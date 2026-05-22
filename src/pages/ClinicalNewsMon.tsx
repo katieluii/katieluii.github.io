@@ -730,7 +730,7 @@ export default function ClinicalNewsMon() {
     setLoading(true);
     setError('');
     try {
-      const baseParams = new URLSearchParams({ limit: '60', days: String(days) });
+      const baseParams = new URLSearchParams({ limit: '200', days: String(days) });
       if (taFilter) baseParams.set('ta', taFilter);
 
       let fetched: Article[] = [];
@@ -859,14 +859,14 @@ export default function ClinicalNewsMon() {
 
   const displayStats = weekStats
     ? [
-        { value: weekStats.data_readout, label: 'Data readouts' },
-        { value: weekStats.pipeline_regulatory, label: 'Pipeline & regulatory' },
-        { value: weekStats.company_action, label: 'M&A / company actions' },
+        { value: weekStats.data_readout, label: 'Data Readouts' },
+        { value: weekStats.pipeline_regulatory, label: 'Pipeline & Regulatory Developments' },
+        { value: weekStats.company_action, label: 'M&A Activities / Management Changes' },
       ]
     : [
-        { value: stats?.by_category?.data_readout ?? 0, label: 'Data readouts' },
-        { value: pipelineRegulatoryCount, label: 'Pipeline & regulatory' },
-        { value: stats?.by_category?.company_action ?? 0, label: 'M&A / company actions' },
+        { value: stats?.by_category?.data_readout ?? 0, label: 'Data Readouts' },
+        { value: pipelineRegulatoryCount, label: 'Pipeline & Regulatory Developments' },
+        { value: stats?.by_category?.company_action ?? 0, label: 'M&A Activities / Management Changes' },
       ];
 
   return (
