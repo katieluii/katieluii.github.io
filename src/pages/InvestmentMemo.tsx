@@ -121,7 +121,7 @@ export default function InvestmentMemo() {
 
         {/* Description */}
         <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
-          A multi-agent investment memo generation tool built for biotech VCs. The workflow moves through three phases: quantitative analysis (market sizing, cap table modelling, and exit scenario waterfall), a founding team assessment to capture soft signals and econometric inputs, then four specialised DD agents — scientific diligence, competitive intelligence, clinical &amp; regulatory, and financing &amp; valuation — that draw on public biopharma intelligence and your indexed documents. Analysts review and annotate each agent card before An LLM synthesises everything into a structured investment memo.
+          A multi-agent investment memo generation tool built for biotech VCs. The workflow runs through three phases: quantitative analysis (market sizing, cap table modelling, and exit scenario waterfall) for econometric inputs; a founding team assessment to capture soft signals; then four specialised DD agents — scientific diligence, competitive intelligence, clinical &amp; regulatory, and financing &amp; valuation — drawing on public biopharma intelligence and your indexed documents. Analysts review and annotate each agent card (incl. incorporating quantitative outputs where relevant) before all human and agentic inputs are synthesised into a structured investment memo.
         </p>
 
         {/* Open app button */}
