@@ -13,6 +13,7 @@ interface FlowStep {
   detail: string;
   type: StepType;
   tags: DataTag[];
+  checkpoint?: boolean;
 }
 
 const FLOW: FlowStep[] = [
@@ -53,6 +54,7 @@ const FLOW: FlowStep[] = [
     label: 'Review & annotate',
     detail: 'Read each agent\'s analysis as a structured card. Correct errors, inject network intelligence, and add context that agents cannot access.',
     type: 'human',
+    checkpoint: true,
     tags: [{ label: 'Your notes & corrections', color: 'amber' }],
   },
   {
@@ -104,14 +106,6 @@ export default function InvestmentMemo() {
     },
   ];
 
-  const roadmap = [
-    'PDF pitch deck parsing — extract text automatically on upload',
-    'Embeddings and semantic retrieval (RAG) for citation-grounded analysis',
-    'Parallel agent execution to reduce turnaround time',
-    'Memo export to DOCX and PDF',
-    'Live clinical news feed integration as automatic deal context',
-  ];
-
   return (
     <ProjectPageLayout title={project.title} subtitle="Multi-agent · FastAPI · Next.js · SQLite">
       <div className="space-y-10">
@@ -157,7 +151,7 @@ export default function InvestmentMemo() {
             </span>
             <span className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-zinc-400">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0" />
-              Human checkpoint
+              Human
             </span>
             <span className={`text-xs px-2 py-0.5 rounded-full ${TAG_STYLES.blue}`}>Public data</span>
             <span className={`text-xs px-2 py-0.5 rounded-full ${TAG_STYLES.purple}`}>Proprietary docs</span>
@@ -169,6 +163,7 @@ export default function InvestmentMemo() {
             {FLOW.map((step, i) => {
               const isHuman = step.type === 'human';
               const isAgentic = step.type === 'agentic';
+              const isCheckpoint = step.checkpoint === true;
               const isLast = i === FLOW.length - 1;
               return (
                 <div key={step.label} className="flex gap-3">
@@ -196,15 +191,15 @@ export default function InvestmentMemo() {
                   }`}>
                     <div className="flex items-start justify-between gap-2 flex-wrap">
                       <p className="text-sm font-semibold text-slate-900 dark:text-zinc-100">{step.label}</p>
-                      <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${
-                        isHuman
-                          ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
-                          : isAgentic
-                          ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300'
-                          : 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400'
-                      }`}>
-                        {isHuman ? '◆ Human checkpoint' : isAgentic ? '✦ Auto / Agentic' : '● Automated'}
-                      </span>
+                      {(isCheckpoint || isAgentic) && (
+                        <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${
+                          isCheckpoint
+                            ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'
+                            : 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300'
+                        }`}>
+                          {isCheckpoint ? '◆ Human checkpoint' : '✦ Auto / Agentic'}
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-slate-500 dark:text-zinc-500 mt-1 leading-relaxed">{step.detail}</p>
                     {step.tags.length > 0 && (
@@ -231,19 +226,6 @@ export default function InvestmentMemo() {
               <div key={a.name} className="rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3">
                 <p className="text-sm font-semibold text-slate-900 dark:text-zinc-100 mb-1">{a.icon} {a.name}</p>
                 <p className="text-xs text-slate-500 dark:text-zinc-500 leading-relaxed">{a.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Roadmap */}
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Roadmap</h2>
-          <div className="rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800/50 p-4 space-y-1.5">
-            {roadmap.map(item => (
-              <div key={item} className="flex gap-2 text-sm text-slate-600 dark:text-zinc-400">
-                <span className="text-slate-400 dark:text-zinc-600 flex-shrink-0">→</span>
-                {item}
               </div>
             ))}
           </div>
