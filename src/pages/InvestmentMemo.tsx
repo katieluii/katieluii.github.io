@@ -2,9 +2,6 @@ import { ExternalLink } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
-import MarketSizingCalculator from '../components/MarketSizingCalculator';
-import CapTableHelper from '../components/CapTableHelper';
-import ExitScenarios from '../components/ExitScenarios';
 
 const APP_URL = 'https://investment-memo-agent-git-main-katieluiis-projects.vercel.app';
 
@@ -144,31 +141,6 @@ export default function InvestmentMemo() {
             <ExternalLink className="w-4 h-4" />
             Open App
           </a>
-        </div>
-
-        {/* Market Sizing Calculator */}
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Market Sizing Calculator</h2>
-          <p className="text-sm text-slate-500 dark:text-zinc-500">Build a bottom-up or top-down sizing model for the asset. Adjust inputs to stress-test TAM/SAM/SOM assumptions.</p>
-          <MarketSizingCalculator />
-        </div>
-
-        {/* Cap Table & Dilution Modeller */}
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Cap Table &amp; Dilution Modeller</h2>
-          <p className="text-sm text-slate-500 dark:text-zinc-500">
-            Upload or enter the founder's cap table, model this round and co-investors, then project ownership across future rounds.
-          </p>
-          <CapTableHelper />
-        </div>
-
-        {/* Exit Scenarios & Waterfall */}
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Exit Scenarios &amp; Waterfall</h2>
-          <p className="text-sm text-slate-500 dark:text-zinc-500">
-            Model the full liquidation waterfall across bear / base / bull exits. Supports non-participating, participating (capped and uncapped), and pari passu preference structures. Generates a structured output block for the Financing &amp; Valuation agent.
-          </p>
-          <ExitScenarios />
         </div>
 
         {/* Flow diagram */}
