@@ -258,7 +258,7 @@ const TITLE_SYNONYMS: [RegExp, string][] = [
   [/\b(overall\s+survival|progression.?free\s+survival|overall\s+response\s+rate)\b/gi, 'xendpoint'],
 ];
 
-const STOP = new Set(['that', 'with', 'from', 'have', 'this', 'they', 'will', 'been', 'were', 'said', 'after', 'into', 'adds', 'about', 'than', 'more', 'also', 'drug', 'data', 'news', 'trial', 'study']);
+const STOP = new Set(['that', 'with', 'from', 'have', 'this', 'they', 'will', 'been', 'were', 'said', 'after', 'into', 'adds', 'about', 'than', 'more', 'also', 'drug', 'data', 'news', 'trial', 'study', 'approval', 'approvals']);
 
 function titleTokens(title: string): Set<string> {
   let s = title.replace(/'s\b/g, '').toLowerCase();
@@ -325,7 +325,9 @@ function groupArticles(articles: Article[]): (Article | Article[])[] {
       const sameTA = !!(taA && taB && taA === taB);
       const assetOverlap = assetNamesOverlap(a.asset_name, b.asset_name);
       const titleSim = titlesSimilar(a.title, b.title);
-      if (titleSim || (sameTA && assetOverlap)) {
+      // Two articles with distinct known asset names are different drugs — never group them.
+      const conflictingAssets = !!(a.asset_name && b.asset_name && !assetNamesOverlap(a.asset_name, b.asset_name));
+      if (!conflictingAssets && (titleSim || (sameTA && assetOverlap))) {
         ensure(a.id); ensure(b.id);
         edges.get(a.id)!.add(b.id);
         edges.get(b.id)!.add(a.id);
@@ -844,7 +846,13 @@ export default function ClinicalNewsMon() {
 
   const sponsorOptions = useMemo(() => {
     const s = new Set<string>();
-    articles.forEach(a => { if (a.sponsor) s.add(a.sponsor); });
+    articles.forEach(a => {
+      if (!a.sponsor) return;
+      for (const part of a.sponsor.split(/\s*\/\s*|\s+and\s+/i)) {
+        const p = part.trim();
+        if (p) s.add(p);
+      }
+    });
     return Array.from(s).sort();
   }, [articles]);
 
@@ -856,7 +864,7 @@ export default function ClinicalNewsMon() {
 
   const filteredArticles = useMemo(() => {
     return articles.filter(a => {
-      if (sponsorFilter && a.sponsor !== sponsorFilter) return false;
+      if (sponsorFilter && !sponsorsOverlap(a.sponsor, sponsorFilter)) return false;
       if (indicationFilter && a.indication !== indicationFilter) return false;
       return true;
     });
