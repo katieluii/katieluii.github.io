@@ -248,7 +248,7 @@ function normalizeTa(ta: string | null): string {
 
 // Synonym groups for title fingerprinting — replaces variant phrases with canonical tokens.
 const TITLE_SYNONYMS: [RegExp, string][] = [
-  [/\b(fda\s+approv\w*|grants?\s+(full|accelerat\w+)?\s*approv\w*|gains?\s+approv\w*|receives?\s+approv\w*|earns?\s+approv\w*|notch\w*\s+(fda\s+)?nod|us\s+regulatory\s+approv\w*)\b/gi, 'xapproved'],
+  [/\b(fda\s+approv\w*|grants?\s+(full|accelerat\w+)?\s*approv\w*|gains?\s+approv\w*|receives?\s+approv\w*|earns?\s+approv\w*|notch\w*\s+(fda\s+)?nod|us\s+regulatory\s+approv\w*|chmp\b|eu\s+(?:approv\w*|back\w*)|positive\s+opinion|ema\s+approv\w*|european\s+approv\w*|mhra\s+approv\w*)\b/gi, 'xapproved'],
   [/\b(fda\s+reject\w*|complete\s+response\s+letter|crl\b|clinical\s+hold|refuse\s+to\s+file)\b/gi, 'xfdareject'],
   [/\b(fails?\s+to\s+beat|miss(es|ed)?\b|did\s+not\s+meet|no\s+clinical\s+benefit|falls?\s+short|adds?\s+to\s+(\w+\s+)?failures?|comes?\s+up\s+short|failed?\b|disappoints?\w*|no\s+significant\s+benefit)\b/gi, 'xnegoutcome'],
   [/\b(meets?\s+(primary\s+)?endpoint\w*|beat\w*|shows?\s+significant|demonstrat\w+\s+(efficacy|benefit|survival)|positive\s+(phase|result)\w*|showed\s+promising\w*)\b/gi, 'xposoutcome'],
