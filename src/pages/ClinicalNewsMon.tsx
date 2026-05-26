@@ -99,14 +99,25 @@ function formatPublished(published: string): string {
   return published.replace(/[T ]\d{1,2}:\d{2}.*$/, '').trim();
 }
 
-// Robust published-date parser — handles ISO 8601, RFC 2822, and common RSS variants
-// (feedparser stores the raw string; "UTC" suffix isn't valid in JS but "GMT" is).
+// Robust published-date parser — handles ISO 8601, RFC 2822, and common RSS variants.
+// (feedparser stores the raw string; "UTC" suffix isn't valid in JS but "GMT" is.)
+// Also handles FierceBiotech/FiercePharma "Month D, YYYY H:MMam/pm" format which
+// JS Date can't parse natively, causing those articles to vanish from "last week".
 function parsePublished(s: string | undefined): number {
   if (!s) return NaN;
   let t = new Date(s).getTime();
   if (!isNaN(t)) return t;
   t = new Date(s.replace(/\bUTC\b/gi, 'GMT')).getTime();
   if (!isNaN(t)) return t;
+  // "May 21, 2026 3:21pm" / "May 22, 2026 4:23am" (FierceBiotech / FiercePharma)
+  const ampm = s.match(/^(\w+ \d{1,2},\s*\d{4})\s+(\d{1,2}):(\d{2})(am|pm)$/i);
+  if (ampm) {
+    let h = parseInt(ampm[2], 10);
+    if (ampm[4].toLowerCase() === 'pm' && h !== 12) h += 12;
+    if (ampm[4].toLowerCase() === 'am' && h === 12) h = 0;
+    t = new Date(`${ampm[1]} ${String(h).padStart(2, '0')}:${ampm[3]}:00`).getTime();
+    if (!isNaN(t)) return t;
+  }
   // Last resort: pull YYYY-MM-DD substring (covers seed "_ago(N)" format)
   const m = s.match(/(\d{4}-\d{2}-\d{2})/);
   return m ? new Date(m[1]).getTime() : NaN;
@@ -687,7 +698,7 @@ export default function ClinicalNewsMon() {
 
   useEffect(() => {
     if (!refreshing) return;
-    setRefreshSecsLeft(45);
+    setRefreshSecsLeft(90);
     const t = setInterval(() => setRefreshSecsLeft(s => Math.max(0, s - 1)), 1000);
     return () => clearInterval(t);
   }, [refreshing]);
@@ -815,7 +826,7 @@ export default function ClinicalNewsMon() {
           apiFetch('/stats').then(setStats).catch(() => null),
         ]);
         setRefreshing(false);
-      }, 45000);
+      }, 90000);
     } catch {
       setRefreshing(false);
     }
