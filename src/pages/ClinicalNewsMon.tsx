@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { RefreshCw, FlaskConical, ExternalLink, Archive } from 'lucide-react';
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
+import { RefreshCw, FlaskConical, ExternalLink, Archive, ChevronDown } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
 import { getProjectBySlug, formatYearRange } from '../data/projects';
@@ -123,10 +123,89 @@ function parsePublished(s: string | undefined): number {
   return m ? new Date(m[1]).getTime() : NaN;
 }
 
+function decodeHtml(s: string): string {
+  return s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+}
+
 async function apiFetch(path: string) {
   const res = await fetch(`${API}${path}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
+}
+
+function MultiSelect({
+  options,
+  selected,
+  onChange,
+  placeholder,
+}: {
+  options: { key: string; label: string }[];
+  selected: Set<string>;
+  onChange: (next: Set<string>) => void;
+  placeholder: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
+  const toggle = (key: string) => {
+    const next = new Set(selected);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    onChange(next);
+  };
+
+  const buttonLabel =
+    selected.size === 0
+      ? placeholder
+      : selected.size === 1
+      ? (options.find(o => selected.has(o.key))?.label ?? placeholder)
+      : `${selected.size} selected`;
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        className="text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 inline-flex items-center gap-1.5"
+      >
+        <span>{buttonLabel}</span>
+        <ChevronDown className={`w-3 h-3 opacity-60 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && options.length > 0 && (
+        <div className="absolute z-20 mt-1 min-w-[180px] max-h-64 overflow-y-auto rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-lg py-1">
+          {selected.size > 0 && (
+            <button
+              onClick={() => onChange(new Set())}
+              className="w-full text-left px-3 py-1.5 text-xs text-blue-600 dark:text-blue-400 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 border-b border-zinc-100 dark:border-zinc-700 mb-0.5"
+            >
+              Clear all
+            </button>
+          )}
+          {options.map(o => (
+            <label
+              key={o.key}
+              className="flex items-center gap-2 px-3 py-1.5 text-xs text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-700/50 cursor-pointer"
+            >
+              <input
+                type="checkbox"
+                checked={selected.has(o.key)}
+                onChange={() => toggle(o.key)}
+                className="accent-blue-600"
+              />
+              <span>{o.label}</span>
+            </label>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function Tag({ label, color = 'zinc' }: { label: string; color?: string }) {
@@ -197,7 +276,7 @@ const SPONSOR_ALIASES: [RegExp, string][] = [
   [/\bipsen\b/i,                                             'ipsen'],
 ];
 
-const SPONSOR_SUFFIX = /\s+(pharmaceuticals?|pharma|biosciences?|biotechnology|biotech|therapeutics?|sciences?|oncology|biopharmaceuticals?|inc\.?|ltd\.?|corp\.?|plc\.?|llc\.?|gmbh|sa|ag)\s*$/i;
+const SPONSOR_SUFFIX = /\s+(pharmaceuticals?|pharma|biosciences?|bio|biotechnology|biotech|therapeutics?|sciences?|oncology|biopharmaceuticals?|inc\.?|ltd\.?|corp\.?|plc\.?|llc\.?|gmbh|sa|ag)\s*$/i;
 
 function normalizeSponsor(s: string): string {
   for (const [re, canonical] of SPONSOR_ALIASES) {
@@ -206,12 +285,12 @@ function normalizeSponsor(s: string): string {
   return normalizeKey(s.replace(SPONSOR_SUFFIX, '').replace(SPONSOR_SUFFIX, ''));
 }
 
-// Co-development articles ("Daiichi Sankyo / AstraZeneca", "Eisai/Biogen") carry
-// multiple sponsors — split them so either company can pair with a solo-sponsor article.
+// Co-development articles ("Daiichi Sankyo / AstraZeneca", "Merck & Co., Kelun-Biotech") carry
+// multiple sponsors — split on / and , so either company matches a solo-sponsor article.
 function sponsorKeys(s: string | null): Set<string> {
   if (!s) return new Set();
   const keys = new Set<string>();
-  for (const part of s.split(/\s*\/\s*|\s+and\s+/i)) {
+  for (const part of s.split(/\s*[\/,]\s*|\s+and\s+/i)) {
     const k = normalizeSponsor(part.trim());
     if (k) keys.add(k);
   }
@@ -245,6 +324,46 @@ function normalizeTa(ta: string | null): string {
   }
   return normalizeKey(ta);
 }
+
+const SPONSOR_DISPLAY: Record<string, string> = {
+  roche: 'Roche / Genentech',
+  jnj: 'Johnson & Johnson',
+  merckkgaa: 'Merck KGaA',
+  merck: 'Merck & Co.',
+  astrazeneca: 'AstraZeneca',
+  sanofi: 'Sanofi / Genzyme',
+  bms: 'Bristol-Myers Squibb',
+  lilly: 'Eli Lilly',
+  gsk: 'GSK',
+  pfizer: 'Pfizer',
+  abbvie: 'AbbVie',
+  novartis: 'Novartis',
+  amgen: 'Amgen',
+  gilead: 'Gilead Sciences',
+  regeneron: 'Regeneron',
+  biogen: 'Biogen',
+  bayer: 'Bayer',
+  takeda: 'Takeda',
+  novonordisk: 'Novo Nordisk',
+  ucb: 'UCB',
+  daiichisankyo: 'Daiichi Sankyo',
+  boehringeringelheim: 'Boehringer Ingelheim',
+  moderna: 'Moderna',
+  biontech: 'BioNTech',
+  eisai: 'Eisai',
+  incyte: 'Incyte',
+  ipsen: 'Ipsen',
+};
+
+const TA_DISPLAY: Record<string, string> = {
+  oncology: 'Oncology',
+  cns: 'CNS / Neurology',
+  cardiovascular: 'Cardiovascular',
+  metabolic: 'Metabolic / Diabetes',
+  raredisease: 'Rare Disease',
+  immunology: 'Immunology',
+  infectiousdisease: 'Infectious Disease',
+};
 
 // Synonym groups for title fingerprinting — replaces variant phrases with canonical tokens.
 const TITLE_SYNONYMS: [RegExp, string][] = [
@@ -440,7 +559,7 @@ function DigestPanel({ digest, mondayDate }: { digest: Digest; mondayDate: Date 
           {dedupedLines.map((line, i) => (
             <li key={i} className="flex gap-2 text-xs text-zinc-600 dark:text-zinc-400">
               <span className="text-zinc-300 dark:text-zinc-600 shrink-0">·</span>
-              <span>{line}</span>
+              <span>{decodeHtml(line)}</span>
             </li>
           ))}
         </ul>
@@ -453,7 +572,7 @@ function DigestPanel({ digest, mondayDate }: { digest: Digest; mondayDate: Date 
           {dedupedLines.map((line, i) => (
             <li key={i} className="flex gap-2 text-xs text-zinc-600 dark:text-zinc-400">
               <span className="text-zinc-300 dark:text-zinc-600 shrink-0">·</span>
-              <span>{line}</span>
+              <span>{decodeHtml(line)}</span>
             </li>
           ))}
         </ul>
@@ -691,7 +810,6 @@ export default function ClinicalNewsMon() {
   const [weekStats, setWeekStats] = useState<WeekStats | null>(null);
   const [articles, setArticles] = useState<Article[]>([]);
   const [view, setView] = useState<ViewMode>('all');
-  const [ta, setTa] = useState('');
   const [weekTab, setWeekTab] = useState<WeekTab>('this');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -739,12 +857,11 @@ export default function ClinicalNewsMon() {
   // For "last week" fetch enough days to cover both weeks, then filter client-side.
   const days = weekTab === 'this' ? weekStartDays() : weekStartDays() + 7;
 
-  const loadArticles = useCallback(async (v: ViewMode, taFilter: string) => {
+  const loadArticles = useCallback(async (v: ViewMode) => {
     setLoading(true);
     setError('');
     try {
       const baseParams = new URLSearchParams({ limit: '200', days: String(days) });
-      if (taFilter) baseParams.set('ta', taFilter);
 
       let fetched: Article[] = [];
 
@@ -778,9 +895,7 @@ export default function ClinicalNewsMon() {
 
       setArticles(fetched);
 
-      // Track unfiltered articles per week so the digest always reflects all events
-      // regardless of the category/TA filter the user has selected.
-      if (v === 'all' && !taFilter) {
+      if (v === 'all') {
         if (weekTab === 'this') setAllThisWeekArticles(fetched);
         else setAllLastWeekArticles(fetched);
       }
@@ -811,12 +926,12 @@ export default function ClinicalNewsMon() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    loadArticles('all', '');
+    loadArticles('all');
   }, [loadArticles]);
 
   useEffect(() => {
-    loadArticles(view, ta);
-  }, [view, ta, loadArticles]);
+    loadArticles(view);
+  }, [view, loadArticles]);
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -824,7 +939,7 @@ export default function ClinicalNewsMon() {
       await fetch(`${API}/refresh`, { method: 'POST' });
       setTimeout(async () => {
         await Promise.all([
-          loadArticles(view, ta),
+          loadArticles(view),
           apiFetch('/stats').then(setStats).catch(() => null),
         ]);
         setRefreshing(false);
@@ -841,36 +956,58 @@ export default function ClinicalNewsMon() {
     { id: 'company_action', label: 'M&A/Management Activities' },
   ];
 
-  const [sponsorFilter, setSponsorFilter] = useState('');
-  const [indicationFilter, setIndicationFilter] = useState('');
+  const [sponsorFilters, setSponsorFilters] = useState<Set<string>>(new Set());
+  const [taFilters, setTaFilters] = useState<Set<string>>(new Set());
+  const [indicationFilters, setIndicationFilters] = useState<Set<string>>(new Set());
 
   const sponsorOptions = useMemo(() => {
-    const s = new Set<string>();
+    const seen = new Map<string, string>();
     articles.forEach(a => {
       if (!a.sponsor) return;
-      for (const part of a.sponsor.split(/\s*\/\s*|\s+and\s+/i)) {
-        const p = part.trim();
-        if (p) s.add(p);
+      for (const raw of a.sponsor.split(/\s*[\/,]\s*|\s+and\s+/i)) {
+        const part = raw.trim();
+        if (!part) continue;
+        const key = normalizeSponsor(part);
+        if (!key) continue;
+        if (!seen.has(key)) {
+          const label = SPONSOR_DISPLAY[key] ?? part.replace(SPONSOR_SUFFIX, '').replace(SPONSOR_SUFFIX, '').trim() || part;
+          seen.set(key, label);
+        }
       }
     });
-    return Array.from(s).sort();
+    return Array.from(seen.entries()).map(([key, label]) => ({ key, label })).sort((a, b) => a.label.localeCompare(b.label));
+  }, [articles]);
+
+  const taOptions = useMemo(() => {
+    const seen = new Map<string, string>();
+    articles.forEach(a => {
+      if (!a.therapeutic_area) return;
+      const key = normalizeTa(a.therapeutic_area);
+      if (key && !seen.has(key)) seen.set(key, TA_DISPLAY[key] ?? a.therapeutic_area);
+    });
+    return Array.from(seen.entries()).map(([key, label]) => ({ key, label })).sort((a, b) => a.label.localeCompare(b.label));
   }, [articles]);
 
   const indicationOptions = useMemo(() => {
     const s = new Set<string>();
     articles.forEach(a => { if (a.indication) s.add(a.indication); });
-    return Array.from(s).sort();
+    return Array.from(s).sort().map(v => ({ key: v, label: v }));
   }, [articles]);
 
   const filteredArticles = useMemo(() => {
     return articles.filter(a => {
-      if (sponsorFilter && !sponsorsOverlap(a.sponsor, sponsorFilter)) return false;
-      if (indicationFilter && a.indication !== indicationFilter) return false;
+      if (sponsorFilters.size > 0) {
+        const articleKeys = sponsorKeys(a.sponsor);
+        if (![...sponsorFilters].some(k => articleKeys.has(k))) return false;
+      }
+      if (taFilters.size > 0) {
+        const aKey = normalizeTa(a.therapeutic_area);
+        if (!aKey || !taFilters.has(aKey)) return false;
+      }
+      if (indicationFilters.size > 0 && !indicationFilters.has(a.indication ?? '')) return false;
       return true;
     });
-  }, [articles, sponsorFilter, indicationFilter]);
-
-  const taOptions = stats ? Object.keys(stats.top_therapeutic_areas) : [];
+  }, [articles, sponsorFilters, taFilters, indicationFilters]);
 
   const pipelineRegulatoryCount = stats
     ? (stats.by_category?.pipeline_change ?? 0) + (stats.by_category?.regulatory ?? 0)
@@ -920,7 +1057,7 @@ export default function ClinicalNewsMon() {
             return (
               <button
                 key={tab}
-                onClick={() => { setWeekTab(tab); setView('all'); setTa(''); setSponsorFilter(''); setIndicationFilter(''); }}
+                onClick={() => { setWeekTab(tab); setView('all'); setSponsorFilters(new Set()); setTaFilters(new Set()); setIndicationFilters(new Set()); }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   weekTab === tab
                     ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
@@ -982,39 +1119,31 @@ export default function ClinicalNewsMon() {
           </button>
         </div>
 
-        {/* Controls — row 2: dropdown filters (sponsors → TA → indications) */}
+        {/* Controls — row 2: multi-select filters (sponsors → TA → indications) */}
         <div className="flex flex-wrap gap-3 items-center">
           {sponsorOptions.length > 0 && (
-            <select
-              value={sponsorFilter}
-              onChange={e => setSponsorFilter(e.target.value)}
-              className="text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            >
-              <option value="">All sponsors</option>
-              {sponsorOptions.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
+            <MultiSelect
+              options={sponsorOptions}
+              selected={sponsorFilters}
+              onChange={setSponsorFilters}
+              placeholder="All sponsors"
+            />
           )}
-
           {taOptions.length > 0 && (
-            <select
-              value={ta}
-              onChange={e => setTa(e.target.value)}
-              className="text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            >
-              <option value="">All therapeutic areas</option>
-              {taOptions.map(t => <option key={t} value={t}>{t}</option>)}
-            </select>
+            <MultiSelect
+              options={taOptions}
+              selected={taFilters}
+              onChange={setTaFilters}
+              placeholder="All therapeutic areas"
+            />
           )}
-
           {indicationOptions.length > 0 && (
-            <select
-              value={indicationFilter}
-              onChange={e => setIndicationFilter(e.target.value)}
-              className="text-xs rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            >
-              <option value="">All indications</option>
-              {indicationOptions.map(i => <option key={i} value={i}>{i}</option>)}
-            </select>
+            <MultiSelect
+              options={indicationOptions}
+              selected={indicationFilters}
+              onChange={setIndicationFilters}
+              placeholder="All indications"
+            />
           )}
         </div>
 
