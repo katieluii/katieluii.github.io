@@ -970,7 +970,8 @@ export default function ClinicalNewsMon() {
         const key = normalizeSponsor(part);
         if (!key) continue;
         if (!seen.has(key)) {
-          const label = SPONSOR_DISPLAY[key] ?? part.replace(SPONSOR_SUFFIX, '').replace(SPONSOR_SUFFIX, '').trim() || part;
+          const cleaned = part.replace(SPONSOR_SUFFIX, '').replace(SPONSOR_SUFFIX, '').trim();
+          const label = SPONSOR_DISPLAY[key] ?? (cleaned || part);
           seen.set(key, label);
         }
       }
