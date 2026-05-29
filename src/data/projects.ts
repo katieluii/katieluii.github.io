@@ -240,43 +240,15 @@ export const projects: Project[] = [
     slug: "biotech-fundraising-tracker",
     title: "Biotech Fundraising Tracker",
     themes: ["AI/ML & Automation", "Investing"],
-    status: "Live", // change back to "WIP" if you prefer
+    status: "Live",
     yearStart: 2025,
     yearEnd: 2026,
     summary:
-      "Daily capture + weekly CSV rollup of private biotech financings with strict inclusion/exclusion logic, structured extraction, and Google Sheets persistence.",
+      "Live tracker of private biotech financing rounds — daily RSS ingestion, Claude Haiku classification, and a filterable deal feed with round-type, therapeutic area, and amount filters.",
     longDescription:
-      "I built an automated biotech fundraising tracker that turns daily headlines into a continuously updated financing ledger -- captured into a Google Sheet and shipped weekly as an Excel CSV ready for further analysis. It ingests daily news headlines from RSS from FierceBiotech, Labiotech, and Endpoints, dedupes new items with a persistent key (link/date/title), applies an early keyword filter, then runs a strict LLM classifier to keep only private, therapeutic-asset-centric financings.\n\nFor kept items, the workflow extracts structured fields (company, round normalization, amount text + USD estimate when present, currency, published date) and logs both kept and rejected entries with explicit reasons in a unified schema. A final validation/dedupe step flattens results before appending to Sheets; a weekly job then pulls the last 7 days, generates a CSV attachment, and emails it via Gmail.",
-    tags: [
-      "n8n",
-      "RSS",
-      "LLM Classification",
-      "Prompt Engineering"
-    ],
-    links: {},
-    sections: [
-      {
-        title: "Architecture",
-        bullets: [
-          "Daily RSS ingestion from FierceBiotech, Labiotech, and Endpoints",
-          "Persistent dedupe key (link + date + title) to keep only new entries",
-          "Keyword pre-filter to drop non-fundraising items early",
-          "LLM classifier keeps only private, therapeutic-asset-centric financings (seed/Series/venture + select debt/convertible/grants)",
-          "Explicit rejection of public offerings, M&A, platform/tooling raises, hiring, legal, etc., with logged reasons",
-          "Structured extraction: company, round normalization, amount text + USD estimate (when present), currency, published date",
-          "Stores kept + rejected rows in a unified schema for auditability",
-          "Validation + dedupe pass flattens results before appending to a staging Google Sheet",
-          "Weekly job filters last 7 days (tolerant date parsing), generates CSV, and emails via Gmail",
-        ],
-        images: [
-          {
-            src: "/images/n8n/fundraising-tracker.png",
-            alt: "Biotech fundraising tracker workflow",
-            caption: "Daily capture → classify/extract → Sheets, plus weekly CSV rollup email",
-          },
-        ],
-      },
-    ],
+      "I built this tool to continuously monitor private biotech fundraising from five daily RSS sources. Claude Haiku runs a strict inclusion filter to keep only private, therapeutic-asset-centric financings — pre-seed through Series G, venture rounds, convertible notes, debt financing, and NIH/BARDA grants — explicitly excluding public-market transactions (IPOs, shelf offerings), M&A deals, and platform-only raises. Each deal is tagged with therapeutic area, round type, disclosed amount normalised to USD, and lead investor. A FastAPI backend stores all deals in SQLite and serves a filterable feed; a React frontend shows deal cards, a monthly trends chart, and round-type filter chips.",
+    tags: ["Python", "Claude API", "FastAPI", "SQLite", "RSS", "React"],
+    links: { live: "/biotech-fundraising" },
   },
   {
     id: "clinical-news-monitor",

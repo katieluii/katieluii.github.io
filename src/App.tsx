@@ -38,6 +38,7 @@ import ClinicalNewsMon from './pages/ClinicalNewsMon';
 import InvestmentMemo from './pages/InvestmentMemo';
 import ObesityStockAnalysis from './pages/ObesityStockAnalysis';
 import BiopharmaAIFeed from './pages/BiopharmaAIFeed';
+import BiotechFundraising from './pages/BiotechFundraising';
 import StandardProjectPage from './pages/StandardProjectPage';
 
 function App() {
@@ -66,6 +67,10 @@ function App() {
 
         {/* WS2: AI biopharma intelligence feed */}
         <Route path="/ai-biopharma-feed" element={<BiopharmaAIFeed />} />
+
+        {/* Biotech Fundraising Tracker (v2) */}
+        <Route path="/biotech-fundraising" element={<BiotechFundraising />} />
+        <Route path="/projects/biotech-fundraising-tracker" element={<BiotechFundraising />} />
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />
       </Routes>
