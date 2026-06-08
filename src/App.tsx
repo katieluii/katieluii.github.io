@@ -39,6 +39,8 @@ import InvestmentMemo from './pages/InvestmentMemo';
 import ObesityStockAnalysis from './pages/ObesityStockAnalysis';
 import BiopharmaAIFeed from './pages/BiopharmaAIFeed';
 import BiotechFundraising from './pages/BiotechFundraising';
+import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
+import ConferenceCatalyst from './pages/ConferenceCatalyst';
 import StandardProjectPage from './pages/StandardProjectPage';
 
 function App() {
@@ -71,6 +73,14 @@ function App() {
         {/* Biotech Fundraising Tracker (v2) */}
         <Route path="/biotech-fundraising" element={<BiotechFundraising />} />
         <Route path="/projects/biotech-fundraising-tracker" element={<BiotechFundraising />} />
+
+        {/* Atlas — Drug Development Analyst Agent (WS9/10a/10b/12/13 umbrella) */}
+        <Route path="/atlas-drug-dev-analyst" element={<AtlasDrugDevAnalyst />} />
+        <Route path="/projects/atlas-drug-dev-analyst" element={<AtlasDrugDevAnalyst />} />
+
+        {/* WS8: Biotech Conference Catalyst Monitor */}
+        <Route path="/conference-catalyst" element={<ConferenceCatalyst />} />
+        <Route path="/projects/conference-catalyst-monitor" element={<ConferenceCatalyst />} />
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />
       </Routes>
