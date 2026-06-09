@@ -796,7 +796,18 @@ export default function AtlasDrugDevAnalyst() {
         </section>
 
         {/* Closing — two paths, casual */}
-        <section className="border-t border-zinc-200/80 dark:border-white/10 pt-6">
+        <section className="border-t border-zinc-200/80 dark:border-white/10 pt-6 space-y-4">
+          <p className="text-[13.5px] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
+            Want to see what the deliverables actually look like?{' '}
+            <a
+              href="/atlas-reader"
+              className="text-zinc-900 dark:text-zinc-100 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
+            >
+              Open the reader →
+            </a>{' '}
+            for a redacted sample of two landscape maps, five target product profiles, three thematic
+            syntheses, and a slice of the ecosystem note.
+          </p>
           <p className="text-[13.5px] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
             You might want the outputs — briefs, profiles, verdicts, ready to use. Or your team might want Atlas sitting
             inside your own systems and data. Both are fine. And if you're not sure yet — feel free to{' '}

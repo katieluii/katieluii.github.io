@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output (CI rebuilds from source)
+dist/
+
+# Secrets / local env
+.env
+.env.*
+
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+
+# Alternative lockfile (CI uses npm + package-lock.json)
+bun.lock

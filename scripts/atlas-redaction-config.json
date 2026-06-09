@@ -1,0 +1,46 @@
+{
+  "etlm_whitelist": ["nsclc", "obesity"],
+  "etlm_strip_keys": [
+    "analyst_session_id",
+    "analyst_notes",
+    "internal_confidence",
+    "decision_calibrations",
+    "confidence_notes",
+    "pm_qc_passed",
+    "human_approved",
+    "data_gaps",
+    "schema_adaptation_note"
+  ],
+  "tpp_whitelist": [
+    "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05.md",
+    "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05.md",
+    "tpp_obesity_1L_injectable_bmi30_2026-06-05.md",
+    "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05.md",
+    "tpp_nhl_dlbcl_3L_post_cart_post_zynlonta_2026-06-05.md"
+  ],
+  "theme_whitelist": [
+    "adc_class_state_2026-06-05.md",
+    "glp1_class_competitive_supply_2026-06-05.md",
+    "kras_class_trajectory_2026-06-05.md"
+  ],
+  "ecosystem_section_whitelist": [
+    "target/modality",
+    "modality trajectory",
+    "deal climate",
+    "conference observations"
+  ],
+  "ecosystem_keep_latest_n_entries": 2,
+  "ecosystem_strip_paragraph_markers": [
+    "INTERNAL:",
+    "Katie note:",
+    "PM note:",
+    "Katie editorial"
+  ],
+  "indication_aliases": {
+    "nhl_dlbcl": "nhl_dlbcl",
+    "nhl": "nhl_dlbcl",
+    "aml_mds": "aml_mds",
+    "aml": "aml_mds",
+    "mds": "aml_mds"
+  }
+}

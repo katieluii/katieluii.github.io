@@ -1,0 +1,40 @@
+{
+  "etlm_to_tpps": {
+    "nsclc": [
+      "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05",
+      "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05"
+    ],
+    "obesity": [
+      "tpp_obesity_1L_injectable_bmi30_2026-06-05",
+      "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05"
+    ]
+  },
+  "etlm_to_themes": {
+    "nsclc": [
+      "adc_class_state_2026-06-05",
+      "kras_class_trajectory_2026-06-05"
+    ],
+    "obesity": [
+      "adc_class_state_2026-06-05",
+      "glp1_class_competitive_supply_2026-06-05"
+    ]
+  },
+  "tpp_to_etlm": {
+    "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05": "nsclc",
+    "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05": "nsclc",
+    "tpp_obesity_1L_injectable_bmi30_2026-06-05": "obesity",
+    "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05": "obesity"
+  },
+  "theme_to_indications": {
+    "adc_class_state_2026-06-05": [
+      "nsclc",
+      "obesity"
+    ],
+    "glp1_class_competitive_supply_2026-06-05": [
+      "obesity"
+    ],
+    "kras_class_trajectory_2026-06-05": [
+      "nsclc"
+    ]
+  }
+}

@@ -41,6 +41,11 @@ import BiopharmaAIFeed from './pages/BiopharmaAIFeed';
 import BiotechFundraising from './pages/BiotechFundraising';
 import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
 import ConferenceCatalyst from './pages/ConferenceCatalyst';
+import AtlasReader from './pages/AtlasReader';
+import AtlasReaderETLM from './pages/AtlasReaderETLM';
+import AtlasReaderTPP from './pages/AtlasReaderTPP';
+import AtlasReaderTheme from './pages/AtlasReaderTheme';
+import AtlasReaderEcosystem from './pages/AtlasReaderEcosystem';
 import StandardProjectPage from './pages/StandardProjectPage';
 
 function App() {
@@ -81,6 +86,14 @@ function App() {
         {/* WS8: Biotech Conference Catalyst Monitor */}
         <Route path="/conference-catalyst" element={<ConferenceCatalyst />} />
         <Route path="/projects/conference-catalyst-monitor" element={<ConferenceCatalyst />} />
+
+        {/* Atlas Reader — rendered deliverables preview */}
+        <Route path="/atlas-reader" element={<AtlasReader />} />
+        <Route path="/projects/atlas-reader" element={<AtlasReader />} />
+        <Route path="/atlas-reader/etlm/:indication" element={<AtlasReaderETLM />} />
+        <Route path="/atlas-reader/tpp/:slug" element={<AtlasReaderTPP />} />
+        <Route path="/atlas-reader/theme/:slug" element={<AtlasReaderTheme />} />
+        <Route path="/atlas-reader/ecosystem" element={<AtlasReaderEcosystem />} />
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />
       </Routes>
