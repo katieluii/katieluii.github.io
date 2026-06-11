@@ -43,8 +43,11 @@ import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
 import ConferenceCatalyst from './pages/ConferenceCatalyst';
 import AtlasReader from './pages/AtlasReader';
 import AtlasReaderETLM from './pages/AtlasReaderETLM';
+import AtlasReaderETLMReport from './pages/AtlasReaderETLMReport';
 import AtlasReaderTPP from './pages/AtlasReaderTPP';
+import AtlasReaderTPPReport from './pages/AtlasReaderTPPReport';
 import AtlasReaderTheme from './pages/AtlasReaderTheme';
+import AtlasReaderThemeReport from './pages/AtlasReaderThemeReport';
 import AtlasReaderEcosystem from './pages/AtlasReaderEcosystem';
 import StandardProjectPage from './pages/StandardProjectPage';
 
@@ -91,8 +94,11 @@ function App() {
         <Route path="/atlas-reader" element={<AtlasReader />} />
         <Route path="/projects/atlas-reader" element={<AtlasReader />} />
         <Route path="/atlas-reader/etlm/:indication" element={<AtlasReaderETLM />} />
+        <Route path="/atlas-reader/etlm/:indication/report" element={<AtlasReaderETLMReport />} />
         <Route path="/atlas-reader/tpp/:slug" element={<AtlasReaderTPP />} />
+        <Route path="/atlas-reader/tpp/:slug/report" element={<AtlasReaderTPPReport />} />
         <Route path="/atlas-reader/theme/:slug" element={<AtlasReaderTheme />} />
+        <Route path="/atlas-reader/theme/:slug/report" element={<AtlasReaderThemeReport />} />
         <Route path="/atlas-reader/ecosystem" element={<AtlasReaderEcosystem />} />
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />

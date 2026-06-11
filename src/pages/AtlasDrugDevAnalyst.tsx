@@ -530,7 +530,7 @@ export default function AtlasDrugDevAnalyst() {
   return (
     <ProjectPageLayout
       title="Atlas"
-      subtitle="Strategic memory for drug development."
+      subtitle="Strategic intelligence for drug development."
     >
       <div className="space-y-14">
         {/* Status pills */}
@@ -587,7 +587,7 @@ export default function AtlasDrugDevAnalyst() {
             Areas of work
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            Four streams share one strategic memory — the Emerging Therapeutic Landscape Map (ETLM). Three feed it; one
+            Four streams share one strategic intelligence layer — the Emerging Therapeutic Landscape Map (ETLM). Three feed it; one
             consumes it.
           </p>
 
@@ -667,7 +667,7 @@ export default function AtlasDrugDevAnalyst() {
                 <div className="hidden lg:block w-px h-12 bg-gradient-to-b from-transparent to-zinc-300 dark:to-zinc-600" />
                 <div className="rounded-2xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-5 py-4 text-center shadow-md w-full">
                   <Microscope className="w-5 h-5 mx-auto mb-2 opacity-80" />
-                  <p className="text-[10px] uppercase tracking-widest font-semibold opacity-70">Persistent memory</p>
+                  <p className="text-[10px] uppercase tracking-widest font-semibold opacity-70">Persistent intelligence</p>
                   <p className="text-base font-bold mt-1">ETLM</p>
                   <p className="text-[11px] opacity-70 mt-1 leading-tight">
                     Emerging Therapeutic Landscape Map · one per indication

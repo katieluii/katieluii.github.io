@@ -10,6 +10,8 @@
 // surfaces the indexes the landing page consumes; the viewer pages
 // pick the file they need by route param.
 
+import { INDICATION_DISPLAY, indicationDisplay } from './taxonomy';
+
 export type ETLMIndexEntry = {
   indication_code: string;
   indication: string;
@@ -18,8 +20,12 @@ export type ETLMIndexEntry = {
 
 export type TPPIndexEntry = {
   slug: string;
-  title: string;
+  title: string; // raw first heading (may be generic, e.g. "Target Product Profile")
   indication_code?: string;
+  indication_display: string;
+  segment: string; // short primary segment label
+  segment_full: string; // full segment text
+  date?: string;
 };
 
 export type ThemeIndexEntry = {
@@ -61,10 +67,54 @@ function firstHeading(md: string): string | undefined {
   return match?.[1];
 }
 
+// Resolve indication code by longest known-code prefix match on the slug
+// (handles multi-underscore codes like nhl_dlbcl). Falls back to the legacy
+// segment-token heuristic.
 function indicationCodeFromTppSlug(slug: string): string | undefined {
-  // tpp_<indication>_<segment>_<date> → indication
+  const codes = Object.keys(INDICATION_DISPLAY).sort((a, b) => b.length - a.length);
+  for (const code of codes) {
+    if (slug.startsWith(`tpp_${code}_`)) return code;
+  }
   const match = slug.match(/^tpp_([a-z0-9_]+?)_(?:1L|2L|3L|adjuvant|pediatric|MIBC|PSROC|post|BRAF|HER2pos|HRpos|TNBC|HRD|HRP|IDHmut)/);
   return match?.[1];
+}
+
+// Parse "TPP — {IND} — {SEGMENT} ({DATE})" titles; fall back to slug-derived
+// segment when the heading is generic (e.g. "# Target Product Profile").
+function parseTpp(
+  slug: string,
+  md: string,
+): { indication_code?: string; indication_display: string; segment: string; segment_full: string; date?: string } {
+  const code = indicationCodeFromTppSlug(slug);
+  const date = slug.match(/(\d{4}-\d{2}-\d{2})/)?.[1];
+  const heading = firstHeading(md) ?? '';
+  const titleMatch = heading.match(/^TPP\s*[—-]\s*(.+?)\s*[—-]\s*(.+?)\s*(?:\(\d{4}-\d{2}-\d{2}\))?\s*$/);
+
+  let segmentFull: string;
+  let displayFromTitle: string | undefined;
+  if (titleMatch) {
+    displayFromTitle = titleMatch[1].trim();
+    segmentFull = titleMatch[2].trim();
+  } else {
+    // Derive segment from slug: strip tpp_<code>_ prefix and _<date> suffix.
+    const stripped = slug
+      .replace(/^tpp_/, '')
+      .replace(code ? new RegExp(`^${code}_`) : /^/, '')
+      .replace(/_\d{4}-\d{2}-\d{2}$/, '')
+      .replace(/_/g, ' ');
+    segmentFull = stripped.replace(/\bcart\b/gi, 'CAR-T').replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
+  // Short label: first clause before a comma / em-dash / colon, capped.
+  const segment = (segmentFull.split(/\s*[,—:]\s*/)[0] || segmentFull).slice(0, 70).trim();
+
+  return {
+    indication_code: code,
+    indication_display: indicationDisplay(code, displayFromTitle),
+    segment,
+    segment_full: segmentFull,
+    date,
+  };
 }
 
 function indicationsTouchedFromThemeMd(md: string): string[] | undefined {
@@ -92,13 +142,14 @@ export const etlmIndex: ETLMIndexEntry[] = Object.entries(etlmModules)
 export const tppIndex: TPPIndexEntry[] = Object.entries(tppModules)
   .map(([path, md]) => {
     const slug = slugFromPath(path);
+    const parsed = parseTpp(slug, md);
     return {
       slug,
       title: firstHeading(md) ?? slug,
-      indication_code: indicationCodeFromTppSlug(slug),
+      ...parsed,
     };
   })
-  .sort((a, b) => a.title.localeCompare(b.title));
+  .sort((a, b) => a.segment.localeCompare(b.segment));
 
 export const themeIndex: ThemeIndexEntry[] = Object.entries(themeModules)
   .map(([path, md]) => {

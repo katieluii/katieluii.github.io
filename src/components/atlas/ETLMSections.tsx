@@ -11,7 +11,12 @@ import {
   Users,
   ExternalLink,
 } from 'lucide-react';
-import { crossLinks, etlmIndex } from '../../data/atlas/index';
+import { crossLinks, etlmIndex, tppIndex } from '../../data/atlas/index';
+import { themeShortLabel } from '../../data/atlas/taxonomy';
+
+const tppLabel = (slug: string) =>
+  tppIndex.find((t) => t.slug === slug)?.segment ??
+  slug.replace(/^tpp_/, '').replace(/_\d{4}-\d{2}-\d{2}$/, '').replace(/_/g, ' ');
 
 type Props = {
   etlm: Record<string, unknown>;
@@ -279,7 +284,7 @@ function PipelineAssets({
                 to={`/atlas-reader/tpp/${slug}`}
                 className="text-rose-600 dark:text-rose-400 underline decoration-dotted underline-offset-4"
               >
-                {slug.replace(/^tpp_/, '').replace(/_2026-06-05$/, '').replace(/_/g, ' ')}
+                {tppLabel(slug)}
               </Link>
               {i < linkedTpps.length - 1 ? ' · ' : ''}
             </span>
@@ -436,7 +441,7 @@ function MechanismLandscape({
                 to={`/atlas-reader/theme/${slug}`}
                 className="text-amber-600 dark:text-amber-400 underline decoration-dotted underline-offset-4"
               >
-                {slug.replace(/_2026-06-05$/, '').replace(/_/g, ' ')}
+                {themeShortLabel(slug)}
               </Link>
               {i < linkedThemes.length - 1 ? ' · ' : ''}
             </span>
@@ -767,7 +772,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
                 to={`/atlas-reader/tpp/${slug}`}
                 className="text-xs px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 ring-1 ring-rose-600/20 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30 hover:ring-rose-600/40"
               >
-                TPP · {slug.replace(/^tpp_/, '').replace(/_2026-06-05$/, '').replace(/_/g, ' ')}
+                TPP · {tppLabel(slug)}
               </Link>
             ))}
             {linkedThemes.map((slug) => (
@@ -776,7 +781,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
                 to={`/atlas-reader/theme/${slug}`}
                 className="text-xs px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 ring-1 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30 hover:ring-amber-600/40"
               >
-                Theme · {slug.replace(/_2026-06-05$/, '').replace(/_/g, ' ')}
+                Theme · {themeShortLabel(slug)}
               </Link>
             ))}
           </div>

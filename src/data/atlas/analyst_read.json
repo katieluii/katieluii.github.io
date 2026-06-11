@@ -1,0 +1,52 @@
+{
+  "updated": "2026-06-08",
+  "intro": "Five threads worth watching across drug development this week — a clear point of view, with the sources to back it. Refreshed every Monday.",
+  "narratives": [
+    {
+      "headline": "Protein degraders have moved from promise to big-pharma balance sheets",
+      "detail": "Roche put $700M down (up to $2.3B) for Nurix's BTK-degrader, and optioned immunology and neurology alongside it — the second large-cap degrader deal this window. The signal is hard to miss: this is now a Phase 3-stage commercial platform, not an early-stage bet.",
+      "momentum": "Hot",
+      "sources": [
+        { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
+        { "label": "Nurix newsroom", "url": "https://www.nurixtx.com/news/" },
+        { "label": "Endpoints News", "url": "https://endpts.com" }
+      ]
+    },
+    {
+      "headline": "KRAS is now a three-class target",
+      "detail": "J&J paid $1B in cash for preclinical Firefly Bio, pricing a KRAS-targeting ADC before a single patient is dosed. Covalent inhibitors, RAS(ON) agents, and now ADCs are all chasing the same target everyone spent a decade calling undruggable.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "J&J press releases", "url": "https://www.jnj.com/media-center/press-releases" },
+        { "label": "Firefly Bio", "url": "https://www.fireflybio.com" }
+      ]
+    },
+    {
+      "headline": "The incretin tolerability ceiling is real at Phase 3 scale",
+      "detail": "Survodutide posted ~19% discontinuations in SYNCHRONIZE-1 — roughly 2.5–5× the Phase 2 class baseline. The GLP-1/glucagon tolerability ceiling is now a live constraint on retatrutide and CagriSema, not a footnote.",
+      "momentum": "Hot",
+      "sources": [
+        { "label": "Boehringer Ingelheim", "url": "https://www.boehringer-ingelheim.com/human-health/metabolic-diseases" },
+        { "label": "ADA Scientific Sessions", "url": "https://professional.diabetes.org/scientific-sessions" }
+      ]
+    },
+    {
+      "headline": "Obesity's next contest is the triple-agonist class",
+      "detail": "Novo's 2030 triple-agonist commitment turns this into a two-sponsor race against Lilly's retatrutide. The open question is whether the Phase 3 weight-loss ceiling actually moves, or whether tolerability eats the gains.",
+      "momentum": "Watch",
+      "sources": [
+        { "label": "Novo Nordisk news", "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html" },
+        { "label": "Lilly TRIUMPH (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=retatrutide%20TRIUMPH" }
+      ]
+    },
+    {
+      "headline": "M&A heat is sustained at the top end — even in a 'quiet' month",
+      "detail": "Seven multibillion-dollar takeouts closed in a month trade press called quiet. By deal count it looks slow; weighted by value, the top end is clearly still active — and it's holding across oncology, hepatology and rare disease. Deal-value is the signal to watch, not deal-count.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "Endpoints News deal coverage", "url": "https://endpts.com/channel/business" },
+        { "label": "Fierce Pharma", "url": "https://www.fiercepharma.com" }
+      ]
+    }
+  ]
+}
