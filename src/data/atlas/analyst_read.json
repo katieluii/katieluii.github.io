@@ -1,10 +1,10 @@
 {
-  "updated": "2026-06-08",
+  "updated": "2026-06-11",
   "intro": "Five threads worth watching across drug development this week — a clear point of view, with the sources to back it. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "Protein degraders have moved from promise to big-pharma balance sheets",
-      "detail": "Roche put $700M down (up to $2.3B) for Nurix's BTK-degrader, and optioned immunology and neurology alongside it — the second large-cap degrader deal this window. The signal is hard to miss: this is now a Phase 3-stage commercial platform, not an early-stage bet.",
+      "headline": "Protein degraders have moved from promise to frontline pharma capital",
+      "detail": "Roche's $700M upfront (up to $2.3B) for Nurix's BTK-degrader is the second large-cap degrader transaction this window, and Roche optioned immunology and neurology on top of the oncology lead. That promotes protein degradation from emerging-modality watch to a confirmed, multi-TA platform with frontline-pharma capital behind it — no longer an early-stage bet.",
       "momentum": "Hot",
       "sources": [
         { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
@@ -14,34 +14,36 @@
     },
     {
       "headline": "KRAS is now a three-class target",
-      "detail": "J&J paid $1B in cash for preclinical Firefly Bio, pricing a KRAS-targeting ADC before a single patient is dosed. Covalent inhibitors, RAS(ON) agents, and now ADCs are all chasing the same target everyone spent a decade calling undruggable.",
+      "detail": "J&J paid $1B in cash for preclinical Firefly Bio, pricing a KRAS-targeting ADC before a single patient is dosed and anchoring the deal on Bertozzi bioorthogonal chemistry. Covalent inhibitors, RAS(ON) agents and now ADCs are all chasing the target everyone spent a decade calling undruggable.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "J&J press releases", "url": "https://www.jnj.com/media-center/press-releases" },
-        { "label": "Firefly Bio", "url": "https://www.fireflybio.com" }
+        { "label": "Firefly Bio", "url": "https://www.fireflybio.com" },
+        { "label": "KRAS-ADC trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20antibody-drug%20conjugate" }
       ]
     },
     {
-      "headline": "The incretin tolerability ceiling is real at Phase 3 scale",
-      "detail": "Survodutide posted ~19% discontinuations in SYNCHRONIZE-1 — roughly 2.5–5× the Phase 2 class baseline. The GLP-1/glucagon tolerability ceiling is now a live constraint on retatrutide and CagriSema, not a footnote.",
+      "headline": "The incretin tolerability ceiling is now Phase 3-anchored",
+      "detail": "Survodutide's ~19% discontinuation rate in SYNCHRONIZE-1 runs roughly 2.5–5x the Phase 2 class baseline, and Boehringer's 'consistent with class' defence quietly extends that ceiling across the GLP-1/glucagon tier. With ENDO 2026 days out, it reads as a live constraint on retatrutide and CagriSema — not a footnote.",
       "momentum": "Hot",
       "sources": [
         { "label": "Boehringer Ingelheim", "url": "https://www.boehringer-ingelheim.com/human-health/metabolic-diseases" },
-        { "label": "ADA Scientific Sessions", "url": "https://professional.diabetes.org/scientific-sessions" }
+        { "label": "ADA Scientific Sessions", "url": "https://professional.diabetes.org/scientific-sessions" },
+        { "label": "ENDO 2026 (Endocrine Society)", "url": "https://www.endocrine.org/meetings-and-events/endo" }
       ]
     },
     {
-      "headline": "Obesity's next contest is the triple-agonist class",
-      "detail": "Novo's 2030 triple-agonist commitment turns this into a two-sponsor race against Lilly's retatrutide. The open question is whether the Phase 3 weight-loss ceiling actually moves, or whether tolerability eats the gains.",
+      "headline": "Hepatology fibrosis-regression opens a new target axis",
+      "detail": "GSK's UK liver-fibrosis pact with Engitix is the first hepatology-fibrosis macro signal in twelve cycles, and it's framed around mechanism of regression rather than the steatosis-and-inflammation playbook of NASH/MASH. It's early and discovery-stage, but it marks target diversification beyond cardiometabolic into fibrosis biology — worth tracking before it gets crowded.",
       "momentum": "Watch",
       "sources": [
-        { "label": "Novo Nordisk news", "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html" },
-        { "label": "Lilly TRIUMPH (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=retatrutide%20TRIUMPH" }
+        { "label": "GSK press releases", "url": "https://www.gsk.com/en-gb/media/press-releases/" },
+        { "label": "Engitix", "url": "https://www.engitix.com" }
       ]
     },
     {
       "headline": "M&A heat is sustained at the top end — even in a 'quiet' month",
-      "detail": "Seven multibillion-dollar takeouts closed in a month trade press called quiet. By deal count it looks slow; weighted by value, the top end is clearly still active — and it's holding across oncology, hepatology and rare disease. Deal-value is the signal to watch, not deal-count.",
+      "detail": "Seven multibillion-dollar takeouts closed in a May that trade press called quiet, and the cycles since have kept adding deals across oncology, hepatology and rare disease. By deal count it looks slow; weighted by value, the top end is plainly still active. Deal-value, not deal-count, is the indicator that's holding.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "Endpoints News deal coverage", "url": "https://endpts.com/channel/business" },
