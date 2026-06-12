@@ -17,26 +17,26 @@ interface FlowStep {
 
 const FLOW: FlowStep[] = [
   {
-    label: 'Conferences in scope',
-    detail: 'Four major oncology/hematology congresses — ASCO, ESMO, AACR, and ASH — each tracked from their public programme indices.',
+    label: 'Indications in scope',
+    detail: 'You define the coverage list — the indications you actually follow. The monitor mirrors that roster (here, the indications our drug-development analysts cover) and tracks nothing outside it. Focused by design, not a catch-all of every abstract at the meeting.',
     type: 'auto',
-    tags: [{ label: 'ASCO · ESMO · AACR · ASH', color: 'blue' }],
+    tags: [{ label: 'Your indication list', color: 'purple' }],
   },
   {
     label: 'Anticipated catalysts',
-    detail: 'Phase 2/3 trials with primary completion in the months leading up to each meeting are pulled from ClinicalTrials.gov — these are the assets the market is watching for at the conference.',
+    detail: 'For each in-scope indication, the Phase 2/3 trials with primary completion in the months before each meeting are pulled from ClinicalTrials.gov — the readouts the market is watching for, across ASCO, ESMO, AACR, and ASH.',
     type: 'auto',
     tags: [{ label: 'ClinicalTrials.gov', color: 'blue' }],
   },
   {
     label: 'Asset database',
-    detail: 'Each anticipated catalyst becomes a row in the asset database, with sortable columns (drug, sponsor, indication, phase, endpoint result, key data) and expandable rows for full abstract and extraction details.',
+    detail: 'Each anticipated catalyst becomes a row — drug, sponsor, indication, phase — with the primary-endpoint result and key data surfaced inline, and expandable rows for the full abstract.',
     type: 'auto',
     tags: [{ label: 'Sortable · Expandable', color: 'purple' }],
   },
   {
     label: 'LLM data extraction',
-    detail: 'Once a conference releases its programme, the matching abstract is attached to each anticipated asset and an LLM extracts the primary endpoint result and the key numerical data points (ORR, mPFS, OS, response rates, hazard ratios).',
+    detail: 'When a meeting releases its programme, the matching abstract is attached to each tracked asset and an LLM pulls the numbers that move the read: whether the primary endpoint was met, plus ORR, mPFS, OS, hazard ratios and p-values — verbatim, no interpretation.',
     type: 'agentic',
     tags: [{ label: 'Primary endpoint + key data', color: 'green' }],
   },
@@ -48,6 +48,13 @@ const TAG_STYLES: Record<DataTag['color'], string> = {
   amber:  'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300',
   green:  'bg-green-50 text-green-700 dark:bg-green-950/40 dark:text-green-300',
 };
+
+// The onc/heme indications currently in scope — mirrors the drug-development
+// analyst roster that feeds the watchlist (see the monitor's indications.py).
+const INDICATIONS = [
+  'NSCLC', 'SCLC', 'Breast', 'CRC', 'PDAC', 'HCC', 'Prostate', 'Ovarian',
+  'Melanoma', 'GBM', 'Urothelial', 'Thyroid', 'AML/MDS', 'Myeloma', 'NHL/DLBCL',
+];
 
 const CONFERENCES = [
   {
@@ -92,7 +99,7 @@ export default function ConferenceCatalyst() {
   }
 
   return (
-    <ProjectPageLayout title={project.title} subtitle="Conference catalyst monitoring · LLM data extraction">
+    <ProjectPageLayout title={project.title} subtitle="Indication-scoped readout tracking · LLM efficacy extraction">
       <div className="space-y-10">
 
         {/* Status pills */}
@@ -106,8 +113,25 @@ export default function ConferenceCatalyst() {
 
         {/* Description */}
         <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
-          A catalyst monitor for the four major oncology/hematology congresses (ASCO, ESMO, AACR, ASH). Anticipated readouts are sourced from ClinicalTrials.gov; conference abstracts are pulled from each meeting's public index (linked below). An LLM extracts the primary endpoint result and key numerical data points per asset. The frontend renders an asset database with sortable columns (drug, sponsor, indication, phase, endpoint result, key data) and expandable rows for full abstract and extraction details.
+          A focused readout tracker for the four major oncology/hematology congresses (ASCO, ESMO, AACR, ASH). The premise is the opposite of catch-all: tell it the indications you cover, and it tracks the Phase 2/3 trials reading out in exactly those — sourced from ClinicalTrials.gov by primary-completion window. When a meeting releases its programme, the matching abstract is attached and an LLM extracts what actually moves the read: whether the primary endpoint was met, plus the key numbers (ORR, mPFS, OS, hazard ratios). The result is an asset database scoped to your coverage, with the efficacy data surfaced inline — not 8,000 abstracts you have to filter yourself.
         </p>
+
+        {/* Indications in scope */}
+        <div className="space-y-3">
+          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">
+            Indications in scope
+          </h2>
+          <p className="text-xs text-slate-500 dark:text-zinc-500 leading-relaxed">
+            The watchlist mirrors the indications our drug-development analysts cover, so every tracked readout maps to a downstream consumer. Swap in a different coverage list and the scope follows.
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {INDICATIONS.map(ind => (
+              <span key={ind} className="text-[11px] px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300">
+                {ind}
+              </span>
+            ))}
+          </div>
+        </div>
 
         {/* Open app button */}
         <div className="flex flex-wrap gap-3">
