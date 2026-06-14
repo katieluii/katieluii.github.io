@@ -2,7 +2,7 @@
 """Sync Atlas deliverables from WS9/WS12 source dirs into kl-portfolio.
 
 Reads:
-  - ~/Desktop/KATIE_LUI/Projects/ws9-etlm/drafts/<indication>.json
+  - ~/Projects/ws9-etlm/drafts/<indication>/<indication>.json
   - ~/Projects/ws12_news_signal/landscape/tpp_*.md
   - ~/Projects/ws12_news_signal/landscape/themes/*.md
   - ~/Projects/ws12_news_signal/ecosystem_knowledge.md
@@ -29,7 +29,7 @@ REPO = HERE.parent
 CONFIG_PATH = HERE / "atlas-redaction-config.json"
 DATA = REPO / "src" / "data" / "atlas"
 
-ETLM_SRC = Path.home() / "Desktop" / "KATIE_LUI" / "Projects" / "ws9-etlm" / "drafts"
+ETLM_SRC = Path.home() / "Projects" / "ws9-etlm" / "drafts"
 LANDSCAPE_SRC = Path.home() / "Projects" / "ws12_news_signal" / "landscape"
 THEMES_SRC = LANDSCAPE_SRC / "themes"
 ECOSYSTEM_SRC = Path.home() / "Projects" / "ws12_news_signal" / "ecosystem_knowledge.md"
@@ -56,7 +56,11 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     strip = set(cfg["etlm_strip_keys"])
     written: list[str] = []
     for code in cfg["etlm_whitelist"]:
-        src = ETLM_SRC / f"{code}.json"
+        # Drafts are nested as drafts/<code>/<code>.json (post-2026-06 layout);
+        # fall back to the legacy flat drafts/<code>.json if present.
+        src = ETLM_SRC / code / f"{code}.json"
+        if not src.exists():
+            src = ETLM_SRC / f"{code}.json"
         if not src.exists():
             print(f"  ! ETLM source missing: {src}", file=sys.stderr)
             continue
