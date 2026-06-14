@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
 import memoMd from '../data/atlas/memo/obesity-glp1.md?raw';
+import { Grain } from '../components/wwm/craft';
 
 /* WS15 — sample IC memo viewer. Renders the sourced sample as a document,
    on the same warm canvas / Fraunces system as the work-with-me pages. */
@@ -17,6 +18,7 @@ const DISPLAY = "'Fraunces', Georgia, serif";
 export default function SampleMemo() {
   return (
     <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased">
+      <Grain />
       <div className="mx-auto max-w-2xl px-6 sm:px-8">
         <div className="flex items-center justify-between pt-8 pb-2 text-[13px]" style={{ color: MUTED }}>
           <Link to="/work-with-me/investors" className="hover:opacity-70 transition-opacity">← Back</Link>
@@ -28,10 +30,10 @@ export default function SampleMemo() {
             remarkPlugins={[remarkGfm]}
             components={{
               h1: ({ children }) => (
-                <h1 className="text-[32px] sm:text-[40px] leading-[1.1] font-semibold mb-6" style={{ fontFamily: DISPLAY, letterSpacing: '-0.015em' }}>{children}</h1>
+                <h1 className="text-[32px] sm:text-[40px] leading-[1.1] font-semibold mb-6 opsz-auto" style={{ fontFamily: DISPLAY, letterSpacing: '-0.015em' }}>{children}</h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-[22px] sm:text-[26px] leading-[1.2] font-semibold mt-12 mb-3" style={{ fontFamily: DISPLAY }}>{children}</h2>
+                <h2 className="text-[22px] sm:text-[26px] leading-[1.2] font-semibold mt-12 mb-3 opsz-auto" style={{ fontFamily: DISPLAY }}>{children}</h2>
               ),
               h3: ({ children }) => (
                 <h3 className="text-[17px] font-semibold mt-8 mb-2" style={{ color: INK }}>{children}</h3>

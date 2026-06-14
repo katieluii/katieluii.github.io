@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode } from '../data/workWithMe';
+import { Grain, Reveal, ConnectorH, ConnectorV, emphasize } from '../components/wwm/craft';
+import { useReveal } from '../hooks/useReveal';
 
-/* WS15 — two audience pages. Canonical consultancy flow (hero → POV → how it
-   works → selected work → CTA), differentiated by hero alignment + which
-   deliverable leads. Warm canvas, near-black ink with an opacity ramp, one
-   indigo accent used sparingly, Fraunces display at light weight + large scale. */
+/* WS15 — two audience pages. Editorial flow (hero → POV → how it works → selected
+   work → CTA), differentiated by which "system" leads. Warm canvas, one oxblood
+   accent used sparingly, Fraunces display + an italic emphasis, Hanken Grotesk
+   body, staggered motion, paper grain. */
 
 const FONT_MAP: Record<string, string> = {
   fraunces: "'Fraunces', Georgia, serif",
@@ -34,11 +36,11 @@ function Eyebrow({ children, color = ACCENT }: { children: React.ReactNode; colo
   );
 }
 
-function Cta({ block = false }: { block?: boolean }) {
+function Cta() {
   return (
     <a
       href="mailto:katieluikakiu@gmail.com?subject=Working%20together"
-      className={`text-[14px] font-medium px-5 py-2.5 rounded-lg text-white transition-transform hover:-translate-y-0.5 ${block ? 'inline-block' : 'inline-block'}`}
+      className="inline-block text-[14px] font-medium px-5 py-2.5 rounded-lg text-white transition-transform hover:-translate-y-0.5"
       style={{ background: ACCENT }}
     >
       Start a conversation
@@ -80,7 +82,7 @@ function WorkCard({ item, featured = false }: { item: WorkItem; featured?: boole
       <div className={featured ? 'mt-5 sm:mt-0' : ''}>
         <Eyebrow>{item.eyebrow}</Eyebrow>
         <h3
-          className={`mt-2 font-semibold leading-[1.15] ${featured ? 'text-[26px] sm:text-[32px]' : 'text-[21px]'}`}
+          className={`mt-2 font-semibold leading-[1.15] opsz-auto ${featured ? 'text-[26px] sm:text-[32px]' : 'text-[21px]'}`}
           style={{ fontFamily: display(), color: INK }}
         >
           {item.title}
@@ -137,16 +139,17 @@ function TwoModeStrip({ m }: { m: TwoMode }) {
 
 /* TEAMS — the living-memory dataflow: continuous inputs → ATLAS → deliverables */
 function AtlasDataflow({ d }: { d: Dataflow }) {
+  const ref = useReveal<HTMLElement>();
   const Connector = () => (
-    <div className="flex items-center justify-center py-3 sm:py-0 sm:px-2" style={{ color: INK_META }} aria-hidden>
-      <span className="sm:hidden text-[18px]">↓</span>
-      <span className="hidden sm:inline text-[18px]">→</span>
+    <div className="flex items-center justify-center py-3 sm:py-0 sm:px-2" aria-hidden>
+      <span className="sm:hidden"><ConnectorV color={INK_META} height={34} /></span>
+      <span className="hidden sm:inline"><ConnectorH color={INK_META} /></span>
     </div>
   );
   return (
-    <section className="py-20">
+    <section ref={ref} className="reveal py-20">
       <Eyebrow color={INK_META}>{d.eyebrow}</Eyebrow>
-      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
         {d.lead}
       </p>
       <p className="mt-4 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.sub}</p>
@@ -172,7 +175,7 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
           className="flex-[1.25] flex flex-col justify-center rounded-xl px-6 py-7 text-center"
           style={{ background: 'rgba(110,36,51,0.045)', border: `1px solid ${HAIR}` }}
         >
-          <p className="text-[26px] sm:text-[30px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT, letterSpacing: '0.01em' }}>
+          <p className="text-[26px] sm:text-[30px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT, letterSpacing: '0.01em' }}>
             {d.hubName}
           </p>
           <p className="mt-2.5 text-[13.5px] leading-[1.5]" style={{ color: INK_BODY }}>{d.hubLine}</p>
@@ -207,16 +210,17 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
 
 /* INVESTORS — the Underwrite engine: structured modules → agents → IC memo */
 function UnderwriteFunnel({ u }: { u: Underwrite }) {
+  const ref = useReveal<HTMLElement>();
   const FlowLabel = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex flex-col items-center py-5" aria-hidden>
-      <span className="text-[18px]" style={{ color: INK_META }}>↓</span>
-      <span className="mt-1 text-[11px] uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>{children}</span>
+    <div className="flex flex-col items-center py-4" aria-hidden>
+      <ConnectorV color={INK_META} height={30} />
+      <span className="mt-2 text-[11px] uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>{children}</span>
     </div>
   );
   return (
-    <section className="py-20">
+    <section ref={ref} className="reveal py-20">
       <Eyebrow color={INK_META}>{u.eyebrow}</Eyebrow>
-      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
         {u.lead}
       </p>
 
@@ -235,7 +239,7 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
 
       {/* tier 2 — the five agents */}
       <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
-        <p className="text-[16px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
+        <p className="text-[16px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
         <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {u.agents.map((a) => (
@@ -248,10 +252,10 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
 
       <FlowLabel>Synthesised into</FlowLabel>
 
-      {/* tier 3 — the IC memo (the payoff; the one strongly-indigo element) */}
+      {/* tier 3 — the IC memo (the payoff; the one oxblood-filled element) */}
       <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
         <div>
-          <p className="text-[19px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
+          <p className="text-[19px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
           <p className="mt-0.5 text-[13px]" style={{ color: 'rgba(255,255,255,0.72)' }}>{u.output.dek}</p>
         </div>
         <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
@@ -278,11 +282,11 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
 
 export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors' }) {
   const c: WwmContent = WWM[variant];
-  const centered = false; // both pages left-aligned (Katie); differentiate by content, not alignment
   const [featured, ...rest] = c.work;
 
   return (
     <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased">
+      <Grain />
       <div className="mx-auto max-w-3xl px-6 sm:px-8" style={{ ['--d' as string]: display() }}>
         {/* top bar */}
         <div className="flex items-center justify-between pt-8 text-[13px]" style={{ color: INK_META }}>
@@ -292,22 +296,22 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
           </Link>
         </div>
 
-        {/* ── HERO (asymmetric for teams, centered masthead for investors) ── */}
-        <header className={`pt-20 sm:pt-28 pb-20 ${centered ? 'text-center' : ''}`}>
-          <div className={`flex items-center gap-2 mb-8 text-[11.5px] uppercase ${centered ? 'justify-center' : ''}`} style={{ color: INK_META, letterSpacing: '0.14em' }}>
+        {/* ── HERO — staggered on-load reveal + italic-Fraunces emphasis ── */}
+        <header className="pt-20 sm:pt-28 pb-20">
+          <div className="rise flex items-center gap-2 mb-8 text-[11.5px] uppercase" style={{ color: INK_META, letterSpacing: '0.14em', animationDelay: '0ms' }}>
             <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: ACCENT }} aria-hidden />
             Field memory current to June 2026
           </div>
           <h1
-            className={`text-[42px] leading-[1.04] sm:text-[64px] sm:leading-[1.02] ${centered ? 'mx-auto max-w-2xl' : 'max-w-[19ch]'}`}
-            style={{ fontFamily: 'var(--d)', fontWeight: 450, letterSpacing: '-0.02em', color: INK }}
+            className="rise opsz-auto max-w-[19ch] text-[42px] leading-[1.04] sm:text-[64px] sm:leading-[1.02]"
+            style={{ fontFamily: 'var(--d)', fontWeight: 450, letterSpacing: '-0.02em', color: INK, animationDelay: '90ms' }}
           >
-            {c.hero.h1}
+            {emphasize(c.hero.h1)}
           </h1>
-          <p className={`mt-7 text-[18px] sm:text-[19px] leading-[1.6] ${centered ? 'mx-auto max-w-lg' : 'max-w-md'}`} style={{ color: INK_BODY }}>
+          <p className="rise mt-7 text-[18px] sm:text-[19px] leading-[1.6] max-w-md" style={{ color: INK_BODY, animationDelay: '180ms' }}>
             {c.hero.sub}
           </p>
-          <div className={`mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 ${centered ? 'justify-center' : ''}`}>
+          <div className="rise mt-10 flex flex-wrap items-center gap-x-7 gap-y-3" style={{ animationDelay: '270ms' }}>
             <Cta />
             <a href="#work" className="text-[14px] font-medium hover:opacity-70 transition-opacity" style={{ color: INK }}>
               See a sample →
@@ -318,23 +322,24 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
         <div style={{ height: 1, background: HAIR }} />
 
         {/* ── POV ── */}
-        <section className="py-20">
+        <Reveal className="py-20">
           <Eyebrow color={INK_META}>How I think</Eyebrow>
-          <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
             {c.pov}
           </p>
-        </section>
+        </Reveal>
+
+        <div style={{ height: 1, background: HAIR }} />
 
         {/* ── HOW IT WORKS — a different system on each page ──
-            teams: the ATLAS living-memory dataflow · investors: the Underwrite engine.
-            Both abstracted/outcome-framed; never name scrapers/DBs/cron. */}
+            teams: the ATLAS living-memory dataflow · investors: the Underwrite engine. */}
         {c.dataflow && <AtlasDataflow d={c.dataflow} />}
         {c.underwrite && <UnderwriteFunnel u={c.underwrite} />}
 
         <div style={{ height: 1, background: HAIR }} />
 
         {/* ── SELECTED WORK (featured + 2-up) ── */}
-        <section id="work" className="py-20 scroll-mt-8">
+        <Reveal id="work" className="py-20 scroll-mt-8">
           <Eyebrow color={INK_META}>Selected work</Eyebrow>
           <div className="mt-9">
             <WorkCard item={featured} featured />
@@ -343,17 +348,17 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
             {rest.map((w) => <WorkCard key={w.href} item={w} />)}
           </div>
           <p className="mt-10 text-[13.5px] leading-[1.5]" style={{ color: INK_META }}>{c.workFootnote}</p>
-        </section>
+        </Reveal>
 
         <div style={{ height: 1, background: HAIR }} />
 
         {/* ── CREDIBILITY + CTA ── */}
-        <section className="py-20">
-          <p className="text-[22px] sm:text-[26px] leading-[1.42] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+        <Reveal className="py-20">
+          <p className="text-[22px] sm:text-[26px] leading-[1.42] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
             {c.credibility}
           </p>
           <div className="mt-16 pt-14" style={{ borderTop: `1px solid ${HAIR}` }}>
-            <p className="text-[24px] sm:text-[30px] leading-[1.18]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT }}>
+            <p className="text-[24px] sm:text-[30px] leading-[1.18] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT }}>
               {c.ctaHeadline}
             </p>
             <p className="mt-4 text-[16px] leading-[1.6] max-w-lg" style={{ color: INK_BODY }}>{c.ctaBody}</p>
@@ -362,7 +367,7 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
               <a href="https://www.linkedin.com/in/katieluikakiu" target="_blank" rel="noreferrer" className="text-[14px] font-medium hover:opacity-70 transition-opacity" style={{ color: INK }}>LinkedIn →</a>
             </div>
           </div>
-        </section>
+        </Reveal>
 
         <footer className="py-10 text-[12px]" style={{ color: INK_META, borderTop: `1px solid ${HAIR}` }}>
           © 2026 Katie Lui

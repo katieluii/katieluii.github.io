@@ -148,7 +148,7 @@ export const TEAMS: WwmContent = {
   variant: 'teams',
   navOther: { label: 'For investors', href: '/work-with-me/investors' },
   hero: {
-    h1: 'Drug-development analysis you can defend.',
+    h1: 'Drug-development analysis you can *defend*.',
     sub: 'Competitive landscapes, target product profiles, and positioning for the teams building drugs. Current, sourced, on your deadline.',
   },
   pov: 'Good development calls come from current evidence, not last quarter’s deck. I keep a living memory of your field and turn it into the artifact your next decision needs.',
@@ -164,7 +164,7 @@ export const INVESTORS: WwmContent = {
   variant: 'investors',
   navOther: { label: 'For biotech teams', href: '/work-with-me/teams' },
   hero: {
-    h1: 'Underwrite the science, not the story.',
+    h1: 'Underwrite the science, not the *story*.',
     sub: 'IC-grade memos and scientific diligence for biotech investors. Sourced to the primary record, fast enough to keep up with your deal flow.',
   },
   pov: 'Conviction comes from the science holding up, not the pitch. I underwrite the evidence, source every claim, and hand you a memo your committee cannot pick apart.',

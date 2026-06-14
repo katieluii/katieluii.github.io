@@ -5,3 +5,51 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ── WS15 /work-with-me — refined motion + atmosphere (frontend-design pass) ── */
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* on-load staggered reveal — hero elements (in view at load) */
+.rise {
+  opacity: 0;
+  animation: riseIn 0.7s cubic-bezier(0.21, 0.68, 0.2, 1) both;
+}
+
+/* scroll-triggered reveal — sections below the fold (toggled by useReveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.75s cubic-bezier(0.21, 0.68, 0.2, 1),
+              transform 0.75s cubic-bezier(0.21, 0.68, 0.2, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* paper grain atmosphere — subtle fine-stock texture over the warm canvas */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.opsz-auto { font-optical-sizing: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
