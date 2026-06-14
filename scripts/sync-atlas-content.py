@@ -30,6 +30,7 @@ CONFIG_PATH = HERE / "atlas-redaction-config.json"
 DATA = REPO / "src" / "data" / "atlas"
 
 ETLM_SRC = Path.home() / "Projects" / "ws9-etlm" / "drafts"
+ETLM_APPROVED_SRC = Path.home() / "Projects" / "ws9-etlm" / "approved"
 LANDSCAPE_SRC = Path.home() / "Projects" / "ws12_news_signal" / "landscape"
 THEMES_SRC = LANDSCAPE_SRC / "themes"
 ECOSYSTEM_SRC = Path.home() / "Projects" / "ws12_news_signal" / "ecosystem_knowledge.md"
@@ -56,20 +57,29 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     strip = set(cfg["etlm_strip_keys"])
     written: list[str] = []
     for code in cfg["etlm_whitelist"]:
-        # Drafts are nested as drafts/<code>/<code>.json (post-2026-06 layout);
-        # fall back to the legacy flat drafts/<code>.json if present.
-        src = ETLM_SRC / code / f"{code}.json"
-        if not src.exists():
-            src = ETLM_SRC / f"{code}.json"
-        if not src.exists():
-            print(f"  ! ETLM source missing: {src}", file=sys.stderr)
+        # PREFER the human-approved copy; fall back to the working draft.
+        # Each dir uses nested <code>/<code>.json (post-2026-06 layout) with a
+        # legacy flat <code>.json fallback. So moving an ETLM from drafts/ to
+        # approved/ automatically promotes the published copy to the approved
+        # version on the next sync, with no config change.
+        candidates = [
+            ETLM_APPROVED_SRC / code / f"{code}.json",
+            ETLM_APPROVED_SRC / f"{code}.json",
+            ETLM_SRC / code / f"{code}.json",
+            ETLM_SRC / f"{code}.json",
+        ]
+        src = next((p for p in candidates if p.exists()), None)
+        if src is None:
+            print(f"  ! ETLM source missing (approved+drafts): {code}", file=sys.stderr)
             continue
+        is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
         sanitised = strip_keys(data, strip)
         dst = out_dir / f"{code}.json"
         dst.write_text(json.dumps(sanitised, indent=2))
         written.append(code)
-        print(f"  ok etlm/{code}.json ({len(json.dumps(sanitised)):,} bytes)")
+        tag = "approved" if is_approved else "draft"
+        print(f"  ok etlm/{code}.json [{tag}] ({len(json.dumps(sanitised)):,} bytes)")
     return written
 
 
@@ -145,6 +155,31 @@ def _parse_h3_subsections(body: list[str]) -> list[tuple[str, list[str]]]:
     return subs
 
 
+# Internal-token scrub for the public ecosystem preview. The redaction config
+# only drops whole marker lines; these patterns strip INLINE provenance/workflow
+# tokens (signal_id/event_id refs, trailing "Anchor:" clauses, HUMAN_REVIEW /
+# AUTO_APPLY state) that are internal/meaningless to a client reader, without
+# dropping the surrounding analyst bullet.
+_PROVENANCE_RE = re.compile(r"\s*\bAnchors?\b\s*:.*$", re.IGNORECASE)
+_IDPAREN_RE = re.compile(
+    r"\s*\(\s*(?:signal_id|signal_ids|event_id|event_ids|macro_signal_id)\b[^)]*\)",
+    re.IGNORECASE,
+)
+_WORKFLOW_RE = re.compile(r"\b(?:HUMAN_REVIEW|AUTO_APPLY)\b")
+
+
+def _scrub_inline(line: str) -> str:
+    line = _PROVENANCE_RE.sub("", line)
+    line = _IDPAREN_RE.sub("", line)
+    line = _WORKFLOW_RE.sub("", line)
+    # tidy artifacts left by token removal
+    line = re.sub(r",\s*\)", ")", line)
+    line = re.sub(r"\(\s*,?\s*\)", "", line)
+    line = re.sub(r"\s{2,}", " ", line)
+    line = re.sub(r"\s+([.,;])", r"\1", line)
+    return line.rstrip()
+
+
 def sync_ecosystem(cfg: dict[str, Any]) -> bool:
     if not ECOSYSTEM_SRC.exists():
         print(f"  ! Ecosystem source missing: {ECOSYSTEM_SRC}", file=sys.stderr)
@@ -163,8 +198,21 @@ def sync_ecosystem(cfg: dict[str, Any]) -> bool:
     )
 
     entries = _parse_h2_entries(full)
-    # The note is append-only chronological — newest is at the END, so keep the LAST keep_n.
-    entries = entries[-keep_n:]
+
+    # The note is append-only chronological (newest at the END). Recent cycles
+    # are often thin "net-new = 0" re-fire deltas whose only subsections are
+    # Watch flags / Standing observations — none whitelisted. Keep the most
+    # recent keep_n entries that ACTUALLY contain a whitelisted subsection, so a
+    # thin tail doesn't shut out the latest substantive entry. Fall back to the
+    # raw last keep_n if nothing matches.
+    def _has_whitelisted_sub(body: list[str]) -> bool:
+        return any(
+            any(w in h3.lower() for w in whitelist)
+            for h3, _ in _parse_h3_subsections(body)
+        )
+
+    substantive = [e for e in entries if _has_whitelisted_sub(e[1])]
+    entries = (substantive or entries)[-keep_n:]
 
     kept_total = 0
     for h2_heading, body in entries:
@@ -176,7 +224,7 @@ def sync_ecosystem(cfg: dict[str, Any]) -> bool:
             for line in sub_body:
                 if any(marker in line for marker in strip_markers):
                     continue
-                cleaned.append(line)
+                cleaned.append(_scrub_inline(line))
             while cleaned and not cleaned[-1].strip():
                 cleaned.pop()
             if not cleaned:
