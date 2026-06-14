@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite } from '../data/workWithMe';
+import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode } from '../data/workWithMe';
 
 /* WS15 — two audience pages. Canonical consultancy flow (hero → POV → how it
    works → selected work → CTA), differentiated by hero alignment + which
@@ -13,7 +13,7 @@ const FONT_MAP: Record<string, string> = {
 };
 
 const BG = '#FAF7F1';
-const ACCENT = '#26306B'; // single accent — used on eyebrows, links, CTA only
+const ACCENT = '#6E2433'; // single oxblood accent — eyebrows, links, CTA only
 // ink opacity ramp
 const INK = 'rgba(27,26,23,1)';
 const INK_BODY = 'rgba(27,26,23,0.72)';
@@ -69,7 +69,7 @@ function WorkCard({ item, featured = false }: { item: WorkItem; featured?: boole
         ) : (
           <div
             className="hidden sm:flex aspect-[4/3] rounded-xl items-end p-6"
-            style={{ background: 'rgba(38,48,107,0.05)', border: `1px solid ${HAIR}` }}
+            style={{ background: 'rgba(110,36,51,0.05)', border: `1px solid ${HAIR}` }}
           >
             <span className="text-[13px]" style={{ fontFamily: display(), color: ACCENT }}>
               {item.eyebrow.split(' · ')[0]}
@@ -118,6 +118,23 @@ function ModuleIcon({ name }: { name: 'doc' | 'market' | 'cap' | 'team' }) {
   }
 }
 
+/* "two ways to run it" — the core offering + the deploy-on-your-stack option */
+function TwoModeStrip({ m }: { m: TwoMode }) {
+  return (
+    <div className="mt-10 pt-9 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7" style={{ borderTop: `1px solid ${HAIR}` }}>
+      <p className="sm:col-span-2 text-[11px] font-semibold uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>
+        {m.eyebrow}
+      </p>
+      {[m.a, m.b].map((x) => (
+        <div key={x.label}>
+          <p className="text-[15.5px] font-semibold" style={{ color: INK }}>{x.label}</p>
+          <p className="mt-2 text-[14.5px] leading-[1.6]" style={{ color: INK_BODY }}>{x.dek}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* TEAMS — the living-memory dataflow: continuous inputs → ATLAS → deliverables */
 function AtlasDataflow({ d }: { d: Dataflow }) {
   const Connector = () => (
@@ -153,7 +170,7 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
         {/* the living memory — visual hub */}
         <div
           className="flex-[1.25] flex flex-col justify-center rounded-xl px-6 py-7 text-center"
-          style={{ background: 'rgba(38,48,107,0.045)', border: `1px solid ${HAIR}` }}
+          style={{ background: 'rgba(110,36,51,0.045)', border: `1px solid ${HAIR}` }}
         >
           <p className="text-[26px] sm:text-[30px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT, letterSpacing: '0.01em' }}>
             {d.hubName}
@@ -178,7 +195,10 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
       </div>
 
       <p className="mt-12 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.closer}</p>
-      <a href={d.button.href} className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
+
+      <TwoModeStrip m={d.modes} />
+
+      <a href={d.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
         {d.button.label} →
       </a>
     </section>
@@ -214,7 +234,7 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
       <FlowLabel>Feed into</FlowLabel>
 
       {/* tier 2 — the five agents */}
-      <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(38,48,107,0.035)' }}>
+      <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
         <p className="text-[16px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
         <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -240,17 +260,18 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
       {/* wrapper — pipeline + deal page tracking layer */}
       <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
         <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
-        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <div className="flex flex-wrap gap-2">
-            {u.wrapperTags.map((t) => (
-              <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
-            ))}
-          </div>
-          <a href={u.button.href} className="inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
-            {u.button.label} →
-          </a>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {u.wrapperTags.map((t) => (
+            <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
+          ))}
         </div>
       </div>
+
+      <TwoModeStrip m={u.modes} />
+
+      <a href={u.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
+        {u.button.label} →
+      </a>
     </section>
   );
 }

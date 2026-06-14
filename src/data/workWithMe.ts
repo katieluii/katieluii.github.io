@@ -12,6 +12,13 @@ export interface WorkItem {
   image?: string;    // cropped screenshot of the real artifact (featured card only)
 }
 
+// the "two ways to run it" value strip — shared shape across both pages
+export interface TwoMode {
+  eyebrow: string;
+  a: { label: string; dek: string }; // the core / ready offering
+  b: { label: string; dek: string }; // the deploy-on-your-stack option
+}
+
 // teams "how it works" — the ATLAS living-memory dataflow (inputs → memory → output)
 export interface Dataflow {
   eyebrow: string;
@@ -22,6 +29,7 @@ export interface Dataflow {
   hubLine: string;
   outputs: string[];       // the deliverables that fall out
   closer: string;
+  modes: TwoMode;          // public-record vs on-your-systems
   button: { label: string; href: string };
 }
 
@@ -36,6 +44,7 @@ export interface Underwrite {
   output: { label: string; dek: string };
   wrapper: string;
   wrapperTags: string[];
+  modes: TwoMode;          // ready-to-run vs on-your-systems
   button: { label: string; href: string };
 }
 
@@ -89,8 +98,19 @@ const DATAFLOW: Dataflow = {
   inputs: ['Published literature', 'Clinical trial registries', 'Congress readouts', 'Trade & deal-flow press'],
   hubName: 'ATLAS',
   hubLine: 'Every asset, mechanism, and readout tied to its source — and kept current as the field moves.',
-  outputs: ['Competitive landscape', 'Target product profile', 'Investment-grade memo'],
+  outputs: ['Competitive landscape', 'Target product profile', 'Deep thematic synthesis'],
   closer: 'The same memory sits behind every deliverable — which is why they stay current, and agree with each other.',
+  modes: {
+    eyebrow: 'Two ways to run it',
+    a: {
+      label: 'On the public record',
+      dek: 'A proprietary agentic harness builds and maintains this memory continuously from public sources — shaped to your field, your pipeline, your questions.',
+    },
+    b: {
+      label: 'On your systems',
+      dek: 'Or the same architecture, deployed on your stack — folding your proprietary data and internal signals into the same living picture.',
+    },
+  },
   button: { label: 'See what it produces', href: '#work' },
 };
 
@@ -110,6 +130,17 @@ const UNDERWRITE: Underwrite = {
   output: { label: 'IC memo', dek: 'Exportable Word document' },
   wrapper: 'Every deal rolls up to a deal page, inside a pipeline you read at a glance — so partners and analysts track the book and see what they should be seeing.',
   wrapperTags: ['Pipeline view', 'Deal page'],
+  modes: {
+    eyebrow: 'Two ways to run it',
+    a: {
+      label: 'Ready to run',
+      dek: 'The tools and agents above, ready to underwrite your analysis and diligence from day one.',
+    },
+    b: {
+      label: 'On your systems',
+      dek: 'Or the same agentic architecture, deployed on your stack — so your proprietary data and signals feed the diligence.',
+    },
+  },
   button: { label: 'Read a sample memo', href: '#work' },
 };
 

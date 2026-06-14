@@ -6,9 +6,24 @@ const INK = '#1B1A17';
 const BG = '#FAF7F1';
 const MUTED = '#6B665D';
 const BODY = '#3A362F';
-const ACCENT = '#26306B'; // indigo (match the audience pages)
+const ACCENT = '#6E2433'; // oxblood accent (match the audience pages)
 const HAIR = 'rgba(27,26,23,0.12)';
 const DISPLAY = "'Fraunces', Georgia, serif";
+
+const WAYS = [
+  {
+    label: 'Retainer',
+    line: 'Fractional AI and analytical expertise, ongoing — your standing analyst.',
+  },
+  {
+    label: 'Project',
+    line: 'A defined analysis or build, scoped by milestone — or by time when it’s work on your platform.',
+  },
+  {
+    label: 'Tools',
+    line: 'The AI tools and agents themselves — handed over, or licensed to run in-house.',
+  },
+];
 
 const DOORS = [
   {
@@ -41,18 +56,19 @@ export default function WorkWithMeHub() {
             className="text-[36px] leading-[1.08] sm:text-[52px] sm:leading-[1.05] font-semibold max-w-2xl"
             style={{ fontFamily: DISPLAY, letterSpacing: '-0.015em' }}
           >
-            One analyst, two practices.
+            Analysis is cheap now. Judgment isn’t.
           </h1>
           <p className="mt-5 text-[18px] leading-[1.55] max-w-xl" style={{ color: BODY }}>
-            I do the drug-development analysis teams build on, and the diligence investors underwrite on. Pick the one that fits you.
+            AI-run, human-checked. The drug-development analysis teams build on, and the diligence investors rely on. Pick your side.
           </p>
 
+          {/* the decision: two audience doors, first thing after the intro */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
             {DOORS.map((d) => (
               <Link
                 key={d.href}
                 to={d.href}
-                className="group block p-7 rounded-2xl transition-all hover:-translate-y-1"
+                className="group flex flex-col p-7 rounded-2xl transition-all hover:-translate-y-1"
                 style={{ border: `1px solid ${HAIR}`, background: 'rgba(255,255,255,0.5)' }}
               >
                 <h2 className="text-[24px] sm:text-[27px] font-semibold leading-tight" style={{ fontFamily: DISPLAY }}>
@@ -60,13 +76,28 @@ export default function WorkWithMeHub() {
                 </h2>
                 <p className="mt-3 text-[14px] leading-[1.55]" style={{ color: BODY }}>{d.line}</p>
                 <span
-                  className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all group-hover:gap-3"
+                  className="mt-auto pt-6 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all group-hover:gap-3"
                   style={{ color: ACCENT }}
                 >
                   Enter →
                 </span>
               </Link>
             ))}
+          </div>
+
+          {/* ways of working — supporting "how it works" footnote, below the decision */}
+          <div className="mt-14 pt-9" style={{ borderTop: `1px solid ${HAIR}` }}>
+            <p className="text-[11px] font-semibold uppercase mb-5" style={{ color: MUTED, letterSpacing: '0.1em' }}>
+              Ways of working
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-5">
+              {WAYS.map((w) => (
+                <div key={w.label}>
+                  <p className="text-[13px] font-semibold" style={{ color: BODY }}>{w.label}</p>
+                  <p className="mt-1.5 text-[12.5px] leading-[1.5]" style={{ color: MUTED }}>{w.line}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

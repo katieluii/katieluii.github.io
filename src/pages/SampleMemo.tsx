@@ -10,7 +10,7 @@ const INK = '#1B1A17';
 const BG = '#FAF7F1';
 const MUTED = '#6B665D';
 const BODY = '#3A362F';
-const ACCENT = '#26306B';
+const ACCENT = '#6E2433';
 const HAIR = 'rgba(27,26,23,0.12)';
 const DISPLAY = "'Fraunces', Georgia, serif";
 
