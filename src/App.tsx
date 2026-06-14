@@ -30,7 +30,7 @@
 
 
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Sec13f } from './pages/Sec13f';
 import TrialRecruitment from './pages/TrialRecruitment';
@@ -49,6 +49,9 @@ import AtlasReaderTPPReport from './pages/AtlasReaderTPPReport';
 import AtlasReaderTheme from './pages/AtlasReaderTheme';
 import AtlasReaderThemeReport from './pages/AtlasReaderThemeReport';
 import AtlasReaderEcosystem from './pages/AtlasReaderEcosystem';
+import WorkWithMe from './pages/WorkWithMe';
+import WorkWithMeHub from './pages/WorkWithMeHub';
+import SampleMemo from './pages/SampleMemo';
 import StandardProjectPage from './pages/StandardProjectPage';
 
 function App() {
@@ -56,6 +59,13 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+
+        {/* WS15: Work with me — hub chooser + two distinct audience pages */}
+        <Route path="/work-with-me" element={<WorkWithMeHub />} />
+        <Route path="/work-with-me/teams" element={<WorkWithMe variant="teams" />} />
+        <Route path="/work-with-me/investors" element={<WorkWithMe variant="investors" />} />
+        <Route path="/work" element={<Navigate to="/work-with-me" replace />} />
+
         <Route path="/sec-13f" element={<Sec13f />} />
 
         {/* Trial recruitment */}
@@ -100,6 +110,8 @@ function App() {
         <Route path="/atlas-reader/theme/:slug" element={<AtlasReaderTheme />} />
         <Route path="/atlas-reader/theme/:slug/report" element={<AtlasReaderThemeReport />} />
         <Route path="/atlas-reader/ecosystem" element={<AtlasReaderEcosystem />} />
+        {/* WS15: sample IC memo (the deliverable atlas-reader didn't have) */}
+        <Route path="/atlas-reader/memo/obesity-glp1" element={<SampleMemo />} />
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />
       </Routes>

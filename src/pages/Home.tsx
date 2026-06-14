@@ -46,6 +46,12 @@ export function Home() {
               >
                 Interests
               </a>
+              <a
+                href="/work-with-me"
+                className="rounded-lg bg-zinc-900 text-white px-3 py-1.5 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white transition-colors"
+              >
+                Work with me
+              </a>
             </nav>
           </div>
 
