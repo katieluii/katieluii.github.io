@@ -42,6 +42,7 @@ export interface Underwrite {
   agentsSub: string;
   agents: string[];
   output: { label: string; dek: string };
+  reviewLabel?: string;    // human-in-the-loop checkpoint label (rendered on the showcase variant only)
   wrapper: string;
   wrapperTags: string[];
   modes: TwoMode;          // ready-to-run vs on-your-systems
@@ -128,6 +129,7 @@ const UNDERWRITE: Underwrite = {
   agentsSub: 'Run in parallel, every claim fact-checked, each refined by hand.',
   agents: ['Fund-fit', 'Scientific', 'Competitive', 'Clinical & regulatory', 'Financing & valuation'],
   output: { label: 'IC memo', dek: 'Exportable Word document' },
+  reviewLabel: 'Reviewed & annotated by hand',
   wrapper: 'Every deal rolls up to a deal page, inside a pipeline you read at a glance — so partners and analysts track the book and see what they should be seeing.',
   wrapperTags: ['Pipeline view', 'Deal page'],
   modes: {
