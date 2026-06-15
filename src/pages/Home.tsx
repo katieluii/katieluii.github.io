@@ -43,7 +43,7 @@ export function Home() {
               >
                 <span className="inline-flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  SF biopharma-AI startup
+                  biopharma-AI startup
                 </span>
                 <span className="text-zinc-300 dark:text-zinc-600">·</span>
                 <span>Oxford / HK / London</span>
