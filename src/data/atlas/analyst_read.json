@@ -1,53 +1,55 @@
 {
-  "updated": "2026-06-11",
-  "intro": "Five threads worth watching across drug development this week — a clear point of view, with the sources to back it. Refreshed every Monday.",
+  "updated": "2026-06-15",
+  "intro": "Five threads moving drug development this week — ranked, with a point of view and the sources behind it. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "Protein degraders have moved from promise to frontline pharma capital",
-      "detail": "Roche's $700M upfront (up to $2.3B) for Nurix's BTK-degrader is the second large-cap degrader transaction this window, and Roche optioned immunology and neurology on top of the oncology lead. That promotes protein degradation from emerging-modality watch to a confirmed, multi-TA platform with frontline-pharma capital behind it — no longer an early-stage bet.",
+      "headline": "KRAS has become a four-modality pile-up — and it's reaching pivotal stage",
+      "detail": "The ASCO 2026 tail has KRAS converging from four directions at once: allele-specific small molecules (zoldonrasib's G12D Phase 3 now enrolling alongside daraxonrasib, sotorasib and adagrasib), J&J's $1B Firefly Bio ADC platform, and the standing neoantigen-vaccine lane — all pressing on the same target across PDAC and NSCLC simultaneously. None of it is de-risked: per pancreatic cancer's Phase 3 graveyard, every read this cycle is entrant- or phase-advance movement, not validated efficacy. The crowding is the story; ESMO in September is where it gets tested.",
       "momentum": "Hot",
-      "sources": [
-        { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
-        { "label": "Nurix newsroom", "url": "https://www.nurixtx.com/news/" },
-        { "label": "Endpoints News", "url": "https://endpts.com" }
-      ]
-    },
-    {
-      "headline": "KRAS is now a three-class target",
-      "detail": "J&J paid $1B in cash for preclinical Firefly Bio, pricing a KRAS-targeting ADC before a single patient is dosed and anchoring the deal on Bertozzi bioorthogonal chemistry. Covalent inhibitors, RAS(ON) agents and now ADCs are all chasing the target everyone spent a decade calling undruggable.",
-      "momentum": "Confirmed",
       "sources": [
         { "label": "J&J press releases", "url": "https://www.jnj.com/media-center/press-releases" },
-        { "label": "Firefly Bio", "url": "https://www.fireflybio.com" },
-        { "label": "KRAS-ADC trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20antibody-drug%20conjugate" }
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
+        { "label": "KRAS inhibitor trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20inhibitor%20pancreatic" }
       ]
     },
     {
-      "headline": "The incretin tolerability ceiling is now Phase 3-anchored",
-      "detail": "Survodutide's ~19% discontinuation rate in SYNCHRONIZE-1 runs roughly 2.5–5x the Phase 2 class baseline, and Boehringer's 'consistent with class' defence quietly extends that ceiling across the GLP-1/glucagon tier. With ENDO 2026 days out, it reads as a live constraint on retatrutide and CagriSema — not a footnote.",
-      "momentum": "Hot",
-      "sources": [
-        { "label": "Boehringer Ingelheim", "url": "https://www.boehringer-ingelheim.com/human-health/metabolic-diseases" },
-        { "label": "ADA Scientific Sessions", "url": "https://professional.diabetes.org/scientific-sessions" },
-        { "label": "ENDO 2026 (Endocrine Society)", "url": "https://www.endocrine.org/meetings-and-events/endo" }
-      ]
-    },
-    {
-      "headline": "Hepatology fibrosis-regression opens a new target axis",
-      "detail": "GSK's UK liver-fibrosis pact with Engitix is the first hepatology-fibrosis macro signal in twelve cycles, and it's framed around mechanism of regression rather than the steatosis-and-inflammation playbook of NASH/MASH. It's early and discovery-stage, but it marks target diversification beyond cardiometabolic into fibrosis biology — worth tracking before it gets crowded.",
-      "momentum": "Watch",
-      "sources": [
-        { "label": "GSK press releases", "url": "https://www.gsk.com/en-gb/media/press-releases/" },
-        { "label": "Engitix", "url": "https://www.engitix.com" }
-      ]
-    },
-    {
-      "headline": "M&A heat is sustained at the top end — even in a 'quiet' month",
-      "detail": "Seven multibillion-dollar takeouts closed in a May that trade press called quiet, and the cycles since have kept adding deals across oncology, hepatology and rare disease. By deal count it looks slow; weighted by value, the top end is plainly still active. Deal-value, not deal-count, is the indicator that's holding.",
+      "headline": "Oral SERDs are quietly conceding 1L monotherapy — and winning everywhere adjacent",
+      "detail": "Roche dropped three giredestrant Phase 3 reads in a single cycle: pionERA in 1L monotherapy failed against letrozole (PFS HR 0.89), while adjuvant lidERA cleared its bar (IDFS HR 0.65) and the post-CDK4/6 everolimus combination hit (PFS HR 0.56). It's the clearest in-period signal yet that the class — elacestrant, camizestrant and imlunestrant included — is consolidating around adjuvant and combination positioning rather than the AI-displacement fight it keeps losing.",
       "momentum": "Confirmed",
       "sources": [
-        { "label": "Endpoints News deal coverage", "url": "https://endpts.com/channel/business" },
-        { "label": "Fierce Pharma", "url": "https://www.fiercepharma.com" }
+        { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
+        { "label": "Giredestrant trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=giredestrant" }
+      ]
+    },
+    {
+      "headline": "CD19 antibodies just broke into frontline DLBCL",
+      "detail": "Tafasitamab's frontMIND read is the first CD19 antibody to win in frontline DLBCL (PFS HR 0.75), landing alongside a fresh epcoritamab OS cut versus immunochemotherapy and the standing mosunetuzumab-plus-pola benchmark (PFS HR 0.41). After several cycles of bispecific and CD-targeting dominance in relapsed/refractory disease, the frontline door is now open too. The entrant tail — sonrotoclax, tazemetostat, allo-NK CD19 — is still early.",
+      "momentum": "Hot",
+      "sources": [
+        { "label": "Incyte press releases", "url": "https://investor.incyte.com/press-releases" },
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
+        { "label": "frontMIND / tafasitamab trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=tafasitamab%20frontMIND" }
+      ]
+    },
+    {
+      "headline": "FRα ADCs have graduated from entry to head-to-head",
+      "detail": "AZD5335's Phase 3 in ovarian is a direct head-to-head against Elahere (mirvetuximab) — not another me-too entry but a bid to displace the benchmark itself, with sofetabart and BL-B01D1 filling in the pipeline behind it. That intra-class H2H is the surest sign a modality has saturated its entry phase, the same maturation arc FcRn (myasthenia gravis) and IL-23 p19 (Crohn's) have already walked. ESMO is the likely readout inflection.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "AstraZeneca press releases", "url": "https://www.astrazeneca.com/media-centre/press-releases.html" },
+        { "label": "AZD5335 trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=AZD5335" },
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" }
+      ]
+    },
+    {
+      "headline": "WEE1 cracks platinum-resistant ovarian — the first non-ADC, non-PARP mechanism to",
+      "detail": "Azenosertib posted a 39.1% ORR in platinum-resistant ovarian cancer, edging past the 32.4% SORAYA mirvetuximab reference and becoming the first credible non-ADC, non-PARP mechanism to clear that bar this period. It's a single entrant-stage readout, not a franchise. But in a setting defined by ADCs, a genuinely new mechanism clearing the threshold is worth tracking before ESMO crowds the lane.",
+      "momentum": "Watch",
+      "sources": [
+        { "label": "Zentalis press releases", "url": "https://ir.zentalis.com/news-events/press-releases" },
+        { "label": "Azenosertib trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=azenosertib%20ovarian" },
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" }
       ]
     }
   ]
