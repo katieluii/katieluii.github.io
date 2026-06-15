@@ -4,7 +4,6 @@ import {
   Newspaper,
   Target,
   FlaskConical,
-  Microscope,
   ShieldCheck,
   GitBranch,
   Gauge,
@@ -17,134 +16,74 @@ import {
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
 import { getProjectBySlug } from '../data/projects';
-
-type CapColor = 'indigo' | 'emerald' | 'amber' | 'rose';
+import { Reveal, emphasize } from '../components/shared/craft';
+import AtlasDataflow from '../components/atlas/AtlasDataflow';
+import { WWM_LIVE } from '../data/atlas/copy';
 
 interface Capability {
   id: string;
   icon: React.ElementType;
-  color: CapColor;
   name: string;
   tag: string;
   detail: string;
-  extras?: React.ReactNode;
+  connected?: { label: string; href: string }[];
 }
 
-const COLOR_MAP: Record<CapColor, { ring: string; bg: string; icon: string; chip: string }> = {
-  indigo: {
-    ring: 'ring-indigo-200/70 dark:ring-indigo-900/40',
-    bg: 'bg-indigo-50/40 dark:bg-indigo-950/10',
-    icon: 'text-indigo-600 dark:text-indigo-400',
-    chip: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300',
-  },
-  emerald: {
-    ring: 'ring-emerald-200/70 dark:ring-emerald-900/40',
-    bg: 'bg-emerald-50/40 dark:bg-emerald-950/10',
-    icon: 'text-emerald-600 dark:text-emerald-400',
-    chip: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
-  },
-  amber: {
-    ring: 'ring-amber-200/70 dark:ring-amber-900/40',
-    bg: 'bg-amber-50/40 dark:bg-amber-950/10',
-    icon: 'text-amber-600 dark:text-amber-400',
-    chip: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
-  },
-  rose: {
-    ring: 'ring-rose-200/70 dark:ring-rose-900/40',
-    bg: 'bg-rose-50/40 dark:bg-rose-950/10',
-    icon: 'text-rose-600 dark:text-rose-400',
-    chip: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300',
-  },
-};
-
-const NEWS_SOURCES = [
-  'FierceBiotech',
-  'FiercePharma',
-  'Endpoints News',
-  'BioPharma Dive',
-  'Labiotech',
-];
-
+// the four streams — three feed the ETLM, one ships from it (lean one-liners)
 const CAPABILITIES: Capability[] = [
   {
     id: 'landscape',
     icon: Network,
-    color: 'indigo',
     name: 'Landscape mapping',
     tag: 'Strategic spine',
-    detail:
-      'The per-indication strategic map — approved therapies, pipeline, unmet need, efficacy bar, mechanism landscape, competitive dynamics — built from authoritative registries only (ClinicalTrials.gov, FDA, EMA, NCI Thesaurus).',
+    detail: 'The per-indication strategic map, built from authoritative registries only — ClinicalTrials.gov, FDA, EMA, NCI Thesaurus.',
   },
   {
     id: 'literature',
     icon: FlaskConical,
-    color: 'emerald',
     name: 'Literature scouting',
     tag: 'Novelty surveillance',
-    detail:
-      'Reads PubMed, bioRxiv, and medRxiv for novel assets and mechanisms that registry searches miss. Surfaces early-stage programs before they hit mainstream coverage.',
+    detail: 'Reads PubMed, bioRxiv, and medRxiv for the novel assets registry searches miss.',
   },
   {
     id: 'news',
     icon: Newspaper,
-    color: 'amber',
     name: 'News-signal monitoring',
     tag: 'Live industry pulse',
-    detail:
-      'Reads the trade press daily, triages each item for strategic relevance, and converts material events — readouts, deals, label updates — into landscape edits.',
-    extras: (
-      <div className="pl-14 space-y-3 pt-1">
-        <div>
-          <p className="text-[10.5px] uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400 mb-1.5">
-            Sources tracked
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {NEWS_SOURCES.map((s) => (
-              <span
-                key={s}
-                className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-white text-zinc-700 ring-1 ring-amber-200 dark:bg-zinc-900/60 dark:text-zinc-300 dark:ring-amber-900/40"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="rounded-lg ring-1 ring-zinc-200 dark:ring-zinc-700 bg-zinc-50/60 dark:bg-zinc-900/30 px-3 py-2">
-          <div className="flex items-center gap-1.5 mb-1">
-            <Network className="w-3 h-3 text-zinc-500 dark:text-zinc-400" />
-            <p className="text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">Connected workstreams</p>
-          </div>
-          <p className="text-[11.5px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            Live feeds from the{' '}
-            <a
-              href="/clinical-news"
-              className="text-zinc-700 dark:text-zinc-200 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
-            >
-              Clinical Development Monitoring Agent
-            </a>{' '}
-            (pre-classified clinical events) and the{' '}
-            <a
-              href="/conference-catalyst"
-              className="text-zinc-700 dark:text-zinc-200 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
-            >
-              Conference Catalyst Monitor
-            </a>{' '}
-            (verdicted readouts from ASCO, ESMO, AACR, ASH, and other major congresses) feed straight into the landscape —
-            one shared event stream.
-          </p>
-        </div>
-      </div>
-    ),
+    detail: 'Triages the trade press daily, turning material events — readouts, deals, label updates — into landscape edits.',
+    connected: [
+      { label: 'Clinical News', href: '/clinical-news' },
+      { label: 'Conference Catalyst', href: '/conference-catalyst' },
+    ],
   },
   {
     id: 'tpp',
     icon: Target,
-    color: 'rose',
     name: 'TPP drafting',
     tag: 'Decision artifact',
-    detail:
-      'Drafts Target Product Profiles per indication and segment — the efficacy bar against named comparators, the safety bar, the differentiation axes that actually move the answer, the regulatory pathway, and the commercial reality. Built on the live landscape as biology and competitive context.',
+    detail: 'Drafts Target Product Profiles — the efficacy bar, the safety bar, and the axes that move the answer.',
   },
+];
+
+// governance lines (open text, no cards)
+const GOVERNANCE = [
+  {
+    icon: ShieldCheck,
+    title: 'Analysts on the judgment calls, not the rote refresh',
+    detail: 'Routine updates land on their own; material shifts surface for human review before they go in.',
+  },
+  {
+    icon: GitBranch,
+    title: 'Conflict resolution as a first-class behaviour',
+    detail: 'When sources disagree: date-compare → verify → escalate. Newer evidence wins on facts; every patch tagged.',
+  },
+];
+
+// real samples in the reader — slugs verified against src/data/atlas/
+const SELECTED_WORK = [
+  { title: 'Obesity competitive landscape', kind: 'ETLM', href: '/atlas-reader/etlm/obesity' },
+  { title: '1L injectable, BMI ≥ 30', kind: 'Target Product Profile', href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05' },
+  { title: 'GLP-1 class — competitive supply', kind: 'Thematic synthesis', href: '/atlas-reader/theme/glp1_class_competitive_supply_2026-06-05' },
 ];
 
 interface Indication {
@@ -359,26 +298,56 @@ const VALUE_PROPS = [
   {
     icon: Gauge,
     title: 'Strategic outputs in hours, not weeks',
-    detail: 'Outputs your team would normally commission and wait on come back the same day a question is asked.',
+    detail: "Work you'd normally commission comes back the day you ask.",
   },
   {
     icon: Layers,
     title: 'Specialist depth across the full portfolio',
-    detail: 'Every indication held in sync at the depth a dedicated analyst would bring to one.',
+    detail: 'Every indication held at the depth a dedicated analyst gives one.',
   },
   {
     icon: CheckCircle2,
     title: 'Evidence-anchored verdicts',
-    detail: 'Strategic questions return a clear answer with citations already organised. Auditable, not a black box.',
+    detail: 'A clear answer with citations already organised. Auditable, not a black box.',
   },
   {
     icon: Sparkles,
     title: 'LLM agents where they earn their place',
-    detail: 'Structured registries are fetched deterministically. LLM agents do the work registries can\'t — pulling material events from unstructured press, judging strategic relevance, synthesising outputs on demand.',
+    detail: "Registries fetched deterministically; agents do what registries can't.",
   },
 ];
 
-const TECH_ITEMS = ['LLM (multi-agent)', 'Python'];
+// the Atlas page's own framing of the knowledge flow (restored original wording) — fed to the
+// shared <AtlasDataflow/> as content overrides so we keep the upgraded diagram but the original copy
+const KNOWLEDGE_FLOW = {
+  inputsLabel: 'Knowledge sources',
+  outputsLabel: 'Strategic deliverables',
+  inputs: [
+    {
+      name: 'Literature scouting',
+      detail: 'PubMed · bioRxiv · medRxiv — novelty signal beyond what registry searches return',
+    },
+    {
+      name: 'News-signal monitoring',
+      detail: 'Industry press + live feeds from connected clinical-news and conference workstreams',
+    },
+  ],
+  hub: {
+    name: 'ETLM',
+    badge: 'Persistent intelligence',
+    line: 'Emerging Therapeutic Landscape Map · one per indication',
+  },
+  outputs: [
+    {
+      name: 'ETLM',
+      detail: 'Competitive baseline · unmet need · efficacy + safety benchmarks · refreshed live with new readouts',
+    },
+    {
+      name: 'Target Product Profile',
+      detail: 'Per indication / segment · efficacy bar against named comparators · differentiation axes that move the answer',
+    },
+  ],
+};
 
 // ── Animation styles (scoped via id selector) ──────────────────────────────────
 const BUBBLE_STYLE = `
@@ -532,7 +501,7 @@ export default function AtlasDrugDevAnalyst() {
       title="Atlas"
       subtitle="Strategic intelligence for drug development."
     >
-      <div className="space-y-14">
+      <div>
         {/* Status pills */}
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs text-zinc-500 dark:text-zinc-400 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 rounded">
@@ -546,180 +515,100 @@ export default function AtlasDrugDevAnalyst() {
           ))}
         </div>
 
-        {/* Brand statement */}
-        <section className="border-l-2 border-zinc-900 dark:border-zinc-100 pl-5 sm:pl-6 py-1">
-          <p className="text-[22px] sm:text-[26px] font-bold text-zinc-900 dark:text-zinc-100 leading-[1.2] tracking-tight">
-            Atlas tracks every indication in your scope — approvals, pipeline, data readouts, and regulatory moves — and
-            produces deliverables for your teams.
+        {/* Hero — the thesis */}
+        <div className="mt-8 max-w-2xl">
+          <p className="rise text-[26px] sm:text-[34px] font-bold text-zinc-900 dark:text-zinc-100 leading-[1.12] tracking-tight">
+            {emphasize('You get a *decision*, not a reading list.')}
           </p>
-          <p className="mt-3 text-[14px] text-zinc-500 dark:text-zinc-400">
-            You get a decision, not a reading list.
+          <p className="rise mt-4 text-[15px] sm:text-[16px] text-zinc-500 dark:text-zinc-400 leading-relaxed" style={{ animationDelay: '120ms' }}>
+            Atlas holds every indication in your scope — approvals, pipeline, readouts, regulatory moves — and turns them
+            into the deliverables your teams act on.
           </p>
-        </section>
+        </div>
 
-        {/* Value props */}
-        <section className="space-y-3">
+        {/* What it changes — open text, no cards */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-6">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
             What it changes for your team
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
             {VALUE_PROPS.map((v) => {
               const Icon = v.icon;
               return (
-                <div
-                  key={v.title}
-                  className="rounded-xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-4 space-y-2"
-                >
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+                <div key={v.title} className="flex gap-3">
+                  <Icon className="w-[18px] h-[18px] mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
+                  <div>
                     <p className="text-[14px] font-semibold text-zinc-900 dark:text-zinc-100">{v.title}</p>
+                    <p className="mt-1 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{v.detail}</p>
                   </div>
-                  <p className="text-[12.5px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{v.detail}</p>
                 </div>
               );
             })}
           </div>
-        </section>
+        </Reveal>
 
-        {/* Areas of work */}
-        <section className="space-y-3">
+        {/* How it works — the living-memory dataflow + the four streams */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-5">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
-            Areas of work
+            How it works
           </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            Four streams share one strategic intelligence layer — the Emerging Therapeutic Landscape Map (ETLM). Three feed it; one
-            consumes it.
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            Four streams feed one living memory — the ETLM. Three build it; one ships from it.
           </p>
 
-          <div className="space-y-3 pt-2">
-            {CAPABILITIES.map((cap, i) => {
-              const c = COLOR_MAP[cap.color];
+          <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-6">
+            <AtlasDataflow
+              theme="portfolio"
+              inputsLabel={KNOWLEDGE_FLOW.inputsLabel}
+              outputsLabel={KNOWLEDGE_FLOW.outputsLabel}
+              inputs={KNOWLEDGE_FLOW.inputs}
+              outputs={KNOWLEDGE_FLOW.outputs}
+              hub={KNOWLEDGE_FLOW.hub}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 pt-1">
+            {CAPABILITIES.map((cap) => {
               const Icon = cap.icon;
               return (
-                <div key={cap.id} className={`rounded-2xl ring-1 ${c.ring} ${c.bg} p-5 space-y-3`}>
-                  <div className="flex items-start gap-4">
-                    <div
-                      className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white dark:bg-zinc-900 ring-1 ring-zinc-200/80 dark:ring-white/10 flex items-center justify-center ${c.icon}`}
-                    >
-                      <Icon className="w-5 h-5" />
+                <div key={cap.id} className="flex gap-3">
+                  <Icon className="w-[18px] h-[18px] mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
+                  <div className="min-w-0">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      <p className="text-[14px] font-semibold text-zinc-900 dark:text-zinc-100">{cap.name}</p>
+                      <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">{cap.tag}</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-baseline justify-between gap-3 flex-wrap mb-1.5">
-                        <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                          <span className="text-zinc-400 dark:text-zinc-500 font-normal mr-2">0{i + 1}</span>
-                          {cap.name}
-                        </h3>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${c.chip}`}>
-                          {cap.tag}
-                        </span>
-                      </div>
-                      <p className="text-[13px] text-zinc-600 dark:text-zinc-400 leading-relaxed">{cap.detail}</p>
-                    </div>
+                    <p className="mt-1 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{cap.detail}</p>
+                    {cap.connected && (
+                      <p className="mt-1.5 text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Feeds from{' '}
+                        <a href={cap.connected[0].href} className="text-zinc-700 dark:text-zinc-200 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300">
+                          {cap.connected[0].label}
+                        </a>{' '}
+                        and{' '}
+                        <a href={cap.connected[1].href} className="text-zinc-700 dark:text-zinc-200 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300">
+                          {cap.connected[1].label}
+                        </a>.
+                      </p>
+                    )}
                   </div>
-                  {cap.extras}
                 </div>
               );
             })}
           </div>
-        </section>
+        </Reveal>
 
-        {/* Knowledge architecture */}
-        <section className="space-y-3">
-          <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
-            Knowledge architecture
-          </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            One source of truth between the streams that build knowledge and the streams that ship deliverables. Every
-            output traces back to it.
-          </p>
-
-          <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-6 mt-2">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-stretch">
-              <div className="flex flex-col gap-2">
-                <p className="text-[11px] uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400">
-                  Knowledge sources
-                </p>
-                {[
-                  {
-                    name: 'Literature scouting',
-                    detail: 'PubMed · bioRxiv · medRxiv — novelty signal beyond what registry searches return',
-                    ring: 'ring-emerald-200/80 dark:ring-emerald-900/40',
-                    bg: 'bg-emerald-50/50 dark:bg-emerald-950/10',
-                  },
-                  {
-                    name: 'News-signal monitoring',
-                    detail: 'Industry press + live feeds from connected clinical-news and conference workstreams',
-                    ring: 'ring-amber-200/80 dark:ring-amber-900/40',
-                    bg: 'bg-amber-50/50 dark:bg-amber-950/10',
-                  },
-                ].map((w) => (
-                  <div
-                    key={w.name}
-                    className={`flex-1 rounded-lg ring-1 ${w.ring} ${w.bg} px-3 py-2`}
-                  >
-                    <p className="text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">{w.name}</p>
-                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">{w.detail}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col items-center justify-center gap-3 px-2 min-w-[180px]">
-                <div className="hidden lg:block w-px h-12 bg-gradient-to-b from-transparent to-zinc-300 dark:to-zinc-600" />
-                <div className="rounded-2xl bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-5 py-4 text-center shadow-md w-full">
-                  <Microscope className="w-5 h-5 mx-auto mb-2 opacity-80" />
-                  <p className="text-[10px] uppercase tracking-widest font-semibold opacity-70">Persistent intelligence</p>
-                  <p className="text-base font-bold mt-1">ETLM</p>
-                  <p className="text-[11px] opacity-70 mt-1 leading-tight">
-                    Emerging Therapeutic Landscape Map · one per indication
-                  </p>
-                </div>
-                <div className="hidden lg:block w-px h-12 bg-gradient-to-t from-transparent to-zinc-300 dark:to-zinc-600" />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <p className="text-[11px] uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400">
-                  Strategic deliverables
-                </p>
-                {[
-                  {
-                    name: 'ETLM',
-                    detail:
-                      'Competitive baseline · unmet need · efficacy + safety benchmarks · refreshed live with new readouts',
-                    ring: 'ring-indigo-200/80 dark:ring-indigo-900/40',
-                    bg: 'bg-indigo-50/50 dark:bg-indigo-950/10',
-                  },
-                  {
-                    name: 'Target Product Profile',
-                    detail: 'Per indication / segment · efficacy bar against named comparators · differentiation axes that move the answer',
-                    ring: 'ring-rose-200/80 dark:ring-rose-900/40',
-                    bg: 'bg-rose-50/50 dark:bg-rose-950/10',
-                  },
-                ].map((c) => (
-                  <div
-                    key={c.name}
-                    className={`flex-1 rounded-lg ring-1 ${c.ring} ${c.bg} px-3 py-2`}
-                  >
-                    <p className="text-[13px] font-semibold text-zinc-900 dark:text-zinc-100">{c.name}</p>
-                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">{c.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Therapeutic coverage — interactive bubbles */}
-        <section className="space-y-3">
+        {/* Therapeutic coverage — interactive bubbles (signature element) */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-4">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
             Therapeutic coverage
           </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            Each indication carries its own ETLM, specialist analyst, and calibration anchors. Tap an indication for the
-            assets currently setting the bar.
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            Each indication carries its own ETLM and calibration anchors. Tap one for the assets setting the bar.
           </p>
 
           {/* Legend */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-[11.5px] text-zinc-500 dark:text-zinc-400">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11.5px] text-zinc-500 dark:text-zinc-400">
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-rose-200 to-rose-100 ring-1 ring-rose-300 dark:from-rose-800 dark:to-rose-900 dark:ring-rose-700" />
               Oncology
@@ -736,90 +625,92 @@ export default function AtlasDrugDevAnalyst() {
 
           <IndicationBubbles />
 
-          {/* Growth callout */}
-          <div className="pt-3 flex items-start gap-2">
-            <ArrowRight className="w-3.5 h-3.5 mt-0.5 text-zinc-400 dark:text-zinc-500 flex-shrink-0" />
-            <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              <span className="font-semibold text-zinc-700 dark:text-zinc-300">Coverage extends on demand.</span> New
-              indications onboard to client scope as priorities evolve. Same architecture, new TA.
-            </p>
-          </div>
-        </section>
+          <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            <span className="font-semibold text-zinc-700 dark:text-zinc-300">Coverage extends on demand</span> — same
+            architecture, new TA.
+          </p>
+        </Reveal>
 
-        {/* Governance & trust */}
-        <section className="space-y-3">
+        {/* Governance & trust — open text */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-6">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
             Governance &amp; trust
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Analysts on the judgment calls, not the rote refresh
-                </p>
-              </div>
-              <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Routine landscape updates flow in on their own. Material shifts — a class-defining readout, a competitive
-                pivot, a regulatory inflection — surface for human review before they land. Your analysts spend their time
-                where it changes the answer.
-              </p>
-            </div>
-
-            <div className="rounded-xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-4 space-y-2">
-              <div className="flex items-center gap-2">
-                <GitBranch className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Conflict resolution as a first-class behaviour
-                </p>
-              </div>
-              <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                When sources disagree, Atlas runs date-compare → targeted verification → escalation. Newer evidence wins
-                on facts; review framing wins on framing. Every patch tagged with its conflict axis.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
+            {GOVERNANCE.map((g) => {
+              const Icon = g.icon;
+              return (
+                <div key={g.title} className="flex gap-3">
+                  <Icon className="w-[18px] h-[18px] mt-0.5 text-zinc-400 dark:text-zinc-500 shrink-0" />
+                  <div>
+                    <p className="text-[14px] font-semibold text-zinc-900 dark:text-zinc-100">{g.title}</p>
+                    <p className="mt-1 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{g.detail}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </section>
+        </Reveal>
 
-        {/* Technology */}
-        <section className="space-y-3">
+        {/* Selected work — named samples from the reader */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-4">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
-            Technology
+            Selected work
           </h2>
-          <div className="flex flex-wrap gap-1.5">
-            {TECH_ITEMS.map((item) => (
-              <Pill key={item} variant="tech">
-                {item}
-              </Pill>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            Redacted samples, straight from the reader.
+          </p>
+          <div className="border-y border-zinc-200/70 dark:border-white/10 divide-y divide-zinc-200/70 dark:divide-white/10">
+            {SELECTED_WORK.map((w) => (
+              <a key={w.href} href={w.href} className="group flex items-center justify-between gap-4 py-3">
+                <span className="min-w-0">
+                  <span className="text-[14px] font-semibold text-zinc-900 dark:text-zinc-100">{w.title}</span>
+                  <span className="ml-2 text-[12px] text-zinc-500 dark:text-zinc-400">{w.kind}</span>
+                </span>
+                <ArrowRight className="w-4 h-4 text-zinc-400 dark:text-zinc-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+              </a>
             ))}
           </div>
-        </section>
+          <a
+            href="/atlas-reader"
+            className="inline-flex items-center gap-1 text-[13px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
+          >
+            Browse all deliverables
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </Reveal>
 
-        {/* Closing — two paths, casual */}
-        <section className="border-t border-zinc-200/80 dark:border-white/10 pt-6 space-y-4">
-          <p className="text-[13.5px] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            Want to see what the deliverables actually look like?{' '}
+        {/* Close */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-4">
+          <p className="text-[15px] sm:text-[16px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
+            Want the outputs ready to use, or Atlas inside your own systems? Either works.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href="/atlas-reader"
-              className="text-zinc-900 dark:text-zinc-100 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
+              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] font-medium bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 shadow-sm ring-1 ring-zinc-900/10 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
-              Open the reader →
-            </a>{' '}
-            for a redacted sample of two landscape maps, five target product profiles, three thematic
-            syntheses, and a slice of the ecosystem note.
-          </p>
-          <p className="text-[13.5px] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
-            You might want the outputs — briefs, profiles, verdicts, ready to use. Or your team might want Atlas sitting
-            inside your own systems and data. Both are fine. And if you're not sure yet — feel free to{' '}
+              See sample deliverables
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            {WWM_LIVE && (
+              <a
+                href="/work-with-me/teams"
+                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] font-medium text-zinc-700 dark:text-zinc-300 ring-1 ring-zinc-300 dark:ring-zinc-700 hover:ring-zinc-400 dark:hover:ring-zinc-500 transition-colors"
+              >
+                Work with me
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            )}
             <a
               href="mailto:katieluikakiu@gmail.com?subject=Atlas%20—%20enquiry"
-              className="text-zinc-900 dark:text-zinc-100 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
+              className="text-[13px] text-zinc-700 dark:text-zinc-300 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
             >
-              reach out
-            </a>{' '}
-            to learn more.
-          </p>
-        </section>
+              Get in touch →
+            </a>
+          </div>
+          <p className="text-[12px] text-zinc-400 dark:text-zinc-500 pt-2">LLM (multi-agent) · Python</p>
+        </Reveal>
 
       </div>
     </ProjectPageLayout>
