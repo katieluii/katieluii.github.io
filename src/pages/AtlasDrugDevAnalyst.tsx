@@ -14,9 +14,10 @@ import {
   X,
 } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import ProjectLead from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
 import { getProjectBySlug } from '../data/projects';
-import { Reveal, emphasize } from '../components/shared/craft';
+import { Reveal } from '../components/shared/craft';
 import AtlasDataflow from '../components/atlas/AtlasDataflow';
 import { WWM_LIVE } from '../data/atlas/copy';
 
@@ -504,7 +505,7 @@ export default function AtlasDrugDevAnalyst() {
       <div>
         {/* Status pills */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-zinc-500 dark:text-zinc-400 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 rounded">
+          <span className="text-sm text-slate-600 dark:text-zinc-400 px-2.5 py-1 bg-slate-100 dark:bg-zinc-800 rounded">
             {project.yearStart}
           </span>
           <Pill variant="status-live">Live</Pill>
@@ -515,15 +516,12 @@ export default function AtlasDrugDevAnalyst() {
           ))}
         </div>
 
-        {/* Hero — the thesis */}
-        <div className="mt-8 max-w-2xl">
-          <p className="rise text-[26px] sm:text-[34px] font-bold text-zinc-900 dark:text-zinc-100 leading-[1.12] tracking-tight">
-            {emphasize('You get a *decision*, not a reading list.')}
-          </p>
-          <p className="rise mt-4 text-[15px] sm:text-[16px] text-zinc-500 dark:text-zinc-400 leading-relaxed" style={{ animationDelay: '120ms' }}>
+        {/* Description — shared ProjectLead intro (matches the other project pages) */}
+        <div className="mt-8">
+          <ProjectLead headline="You get a decision, not a reading list.">
             Atlas holds every indication in your scope — approvals, pipeline, readouts, regulatory moves — and turns them
             into the deliverables your teams act on.
-          </p>
+          </ProjectLead>
         </div>
 
         {/* What it changes — open text, no cards */}
