@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { RefreshCw, ExternalLink, Archive, ChevronDown, TrendingUp, FlaskConical, Inbox } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
 import {
   StatCard, StatGrid, EmptyState, SkeletonList, Reveal,
@@ -562,14 +563,16 @@ export default function BiotechFundraising() {
           </div>
         )}
 
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
-          A deal sourcing pipeline for biotech VCs, focused on preclinical and early-stage therapeutic companies.
-          Three higher-signal sources are ingested daily: <strong className="text-zinc-700 dark:text-zinc-300">SEC EDGAR Form D</strong> — private placements that never appear in the press (seed rounds from university spinouts, stealth companies);
-          <strong className="text-zinc-700 dark:text-zinc-300"> NIH SBIR/STTR grants</strong> — Phase I/II grant awards to small companies, with Claude extracting the asset, target, indication, and TA from each abstract;
-          and <strong className="text-zinc-700 dark:text-zinc-300">RSS fundraising news</strong> for later-stage disclosed rounds.
-          The Pipeline Signals tab tracks new Phase 1 ClinicalTrials.gov registrations from emerging sponsors — the moment a company crosses the preclinical → clinical threshold.
-          Lead investor names are not disclosed in Form D filings.
-        </p>
+        <ProjectLead headline="Surface early-stage biotech raises before they hit the headlines.">
+          <p>
+            A deal sourcing pipeline for biotech VCs, focused on preclinical and early-stage therapeutic companies.
+            Three higher-signal sources are ingested daily: <strong className="text-zinc-700 dark:text-zinc-300">SEC EDGAR Form D</strong> — private placements that never appear in the press (seed rounds from university spinouts, stealth companies);
+            <strong className="text-zinc-700 dark:text-zinc-300"> NIH SBIR/STTR grants</strong> — Phase I/II grant awards to small companies, with Claude extracting the asset, target, indication, and TA from each abstract;
+            and <strong className="text-zinc-700 dark:text-zinc-300">RSS fundraising news</strong> for later-stage disclosed rounds.
+            The Pipeline Signals tab tracks new Phase 1 ClinicalTrials.gov registrations from emerging sponsors — the moment a company crosses the preclinical → clinical threshold.
+            Lead investor names are not disclosed in Form D filings.
+          </p>
+        </ProjectLead>
 
         {/* Stats row */}
         <StatGrid cols={4}>

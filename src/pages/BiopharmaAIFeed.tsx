@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { ExternalLink, RefreshCw, Zap, Handshake, DollarSign, FlaskConical } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
 import { StatCard, StatGrid, EmptyState, SkeletonList, Reveal } from '../components/ui';
 import { getProjectBySlug, formatYearRange } from '../data/projects';
@@ -343,9 +344,9 @@ export function BiopharmaAIFeed() {
         )}
 
         {/* Description */}
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
+        <ProjectLead headline="Track how AI is being adopted across biopharma, deal by deal.">
           Tracks how AI is being adopted across biopharma — partnerships, acquisitions, platform deals, clinical trial technology, diagnostics, and drug discovery. RSS ingestion from nine sources, LLM-based relevance filtering, and structured deal/entity extraction.
-        </p>
+        </ProjectLead>
 
         {/* Stats row */}
         {stats && (

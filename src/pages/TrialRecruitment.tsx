@@ -2,6 +2,7 @@ import { FileText } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { TrialPredictor } from '../components/TrialPredictor';
 
 export function TrialRecruitment() {
@@ -46,9 +47,9 @@ export function TrialRecruitment() {
         </div>
 
         {/* Description */}
-        <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
+        <ProjectLead headline="Predict trial enrolment timelines before the first site opens.">
           {project.longDescription || project.summary}
-        </p>
+        </ProjectLead>
 
         {/* Action buttons */}
         <div className="flex flex-wrap gap-3">

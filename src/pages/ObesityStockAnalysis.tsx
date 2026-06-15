@@ -3,6 +3,7 @@ import { RefreshCw } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { StockChart } from '../components/StockChart';
 import { PipelineLandscape } from '../components/PipelineLandscape';
 import { MaSignals } from '../components/MaSignals';
@@ -75,9 +76,9 @@ export default function ObesityStockAnalysis() {
           {project.themes.map(t => <Pill key={t} variant="tech">{t}</Pill>)}
         </div>
 
-        <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+        <ProjectLead headline="The obesity drug race, read through markets, pipelines, and M&A firepower.">
           A competitive intelligence tool for the GLP-1/obesity pharma space, anchored to an M&A signal framework. The M&A Signals tab analyzes firepower (Net Debt/EBITDA capacity to deploy capital), surfaces likely targets, and tracks the 2023–2025 deal timeline. The Pipeline tab maps the asset-level competitive landscape feeding into those M&A decisions, sourced live from ClinicalTrials.gov. The Stock Charts tab tracks 3-year price history with SMA-50/200, ARIMA 30-day forecasts, and deal/readout markers overlaid as catalysts — sourced live from yfinance.
-        </p>
+        </ProjectLead>
 
         {/* API status */}
         {!loading && apiStatus !== 'ready' && (

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronUp, ChevronDown, Search, ExternalLink, Database, SearchX } from 'lucide-react';
 import { Pill } from '../components/Pill';
+import { ProjectLead } from '../components/ProjectLead';
 import {
   DataTable,
   type Column,
@@ -243,19 +244,21 @@ export function Sec13f() {
         )}
 
         <div className="space-y-3">
-          <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
-            A live SEC 13F Fund Analysis dashboard that pulls the latest filing
-            per fund from the SEC EDGAR database and converts raw holdings into
-            a fast, searchable, and comparable view of each fund's
-            diversification and top exposures.
-          </p>
-          <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
-            Toggle to rank funds by various parameters, including by
-            concentration metrics (Largest holding %, Top 3 holdings %, and
-            HHI), and RAG tags for flagging concentration risk — useful for
-            quickly spotting hidden single-name exposure, crowding, investment
-            research, risk monitoring, and strategic fund profiling.
-          </p>
+          <ProjectLead headline="Turn raw 13F filings into a fund's real exposures — ranked and comparable.">
+            <p>
+              A live SEC 13F Fund Analysis dashboard that pulls the latest filing
+              per fund from the SEC EDGAR database and converts raw holdings into
+              a fast, searchable, and comparable view of each fund's
+              diversification and top exposures.
+            </p>
+            <p>
+              Toggle to rank funds by various parameters, including by
+              concentration metrics (Largest holding %, Top 3 holdings %, and
+              HHI), and RAG tags for flagging concentration risk — useful for
+              quickly spotting hidden single-name exposure, crowding, investment
+              research, risk monitoring, and strategic fund profiling.
+            </p>
+          </ProjectLead>
           <p className="text-sm text-slate-500 dark:text-zinc-400">
             What should I build next? Send in your thoughts via email.
           </p>

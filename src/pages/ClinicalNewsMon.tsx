@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { RefreshCw, FlaskConical, ExternalLink, Archive, ChevronDown } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
 import {
   StatCard, StatGrid, EmptyState, SkeletonList, Skeleton, Reveal,
@@ -1049,9 +1050,9 @@ export default function ClinicalNewsMon() {
           </div>
         )}
 
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
+        <ProjectLead headline="A week of clinical-development news, with readouts, pipeline moves, management, and M&A called out.">
           I built this agent to monitor every week's clinical development news from five main biopharma RSS feeds — FierceBiotech, FiercePharma, Endpoints News, Labiotech, and BioPharma Dive. LLM classifies each article into structured clinical development events: trial data readouts (Phase I–III, interim, endpoint outcomes), regulatory decisions across FDA, EMA/CHMP, UK MHRA, Japan PMDA, and China NMPA (including approvals, CRL letters, clinical holds, and label expansions), pipeline movements (assets added, in-licensed, dropped, or deprioritised), and M&A/management activities. Each article is tagged by therapeutic area, indication, sponsor, and asset. A narrative digest is generated weekly across all extracted events.
-        </p>
+        </ProjectLead>
 
         {/* Week tab selector */}
         <SegmentedChips<WeekTab>

@@ -2,6 +2,7 @@ import { ExternalLink, Activity, Globe, Microscope, Droplets, type LucideIcon } 
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { Reveal } from '../components/ui';
 
 const APP_URL = 'https://conference-catalyst-monitor-production.up.railway.app';
@@ -119,9 +120,9 @@ export default function ConferenceCatalyst() {
         </div>
 
         {/* Description */}
-        <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
+        <ProjectLead headline="Every congress readout in your indications, with the key data surfaced.">
           A focused readout tracker for the four major oncology/hematology congresses (ASCO, ESMO, AACR, ASH). The premise is the opposite of catch-all: tell it the indications you cover, and it tracks the Phase 2/3 trials reading out in exactly those — sourced from ClinicalTrials.gov by primary-completion window. When a meeting releases its programme, the matching abstract is attached and an LLM extracts what actually moves the read: whether the primary endpoint was met, plus the key numbers (ORR, mPFS, OS, hazard ratios). The result is an asset database scoped to your coverage, with the efficacy data surfaced inline — not 8,000 abstracts you have to filter yourself.
-        </p>
+        </ProjectLead>
 
         {/* Indications in scope */}
         <Reveal className="space-y-3">
