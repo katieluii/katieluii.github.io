@@ -4,8 +4,6 @@ import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { TrialPredictor } from '../components/TrialPredictor';
 
-const RAILWAY_URL = 'https://web-production-e6859b.up.railway.app';
-
 export function TrialRecruitment() {
   const project = getProjectBySlug('trial-recruitment-prediction');
 

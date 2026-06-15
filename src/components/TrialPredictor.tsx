@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ChevronDown, Timer } from 'lucide-react';
+import { Rise, EmptyState } from './ui';
 
 const API = 'https://web-production-e6859b.up.railway.app/api';
 
@@ -60,9 +62,9 @@ export function TrialPredictor() {
   }
 
   const selectClass =
-    'w-full rounded-lg border border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 ' +
-    'text-slate-900 dark:text-zinc-100 px-3 py-2 text-sm focus:outline-none ' +
-    'focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400';
+    'w-full appearance-none rounded-lg border border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 ' +
+    'text-slate-900 dark:text-zinc-100 pl-3 pr-9 py-2 text-sm cursor-pointer transition-shadow focus:outline-none ' +
+    'focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400 dark:focus:ring-blue-400/40';
 
   const intervalPct = result
     ? ((result.predicted_months - result.lower_months) / (result.upper_months - result.lower_months)) * 100
@@ -76,26 +78,32 @@ export function TrialPredictor() {
           <label className="text-xs font-semibold text-slate-600 dark:text-zinc-400 uppercase tracking-wide">
             Trial Phase
           </label>
-          <select className={selectClass} value={phase} onChange={e => setPhase(e.target.value)}>
-            <option value="" disabled>Select a phase…</option>
-            {phases.map(p => (
-              <option key={p.key} value={p.key} disabled={!p.trained}>
-                {p.label}{!p.trained ? ' (model pending)' : ''}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select className={selectClass} value={phase} onChange={e => setPhase(e.target.value)}>
+              <option value="" disabled>Select a phase…</option>
+              {phases.map(p => (
+                <option key={p.key} value={p.key} disabled={!p.trained}>
+                  {p.label}{!p.trained ? ' (model pending)' : ''}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-zinc-500" />
+          </div>
         </div>
 
         <div className="space-y-1.5">
           <label className="text-xs font-semibold text-slate-600 dark:text-zinc-400 uppercase tracking-wide">
             Therapeutic Area
           </label>
-          <select className={selectClass} value={ta} onChange={e => setTa(e.target.value)}>
-            <option value="" disabled>Select a therapeutic area…</option>
-            {areas.map(a => (
-              <option key={a} value={a}>{a}</option>
-            ))}
-          </select>
+          <div className="relative">
+            <select className={selectClass} value={ta} onChange={e => setTa(e.target.value)}>
+              <option value="" disabled>Select a therapeutic area…</option>
+              {areas.map(a => (
+                <option key={a} value={a}>{a}</option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-zinc-500" />
+          </div>
         </div>
       </div>
 
@@ -111,9 +119,18 @@ export function TrialPredictor() {
         <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
       )}
 
+      {/* Empty state — before first prediction */}
+      {!result && !error && !loading && (
+        <EmptyState
+          icon={<Timer className="h-5 w-5" />}
+          title="Estimate a trial's duration"
+          hint="Pick a phase and therapeutic area, then run the prediction to see the expected primary-completion timeline and its 80% interval."
+        />
+      )}
+
       {/* Result */}
       {result && (
-        <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-zinc-800/50 p-5 space-y-5">
+        <Rise className="rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-zinc-800/50 p-5 space-y-5">
           {/* Headline */}
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="text-4xl font-bold text-slate-900 dark:text-zinc-100">
@@ -165,7 +182,7 @@ export function TrialPredictor() {
               </div>
             ))}
           </div>
-        </div>
+        </Rise>
       )}
     </div>
   );

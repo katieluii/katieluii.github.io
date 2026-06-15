@@ -2,6 +2,10 @@ import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { RefreshCw, FlaskConical, ExternalLink, Archive, ChevronDown } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
+import {
+  StatCard, StatGrid, EmptyState, SkeletonList, Skeleton, Reveal,
+  Toolbar, ToolbarGroup, ToolbarSpacer, SegmentedChips,
+} from '../components/ui';
 import { getProjectBySlug, formatYearRange } from '../data/projects';
 
 const API = 'https://clinical-news-agent-production.up.railway.app';
@@ -1050,37 +1054,21 @@ export default function ClinicalNewsMon() {
         </p>
 
         {/* Week tab selector */}
-        <div className="flex gap-1 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800 w-fit">
-          {(['this', 'last'] as WeekTab[]).map(tab => {
-            const monday = tab === 'this' ? thisMonday : lastMonday;
-            const label = tab === 'this' ? 'This week' : 'Last week';
-            const dateStr = toDateStr(monday);
-            return (
-              <button
-                key={tab}
-                onClick={() => { setWeekTab(tab); setView('all'); setSponsorFilters(new Set()); setTaFilters(new Set()); setIndicationFilters(new Set()); }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  weekTab === tab
-                    ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                    : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                }`}
-              >
-                {label}
-                <span className="ml-1.5 text-xs font-normal opacity-60">w/c {dateStr}</span>
-              </button>
-            );
-          })}
-        </div>
+        <SegmentedChips<WeekTab>
+          value={weekTab}
+          onChange={(tab) => { setWeekTab(tab); setView('all'); setSponsorFilters(new Set()); setTaFilters(new Set()); setIndicationFilters(new Set()); }}
+          options={[
+            { value: 'this', label: <>This week <span className="font-normal opacity-60">w/c {toDateStr(thisMonday)}</span></> },
+            { value: 'last', label: <>Last week <span className="font-normal opacity-60">w/c {toDateStr(lastMonday)}</span></> },
+          ]}
+        />
 
         {/* Stats row */}
-        <div className="grid grid-cols-3 gap-3">
+        <StatGrid cols={3}>
           {displayStats.map(s => (
-            <div key={s.label} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 px-4 py-3 text-center">
-              <div className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{s.value}</div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{s.label}</div>
-            </div>
+            <StatCard key={s.label} label={s.label} value={typeof s.value === 'number' ? s.value.toLocaleString() : s.value} />
           ))}
-        </div>
+        </StatGrid>
 
         {/* Digest */}
         {weekTab === 'this' && thisWeekDigest && (
@@ -1088,28 +1076,35 @@ export default function ClinicalNewsMon() {
         )}
         {weekTab === 'last' && (
           loading && allLastWeekArticles.length === 0
-            ? <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 h-24 animate-pulse" />
+            ? <Skeleton className="h-24 w-full rounded-2xl" />
             : lastWeekDigest && <DigestPanel digest={lastWeekDigest} mondayDate={lastMonday} />
         )}
 
-        {/* Controls — row 1: category tabs + refresh */}
-        <div className="flex flex-wrap gap-3 items-center">
-          <div className="flex gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800">
-            {viewBtns.map(btn => (
-              <button
-                key={btn.id}
-                onClick={() => setView(btn.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                  view === btn.id
-                    ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                    : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                }`}
-              >
-                {btn.label}
-              </button>
-            ))}
-          </div>
-
+        {/* Controls — category + filters + refresh in one toolbar */}
+        <Toolbar>
+          <ToolbarGroup label="Category">
+            <SegmentedChips<ViewMode>
+              value={view}
+              onChange={setView}
+              options={viewBtns.map(b => ({ value: b.id, label: b.label }))}
+            />
+          </ToolbarGroup>
+          {sponsorOptions.length > 0 && (
+            <ToolbarGroup label="Sponsor">
+              <MultiSelect options={sponsorOptions} selected={sponsorFilters} onChange={setSponsorFilters} placeholder="All sponsors" />
+            </ToolbarGroup>
+          )}
+          {taOptions.length > 0 && (
+            <ToolbarGroup label="Area">
+              <MultiSelect options={taOptions} selected={taFilters} onChange={setTaFilters} placeholder="All therapeutic areas" />
+            </ToolbarGroup>
+          )}
+          {indicationOptions.length > 0 && (
+            <ToolbarGroup label="Indication">
+              <MultiSelect options={indicationOptions} selected={indicationFilters} onChange={setIndicationFilters} placeholder="All indications" />
+            </ToolbarGroup>
+          )}
+          <ToolbarSpacer />
           <button
             onClick={handleRefresh}
             disabled={refreshing}
@@ -1118,57 +1113,26 @@ export default function ClinicalNewsMon() {
             <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
             {refreshing ? `Refreshing… ${refreshSecsLeft}s` : 'Refresh feed'}
           </button>
-        </div>
-
-        {/* Controls — row 2: multi-select filters (sponsors → TA → indications) */}
-        <div className="flex flex-wrap gap-3 items-center">
-          {sponsorOptions.length > 0 && (
-            <MultiSelect
-              options={sponsorOptions}
-              selected={sponsorFilters}
-              onChange={setSponsorFilters}
-              placeholder="All sponsors"
-            />
-          )}
-          {taOptions.length > 0 && (
-            <MultiSelect
-              options={taOptions}
-              selected={taFilters}
-              onChange={setTaFilters}
-              placeholder="All therapeutic areas"
-            />
-          )}
-          {indicationOptions.length > 0 && (
-            <MultiSelect
-              options={indicationOptions}
-              selected={indicationFilters}
-              onChange={setIndicationFilters}
-              placeholder="All indications"
-            />
-          )}
-        </div>
+        </Toolbar>
 
         {/* Feed */}
         {error && <p className="text-sm text-red-500 dark:text-red-400">{error}</p>}
 
         {loading ? (
-          <div className="space-y-3">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 h-28 animate-pulse" />
-            ))}
-          </div>
+          <SkeletonList count={5} />
         ) : filteredArticles.length === 0 ? (
-          <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-10 text-center">
-            <FlaskConical className="w-8 h-8 text-zinc-300 dark:text-zinc-600 mx-auto mb-3" />
-            <p className="text-sm text-zinc-500 dark:text-zinc-500">No articles found — try a different filter.</p>
-          </div>
+          <EmptyState
+            icon={<FlaskConical className="h-5 w-5" />}
+            title="No articles found"
+            hint="Try a different category, sponsor, area, or indication filter."
+          />
         ) : (
           <div className="space-y-3">
             <p className="text-xs text-zinc-400 dark:text-zinc-600">{filteredArticles.length} articles</p>
             {groupArticles(filteredArticles).map(item =>
               Array.isArray(item)
-                ? <GroupedArticleCard key={item.map(a => a.id).join('-')} articles={item} />
-                : <ArticleCard key={item.id} article={item} />
+                ? <Reveal key={item.map(a => a.id).join('-')}><GroupedArticleCard articles={item} /></Reveal>
+                : <Reveal key={item.id}><ArticleCard article={item} /></Reveal>
             )}
           </div>
         )}

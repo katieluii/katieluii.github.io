@@ -6,6 +6,7 @@ import ProjectPageLayout from '../components/ProjectPageLayout';
 import { StockChart } from '../components/StockChart';
 import { PipelineLandscape } from '../components/PipelineLandscape';
 import { MaSignals } from '../components/MaSignals';
+import { SegmentedChips, Skeleton } from '../components/ui';
 
 // Update after deploying obesity_landscape to Railway
 const API = 'https://obesitylandscape-production.up.railway.app';
@@ -57,13 +58,6 @@ export default function ObesityStockAnalysis() {
     );
   }
 
-  const tabClass = (active: boolean) =>
-    `px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-      active
-        ? 'border-zinc-900 dark:border-zinc-100 text-zinc-900 dark:text-zinc-100'
-        : 'border-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-    }`;
-
   return (
     <ProjectPageLayout
       title={project.title}
@@ -96,17 +90,22 @@ export default function ObesityStockAnalysis() {
         )}
 
         {/* tabs */}
-        <div className="border-b border-zinc-200/80 dark:border-white/10">
-          <div className="flex gap-0">
-            <button className={tabClass(tab === 'ma')}       onClick={() => setTab('ma')}>M&amp;A Signals</button>
-            <button className={tabClass(tab === 'pipeline')} onClick={() => setTab('pipeline')}>Pipeline</button>
-            <button className={tabClass(tab === 'stocks')}   onClick={() => setTab('stocks')}>Stock Charts</button>
-          </div>
-        </div>
+        <SegmentedChips<Tab>
+          value={tab}
+          onChange={setTab}
+          options={[
+            { value: 'ma', label: 'M&A Signals' },
+            { value: 'pipeline', label: 'Pipeline' },
+            { value: 'stocks', label: 'Stock Charts' },
+          ]}
+        />
 
         {/* tab content */}
         {loading ? (
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Loading data…</p>
+          <div className="space-y-3">
+            <Skeleton className="h-64 w-full rounded-2xl" />
+            <Skeleton className="h-32 w-full rounded-2xl" />
+          </div>
         ) : (
           <>
             {tab === 'stocks' && (

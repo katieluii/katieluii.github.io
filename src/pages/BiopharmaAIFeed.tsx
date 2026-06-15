@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { ExternalLink, RefreshCw, Zap, Handshake, DollarSign, FlaskConical } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
+import { StatCard, StatGrid, EmptyState, SkeletonList, Reveal } from '../components/ui';
 import { getProjectBySlug, formatYearRange } from '../data/projects';
 
 const API = 'https://ai-deal-scraper-production.up.railway.app';
@@ -78,10 +79,8 @@ function relevanceBar(score: number | null) {
 
 function Tag({ label, color = 'zinc' }: { label: string; color?: string }) {
   const cls =
-    color === 'blue'
-      ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300'
-      : color === 'green'
-      ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300'
+    color === 'indigo'
+      ? 'bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 ring-1 ring-indigo-600/15 dark:ring-indigo-400/20'
       : color === 'amber'
       ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300'
       : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400';
@@ -210,16 +209,16 @@ function ArticleCard({ article }: { article: Article }) {
         </p>
       )}
 
-      {/* Tags row */}
+      {/* Tags row — primary accent = AI application; money = amber; rest neutral */}
       <div className="flex flex-wrap gap-1.5">
         {article.ai_application?.slice(0, 3).map(tag => (
-          <Tag key={tag} label={tag} color="blue" />
+          <Tag key={tag} label={tag} color="indigo" />
         ))}
-        {article.deal_type && <Tag label={article.deal_type} color="green" />}
-        {article.therapeutic_area && <Tag label={article.therapeutic_area} />}
         {article.has_disclosed_value && article.deal_value_raw && (
           <Tag label={article.deal_value_raw} color="amber" />
         )}
+        {article.deal_type && <Tag label={article.deal_type} />}
+        {article.therapeutic_area && <Tag label={article.therapeutic_area} />}
       </div>
 
       {/* Companies */}
@@ -350,22 +349,12 @@ export function BiopharmaAIFeed() {
 
         {/* Stats row */}
         {stats && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { value: stats.total_articles, label: 'Articles tracked' },
-              { value: stats.deal_related, label: 'Deal-related' },
-              { value: stats.disclosed_value, label: 'Disclosed value' },
-              { value: stats.top_ai_application ?? '—', label: 'Top AI application' },
-            ].map(s => (
-              <div
-                key={s.label}
-                className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 px-4 py-3 text-center"
-              >
-                <div className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{s.value}</div>
-                <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{s.label}</div>
-              </div>
-            ))}
-          </div>
+          <StatGrid cols={4}>
+            <StatCard label="Articles tracked" value={stats.total_articles.toLocaleString()} />
+            <StatCard label="Deal-related" value={stats.deal_related.toLocaleString()} />
+            <StatCard label="Disclosed value" value={stats.disclosed_value.toLocaleString()} />
+            <StatCard label="Top AI application" value={<span className="text-base">{stats.top_ai_application ?? '—'}</span>} accent />
+          </StatGrid>
         )}
 
         {/* Analytics panel */}
@@ -417,25 +406,21 @@ export function BiopharmaAIFeed() {
         )}
 
         {loading ? (
-          <div className="space-y-3">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 h-28 animate-pulse" />
-            ))}
-          </div>
+          <SkeletonList count={5} />
         ) : articles.length === 0 ? (
-          <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-10 text-center">
-            <FlaskConical className="w-8 h-8 text-zinc-300 dark:text-zinc-600 mx-auto mb-3" />
-            <p className="text-sm text-zinc-500 dark:text-zinc-500">
-              No articles yet — the feed refreshes daily.
-            </p>
-            <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">
-              Trigger a refresh via the backend or wait for the scheduled job.
-            </p>
-          </div>
+          <EmptyState
+            icon={<FlaskConical className="h-5 w-5" />}
+            title="No articles yet"
+            hint="The feed refreshes daily — trigger a refresh via the backend or wait for the scheduled job."
+          />
         ) : (
           <div className="space-y-3">
             <p className="text-xs text-zinc-400 dark:text-zinc-600">{articles.length} articles</p>
-            {articles.map(a => <ArticleCard key={a.id} article={a} />)}
+            {articles.map(a => (
+              <Reveal key={a.id}>
+                <ArticleCard article={a} />
+              </Reveal>
+            ))}
           </div>
         )}
 
