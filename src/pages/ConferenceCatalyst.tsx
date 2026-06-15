@@ -1,7 +1,9 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Activity, Globe, Microscope, Droplets, type LucideIcon } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
+import { Reveal } from '../components/ui';
 
 const APP_URL = 'https://conference-catalyst-monitor-production.up.railway.app';
 
@@ -56,30 +58,36 @@ const INDICATIONS = [
   'Melanoma', 'GBM', 'Urothelial', 'Thyroid', 'AML/MDS', 'Myeloma', 'NHL/DLBCL',
 ];
 
-const CONFERENCES = [
+const CONFERENCES: {
+  Icon: LucideIcon;
+  name: string;
+  description: string;
+  sourceLabel: string;
+  sourceUrl: string;
+}[] = [
   {
-    icon: '🎗️',
+    Icon: Activity,
     name: 'ASCO',
     description: 'American Society of Clinical Oncology Annual Meeting — the largest oncology meeting of the year, broad solid-tumour coverage.',
     sourceLabel: 'meetings.asco.org',
     sourceUrl: 'https://meetings.asco.org/',
   },
   {
-    icon: '🇪🇺',
+    Icon: Globe,
     name: 'ESMO',
     description: 'European Society for Medical Oncology Congress — Europe\'s flagship oncology meeting and a major late-year readout window.',
     sourceLabel: 'esmo.org',
     sourceUrl: 'https://www.esmo.org/meetings/esmo-congress',
   },
   {
-    icon: '🔬',
+    Icon: Microscope,
     name: 'AACR',
     description: 'American Association for Cancer Research Annual Meeting — earlier-stage and translational oncology, including the spring late-breaker track.',
     sourceLabel: 'aacr.org',
     sourceUrl: 'https://www.aacr.org/meeting/aacr-annual-meeting/',
   },
   {
-    icon: '🩸',
+    Icon: Droplets,
     name: 'ASH',
     description: 'American Society of Hematology Annual Meeting — the year-end readout window for hematologic malignancies and rare blood diseases.',
     sourceLabel: 'hematology.org',
@@ -112,14 +120,17 @@ export default function ConferenceCatalyst() {
         </div>
 
         {/* Description */}
-        <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
+        <ProjectLead headline="Every congress readout in your indications, with the key data surfaced.">
           A focused readout tracker for the four major oncology/hematology congresses (ASCO, ESMO, AACR, ASH). The premise is the opposite of catch-all: tell it the indications you cover, and it tracks the Phase 2/3 trials reading out in exactly those — sourced from ClinicalTrials.gov by primary-completion window. When a meeting releases its programme, the matching abstract is attached and an LLM extracts what actually moves the read: whether the primary endpoint was met, plus the key numbers (ORR, mPFS, OS, hazard ratios). The result is an asset database scoped to your coverage, with the efficacy data surfaced inline — not 8,000 abstracts you have to filter yourself.
-        </p>
+        </ProjectLead>
 
         {/* Indications in scope */}
-        <div className="space-y-3">
-          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">
+        <Reveal className="space-y-3">
+          <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest flex items-center gap-2">
             Indications in scope
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300 normal-case tracking-normal">
+              {INDICATIONS.length}
+            </span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-zinc-500 leading-relaxed">
             The watchlist mirrors the indications our drug-development analysts cover, so every tracked readout maps to a downstream consumer. Swap in a different coverage list and the scope follows.
@@ -131,7 +142,7 @@ export default function ConferenceCatalyst() {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* Open app button */}
         <div className="flex flex-wrap gap-3">
@@ -147,7 +158,7 @@ export default function ConferenceCatalyst() {
         </div>
 
         {/* Flow diagram */}
-        <div className="space-y-3">
+        <Reveal className="space-y-3">
           <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">
             How it works
           </h2>
@@ -212,15 +223,20 @@ export default function ConferenceCatalyst() {
               );
             })}
           </div>
-        </div>
+        </Reveal>
 
         {/* Conferences covered */}
-        <div className="space-y-3">
+        <Reveal className="space-y-3">
           <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Conferences covered</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {CONFERENCES.map(c => (
-              <div key={c.name} className="rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3 flex flex-col">
-                <p className="text-sm font-semibold text-slate-900 dark:text-zinc-100 mb-1">{c.icon} {c.name}</p>
+              <div key={c.name} className="rounded-xl border border-slate-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3 flex flex-col transition-colors hover:border-indigo-300 dark:hover:border-indigo-500/40">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300">
+                    <c.Icon className="h-4 w-4" />
+                  </span>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-zinc-100">{c.name}</p>
+                </div>
                 <p className="text-xs text-slate-500 dark:text-zinc-500 leading-relaxed">{c.description}</p>
                 <a
                   href={c.sourceUrl}
@@ -234,16 +250,16 @@ export default function ConferenceCatalyst() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* Technologies */}
         {project.tags.length > 0 && (
-          <div className="space-y-3">
+          <Reveal className="space-y-3">
             <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h2>
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
             </div>
-          </div>
+          </Reveal>
         )}
 
       </div>

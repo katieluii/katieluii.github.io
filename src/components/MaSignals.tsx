@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import { OBESITY_DEALS, type ObesityDeal } from '../data/obesity-deals';
 import { SITTING_OUT } from '../data/sitting-out';
+import { SkeletonList, Reveal } from './ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -304,7 +305,7 @@ function FirepowerSection({ data }: { data: FirepowerResponse }) {
               {companies.map(co => (
                 <tr
                   key={co.ticker}
-                  className="border-b border-zinc-50 dark:border-white/[0.03] hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors"
+                  className="border-b border-zinc-50 odd:bg-zinc-50/40 hover:bg-indigo-50/50 dark:border-white/[0.03] dark:odd:bg-white/[0.015] dark:hover:bg-indigo-500/10 transition-colors"
                 >
                   <td className="py-2 px-4">
                     <span className="font-mono text-zinc-400 dark:text-zinc-500 mr-1.5">{co.ticker}</span>
@@ -648,22 +649,32 @@ export function MaSignals({ api }: MaSignalsProps) {
   }, [api]);
 
   if (loading) {
-    return <p className="text-sm text-zinc-500 dark:text-zinc-400">Loading M&A data…</p>;
+    return <SkeletonList count={4} />;
   }
   if (error) {
     return <p className="text-sm text-red-500">Failed to load M&A data: {error}</p>;
   }
 
+  const divider = 'border-t border-zinc-200/70 dark:border-white/10 pt-12';
+
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       {firepower && firepower.companies.length > 0 && (
-        <FirepowerSection data={firepower} />
+        <Reveal>
+          <FirepowerSection data={firepower} />
+        </Reveal>
       )}
       {targets.length > 0 && (
-        <TargetsSection targets={targets} />
+        <Reveal className={divider}>
+          <TargetsSection targets={targets} />
+        </Reveal>
       )}
-      <DealHistory />
-      <AbsentFromObesity />
+      <Reveal className={divider}>
+        <DealHistory />
+      </Reveal>
+      <Reveal className={divider}>
+        <AbsentFromObesity />
+      </Reveal>
     </div>
   );
 }

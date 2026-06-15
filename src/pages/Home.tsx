@@ -3,12 +3,17 @@ import { Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { FilterChips } from '../components/FilterChips';
 import { ProjectTimeline } from '../components/ProjectTimeline';
+import { useReveal } from '../hooks/useReveal';
 import { getUniqueThemes, filterProjectsByTheme, groupProjectsByYear, type ProjectTheme } from '../data/projects';
 
 export function Home() {
   const [selectedTheme, setSelectedTheme] = useState<ProjectTheme | null>(null);
 
   const themes = useMemo(() => getUniqueThemes(), []);
+
+  const aboutRef = useReveal<HTMLElement>();
+  const projectsRef = useReveal<HTMLElement>();
+  const interestsRef = useReveal<HTMLElement>();
 
   const groupedProjects = useMemo(() => {
     const filtered = filterProjectsByTheme(selectedTheme);
@@ -23,11 +28,28 @@ export function Home() {
         <div className="max-w-3xl mx-auto px-6 py-10 sm:py-12">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold text-zinc-900 tracking-tight leading-tight dark:text-zinc-100">
+              <h1 className="rise text-5xl sm:text-6xl font-bold text-zinc-900 tracking-tight leading-[0.95] dark:text-zinc-50">
                 Katie Lui
               </h1>
+              <p
+                className="rise mt-4 text-lg text-zinc-600 leading-relaxed max-w-xl dark:text-zinc-300"
+                style={{ animationDelay: '60ms' }}
+              >
+                Biopharma × strategy × AI — building tools that turn complex science and data into decisions.
+              </p>
+              <div
+                className="rise mt-4 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px] text-zinc-500 dark:text-zinc-400"
+                style={{ animationDelay: '120ms' }}
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  biopharma-AI startup
+                </span>
+                <span className="text-zinc-300 dark:text-zinc-600">·</span>
+                <span>Oxford / HK / London</span>
+              </div>
             </div>
-            <nav className="hidden sm:flex items-center gap-4 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+            <nav className="hidden sm:flex items-center gap-4 text-sm font-medium text-zinc-600 dark:text-zinc-400 shrink-0">
               <a
                 href="#about"
                 className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
@@ -50,7 +72,7 @@ export function Home() {
             </nav>
           </div>
 
-          <div className="flex items-center gap-2 mt-4">
+          <div className="rise flex items-center gap-2 mt-6" style={{ animationDelay: '180ms' }}>
             {/* TODO: Replace with your actual LinkedIn URL */}
             <a
               href="https://www.linkedin.com/in/katieluikakiu"
@@ -77,16 +99,16 @@ export function Home() {
       </header>
 
       <main className="relative max-w-3xl mx-auto px-6 py-12 sm:py-16 space-y-16">
-        <section id="about" className="scroll-mt-20">
+        <section ref={aboutRef} id="about" className="reveal scroll-mt-20">
           <h2 className="text-sm font-semibold text-zinc-900 tracking-tight uppercase mb-6 dark:text-zinc-100">
             About.
           </h2>
           <div className="space-y-4 text-zinc-600 leading-relaxed max-w-prose dark:text-zinc-400">
             <p>
-              Biopharma x strategy x AI. Experience in a medtech startup and
-              biopharma consultancy, translating complex science and data to
-              insights and narratives. Started in wet lab (Oxford/HK/London),
-              and recently AI/ML trained. Now at a SF-based Biopharma-AI startup.
+              Experience in a medtech startup and biopharma consultancy,
+              translating complex science and data to insights and narratives.
+              Started in wet lab (Oxford/HK/London), and recently AI/ML trained.
+              Now at a SF-based Biopharma-AI startup.
             </p>
             <p>
               I enjoy building AI and automation tools to scale analysis, productivity, and impact.
@@ -94,7 +116,7 @@ export function Home() {
           </div>
         </section>
 
-        <section id="projects" className="scroll-mt-20">
+        <section ref={projectsRef} id="projects" className="reveal scroll-mt-20">
           <h2 className="text-sm font-semibold text-zinc-900 tracking-tight uppercase mb-6 dark:text-zinc-100">
             Projects.
           </h2>
@@ -117,7 +139,7 @@ export function Home() {
           </div>
         </section>
 
-        <section id="interests" className="scroll-mt-20">
+        <section ref={interestsRef} id="interests" className="reveal scroll-mt-20">
           <h2 className="text-sm font-semibold text-zinc-900 tracking-tight uppercase mb-6 dark:text-zinc-100">
             Interests.
           </h2>
@@ -139,10 +161,26 @@ export function Home() {
       </main>
 
       <footer className="relative border-t border-zinc-200/80 bg-white/40 backdrop-blur-sm mt-16 dark:border-white/10 dark:bg-white/5">
-        <div className="max-w-3xl mx-auto px-6 py-8 text-center">
+        <div className="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-zinc-500 dark:text-zinc-400">
             © 2026 Katie Lui. All rights reserved.
           </p>
+          <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <a
+              href="https://www.linkedin.com/in/katieluikakiu"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="mailto:katieluikakiu@gmail.com"
+              className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            >
+              Email
+            </a>
+          </div>
         </div>
       </footer>
     </div>

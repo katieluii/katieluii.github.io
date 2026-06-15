@@ -1222,7 +1222,7 @@
         "t2d_hba1c_reduction_pct_w24": 2.16,
         "note": "VISTA Ph2b 75mg, n=49; SOLSTICE Ph2b. Both met primary endpoints. Published The Lancet PIIS0140-6736(26)00748-8 simultaneous with ADA26. Tolerability comparable to oral GLP-1 class; GI discontinuation low."
       },
-      "competitive_positioning": "Second credible small-molecule oral GLP-1 entrant alongside Lilly orforglipron (-14.7% w52 ATTAIN-1). Differentiator vs orforglipron: no food/fasting restrictions (orforglipron has dosing constraints). AZ cardiometabolic franchise (Farxiga) extends positioning into CV + renal outcomes \u2014 likely positioned for cardiometabolic comorbidity labels, not pure obesity. Race-to-third oral GLP-1 cohort: Roche enicepatide, Pfizer berobenatide (MET-097i), Structure GSBR-1290. Phase 3 launch ~2026, approval ~2028-2030. CYCLE16 UPDATE: pivotal program confirmed per ADA follow-up (event_id 193, 2026-06-09).",
+      "competitive_positioning": "Second credible small-molecule oral GLP-1 entrant alongside Lilly orforglipron (-12.4% w72 ATTAIN-1, NEJM 2025). Differentiator vs orforglipron: no food/fasting restrictions (orforglipron has dosing constraints). AZ cardiometabolic franchise (Farxiga) extends positioning into CV + renal outcomes \u2014 likely positioned for cardiometabolic comorbidity labels, not pure obesity. Race-to-third oral GLP-1 cohort: Roche enicepatide, Pfizer berobenatide (MET-097i), Structure GSBR-1290. Phase 3 launch ~2026, approval ~2028-2030. CYCLE16 UPDATE: pivotal program confirmed per ADA follow-up (event_id 193, 2026-06-09).",
       "source_events": [
         181,
         193
@@ -1589,8 +1589,8 @@
         "os_mo": null
       },
       "custom_efficacy_benchmark": {
-        "mean_tbwl_pct_w52": -14.7,
-        "source": "Lilly ATTAIN-1 topline Aug 2025 sponsor press release"
+        "mean_tbwl_pct_w72": -12.4,
+        "source": "ATTAIN-1, NEJM 2025 (NEJMoa2511774): -12.4% w72 (efficacy estimand, 36mg); -11.2% treatment-policy"
       },
       "key_resistance_mechanism": null
     },
@@ -1629,7 +1629,7 @@
       },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w46": -18.7,
-        "source": "survodutide Ph2 (le Roux 2024 NEJM) PMID 38330987"
+        "source": "survodutide Ph2 (le Roux 2024 Lancet Diabetes & Endocrinol) PMID 38330987"
       },
       "key_resistance_mechanism": null
     },
@@ -2017,18 +2017,25 @@
       ]
     },
     "oral_small_molecule_glp1": {
-      "mean_tbwl_pct_w52": -14.7,
-      "responder_15pct": 60.0,
+      "mean_tbwl_pct_w72": -12.4,
+      "responder_15pct": 39.6,
       "representative_trial": "ATTAIN-1 (orforglipron)",
-      "nct": "NCT05803421",
-      "source": "Lilly press release Aug 2025",
+      "nct": "NCT05869903",
+      "source": "ATTAIN-1, NEJM 2025 (NEJMoa2511774)",
       "sources": [
         {
-          "label": "NCT05803421",
-          "url": "https://clinicaltrials.gov/study/NCT05803421",
+          "label": "NCT05869903",
+          "url": "https://clinicaltrials.gov/study/NCT05869903",
           "type": "ctgov",
-          "date": "2025-08",
-          "quoted_metric": "TBWL -14.7% (w52)"
+          "date": "2025",
+          "quoted_metric": "TBWL -12.4% w72 (efficacy estimand, 36mg)"
+        },
+        {
+          "label": "NEJMoa2511774",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2511774",
+          "type": "journal",
+          "date": "2025-09",
+          "quoted_metric": "efficacy estimand: -12.4% w72, >=15% 39.6%; treatment-policy: -11.2%, >=15% 36.0%, >=10% 54.6%, >=20% 18.4%"
         }
       ]
     },

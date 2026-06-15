@@ -488,13 +488,13 @@
       "phase": "Phase 3 (completed/approved expansion)",
       "combination": "osimertinib + pemetrexed + platinum",
       "indication_subtype": "1L EGFR-mutant (exon19del/L858R) advanced NSCLC",
-      "nct": "NCT02296125",
+      "nct": "NCT04035486",
       "trial_name": "FLAURA2",
       "status": "COMPLETED",
       "estimated_readout": "2026-01",
       "primary_endpoint": "Progression-free survival",
       "enrollment": 557,
-      "source": "ClinicalTrials.gov NCT02296125; J\u00e4nne PA et al. NEJM 2026; PMID 41104938. mPFS 25.5 mo osi+chemo vs 16.7 mo osi alone; OS HR 0.75 (early positive trend)"
+      "source": "ClinicalTrials.gov NCT04035486; J\u00e4nne PA et al. NEJM 2026; PMID 41104938. mPFS 25.5 mo osi+chemo vs 16.7 mo osi alone; final OS 47.5 vs 37.6 mo, HR 0.77 (mature, ESMO 2025/NEJM 2026)"
     },
     {
       "asset_name": "amivantamab + lazertinib (1L, MARIPOSA)",
@@ -887,25 +887,12 @@
       "asset_name": "selpercatinib (Retevmo)",
       "phase": "Phase 3 completed \u2014 adjuvant",
       "trial_name": "LIBRETTO-432",
+      "nct": "NCT04819100",
       "company": "Eli Lilly",
       "target": "RET fusion",
       "setting": "adjuvant, early-stage resected RET fusion-positive NSCLC",
-      "key_result": "DFS HR 0.17 (83% reduction in progression/death vs placebo); primary endpoint met at ASCO 2026",
-      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant DFS HR in targeted NSCLC to date.",
-      "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected \u2014 potential NDA/sBLA filing.",
-      "analyst_note": "Full publication pending peer review. ASCO 2026 oral presentation is primary data source.",
-      "source": "ASCO 2026 (May 29, 2026); KB event ID 9",
-      "last_updated": "2026-06-05"
-    },
-    {
-      "asset_name": "selpercatinib (Retevmo)",
-      "phase": "Phase 3 completed \u2014 adjuvant",
-      "trial_name": "LIBRETTO-432",
-      "company": "Eli Lilly",
-      "target": "RET fusion",
-      "setting": "adjuvant, early-stage resected RET fusion-positive NSCLC",
-      "key_result": "DFS HR 0.17 (83% reduction in progression/death vs placebo); primary endpoint met at ASCO 2026",
-      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant DFS HR in targeted NSCLC to date.",
+      "key_result": "EFS HR 0.172 (Stage IB-IIIA; 2-yr EFS 91.5% vs 61.1% placebo); 83% reduction in disease recurrence/death; primary endpoint met at ASCO 2026 (NEJM 2026)",
+      "calibration_vs_benchmark": "EFS HR 0.172 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant HR in targeted NSCLC to date.",
       "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected \u2014 potential NDA/sBLA filing.",
       "analyst_note": "Full publication pending peer review. ASCO 2026 oral presentation is primary data source.",
       "source": "ASCO 2026 (May 29, 2026); KB event ID 9",
@@ -1475,8 +1462,8 @@
     {
       "drug": "osimertinib + pemetrexed + platinum",
       "trial": "FLAURA2 (OS analysis)",
-      "conference": "ASCO 2025 / NEJM Jan 2026",
-      "finding": "OS HR 0.75 at interim analysis (osi+chemo vs osi alone); mPFS 25.5 mo vs 16.7 mo. OS benefit emerging but not fully mature",
+      "conference": "WCLC 2025 / NEJM 2026",
+      "finding": "Final OS 47.5 vs 37.6 mo, HR 0.77 (36-mo OS 63% vs 51%); mPFS 25.5 vs 16.7 mo. Mature OS benefit confirmed (ESMO 2025 / NEJM 2026)",
       "source": "J\u00e4nne PA et al. NEJM 2026; PMID 41104938"
     },
     {
@@ -1497,7 +1484,7 @@
       "drug": "ivonescimab (AK112, PD-1\u00d7VEGF bispecific)",
       "trial": "HARMONi-A",
       "conference": "JAMA Aug 2024",
-      "finding": "Ivonescimab + chemo vs osimertinib-failed EGFR-mutated NSCLC: ORR 50% vs 28% osimertinib-retreatment arm. Randomised Phase III data",
+      "finding": "Ivonescimab + chemo vs placebo + chemo in EGFR-mutated NSCLC that progressed on EGFR TKI: mPFS 7.1 vs 4.8 mo (HR 0.46). Randomised Phase III data",
       "source": "Fang W et al. JAMA 2024; PMID 38820549"
     },
     {

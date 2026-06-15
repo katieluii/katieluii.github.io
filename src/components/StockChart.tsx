@@ -38,7 +38,6 @@ interface StockChartProps {
 
 function fmtDate(d: string) { return d.slice(0, 7); } // YYYY-MM
 function fmtPrice(v: number) { return `$${v.toFixed(2)}`; }
-function fmtNorm(v: number) { return `${v.toFixed(1)}`; }
 
 // Keep last N data points to avoid rendering thousands of tick marks
 function downsample<T>(arr: T[], maxPoints: number): T[] {

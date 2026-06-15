@@ -206,6 +206,7 @@ import { ExternalLink, FileText, Github } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 
 export function StandardProjectPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -250,9 +251,15 @@ export function StandardProjectPage() {
         </div>
 
         {/* Description */}
-        <p className="text-slate-700 dark:text-zinc-300 leading-relaxed">
-          {project.longDescription || project.summary}
-        </p>
+        {project.longDescription ? (
+          <ProjectLead headline={project.summary}>
+            {project.longDescription}
+          </ProjectLead>
+        ) : (
+          <p className="text-[14px] text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            {project.summary}
+          </p>
+        )}
 
         {/* CTA Buttons */}
         {(project.links.pdf ||

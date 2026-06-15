@@ -1,8 +1,13 @@
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
-import { RefreshCw, ExternalLink, Archive, ChevronDown, TrendingUp, FlaskConical } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { RefreshCw, ExternalLink, Archive, ChevronDown, TrendingUp, FlaskConical, Inbox } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
 import ProjectPageLayout from '../components/ProjectPageLayout';
+import { ProjectLead } from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
+import {
+  StatCard, StatGrid, EmptyState, SkeletonList, Reveal,
+  Toolbar, ToolbarGroup, ToolbarSpacer, SegmentedChips, useChartTheme,
+} from '../components/ui';
 import { getProjectBySlug, formatYearRange } from '../data/projects';
 
 const API = 'https://biotech-fundraise-tracker-production.up.railway.app';
@@ -384,6 +389,7 @@ function SignalCard({ signal }: { signal: Signal }) {
 // ── Trends panel ───────────────────────────────────────────────────────────────
 
 function TrendsPanel({ rows }: { rows: TrendRow[] }) {
+  const theme = useChartTheme();
   if (!rows.length) return null;
   const chartData = pivotTrends(rows);
   const roundTypes = allRoundTypesInTrends(rows);
@@ -395,15 +401,19 @@ function TrendsPanel({ rows }: { rows: TrendRow[] }) {
       </div>
       <ResponsiveContainer width="100%" height={180}>
         <BarChart data={chartData} margin={{ top: 0, right: 0, left: -24, bottom: 0 }}>
-          <XAxis dataKey="month" tickFormatter={formatMonthLabel} tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
-          <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} allowDecimals={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke={theme.grid} vertical={false} />
+          <XAxis dataKey="month" tickFormatter={formatMonthLabel} tick={{ fontSize: 11, fill: theme.axis }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fontSize: 11, fill: theme.axis }} axisLine={false} tickLine={false} allowDecimals={false} />
           <Tooltip
-            contentStyle={{ borderRadius: '8px', fontSize: '12px' }}
+            contentStyle={theme.tooltip.contentStyle}
+            labelStyle={theme.tooltip.labelStyle}
+            itemStyle={theme.tooltip.itemStyle}
+            cursor={theme.tooltip.cursor}
             formatter={(v: number, name: string) => [v, ROUND_LABELS[name] ?? name]}
             labelFormatter={(l: string) => `Month: ${formatMonthLabel(l)}`}
           />
           <Legend formatter={(v: string) => ROUND_LABELS[v] ?? v} wrapperStyle={{ fontSize: '11px' }} />
-          {roundTypes.map(rt => <Bar key={rt} dataKey={rt} stackId="a" fill={ROUND_COLORS[rt] ?? '#9ca3af'} />)}
+          {roundTypes.map(rt => <Bar key={rt} dataKey={rt} stackId="a" fill={ROUND_COLORS[rt] ?? '#9ca3af'} radius={[2, 2, 0, 0]} />)}
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -553,40 +563,33 @@ export default function BiotechFundraising() {
           </div>
         )}
 
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
-          A deal sourcing pipeline for biotech VCs, focused on preclinical and early-stage therapeutic companies.
-          Three higher-signal sources are ingested daily: <strong className="text-zinc-700 dark:text-zinc-300">SEC EDGAR Form D</strong> — private placements that never appear in the press (seed rounds from university spinouts, stealth companies);
-          <strong className="text-zinc-700 dark:text-zinc-300"> NIH SBIR/STTR grants</strong> — Phase I/II grant awards to small companies, with Claude extracting the asset, target, indication, and TA from each abstract;
-          and <strong className="text-zinc-700 dark:text-zinc-300">RSS fundraising news</strong> for later-stage disclosed rounds.
-          The Pipeline Signals tab tracks new Phase 1 ClinicalTrials.gov registrations from emerging sponsors — the moment a company crosses the preclinical → clinical threshold.
-          Lead investor names are not disclosed in Form D filings.
-        </p>
+        <ProjectLead headline="Surface early-stage biotech raises before they hit the headlines.">
+          <p>
+            A deal sourcing pipeline for biotech VCs, focused on preclinical and early-stage therapeutic companies.
+            Three higher-signal sources are ingested daily: <strong className="text-zinc-700 dark:text-zinc-300">SEC EDGAR Form D</strong> — private placements that never appear in the press (seed rounds from university spinouts, stealth companies);
+            <strong className="text-zinc-700 dark:text-zinc-300"> NIH SBIR/STTR grants</strong> — Phase I/II grant awards to small companies, with Claude extracting the asset, target, indication, and TA from each abstract;
+            and <strong className="text-zinc-700 dark:text-zinc-300">RSS fundraising news</strong> for later-stage disclosed rounds.
+            The Pipeline Signals tab tracks new Phase 1 ClinicalTrials.gov registrations from emerging sponsors — the moment a company crosses the preclinical → clinical threshold.
+            Lead investor names are not disclosed in Form D filings.
+          </p>
+        </ProjectLead>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <StatGrid cols={4}>
           {statCards.map(s => (
-            <div key={s.label} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 px-4 py-3 text-center">
-              <div className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{s.value}</div>
-              <div className="text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">{s.label}</div>
-            </div>
+            <StatCard key={s.label} label={s.label} value={typeof s.value === 'number' ? s.value.toLocaleString() : s.value} />
           ))}
-        </div>
+        </StatGrid>
 
         {/* Main tabs */}
-        <div className="flex gap-1 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800 w-fit">
-          {([
-            { id: 'deal-flow' as MainTab, label: 'Deal Flow' },
-            { id: 'pipeline' as MainTab, label: 'Pipeline Signals' },
-          ]).map(t => (
-            <button key={t.id} onClick={() => setMainTab(t.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                mainTab === t.id ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-              }`}>
-              {t.label}
-            </button>
-          ))}
-        </div>
+        <SegmentedChips<MainTab>
+          value={mainTab}
+          onChange={setMainTab}
+          options={[
+            { value: 'deal-flow', label: 'Deal Flow' },
+            { value: 'pipeline', label: 'Pipeline Signals' },
+          ]}
+        />
 
         {/* ── DEAL FLOW TAB ── */}
         {mainTab === 'deal-flow' && (
@@ -594,69 +597,50 @@ export default function BiotechFundraising() {
             <TrendsPanel rows={trends} />
 
             {/* Controls */}
-            <div className="space-y-3">
-              <div className="flex flex-wrap gap-3 items-center">
-                {/* Round group chips */}
-                <div className="flex gap-1 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex-wrap">
-                  {ROUND_GROUPS.map(g => (
-                    <button key={g.id} onClick={() => setRoundGroup(g.id)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                        roundGroup === g.id ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                      }`}>
-                      {g.label}
-                    </button>
-                  ))}
-                </div>
-                <button onClick={handleRefresh} disabled={refreshing}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[8.5rem] whitespace-nowrap">
-                  <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
-                  {refreshing ? `Refreshing… ${refreshSecsLeft}s` : 'Refresh feed'}
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-3 items-center">
-                {/* Source filter */}
-                <div className="flex gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-800">
-                  {SOURCE_OPTIONS.map(opt => (
-                    <button key={opt.id} onClick={() => setSourceFilter(opt.id)}
-                      className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-                        sourceFilter === opt.id ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                      }`}>
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-                {taOptions.length > 0 && (
+            <Toolbar>
+              <ToolbarGroup label="Round">
+                <SegmentedChips value={roundGroup} onChange={setRoundGroup}
+                  options={ROUND_GROUPS.map(g => ({ value: g.id, label: g.label }))} />
+              </ToolbarGroup>
+              <ToolbarGroup label="Source">
+                <SegmentedChips value={sourceFilter} onChange={setSourceFilter}
+                  options={SOURCE_OPTIONS.map(o => ({ value: o.id, label: o.label }))} />
+              </ToolbarGroup>
+              <ToolbarGroup label="Window">
+                <SegmentedChips value={days} onChange={setDays}
+                  options={DAYS_OPTIONS.map(o => ({ value: o.value, label: o.label }))} />
+              </ToolbarGroup>
+              {taOptions.length > 0 && (
+                <ToolbarGroup label="Area">
                   <MultiSelect options={taOptions} selected={taFilters} onChange={setTaFilters} placeholder="All therapeutic areas" />
-                )}
-                <div className="flex gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-800">
-                  {DAYS_OPTIONS.map(opt => (
-                    <button key={opt.value} onClick={() => setDays(opt.value)}
-                      className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-                        days === opt.value ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                      }`}>
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+                </ToolbarGroup>
+              )}
+              <ToolbarSpacer />
+              <button onClick={handleRefresh} disabled={refreshing}
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-w-[8.5rem] whitespace-nowrap">
+                <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+                {refreshing ? `Refreshing… ${refreshSecsLeft}s` : 'Refresh feed'}
+              </button>
+            </Toolbar>
 
             {error && <p className="text-sm text-red-500 dark:text-red-400">{error}</p>}
 
             {loading ? (
-              <div className="space-y-3">{[...Array(5)].map((_, i) => <div key={i} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 h-36 animate-pulse" />)}</div>
+              <SkeletonList count={5} />
             ) : filteredDeals.length === 0 ? (
-              <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-10 text-center">
-                <p className="text-sm text-zinc-500 dark:text-zinc-500">No deals found — try a different filter or refresh the feed.</p>
-              </div>
+              <EmptyState
+                icon={<Inbox className="h-5 w-5" />}
+                title="No deals found"
+                hint="Try a different filter or refresh the feed."
+              />
             ) : (
               <div className="space-y-3">
                 <p className="text-xs text-zinc-400 dark:text-zinc-600">{filteredDeals.length} deals</p>
-                {filteredDeals.map(deal => <DealCard key={deal.id} deal={deal} />)}
+                {filteredDeals.map(deal => (
+                  <Reveal key={deal.id}>
+                    <DealCard deal={deal} />
+                  </Reveal>
+                ))}
               </div>
             )}
           </div>
@@ -673,34 +657,34 @@ export default function BiotechFundraising() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 items-center">
+            <Toolbar>
               {sigTaOptions.length > 0 && (
-                <MultiSelect options={sigTaOptions} selected={sigTaFilters} onChange={setSigTaFilters} placeholder="All therapeutic areas" />
+                <ToolbarGroup label="Area">
+                  <MultiSelect options={sigTaOptions} selected={sigTaFilters} onChange={setSigTaFilters} placeholder="All therapeutic areas" />
+                </ToolbarGroup>
               )}
-              <div className="flex gap-1 p-1 rounded-lg bg-zinc-100 dark:bg-zinc-800">
-                {DAYS_OPTIONS.map(opt => (
-                  <button key={opt.value} onClick={() => setDays(opt.value)}
-                    className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
-                      days === opt.value ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'
-                    }`}>
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+              <ToolbarGroup label="Window">
+                <SegmentedChips value={days} onChange={setDays}
+                  options={DAYS_OPTIONS.map(o => ({ value: o.value, label: o.label }))} />
+              </ToolbarGroup>
+            </Toolbar>
 
             {loading ? (
-              <div className="space-y-3">{[...Array(4)].map((_, i) => <div key={i} className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 h-36 animate-pulse" />)}</div>
+              <SkeletonList count={4} />
             ) : filteredSignals.length === 0 ? (
-              <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-10 text-center">
-                <FlaskConical className="w-8 h-8 text-zinc-300 dark:text-zinc-600 mx-auto mb-3" />
-                <p className="text-sm text-zinc-500 dark:text-zinc-500">No pipeline signals — try refreshing the feed.</p>
-              </div>
+              <EmptyState
+                icon={<FlaskConical className="h-5 w-5" />}
+                title="No pipeline signals"
+                hint="Try a different therapeutic area or refresh the feed."
+              />
             ) : (
               <div className="space-y-3">
                 <p className="text-xs text-zinc-400 dark:text-zinc-600">{filteredSignals.length} signals</p>
-                {filteredSignals.map(sig => <SignalCard key={sig.id} signal={sig} />)}
+                {filteredSignals.map(sig => (
+                  <Reveal key={sig.id}>
+                    <SignalCard signal={sig} />
+                  </Reveal>
+                ))}
               </div>
             )}
           </div>
