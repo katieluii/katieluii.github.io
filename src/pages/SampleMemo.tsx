@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom';
 import memoMd from '../data/atlas/memo/obesity-glp1.md?raw';
-import { Grain } from '../components/wwm/craft';
+import { Grain } from '../components/shared/craft';
 
 /* WS15 — sample IC memo viewer. Renders the sourced sample as a document,
    on the same warm canvas / Fraunces system as the work-with-me pages. */

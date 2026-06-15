@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Grain, emphasize } from '../components/wwm/craft';
+import { Grain, emphasize } from '../components/shared/craft';
 
 /* WS15 — the "Work with me" chooser. Two doors: biotech teams / investors.
    Staggered on-load reveal + italic-Fraunces emphasis + paper grain. */

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode } from '../data/workWithMe';
-import { Grain, Reveal, ConnectorH, ConnectorV, emphasize } from '../components/wwm/craft';
+import { Grain, Reveal, emphasize, EDITORIAL } from '../components/shared/craft';
 import { useReveal } from '../hooks/useReveal';
+import UnderwriteFunnel from '../components/diagrams/UnderwriteFunnel';
+import SharedAtlasDataflow from '../components/atlas/AtlasDataflow';
 
 /* WS15 — two audience pages. Editorial flow (hero → POV → how it works → selected
    work → CTA), differentiated by which "system" leads. Warm canvas, one oxblood
@@ -14,13 +16,7 @@ const FONT_MAP: Record<string, string> = {
   grotesk: "'Space Grotesk', system-ui, sans-serif",
 };
 
-const BG = '#FAF7F1';
-const ACCENT = '#6E2433'; // single oxblood accent — eyebrows, links, CTA only
-// ink opacity ramp
-const INK = 'rgba(27,26,23,1)';
-const INK_BODY = 'rgba(27,26,23,0.72)';
-const INK_META = 'rgba(27,26,23,0.5)';
-const HAIR = 'rgba(27,26,23,0.12)';
+const { BG, ACCENT, INK, INK_BODY, INK_META, HAIR } = EDITORIAL;
 
 function display(): string {
   if (typeof window === 'undefined') return FONT_MAP.fraunces;
@@ -102,24 +98,6 @@ function WorkCard({ item, featured = false }: { item: WorkItem; featured?: boole
   );
 }
 
-/* minimal single-weight line icons for the underwrite modules */
-function ModuleIcon({ name }: { name: 'doc' | 'market' | 'cap' | 'team' }) {
-  const common = {
-    width: 19, height: 19, viewBox: '0 0 24 24', fill: 'none',
-    stroke: ACCENT, strokeWidth: 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const,
-  };
-  switch (name) {
-    case 'doc':
-      return (<svg {...common}><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" /><path d="M9 13h6M9 17h4" /></svg>);
-    case 'market':
-      return (<svg {...common}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>);
-    case 'cap':
-      return (<svg {...common}><path d="M3 5h18M3 12h18M3 19h18M9 5v14" /></svg>);
-    case 'team':
-      return (<svg {...common}><circle cx="9" cy="8" r="3" /><path d="M3 20a6 6 0 0 1 12 0" /><path d="M16 5.5a3 3 0 0 1 0 5.5M21 20a6 6 0 0 0-4-5.6" /></svg>);
-  }
-}
-
 /* "two ways to run it" — the core offering + the deploy-on-your-stack option */
 function TwoModeStrip({ m }: { m: TwoMode }) {
   return (
@@ -137,15 +115,11 @@ function TwoModeStrip({ m }: { m: TwoMode }) {
   );
 }
 
-/* TEAMS — the living-memory dataflow: continuous inputs → ATLAS → deliverables */
-function AtlasDataflow({ d }: { d: Dataflow }) {
+/* TEAMS — the living-memory dataflow: continuous inputs → ATLAS → deliverables.
+   The diagram itself is the shared <SharedAtlasDataflow/> (editorial skin); this
+   wrapper adds the warm section chrome, the closer, and the "two ways to run it" strip. */
+function TeamsDataflowSection({ d }: { d: Dataflow }) {
   const ref = useReveal<HTMLElement>();
-  const Connector = () => (
-    <div className="flex items-center justify-center py-3 sm:py-0 sm:px-2" aria-hidden>
-      <span className="sm:hidden"><ConnectorV color={INK_META} height={34} /></span>
-      <span className="hidden sm:inline"><ConnectorH color={INK_META} /></span>
-    </div>
-  );
   return (
     <section ref={ref} className="reveal py-20">
       <Eyebrow color={INK_META}>{d.eyebrow}</Eyebrow>
@@ -154,47 +128,8 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
       </p>
       <p className="mt-4 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.sub}</p>
 
-      <div className="mt-12 flex flex-col sm:flex-row sm:items-stretch">
-        {/* inputs */}
-        <div className="flex-1">
-          <p className="text-[11px] font-semibold uppercase mb-3" style={{ color: INK_META, letterSpacing: '0.1em' }}>Continuous inputs</p>
-          <ul className="space-y-2">
-            {d.inputs.map((i) => (
-              <li key={i} className="flex items-center gap-2.5 text-[14.5px]" style={{ color: INK_BODY }}>
-                <span className="inline-block w-1 h-1 rounded-full" style={{ background: ACCENT }} aria-hidden />
-                {i}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <Connector />
-
-        {/* the living memory — visual hub */}
-        <div
-          className="flex-[1.25] flex flex-col justify-center rounded-xl px-6 py-7 text-center"
-          style={{ background: 'rgba(110,36,51,0.045)', border: `1px solid ${HAIR}` }}
-        >
-          <p className="text-[26px] sm:text-[30px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT, letterSpacing: '0.01em' }}>
-            {d.hubName}
-          </p>
-          <p className="mt-2.5 text-[13.5px] leading-[1.5]" style={{ color: INK_BODY }}>{d.hubLine}</p>
-        </div>
-
-        <Connector />
-
-        {/* outputs */}
-        <div className="flex-1">
-          <p className="text-[11px] font-semibold uppercase mb-3" style={{ color: INK_META, letterSpacing: '0.1em' }}>What comes out</p>
-          <ul className="space-y-2">
-            {d.outputs.map((o) => (
-              <li key={o} className="flex items-start gap-2.5 text-[14.5px]" style={{ color: INK }}>
-                <span className="inline-block w-1 h-1 rounded-full mt-[9px] shrink-0" style={{ background: INK_META }} aria-hidden />
-                {o}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="mt-12">
+        <SharedAtlasDataflow theme="editorial" hub={{ name: d.hubName, line: d.hubLine }} />
       </div>
 
       <p className="mt-12 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.closer}</p>
@@ -208,68 +143,15 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
   );
 }
 
-/* INVESTORS — the Underwrite engine: structured modules → agents → IC memo */
-function UnderwriteFunnel({ u }: { u: Underwrite }) {
+/* INVESTORS — the Underwrite engine: structured modules → agents → IC memo.
+   The funnel diagram itself is the shared <UnderwriteFunnel/> (also rendered on the
+   /investment-memo showcase page); this wrapper adds the warm section chrome +
+   reveal animation + the sales-only "two ways to run it" strip and CTA. */
+function UnderwriteSection({ u }: { u: Underwrite }) {
   const ref = useReveal<HTMLElement>();
-  const FlowLabel = ({ children }: { children: React.ReactNode }) => (
-    <div className="flex flex-col items-center py-4" aria-hidden>
-      <ConnectorV color={INK_META} height={30} />
-      <span className="mt-2 text-[11px] uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>{children}</span>
-    </div>
-  );
   return (
     <section ref={ref} className="reveal py-20">
-      <Eyebrow color={INK_META}>{u.eyebrow}</Eyebrow>
-      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
-        {u.lead}
-      </p>
-
-      {/* tier 1 — input modules */}
-      <div className="mt-11 grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-        {u.inputs.map((m) => (
-          <div key={m.label} className="rounded-xl px-4 py-4" style={{ border: `1px solid ${HAIR}` }}>
-            <ModuleIcon name={m.icon} />
-            <p className="mt-3 text-[14.5px] font-semibold" style={{ color: INK }}>{m.label}</p>
-            <p className="mt-1 text-[12px] leading-[1.4]" style={{ color: INK_META }}>{m.dek}</p>
-          </div>
-        ))}
-      </div>
-
-      <FlowLabel>Feed into</FlowLabel>
-
-      {/* tier 2 — the five agents */}
-      <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
-        <p className="text-[16px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
-        <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {u.agents.map((a) => (
-            <span key={a} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}`, background: BG }}>
-              {a}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <FlowLabel>Synthesised into</FlowLabel>
-
-      {/* tier 3 — the IC memo (the payoff; the one oxblood-filled element) */}
-      <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
-        <div>
-          <p className="text-[19px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
-          <p className="mt-0.5 text-[13px]" style={{ color: 'rgba(255,255,255,0.72)' }}>{u.output.dek}</p>
-        </div>
-        <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
-      </div>
-
-      {/* wrapper — pipeline + deal page tracking layer */}
-      <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
-        <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {u.wrapperTags.map((t) => (
-            <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
-          ))}
-        </div>
-      </div>
+      <UnderwriteFunnel data={u} variant="warm" />
 
       <TwoModeStrip m={u.modes} />
 
@@ -333,8 +215,8 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
 
         {/* ── HOW IT WORKS — a different system on each page ──
             teams: the ATLAS living-memory dataflow · investors: the Underwrite engine. */}
-        {c.dataflow && <AtlasDataflow d={c.dataflow} />}
-        {c.underwrite && <UnderwriteFunnel u={c.underwrite} />}
+        {c.dataflow && <TeamsDataflowSection d={c.dataflow} />}
+        {c.underwrite && <UnderwriteSection u={c.underwrite} />}
 
         <div style={{ height: 1, background: HAIR }} />
 

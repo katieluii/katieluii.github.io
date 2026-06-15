@@ -3,6 +3,19 @@ import { useReveal } from '../../hooks/useReveal';
 
 /* ── WS15 /work-with-me — shared craft layer (frontend-design pass) ── */
 
+/* editorial palette + display face — the single source for the warm cream / oxblood /
+   Fraunces system. Used by the WWM audience pages, the Atlas project page, and the shared
+   AtlasDataflow diagram so the look can't drift across them. */
+export const EDITORIAL = {
+  BG: '#FAF7F1',
+  ACCENT: '#6E2433', // oxblood — eyebrows, links, CTA, the one accent
+  INK: 'rgba(27,26,23,1)',
+  INK_BODY: 'rgba(27,26,23,0.72)',
+  INK_META: 'rgba(27,26,23,0.5)',
+  HAIR: 'rgba(27,26,23,0.12)',
+  FRAUNCES: "'Fraunces', Georgia, serif",
+} as const;
+
 /* subtle fine-stock grain over the warm canvas */
 export function Grain() {
   return <div aria-hidden className="grain-overlay" />;

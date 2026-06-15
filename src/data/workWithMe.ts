@@ -19,15 +19,16 @@ export interface TwoMode {
   b: { label: string; dek: string }; // the deploy-on-your-stack option
 }
 
-// teams "how it works" — the ATLAS living-memory dataflow (inputs → memory → output)
+// teams "how it works" — the ATLAS living-memory dataflow (inputs → memory → output).
+// The inputs/outputs themselves come from the canonical ATLAS_DATAFLOW (src/data/atlas/copy.ts),
+// shared with the portfolio Atlas page so the two can't drift; this type carries only the
+// editorial chrome (headline, hub brand, closer, modes).
 export interface Dataflow {
   eyebrow: string;
   lead: string;            // Fraunces headline
   sub: string;             // body line under it
-  inputs: string[];        // continuous feeds (abstracted — never scrapers/DBs)
   hubName: string;         // 'ATLAS'
   hubLine: string;
-  outputs: string[];       // the deliverables that fall out
   closer: string;
   modes: TwoMode;          // public-record vs on-your-systems
   button: { label: string; href: string };
@@ -42,6 +43,7 @@ export interface Underwrite {
   agentsSub: string;
   agents: string[];
   output: { label: string; dek: string };
+  reviewLabel?: string;    // human-in-the-loop checkpoint label (rendered on the showcase variant only)
   wrapper: string;
   wrapperTags: string[];
   modes: TwoMode;          // ready-to-run vs on-your-systems
@@ -95,10 +97,8 @@ const DATAFLOW: Dataflow = {
   eyebrow: 'How it works',
   lead: 'Most analysis is a snapshot. This one isn’t.',
   sub: 'It runs on a living memory of your field — continuously fed by the latest data, so the evidence is current every time.',
-  inputs: ['Published literature', 'Clinical trial registries', 'Congress readouts', 'Trade & deal-flow press'],
   hubName: 'ATLAS',
   hubLine: 'Every asset, mechanism, and readout tied to its source — and kept current as the field moves.',
-  outputs: ['Competitive landscape', 'Target product profile', 'Deep thematic synthesis'],
   closer: 'The same memory sits behind every deliverable — which is why they stay current, and agree with each other.',
   modes: {
     eyebrow: 'Two ways to run it',
@@ -128,6 +128,7 @@ const UNDERWRITE: Underwrite = {
   agentsSub: 'Run in parallel, every claim fact-checked, each refined by hand.',
   agents: ['Fund-fit', 'Scientific', 'Competitive', 'Clinical & regulatory', 'Financing & valuation'],
   output: { label: 'IC memo', dek: 'Exportable Word document' },
+  reviewLabel: 'Reviewed & annotated by hand',
   wrapper: 'Every deal rolls up to a deal page, inside a pipeline you read at a glance — so partners and analysts track the book and see what they should be seeing.',
   wrapperTags: ['Pipeline view', 'Deal page'],
   modes: {
