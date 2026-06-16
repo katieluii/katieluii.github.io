@@ -135,13 +135,19 @@ function Epidemiology({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-function ApprovedTherapies({ data }: { data: unknown[] }) {
+function ApprovedTherapies({ data, sectionLabel }: { data: unknown[]; sectionLabel?: string }) {
+  const title = sectionLabel ?? 'Approved therapies';
+  const subtitle = sectionLabel === 'Legacy Approved Therapies'
+    ? 'Pre-incretin era; largely displaced in general obesity'
+    : sectionLabel === 'Novel Approved Therapies'
+    ? 'Current standard-of-care and active agents'
+    : 'The standard-of-care anchor';
   return (
     <section className="mb-10">
       <SectionHeader
         icon={Shield}
-        title="Approved therapies"
-        subtitle="The standard-of-care anchor"
+        title={title}
+        subtitle={subtitle}
         count={data.length}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -966,6 +972,8 @@ const SKIP_KEYS = new Set([
 
 const SECTION_ORDER = [
   'epidemiology',
+  'approved_therapies_novel',
+  'approved_therapies_legacy',
   'approved_therapies',
   'pipeline_assets',
   'recent_conference_readouts',
@@ -1028,6 +1036,12 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
 
         if (key === 'epidemiology' && isObj(val)) {
           return <Epidemiology key={key} data={val} />;
+        }
+        if (key === 'approved_therapies_novel' && Array.isArray(val)) {
+          return <ApprovedTherapies key={key} data={val} sectionLabel="Novel Approved Therapies" />;
+        }
+        if (key === 'approved_therapies_legacy' && Array.isArray(val)) {
+          return <ApprovedTherapies key={key} data={val} sectionLabel="Legacy Approved Therapies" />;
         }
         if (key === 'approved_therapies' && Array.isArray(val)) {
           return <ApprovedTherapies key={key} data={val} />;

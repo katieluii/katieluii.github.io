@@ -28,7 +28,10 @@ function num(v: unknown): number | undefined {
 
 function buildKeyFacts(etlm: Record<string, unknown>): KeyFact[] {
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
-  const approved = Array.isArray(etlm.approved_therapies) ? etlm.approved_therapies.length : 0;
+  const approved = Array.isArray(etlm.approved_therapies)
+    ? etlm.approved_therapies.length
+    : (Array.isArray(etlm.approved_therapies_novel) ? (etlm.approved_therapies_novel as unknown[]).length : 0) +
+      (Array.isArray(etlm.approved_therapies_legacy) ? (etlm.approved_therapies_legacy as unknown[]).length : 0);
   const segments = Array.isArray((epi as any).key_genomic_segments)
     ? (epi as any).key_genomic_segments.length
     : Array.isArray(etlm.mechanism_landscape)
@@ -276,7 +279,12 @@ export function AtlasReaderETLM() {
 
   const summary = getEtlmSummary(indication);
   const keyFacts = buildKeyFacts(etlm);
-  const therapies = Array.isArray(etlm.approved_therapies) ? etlm.approved_therapies : [];
+  const therapies = Array.isArray(etlm.approved_therapies)
+    ? etlm.approved_therapies
+    : [
+        ...(Array.isArray(etlm.approved_therapies_novel) ? etlm.approved_therapies_novel : []),
+        ...(Array.isArray(etlm.approved_therapies_legacy) ? etlm.approved_therapies_legacy : []),
+      ];
   const table = buildTherapiesTable(therapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
