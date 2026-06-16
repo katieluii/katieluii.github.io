@@ -58,51 +58,108 @@ function effVal(eff: Record<string, unknown>, keys: string[]): unknown {
 function buildTherapiesTable(
   therapies: unknown[],
   anchorAssets: string[],
+  therapeuticArea: string = '',
 ): { columns: Column[]; rows: Row[] } {
-  const columns: Column[] = [
-    { key: 'asset', label: 'Asset' },
-    { key: 'sponsor', label: 'Sponsor' },
-    { key: 'target', label: 'Target' },
-    { key: 'line', label: 'Line / setting', sortable: false },
-    { key: 'orr', label: 'ORR', align: 'right' },
-    { key: 'mpfs', label: 'mPFS', align: 'right' },
-    { key: 'mos', label: 'mOS', align: 'right' },
-    { key: 'fda', label: 'FDA' },
-  ];
+  const isMetabolic = therapeuticArea === 'metabolic';
+
+  const columns: Column[] = isMetabolic
+    ? [
+        { key: 'asset', label: 'Asset' },
+        { key: 'sponsor', label: 'Sponsor' },
+        { key: 'target', label: 'Target' },
+        { key: 'route', label: 'Route' },
+        { key: 'tbwl', label: 'TBWL%', align: 'right' },
+        { key: 'nausea', label: 'Nausea%', align: 'right' },
+        { key: 'fda', label: 'FDA' },
+      ]
+    : [
+        { key: 'asset', label: 'Asset' },
+        { key: 'sponsor', label: 'Sponsor' },
+        { key: 'target', label: 'Target' },
+        { key: 'line', label: 'Line / setting', sortable: false },
+        { key: 'orr', label: 'ORR', align: 'right' },
+        { key: 'mpfs', label: 'mPFS', align: 'right' },
+        { key: 'mos', label: 'mOS', align: 'right' },
+        { key: 'fda', label: 'FDA' },
+      ];
+
   const rows: Row[] = therapies.map((entry, i) => {
     const e = isObj(entry) ? entry : {};
     const eff = isObj(e.key_efficacy) ? e.key_efficacy : {};
+    const custEff = isObj(e.custom_efficacy) ? e.custom_efficacy : {};
+    const custSafe = isObj(e.custom_safety) ? e.custom_safety : {};
     const asset = String(e.brand ?? e.drug_name ?? e.asset_name ?? '—');
-    const orr = num(effVal(eff, ['orr_pct', 'orr']));
-    const mpfs = num(effVal(eff, ['median_pfs_mo', 'mpfs_mo', 'pfs_mo']));
-    const mos = num(effVal(eff, ['median_os_mo', 'mos_mo', 'os_mo']));
     const fda = e.fda_approval_date ? String(e.fda_approval_date) : '';
     const line = e.indication_line ? String(e.indication_line) : '';
     const isAnchor = anchorAssets.some(
       (a) => asset.toLowerCase().includes(a) || String(e.drug_name ?? '').toLowerCase().includes(a),
     );
+
+    const modality = String(e.modality ?? '');
+    const route = modality.toLowerCase().includes('oral')
+      ? 'Oral'
+      : modality.includes('s.c.')
+        ? 'S.C.'
+        : modality.includes('i.v.')
+          ? 'I.V.'
+          : '—';
+
+    const tbwlRaw = effVal(custEff, ['tbwl_pct_w68_or_72', 'tbwl_pct_w68', 'tbwl_pct_w52', 'tbwl_pct']);
+    const tbwl = num(tbwlRaw);
+    const nausea = num(custSafe['nausea_pct']);
+    const orr = num(effVal(eff, ['orr_pct', 'orr']));
+    const mpfs = num(effVal(eff, ['median_pfs_mo', 'mpfs_mo', 'pfs_mo']));
+    const mos = num(effVal(eff, ['median_os_mo', 'mos_mo', 'os_mo']));
+
+    const cells = isMetabolic
+      ? {
+          asset,
+          sponsor: String(e.company ?? '—'),
+          target: e.target ? String(e.target) : '—',
+          route,
+          tbwl: tbwl != null ? `${tbwl}%` : '—',
+          nausea: nausea != null ? `${nausea}%` : '—',
+          fda: fda ? fda.slice(0, 7) : '—',
+        }
+      : {
+          asset,
+          sponsor: String(e.company ?? '—'),
+          target: e.target ? String(e.target) : '—',
+          line: <span title={line}>{line.length > 34 ? line.slice(0, 33) + '…' : line || '—'}</span>,
+          orr: orr != null ? `${orr}%` : '—',
+          mpfs: mpfs != null ? `${mpfs} mo` : '—',
+          mos: mos != null ? `${mos} mo` : '—',
+          fda: fda ? fda.slice(0, 7) : '—',
+        };
+
+    const sortValues = isMetabolic
+      ? {
+          asset,
+          sponsor: String(e.company ?? ''),
+          target: String(e.target ?? ''),
+          route,
+          tbwl: tbwl ?? Infinity,
+          nausea: nausea ?? -1,
+          fda,
+        }
+      : {
+          asset,
+          sponsor: String(e.company ?? ''),
+          target: String(e.target ?? ''),
+          orr: orr ?? -1,
+          mpfs: mpfs ?? -1,
+          mos: mos ?? -1,
+          fda,
+        };
+
+    const detailEff = isMetabolic ? custEff : eff;
+    const detailEffLabel = isMetabolic ? 'Efficacy' : 'Key efficacy';
+
     return {
       id: String(i),
       isAnchor,
-      cells: {
-        asset,
-        sponsor: String(e.company ?? '—'),
-        target: e.target ? String(e.target) : '—',
-        line: <span title={line}>{line.length > 34 ? line.slice(0, 33) + '…' : line || '—'}</span>,
-        orr: orr != null ? `${orr}%` : '—',
-        mpfs: mpfs != null ? `${mpfs} mo` : '—',
-        mos: mos != null ? `${mos} mo` : '—',
-        fda: fda ? fda.slice(0, 7) : '—',
-      },
-      sortValues: {
-        asset,
-        sponsor: String(e.company ?? ''),
-        target: String(e.target ?? ''),
-        orr: orr ?? -1,
-        mpfs: mpfs ?? -1,
-        mos: mos ?? -1,
-        fda,
-      },
+      cells,
+      sortValues,
       detail: (
         <div className="space-y-2 text-[13px] text-zinc-600 dark:text-zinc-400">
           {e.drug_name && e.brand ? (
@@ -137,14 +194,38 @@ function buildTherapiesTable(
               {line}
             </div>
           ) : null}
-          {Object.keys(eff).length > 0 && (
-            <div className="flex flex-wrap gap-x-4 gap-y-1">
-              {Object.entries(eff).map(([k, v]) => (
-                <span key={k}>
-                  <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
-                  <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
-                </span>
-              ))}
+          {Object.keys(detailEff).filter((k) => detailEff[k] != null).length > 0 && (
+            <div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1">
+                {detailEffLabel}
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                {Object.entries(detailEff)
+                  .filter(([, v]) => v != null)
+                  .map(([k, v]) => (
+                    <span key={k}>
+                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+          {isMetabolic && Object.keys(custSafe).filter((k) => custSafe[k] != null).length > 0 && (
+            <div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1">
+                Safety (GI)
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                {Object.entries(custSafe)
+                  .filter(([, v]) => v != null)
+                  .map(([k, v]) => (
+                    <span key={k}>
+                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                    </span>
+                  ))}
+              </div>
             </div>
           )}
           {e.nct ? (
@@ -196,7 +277,7 @@ export function AtlasReaderETLM() {
   const summary = getEtlmSummary(indication);
   const keyFacts = buildKeyFacts(etlm);
   const therapies = Array.isArray(etlm.approved_therapies) ? etlm.approved_therapies : [];
-  const table = buildTherapiesTable(therapies, summary?.anchorAssets ?? []);
+  const table = buildTherapiesTable(therapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
   const segments = Array.isArray((epi as any).key_genomic_segments)
