@@ -644,7 +644,24 @@ function UnmetNeeds({ data }: { data: unknown[] }) {
   );
 }
 
+const REG_SKIP_KEYS = new Set([
+  'section_status', 'schema_version', 'section_created',
+  'katie_directives', 'ratified_by_katie',
+]);
+
+function isTemplateOnly(val: Record<string, unknown>): boolean {
+  return Object.keys(val).every((k) => k === '_template_note');
+}
+
 function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
+  const entries = Object.entries(data).filter(([key, val]) => {
+    if (REG_SKIP_KEYS.has(key)) return false;
+    if (isObj(val) && isTemplateOnly(val)) return false;
+    return true;
+  });
+
+  if (entries.length === 0) return null;
+
   return (
     <section className="mb-10">
       <SectionHeader
@@ -653,62 +670,117 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
         subtitle="Pathway risks, legislative signals, label scope"
       />
       <div className="space-y-3">
-        {Object.entries(data).map(([categoryKey, categoryVal]) => {
+        {entries.map(([categoryKey, categoryVal]) => {
+          // Array of milestone / event objects
+          if (Array.isArray(categoryVal)) {
+            return (
+              <Card key={categoryKey}>
+                <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
+                  {categoryKey.replace(/_/g, ' ')}
+                </div>
+                <div className="space-y-2">
+                  {(categoryVal as unknown[]).map((item, i) => {
+                    if (!isObj(item)) return <div key={i} className="text-xs text-zinc-700 dark:text-zinc-300">{String(item)}</div>;
+                    return (
+                      <div key={i} className="rounded-lg ring-1 ring-zinc-200/60 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-3 text-xs">
+                        {item.date ? (
+                          <span className="text-[10px] text-zinc-400 dark:text-zinc-500 block mb-1">{String(item.date)}</span>
+                        ) : null}
+                        <span className="text-zinc-800 dark:text-zinc-200">
+                          {String(item.milestone ?? item.summary ?? item.event ?? '')}
+                        </span>
+                        {item.commercial_implication ? (
+                          <div className="mt-1.5 text-zinc-500 dark:text-zinc-400 italic">{String(item.commercial_implication)}</div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+            );
+          }
+
+          // Simple string / primitive
           if (!isObj(categoryVal)) {
             return (
               <Card key={categoryKey}>
                 <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
                   {categoryKey.replace(/_/g, ' ')}
                 </div>
-                <div className="text-xs text-zinc-700 dark:text-zinc-300">
-                  {String(categoryVal)}
-                </div>
+                <div className="text-xs text-zinc-700 dark:text-zinc-300">{String(categoryVal)}</div>
               </Card>
             );
           }
+
+          const subEntries = Object.entries(categoryVal).filter(([k]) => k !== '_template_note');
+          const hasNestedObjects = subEntries.some(([, v]) => isObj(v));
+
           return (
             <Card key={categoryKey}>
               <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
                 {categoryKey.replace(/_/g, ' ')}
               </div>
-              <div className="space-y-3">
-                {Object.entries(categoryVal).map(([subKey, subVal]) => (
-                  <div
-                    key={subKey}
-                    className="rounded-lg ring-1 ring-zinc-200/60 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-3"
-                  >
-                    <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-1.5">
-                      {subKey.replace(/_/g, ' ')}
+              {hasNestedObjects ? (
+                // Nested signal objects (e.g. safety_class_signals > neuropsychiatric > {signal, status, as_of})
+                <div className="space-y-3">
+                  {subEntries.map(([subKey, subVal]) => (
+                    <div
+                      key={subKey}
+                      className="rounded-lg ring-1 ring-zinc-200/60 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-3"
+                    >
+                      <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-1.5">
+                        {subKey.replace(/_/g, ' ')}
+                      </div>
+                      {isObj(subVal) ? (
+                        <div className="space-y-1.5">
+                          {(subVal.signal ?? subVal.summary) ? (
+                            <div className="text-xs text-zinc-700 dark:text-zinc-300">
+                              {String(subVal.signal ?? subVal.summary)}
+                            </div>
+                          ) : null}
+                          {subVal.status ? (
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                              <span className="text-zinc-500 dark:text-zinc-400">Status: </span>
+                              {String(subVal.status)}
+                            </div>
+                          ) : null}
+                          {subVal.context ? (
+                            <div className="text-xs text-zinc-600 dark:text-zinc-400 italic">{String(subVal.context)}</div>
+                          ) : null}
+                          {subVal.as_of ? (
+                            <div className="text-[10px] text-zinc-400 dark:text-zinc-500">As of: {String(subVal.as_of)}</div>
+                          ) : null}
+                          {Array.isArray(subVal.signals) && subVal.signals.length > 0 && (
+                            <ul className="text-xs text-zinc-700 dark:text-zinc-300 list-disc pl-4 space-y-0.5">
+                              {subVal.signals.map((s, i) => <li key={i}>{String(s)}</li>)}
+                            </ul>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="text-xs text-zinc-700 dark:text-zinc-300">{String(subVal)}</div>
+                      )}
                     </div>
-                    {isObj(subVal) ? (
-                      <div className="space-y-1.5">
-                        {subVal.status ? (
-                          <div className="text-xs text-zinc-700 dark:text-zinc-300">
-                            <span className="text-zinc-500 dark:text-zinc-400">Status: </span>
-                            {String(subVal.status)}
+                  ))}
+                </div>
+              ) : (
+                // Flat object — show date + main text fields (e.g. pbm_coverage_glp1_us_2026)
+                <div className="space-y-2 text-xs">
+                  {subEntries
+                    .filter(([k]) => !['source_event_ids', 'cross_reference'].includes(k))
+                    .map(([k, v]) =>
+                      k === 'date' || k === 'as_of' ? (
+                        <span key={k} className="text-[10px] text-zinc-400 dark:text-zinc-500 block">{String(v)}</span>
+                      ) : (
+                        <div key={k}>
+                          <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-0.5">
+                            {k.replace(/_/g, ' ')}
                           </div>
-                        ) : null}
-                        {subVal.context ? (
-                          <div className="text-xs text-zinc-600 dark:text-zinc-400 italic">
-                            {String(subVal.context)}
-                          </div>
-                        ) : null}
-                        {Array.isArray(subVal.signals) && subVal.signals.length > 0 && (
-                          <ul className="text-xs text-zinc-700 dark:text-zinc-300 list-disc pl-4 space-y-0.5">
-                            {subVal.signals.map((s, i) => (
-                              <li key={i}>{String(s)}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="text-xs text-zinc-700 dark:text-zinc-300">
-                        {String(subVal)}
-                      </div>
+                          <div className="text-zinc-700 dark:text-zinc-300">{String(v)}</div>
+                        </div>
+                      )
                     )}
-                  </div>
-                ))}
-              </div>
+                </div>
+              )}
             </Card>
           );
         })}
@@ -751,6 +823,51 @@ function PreclinicalWatchlist({ data }: { data: unknown[] }) {
   );
 }
 
+function NovelTargets({ data }: { data: unknown[] }) {
+  return (
+    <section className="mb-10">
+      <SectionHeader
+        icon={TestTube}
+        title="Novel targets"
+        subtitle="Emerging biology and design principles from recent literature"
+        count={data.length}
+      />
+      <div className="space-y-3">
+        {data.map((entry, i) => {
+          if (!isObj(entry)) return null;
+          return (
+            <Card key={i}>
+              <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
+                {String(entry.target ?? '—')}
+              </div>
+              {entry.probe_compound ? (
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                  Probe: {String(entry.probe_compound)}
+                </div>
+              ) : null}
+              {entry.MoA_class ? (
+                <div className="text-xs text-zinc-700 dark:text-zinc-300 mb-2">{String(entry.MoA_class)}</div>
+              ) : null}
+              {entry.evidence_summary ? (
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">{String(entry.evidence_summary)}</div>
+              ) : null}
+              <div className="flex flex-wrap gap-4 mb-2">
+                {entry.stage ? <KV label="Stage" value={String(entry.stage)} /> : null}
+                {entry.source_year ? <KV label="Year" value={String(entry.source_year)} /> : null}
+              </div>
+              {(entry.asset_note ?? entry.design_principle) ? (
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 italic">
+                  {String(entry.asset_note ?? entry.design_principle)}
+                </div>
+              ) : null}
+            </Card>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 const SKIP_KEYS = new Set([
   'analyst_session_id',
   'human_approved',
@@ -782,6 +899,7 @@ const SECTION_ORDER = [
   'unmet_needs',
   'regulatory_landscape',
   'preclinical_watchlist',
+  'novel_targets',
 ];
 
 export function ETLMSections({ etlm, indicationCode }: Props) {
@@ -863,6 +981,9 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
         }
         if (key === 'preclinical_watchlist' && Array.isArray(val)) {
           return <PreclinicalWatchlist key={key} data={val} />;
+        }
+        if (key === 'novel_targets' && Array.isArray(val)) {
+          return <NovelTargets key={key} data={val} />;
         }
 
         return (
