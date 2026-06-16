@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Pill as PillIcon,
@@ -242,6 +243,24 @@ function ApprovedTherapies({ data }: { data: unknown[] }) {
   );
 }
 
+type SortDir = 'asc' | 'desc';
+type SortKey = 'asset_name' | 'company' | 'modality' | 'target' | 'phase' | 'status' | 'trial_name' | 'estimated_readout';
+
+const PHASE_ORDER: Record<string, number> = {
+  'Phase 1': 1, 'Phase 1/2': 2, 'Phase 2': 3, 'Phase 2/3': 4, 'Phase 3': 5, 'NDA/BLA': 6, 'Approved': 7,
+};
+
+function phasePill(phase: string) {
+  const p = phase.toLowerCase();
+  if (p.includes('approved') || p.includes('nda') || p.includes('bla'))
+    return 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300 ring-emerald-600/20 dark:ring-emerald-500/30';
+  if (p.includes('3'))
+    return 'bg-violet-50 text-violet-700 dark:bg-violet-500/10 dark:text-violet-300 ring-violet-600/20 dark:ring-violet-500/30';
+  if (p.includes('2'))
+    return 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300 ring-indigo-600/20 dark:ring-indigo-500/30';
+  return 'bg-zinc-100 text-zinc-600 dark:bg-white/10 dark:text-zinc-300 ring-zinc-300/50 dark:ring-white/10';
+}
+
 function PipelineAssets({
   data,
   indicationCode,
@@ -250,6 +269,50 @@ function PipelineAssets({
   indicationCode: string;
 }) {
   const linkedTpps = crossLinks.etlm_to_tpps?.[indicationCode] ?? [];
+  const [sortKey, setSortKey] = useState<SortKey | null>(null);
+  const [sortDir, setSortDir] = useState<SortDir>('asc');
+
+  const rows = data.filter(isObj);
+
+  const sorted = sortKey
+    ? [...rows].sort((a, b) => {
+        let av: string | number = '';
+        let bv: string | number = '';
+        if (sortKey === 'phase') {
+          av = PHASE_ORDER[String(a.phase ?? '')] ?? 0;
+          bv = PHASE_ORDER[String(b.phase ?? '')] ?? 0;
+        } else {
+          av = String(a[sortKey] ?? '').toLowerCase();
+          bv = String(b[sortKey] ?? '').toLowerCase();
+        }
+        if (av < bv) return sortDir === 'asc' ? -1 : 1;
+        if (av > bv) return sortDir === 'asc' ? 1 : -1;
+        return 0;
+      })
+    : rows;
+
+  function handleSort(key: SortKey) {
+    if (sortKey === key) {
+      if (sortDir === 'asc') setSortDir('desc');
+      else { setSortKey(null); setSortDir('asc'); }
+    } else {
+      setSortKey(key);
+      setSortDir('asc');
+    }
+  }
+
+  function SortTh({ col, label, className }: { col: SortKey; label: string; className?: string }) {
+    const active = sortKey === col;
+    return (
+      <th
+        onClick={() => handleSort(col)}
+        className={`px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-white/10 cursor-pointer select-none whitespace-nowrap hover:text-zinc-800 dark:hover:text-zinc-200 ${className ?? ''}`}
+      >
+        {label}
+        {active ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ''}
+      </th>
+    );
+  }
 
   return (
     <section className="mb-10">
@@ -257,61 +320,76 @@ function PipelineAssets({
         icon={TestTube}
         title="Pipeline assets"
         subtitle="Phase 2/3 programs and key catalysts"
-        count={data.length}
+        count={rows.length}
       />
-      <div className="grid grid-cols-1 gap-3">
-        {data.map((entry, i) => {
-          if (!isObj(entry)) return null;
-          return (
-            <Card key={i} accent="ring-indigo-200/50 dark:ring-indigo-500/20">
-              <div className="flex items-baseline justify-between gap-2 mb-2">
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  {String(entry.asset_name ?? entry.drug_name ?? '—')}
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300 ring-1 ring-indigo-600/20 dark:ring-indigo-500/30">
-                  {String(entry.phase ?? '—')}
-                </span>
-              </div>
-              <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">
-                {String(entry.company ?? entry.sponsor ?? '')} · {String(entry.modality ?? '')}
-              </div>
-              <div className="grid grid-cols-2 gap-3 mb-3">
-                <KV label="Target" value={entry.target ? String(entry.target) : null} />
-                <KV
-                  label="Indication subtype"
-                  value={
-                    entry.indication_subtype ? String(entry.indication_subtype) : null
-                  }
-                />
-                <KV
-                  label="Trial"
-                  value={entry.trial_name ? String(entry.trial_name) : null}
-                />
-                <KV
-                  label="Estimated readout"
-                  value={entry.estimated_readout ? String(entry.estimated_readout) : null}
-                />
-                <KV
-                  label="Primary endpoint"
-                  value={entry.primary_endpoint ? String(entry.primary_endpoint) : null}
-                />
-                <KV
-                  label="Enrollment"
-                  value={typeof entry.enrollment === 'number' ? entry.enrollment.toLocaleString() : null}
-                />
-              </div>
-              {entry.combination ? (
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-2">
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                    Combination:
-                  </span>{' '}
-                  {String(entry.combination)}
-                </div>
-              ) : null}
-              <NctLink nct={entry.nct ? String(entry.nct) : undefined} />
-            </Card>
-          );
-        })}
+      <div className="overflow-x-auto rounded-xl ring-1 ring-zinc-200 dark:ring-white/10">
+        <table className="w-full text-xs border-collapse">
+          <thead>
+            <tr>
+              <SortTh col="asset_name" label="Asset" />
+              <SortTh col="company" label="Company" className="hidden sm:table-cell" />
+              <SortTh col="modality" label="Modality" className="hidden md:table-cell" />
+              <SortTh col="target" label="Target" className="hidden md:table-cell" />
+              <SortTh col="phase" label="Phase" />
+              <SortTh col="status" label="Status" className="hidden lg:table-cell" />
+              <SortTh col="trial_name" label="Trial" className="hidden lg:table-cell" />
+              <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-white/10 whitespace-nowrap">
+                NCT
+              </th>
+              <SortTh col="estimated_readout" label="Readout" className="hidden sm:table-cell" />
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.map((entry, i) => {
+              const phase = String(entry.phase ?? '—');
+              return (
+                <tr
+                  key={i}
+                  className={`border-b border-zinc-100 dark:border-white/5 hover:bg-zinc-50/80 dark:hover:bg-white/5 ${i % 2 === 1 ? 'bg-zinc-50/40 dark:bg-white/[0.02]' : ''}`}
+                >
+                  <td className="px-3 py-2.5 align-top">
+                    <div className="font-medium text-zinc-900 dark:text-zinc-100">
+                      {String(entry.asset_name ?? entry.drug_name ?? '—')}
+                    </div>
+                    {entry.indication_subtype ? (
+                      <div className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-0.5">
+                        {String(entry.indication_subtype)}
+                      </div>
+                    ) : null}
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
+                    {String(entry.company ?? entry.sponsor ?? '—')}
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden md:table-cell max-w-[180px]">
+                    <span title={String(entry.modality ?? '')}>
+                      {String(entry.modality ?? '—').slice(0, 40)}{String(entry.modality ?? '').length > 40 ? '…' : ''}
+                    </span>
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden md:table-cell">
+                    {String(entry.target ?? '—')}
+                  </td>
+                  <td className="px-3 py-2.5 align-top">
+                    <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full ring-1 ${phasePill(phase)}`}>
+                      {phase}
+                    </span>
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-500 dark:text-zinc-400 hidden lg:table-cell whitespace-nowrap">
+                    {String(entry.status ?? '—')}
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden lg:table-cell">
+                    {String(entry.trial_name ?? '—')}
+                  </td>
+                  <td className="px-3 py-2.5 align-top">
+                    <NctLink nct={entry.nct ? String(entry.nct) : undefined} />
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-500 dark:text-zinc-400 hidden sm:table-cell whitespace-nowrap">
+                    {String(entry.estimated_readout ?? '—')}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
       {linkedTpps.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
