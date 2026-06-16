@@ -180,21 +180,59 @@ function ApprovedTherapies({ data }: { data: unknown[] }) {
                   value={entry.ema_approval_date ? String(entry.ema_approval_date) : null}
                 />
               </div>
-              {Object.keys(eff).length > 0 && (
+              {Object.entries(eff).filter(([, v]) => v != null).length > 0 && (
                 <div className="border-t border-zinc-200 dark:border-white/10 pt-3 mb-2">
                   <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
                     Key efficacy ({entry.trial ? String(entry.trial) : 'pivotal trial'})
                   </div>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-800 dark:text-zinc-200">
-                    {Object.entries(eff).map(([k, v]) => (
-                      <span key={k}>
-                        <span className="text-zinc-500 dark:text-zinc-400">{k}:</span>{' '}
-                        <span className="font-medium">{String(v)}</span>
-                      </span>
-                    ))}
+                    {Object.entries(eff)
+                      .filter(([, v]) => v != null)
+                      .map(([k, v]) => (
+                        <span key={k}>
+                          <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                          <span className="font-medium">{String(v)}</span>
+                        </span>
+                      ))}
                   </div>
                 </div>
               )}
+              {isObj(entry.custom_efficacy) &&
+                Object.entries(entry.custom_efficacy).filter(([, v]) => v != null).length > 0 && (
+                  <div className="border-t border-zinc-200 dark:border-white/10 pt-3 mb-2">
+                    <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
+                      Efficacy ({entry.trial ? String(entry.trial) : 'pivotal trial'})
+                    </div>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-800 dark:text-zinc-200">
+                      {Object.entries(entry.custom_efficacy as Record<string, unknown>)
+                        .filter(([, v]) => v != null)
+                        .map(([k, v]) => (
+                          <span key={k}>
+                            <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                            <span className="font-medium">{String(v)}</span>
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                )}
+              {isObj(entry.custom_safety) &&
+                Object.entries(entry.custom_safety).filter(([, v]) => v != null).length > 0 && (
+                  <div className="border-t border-zinc-200 dark:border-white/10 pt-3 mb-2">
+                    <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
+                      Safety — GI
+                    </div>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-800 dark:text-zinc-200">
+                      {Object.entries(entry.custom_safety as Record<string, unknown>)
+                        .filter(([, v]) => v != null)
+                        .map(([k, v]) => (
+                          <span key={k}>
+                            <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                            <span className="font-medium">{String(v)}</span>
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                )}
               {entry.nct ? <NctLink nct={String(entry.nct)} /> : null}
             </Card>
           );
