@@ -22,7 +22,7 @@ The GLP-1 receptor agonist class has evolved from a diabetes adjunct into the mo
 **Approved obesity indications (US, as of 2026-06):**
 - Wegovy 2.4 mg SC once-weekly: chronic weight management in adults with BMI ≥30, or ≥27 with comorbidity (FDA 2021-06-04, NDA215256)
 - Wegovy CV risk reduction label expansion: MACE reduction in adults with established CVD + overweight/obesity (FDA 2024-03, sNDA based on SELECT NCT03574597)
-- Wegovy oral 25 mg tablet: approved ~Dec 2025 (NDA218316); first oral GLP-1 approved for weight management
+- Wegovy oral 25 mg tablet: FDA approved 2025-12-22 (NDA218316); EMA approved 2026-05-22; first oral GLP-1 approved for weight management; now marketed
 
 **Pivotal efficacy:**
 - STEP 1 (NCT03548935, Wilding 2021 NEJM PMID 33567185): −14.9% TBWL at w68 vs −2.4% placebo; ≥5% responders 86.4%, ≥15% responders 50.5%
@@ -40,15 +40,16 @@ The GLP-1 receptor agonist class has evolved from a diabetes adjunct into the mo
 **Mechanism:** Dual GIP receptor (GIPR) + GLP-1R agonist, once-weekly SC injection. GIPR agonism provides additive weight loss beyond GLP-1R alone (mechanistically distinct from Amgen MariTide's GIPR antagonism + GLP-1R agonism strategy).
 
 **Approved obesity indications (US):**
-- Zepbound: chronic weight management in adults BMI ≥30 or ≥27 with comorbidity (FDA 2023-11-08, NDA217806)
+- Zepbound (SC): chronic weight management in adults BMI ≥30 or ≥27 with comorbidity (FDA 2023-11-08, NDA217806)
 - Zepbound OSA expansion: SURMOUNT-OSA label (FDA 2024-12, sNDA #13 NDA217806) — AHI −29.3 events/hr, first weight-loss drug with OSA label
+- Foundayo (oral tirzepatide): chronic weight management in adults BMI ≥30 or ≥27 with comorbidity; FDA approved 2026-04-01; NOT EMA approved as of 2026-06-16; now marketed
 
 **Pivotal efficacy:**
 - SURMOUNT-1 (NCT04184622, Jastreboff 2022 NEJM PMID 35658024): −20.9% TBWL at w72 (15 mg); ≥20% responders 56.7%; waist circumference −18.5 cm — highest-magnitude pivotal weight-loss trial for an approved drug at time of publication
 - SURMOUNT-2 (Garvey 2023 Lancet PMID 37331371): T2D subgroup −15.7% TBWL, HbA1c −2.2% at w72
 - SURMOUNT-OSA (NCT05412004, Malhotra 2024 NEJM): AHI −29.3 events/hr; 50% achieving AHI <5 (remission)
 
-**Competitive position:** Fastest-growing obesity Rx by volume 2024-2025. Lilly's Mounjaro/Zepbound are the same molecule with separate approvals — the T2D → obesity patient funnel is structurally favourable. SURMOUNT-MMO (cardiovascular outcomes; NCT05556512, active not recruiting) is Lilly's answer to SELECT; a positive readout would equalise label differentiation vs Wegovy.
+**Competitive position:** Fastest-growing obesity Rx by volume 2024-2025. Lilly's Mounjaro/Zepbound are the same molecule with separate approvals — the T2D → obesity patient funnel is structurally favourable. Foundayo (oral tirzepatide, FDA approved 2026-04-01) extends the franchise into the oral-pill segment, directly competing with oral Wegovy. SURMOUNT-MMO (cardiovascular outcomes; NCT05556512, active not recruiting) is Lilly's answer to SELECT; a positive readout would equalise label differentiation vs Wegovy.
 
 **PBM/access dynamics (see Section 4):** Lilly has been more aggressive than Novo in negotiating PBM preferred-tier placement, including a high-profile strategy of direct patient discount programs and formulary bypass contracts. The ~$1,000/mo list-price environment creates persistent commercial pressure.
 
@@ -103,7 +104,7 @@ The GLP-1 receptor agonist class has evolved from a diabetes adjunct into the mo
 | petrelintide (ZP8396) | Zealand Pharma | AMY-R + CTR | Ph2 ZUPREME | Ph2 complete; publication awaited | Amylin monotherapy; differentiates tolerability vs GLP-1 combo |
 | bimagrumab (LY3985863) | Lilly / Versanis | ActRIIA/B (anti-myostatin) | Ph2 | lean mass loss −0.5%; fat mass −28% | Lean-mass sparing; combination with GLP-1 |
 
-**Class-level competitive verdict:** The obesity pipeline will generate 4-6 new approvals between 2026-2029. The efficacy ceiling is being raised from 21% (tirzepatide) to ~25% (retatrutide, potentially CagriSema). Differentiation after the first wave will hinge on: (a) monthly dosing convenience (MariTide), (b) oral option (orforglipron vs oral sema), (c) body-composition quality (lean-mass-sparing combinations), and (d) comorbidity label breadth (MASH, OSA, HFpEF, CKD). Novo's amylin strategy (CagriSema, petrelintide via Zealand partnership) and Lilly's triple-agonist + lean-mass-sparing portfolio represent the two most differentiated deep-pipeline plays.
+**Class-level competitive verdict:** Two oral GLP-1/dual-agonist products reached market in 2025-2026 (oral Wegovy FDA Dec 2025 + EMA May 2026; Foundayo FDA Apr 2026), shifting the oral vs injectable battleground from future pipeline to live commercial. The obesity pipeline will generate a further 3-5 approvals between 2026-2029. The efficacy ceiling is being raised from 21% (tirzepatide SC) to ~25% (retatrutide, potentially CagriSema). Differentiation in the next wave will hinge on: (a) monthly dosing convenience (MariTide), (b) efficacy vs oral convenience trade-off (orforglipron entering an already contested oral market), (c) body-composition quality (lean-mass-sparing combinations), and (d) comorbidity label breadth (MASH, OSA, HFpEF, CKD). Novo's amylin strategy (CagriSema, petrelintide via Zealand partnership) and Lilly's triple-agonist + lean-mass-sparing portfolio represent the two most differentiated deep-pipeline plays.
 
 ---
 
