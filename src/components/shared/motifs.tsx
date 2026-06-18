@@ -72,6 +72,46 @@ export function NodeGraph({ className, style }: MotifProps) {
   );
 }
 
+/* ── Bespoke glyph set — a custom line-art icon family in the same hand as the
+   motifs (not off-the-shelf). 24×24, currentColor, single weight. Keyed by
+   semantic name from workWithMe.ts. ─────────────────────────────────────────── */
+const g = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.4,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+};
+const GLYPHS: Record<string, React.ReactNode> = {
+  // disease target — concentric rings + crosshair
+  indication: (<><circle cx="12" cy="12" r="8" {...g} /><circle cx="12" cy="12" r="3.4" {...g} /><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" /><path d="M12 1.5v2.6M12 19.9v2.6M1.5 12h2.6M19.9 12h2.6" {...g} /></>),
+  // living memory — central node with satellites
+  memory: (<><path d="M12 12 4.5 5.5M12 12l7.5-6M12 12 5 19M12 12l7 6.5" {...g} strokeWidth={1} /><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none" /><circle cx="4.5" cy="5.5" r="1.5" fill="currentColor" stroke="none" /><circle cx="19.5" cy="6" r="1.5" fill="currentColor" stroke="none" /><circle cx="5" cy="19" r="1.5" fill="currentColor" stroke="none" /><circle cx="19" cy="18.5" r="1.5" fill="currentColor" stroke="none" /></>),
+  // defensible artifact — document with a rising data line + check
+  artifact: (<><path d="M6 3h8l4 4v14H6z" {...g} /><path d="M14 3v4h4" {...g} /><path d="M8.5 17c1.4 0 1.6-4 3.5-4 1.2 0 1.6-1.5 3.5-2.5" {...g} strokeWidth={1.1} /></>),
+  // live deal — stacked documents
+  deal: (<><path d="M9 3h7l3 3v11h-9z" {...g} /><path d="M16 3v3h3" {...g} /><path d="M14 8v12H5V9l3-1" {...g} /><path d="M8 13h3M8 16h3" {...g} strokeWidth={1.1} /></>),
+  // underwrite the science — lens over a curve
+  underwrite: (<><circle cx="10.5" cy="10.5" r="6.5" {...g} /><path d="M15.2 15.2 20.5 20.5" {...g} /><path d="M7.5 12c1.2 0 1.3-3.2 3-3.2 1 0 1.3-1.3 2.5-1.8" {...g} strokeWidth={1.1} /></>),
+  // IC memo — document with seal
+  memo: (<><path d="M6 3h9l3 3v15H6z" {...g} /><path d="M15 3v3h3" {...g} /><path d="M9 10h5M9 13h5" {...g} strokeWidth={1.1} /><circle cx="14.5" cy="17.5" r="2.2" {...g} strokeWidth={1.1} /></>),
+  // sourced — a citation bookmark
+  sourced: (<><path d="M7 3.5h10v17l-5-4-5 4z" {...g} /><path d="M10 9h4" {...g} strokeWidth={1.1} /></>),
+  // human-checked — check inside a ring
+  checked: (<><circle cx="12" cy="12" r="8.5" {...g} /><path d="m8.2 12 2.6 2.8 5-6" {...g} /></>),
+  // current — a vital-sign / live pulse line
+  current: (<><path d="M2.5 12H8l1.8-5.5L13 18l1.8-6H21.5" {...g} /></>),
+};
+export function Glyph({ name, size = 22, style }: { name: string; size?: number; style?: React.CSSProperties }) {
+  const node = GLYPHS[name];
+  if (!node) return null;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden style={style}>
+      {node}
+    </svg>
+  );
+}
+
 /* Dose–response sigmoid — an S-curve with a few plotted points. */
 export function DoseResponse({ className, style }: MotifProps) {
   return (

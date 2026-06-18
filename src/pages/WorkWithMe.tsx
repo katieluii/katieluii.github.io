@@ -1,20 +1,13 @@
 import { Link } from 'react-router-dom';
 import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode, type Step, type TrustPillar } from '../data/workWithMe';
-import {
-  Send, BrainCircuit, FileCheck2, Briefcase, Microscope, ScrollText,
-  Link2, UserCheck, RefreshCw, type LucideIcon,
-} from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 import { Grain } from '../components/shared/craft';
-import { KMCurve, ForestPlot, NodeGraph } from '../components/shared/motifs';
+import { KMCurve, ForestPlot, NodeGraph, Glyph } from '../components/shared/motifs';
 
-/* lucide icon registry — resolves the icon name stored in workWithMe.ts content */
-const ICONS: Record<string, LucideIcon> = {
-  Send, BrainCircuit, FileCheck2, Briefcase, Microscope, ScrollText, Link2, UserCheck, RefreshCw,
-};
-function CardIcon({ name, size = 20 }: { name: string; size?: number }) {
-  const I = ICONS[name];
-  return I ? <I size={size} strokeWidth={1.5} style={{ color: ACCENT }} aria-hidden /> : null;
+/* bespoke line-art glyph (our own icon family, not lucide). `color` lets the dark
+   trust band tint them cream. */
+function CardIcon({ name, size = 22, color = ACCENT }: { name: string; size?: number; color?: string }) {
+  return <Glyph name={name} size={size} style={{ color }} />;
 }
 
 /* motion wrapper — block fade-up on scroll, or `stagger` to cascade children
@@ -201,20 +194,20 @@ function EngagementSteps({ steps }: { steps: Step[] }) {
    tinted band so it reads as its own zone (the pharosyn trust section) */
 function TrustPillars({ lead, trust }: { lead: string; trust: TrustPillar[] }) {
   return (
-    <Reveal className="relative overflow-hidden rounded-2xl p-8 sm:p-12" style={{ background: 'rgba(110,36,51,0.045)', border: `1px solid ${HAIR}` }}>
-      {/* faint forest-plot motif — domain-native ornament, kept well behind the text */}
-      <ForestPlot className="pointer-events-none absolute -right-6 -top-6 w-44 h-44" style={{ color: ACCENT, opacity: 0.06 }} />
+    <Reveal className="relative overflow-hidden rounded-2xl p-8 sm:p-14" style={{ background: ACCENT }}>
+      {/* large forest-plot motif — domain ornament, cream line-art on the oxblood block */}
+      <ForestPlot className="pointer-events-none absolute -right-10 -top-10 w-72 h-72" style={{ color: '#fff', opacity: 0.1 }} />
       <div className="relative">
-        <Eyebrow color={INK_META}>What you can rely on</Eyebrow>
-        <p className="mt-5 text-[22px] sm:text-[27px] leading-[1.35] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+        <p className="text-[11.5px] font-semibold uppercase" style={{ color: 'rgba(255,255,255,0.6)', letterSpacing: '0.09em' }}>What you can rely on</p>
+        <p className="mt-5 text-[24px] sm:text-[30px] leading-[1.3] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: '#fff' }}>
           {lead}
         </p>
-        <Reveal stagger className="mt-10 pt-9 grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-9" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <Reveal stagger className="mt-11 pt-10 grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-9" style={{ borderTop: '1px solid rgba(255,255,255,0.18)' }}>
           {trust.map((t) => (
             <div key={t.label}>
-              <CardIcon name={t.icon} size={20} />
-              <p className="mt-3.5 text-[16px] sm:text-[17px] leading-[1.3]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT }}>{t.label}</p>
-              <p className="mt-2.5 text-[14.5px] leading-[1.6]" style={{ color: INK_BODY }}>{t.body}</p>
+              <CardIcon name={t.icon} size={22} color="#fff" />
+              <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.3]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{t.label}</p>
+              <p className="mt-2.5 text-[14.5px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.78)' }}>{t.body}</p>
             </div>
           ))}
         </Reveal>
@@ -387,12 +380,12 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
         style={{ background: 'radial-gradient(120% 80% at 18% 0%, rgba(110,36,51,0.10), rgba(110,36,51,0) 60%)' }}
       />
       {/* domain-native hero motif — bespoke line-art bleeding off the top-right,
-          duotoned to oxblood at low opacity, with the glow as its scrim. The
-          "background image", made of the field's own visual grammar. */}
-      <div aria-hidden className="pointer-events-none absolute top-0 right-0 w-[min(46vw,560px)] overflow-hidden" style={{ maskImage: 'linear-gradient(to bottom left, #000, transparent 78%)', WebkitMaskImage: 'linear-gradient(to bottom left, #000, transparent 78%)' }}>
+          duotoned to oxblood, wiping in on load. The "background image", made of
+          the field's own visual grammar. */}
+      <div aria-hidden className="motif-wipe pointer-events-none absolute -top-6 right-0 w-[min(52vw,640px)] overflow-hidden" style={{ maskImage: 'linear-gradient(to bottom left, #000, transparent 74%)', WebkitMaskImage: 'linear-gradient(to bottom left, #000, transparent 74%)' }}>
         {variant === 'teams'
-          ? <KMCurve className="w-full" style={{ color: ACCENT, opacity: 0.1 }} />
-          : <NodeGraph className="w-full" style={{ color: ACCENT, opacity: 0.1 }} />}
+          ? <KMCurve className="w-full" style={{ color: ACCENT, opacity: 0.16 }} />
+          : <NodeGraph className="w-full" style={{ color: ACCENT, opacity: 0.16 }} />}
       </div>
       <div className="relative mx-auto max-w-3xl px-6 sm:px-8" style={{ ['--d' as string]: display() }}>
         {/* top bar */}

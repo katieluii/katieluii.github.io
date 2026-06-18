@@ -86,17 +86,17 @@ const TRUST: TrustPillar[] = [
   {
     label: 'Sourced to the primary record',
     body: 'Every number, comparator, and readout traces to PubMed, ClinicalTrials.gov, or the congress record. No unsourced claims.',
-    icon: 'Link2',
+    icon: 'sourced',
   },
   {
     label: 'Human-checked, never generated',
     body: 'The models do the breadth; the judgment and the sourcing are mine. Modelled figures are flagged as modelled.',
-    icon: 'UserCheck',
+    icon: 'checked',
   },
   {
     label: 'Current as the field moves',
     body: 'Refreshed against new trials and readouts, so the evidence is current every time — not last quarter’s deck.',
-    icon: 'RefreshCw',
+    icon: 'current',
   },
 ];
 
@@ -192,9 +192,9 @@ export const TEAMS: WwmContent = {
   },
   pov: 'Good development calls come from current evidence, not last quarter’s deck. I keep a living memory of your field and turn it into the artifact your next decision needs.',
   steps: [
-    { n: '01', label: 'Send your lead indication', body: 'What you’re building, and the questions you need answered.', icon: 'Send' },
-    { n: '02', label: 'I build your field’s living memory', body: 'Every asset, mechanism, and readout, tied to its source and kept current.', icon: 'BrainCircuit' },
-    { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'FileCheck2' },
+    { n: '01', label: 'Send your lead indication', body: 'What you’re building, and the questions you need answered.', icon: 'indication' },
+    { n: '02', label: 'I build your field’s living memory', body: 'Every asset, mechanism, and readout, tied to its source and kept current.', icon: 'memory' },
+    { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'artifact' },
   ],
   dataflow: DATAFLOW,
   work: [ETLM, TPP, MEMO],
@@ -215,9 +215,9 @@ export const INVESTORS: WwmContent = {
   },
   pov: 'Conviction comes from the science holding up, not the pitch. I underwrite the evidence, source every claim, and hand you a memo your committee cannot pick apart.',
   steps: [
-    { n: '01', label: 'Send a live deal', body: 'The data room, the asset, and the thesis you need tested.', icon: 'Briefcase' },
-    { n: '02', label: 'I underwrite the science', body: 'Structured diligence, every claim fact-checked against the primary record.', icon: 'Microscope' },
-    { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'ScrollText' },
+    { n: '01', label: 'Send a live deal', body: 'The data room, the asset, and the thesis you need tested.', icon: 'deal' },
+    { n: '02', label: 'I underwrite the science', body: 'Structured diligence, every claim fact-checked against the primary record.', icon: 'underwrite' },
+    { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'memo' },
   ],
   underwrite: UNDERWRITE,
   work: [MEMO, ETLM, TPP],
