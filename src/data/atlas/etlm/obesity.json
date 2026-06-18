@@ -135,36 +135,56 @@
         "vomiting_pct": 24.3,
         "diarrhea_pct": 26.0,
         "safety_note": "Higher nausea vs s.c. semaglutide due to oral GI-first delivery; OASIS 1 50mg; verify",
-        "source": "OASIS 1 (Kosiborod 2023 NEJM PMID 37351474); verify"
+        "source": "OASIS 1 (Kosiborod 2023 NEJM PMID 37351474)"
       },
       "trial": "OASIS 1 (obesity, no T2D); OASIS 2 (obesity + T2D)",
       "nct": "NCT05035095",
-      "source": "ClinicalTrials.gov NCT05035095 (OASIS 1) + Kosiborod 2023 NEJM PMID 37351474; verify NDA/label",
-      "analyst_note": "Added 2026-06-16 (human-confirmed approved). Distinct from Rybelsus 14mg (T2D). FDA approved 2025-12-22 (NDA218316); EMA approved 2026-05-22. Human-confirmed 2026-06-16."
+      "source": "FDA NDA 218316; FDA approval letter / prescribing information for Wegovy (semaglutide) tablets; ClinicalTrials.gov NCT05035095 (OASIS 1) + Kosiborod 2023 NEJM PMID 37351474",
+      "source_status": "confirmed",
+      "analyst_note": "Added 2026-06-16 (human-confirmed approved). Distinct from Rybelsus 14mg (T2D). FDA approved 2025-12-22 (NDA 218316; label 218316Orig1s000lbl.pdf); EMA approved 2026-05-22. NDA human-confirmed 2026-06-18."
     },
     {
-      "drug_name": "tirzepatide (oral)",
+      "drug_name": "orforglipron (LY3502970)",
       "brand": "Foundayo",
       "company": "Eli Lilly",
-      "modality": "GIP/GLP-1 dual receptor agonist (oral peptide, weekly)",
-      "target": "GIPR + GLP-1R",
-      "indication_line": "Chronic weight management in adults with obesity (BMI >=30) or overweight (BMI >=27) with weight-related comorbidity (verify FDA label scope)",
+      "modality": "GLP-1 receptor agonist (oral non-peptide small molecule, once-daily)",
+      "target": "GLP-1R",
+      "indication_line": "Chronic weight management in adults with obesity (BMI >=30) or overweight (BMI >=27) with >=1 weight-related comorbidity; excludes type 2 diabetes (ATTAIN-1 population)",
       "fda_approval_date": "2026-04-01",
       "ema_approval_date": null,
+      "nda": "220934",
       "key_efficacy": {},
       "custom_efficacy": {
-        "tbwl_pct": "verify: oral tirzepatide pivotal trial (distinct from s.c. Zepbound SURMOUNT-1)",
-        "efficacy_note": "Foundayo = oral formulation of tirzepatide; distinct from orforglipron (LY3502970) which is a separate oral small-molecule GLP-1 agonist. Verify pivotal trial NCT and efficacy."
+        "dose": "17.2 mg once-daily (ATTAIN-1 / FDA label Trial 1)",
+        "tbwl_pct_w72": -11.1,
+        "vs_placebo_tbwl_pct": -2.1,
+        "placebo_adjusted_pp": -9.0,
+        "p_value": "<0.001",
+        "pct_achieving_5pct_loss": 71.5,
+        "pct_achieving_5pct_loss_placebo": 26.8,
+        "pct_achieving_10pct_loss": 54.5,
+        "pct_achieving_10pct_loss_placebo": 13.0,
+        "pct_achieving_15pct_loss": 35.9,
+        "pct_achieving_15pct_loss_placebo": 6.0,
+        "pct_achieving_20pct_loss": 18.4,
+        "pct_achieving_20pct_loss_placebo": 2.9,
+        "efficacy_note": "ATTAIN-1 / FDA label Trial 1 (Phase 3, 72-week, randomized, double-blind, placebo-controlled; once-daily oral orforglipron vs placebo in adults with obesity or overweight + >=1 weight-related comorbidity, excluding T2D). Foundayo 17.2 mg at Week 72: -11.1% mean body-weight vs -2.1% placebo (placebo-adjusted -9.0 pp, p<0.001). NOTE: efficacy_benchmarks_by_class_and_indication carries the NEJM 2025 (PMID 40960239) ATTAIN-1 36 mg figure (-12.4% w72); reconcile dose/figure on next benchmark pass."
       },
       "custom_safety": {
-        "nausea_pct": "verify",
-        "vomiting_pct": "verify",
-        "safety_note": "Foundayo pivotal trial; verify GI AE profile vs s.c. tirzepatide (Zepbound)"
+        "boxed_warning": "Thyroid C-cell tumors; contraindicated with personal/family history of medullary thyroid carcinoma (MTC) or MEN2",
+        "ae_discontinuation_pct": 8.0,
+        "ae_discontinuation_pct_placebo": 3.0,
+        "gi_ae_pct_range": "60-69% across Foundayo doses vs 37% placebo (mostly GI)",
+        "common_aes": "nausea, constipation, diarrhea, vomiting, dyspepsia, abdominal pain, headache, abdominal distension, fatigue, eructation, GERD, flatulence, hair loss (each >=5%)",
+        "key_warnings": "pancreatitis; severe GI reactions; acute kidney injury from volume depletion; hypoglycemia with insulin/sulfonylureas; hypersensitivity; gallbladder disease; pulmonary aspiration risk; fetal harm/pregnancy precautions; drug-interaction considerations",
+        "safety_note": "Per Foundayo (orforglipron) FDA prescribing information.",
+        "source": "Foundayo (orforglipron) FDA prescribing information / approval letter (NDA 220934); ATTAIN-1"
       },
-      "trial": "verify: Foundayo obesity pivotal trial NCT",
-      "nct": "verify",
-      "source": "human-confirmed approved as of 2026-06-16; verify NDA, trial, NCT, efficacy, and safety",
-      "analyst_note": "FDA approved 2026-04-01; NOT EMA approved as of 2026-06-16. Human-confirmed 2026-06-16."
+      "trial": "ATTAIN-1 (FDA label Trial 1; NCT05869903) - Phase 3, 72-week, randomized, double-blind, placebo-controlled, once-daily oral orforglipron vs placebo in adults with obesity/overweight + >=1 comorbidity, excluding T2D. Companion: ATTAIN-2 (NCT05872620, obesity/overweight + T2D).",
+      "nct": "NCT05869903",
+      "source": "FDA NDA 220934; Foundayo (orforglipron) FDA approval letter + prescribing information; ATTAIN-1",
+      "source_status": "confirmed",
+      "analyst_note": "IDENTITY CORRECTED 2026-06-18: Foundayo = orforglipron (LY3502970), Eli Lilly's oral non-peptide small-molecule GLP-1R agonist (once-daily, no food/water restriction) - NOT 'oral tirzepatide' as previously recorded. FDA approved 2026-04-01 under the National Priority Voucher Program, NDA 220934. Obesity pivotal = ATTAIN-1 (NCT05869903); ATTAIN-2 (NCT05872620) = obesity+T2D. Not EMA approved as of 2026-06-18. Efficacy/safety human-confirmed from FDA label 2026-06-18."
     },
     {
       "drug_name": "liraglutide 3.0 mg",
