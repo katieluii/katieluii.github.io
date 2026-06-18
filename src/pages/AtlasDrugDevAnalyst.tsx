@@ -61,7 +61,7 @@ const CAPABILITIES: Capability[] = [
     id: 'tpp',
     icon: Target,
     name: 'TPP drafting',
-    tag: 'Decision artifact',
+    tag: 'Design artifact',
     detail: 'Drafts Target Product Profiles — the efficacy bar, the safety bar, and the axes that move the answer.',
   },
 ];
@@ -354,8 +354,8 @@ const VALUE_PROPS = [
   },
   {
     icon: CheckCircle2,
-    title: 'Evidence-anchored verdicts',
-    detail: 'A clear answer with citations already organised. Auditable, not a black box.',
+    title: 'Evidence-anchored, not asserted',
+    detail: 'Every claim traces to a primary source, citations already organised. Auditable, not a black box.',
   },
   {
     icon: Sparkles,
@@ -564,9 +564,9 @@ export default function AtlasDrugDevAnalyst() {
 
         {/* Description — shared ProjectLead intro (matches the other project pages) */}
         <div className="mt-8">
-          <ProjectLead headline="You get a decision, not a reading list.">
-            Atlas holds every indication in your scope — approvals, pipeline, readouts, regulatory moves — and turns them
-            into the deliverables your teams act on.
+          <ProjectLead headline="Know where every indication stands — without reading everything.">
+            From the whole landscape — approvals, pipeline, readouts, regulatory moves — to a clear, current view of your
+            scope. Curated by an analyst, not an aggregator's pile.
           </ProjectLead>
         </div>
 
@@ -714,7 +714,7 @@ export default function AtlasDrugDevAnalyst() {
             Selected work
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            The memory resolves into deliverables a team can act on — an indication landscape, a
+            The intelligence resolves into deliverables a team can act on — an indication landscape, a
             target product profile, a thematic read. Redacted samples, straight from the reader.
           </p>
           <div className="border-y border-zinc-200/70 dark:border-white/10 divide-y divide-zinc-200/70 dark:divide-white/10">
