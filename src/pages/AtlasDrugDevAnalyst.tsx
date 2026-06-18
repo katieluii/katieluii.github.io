@@ -90,11 +90,16 @@ const SELECTED_WORK = [
 interface Indication {
   code: string;
   full?: string;
-  ta: 'oncology' | 'neuro' | 'cardiometabolic';
+  ta: 'oncology' | 'neuro' | 'immunology' | 'cardiometabolic';
   assets: { name: string; meta: string }[];
 }
 
+// A curated FLAGSHIP set across therapeutic areas — chosen to show breadth, not to enumerate the
+// full active roster (44+ indications carry their own ETLM). Rebalanced beyond oncology to make the
+// multi-TA platform visible: oncology · neurology · immunology · cardiometabolic. Benchmark assets
+// are the standard of care in each setting (current as of mid-2026).
 const INDICATIONS: Indication[] = [
+  // ── Oncology ──
   {
     code: 'NSCLC',
     full: 'Non-small cell lung cancer',
@@ -126,26 +131,6 @@ const INDICATIONS: Indication[] = [
     ],
   },
   {
-    code: 'PDAC',
-    full: 'Pancreatic ductal adenocarcinoma',
-    ta: 'oncology',
-    assets: [
-      { name: 'FOLFIRINOX', meta: 'Chemo · 1L fit pts standard' },
-      { name: 'Nab-paclitaxel + gemcitabine', meta: 'Chemo · 1L unfit standard' },
-      { name: 'Daraxonrasib', meta: 'RAS pan-inhibitor · RASolute 302 Ph3 paradigm shift' },
-    ],
-  },
-  {
-    code: 'HCC',
-    full: 'Hepatocellular carcinoma',
-    ta: 'oncology',
-    assets: [
-      { name: 'Tecentriq + Avastin', meta: 'PD-L1 + VEGF · 1L unresectable standard' },
-      { name: 'Imjudo + Imfinzi', meta: 'CTLA-4 + PD-L1 · 1L STRIDE regimen' },
-      { name: 'Lenvima (lenvatinib)', meta: 'Multikinase TKI · 1L TKI standard' },
-    ],
-  },
-  {
     code: 'Prostate',
     full: 'Prostate cancer (mCRPC / mHSPC)',
     ta: 'oncology',
@@ -153,16 +138,6 @@ const INDICATIONS: Indication[] = [
       { name: 'Pluvicto', meta: 'Lu-177-PSMA · post-ARSI mCRPC' },
       { name: 'Xtandi (enzalutamide)', meta: 'AR inhibitor · mHSPC + mCRPC' },
       { name: 'Zytiga (abiraterone)', meta: 'CYP17 + AR · mHSPC + mCRPC' },
-    ],
-  },
-  {
-    code: 'Ovarian',
-    full: 'Epithelial ovarian cancer',
-    ta: 'oncology',
-    assets: [
-      { name: 'Lynparza (olaparib)', meta: 'PARP inhibitor · HRD+ maintenance' },
-      { name: 'Bevacizumab maintenance', meta: 'VEGF · 1L maintenance' },
-      { name: 'Elahere (mirvetuximab)', meta: 'FRα ADC · PROC FRα-high' },
     ],
   },
   {
@@ -175,16 +150,6 @@ const INDICATIONS: Indication[] = [
     ],
   },
   {
-    code: 'Urothelial',
-    full: 'Urothelial (bladder) cancer',
-    ta: 'oncology',
-    assets: [
-      { name: 'Padcev + Keytruda', meta: 'Nectin-4 ADC + PD-1 · 1L mUC standard' },
-      { name: 'Imfinzi (durvalumab)', meta: 'PD-L1 · MIBC perioperative NIAGARA' },
-      { name: 'TAR-200', meta: 'Intravesical gemcitabine · NMIBC BCG-unresponsive · PDUFA Q3 2026' },
-    ],
-  },
-  {
     code: 'SCLC',
     full: 'Small cell lung cancer',
     ta: 'oncology',
@@ -192,26 +157,6 @@ const INDICATIONS: Indication[] = [
       { name: 'Imdelltra (tarlatamab)', meta: 'DLL3 BiTE · 2L+ ES-SCLC' },
       { name: 'Tecentriq + chemo', meta: 'PD-L1 + EP · 1L ES-SCLC' },
       { name: 'Zepzelca (lurbinectedin)', meta: 'RNA-Pol II inhibitor · 2L' },
-    ],
-  },
-  {
-    code: 'Thyroid',
-    full: 'Thyroid cancer (DTC / MTC / ATC)',
-    ta: 'oncology',
-    assets: [
-      { name: 'Retsevmo (selpercatinib)', meta: 'RET inhibitor · LIBRETTO-432 adjuvant readout' },
-      { name: 'Lenvima (lenvatinib)', meta: 'Multikinase TKI · RAI-refractory DTC' },
-      { name: 'Cabometyx (cabozantinib)', meta: 'Multikinase TKI · DTC + MTC' },
-    ],
-  },
-  {
-    code: 'GBM',
-    full: 'Glioblastoma',
-    ta: 'oncology',
-    assets: [
-      { name: 'Temozolomide + RT (Stupp)', meta: '1L SoC since 2005 — bar still unmoved' },
-      { name: 'Optune (TTFields)', meta: 'Tumor-treating fields · 1L + recurrent' },
-      { name: 'Avastin (bevacizumab)', meta: 'VEGF · recurrent GBM' },
     ],
   },
   {
@@ -234,16 +179,7 @@ const INDICATIONS: Indication[] = [
       { name: 'Epkinly (epcoritamab)', meta: 'CD20 × CD3 bispecific · 3L+' },
     ],
   },
-  {
-    code: 'AML / MDS',
-    full: 'Acute myeloid leukemia + myelodysplastic syndromes',
-    ta: 'oncology',
-    assets: [
-      { name: 'Venclexta + azacitidine', meta: 'BCL-2 + HMA · 1L unfit AML standard' },
-      { name: 'Vidaza (azacitidine)', meta: 'HMA · MDS + low-int AML' },
-      { name: 'Xospata (gilteritinib)', meta: 'FLT3 inhibitor · FLT3-mut RR AML' },
-    ],
-  },
+  // ── Neurology ──
   {
     code: "Parkinson's",
     full: "Parkinson's disease",
@@ -255,12 +191,113 @@ const INDICATIONS: Indication[] = [
     ],
   },
   {
+    code: 'Alzheimer’s',
+    full: "Alzheimer's disease",
+    ta: 'neuro',
+    assets: [
+      { name: 'Leqembi (lecanemab)', meta: 'Anti-amyloid mAb · early AD, first to slow decline' },
+      { name: 'Kisunla (donanemab)', meta: 'Anti-amyloid mAb · early symptomatic AD' },
+      { name: 'Aricept (donepezil)', meta: 'Cholinesterase inhibitor · symptomatic anchor' },
+    ],
+  },
+  {
+    code: 'MS',
+    full: 'Multiple sclerosis',
+    ta: 'neuro',
+    assets: [
+      { name: 'Ocrevus (ocrelizumab)', meta: 'Anti-CD20 · RMS + PPMS standard' },
+      { name: 'Kesimpta (ofatumumab)', meta: 'Anti-CD20 SC · relapsing MS' },
+      { name: 'Tysabri (natalizumab)', meta: 'α4-integrin · highly active RMS' },
+    ],
+  },
+  {
+    code: 'ALS',
+    full: 'Amyotrophic lateral sclerosis',
+    ta: 'neuro',
+    assets: [
+      { name: 'Riluzole', meta: 'Glutamate modulator · 1995 survival anchor' },
+      { name: 'Radicava (edaravone)', meta: 'Free-radical scavenger · functional decline' },
+      { name: 'Qalsody (tofersen)', meta: 'SOD1 antisense · SOD1-ALS' },
+    ],
+  },
+  // ── Immunology ──
+  {
+    code: 'RA',
+    full: 'Rheumatoid arthritis',
+    ta: 'immunology',
+    assets: [
+      { name: 'Humira (adalimumab)', meta: 'TNF inhibitor · biologic anchor' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 inhibitor · oral advanced' },
+      { name: 'Actemra (tocilizumab)', meta: 'IL-6R · post-TNF / combo' },
+    ],
+  },
+  {
+    code: 'Psoriasis',
+    ta: 'immunology',
+    assets: [
+      { name: 'Skyrizi (risankizumab)', meta: 'IL-23 · highest PASI bar' },
+      { name: 'Bimzelx (bimekizumab)', meta: 'IL-17A/F · PASI 100 leader' },
+      { name: 'Sotyktu (deucravacitinib)', meta: 'TYK2 · oral moderate-severe' },
+    ],
+  },
+  {
+    code: 'UC',
+    full: 'Ulcerative colitis',
+    ta: 'immunology',
+    assets: [
+      { name: 'Entyvio (vedolizumab)', meta: 'α4β7 gut-selective · 1L biologic' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 · oral advanced' },
+      { name: 'Stelara (ustekinumab)', meta: 'IL-12/23 · moderate-severe' },
+    ],
+  },
+  {
+    code: 'SLE',
+    full: 'Systemic lupus erythematosus',
+    ta: 'immunology',
+    assets: [
+      { name: 'Benlysta (belimumab)', meta: 'BLyS inhibitor · SLE + lupus nephritis' },
+      { name: 'Saphnelo (anifrolumab)', meta: 'Type-I IFNAR · moderate-severe SLE' },
+      { name: 'MMF + corticosteroids', meta: 'Immunosuppression · anchor of care' },
+    ],
+  },
+  {
+    code: 'Atopic derm.',
+    full: 'Atopic dermatitis',
+    ta: 'immunology',
+    assets: [
+      { name: 'Dupixent (dupilumab)', meta: 'IL-4Rα · biologic anchor' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 · oral moderate-severe' },
+      { name: 'Adbry (tralokinumab)', meta: 'IL-13 · biologic alternative' },
+    ],
+  },
+  // ── Cardiometabolic ──
+  {
     code: 'Obesity',
     ta: 'cardiometabolic',
     assets: [
       { name: 'Zepbound (tirzepatide)', meta: 'GLP-1 + GIP · TBWL -22.5% bar' },
       { name: 'Wegovy (semaglutide)', meta: 'GLP-1 · SELECT MACE benefit' },
       { name: 'Retatrutide', meta: 'GLP-1 + GIP + glucagon triple · TBWL ~24% pending' },
+    ],
+  },
+  {
+    code: 'MASH',
+    full: 'Metabolic dysfunction-associated steatohepatitis',
+    ta: 'cardiometabolic',
+    assets: [
+      { name: 'Rezdiffra (resmetirom)', meta: 'THR-β agonist · first approved MASH' },
+      { name: 'Semaglutide (GLP-1)', meta: 'ESSENCE Ph3 · fibrosis benefit' },
+      { name: 'Lifestyle / standard care', meta: 'Fibrosis-stage anchor' },
+    ],
+  },
+  {
+    code: 'T1D',
+    full: 'Type 1 diabetes',
+    ta: 'cardiometabolic',
+    assets: [
+      { name: 'Tzield (teplizumab)', meta: 'Anti-CD3 · delays Stage-3 onset' },
+      { name: 'Insulin (analog + AID)', meta: 'Standard of care anchor' },
+      { name: 'Automated insulin delivery', meta: 'Closed-loop systems · standard' },
     ],
   },
 ];
@@ -276,13 +313,22 @@ const TA_STYLES = {
     dot: 'bg-rose-400 dark:bg-rose-500',
   },
   neuro: {
-    label: 'Neurodegeneration',
+    label: 'Neurology',
     accent: 'text-indigo-600 dark:text-indigo-400',
     bubble:
       'bg-gradient-to-br from-indigo-100 to-indigo-50 ring-indigo-200 text-indigo-800 hover:ring-indigo-300 dark:from-indigo-900/30 dark:to-indigo-950/20 dark:ring-indigo-900/50 dark:text-indigo-200',
     open:
       'bg-gradient-to-br from-indigo-100 to-indigo-50 ring-indigo-300 dark:from-indigo-900/30 dark:to-indigo-950/20 dark:ring-indigo-700/60',
     dot: 'bg-indigo-400 dark:bg-indigo-500',
+  },
+  immunology: {
+    label: 'Immunology',
+    accent: 'text-amber-600 dark:text-amber-400',
+    bubble:
+      'bg-gradient-to-br from-amber-100 to-amber-50 ring-amber-200 text-amber-800 hover:ring-amber-300 dark:from-amber-900/30 dark:to-amber-950/20 dark:ring-amber-900/50 dark:text-amber-200',
+    open:
+      'bg-gradient-to-br from-amber-100 to-amber-50 ring-amber-300 dark:from-amber-900/30 dark:to-amber-950/20 dark:ring-amber-700/60',
+    dot: 'bg-amber-400 dark:bg-amber-500',
   },
   cardiometabolic: {
     label: 'Cardiometabolic',
@@ -553,6 +599,13 @@ export default function AtlasDrugDevAnalyst() {
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
             Four streams feed one living memory — the ETLM. Three build it; one ships from it.
           </p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            The learning is deliberately narrow. Atlas reads structured primary signals — trial
+            registries, conference readouts, and company disclosures at the wire — in preference to
+            the noisier secondary press, and an analyst gates what becomes canonical. The result is
+            an engine that <span className="text-zinc-700 dark:text-zinc-300">earns</span> its memory,
+            not an aggregator that accumulates it.
+          </p>
 
           <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-6">
             <AtlasDataflow
@@ -602,7 +655,8 @@ export default function AtlasDrugDevAnalyst() {
             Therapeutic coverage
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            Each indication carries its own ETLM and calibration anchors. Tap one for the assets setting the bar.
+            A flagship slice across four therapeutic areas — Atlas tracks 40+ indications on the same
+            architecture, each with its own ETLM and calibration anchors. Tap one for the assets setting the bar.
           </p>
 
           {/* Legend */}
@@ -613,7 +667,11 @@ export default function AtlasDrugDevAnalyst() {
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-indigo-200 to-indigo-100 ring-1 ring-indigo-300 dark:from-indigo-800 dark:to-indigo-900 dark:ring-indigo-700" />
-              Neurodegeneration
+              Neurology
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-amber-200 to-amber-100 ring-1 ring-amber-300 dark:from-amber-800 dark:to-amber-900 dark:ring-amber-700" />
+              Immunology
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-emerald-200 to-emerald-100 ring-1 ring-emerald-300 dark:from-emerald-800 dark:to-emerald-900 dark:ring-emerald-700" />
@@ -625,7 +683,7 @@ export default function AtlasDrugDevAnalyst() {
 
           <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
             <span className="font-semibold text-zinc-700 dark:text-zinc-300">Coverage extends on demand</span> — same
-            architecture, new TA.
+            architecture, any new indication.
           </p>
         </Reveal>
 
@@ -656,7 +714,8 @@ export default function AtlasDrugDevAnalyst() {
             Selected work
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            Redacted samples, straight from the reader.
+            The memory resolves into deliverables a team can act on — an indication landscape, a
+            target product profile, a thematic read. Redacted samples, straight from the reader.
           </p>
           <div className="border-y border-zinc-200/70 dark:border-white/10 divide-y divide-zinc-200/70 dark:divide-white/10">
             {SELECTED_WORK.map((w) => (
