@@ -49,19 +49,56 @@ export interface Underwrite {
   button: { label: string; href: string };
 }
 
+// engagement steps — "what working with me looks like" (sits above the diagram)
+export interface Step {
+  n: string;       // '01' | '02' | '03'
+  label: string;   // the action
+  body: string;    // one line
+  icon: string;    // lucide icon name (resolved via the page's icon registry)
+}
+
+// trust pillars — the provenance story, elevated into its own section
+export interface TrustPillar {
+  label: string;
+  body: string;
+  icon: string;    // lucide icon name
+}
+
 export interface WwmContent {
   variant: 'teams' | 'investors';
   navOther: { label: string; href: string };
   hero: { h1: string; sub: string };
   pov: string;             // short conviction statement
+  steps: Step[];           // engagement flow, above the how-it-works diagram
   dataflow?: Dataflow;     // teams only
   underwrite?: Underwrite; // investors only
   work: WorkItem[];        // [0] is featured
   workFootnote: string;
-  credibility: string;
+  credibility: string;     // short lead-in line above the trust pillars
+  trust: TrustPillar[];    // 3 provenance pillars
   ctaHeadline: string;
   ctaBody: string;
+  ctaBullets: string[];    // concrete "what you get" bullets on the CTA
 }
+
+// the provenance pillars are shared across both audiences — one verification story
+const TRUST: TrustPillar[] = [
+  {
+    label: 'Sourced to the primary record',
+    body: 'Every number, comparator, and readout traces to PubMed, ClinicalTrials.gov, or the congress record. No unsourced claims.',
+    icon: 'Link2',
+  },
+  {
+    label: 'Human-checked, never generated',
+    body: 'The models do the breadth; the judgment and the sourcing are mine. Modelled figures are flagged as modelled.',
+    icon: 'UserCheck',
+  },
+  {
+    label: 'Current as the field moves',
+    body: 'Refreshed against new trials and readouts, so the evidence is current every time — not last quarter’s deck.',
+    icon: 'RefreshCw',
+  },
+];
 
 // ── the three real sample deliverables (shared; ordered differently per page) ──
 const ETLM: WorkItem = {
@@ -154,12 +191,19 @@ export const TEAMS: WwmContent = {
     sub: 'Competitive landscapes, target product profiles, and positioning for the teams building drugs. Current, sourced, on your deadline.',
   },
   pov: 'Good development calls come from current evidence, not last quarter’s deck. I keep a living memory of your field and turn it into the artifact your next decision needs.',
+  steps: [
+    { n: '01', label: 'Send your lead indication', body: 'What you’re building, and the questions you need answered.', icon: 'Send' },
+    { n: '02', label: 'I build your field’s living memory', body: 'Every asset, mechanism, and readout, tied to its source and kept current.', icon: 'BrainCircuit' },
+    { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'FileCheck2' },
+  ],
   dataflow: DATAFLOW,
   work: [ETLM, TPP, MEMO],
   workFootnote: 'Other work, from full landscape builds to regulatory drafts, is scoped in conversation.',
-  credibility: 'Nothing I deliver is generated. Every number, comparator, and readout comes from the primary record and gets checked. The models do the breadth. The judgment and the sourcing are mine.',
+  credibility: 'Nothing I deliver is generated.',
+  trust: TRUST,
   ctaHeadline: 'I take on a few design partners at a reduced rate.',
   ctaBody: 'In exchange for a reference once the work earns it. Send me your lead indication, and you will get a sample back before you spend anything.',
+  ctaBullets: ['A sample back before you spend anything', 'Every claim sourced to the primary record', 'On your deadline'],
 };
 
 export const INVESTORS: WwmContent = {
@@ -170,12 +214,19 @@ export const INVESTORS: WwmContent = {
     sub: 'IC-grade memos and scientific diligence for biotech investors. Sourced to the primary record, fast enough to keep up with your deal flow.',
   },
   pov: 'Conviction comes from the science holding up, not the pitch. I underwrite the evidence, source every claim, and hand you a memo your committee cannot pick apart.',
+  steps: [
+    { n: '01', label: 'Send a live deal', body: 'The data room, the asset, and the thesis you need tested.', icon: 'Briefcase' },
+    { n: '02', label: 'I underwrite the science', body: 'Structured diligence, every claim fact-checked against the primary record.', icon: 'Microscope' },
+    { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'ScrollText' },
+  ],
   underwrite: UNDERWRITE,
   work: [MEMO, ETLM, TPP],
   workFootnote: 'Other work, from landscape deep-dives to portfolio monitoring, is scoped in conversation.',
-  credibility: 'Nothing I deliver is generated. Every number, comparator, and readout comes from the primary record and gets checked. The models do the breadth. The judgment, the financials, and the sourcing are mine.',
+  credibility: 'Nothing I deliver is generated.',
+  trust: TRUST,
   ctaHeadline: 'I take on a few design partners at a reduced rate.',
   ctaBody: 'In exchange for a reference once the work earns it. Send me a live deal, and you will get a sample memo back before you spend anything.',
+  ctaBullets: ['A sample memo back before you spend anything', 'Every claim sourced to the primary record', 'On your deal-flow timeline'],
 };
 
 export const WWM: Record<'teams' | 'investors', WwmContent> = {

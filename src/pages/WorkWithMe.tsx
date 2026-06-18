@@ -1,5 +1,34 @@
 import { Link } from 'react-router-dom';
-import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode } from '../data/workWithMe';
+import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, type TwoMode, type Step, type TrustPillar } from '../data/workWithMe';
+import {
+  Send, BrainCircuit, FileCheck2, Briefcase, Microscope, ScrollText,
+  Link2, UserCheck, RefreshCw, type LucideIcon,
+} from 'lucide-react';
+import { useReveal } from '../hooks/useReveal';
+import { Grain } from '../components/shared/craft';
+import { KMCurve, ForestPlot, NodeGraph } from '../components/shared/motifs';
+
+/* lucide icon registry — resolves the icon name stored in workWithMe.ts content */
+const ICONS: Record<string, LucideIcon> = {
+  Send, BrainCircuit, FileCheck2, Briefcase, Microscope, ScrollText, Link2, UserCheck, RefreshCw,
+};
+function CardIcon({ name, size = 20 }: { name: string; size?: number }) {
+  const I = ICONS[name];
+  return I ? <I size={size} strokeWidth={1.5} style={{ color: ACCENT }} aria-hidden /> : null;
+}
+
+/* motion wrapper — block fade-up on scroll, or `stagger` to cascade children
+   in sequence (the 01 → 02 → 03 deck-slide feel). Driven by useReveal + index.css. */
+function Reveal({
+  stagger = false, className = '', style, children, id,
+}: { stagger?: boolean; className?: string; style?: React.CSSProperties; children: React.ReactNode; id?: string }) {
+  const ref = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} id={id} className={`${stagger ? 'stagger' : 'reveal'} ${className}`} style={style}>
+      {children}
+    </div>
+  );
+}
 
 /* WS15 — two audience pages. Canonical consultancy flow (hero → POV → how it
    works → selected work → CTA), differentiated by hero alignment + which
@@ -135,6 +164,65 @@ function TwoModeStrip({ m }: { m: TwoMode }) {
   );
 }
 
+/* engagement steps — "what working with me looks like", as a 3-up numbered card
+   row (the pharosyn process block), sitting above the how-it-works diagram */
+function EngagementSteps({ steps }: { steps: Step[] }) {
+  return (
+    <section className="py-20">
+      <Reveal>
+        <Eyebrow color={INK_META}>How we’d work together</Eyebrow>
+        <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.3] max-w-xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          Three steps to an artifact you can put your name on.
+        </p>
+      </Reveal>
+      <Reveal stagger className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {steps.map((s) => (
+          <div
+            key={s.n}
+            className="rounded-2xl p-6 sm:p-7 flex flex-col"
+            style={{ border: `1px solid ${HAIR}`, background: 'rgba(255,255,255,0.5)' }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[30px] sm:text-[34px] leading-none tabular-nums" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: ACCENT }}>
+                {s.n}
+              </span>
+              <CardIcon name={s.icon} size={22} />
+            </div>
+            <p className="mt-5 text-[18px] leading-[1.25]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{s.label}</p>
+            <p className="mt-2.5 text-[14.5px] leading-[1.6]" style={{ color: INK_BODY }}>{s.body}</p>
+          </div>
+        ))}
+      </Reveal>
+    </section>
+  );
+}
+
+/* trust pillars — the provenance story, given visual weight as a contained
+   tinted band so it reads as its own zone (the pharosyn trust section) */
+function TrustPillars({ lead, trust }: { lead: string; trust: TrustPillar[] }) {
+  return (
+    <Reveal className="relative overflow-hidden rounded-2xl p-8 sm:p-12" style={{ background: 'rgba(110,36,51,0.045)', border: `1px solid ${HAIR}` }}>
+      {/* faint forest-plot motif — domain-native ornament, kept well behind the text */}
+      <ForestPlot className="pointer-events-none absolute -right-6 -top-6 w-44 h-44" style={{ color: ACCENT, opacity: 0.06 }} />
+      <div className="relative">
+        <Eyebrow color={INK_META}>What you can rely on</Eyebrow>
+        <p className="mt-5 text-[22px] sm:text-[27px] leading-[1.35] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          {lead}
+        </p>
+        <Reveal stagger className="mt-10 pt-9 grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-9" style={{ borderTop: `1px solid ${HAIR}` }}>
+          {trust.map((t) => (
+            <div key={t.label}>
+              <CardIcon name={t.icon} size={20} />
+              <p className="mt-3.5 text-[16px] sm:text-[17px] leading-[1.3]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT }}>{t.label}</p>
+              <p className="mt-2.5 text-[14.5px] leading-[1.6]" style={{ color: INK_BODY }}>{t.body}</p>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+    </Reveal>
+  );
+}
+
 /* TEAMS — the living-memory dataflow: continuous inputs → ATLAS → deliverables */
 function AtlasDataflow({ d }: { d: Dataflow }) {
   const Connector = () => (
@@ -145,13 +233,15 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
   );
   return (
     <section className="py-20">
-      <Eyebrow color={INK_META}>{d.eyebrow}</Eyebrow>
-      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
-        {d.lead}
-      </p>
-      <p className="mt-4 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.sub}</p>
+      <Reveal>
+        <Eyebrow color={INK_META}>{d.eyebrow}</Eyebrow>
+        <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          {d.lead}
+        </p>
+        <p className="mt-4 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.sub}</p>
+      </Reveal>
 
-      <div className="mt-12 flex flex-col sm:flex-row sm:items-stretch">
+      <Reveal className="mt-12 flex flex-col sm:flex-row sm:items-stretch">
         {/* inputs */}
         <div className="flex-1">
           <p className="text-[11px] font-semibold uppercase mb-3" style={{ color: INK_META, letterSpacing: '0.1em' }}>Continuous inputs</p>
@@ -192,15 +282,17 @@ function AtlasDataflow({ d }: { d: Dataflow }) {
             ))}
           </ul>
         </div>
-      </div>
+      </Reveal>
 
-      <p className="mt-12 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.closer}</p>
+      <Reveal>
+        <p className="mt-12 text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{d.closer}</p>
 
-      <TwoModeStrip m={d.modes} />
+        <TwoModeStrip m={d.modes} />
 
-      <a href={d.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
-        {d.button.label} →
-      </a>
+        <a href={d.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
+          {d.button.label} →
+        </a>
+      </Reveal>
     </section>
   );
 }
@@ -215,13 +307,15 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
   );
   return (
     <section className="py-20">
-      <Eyebrow color={INK_META}>{u.eyebrow}</Eyebrow>
-      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
-        {u.lead}
-      </p>
+      <Reveal>
+        <Eyebrow color={INK_META}>{u.eyebrow}</Eyebrow>
+        <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          {u.lead}
+        </p>
+      </Reveal>
 
       {/* tier 1 — input modules */}
-      <div className="mt-11 grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+      <Reveal stagger className="mt-11 grid grid-cols-2 sm:grid-cols-4 gap-3.5">
         {u.inputs.map((m) => (
           <div key={m.label} className="rounded-xl px-4 py-4" style={{ border: `1px solid ${HAIR}` }}>
             <ModuleIcon name={m.icon} />
@@ -229,12 +323,12 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
             <p className="mt-1 text-[12px] leading-[1.4]" style={{ color: INK_META }}>{m.dek}</p>
           </div>
         ))}
-      </div>
+      </Reveal>
 
       <FlowLabel>Feed into</FlowLabel>
 
       {/* tier 2 — the five agents */}
-      <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
+      <Reveal className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
         <p className="text-[16px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
         <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -244,34 +338,36 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
             </span>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       <FlowLabel>Synthesised into</FlowLabel>
 
       {/* tier 3 — the IC memo (the payoff; the one strongly-indigo element) */}
-      <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
+      <Reveal className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
         <div>
           <p className="text-[19px]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
           <p className="mt-0.5 text-[13px]" style={{ color: 'rgba(255,255,255,0.72)' }}>{u.output.dek}</p>
         </div>
         <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
-      </div>
+      </Reveal>
 
       {/* wrapper — pipeline + deal page tracking layer */}
-      <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
-        <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {u.wrapperTags.map((t) => (
-            <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
-          ))}
+      <Reveal>
+        <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
+          <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {u.wrapperTags.map((t) => (
+              <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <TwoModeStrip m={u.modes} />
+        <TwoModeStrip m={u.modes} />
 
-      <a href={u.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
-        {u.button.label} →
-      </a>
+        <a href={u.button.href} className="mt-9 inline-flex items-center gap-1.5 text-[14px] font-medium transition-all hover:gap-2.5" style={{ color: ACCENT }}>
+          {u.button.label} →
+        </a>
+      </Reveal>
     </section>
   );
 }
@@ -282,10 +378,25 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
   const [featured, ...rest] = c.work;
 
   return (
-    <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased">
-      <div className="mx-auto max-w-3xl px-6 sm:px-8" style={{ ['--d' as string]: display() }}>
+    <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased relative">
+      <Grain />
+      {/* ambient hero glow — soft oxblood-tinted depth behind the masthead */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[620px]"
+        style={{ background: 'radial-gradient(120% 80% at 18% 0%, rgba(110,36,51,0.10), rgba(110,36,51,0) 60%)' }}
+      />
+      {/* domain-native hero motif — bespoke line-art bleeding off the top-right,
+          duotoned to oxblood at low opacity, with the glow as its scrim. The
+          "background image", made of the field's own visual grammar. */}
+      <div aria-hidden className="pointer-events-none absolute top-0 right-0 w-[min(46vw,560px)] overflow-hidden" style={{ maskImage: 'linear-gradient(to bottom left, #000, transparent 78%)', WebkitMaskImage: 'linear-gradient(to bottom left, #000, transparent 78%)' }}>
+        {variant === 'teams'
+          ? <KMCurve className="w-full" style={{ color: ACCENT, opacity: 0.1 }} />
+          : <NodeGraph className="w-full" style={{ color: ACCENT, opacity: 0.1 }} />}
+      </div>
+      <div className="relative mx-auto max-w-3xl px-6 sm:px-8" style={{ ['--d' as string]: display() }}>
         {/* top bar */}
-        <div className="flex items-center justify-between pt-8 text-[13px]" style={{ color: INK_META }}>
+        <div className="flex items-center justify-between pt-8 text-[13px] rise" style={{ color: INK_META }}>
           <Link to="/work-with-me" className="hover:opacity-70 transition-opacity">← Work with me</Link>
           <Link to={c.navOther.href} className="hover:opacity-70 transition-opacity" style={{ color: ACCENT }}>
             {c.navOther.label} →
@@ -294,20 +405,20 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
 
         {/* ── HERO (asymmetric for teams, centered masthead for investors) ── */}
         <header className={`pt-20 sm:pt-28 pb-20 ${centered ? 'text-center' : ''}`}>
-          <div className={`flex items-center gap-2 mb-8 text-[11.5px] uppercase ${centered ? 'justify-center' : ''}`} style={{ color: INK_META, letterSpacing: '0.14em' }}>
+          <div className={`rise flex items-center gap-2 mb-8 text-[11.5px] uppercase ${centered ? 'justify-center' : ''}`} style={{ color: INK_META, letterSpacing: '0.14em', animationDelay: '0.05s' }}>
             <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: ACCENT }} aria-hidden />
             Field memory current to June 2026
           </div>
           <h1
-            className={`text-[42px] leading-[1.04] sm:text-[64px] sm:leading-[1.02] ${centered ? 'mx-auto max-w-2xl' : 'max-w-[19ch]'}`}
-            style={{ fontFamily: 'var(--d)', fontWeight: 450, letterSpacing: '-0.02em', color: INK }}
+            className={`rise text-[42px] leading-[1.04] sm:text-[64px] sm:leading-[1.02] ${centered ? 'mx-auto max-w-2xl' : 'max-w-[19ch]'}`}
+            style={{ fontFamily: 'var(--d)', fontWeight: 450, letterSpacing: '-0.02em', color: INK, animationDelay: '0.13s' }}
           >
             {c.hero.h1}
           </h1>
-          <p className={`mt-7 text-[18px] sm:text-[19px] leading-[1.6] ${centered ? 'mx-auto max-w-lg' : 'max-w-md'}`} style={{ color: INK_BODY }}>
+          <p className={`rise mt-7 text-[18px] sm:text-[19px] leading-[1.6] ${centered ? 'mx-auto max-w-lg' : 'max-w-md'}`} style={{ color: INK_BODY, animationDelay: '0.21s' }}>
             {c.hero.sub}
           </p>
-          <div className={`mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 ${centered ? 'justify-center' : ''}`}>
+          <div className={`rise mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 ${centered ? 'justify-center' : ''}`} style={{ animationDelay: '0.29s' }}>
             <Cta />
             <a href="#work" className="text-[14px] font-medium hover:opacity-70 transition-opacity" style={{ color: INK }}>
               See a sample →
@@ -319,11 +430,18 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
 
         {/* ── POV ── */}
         <section className="py-20">
-          <Eyebrow color={INK_META}>How I think</Eyebrow>
-          <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
-            {c.pov}
-          </p>
+          <Reveal>
+            <Eyebrow color={INK_META}>How I think</Eyebrow>
+            <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+              {c.pov}
+            </p>
+          </Reveal>
         </section>
+
+        {/* ── ENGAGEMENT STEPS — what working together looks like (simple-first) ── */}
+        <EngagementSteps steps={c.steps} />
+
+        <div style={{ height: 1, background: HAIR }} />
 
         {/* ── HOW IT WORKS — a different system on each page ──
             teams: the ATLAS living-memory dataflow · investors: the Underwrite engine.
@@ -335,33 +453,41 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
 
         {/* ── SELECTED WORK (featured + 2-up) ── */}
         <section id="work" className="py-20 scroll-mt-8">
-          <Eyebrow color={INK_META}>Selected work</Eyebrow>
-          <div className="mt-9">
-            <WorkCard item={featured} featured />
-          </div>
-          <div className="mt-12 pt-12 grid grid-cols-1 sm:grid-cols-2 gap-10" style={{ borderTop: `1px solid ${HAIR}` }}>
+          <Reveal>
+            <Eyebrow color={INK_META}>Selected work</Eyebrow>
+            <div className="mt-9">
+              <WorkCard item={featured} featured />
+            </div>
+          </Reveal>
+          <Reveal stagger className="mt-12 pt-12 grid grid-cols-1 sm:grid-cols-2 gap-10" style={{ borderTop: `1px solid ${HAIR}` }}>
             {rest.map((w) => <WorkCard key={w.href} item={w} />)}
-          </div>
+          </Reveal>
           <p className="mt-10 text-[13.5px] leading-[1.5]" style={{ color: INK_META }}>{c.workFootnote}</p>
         </section>
 
         <div style={{ height: 1, background: HAIR }} />
 
-        {/* ── CREDIBILITY + CTA ── */}
+        {/* ── TRUST (elevated provenance band) + CTA ── */}
         <section className="py-20">
-          <p className="text-[22px] sm:text-[26px] leading-[1.42] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
-            {c.credibility}
-          </p>
-          <div className="mt-16 pt-14" style={{ borderTop: `1px solid ${HAIR}` }}>
+          <TrustPillars lead={c.credibility} trust={c.trust} />
+          <Reveal className="mt-16 pt-14" style={{ borderTop: `1px solid ${HAIR}` }}>
             <p className="text-[24px] sm:text-[30px] leading-[1.18]" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: ACCENT }}>
               {c.ctaHeadline}
             </p>
             <p className="mt-4 text-[16px] leading-[1.6] max-w-lg" style={{ color: INK_BODY }}>{c.ctaBody}</p>
+            <ul className="mt-6 space-y-2.5">
+              {c.ctaBullets.map((b) => (
+                <li key={b} className="flex items-start gap-2.5 text-[14.5px] leading-[1.5]" style={{ color: INK_BODY }}>
+                  <span className="inline-block w-1 h-1 rounded-full mt-[9px] shrink-0" style={{ background: ACCENT }} aria-hidden />
+                  {b}
+                </li>
+              ))}
+            </ul>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Cta />
               <a href="https://www.linkedin.com/in/katieluikakiu" target="_blank" rel="noreferrer" className="text-[14px] font-medium hover:opacity-70 transition-opacity" style={{ color: INK }}>LinkedIn →</a>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <footer className="py-10 text-[12px]" style={{ color: INK_META, borderTop: `1px solid ${HAIR}` }}>

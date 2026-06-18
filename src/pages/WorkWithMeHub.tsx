@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Grain } from '../components/shared/craft';
 
 /* WS15 — the "Work with me" chooser. Two doors: biotech teams / investors. */
 
@@ -40,36 +41,45 @@ const DOORS = [
 
 export default function WorkWithMeHub() {
   return (
-    <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased">
-      <div className="mx-auto max-w-3xl px-6 sm:px-8 flex flex-col min-h-screen">
-        <div className="pt-8 text-[13px]" style={{ color: MUTED }}>
-          <Link to="/" className="hover:opacity-70 transition-opacity">← Katie Lui</Link>
+    <div style={{ background: BG, color: INK, minHeight: '100vh' }} className="antialiased relative">
+      <Grain />
+      {/* ambient glow — soft oxblood depth behind the chooser */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(90% 55% at 22% 32%, rgba(110,36,51,0.10), rgba(110,36,51,0) 60%)' }}
+      />
+      <div className="relative mx-auto max-w-3xl px-6 sm:px-8 flex flex-col min-h-screen">
+        {/* masthead wordmark — identity only; intentionally NOT a link back to the
+            portfolio so the commercial surface stays one-directional (forward into work). */}
+        <div className="rise pt-8 text-[13px] font-medium" style={{ color: INK }}>
+          Katie Lui
         </div>
 
         <div className="flex-1 flex flex-col justify-center py-20">
-          <div className="flex items-center gap-2 mb-7 text-[12px] uppercase tracking-[0.16em]" style={{ color: MUTED }}>
+          <div className="rise flex items-center gap-2 mb-7 text-[12px] uppercase tracking-[0.16em]" style={{ color: MUTED, animationDelay: '0.05s' }}>
             <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: ACCENT }} aria-hidden />
             Work with me
           </div>
 
           <h1
-            className="text-[36px] leading-[1.08] sm:text-[52px] sm:leading-[1.05] font-semibold max-w-2xl"
-            style={{ fontFamily: DISPLAY, letterSpacing: '-0.015em' }}
+            className="rise text-[36px] leading-[1.08] sm:text-[52px] sm:leading-[1.05] font-semibold max-w-2xl"
+            style={{ fontFamily: DISPLAY, letterSpacing: '-0.015em', animationDelay: '0.13s' }}
           >
             Analysis is cheap now. Judgment isn’t.
           </h1>
-          <p className="mt-5 text-[18px] leading-[1.55] max-w-xl" style={{ color: BODY }}>
+          <p className="rise mt-5 text-[18px] leading-[1.55] max-w-xl" style={{ color: BODY, animationDelay: '0.21s' }}>
             AI-run, human-checked. The drug-development analysis teams build on, and the diligence investors rely on. Pick your side.
           </p>
 
           {/* the decision: two audience doors, first thing after the intro */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {DOORS.map((d) => (
+            {DOORS.map((d, i) => (
               <Link
                 key={d.href}
                 to={d.href}
-                className="group flex flex-col p-7 rounded-2xl transition-all hover:-translate-y-1"
-                style={{ border: `1px solid ${HAIR}`, background: 'rgba(255,255,255,0.5)' }}
+                className="rise group flex flex-col p-7 rounded-2xl transition-all hover:-translate-y-1"
+                style={{ border: `1px solid ${HAIR}`, background: 'rgba(255,255,255,0.5)', animationDelay: `${0.3 + i * 0.1}s` }}
               >
                 <h2 className="text-[24px] sm:text-[27px] font-semibold leading-tight" style={{ fontFamily: DISPLAY }}>
                   {d.label}
@@ -84,6 +94,11 @@ export default function WorkWithMeHub() {
               </Link>
             ))}
           </div>
+
+          {/* trust micro-line — echoes the provenance story without a full section */}
+          <p className="mt-7 text-[13px] leading-[1.6]" style={{ color: MUTED }}>
+            Every claim sourced to the primary record. Nothing generated; modelled figures flagged.
+          </p>
 
           {/* ways of working — supporting "how it works" footnote, below the decision */}
           <div className="mt-14 pt-9" style={{ borderTop: `1px solid ${HAIR}` }}>
