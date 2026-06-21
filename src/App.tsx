@@ -41,6 +41,7 @@ import BiopharmaAIFeed from './pages/BiopharmaAIFeed';
 import BiotechFundraising from './pages/BiotechFundraising';
 import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
 import ConferenceCatalyst from './pages/ConferenceCatalyst';
+import PartnerPrioritisation from './pages/PartnerPrioritisation';
 import AtlasReader from './pages/AtlasReader';
 import AtlasReaderETLM from './pages/AtlasReaderETLM';
 import AtlasReaderETLMReport from './pages/AtlasReaderETLMReport';
@@ -106,6 +107,9 @@ function App() {
         {/* WS8: Biotech Conference Catalyst Monitor */}
         <Route path="/conference-catalyst" element={<ConferenceCatalyst />} />
         <Route path="/projects/conference-catalyst-monitor" element={<ConferenceCatalyst />} />
+
+        <Route path="/partner-prioritisation" element={<PartnerPrioritisation />} />
+        <Route path="/projects/partner-prioritisation" element={<PartnerPrioritisation />} />
 
         {/* Atlas Reader — rendered deliverables preview */}
         <Route path="/atlas-reader" element={<AtlasReader />} />

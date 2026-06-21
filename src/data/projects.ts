@@ -341,6 +341,21 @@ export const projects: Project[] = [
     tags: ["Python", "FastAPI", "RSS", "SQLite", "LLM Extraction", "React"],
     links: { live: "/ai-biopharma-feed" },
   },
+  {
+    id: "partner-prioritisation",
+    slug: "partner-prioritisation",
+    title: "Conference Partner Prioritisation Engine",
+    themes: ["AI/ML & Automation", "Biopharma Strategy"],
+    status: "WIP",
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "Tells a biotech or consultancy which companies to prioritise meeting at a partnering conference (BIO, JPM, BioEquity) — scoring every attending company against the client's own positioning, then drafting tailored outreach in a client portal.",
+    longDescription:
+      "Partnering conferences put thousands of companies in one place, and the platform's own AI matchmaker is generic. This engine builds the prioritisation matrix from company profiles instead: it takes a client's positioning from the public domain (their website), pulls the conference's attending-company list, and scores each company against what the client is actually looking for. Scoring is two-tier and deterministic — hard MUST filters (partner type, therapeutic-area fit, deal type) gate the universe, then weighted PREFER rules (stage fit, strategic complementarity, BD appetite, financial capacity) produce a 0–100 fit score, so every rank comes with a readable rationale rather than a black-box number. The same engine reshapes itself per client: for a therapeutic-agnostic drug-development consultancy it drops the disease filters and rewards an early-clinical stage band instead. On a real run it pulled all 1,654 BIO 2026 exhibitors live, classified each from its public blurb, and surfaced ~90 priority early-clinical biotechs from the noise. The output is a client-facing portal: a priority-list tab, a live re-ranking control (edit your purpose or the levers and the list re-scores in-browser), and a card per company with the rank rationale plus an editable first-touch outreach draft to approve, edit and send.",
+    tags: ["Python", "Claude API", "Scoring Engine", "Web Scraping", "JavaScript", "Outreach", "BD"],
+    links: { live: "/partner-prioritisation" },
+  },
 ];
 
 export function getUniqueStartYears(): number[] {
