@@ -3,6 +3,7 @@ import { WWM, type WwmContent, type WorkItem, type Dataflow, type Underwrite, ty
 import { useReveal } from '../hooks/useReveal';
 import { Grain } from '../components/shared/craft';
 import { KMCurve, ForestPlot, NodeGraph, Glyph } from '../components/shared/motifs';
+import { INDICATIONS, TA_META } from '../data/indications';
 
 /* bespoke line-art glyph (our own icon family, not lucide). `color` lets the dark
    trust band tint them cream. */
@@ -365,6 +366,57 @@ function UnderwriteFunnel({ u }: { u: Underwrite }) {
   );
 }
 
+/* therapeutic coverage — the breadth of the field held in living memory, grouped
+   by area. Editorial treatment (single oxblood accent, hairline rules, no playful
+   colour) so it sits inside the WWM system rather than borrowing the Atlas bubbles.
+   Reads the shared flagship indication set so it can't drift from the Atlas page. */
+function IndicationCoverage() {
+  return (
+    <section className="py-20">
+      <Reveal>
+        <Eyebrow color={INK_META}>Therapeutic coverage</Eyebrow>
+        <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>
+          Every area below is held at the depth a dedicated analyst gives one — each with its own living ETLM, refreshed as new readouts land.
+        </p>
+      </Reveal>
+      <Reveal stagger className="mt-12 space-y-9">
+        {TA_META.map(({ key, label }) => {
+          const inds = INDICATIONS.filter((i) => i.ta === key);
+          if (!inds.length) return null;
+          return (
+            <div key={key}>
+              <div className="flex items-center gap-4">
+                <p className="text-[11px] font-semibold uppercase whitespace-nowrap" style={{ color: ACCENT, letterSpacing: '0.1em' }}>
+                  {label}
+                </p>
+                <span className="flex-1" style={{ height: 1, background: HAIR }} aria-hidden />
+                <span className="text-[11px] tabular-nums" style={{ color: INK_META }}>{inds.length}</span>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2.5">
+                {inds.map((i) => (
+                  <span
+                    key={i.code}
+                    title={i.full ?? i.code}
+                    className="text-[15px] leading-none"
+                    style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}
+                  >
+                    {i.code}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </Reveal>
+      <Reveal>
+        <p className="mt-11 text-[13.5px] leading-[1.55] max-w-xl" style={{ color: INK_META }}>
+          A flagship slice across four therapeutic areas — chosen to show breadth, not the full active roster of 40+ indications, each carrying its own ETLM.
+        </p>
+      </Reveal>
+    </section>
+  );
+}
+
 export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors' }) {
   const c: WwmContent = WWM[variant];
   const centered = false; // both pages left-aligned (Katie); differentiate by content, not alignment
@@ -433,6 +485,11 @@ export default function WorkWithMe({ variant }: { variant: 'teams' | 'investors'
 
         {/* ── ENGAGEMENT STEPS — what working together looks like (simple-first) ── */}
         <EngagementSteps steps={c.steps} />
+
+        <div style={{ height: 1, background: HAIR }} />
+
+        {/* ── THERAPEUTIC COVERAGE — breadth of indications held in living memory ── */}
+        <IndicationCoverage />
 
         <div style={{ height: 1, background: HAIR }} />
 
