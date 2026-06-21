@@ -135,12 +135,12 @@ export default function UnderwriteFunnel({ data: u, variant = 'warm' }: { data: 
           <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
         </div>
       ) : (
-        <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4 bg-indigo-600">
+        <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4 bg-zinc-900 dark:bg-zinc-100">
           <div>
-            <p className="text-[19px] font-semibold text-white">{u.output.label}</p>
-            <p className="mt-0.5 text-[13px] text-white/70">{u.output.dek}</p>
+            <p className="text-[19px] font-semibold text-white dark:text-zinc-900">{u.output.label}</p>
+            <p className="mt-0.5 text-[13px] text-white/70 dark:text-zinc-600">{u.output.dek}</p>
           </div>
-          <span className="text-[22px] text-white/60" aria-hidden>↳</span>
+          <span className="text-[22px] text-white/55 dark:text-zinc-500" aria-hidden>↳</span>
         </div>
       )}
 
