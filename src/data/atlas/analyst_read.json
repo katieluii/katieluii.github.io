@@ -1,20 +1,20 @@
 {
-  "updated": "2026-06-15",
-  "intro": "Five threads moving drug development this week — ranked, with a point of view and the sources behind it. Refreshed every Monday.",
+  "updated": "2026-06-22",
+  "intro": "Five themes moving drug development this week — ranked, with a point of view and the sources behind them. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "KRAS has become a four-modality pile-up — and it's reaching pivotal stage",
-      "detail": "The ASCO 2026 tail has KRAS converging from four directions at once: allele-specific small molecules (zoldonrasib's G12D Phase 3 now enrolling alongside daraxonrasib, sotorasib and adagrasib), J&J's $1B Firefly Bio ADC platform, and the standing neoantigen-vaccine lane — all pressing on the same target across PDAC and NSCLC simultaneously. None of it is de-risked: per pancreatic cancer's Phase 3 graveyard, every read this cycle is entrant- or phase-advance movement, not validated efficacy. The crowding is the story; ESMO in September is where it gets tested.",
+      "headline": "KRAS is still the most crowded target in oncology — and the crowd is reaching pivotal stage",
+      "detail": "Four modalities are now pressing on the same target across PDAC and NSCLC at once: allele-specific small molecules (zoldonrasib's G12D Phase 3 enrolling alongside daraxonrasib, sotorasib and adagrasib, with VS-7375 behind in Phase 2), J&J's $1B Firefly Bio KRAS-ADC platform, and the standing neoantigen-vaccine lane (autogene cevumeran, ELI-002). Per pancreatic cancer's Phase 3 graveyard, none of it is de-risked — every read this cycle is an entrant or a phase advance, not validated efficacy. The crowding is the story; ESMO in September is where the cluster gets tested.",
       "momentum": "Hot",
       "sources": [
         { "label": "J&J press releases", "url": "https://www.jnj.com/media-center/press-releases" },
         { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
-        { "label": "KRAS inhibitor trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20inhibitor%20pancreatic" }
+        { "label": "KRAS inhibitor trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20inhibitor" }
       ]
     },
     {
-      "headline": "Oral SERDs are quietly conceding 1L monotherapy — and winning everywhere adjacent",
-      "detail": "Roche dropped three giredestrant Phase 3 reads in a single cycle: pionERA in 1L monotherapy failed against letrozole (PFS HR 0.89), while adjuvant lidERA cleared its bar (IDFS HR 0.65) and the post-CDK4/6 everolimus combination hit (PFS HR 0.56). It's the clearest in-period signal yet that the class — elacestrant, camizestrant and imlunestrant included — is consolidating around adjuvant and combination positioning rather than the AI-displacement fight it keeps losing.",
+      "headline": "Oral SERDs have settled where they actually win — and it isn't 1L monotherapy",
+      "detail": "Roche's three same-cycle giredestrant reads land the point the class has been circling: pionERA failed in 1L monotherapy versus letrozole (PFS HR 0.89), while adjuvant lidERA cleared its bar (IDFS HR 0.65) and the post-CDK4/6 everolimus combination hit (PFS HR 0.56). The class — elacestrant, camizestrant and imlunestrant included — is consolidating around adjuvant and combination positioning rather than the AI-displacement fight it keeps losing. It's the clearest in-period signal yet of where these drugs belong.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
@@ -24,7 +24,7 @@
     },
     {
       "headline": "CD19 antibodies just broke into frontline DLBCL",
-      "detail": "Tafasitamab's frontMIND read is the first CD19 antibody to win in frontline DLBCL (PFS HR 0.75), landing alongside a fresh epcoritamab OS cut versus immunochemotherapy and the standing mosunetuzumab-plus-pola benchmark (PFS HR 0.41). After several cycles of bispecific and CD-targeting dominance in relapsed/refractory disease, the frontline door is now open too. The entrant tail — sonrotoclax, tazemetostat, allo-NK CD19 — is still early.",
+      "detail": "Tafasitamab's frontMIND read is the first CD19 antibody to win in frontline DLBCL (PFS HR 0.75), arriving with a fresh epcoritamab OS cut versus immunochemotherapy and the standing mosunetuzumab-plus-pola benchmark (PFS HR 0.41). After several cycles of bispecific and CD-targeting dominance confined to relapsed/refractory disease, the frontline door is now open too. The entrant tail — sonrotoclax, tazemetostat, allo-NK CD19 — is still early.",
       "momentum": "Hot",
       "sources": [
         { "label": "Incyte press releases", "url": "https://investor.incyte.com/press-releases" },
@@ -33,23 +33,23 @@
       ]
     },
     {
-      "headline": "FRα ADCs have graduated from entry to head-to-head",
-      "detail": "AZD5335's Phase 3 in ovarian is a direct head-to-head against Elahere (mirvetuximab) — not another me-too entry but a bid to displace the benchmark itself, with sofetabart and BL-B01D1 filling in the pipeline behind it. That intra-class H2H is the surest sign a modality has saturated its entry phase, the same maturation arc FcRn (myasthenia gravis) and IL-23 p19 (Crohn's) have already walked. ESMO is the likely readout inflection.",
+      "headline": "HER2+ metastatic breast turns into an ADC-vs-TKI contest",
+      "detail": "A tucatinib-plus-trastuzumab-and-pertuzumab triplet cleared Phase 3 in HER2-positive metastatic breast (PFS HR 0.641; 24.9 vs 16.3 months), giving the setting a credible TKI-anchored alternative to the T-DXd ADC standard. HER2+ MBC is now an ADC-versus-TKI-combination fight rather than ADC-only — a useful counterweight in a year when nearly every other modality story bends toward ADCs.",
       "momentum": "Confirmed",
       "sources": [
-        { "label": "AstraZeneca press releases", "url": "https://www.astrazeneca.com/media-centre/press-releases.html" },
-        { "label": "AZD5335 trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=AZD5335" },
+        { "label": "Pfizer newsroom", "url": "https://www.pfizer.com/newsroom" },
+        { "label": "Tucatinib trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=tucatinib%20HER2%20metastatic" },
         { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" }
       ]
     },
     {
-      "headline": "WEE1 cracks platinum-resistant ovarian — the first non-ADC, non-PARP mechanism to",
-      "detail": "Azenosertib posted a 39.1% ORR in platinum-resistant ovarian cancer, edging past the 32.4% SORAYA mirvetuximab reference and becoming the first credible non-ADC, non-PARP mechanism to clear that bar this period. It's a single entrant-stage readout, not a franchise. But in a setting defined by ADCs, a genuinely new mechanism clearing the threshold is worth tracking before ESMO crowds the lane.",
+      "headline": "The ADC benefit-risk bar is quietly tightening even as the class proliferates",
+      "detail": "The Zynlonta Phase 3 three-fold death-rate signal was flagged independently this cycle by both the breast review — read across T-DXd, Dato-DXd, sacituzumab and patritumab-DXd — and the AML/MDS feed framing the CD123-ADCs pivekimab and BL-M11D1. It's a class-wide scrutiny signal rather than a single-asset miss, and worth watching precisely because so much of the rest of the pipeline is leaning on the modality.",
       "momentum": "Watch",
       "sources": [
-        { "label": "Zentalis press releases", "url": "https://ir.zentalis.com/news-events/press-releases" },
-        { "label": "Azenosertib trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=azenosertib%20ovarian" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" }
+        { "label": "ADC Therapeutics (Zynlonta)", "url": "https://ir.adctherapeutics.com/" },
+        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
+        { "label": "EHA Congress", "url": "https://ehaweb.org/" }
       ]
     }
   ]
