@@ -5,6 +5,8 @@ import { ProjectPageLayout } from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
 import { getTPP, tppIndex } from '../data/atlas/index';
 import { MarkdownView } from '../components/atlas/MarkdownView';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_TPP } from '../data/atlas/gating';
 
 export function AtlasReaderTPPReport() {
   const { slug } = useParams<{ slug: string }>();
@@ -51,7 +53,9 @@ export function AtlasReaderTPPReport() {
           Back to briefing
         </Link>
       </div>
-      <MarkdownView markdown={md.replace(/^#\s+.+?\n/, '')} anchors />
+      <RedactionGate context={`${meta.indication_display} — ${meta.segment} TPP`} bypass={!!slug && UNGATED_TPP.has(slug)}>
+        <MarkdownView markdown={md.replace(/^#\s+.+?\n/, '')} anchors />
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }

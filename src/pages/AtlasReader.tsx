@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, FileText, Layers, Flame } from 'lucide-react';
+import { ArrowRight, FileText, Layers, Flame, Lock } from 'lucide-react';
 import { ProjectPageLayout } from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
 import {
@@ -18,12 +19,15 @@ import {
   indicationDisplay,
   type TherapeuticArea,
 } from '../data/atlas/taxonomy';
+import { LOCKED_INDICATIONS } from '../data/atlas/gating';
+import { AccessGateModal } from '../components/atlas/AccessGate';
 
 type IndicationGroup = {
   code: string;
   short: string;
   long?: string;
   etlmCode?: string;
+  locked?: boolean;
   tpps: TPPIndexEntry[];
 };
 
@@ -60,6 +64,12 @@ function buildAreas(): AreaGroup[] {
   for (const th of themeIndex) {
     area(taForTheme(th.slug, th.indications_touched)).themes.push(th);
   }
+  // Locked catalog cards — title only, no data shipped. Mark any indication
+  // that has no shipped ETLM as locked so it opens the access gate.
+  for (const code of LOCKED_INDICATIONS) {
+    const ind = indication(taForIndication(code), code, indicationDisplay(code));
+    if (!ind.etlmCode) ind.locked = true;
+  }
 
   return TA_ORDER.map((ta) => areas.get(ta)).filter((a): a is AreaGroup => Boolean(a));
 }
@@ -74,19 +84,22 @@ function sortedIndications(group: AreaGroup): IndicationGroup[] {
 
 export function AtlasReader() {
   const areas = buildAreas();
+  const [gateFor, setGateFor] = useState<string | null>(null);
+  const totalIndications = areas.reduce((n, a) => n + a.indications.size, 0);
 
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="A redacted preview of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area."
+      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Open previews are free; full deliverables are by subscription."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
       <div className="flex flex-wrap items-center gap-2 mb-10">
         <Pill variant="status-wip">Preview</Pill>
-        <Pill variant="tech">Redacted sample</Pill>
+        <Pill variant="tech">Subscriber access</Pill>
         <Pill variant="tech">
-          {etlmIndex.length} landscape maps · {tppIndex.length} TPPs · {themeIndex.length} themes
+          {totalIndications} indications · {etlmIndex.length} open previews · {tppIndex.length} TPPs ·{' '}
+          {themeIndex.length} themes
         </Pill>
       </div>
 
@@ -145,7 +158,7 @@ export function AtlasReader() {
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 ml-6 mb-3">{ind.long}</p>
                 )}
 
-                {/* ETLM link */}
+                {/* ETLM link — open preview, locked card, or absent */}
                 {ind.etlmCode ? (
                   <Link
                     to={`/atlas-reader/etlm/${ind.etlmCode}`}
@@ -156,6 +169,17 @@ export function AtlasReader() {
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
                   </Link>
+                ) : ind.locked ? (
+                  <button
+                    type="button"
+                    onClick={() => setGateFor(`${ind.short} landscape map`)}
+                    className="group flex w-full items-center justify-between rounded-lg ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.03] px-3 py-2 mb-3 hover:ring-indigo-300 dark:hover:ring-indigo-500/40 transition-all"
+                  >
+                    <span className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
+                      Landscape map (ETLM)
+                    </span>
+                    <Lock className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
+                  </button>
                 ) : (
                   <p className="text-xs text-zinc-400 dark:text-zinc-500 mb-3 ml-6 italic">
                     No landscape map in this preview
@@ -215,15 +239,17 @@ export function AtlasReader() {
 
       <section className="rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50 dark:bg-white/5 p-6">
         <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
-          What's redacted
+          What's free, what's gated
         </h3>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[72ch]">
-          Analyst notes, confidence calibrations, internal decision rationale, and any ecosystem
-          sections beyond the publicly shareable subset are stripped at sync time. What you see is
-          the same shape of artifact a client team would receive, with the proprietary judgment
-          layer removed.
+          Each deliverable opens with a free briefing — the verdict, the headline facts, the top of
+          the table. The full landscape, competitive set, and analytical detail are available by
+          subscription. Internal analyst notes and decision rationale are never published. Request
+          access on any locked deliverable and I'll send pricing.
         </p>
       </section>
+
+      <AccessGateModal context={gateFor} onClose={() => setGateFor(null)} />
     </ProjectPageLayout>
   );
 }

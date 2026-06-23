@@ -5,6 +5,8 @@ import { ProjectPageLayout } from '../components/ProjectPageLayout';
 import { Pill } from '../components/Pill';
 import { getETLM, etlmIndex } from '../data/atlas/index';
 import { ETLMSections } from '../components/atlas/ETLMSections';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_ETLM } from '../data/atlas/gating';
 
 export function AtlasReaderETLMReport() {
   const { indication } = useParams<{ indication: string }>();
@@ -47,7 +49,9 @@ export function AtlasReaderETLMReport() {
           Back to briefing
         </Link>
       </div>
-      <ETLMSections etlm={etlm} indicationCode={meta.indication_code} />
+      <RedactionGate context={`${meta.indication} landscape map`} bypass={!!indication && UNGATED_ETLM.has(indication)}>
+        <ETLMSections etlm={etlm} indicationCode={meta.indication_code} />
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }

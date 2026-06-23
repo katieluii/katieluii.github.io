@@ -6,6 +6,8 @@ import { Pill } from '../components/Pill';
 import { getTheme, themeIndex } from '../data/atlas/index';
 import { themeShortLabel } from '../data/atlas/taxonomy';
 import { MarkdownView } from '../components/atlas/MarkdownView';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_THEME } from '../data/atlas/gating';
 
 export function AtlasReaderThemeReport() {
   const { slug } = useParams<{ slug: string }>();
@@ -47,7 +49,9 @@ export function AtlasReaderThemeReport() {
           Back to briefing
         </Link>
       </div>
-      <MarkdownView markdown={md.replace(/^#\s+.+?\n/, '')} anchors />
+      <RedactionGate context={`${themeShortLabel(slug)} synthesis`} bypass={!!slug && UNGATED_THEME.has(slug)}>
+        <MarkdownView markdown={md.replace(/^#\s+.+?\n/, '')} anchors />
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }

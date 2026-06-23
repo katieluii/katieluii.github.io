@@ -3,6 +3,8 @@ import { ArrowRight, FileText } from 'lucide-react';
 import { ProjectPageLayout } from '../components/ProjectPageLayout';
 import { getTPP, tppIndex, etlmIndex, crossLinks } from '../data/atlas/index';
 import { ArtifactHeader } from '../components/atlas/briefing/ArtifactHeader';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_TPP } from '../data/atlas/gating';
 import { KeyFactsStrip } from '../components/atlas/briefing/KeyFactsStrip';
 import { KeyTakeaways } from '../components/atlas/briefing/KeyTakeaways';
 import { DataTable, type Column, type Row } from '../components/atlas/briefing/DataTable';
@@ -184,6 +186,7 @@ export function AtlasReaderTPP() {
 
       {summary.keyFacts.length > 0 && <KeyFactsStrip facts={summary.keyFacts} />}
 
+      <RedactionGate context={`${meta.indication_display} — ${meta.segment} TPP`} bypass={UNGATED_TPP.has(slug)}>
       {/* Payload: the efficacy bar, promoted high */}
       {efficacy && (
         <section className="mb-10">
@@ -259,6 +262,7 @@ export function AtlasReaderTPP() {
           </Link>
         </div>
       </section>
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }

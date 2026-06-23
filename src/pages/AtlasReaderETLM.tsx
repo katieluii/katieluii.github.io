@@ -9,6 +9,8 @@ import { DataTable, type Column, type Row } from '../components/atlas/briefing/D
 import { Collapsible } from '../components/atlas/briefing/Collapsible';
 import { SeverityTag, type Severity } from '../components/atlas/briefing/SeverityTag';
 import { getEtlmSummary } from '../data/atlas/summaries';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_ETLM } from '../data/atlas/gating';
 
 function isObj(v: unknown): v is Record<string, unknown> {
   return Boolean(v) && typeof v === 'object' && !Array.isArray(v);
@@ -325,6 +327,7 @@ export function AtlasReaderETLM() {
 
       {keyFacts.length > 0 && <KeyFactsStrip facts={keyFacts} />}
 
+      <RedactionGate context={`${meta.indication} landscape map`} bypass={UNGATED_ETLM.has(indication)}>
       {/* Approved therapies — the standard-of-care anchor */}
       {table.rows.length > 0 && (
         <section className="mb-10">
@@ -410,6 +413,7 @@ export function AtlasReaderETLM() {
           </div>
         </section>
       )}
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }

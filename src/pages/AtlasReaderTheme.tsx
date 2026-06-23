@@ -4,6 +4,8 @@ import { ProjectPageLayout } from '../components/ProjectPageLayout';
 import { getTheme, themeIndex, etlmIndex, crossLinks } from '../data/atlas/index';
 import { themeShortLabel } from '../data/atlas/taxonomy';
 import { ArtifactHeader } from '../components/atlas/briefing/ArtifactHeader';
+import { RedactionGate } from '../components/atlas/AccessGate';
+import { UNGATED_THEME } from '../data/atlas/gating';
 import { KeyTakeaways } from '../components/atlas/briefing/KeyTakeaways';
 import { Collapsible } from '../components/atlas/briefing/Collapsible';
 import { DataTable, type Column, type Row } from '../components/atlas/briefing/DataTable';
@@ -122,6 +124,7 @@ export function AtlasReaderTheme() {
         </section>
       )}
 
+      <RedactionGate context={`${themeShortLabel(slug)} synthesis`} bypass={UNGATED_THEME.has(slug)}>
       {/* About this theme (macro prose, collapsed) */}
       {aboutBlock && (
         <section className="mb-6">
@@ -144,6 +147,7 @@ export function AtlasReaderTheme() {
           </Collapsible>
         </section>
       )}
+      </RedactionGate>
     </ProjectPageLayout>
   );
 }
