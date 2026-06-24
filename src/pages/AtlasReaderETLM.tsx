@@ -28,12 +28,58 @@ function num(v: unknown): number | undefined {
   return typeof v === 'number' ? v : undefined;
 }
 
+/** Trailing integer in a benchmark key — used to prefer the latest timepoint
+ *  (e.g. tbwl_pct_w68_or_72 -> 72, tbwl_pct_w52 -> 52, vs_placebo_tbwl_pct -> 0). */
+function weekOf(key: string): number {
+  const m = key.match(/(\d+)(?!.*\d)/);
+  return m ? Number(m[1]) : 0;
+}
+
+/** Infer route of administration from a free-text modality string. */
+function routeOf(modality: string): string {
+  const m = modality.toLowerCase();
+  if (m.includes('oral')) return 'Oral';
+  if (/s\.c\.|subcutaneous|\bsc\b|inject/.test(m)) return 'S.C.';
+  if (/i\.v\.|intravenous|\biv\b|infus/.test(m)) return 'I.V.';
+  return '—';
+}
+
+/** Latest-timepoint total-body-weight-loss % from a custom_efficacy object,
+ *  scanning any tbwl-named numeric key rather than a fixed allow-list. */
+function tbwlOf(custEff: Record<string, unknown>): number | undefined {
+  const keys = Object.keys(custEff).filter(
+    (k) => /tbwl/i.test(k) && typeof custEff[k] === 'number',
+  );
+  if (keys.length === 0) return undefined;
+  keys.sort((a, b) => weekOf(b) - weekOf(a));
+  return num(custEff[keys[0]]);
+}
+
+/** All-grade nausea % from a custom_safety object — any nausea-named numeric key. */
+function nauseaOf(custSafe: Record<string, unknown>): number | undefined {
+  const k = Object.keys(custSafe).find(
+    (key) => /nausea/i.test(key) && typeof custSafe[key] === 'number',
+  );
+  return k ? num(custSafe[k]) : undefined;
+}
+
+/** Rare/monogenic obesity agents (e.g. setmelanotide) address a different
+ *  population than the mass-market incretins — flag so their efficacy isn't
+ *  read as directly comparable. */
+function isRareGeneticObesity(indicationLine: string): boolean {
+  return /genetic|monogenic|syndrom|hypothalamic|POMC|PCSK1|LEPR|Bardet/i.test(indicationLine);
+}
+
 function buildKeyFacts(etlm: Record<string, unknown>): KeyFact[] {
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
-  const approved = Array.isArray(etlm.approved_therapies)
-    ? etlm.approved_therapies.length
-    : (Array.isArray(etlm.approved_therapies_novel) ? (etlm.approved_therapies_novel as unknown[]).length : 0) +
-      (Array.isArray(etlm.approved_therapies_legacy) ? (etlm.approved_therapies_legacy as unknown[]).length : 0);
+  // Prefer the novel/legacy split when present (the flat `approved_therapies`
+  // array is a stale subset on indications that have split their approved set).
+  const approved = Array.isArray(etlm.approved_therapies_novel)
+    ? (etlm.approved_therapies_novel as unknown[]).length +
+      (Array.isArray(etlm.approved_therapies_legacy) ? (etlm.approved_therapies_legacy as unknown[]).length : 0)
+    : Array.isArray(etlm.approved_therapies)
+      ? etlm.approved_therapies.length
+      : 0;
   const segments = Array.isArray((epi as any).key_genomic_segments)
     ? (epi as any).key_genomic_segments.length
     : Array.isArray(etlm.mechanism_landscape)
@@ -101,24 +147,27 @@ function buildTherapiesTable(
     );
 
     const modality = String(e.modality ?? '');
-    const route = modality.toLowerCase().includes('oral')
-      ? 'Oral'
-      : modality.includes('s.c.')
-        ? 'S.C.'
-        : modality.includes('i.v.')
-          ? 'I.V.'
-          : '—';
+    const route = routeOf(modality);
 
-    const tbwlRaw = effVal(custEff, ['tbwl_pct_w68_or_72', 'tbwl_pct_w68', 'tbwl_pct_w52', 'tbwl_pct']);
-    const tbwl = num(tbwlRaw);
-    const nausea = num(custSafe['nausea_pct']);
+    const tbwl = tbwlOf(custEff);
+    const nausea = nauseaOf(custSafe);
+    const rareGenetic = isMetabolic && isRareGeneticObesity(line);
     const orr = num(effVal(eff, ['orr_pct', 'orr']));
     const mpfs = num(effVal(eff, ['median_pfs_mo', 'mpfs_mo', 'pfs_mo']));
     const mos = num(effVal(eff, ['median_os_mo', 'mos_mo', 'os_mo']));
 
-    const cells = isMetabolic
+    const cells: Record<string, React.ReactNode> = isMetabolic
       ? {
-          asset,
+          asset: rareGenetic ? (
+            <span>
+              {asset}
+              <span className="ml-1.5 text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                rare genetic
+              </span>
+            </span>
+          ) : (
+            asset
+          ),
           sponsor: String(e.company ?? '—'),
           target: e.target ? String(e.target) : '—',
           route,
@@ -137,7 +186,7 @@ function buildTherapiesTable(
           fda: fda ? fda.slice(0, 7) : '—',
         };
 
-    const sortValues = isMetabolic
+    const sortValues: Record<string, string | number> = isMetabolic
       ? {
           asset,
           sponsor: String(e.company ?? ''),
@@ -281,13 +330,19 @@ export function AtlasReaderETLM() {
 
   const summary = getEtlmSummary(indication);
   const keyFacts = buildKeyFacts(etlm);
-  const therapies = Array.isArray(etlm.approved_therapies)
-    ? etlm.approved_therapies
-    : [
-        ...(Array.isArray(etlm.approved_therapies_novel) ? etlm.approved_therapies_novel : []),
-        ...(Array.isArray(etlm.approved_therapies_legacy) ? etlm.approved_therapies_legacy : []),
-      ];
-  const table = buildTherapiesTable(therapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
+  // Headline table = current/novel agents only. The TBWL% / nausea% endpoints
+  // are only meaningful for the incretin-era agents; legacy (pre-incretin)
+  // agents are surfaced as a collapsed, low-granularity block below.
+  const novelList = Array.isArray(etlm.approved_therapies_novel)
+    ? etlm.approved_therapies_novel
+    : null;
+  const legacyList = Array.isArray(etlm.approved_therapies_legacy)
+    ? etlm.approved_therapies_legacy
+    : [];
+  const flatList = Array.isArray(etlm.approved_therapies) ? etlm.approved_therapies : [];
+  const headlineTherapies = novelList ?? (flatList.length ? flatList : legacyList);
+  const showLegacyBlock = Boolean(novelList) && legacyList.length > 0;
+  const table = buildTherapiesTable(headlineTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
   const segments = Array.isArray((epi as any).key_genomic_segments)
@@ -297,7 +352,7 @@ export function AtlasReaderETLM() {
   const reportBase = `/atlas-reader/etlm/${indication}/report`;
   const verdict =
     summary?.verdict ??
-    `${meta.indication}: ${therapies.length} approved therapies and ${pipelineCount} pipeline assets tracked across this landscape.`;
+    `${meta.indication}: ${(novelList ? novelList.length + legacyList.length : headlineTherapies.length)} approved therapies and ${pipelineCount} pipeline assets tracked across this landscape.`;
 
   return (
     <ProjectPageLayout
@@ -347,6 +402,44 @@ export function AtlasReaderETLM() {
             Sort any column; click a row for modality, trial, and full efficacy. Highlighted rows
             are standard-of-care anchors.
           </p>
+        </section>
+      )}
+
+      {/* Legacy / pre-incretin agents — collapsed, class-level only */}
+      {showLegacyBlock && (
+        <section className="mb-10">
+          <Collapsible
+            title={`Legacy / pre-incretin agents (${legacyList.length}) — displaced by GLP-1/incretins`}
+          >
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 max-w-[72ch] leading-relaxed">
+              Pre-incretin oral agents. Efficacy ceiling ~3–8% total body-weight loss versus
+              15–23% for the incretin class — commercially displaced. Retained relevance: low-cost
+              generics, payer step-therapy, and contraindication / adolescent niches.
+            </p>
+            <ul className="text-xs">
+              {legacyList.filter(isObj).map((a, i) => {
+                const ce = isObj(a.custom_efficacy) ? a.custom_efficacy : {};
+                const tb = tbwlOf(ce);
+                const modShort = String(a.modality ?? '').replace(/\s*\(.*$/, '');
+                return (
+                  <li
+                    key={i}
+                    className="flex justify-between gap-3 border-b border-zinc-100 dark:border-white/5 py-1.5"
+                  >
+                    <span className="text-zinc-700 dark:text-zinc-300">
+                      {String(a.brand ?? a.drug_name ?? '—')}
+                      {modShort ? (
+                        <span className="text-zinc-400 dark:text-zinc-500"> · {modShort}</span>
+                      ) : null}
+                    </span>
+                    <span className="tabular-nums text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+                      {tb != null ? `${tb}% TBWL` : '—'}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </Collapsible>
         </section>
       )}
 

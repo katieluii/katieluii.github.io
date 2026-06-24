@@ -232,13 +232,79 @@ function Epidemiology({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-function ApprovedTherapies({ data, sectionLabel }: { data: unknown[]; sectionLabel?: string }) {
+/** Latest-timepoint total-body-weight-loss % from a custom_efficacy object. */
+function tbwlSummary(custEff: unknown): string | null {
+  if (!isObj(custEff)) return null;
+  const keys = Object.keys(custEff).filter(
+    (k) => /tbwl/i.test(k) && typeof custEff[k] === 'number',
+  );
+  if (keys.length === 0) return null;
+  keys.sort((a, b) => {
+    const wa = a.match(/(\d+)(?!.*\d)/);
+    const wb = b.match(/(\d+)(?!.*\d)/);
+    return (wb ? Number(wb[1]) : 0) - (wa ? Number(wa[1]) : 0);
+  });
+  return `${custEff[keys[0]]}% TBWL`;
+}
+
+function ApprovedTherapies({
+  data,
+  sectionLabel,
+  condensed,
+}: {
+  data: unknown[];
+  sectionLabel?: string;
+  condensed?: boolean;
+}) {
   const title = sectionLabel ?? 'Approved therapies';
   const subtitle = sectionLabel === 'Legacy Approved Therapies'
-    ? 'Pre-incretin era; largely displaced in general obesity'
+    ? 'Pre-incretin era; largely displaced — class-level summary only'
     : sectionLabel === 'Novel Approved Therapies'
     ? 'Current standard-of-care and active agents'
     : 'The standard-of-care anchor';
+
+  // Condensed mode: one line per agent (no per-drug efficacy / safety / trial
+  // cards) — legacy agents don't warrant equal granularity to active agents.
+  if (condensed) {
+    return (
+      <section className="mb-10">
+        <SectionHeader icon={Shield} title={title} subtitle={subtitle} count={data.length} />
+        <Card>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 max-w-[72ch] leading-relaxed">
+            Pre-incretin oral agents. Efficacy ceiling ~3–8% total body-weight loss versus 15–23%
+            for the incretin class — commercially displaced. Retained relevance: low-cost generics,
+            payer step-therapy, and contraindication / adolescent niches.
+          </p>
+          <ul className="text-xs">
+            {data.filter(isObj).map((entry, i) => {
+              const tb = tbwlSummary(entry.custom_efficacy);
+              const modShort = String(entry.modality ?? '').replace(/\s*\(.*$/, '');
+              return (
+                <li
+                  key={i}
+                  className="flex justify-between gap-3 border-b border-zinc-100 dark:border-white/5 py-1.5 last:border-0"
+                >
+                  <span className="text-zinc-700 dark:text-zinc-300">
+                    {String(entry.brand ?? entry.drug_name ?? '—')}
+                    {entry.drug_name && entry.brand ? (
+                      <span className="text-zinc-400 dark:text-zinc-500"> ({String(entry.drug_name)})</span>
+                    ) : null}
+                    {modShort ? (
+                      <span className="text-zinc-400 dark:text-zinc-500"> · {modShort}</span>
+                    ) : null}
+                  </span>
+                  <span className="tabular-nums text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
+                    {tb ?? '—'}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </Card>
+      </section>
+    );
+  }
+
   return (
     <section className="mb-10">
       <SectionHeader
@@ -1207,7 +1273,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
           return <ApprovedTherapies key={key} data={val} sectionLabel="Novel Approved Therapies" />;
         }
         if (key === 'approved_therapies_legacy' && Array.isArray(val)) {
-          return <ApprovedTherapies key={key} data={val} sectionLabel="Legacy Approved Therapies" />;
+          return <ApprovedTherapies key={key} data={val} sectionLabel="Legacy Approved Therapies" condensed />;
         }
         if (key === 'approved_therapies' && Array.isArray(val)) {
           // The flat `approved_therapies` array is superseded when an indication
