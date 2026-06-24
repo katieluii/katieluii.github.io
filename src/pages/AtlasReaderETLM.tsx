@@ -357,7 +357,7 @@ export function AtlasReaderETLM() {
   return (
     <ProjectPageLayout
       title={meta.indication}
-      subtitle="Emerging Therapeutic Landscape Map — the state of play, answer-first."
+      subtitle="Emerging Therapeutic Landscape Map"
       backTo="/atlas-reader"
       backLabel="Back to Atlas Reader"
       containerClassName="max-w-5xl mx-auto px-6"
