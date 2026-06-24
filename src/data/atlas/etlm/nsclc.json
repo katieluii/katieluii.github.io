@@ -2832,7 +2832,9 @@
   },
   "presentation_profile": {
     "schema_version": 1,
-    "curated_by": "build_presentation_profiles.py (template baseline)",
+    "curated_by_skill": true,
+    "curated_by": "etlm-curator (nsclc)",
+    "cut_rationale": "NSCLC is the most biomarker-segmented solid tumor (25 approved across EGFR/ALK/KRAS-G12C/MET/RET/ROS1/NRG1/TROP2 + IO + chemo). Efficacy is comparable only WITHIN a target segment and line, so Target is the primary read axis (sort by it to group segments); the ORR -> mPFS -> mOS triple shows depth -> durability -> survival within each. First-gen TKIs are flagged superseded.",
     "headline_table": {
       "source": "approved_therapies",
       "columns": [
@@ -2886,7 +2888,7 @@
           "align": "right",
           "from": "metric",
           "object": "key_efficacy",
-          "match": "_os",
+          "match": "median_os",
           "pick": "first",
           "format": "mo"
         },
@@ -2899,10 +2901,18 @@
         }
       ]
     },
+    "caveats": [
+      {
+        "match_field": "target",
+        "match_regex": "1st gen|1st-gen",
+        "tag": "superseded",
+        "why": "First-generation TKI; displaced within its segment by a next-gen agent (e.g. osimertinib for EGFR)."
+      }
+    ],
     "endpoint_glossary": {
-      "ORR": "Objective response rate",
-      "mPFS": "Median progression-free survival",
-      "mOS": "Median overall survival"
+      "ORR": "Objective response rate (depth of response)",
+      "mPFS": "Median progression-free survival, months (durability)",
+      "mOS": "Median overall survival, months; blank where OS not yet mature"
     }
   }
 }
