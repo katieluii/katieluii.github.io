@@ -3017,5 +3017,90 @@
         }
       ]
     }
-  ]
+  ],
+  "presentation_profile": {
+    "schema_version": 1,
+    "curated_by": "build_presentation_profiles.py (template baseline)",
+    "headline_table": {
+      "source": "approved_therapies_novel",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "route",
+          "label": "Route",
+          "from": "derive",
+          "deriver": "route_from_modality"
+        },
+        {
+          "key": "tbwl",
+          "label": "TBWL%",
+          "align": "right",
+          "from": "metric",
+          "object": "custom_efficacy",
+          "match": "tbwl",
+          "pick": "latest_week",
+          "format": "pct"
+        },
+        {
+          "key": "nausea",
+          "label": "Nausea%",
+          "align": "right",
+          "from": "metric",
+          "object": "custom_safety",
+          "match": "nausea",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "collapse": [
+      {
+        "section": "approved_therapies_legacy",
+        "mode": "class_summary",
+        "lead": "Pre-incretin oral agents. Efficacy ceiling ~3-8% total body-weight loss versus 15-23% for the incretin class - commercially displaced. Retained relevance: low-cost generics, payer step-therapy, and contraindication / adolescent niches.",
+        "line_metric": {
+          "object": "custom_efficacy",
+          "match": "tbwl",
+          "pick": "latest_week",
+          "format": "pct"
+        }
+      }
+    ],
+    "caveats": [
+      {
+        "match_field": "indication_line",
+        "match_regex": "genetic|monogenic|syndrom|hypothalamic|POMC|LEPR|PCSK1|Bardet",
+        "tag": "rare genetic",
+        "why": "Different population from mass-market incretins; efficacy not directly comparable."
+      }
+    ],
+    "endpoint_glossary": {
+      "TBWL%": "Total body-weight loss, on-treatment, latest reported timepoint",
+      "Nausea%": "All-grade nausea incidence, pivotal trial"
+    }
+  }
 }

@@ -11,6 +11,13 @@ import { SeverityTag, type Severity } from '../components/atlas/briefing/Severit
 import { getEtlmSummary } from '../data/atlas/summaries';
 import { RedactionGate } from '../components/atlas/AccessGate';
 import { UNGATED_ETLM } from '../data/atlas/gating';
+import {
+  getProfile,
+  profileColumns,
+  resolveEntry,
+  entryCaveat,
+  type PresentationProfile,
+} from '../data/atlas/presentationProfile';
 
 function isObj(v: unknown): v is Record<string, unknown> {
   return Boolean(v) && typeof v === 'object' && !Array.isArray(v);
@@ -300,6 +307,131 @@ function buildTherapiesTable(
   return { columns, rows };
 }
 
+/** Profile-driven variant: columns + cell extraction come entirely from the
+ *  ETLM's presentation_profile (curated per indication). Falls back to
+ *  buildTherapiesTable when no profile exists. */
+function buildTherapiesTableFromProfile(
+  therapies: unknown[],
+  profile: PresentationProfile,
+  anchorAssets: string[],
+): { columns: Column[]; rows: Row[] } {
+  const columns = profileColumns(profile);
+  const rows: Row[] = therapies.map((entry, i) => {
+    const e = isObj(entry) ? entry : {};
+    const resolved = resolveEntry(profile, e);
+    const cav = entryCaveat(profile, e);
+    const assetStr = String(e.brand ?? e.drug_name ?? e.asset_name ?? '—');
+    const isAnchor = anchorAssets.some(
+      (a) => assetStr.toLowerCase().includes(a) || String(e.drug_name ?? '').toLowerCase().includes(a),
+    );
+    const cells: Record<string, React.ReactNode> = {};
+    const sortValues: Record<string, string | number> = {};
+    for (const c of profile.headline_table?.columns ?? []) {
+      const r = resolved[c.key];
+      sortValues[c.key] = r?.sort ?? '';
+      // Attach the caveat tag to the first (asset) column.
+      cells[c.key] =
+        c === profile.headline_table?.columns[0] && cav ? (
+          <span>
+            {r?.display}
+            <span
+              className="ml-1.5 text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400"
+              title={cav.why}
+            >
+              {cav.tag}
+            </span>
+          </span>
+        ) : (
+          r?.display ?? '—'
+        );
+    }
+    const custEff = isObj(e.custom_efficacy) ? e.custom_efficacy : {};
+    const custSafe = isObj(e.custom_safety) ? e.custom_safety : {};
+    return {
+      id: String(i),
+      isAnchor,
+      cells,
+      sortValues,
+      detail: (
+        <div className="space-y-2 text-[13px] text-zinc-600 dark:text-zinc-400">
+          {e.drug_name && e.brand ? (
+            <div>
+              <span className="text-zinc-500">Generic: </span>
+              {String(e.drug_name)}
+            </div>
+          ) : null}
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            {e.modality ? (
+              <span>
+                <span className="text-zinc-500">Modality: </span>
+                {String(e.modality)}
+              </span>
+            ) : null}
+            {e.ema_approval_date ? (
+              <span>
+                <span className="text-zinc-500">EMA: </span>
+                {String(e.ema_approval_date)}
+              </span>
+            ) : null}
+            {e.trial ? (
+              <span>
+                <span className="text-zinc-500">Trial: </span>
+                {String(e.trial)}
+              </span>
+            ) : null}
+          </div>
+          {Object.keys(custEff).filter((k) => custEff[k] != null).length > 0 && (
+            <div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1">
+                Efficacy
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                {Object.entries(custEff)
+                  .filter(([, v]) => v != null)
+                  .map(([k, v]) => (
+                    <span key={k}>
+                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+          {Object.keys(custSafe).filter((k) => custSafe[k] != null).length > 0 && (
+            <div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-1">
+                Safety
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                {Object.entries(custSafe)
+                  .filter(([, v]) => v != null)
+                  .map(([k, v]) => (
+                    <span key={k}>
+                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+          {e.nct ? (
+            <a
+              href={`https://clinicaltrials.gov/study/${String(e.nct)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 underline decoration-dotted underline-offset-4"
+            >
+              {String(e.nct)}
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          ) : null}
+        </div>
+      ),
+    };
+  });
+  return { columns, rows };
+}
+
 function topUnmetNeeds(etlm: Record<string, unknown>) {
   const needs = Array.isArray(etlm.unmet_needs) ? etlm.unmet_needs : [];
   return needs
@@ -333,6 +465,7 @@ export function AtlasReaderETLM() {
   // Headline table = current/novel agents only. The TBWL% / nausea% endpoints
   // are only meaningful for the incretin-era agents; legacy (pre-incretin)
   // agents are surfaced as a collapsed, low-granularity block below.
+  const profile = getProfile(etlm);
   const novelList = Array.isArray(etlm.approved_therapies_novel)
     ? etlm.approved_therapies_novel
     : null;
@@ -340,9 +473,17 @@ export function AtlasReaderETLM() {
     ? etlm.approved_therapies_legacy
     : [];
   const flatList = Array.isArray(etlm.approved_therapies) ? etlm.approved_therapies : [];
-  const headlineTherapies = novelList ?? (flatList.length ? flatList : legacyList);
+  // A curated profile names the headline source; else default to novel.
+  const profileSource = profile?.headline_table?.source;
+  const headlineTherapies =
+    profileSource && Array.isArray(etlm[profileSource])
+      ? (etlm[profileSource] as unknown[])
+      : novelList ?? (flatList.length ? flatList : legacyList);
   const showLegacyBlock = Boolean(novelList) && legacyList.length > 0;
-  const table = buildTherapiesTable(headlineTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
+  const table =
+    profile?.headline_table
+      ? buildTherapiesTableFromProfile(headlineTherapies, profile, summary?.anchorAssets ?? [])
+      : buildTherapiesTable(headlineTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
   const segments = Array.isArray((epi as any).key_genomic_segments)

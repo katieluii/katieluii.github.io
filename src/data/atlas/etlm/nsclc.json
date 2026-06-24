@@ -4,7 +4,7 @@
   "icd10": "C34",
   "nci_thesaurus_id": "C2926",
   "last_updated": "2026-06-15",
-  "provenance_note": "2026-06-15 staleness-audit pass: refreshed 5 efficacy_benchmarks_by_line entries to \u22643yr-current evidence (2L_KRAS_G12C \u2192 KRYSTAL-12 Ph3 PMID 40783289; 1L_ALK_positive \u2192 CROWN 7-yr PMID 42217582; 1L_PD-L1_ge50_mono \u2192 KN-024 5-yr OS 26.3mo PMID 33872070; stage3_consolidation \u2192 PACIFIC 5-yr PMID 35108059 + LAURA cross-link; 1L_EGFR_combination MARIPOSA date/metric fix). All PMIDs independently verified vs PubMed; routed via WS12-style Cat-1/2/3 funnel. Backup: nsclc.staleness-backup-20260615T005049.json.",
+  "provenance_note": "2026-06-15 staleness-audit pass: refreshed 5 efficacy_benchmarks_by_line entries to ≤3yr-current evidence (2L_KRAS_G12C → KRYSTAL-12 Ph3 PMID 40783289; 1L_ALK_positive → CROWN 7-yr PMID 42217582; 1L_PD-L1_ge50_mono → KN-024 5-yr OS 26.3mo PMID 33872070; stage3_consolidation → PACIFIC 5-yr PMID 35108059 + LAURA cross-link; 1L_EGFR_combination MARIPOSA date/metric fix). All PMIDs independently verified vs PubMed; routed via WS12-style Cat-1/2/3 funnel. Backup: nsclc.staleness-backup-20260615T005049.json.",
   "epidemiology": {
     "global_incidence_annual": 2200000,
     "us_incidence_annual": 234580,
@@ -22,7 +22,7 @@
       "BRAF V600E: ~1-3%",
       "HER2 exon 20 insertion: ~2-3%",
       "NRG1 fusion: ~0.5%",
-      "PD-L1 \u226550% (no driver): ~30% of unselected NSCLC",
+      "PD-L1 ≥50% (no driver): ~30% of unselected NSCLC",
       "Squamous histology (fewer targetable drivers): ~25-30%",
       "No actionable driver, PD-L1 <50%: largest unmet-need segment"
     ],
@@ -63,7 +63,7 @@
       },
       "trial": "MARIPOSA",
       "nct": "NCT04487080",
-      "source": "Cho BC et al. NEJM 2024 Oct 24; PMID 38924756. mPFS 23.7 mo amivantamab-lazertinib vs 16.6 mo osimertinib. OS data: Yang JC et al. NEJM 2025; PMID 40923797 \u2014 OS HR 0.75 at interim, mOS not reached vs 36.7 mo osimertinib"
+      "source": "Cho BC et al. NEJM 2024 Oct 24; PMID 38924756. mPFS 23.7 mo amivantamab-lazertinib vs 16.6 mo osimertinib. OS data: Yang JC et al. NEJM 2025; PMID 40923797 — OS HR 0.75 at interim, mOS not reached vs 36.7 mo osimertinib"
     },
     {
       "drug_name": "alectinib",
@@ -161,7 +161,7 @@
       "company": "Merck",
       "modality": "PD-1 checkpoint inhibitor (mAb)",
       "target": "PD-1",
-      "indication_line": "1L NSCLC PD-L1\u226550% monotherapy; 1L non-squamous + pemetrexed/platinum; 1L squamous + paclitaxel/carboplatin; maintenance post-chemo-IO",
+      "indication_line": "1L NSCLC PD-L1≥50% monotherapy; 1L non-squamous + pemetrexed/platinum; 1L squamous + paclitaxel/carboplatin; maintenance post-chemo-IO",
       "fda_approval_date": "2016-10-24",
       "ema_approval_date": null,
       "key_efficacy": {
@@ -169,7 +169,7 @@
         "median_pfs_mo": 10.3,
         "median_os_mo": 30.0
       },
-      "trial": "KEYNOTE-024 (PD-L1\u226550%); KEYNOTE-189 (non-sq); KEYNOTE-407 (sq)",
+      "trial": "KEYNOTE-024 (PD-L1≥50%); KEYNOTE-189 (non-sq); KEYNOTE-407 (sq)",
       "nct": null,
       "source": "KEYNOTE-024: Reck M et al. NEJM 2016; PMID 27718847. ORR 45%, mPFS 10.3 mo. KEYNOTE-189 5yr update: Garassino MC et al. JCO 2023; PMID 36809080. KEYNOTE-407 5yr: Novello S et al. JCO 2023; PMID 36735893"
     },
@@ -215,7 +215,7 @@
       "company": "Regeneron / Sanofi",
       "modality": "PD-1 checkpoint inhibitor (mAb)",
       "target": "PD-1",
-      "indication_line": "1L NSCLC PD-L1\u226550% monotherapy; 1L all-comer + platinum chemo",
+      "indication_line": "1L NSCLC PD-L1≥50% monotherapy; 1L all-comer + platinum chemo",
       "fda_approval_date": "2021-02-22",
       "ema_approval_date": null,
       "key_efficacy": {
@@ -223,9 +223,9 @@
         "median_pfs_mo": 8.2,
         "median_os_mo": 22.1
       },
-      "trial": "EMPOWER-Lung 1 (PD-L1\u226550%); EMPOWER-Lung 3 (+chemo)",
+      "trial": "EMPOWER-Lung 1 (PD-L1≥50%); EMPOWER-Lung 3 (+chemo)",
       "nct": null,
-      "source": "Sezer A et al. Lancet 2021; PMID 33581821 (PD-L1\u226550%): ORR 37%, mPFS 8.2 mo, mOS 22.1 mo. Gogishvili M et al. Nat Med 2022; PMID 36008722 (+chemo)"
+      "source": "Sezer A et al. Lancet 2021; PMID 33581821 (PD-L1≥50%): ORR 37%, mPFS 8.2 mo, mOS 22.1 mo. Gogishvili M et al. Nat Med 2022; PMID 36008722 (+chemo)"
     },
     {
       "drug_name": "sotorasib",
@@ -233,7 +233,7 @@
       "company": "Amgen",
       "modality": "small molecule covalent inhibitor",
       "target": "KRAS G12C",
-      "indication_line": "2L+ KRAS G12C-mutated NSCLC (\u22651 prior therapy)",
+      "indication_line": "2L+ KRAS G12C-mutated NSCLC (≥1 prior therapy)",
       "fda_approval_date": "2021-05-28",
       "ema_approval_date": null,
       "key_efficacy": {
@@ -251,7 +251,7 @@
       "company": "Mirati Therapeutics (acquired by BMS)",
       "modality": "small molecule covalent inhibitor",
       "target": "KRAS G12C",
-      "indication_line": "2L+ KRAS G12C-mutated NSCLC (\u22651 prior therapy)",
+      "indication_line": "2L+ KRAS G12C-mutated NSCLC (≥1 prior therapy)",
       "fda_approval_date": "2022-12-12",
       "ema_approval_date": null,
       "key_efficacy": {
@@ -357,7 +357,7 @@
       "drug_name": "zenocutuzumab",
       "brand": "Bizengri",
       "company": "Partner Therapeutics / Merus",
-      "modality": "bispecific antibody (HER2\u00d7HER3)",
+      "modality": "bispecific antibody (HER2×HER3)",
       "target": "HER2/HER3 (NRG1 fusion)",
       "indication_line": "2L+ NRG1 fusion-positive NSCLC",
       "fda_approval_date": "2024-08-23",
@@ -375,7 +375,7 @@
       "drug_name": "amivantamab",
       "brand": "Rybrevant",
       "company": "Janssen (J&J)",
-      "modality": "bispecific antibody (EGFR\u00d7MET)",
+      "modality": "bispecific antibody (EGFR×MET)",
       "target": "EGFR/MET bispecific",
       "indication_line": "2L+ EGFR exon 20 insertion NSCLC post-platinum; 2L+ EGFR-mutated post-osimertinib+platinum (+ carboplatin/pemetrexed)",
       "fda_approval_date": "2021-05-21",
@@ -495,7 +495,7 @@
       "estimated_readout": "2026-01",
       "primary_endpoint": "Progression-free survival",
       "enrollment": 557,
-      "source": "ClinicalTrials.gov NCT02296125; J\u00e4nne PA et al. NEJM 2026; PMID 41104938. mPFS 25.5 mo osi+chemo vs 16.7 mo osi alone; MATURE OS: mOS 47.5 mo osi+chemo vs 37.6 mo osi alone, OS HR 0.77, p=0.02 (statistically significant)"
+      "source": "ClinicalTrials.gov NCT02296125; Jänne PA et al. NEJM 2026; PMID 41104938. mPFS 25.5 mo osi+chemo vs 16.7 mo osi alone; MATURE OS: mOS 47.5 mo osi+chemo vs 37.6 mo osi alone, OS HR 0.77, p=0.02 (statistically significant)"
     },
     {
       "asset_name": "amivantamab + lazertinib (1L, MARIPOSA)",
@@ -511,7 +511,7 @@
       "estimated_readout": "2025-10",
       "primary_endpoint": "Progression-free survival",
       "enrollment": 1074,
-      "source": "Cho BC et al. NEJM 2024; PMID 38924756. Yang JC et al. NEJM 2025; PMID 40923797. NOTE: NCT04487080 is not present in ct_gov.json 500-study sample \u2014 NCT sourced from publication, not from raw data file"
+      "source": "Cho BC et al. NEJM 2024; PMID 38924756. Yang JC et al. NEJM 2025; PMID 40923797. NOTE: NCT04487080 is not present in ct_gov.json 500-study sample — NCT sourced from publication, not from raw data file"
     },
     {
       "asset_name": "taletrectinib",
@@ -607,7 +607,7 @@
       "estimated_readout": "2027-05",
       "primary_endpoint": "Progression-free survival",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT06074588; Fang W et al. BMJ 2025; PMID 40473437 \u2014 Phase II vs docetaxel in EGFR-mutated NSCLC"
+      "source": "ClinicalTrials.gov NCT06074588; Fang W et al. BMJ 2025; PMID 40473437 — Phase II vs docetaxel in EGFR-mutated NSCLC"
     },
     {
       "asset_name": "datopotamab deruxtecan (Dato-DXd) vs docetaxel (2L expansion)",
@@ -642,9 +642,9 @@
       "source": "ClinicalTrials.gov NCT06422143"
     },
     {
-      "asset_name": "cadonilimab (AK104; PD-1\u00d7CTLA-4 bispecific) for unresectable Stage III NSCLC",
+      "asset_name": "cadonilimab (AK104; PD-1×CTLA-4 bispecific) for unresectable Stage III NSCLC",
       "company": "Akeso",
-      "modality": "bispecific checkpoint inhibitor (PD-1\u00d7CTLA-4)",
+      "modality": "bispecific checkpoint inhibitor (PD-1×CTLA-4)",
       "target": "PD-1/CTLA-4",
       "phase": "Phase 3",
       "combination": "cadonilimab vs sugemalimab consolidation",
@@ -722,12 +722,12 @@
       "source": "ClinicalTrials.gov NCT06908772"
     },
     {
-      "asset_name": "avutometinib + sotorasib (+ defactinib) \u2014 KRAS G12C combination",
+      "asset_name": "avutometinib + sotorasib (+ defactinib) — KRAS G12C combination",
       "company": "Verastem / Amgen",
-      "modality": "RAF/MEK inhibitor + KRAS G12C inhibitor \u00b1 FAK inhibitor",
+      "modality": "RAF/MEK inhibitor + KRAS G12C inhibitor ± FAK inhibitor",
       "target": "KRAS G12C + MEK + FAK",
       "phase": "Phase 1/2",
-      "combination": "avutometinib + sotorasib \u00b1 defactinib",
+      "combination": "avutometinib + sotorasib ± defactinib",
       "indication_subtype": "KRAS G12C-mutated NSCLC",
       "nct": "NCT05074810",
       "trial_name": null,
@@ -759,7 +759,7 @@
       "modality": "anti-TIGIT + anti-PD-1 + chemotherapy",
       "target": "TIGIT + PD-1",
       "phase": "Phase 2",
-      "combination": "domvanalimab (anti-TIGIT) + zimberelimab (anti-PD-1) \u00b1 chemo",
+      "combination": "domvanalimab (anti-TIGIT) + zimberelimab (anti-PD-1) ± chemo",
       "indication_subtype": "1L advanced NSCLC",
       "nct": "NCT04736173",
       "trial_name": null,
@@ -773,7 +773,7 @@
       "class_context_last_updated": "2026-06-08"
     },
     {
-      "asset_name": "CLN-081 (TAS6417) \u2014 EGFR exon 20 insertion",
+      "asset_name": "CLN-081 (TAS6417) — EGFR exon 20 insertion",
       "company": "Cullinan Therapeutics",
       "modality": "small molecule TKI",
       "target": "EGFR exon 20 insertion",
@@ -789,7 +789,7 @@
       "source": "ClinicalTrials.gov NCT04036682"
     },
     {
-      "asset_name": "encorafenib + binimetinib \u2014 BRAF V600E NSCLC",
+      "asset_name": "encorafenib + binimetinib — BRAF V600E NSCLC",
       "company": "Array BioPharma / Pfizer (via Intergroupe Francophone)",
       "modality": "BRAF inhibitor + MEK inhibitor",
       "target": "BRAF V600E + MEK",
@@ -805,7 +805,7 @@
       "source": "ClinicalTrials.gov NCT04526782"
     },
     {
-      "asset_name": "repotrectinib \u2014 ROS1-positive NSCLC with brain metastases",
+      "asset_name": "repotrectinib — ROS1-positive NSCLC with brain metastases",
       "company": "BMS (acquired Turning Point Therapeutics)",
       "modality": "small molecule TKI (ROS1/NTRK/ALK, next-gen)",
       "target": "ROS1/NTRK",
@@ -821,7 +821,7 @@
       "source": "ClinicalTrials.gov NCT06315010"
     },
     {
-      "asset_name": "repotrectinib \u2014 elderly/frail ROS1-positive NSCLC",
+      "asset_name": "repotrectinib — elderly/frail ROS1-positive NSCLC",
       "company": "BMS",
       "modality": "small molecule TKI",
       "target": "ROS1/NTRK",
@@ -837,9 +837,9 @@
       "source": "ClinicalTrials.gov NCT06552234"
     },
     {
-      "asset_name": "REGN5093 \u2014 MET-amplified / MET-overexpressing NSCLC",
+      "asset_name": "REGN5093 — MET-amplified / MET-overexpressing NSCLC",
       "company": "Regeneron",
-      "modality": "bispecific antibody (MET\u00d7MET)",
+      "modality": "bispecific antibody (MET×MET)",
       "target": "MET",
       "phase": "Phase 2",
       "combination": null,
@@ -853,7 +853,7 @@
       "source": "ClinicalTrials.gov NCT04077099"
     },
     {
-      "asset_name": "tepotinib Phase II (VISION) \u2014 MET exon 14",
+      "asset_name": "tepotinib Phase II (VISION) — MET exon 14",
       "company": "EMD Serono / Merck KGaA",
       "modality": "small molecule MET TKI",
       "target": "MET exon 14 skipping / MET amplification",
@@ -869,7 +869,7 @@
       "source": "ClinicalTrials.gov NCT02864992"
     },
     {
-      "asset_name": "TAK-788 (mobocertinib) vs platinum-chemo \u2014 EGFR exon 20ins",
+      "asset_name": "TAK-788 (mobocertinib) vs platinum-chemo — EGFR exon 20ins",
       "company": "Takeda",
       "modality": "small molecule TKI",
       "target": "EGFR exon 20 insertion",
@@ -886,28 +886,28 @@
     },
     {
       "asset_name": "selpercatinib (Retevmo)",
-      "phase": "Phase 3 completed \u2014 adjuvant",
+      "phase": "Phase 3 completed — adjuvant",
       "trial_name": "LIBRETTO-432",
       "company": "Eli Lilly",
       "target": "RET fusion",
       "setting": "adjuvant, early-stage resected RET fusion-positive NSCLC",
       "key_result": "DFS HR 0.17 (83% reduction in progression/death vs placebo); primary endpoint met at ASCO 2026",
-      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant DFS HR in targeted NSCLC to date.",
-      "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected \u2014 potential NDA/sBLA filing.",
+      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) — strongest adjuvant DFS HR in targeted NSCLC to date.",
+      "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected — potential NDA/sBLA filing.",
       "analyst_note": "Full publication pending peer review. ASCO 2026 oral presentation is primary data source.",
       "source": "ASCO 2026 (May 29, 2026); KB event ID 9",
       "last_updated": "2026-06-05"
     },
     {
       "asset_name": "selpercatinib (Retevmo)",
-      "phase": "Phase 3 completed \u2014 adjuvant",
+      "phase": "Phase 3 completed — adjuvant",
       "trial_name": "LIBRETTO-432",
       "company": "Eli Lilly",
       "target": "RET fusion",
       "setting": "adjuvant, early-stage resected RET fusion-positive NSCLC",
       "key_result": "DFS HR 0.17 (83% reduction in progression/death vs placebo); primary endpoint met at ASCO 2026",
-      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant DFS HR in targeted NSCLC to date.",
-      "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected \u2014 potential NDA/sBLA filing.",
+      "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) — strongest adjuvant DFS HR in targeted NSCLC to date.",
+      "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected — potential NDA/sBLA filing.",
       "analyst_note": "Full publication pending peer review. ASCO 2026 oral presentation is primary data source.",
       "source": "ASCO 2026 (May 29, 2026); KB event ID 9",
       "last_updated": "2026-06-05"
@@ -917,12 +917,12 @@
       "phase": "Phase 1 registrational cohort (BTD-bearing)",
       "trial_name": "NCT06040541",
       "company": "Revolution Medicines",
-      "target": "KRAS G12D (GTP-bound active state \u2014 RAS(ON) covalent G12D-selective inhibitor; cyclophilin A tri-complex)",
+      "target": "KRAS G12D (GTP-bound active state — RAS(ON) covalent G12D-selective inhibitor; cyclophilin A tri-complex)",
       "setting": "2L+ NSCLC, KRAS G12D-mutant, post-PD-1/PD-L1 inhibitor and platinum-based chemotherapy",
       "key_result": "ORR 61% in NSCLC KRAS G12D cohort at Phase 1 (AACR 2026, Dec 2025 data cutoff, n=40); BTD granted FDA January 2026 for G12D NSCLC",
-      "calibration_vs_benchmark": "ORR 61% substantially exceeds the NSCLC 2L targeted therapy ORR benchmarks for first-gen G12C agents (sotorasib ORR 28.1%, adagrasib ORR 42.9% in G12C cohorts). Direct comparison not valid (G12D vs G12C population, different line of therapy). China-cohort VS-7375 G12D ORR 68.8% (n=16) provides an independent corroborating signal at similar magnitude \u2014 both suggest G12D-selective NSCLC activity is real.",
-      "significance": "First KRAS G12D-selective agent with FDA BTD in NSCLC. G12D is the dominant KRAS allele in PDAC (~45%) and also present in ~4% NSCLC. Revolution Medicines' companion asset daraxonrasib (RMC-6236, pan-RAS) won RASolute 302 Phase 3 in PDAC at ASCO 2026 \u2014 validates the RAS(ON) TriComplex platform at the highest regulatory evidence standard. Zoldonrasib is the NSCLC-specific G12D asset on a clinically validated platform.",
-      "analyst_note": "Analyst-knowledge-grounded data. Source: AACR 2026 late-breaking abstract (analyst-knowledge; verify NCT06040541 primary publication before ETLM commit). FDA BTD January 2026 is a public action \u2014 verifiable.",
+      "calibration_vs_benchmark": "ORR 61% substantially exceeds the NSCLC 2L targeted therapy ORR benchmarks for first-gen G12C agents (sotorasib ORR 28.1%, adagrasib ORR 42.9% in G12C cohorts). Direct comparison not valid (G12D vs G12C population, different line of therapy). China-cohort VS-7375 G12D ORR 68.8% (n=16) provides an independent corroborating signal at similar magnitude — both suggest G12D-selective NSCLC activity is real.",
+      "significance": "First KRAS G12D-selective agent with FDA BTD in NSCLC. G12D is the dominant KRAS allele in PDAC (~45%) and also present in ~4% NSCLC. Revolution Medicines' companion asset daraxonrasib (RMC-6236, pan-RAS) won RASolute 302 Phase 3 in PDAC at ASCO 2026 — validates the RAS(ON) TriComplex platform at the highest regulatory evidence standard. Zoldonrasib is the NSCLC-specific G12D asset on a clinically validated platform.",
+      "analyst_note": "Analyst-knowledge-grounded data. Source: AACR 2026 late-breaking abstract (analyst-knowledge; verify NCT06040541 primary publication before ETLM commit). FDA BTD January 2026 is a public action — verifiable.",
       "source": "AACR 2026 (updated Phase 1, Dec 2025 cutoff); BTD press release January 2026",
       "last_updated": "2026-06-05"
     },
@@ -932,10 +932,10 @@
       "trial_name": "TROPION-Lung08",
       "company": "Daiichi Sankyo / AstraZeneca + Merck",
       "target": "TROP2 ADC (DXd payload) + PD-1 (pembrolizumab)",
-      "setting": "1L metastatic NSCLC, PD-L1-positive (TPS \u22651%), including EGFR/ALK-negative populations",
+      "setting": "1L metastatic NSCLC, PD-L1-positive (TPS ≥1%), including EGFR/ALK-negative populations",
       "key_result": "Readout anticipated H2 2026 per trop2 class theme. Primary endpoint PFS. Positive would extend Datroway label from 2L (TROPION-Lung01) to 1L PD-L1+ NSCLC.",
-      "calibration_vs_benchmark": "Comparator: pembrolizumab+chemotherapy (KEYNOTE-189/407 standard in 1L). A positive PFS result would establish TROP2 ADC + IO as 1L standard in PD-L1+ NSCLC, displacing or competing with pembrolizumab monotherapy (KEYNOTE-024) and chemo-IO combinations. Naming note: datopotamab deruxtecan brand name = Datroway (TROP2 target) \u2014 distinct from patritumab deruxtecan (HER3 target, no approved brand).",
-      "significance": "Material 1L label expansion for the dato-DXd franchise if positive. Would create a first-line ADC+IO combination SoC in NSCLC \u2014 first such approval in NSCLC if achieved.",
+      "calibration_vs_benchmark": "Comparator: pembrolizumab+chemotherapy (KEYNOTE-189/407 standard in 1L). A positive PFS result would establish TROP2 ADC + IO as 1L standard in PD-L1+ NSCLC, displacing or competing with pembrolizumab monotherapy (KEYNOTE-024) and chemo-IO combinations. Naming note: datopotamab deruxtecan brand name = Datroway (TROP2 target) — distinct from patritumab deruxtecan (HER3 target, no approved brand).",
+      "significance": "Material 1L label expansion for the dato-DXd franchise if positive. Would create a first-line ADC+IO combination SoC in NSCLC — first such approval in NSCLC if achieved.",
       "analyst_note": "This trial is categorically distinct from TROPION-Lung01 (the 2L+ AA-pathway confirmatory). TROPION-Lung08 is a de novo 1L competitive entry. No readout yet confirmed in WS12 KB as of cycle 6.",
       "source": "Trop2 ADC class theme 2026-06-05 (TROPION-Lung08 readout window confirmed); AstraZeneca pipeline",
       "last_updated": "2026-06-05"
@@ -948,7 +948,7 @@
       "target": "EGFR exon 20 insertion (highly selective TKI; minimal wild-type EGFR binding)",
       "setting": "2L+ NSCLC, EGFR exon 20 insertion",
       "key_result": "ORR ~40% (Phase 1/2 expansion; analyst-knowledge-based); manageable tolerability; minimal wild-type EGFR inhibition",
-      "significance": "Best-in-class tolerability design among oral exon 20ins TKIs. Phase 3 decision pending Phase 2 expansion data (~ASCO/ESMO 2026). Blueprint Medicines has established precedent in NSCLC precision oncology (selpercatinib, pralsetinib). Non-China-origin \u2014 COINS Act-insulated.",
+      "significance": "Best-in-class tolerability design among oral exon 20ins TKIs. Phase 3 decision pending Phase 2 expansion data (~ASCO/ESMO 2026). Blueprint Medicines has established precedent in NSCLC precision oncology (selpercatinib, pralsetinib). Non-China-origin — COINS Act-insulated.",
       "analyst_note": "Analyst-knowledge-grounded. Requires verification of NCT and ORR before final ETLM commit.",
       "source": "exon 20ins theme 2026-06-05; Blueprint Medicines pipeline",
       "last_updated": "2026-06-05"
@@ -961,8 +961,8 @@
       "phase": "Phase 3",
       "trial_name": "NCT05668988",
       "key_data_note": "Phase 2 selective exon 20ins activity confirmed; Phase 3 active in catalyst DB, no readout date assigned",
-      "significance": "Second Phase 3 oral TKI in exon 20ins (alongside TAS6417/CLN-081 \u2014 Taiho). Two Ph3 TKIs signal market participants expect room for oral alternative to IV/SC amivantamab.",
-      "regulatory_risk_annotation": "COINS Act / BIOSECURE applies \u2014 Dizal is Shanghai-based; no Western pharma partnership disclosed as of cycle 6. US commercial pathway requires Western partnership or manufacturing restructuring if COINS Act passes. See regulatory_landscape.us_legislative_risks.coins_act_biosecure_convergence.",
+      "significance": "Second Phase 3 oral TKI in exon 20ins (alongside TAS6417/CLN-081 — Taiho). Two Ph3 TKIs signal market participants expect room for oral alternative to IV/SC amivantamab.",
+      "regulatory_risk_annotation": "COINS Act / BIOSECURE applies — Dizal is Shanghai-based; no Western pharma partnership disclosed as of cycle 6. US commercial pathway requires Western partnership or manufacturing restructuring if COINS Act passes. See regulatory_landscape.us_legislative_risks.coins_act_biosecure_convergence.",
       "source": "WS12 cycle 6 exon20ins theme + catalyst DB",
       "last_updated": "2026-06-08"
     },
@@ -977,9 +977,9 @@
       "setting": "NSCLC, 1L KRAS G12C-mutant (vs pembrolizumab + chemotherapy)",
       "phase": "Phase 3",
       "trial_name": "China-only Ph3, FPI Aug 2024",
-      "phase1_2a_data": "ORR 71%, mPFS 12.2 months (Lancet Respiratory Medicine 2025) \u2014 strongest 1L KRAS G12C signal globally to date.",
-      "regulatory_risk_annotation": "Compound risk: (1) China-only Ph3 \u2014 Western applicability unconfirmed; (2) sitneprotafib/JAB-3312 had AbbVie rights returned July 2023; (3) COINS Act applies; (4) Jacobio is HK-listed. US commercial pathway materially uncertain. See regulatory_landscape.us_legislative_risks.",
-      "western_applicability_status": "UNCONFIRMED \u2014 no global Phase 3, no Western partnership disclosed as of cycle 6.",
+      "phase1_2a_data": "ORR 71%, mPFS 12.2 months (Lancet Respiratory Medicine 2025) — strongest 1L KRAS G12C signal globally to date.",
+      "regulatory_risk_annotation": "Compound risk: (1) China-only Ph3 — Western applicability unconfirmed; (2) sitneprotafib/JAB-3312 had AbbVie rights returned July 2023; (3) COINS Act applies; (4) Jacobio is HK-listed. US commercial pathway materially uncertain. See regulatory_landscape.us_legislative_risks.",
+      "western_applicability_status": "UNCONFIRMED — no global Phase 3, no Western partnership disclosed as of cycle 6.",
       "source": "WS12 cycle 6 KRAS class trajectory + SHP2 class themes; Lancet Respiratory Medicine 2025",
       "last_updated": "2026-06-08"
     },
@@ -988,12 +988,12 @@
       "company": "GSK (acquired from Nuvalent, $10.6B deal closed 2026-06)",
       "modality": "small molecule TKI",
       "target": "ROS1 (3rd gen, CNS-penetrant, ROS1-selective)",
-      "phase": "NDA filed \u2014 FDA target action date 18 Sep 2026",
+      "phase": "NDA filed — FDA target action date 18 Sep 2026",
       "combination": "monotherapy",
       "indication_subtype": "ROS1 fusion-positive advanced NSCLC; positioned for post-crizotinib/lorlatinib/repotrectinib resistance with G2032R coverage",
       "nct": "NCT05118789",
       "trial_name": "ARROS-1 (pivotal)",
-      "status": "active \u2014 NDA under review",
+      "status": "active — NDA under review",
       "estimated_readout": "PDUFA 2026-09-18",
       "primary_endpoint": "ORR (TKI-naive and TKI-pretreated cohorts); CNS ORR",
       "enrollment": null,
@@ -1006,12 +1006,12 @@
       "company": "GSK (acquired from Nuvalent, $10.6B deal closed 2026-06)",
       "modality": "small molecule TKI",
       "target": "ALK (4th gen, lorlatinib-resistance coverage incl. G1202R + compound mutations, CNS-penetrant, TRK-sparing)",
-      "phase": "NDA filed \u2014 FDA target action date 27 Nov 2026",
+      "phase": "NDA filed — FDA target action date 27 Nov 2026",
       "combination": "monotherapy",
       "indication_subtype": "ALK-positive advanced NSCLC, including post-2nd/3rd-gen ALK TKI (lorlatinib-resistant) setting",
       "nct": null,
       "trial_name": "ALKOVE-1 (pivotal)",
-      "status": "active \u2014 NDA under review",
+      "status": "active — NDA under review",
       "estimated_readout": "PDUFA 2026-11-27",
       "primary_endpoint": "ORR (TKI-pretreated; ALK G1202R + compound mutation cohorts)",
       "enrollment": null,
@@ -1068,7 +1068,7 @@
       "enrollment": null,
       "source": "Nat Rev Cancer TPD review (DOI 10.1038/s41568-025-00817-8), Table 1. analyst-known, verify CTR20241691 + sponsor/INN. China-only registry ID, no NCT.",
       "sponsor_note": "China-origin EGFR-PROTAC. COINS Act / BIOSECURE consideration applies.",
-      "verify_note": "Canonical code HJM-561 (Jing Medicine Technology). Aliases ONPR-04 / HJ-002-03 UNVERIFIED \u2014 do not assert without sponsor/DOI confirmation (J15)."
+      "verify_note": "Canonical code HJM-561 (Jing Medicine Technology). Aliases ONPR-04 / HJ-002-03 UNVERIFIED — do not assert without sponsor/DOI confirmation (J15)."
     },
     {
       "asset_name": "CFT1946",
@@ -1120,7 +1120,7 @@
       "primary_endpoint": "ORR / PFS",
       "enrollment": null,
       "source": "Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282. analyst-known, verify: reported mPFS 23.8 mo, RR 67% in treatment-naive NSCLC; CD8+ T-cell proliferative burst with reduced exhaustion. Efficacy numbers review-cited, verify before benchmark use.",
-      "sponsor_note": "JAK1+IO combo rationale: JAK inhibition reduces CD8 exhaustion, potentiating PD-1 blockade where JAK monotherapy fails. mPFS 23.8 mo is competitive if confirmed but single Ph2 \u2014 do not anchor benchmarks."
+      "sponsor_note": "JAK1+IO combo rationale: JAK inhibition reduces CD8 exhaustion, potentiating PD-1 blockade where JAK monotherapy fails. mPFS 23.8 mo is competitive if confirmed but single Ph2 — do not anchor benchmarks."
     },
     {
       "asset_name": "golidocitinib",
@@ -1154,7 +1154,7 @@
       "primary_endpoint": "Efficacy",
       "enrollment": null,
       "source": "Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), Table 2, p.283. analyst-known, verify NCT. Antisense modality distinct from small-molecule JAK inhibitors.",
-      "sponsor_note": "Antisense/STAT3 modality \u2014 distinct mechanism class in NSCLC."
+      "sponsor_note": "Antisense/STAT3 modality — distinct mechanism class in NSCLC."
     },
     {
       "asset_name": "intismeran autogene (mRNA-4157 / V940)",
@@ -1189,7 +1189,7 @@
       "primary_endpoint": "Safety",
       "enrollment": null,
       "source": "Nat Rev Drug Discov mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7), Table 2. analyst-known, verify NCT05142189. Off-the-shelf shared-antigen class; NSCLC analogue to BioNTech BNT111 in melanoma.",
-      "sponsor_note": "Shared-antigen (off-the-shelf) mRNA vaccine \u2014 key alternative class to intismeran's personalised approach; sets up shared-vs-personalised mRNA fork in NSCLC."
+      "sponsor_note": "Shared-antigen (off-the-shelf) mRNA vaccine — key alternative class to intismeran's personalised approach; sets up shared-vs-personalised mRNA fork in NSCLC."
     },
     {
       "asset_name": "calderasib (MK-1084) + durvalumab",
@@ -1206,7 +1206,7 @@
       "primary_endpoint": "PFS / OS",
       "enrollment": null,
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 HR batch 2026-06-14, no-efficacy pipeline add)",
+      "note": "trial_start only — no efficacy readout yet (WS12 HR batch 2026-06-14, no-efficacy pipeline add)",
       "source": "ClinicalTrials.gov NCT07554339"
     },
     {
@@ -1224,13 +1224,13 @@
       "primary_endpoint": "PFS",
       "enrollment": null,
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 HR batch 2026-06-14, no-efficacy pipeline add)",
+      "note": "trial_start only — no efficacy readout yet (WS12 HR batch 2026-06-14, no-efficacy pipeline add)",
       "source": "ClinicalTrials.gov NCT07541170"
     },
     {
-      "asset_name": "BL-B01D1 (EGFR\u00d7HER3 bispecific ADC)",
+      "asset_name": "BL-B01D1 (EGFR×HER3 bispecific ADC)",
       "company": "Sichuan Baili / SystImmune (China)",
-      "modality": "EGFR\u00d7HER3 bispecific ADC",
+      "modality": "EGFR×HER3 bispecific ADC",
       "target": "EGFR + HER3",
       "phase": "Phase 3",
       "combination": "+ osimertinib (EGFR-mutant cohorts)",
@@ -1239,7 +1239,7 @@
       "trial_name": "BL-B01D1 + osimertinib Ph3 (dual NSCLC cohorts)",
       "status": "RECRUITING",
       "estimated_readout": null,
-      "primary_endpoint": "PFS (trial-start \u2014 no efficacy readout yet)",
+      "primary_endpoint": "PFS (trial-start — no efficacy readout yet)",
       "enrollment": null,
       "source": "ClinicalTrials.gov NCT06838273 / NCT07640789 (verified 2026-06-14)",
       "geo_origin_risk": {
@@ -1325,7 +1325,7 @@
       "primary_endpoint": "Objective response rate / progression-free survival",
       "enrollment": null,
       "source": "ClinicalTrials.gov NCT07155187 (+ NCT07005102, NCT06772623); fresh fetch 2026-06-20. Pipeline trigger: Lung_Cancer.pdf p.29 (telisotuzumab AbbVie, c-Met, Phase III, 2023-09)",
-      "sponsor_note": "DISTINCT asset from telisotuzumab vedotin (Emrelis, MMAE payload). ABBV-400 uses a Topo-I/DXd-class payload \u2014 next-gen c-Met ADC; the ETLM's c-Met ADC framing only references the MMAE generation."
+      "sponsor_note": "DISTINCT asset from telisotuzumab vedotin (Emrelis, MMAE payload). ABBV-400 uses a Topo-I/DXd-class payload — next-gen c-Met ADC; the ETLM's c-Met ADC framing only references the MMAE generation."
     },
     {
       "asset_name": "olomorasib (LY3537982)",
@@ -1359,7 +1359,7 @@
       "primary_endpoint": "Progression-free survival vs docetaxel",
       "enrollment": null,
       "source": "ClinicalTrials.gov NCT05132075 (KontRASt-02); fresh fetch 2026-06-20. Pipeline trigger: Lung_Cancer.pdf p.74 (opnurasib Novartis, KRAS G12C, Phase III, 2023-09)",
-      "sponsor_note": "Novartis G12C; Ph3 head-to-head vs docetaxel. Crowded G12C class \u2014 competitive context belongs in ecosystem notes."
+      "sponsor_note": "Novartis G12C; Ph3 head-to-head vs docetaxel. Crowded G12C class — competitive context belongs in ecosystem notes."
     },
     {
       "asset_name": "fulzerasib (GFH925 / IBI351)",
@@ -1368,15 +1368,15 @@
       "target": "KRAS G12C",
       "phase": "Approved (EU + China); Phase 2/3 combinations ongoing",
       "combination": "+ cetuximab and other combos",
-      "indication_subtype": "KRAS G12C-mutated NSCLC (\u22652L; combinations in earlier lines)",
+      "indication_subtype": "KRAS G12C-mutated NSCLC (≥2L; combinations in earlier lines)",
       "nct": "NCT07601048",
       "trial_name": null,
-      "status": "EC-approved Nov 2024; China NMPA-approved \u22652L NSCLC. Combination trials ongoing per CT.gov 2026-06.",
+      "status": "EC-approved Nov 2024; China NMPA-approved ≥2L NSCLC. Combination trials ongoing per CT.gov 2026-06.",
       "estimated_readout": null,
       "primary_endpoint": "Objective response rate (registrational); PFS (combos)",
       "enrollment": null,
       "source": "ClinicalTrials.gov NCT07601048; EMA approval Nov 2024; fresh fetch 2026-06-20. Pipeline trigger: Lung_Cancer.pdf KRAS G12C cluster, 2023-09 vintage",
-      "sponsor_note": "EU + China approved G12C TKI \u2014 a fourth approved-class entrant (after sotorasib/adagrasib) but EU/China geography; geo-origin context relevant.",
+      "sponsor_note": "EU + China approved G12C TKI — a fourth approved-class entrant (after sotorasib/adagrasib) but EU/China geography; geo-origin context relevant.",
       "geo_origin_risk": {
         "origin": "China",
         "exposure": "COINS Act / BIOSECURE legislative risk",
@@ -1390,18 +1390,18 @@
       "target": "KRAS G12C",
       "phase": "Approved (China, conditional); Phase 2 post-approval combos",
       "combination": null,
-      "indication_subtype": "\u22652L KRAS G12C-mutated NSCLC",
+      "indication_subtype": "≥2L KRAS G12C-mutated NSCLC",
       "nct": "NCT07294261",
       "trial_name": null,
-      "status": "China NMPA conditional approval Feb 2025 (\u22652L); post-approval Ph2 trials per CT.gov 2026-06.",
+      "status": "China NMPA conditional approval Feb 2025 (≥2L); post-approval Ph2 trials per CT.gov 2026-06.",
       "estimated_readout": null,
       "primary_endpoint": "Objective response rate",
       "enrollment": null,
       "source": "ClinicalTrials.gov NCT07294261; China NMPA approval Feb 2025; fresh fetch 2026-06-20. Pipeline trigger: Lung_Cancer.pdf KRAS G12C cluster, 2023-09 vintage",
-      "sponsor_note": "China-approved G12C; China-origin asset. Adds to the already-crowded G12C field \u2014 ecosystem crowding note, not per-asset efficacy claim."
+      "sponsor_note": "China-approved G12C; China-origin asset. Adds to the already-crowded G12C field — ecosystem crowding note, not per-asset efficacy claim."
     },
     {
-      "asset_name": "furmonertinib (firmonertinib, AST2818) \u2014 EGFR exon 20 insertion (FURVENT)",
+      "asset_name": "furmonertinib (firmonertinib, AST2818) — EGFR exon 20 insertion (FURVENT)",
       "company": "ArriVent BioPharma / Allist Pharmaceuticals",
       "modality": "small molecule 3rd-gen EGFR TKI (brain-penetrant; exon 20 ins activity)",
       "target": "EGFR (exon 20 insertion)",
@@ -1420,7 +1420,7 @@
         "origin": "China",
         "exposure": "China-origin (Allist Pharmaceuticals); COINS Act / BIOSECURE legislative risk",
         "as_of": "2026-06-21",
-        "note": "ASCO 2026 CNS meta-analysis efficacy figures unverifiable \u2014 efficacy deferred until abstract ID supplied"
+        "note": "ASCO 2026 CNS meta-analysis efficacy figures unverifiable — efficacy deferred until abstract ID supplied"
       }
     },
     {
@@ -1496,7 +1496,7 @@
       "indication_subtype": "KRAS-mutated NSCLC",
       "nct": "NCT07562581",
       "trial_name": null,
-      "status": "Phase 2, NOT_YET_RECRUITING \u2014 trial_start only, no efficacy readout yet",
+      "status": "Phase 2, NOT_YET_RECRUITING — trial_start only, no efficacy readout yet",
       "estimated_readout": null,
       "primary_endpoint": "ORR (RECIST v1.1)",
       "enrollment": 48,
@@ -1522,7 +1522,7 @@
       "primary_endpoint": "DFS",
       "enrollment": null,
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 cycle58). Distinct ADJUVANT setting from the advanced divarasib P3 row (NCT07541170). First KRAS G12C TKI moving into the adjuvant NSCLC setting; benchmark DFS bar ADAURA/ALINA <0.25.",
+      "note": "trial_start only — no efficacy readout yet (WS12 cycle58). Distinct ADJUVANT setting from the advanced divarasib P3 row (NCT07541170). First KRAS G12C TKI moving into the adjuvant NSCLC setting; benchmark DFS bar ADAURA/ALINA <0.25.",
       "source": "CT.gov active-development trial (event 1216, 2026-09-01 planned start)",
       "sources": [
         {
@@ -1548,8 +1548,8 @@
       "source_year": 2026,
       "human_decision": null,
       "panel_decision": null,
-      "sponsor_note": "Status ambiguous \u2014 no development activities reported for CM-701/CM-486 as of 2025; structures unpublished. Kept as watchlist signal, not pipeline, per disclosed-only status.",
-      "verify_note": "Sponsor ambiguous \u2014 BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)."
+      "sponsor_note": "Status ambiguous — no development activities reported for CM-701/CM-486 as of 2025; structures unpublished. Kept as watchlist signal, not pipeline, per disclosed-only status.",
+      "verify_note": "Sponsor ambiguous — BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)."
     },
     {
       "asset_name": "CM-486",
@@ -1563,22 +1563,22 @@
       "source_year": 2026,
       "human_decision": null,
       "panel_decision": null,
-      "sponsor_note": "Status ambiguous \u2014 no development activities reported as of 2025; structures unpublished.",
-      "verify_note": "Sponsor ambiguous \u2014 BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)."
+      "sponsor_note": "Status ambiguous — no development activities reported as of 2025; structures unpublished.",
+      "verify_note": "Sponsor ambiguous — BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)."
     },
     {
       "asset_name": "RLT class (radioligand therapy) in NSCLC",
       "company": "multiple (incl. Telix/Precirix RAD204 PD-L1 nanobody)",
       "modality": "radioligand therapy (RLT)",
-      "target": "DLL3 (lung-neuroendocrine overlap), HER2, FR\u03b1, EGFR/cMET, PD-L1 (RAD204 nanobody)",
+      "target": "DLL3 (lung-neuroendocrine overlap), HER2, FRα, EGFR/cMET, PD-L1 (RAD204 nanobody)",
       "stage": "clinical-stage development (asset-level NCTs/phase TBD)",
-      "evidence_summary": "NSCLC is one of >20 cancer types with active clinical-stage RLT development per RLT modality landscape review (Fig 2b). Active NSCLC RLT targets: DLL3 (overlap with SCLC neuroendocrine biology), HER2, FR\u03b1, EGFR/cMET, and PD-L1 (RAD204 nanobody, Telix/Precirix). PD-L1-targeted nanobody RLT (RAD204) is the most novel entry given PD-L1's established status as an IO target. Lung-neuroendocrine subset called out as distinct from NSCLC in source.",
+      "evidence_summary": "NSCLC is one of >20 cancer types with active clinical-stage RLT development per RLT modality landscape review (Fig 2b). Active NSCLC RLT targets: DLL3 (overlap with SCLC neuroendocrine biology), HER2, FRα, EGFR/cMET, and PD-L1 (RAD204 nanobody, Telix/Precirix). PD-L1-targeted nanobody RLT (RAD204) is the most novel entry given PD-L1's established status as an IO target. Lung-neuroendocrine subset called out as distinct from NSCLC in source.",
       "source": "Nature Reviews Drug Discovery RLT modality review (DOI 10.1038/d41573-025-00096-w), p.2 Fig 2b. analyst-known, verify asset-level NCTs/phase.",
       "positioning": "Emerging modality signal; PD-L1 nanobody RLT (RAD204) most novel.",
       "source_year": 2025,
       "human_decision": null,
       "panel_decision": null,
-      "sponsor_note": "Light review-level signal; no asset-level NCT/phase yet \u2014 watchlist until specific NSCLC assets identified."
+      "sponsor_note": "Light review-level signal; no asset-level NCT/phase yet — watchlist until specific NSCLC assets identified."
     }
   ],
   "mechanism_landscape": [
@@ -1659,14 +1659,14 @@
     },
     {
       "target": "KRAS G12C",
-      "drug_class": "Covalent KRAS G12C inhibitors (KRASG12Ci) \u00b1 combination",
+      "drug_class": "Covalent KRAS G12C inhibitors (KRASG12Ci) ± combination",
       "approved_assets": [
         "sotorasib (Lumakras)",
         "adagrasib (Krazati)"
       ],
       "pipeline_count_ph2": 2,
       "pipeline_count_ph3": 1,
-      "leading_pipeline_asset": "daraxonrasib (RMC-6236) pan-RAS \u2014 RASolve 301 (NCT06881784)",
+      "leading_pipeline_asset": "daraxonrasib (RMC-6236) pan-RAS — RASolve 301 (NCT06881784)",
       "efficacy_benchmark": {
         "orr_pct": 43,
         "pfs_mo": 6.5,
@@ -1734,7 +1734,7 @@
       ],
       "pipeline_count_ph2": 6,
       "pipeline_count_ph3": 5,
-      "leading_pipeline_asset": "cadonilimab (PD-1\u00d7CTLA-4, NCT06617416); ivonescimab (PD-1\u00d7VEGF); domvanalimab+zimberelimab (TIGIT+PD-1)",
+      "leading_pipeline_asset": "cadonilimab (PD-1×CTLA-4, NCT06617416); ivonescimab (PD-1×VEGF); domvanalimab+zimberelimab (TIGIT+PD-1)",
       "efficacy_benchmark": {
         "orr_pct": 45,
         "pfs_mo": 10.3,
@@ -1762,7 +1762,7 @@
       "target": "HER2 (exon 20 insertion / overexpression)",
       "drug_class": "HER2-directed ADCs, TKIs, bispecifics",
       "approved_assets": [
-        "trastuzumab deruxtecan (T-DXd/Enhertu \u2014 FDA approved 2022 for HER2-mutated NSCLC)"
+        "trastuzumab deruxtecan (T-DXd/Enhertu — FDA approved 2022 for HER2-mutated NSCLC)"
       ],
       "pipeline_count_ph2": 1,
       "pipeline_count_ph3": 0,
@@ -1776,7 +1776,7 @@
     },
     {
       "target": "NRG1 fusion (HER2/HER3 signalling)",
-      "drug_class": "HER2\u00d7HER3 bispecific antibodies",
+      "drug_class": "HER2×HER3 bispecific antibodies",
       "approved_assets": [
         "zenocutuzumab (Bizengri, NRG1 fusion NSCLC 2024)"
       ],
@@ -1788,13 +1788,13 @@
         "pfs_mo": 6.8,
         "os_mo": null
       },
-      "key_resistance_mechanism": "Rare mutation \u2014 resistance biology poorly characterised"
+      "key_resistance_mechanism": "Rare mutation — resistance biology poorly characterised"
     },
     {
       "target": "BRAF V600E",
       "drug_class": "BRAF + MEK inhibitor combination",
       "approved_assets": [
-        "dabrafenib + trametinib (Tafinlar + Mekinist \u2014 FDA approved 2017)"
+        "dabrafenib + trametinib (Tafinlar + Mekinist — FDA approved 2017)"
       ],
       "pipeline_count_ph2": 1,
       "pipeline_count_ph3": 0,
@@ -1869,7 +1869,7 @@
         "pfs_mo": null,
         "os_mo": null
       },
-      "key_resistance_mechanism": "Mechanism: JAK inhibition reduces CD8+ T-cell exhaustion markers and dampens chronic IFN-I responsiveness (which correlates with inferior survival), potentiating PD-1 blockade \u2014 explains why JAK monotherapy fails but JAK+IO combos show signal in NSCLC. Source: Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282; cGAS-STING review (DOI 10.1038/s41568-025-00894-9), p.209. analyst-known, verify efficacy numbers."
+      "key_resistance_mechanism": "Mechanism: JAK inhibition reduces CD8+ T-cell exhaustion markers and dampens chronic IFN-I responsiveness (which correlates with inferior survival), potentiating PD-1 blockade — explains why JAK monotherapy fails but JAK+IO combos show signal in NSCLC. Source: Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282; cGAS-STING review (DOI 10.1038/s41568-025-00894-9), p.209. analyst-known, verify efficacy numbers."
     },
     {
       "target": "EGFR / BRAF / ALK targeted protein degradation (TPD)",
@@ -1883,11 +1883,11 @@
         "pfs_mo": null,
         "os_mo": null
       },
-      "key_resistance_mechanism": "Differentiation thesis (preclinical): degraders' catalytic mode means residual ligand affinity is sufficient to drive degradation even against occupancy-resistance mutants (EGFR C797S, T790M+C797S double mutant, ALK G1202R/L1196M) that escape occupancy-based inhibitors; degradation also ablates kinase-independent scaffolding functions. Read-across to BTK-PROTAC vs ibrutinib-resistant BTK-C481S precedent. Compound EGFR mutations remain 'particularly difficult to treat' \u2014 degraders are 'a logical next step' but superiority vs next-gen inhibitors 'remains an open question'. China dominates clinical-stage EGFR-PROTAC pipeline. No Ph1 readouts vs osimertinib-failed patients yet. Sources: Nat Rev Drug Discov kinase-modulator review (DOI 10.1038/s41573-026-01411-9); Nat Rev Cancer TPD review (DOI 10.1038/s41568-025-00817-8). analyst-known, verify."
+      "key_resistance_mechanism": "Differentiation thesis (preclinical): degraders' catalytic mode means residual ligand affinity is sufficient to drive degradation even against occupancy-resistance mutants (EGFR C797S, T790M+C797S double mutant, ALK G1202R/L1196M) that escape occupancy-based inhibitors; degradation also ablates kinase-independent scaffolding functions. Read-across to BTK-PROTAC vs ibrutinib-resistant BTK-C481S precedent. Compound EGFR mutations remain 'particularly difficult to treat' — degraders are 'a logical next step' but superiority vs next-gen inhibitors 'remains an open question'. China dominates clinical-stage EGFR-PROTAC pipeline. No Ph1 readouts vs osimertinib-failed patients yet. Sources: Nat Rev Drug Discov kinase-modulator review (DOI 10.1038/s41573-026-01411-9); Nat Rev Cancer TPD review (DOI 10.1038/s41568-025-00817-8). analyst-known, verify."
     },
     {
       "target": "cGAS-STING axis (innate immune)",
-      "drug_class": "STING agonists \u00b1 hypomethylating agents; downstream IRF3-IFN-I strategies",
+      "drug_class": "STING agonists ± hypomethylating agents; downstream IRF3-IFN-I strategies",
       "approved_assets": [],
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 0,
@@ -1897,11 +1897,11 @@
         "pfs_mo": null,
         "os_mo": null
       },
-      "key_resistance_mechanism": "Mechanistic framing (no clinical-stage NSCLC asset named): (1) STING promoter hypermethylation (DNMT1/EZH2-driven) occurs in dormant lung-adeno tumour cells and accelerates metastatic outbreak; STING agonists alone eliminate dormant metastases T-/NK-cell-dependently \u2014 rationale for STING-agonist + hypomethylating-agent combo in post-resection adjuvant / MRD-positive NSCLC. (2) Recurrent STING loss in lung adenocarcinoma is a structural barrier to STING-agonist monotherapy, supporting demethylation, tumour-targeted ADC delivery, or downstream IRF3-IFN-I targeting. (3) ERCC1-deficient NSCLC accumulates cytosolic dsDNA and engages cGAS-STING \u2014 candidate STING-engagement stratification biomarker (ERCC1 IHC not yet routine). Source: Lu C, Wang W, Fu Y-X. Nat Rev Cancer 26, 200-216 (2026); DOI 10.1038/s41568-025-00894-9, p.205-209. analyst-known, verify."
+      "key_resistance_mechanism": "Mechanistic framing (no clinical-stage NSCLC asset named): (1) STING promoter hypermethylation (DNMT1/EZH2-driven) occurs in dormant lung-adeno tumour cells and accelerates metastatic outbreak; STING agonists alone eliminate dormant metastases T-/NK-cell-dependently — rationale for STING-agonist + hypomethylating-agent combo in post-resection adjuvant / MRD-positive NSCLC. (2) Recurrent STING loss in lung adenocarcinoma is a structural barrier to STING-agonist monotherapy, supporting demethylation, tumour-targeted ADC delivery, or downstream IRF3-IFN-I targeting. (3) ERCC1-deficient NSCLC accumulates cytosolic dsDNA and engages cGAS-STING — candidate STING-engagement stratification biomarker (ERCC1 IHC not yet routine). Source: Lu C, Wang W, Fu Y-X. Nat Rev Cancer 26, 200-216 (2026); DOI 10.1038/s41568-025-00894-9, p.205-209. analyst-known, verify."
     },
     {
       "target": "Therapeutic cancer vaccines (mRNA / peptide / DC)",
-      "drug_class": "Personalised neoantigen mRNA + shared-antigen mRNA + peptide/DC vaccines (\u00b1 checkpoint blockade)",
+      "drug_class": "Personalised neoantigen mRNA + shared-antigen mRNA + peptide/DC vaccines (± checkpoint blockade)",
       "approved_assets": [],
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 1,
@@ -1911,78 +1911,78 @@
         "pfs_mo": null,
         "os_mo": null
       },
-      "key_resistance_mechanism": "Framing: NSCLC is the #2 indication for therapeutic cancer vaccines after melanoma \u2014 ~two dozen NSCLC-directed therapeutic cancer-vaccine agents in active clinical development (inclusion: Ph1\u20133; DC / peptide / mRNA / viral-vector platforms; NSCLC named as a target indication, incl. pan-tumor baskets with an NSCLC cohort; EXCLUDES preclinical-only and discontinued programs) per WS13 cancer-vaccine + mRNA reviews (2026) \u2014 landscape-density estimate, not enumerated in-draft; the ETLM profiles the lead agents (intismeran Ph3, BNT116 Ph1) individually. Platform diversity reflects high-TMB neoantigen feasibility plus shared-TAA (MUC1, viral antigens) optionality. Central open question: whether NSCLC has sufficient neoantigen diversity to favour personalised (intismeran) over shared (BNT116) approaches \u2014 lower TMB in non-smokers is a concern. No Phase III NSCLC vaccine readout yet anchors the field; checkpoint-combination is the dominant clinical hypothesis carried from melanoma's mRNA-4157 validation. Sources: Nat Rev Drug Discov cancer-vaccine landscape (DOI 10.1038/d41573-026-00063-z), p.5; mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7). analyst-known, verify."
+      "key_resistance_mechanism": "Framing: NSCLC is the #2 indication for therapeutic cancer vaccines after melanoma — ~two dozen NSCLC-directed therapeutic cancer-vaccine agents in active clinical development (inclusion: Ph1–3; DC / peptide / mRNA / viral-vector platforms; NSCLC named as a target indication, incl. pan-tumor baskets with an NSCLC cohort; EXCLUDES preclinical-only and discontinued programs) per WS13 cancer-vaccine + mRNA reviews (2026) — landscape-density estimate, not enumerated in-draft; the ETLM profiles the lead agents (intismeran Ph3, BNT116 Ph1) individually. Platform diversity reflects high-TMB neoantigen feasibility plus shared-TAA (MUC1, viral antigens) optionality. Central open question: whether NSCLC has sufficient neoantigen diversity to favour personalised (intismeran) over shared (BNT116) approaches — lower TMB in non-smokers is a concern. No Phase III NSCLC vaccine readout yet anchors the field; checkpoint-combination is the dominant clinical hypothesis carried from melanoma's mRNA-4157 validation. Sources: Nat Rev Drug Discov cancer-vaccine landscape (DOI 10.1038/d41573-026-00063-z), p.5; mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7). analyst-known, verify."
     }
   ],
   "unmet_needs": [
     {
-      "need": "Post-osimertinib resistance \u2014 no approved standard 2L for EGFR-mutant NSCLC after 3rd-gen TKI progression",
+      "need": "Post-osimertinib resistance — no approved standard 2L for EGFR-mutant NSCLC after 3rd-gen TKI progression",
       "severity": "critical",
       "patient_fraction": "All EGFR-mutant patients (~50% of East Asian, ~15-20% Western patients) eventually progress on osimertinib. No approved 2L targeted agent in this setting except amivantamab+lazertinib for osimertinib-resistant disease (MARIPOSA-2) or amivantamab+carbo-peme for specific platinum-eligible patients.",
       "leading_approaches": "MET-targeted combinations (glumetinib+osimertinib for MET-amp); TROP2 ADCs (Dato-DXd approved for EGFR-mutant post TKI+plat; sacituzumab tirumotecan Ph3); broader biomarker-directed 2L studies"
     },
     {
-      "need": "KRAS G12C durability \u2014 rapid resistance to single-agent KRASG12Ci (mPFS 6-7 months vs 18+ months for EGFR TKIs)",
+      "need": "KRAS G12C durability — rapid resistance to single-agent KRASG12Ci (mPFS 6-7 months vs 18+ months for EGFR TKIs)",
       "severity": "high",
       "patient_fraction": "~13% of all NSCLC; largest oncogenic driver in squamous-like adenocarcinoma",
       "leading_approaches": "KRAS+SOS1 inhibition; KRAS+EGFR; KRAS+MEK (avutometinib+sotorasib NCT05074810); pan-RAS inhibition (daraxonrasib RASolve 301 NCT06881784)"
     },
     {
-      "need": "KRAS non-G12C mutations (G12D, G12V, other) \u2014 no approved targeted therapy",
+      "need": "KRAS non-G12C mutations (G12D, G12V, other) — no approved targeted therapy",
       "severity": "high",
       "patient_fraction": "~12% of all NSCLC",
       "leading_approaches": "KRAS G12D inhibitor setidegrasib (ASP3082) Ph3 NCT07566052; pan-RAS inhibition (daraxonrasib); elironrasib"
     },
     {
-      "need": "Brain metastases (intracranial control) \u2014 present in ~25-40% of advanced NSCLC at some point; specific unmet need in post-osimertinib and ROS1/ALK settings",
+      "need": "Brain metastases (intracranial control) — present in ~25-40% of advanced NSCLC at some point; specific unmet need in post-osimertinib and ROS1/ALK settings",
       "severity": "high",
       "patient_fraction": "~30-40% of metastatic NSCLC patients across all drivers",
       "leading_approaches": "Repotrectinib IC-ORR trials (NCT06315010 for ROS1+BM); lorlatinib deep IC penetration; amivantamab SC + lazertinib IC efficacy data; leptomeningeal metastasis studies (NCT06971406)"
     },
     {
-      "need": "Squamous NSCLC \u2014 fewer targetable drivers (~5% EGFR, minimal RAS), limited ADC options, historically poor outcomes",
+      "need": "Squamous NSCLC — fewer targetable drivers (~5% EGFR, minimal RAS), limited ADC options, historically poor outcomes",
       "severity": "high",
       "patient_fraction": "~25-30% of all NSCLC",
-      "leading_approaches": "Pembrolizumab + chemo (KEYNOTE-407); TROP2 ADCs (Dato-DXd and sac-TMT in all-comer or squamous-specific trials); cadonilimab combinations; ivonescimab (PD-1\u00d7VEGF \u2014 HARMONi-A in EGFR-mutant but HARMONi-2 in squamous)"
+      "leading_approaches": "Pembrolizumab + chemo (KEYNOTE-407); TROP2 ADCs (Dato-DXd and sac-TMT in all-comer or squamous-specific trials); cadonilimab combinations; ivonescimab (PD-1×VEGF — HARMONi-A in EGFR-mutant but HARMONi-2 in squamous)"
     },
     {
-      "need": "STK11/KEAP1 co-mutated NSCLC \u2014 primary immunotherapy resistance; ~20% of lung adenocarcinoma; poor survival with IO-based regimens",
+      "need": "STK11/KEAP1 co-mutated NSCLC — primary immunotherapy resistance; ~20% of lung adenocarcinoma; poor survival with IO-based regimens",
       "severity": "high",
       "patient_fraction": "~20% of non-squamous NSCLC",
       "leading_approaches": "DRP-104 (glutamine antagonist targeting KEAP1/NFE2L2-altered NSCLC, NCT07249372); novel IO combinations; TNG462+RMC-9805 (NCT06922591)"
     },
     {
-      "need": "MRD / ctDNA monitoring \u2014 liquid biopsy-guided treatment adaptation not yet standard; no approved ctDNA-guided de-escalation strategy",
+      "need": "MRD / ctDNA monitoring — liquid biopsy-guided treatment adaptation not yet standard; no approved ctDNA-guided de-escalation strategy",
       "severity": "medium",
       "patient_fraction": "Applicable to all NSCLC stages",
       "leading_approaches": "PALACE trial (NCT06917573, ctDNA-guided cemiplimab strategy); ADAPT Lung (NCT07120698, MRD-guided adjuvant sintilimab); multiple ctDNA-directed perioperative studies"
     },
     {
-      "need": "Elderly/frail patients (PS 2+) \u2014 heavily underrepresented in pivotal trials; chemotherapy toxicity limits standard doublet use",
+      "need": "Elderly/frail patients (PS 2+) — heavily underrepresented in pivotal trials; chemotherapy toxicity limits standard doublet use",
       "severity": "medium",
       "patient_fraction": "~30% of NSCLC patients are 75+; significant PS2 cohort",
       "leading_approaches": "Reduced-dose carboplatin-doublet + cemiplimab (NCT07020065); dose-attenuated chemo (NCT05800587); repotrectinib in elderly ROS1+ (NCT06552234)"
     },
     {
-      "need": "ILD risk-management for DXd / TOPO1-payload ADCs in NSCLC \u2014 interstitial lung disease is now understood as a payload-class effect, not a HER2-specific issue",
+      "need": "ILD risk-management for DXd / TOPO1-payload ADCs in NSCLC — interstitial lung disease is now understood as a payload-class effect, not a HER2-specific issue",
       "severity": "high",
       "patient_fraction": "All NSCLC patients receiving DXd-payload ADCs (TROP2, HER3, HER2)",
-      "leading_approaches": "Per Zippelius A et al. Nat Rev Cancer 25, 925-944 (2025; DOI 10.1038/s41568-025-00869-w): ILD originally seen with anti-HER2 ADCs (T-DM1, T-DXd) now appears across DXd-family TOPO1-payload ADCs regardless of target \u2014 datopotamab deruxtecan (TROP2) and patritumab deruxtecan (HER3) both show ILD signals. Mechanism: high payload retention on alveolar macrophages via FcgammaR uptake + low baseline antigen on respiratory epithelium. Any next-gen DXd-payload ADC entering NSCLC needs an upfront ILD risk-management strategy. analyst-known, verify."
+      "leading_approaches": "Per Zippelius A et al. Nat Rev Cancer 25, 925-944 (2025; DOI 10.1038/s41568-025-00869-w): ILD originally seen with anti-HER2 ADCs (T-DM1, T-DXd) now appears across DXd-family TOPO1-payload ADCs regardless of target — datopotamab deruxtecan (TROP2) and patritumab deruxtecan (HER3) both show ILD signals. Mechanism: high payload retention on alveolar macrophages via FcgammaR uptake + low baseline antigen on respiratory epithelium. Any next-gen DXd-payload ADC entering NSCLC needs an upfront ILD risk-management strategy. analyst-known, verify."
     },
     {
-      "need": "Differentiation in the crowded TOPO1-payload ADC field in NSCLC \u2014 TROP2 (Dato-DXd, sac-TMT, sacituzumab govitecan), HER3 (patritumab DXd) and follow-on TOPO1 ADCs converge on the same population",
+      "need": "Differentiation in the crowded TOPO1-payload ADC field in NSCLC — TROP2 (Dato-DXd, sac-TMT, sacituzumab govitecan), HER3 (patritumab DXd) and follow-on TOPO1 ADCs converge on the same population",
       "severity": "medium",
       "patient_fraction": "2L+ and emerging 1L NSCLC (overlapping ADC-eligible populations)",
-      "leading_approaches": "Per Zippelius 2025 review: differentiation must come from biomarker selection (TROP2 IHC, HER3 expression), linker/payload tuning, or ADC-ICI combination architecture rather than target novelty. ADC-ICI synergy looks most promising in NSCLC (with mTNBC) \u2014 EVOKE-02 Cohort A (sac-govitecan + pembro, 1L PD-L1\u226550%) and TROPION-Lung02 subgroup (dato-DXd + pembro \u00b1 chemo) are lead non-randomised signals; 1L mNSCLC is the next likely ADC-ICI battleground after urothelial. analyst-known, verify."
+      "leading_approaches": "Per Zippelius 2025 review: differentiation must come from biomarker selection (TROP2 IHC, HER3 expression), linker/payload tuning, or ADC-ICI combination architecture rather than target novelty. ADC-ICI synergy looks most promising in NSCLC (with mTNBC) — EVOKE-02 Cohort A (sac-govitecan + pembro, 1L PD-L1≥50%) and TROPION-Lung02 subgroup (dato-DXd + pembro ± chemo) are lead non-randomised signals; 1L mNSCLC is the next likely ADC-ICI battleground after urothelial. analyst-known, verify."
     },
     {
-      "need": "c-MET ADC tolerability gap in NSCLC \u2014 MMAE-payload cMET ADCs carry ocular toxicity vs cleaner DXd-payload ADCs",
+      "need": "c-MET ADC tolerability gap in NSCLC — MMAE-payload cMET ADCs carry ocular toxicity vs cleaner DXd-payload ADCs",
       "severity": "medium",
       "patient_fraction": "MET-overexpressing / MET-altered NSCLC receiving cMET ADCs",
       "leading_approaches": "Per Zippelius 2025 review: ocular toxicity has discontinued several site-specific MMAE conjugates; telisotuzumab vedotin and MYTX-011 (both MMAE-based cMET ADCs) exemplify the tolerability gap vs DXd-payload ADCs. analyst-known, verify."
     },
     {
-      "need": "Osimertinib-resistant EGFR-mutant NSCLC \u2014 CDK4/6i combination is a defined high-value rescue niche",
+      "need": "Osimertinib-resistant EGFR-mutant NSCLC — CDK4/6i combination is a defined high-value rescue niche",
       "severity": "high",
       "patient_fraction": "EGFR-mutant patients progressing on osimertinib (overlaps post-osimertinib resistance need)",
       "leading_approaches": "Per Knudsen ES et al. Nat Rev Drug Discov 2026 (DOI 10.1038/s41573-026-01431-5): osimertinib + abemaciclib Ph2 (NCT04545710) is the direct read; preclinical NSCLC patient-derived models across osimertinib-resistance mechanisms support CDK4/6i rescue. KRAS-mutant NSCLC is the second priority CDK4/6i population (binimetinib + palbociclib NCT03170206; almonertinib + palbociclib NCT06947811; ComboMATCH NCT05554367). analyst-known, verify NCTs."
@@ -2010,7 +2010,7 @@
       "best_pfs_mo": 25.5,
       "best_os_mo": 47.5,
       "agent": "osimertinib+chemo (FLAURA2): mature OS mOS 47.5 vs 37.6 mo, OS HR 0.77 (p=0.02); mPFS 25.5 mo, ORR 86%",
-      "source": "J\u00e4nne PA et al. NEJM 2026;394(1):27-38, PMID 41104938, DOI 10.1056/NEJMoa2510308 (FLAURA2 mature OS 47.5 mo, OS HR 0.77)",
+      "source": "Jänne PA et al. NEJM 2026;394(1):27-38, PMID 41104938, DOI 10.1056/NEJMoa2510308 (FLAURA2 mature OS 47.5 mo, OS HR 0.77)",
       "sources": [
         {
           "label": "PMID 41104938",
@@ -2025,7 +2025,7 @@
       "best_orr_pct": 76,
       "best_pfs_mo": 34.8,
       "best_os_mo": null,
-      "agent": "alectinib (ALEX, mPFS 34.8 mo \u2014 quantified anchor) / lorlatinib (CROWN 7-yr: 7-yr PFS 55% vs 3% crizotinib, HR 0.19, mPFS NR \u2014 longest mature follow-up; best-in-class PFS but mPFS not estimable per house rule)",
+      "agent": "alectinib (ALEX, mPFS 34.8 mo — quantified anchor) / lorlatinib (CROWN 7-yr: 7-yr PFS 55% vs 3% crizotinib, HR 0.19, mPFS NR — longest mature follow-up; best-in-class PFS but mPFS not estimable per house rule)",
       "source": "Mok T et al. Ann Oncol 2020; PMID 32418886 (alectinib mPFS 34.8 mo). Shaw AT et al. Ann Oncol 2026; PMID 42217582 (CROWN 7-yr: lorlatinib mPFS NR, HR 0.19; senior author Mok TSK).",
       "sources": [
         {
@@ -2048,8 +2048,8 @@
       "best_orr_pct": 45,
       "best_pfs_mo": 10.3,
       "best_os_mo": 26.3,
-      "agent": "pembrolizumab (KEYNOTE-024; mature 5-yr cut: mOS 26.3 mo, 5-yr OS 31.9%, HR 0.62). No 2024+ update exists \u2014 accepted mature SoC anchor. (Prior 30.0 mo was the 2-yr interim, PMID 30620668.)",
-      "source": "Reck M et al. NEJM 2016; PMID 27718847 (primary, ORR 45%/mPFS 10.3 mo). Reck M et al. JCO 2021; PMID 33872070 (5-yr OS update \u2014 most mature OS, mOS 26.3 mo).",
+      "agent": "pembrolizumab (KEYNOTE-024; mature 5-yr cut: mOS 26.3 mo, 5-yr OS 31.9%, HR 0.62). No 2024+ update exists — accepted mature SoC anchor. (Prior 30.0 mo was the 2-yr interim, PMID 30620668.)",
+      "source": "Reck M et al. NEJM 2016; PMID 27718847 (primary, ORR 45%/mPFS 10.3 mo). Reck M et al. JCO 2021; PMID 33872070 (5-yr OS update — most mature OS, mOS 26.3 mo).",
       "sources": [
         {
           "label": "PMID 27718847",
@@ -2236,7 +2236,7 @@
       "best_orr_pct": null,
       "best_pfs_mo": 16.8,
       "best_os_mo": null,
-      "agent": "durvalumab (PACIFIC, all-comer anchor; mPFS 16.8 mo, 5-yr OS 43%, OS HR 0.72). EGFRm subset: cross-link LAURA (osimertinib consolidation, ASCO 2026) \u2014 see recent_conference_readouts.",
+      "agent": "durvalumab (PACIFIC, all-comer anchor; mPFS 16.8 mo, 5-yr OS 43%, OS HR 0.72). EGFRm subset: cross-link LAURA (osimertinib consolidation, ASCO 2026) — see recent_conference_readouts.",
       "source": "Antonia SJ et al. NEJM 2017; PMID 28885881 (PFS primary, mPFS 16.8 mo). Spigel DR et al. JCO 2022; PMID 35108059 (5-yr OS update: 5-yr OS 43%, median OS 47.5 mo, HR 0.72). LAURA (NCT03521154, ASCO 2026) anchors the EGFRm subset.",
       "sources": [
         {
@@ -2266,7 +2266,7 @@
       "best_orr_pct": null,
       "best_pfs_mo": 23.7,
       "best_os_mo": null,
-      "agent": "amivantamab+lazertinib (MARIPOSA): first EGFR 1L combination to beat osimertinib on overall survival \u2014 OS HR 0.75 (95% CI 0.61-0.92; P=0.005), mOS not reached vs 36.7 mo, 3-yr OS 60% vs 51%; mPFS 23.7 mo",
+      "agent": "amivantamab+lazertinib (MARIPOSA): first EGFR 1L combination to beat osimertinib on overall survival — OS HR 0.75 (95% CI 0.61-0.92; P=0.005), mOS not reached vs 36.7 mo, 3-yr OS 60% vs 51%; mPFS 23.7 mo",
       "source": "Yang JCH et al. NEJM 2025;393(17):1681-1693, PMID 40923797 (MARIPOSA final OS HR 0.75); Cho BC et al. NEJM 2024, PMID 38924756 (MARIPOSA mPFS 23.7 mo); NCT04487080",
       "sources": [
         {
@@ -2288,33 +2288,33 @@
   },
   "competitive_dynamics": {
     "dominant_companies": [
-      "AstraZeneca (osimertinib, durvalumab, datopotamab deruxtecan \u2014 largest EGFR franchise)",
-      "Merck/MSD (pembrolizumab \u2014 largest IO franchise; sacituzumab tirumotecan development)",
-      "Janssen / J&J (amivantamab+lazertinib \u2014 new EGFR 1L challenger)",
+      "AstraZeneca (osimertinib, durvalumab, datopotamab deruxtecan — largest EGFR franchise)",
+      "Merck/MSD (pembrolizumab — largest IO franchise; sacituzumab tirumotecan development)",
+      "Janssen / J&J (amivantamab+lazertinib — new EGFR 1L challenger)",
       "BMS (nivolumab+ipilimumab, repotrectinib ROS1/NTRK)",
       "Daiichi Sankyo / AstraZeneca (Dato-DXd ADC platform)",
       "Amgen (sotorasib KRAS G12C)",
       "Eli Lilly (selpercatinib RET)",
-      "Revolution Medicines (daraxonrasib \u2014 pan-RAS, next KRAS challenger)"
+      "Revolution Medicines (daraxonrasib — pan-RAS, next KRAS challenger)"
     ],
     "crowded_targets": [
-      "EGFR (multiple TKIs, bispecifics, ADCs \u2014 differentiation by post-osimertinib setting and combos)",
+      "EGFR (multiple TKIs, bispecifics, ADCs — differentiation by post-osimertinib setting and combos)",
       "PD-1/PD-L1 (multiple approved agents; differentiation via histology, PD-L1 level, combo partner)",
-      "TROP2 ADC (Dato-DXd vs sacituzumab tirumotecan \u2014 competing in overlapping 2L+ NSCLC)",
-      "KRAS G12C (sotorasib vs adagrasib \u2014 similar efficacy, differentiated by CNS penetration of adagrasib)"
+      "TROP2 ADC (Dato-DXd vs sacituzumab tirumotecan — competing in overlapping 2L+ NSCLC)",
+      "KRAS G12C (sotorasib vs adagrasib — similar efficacy, differentiated by CNS penetration of adagrasib)"
     ],
     "white_space_targets": [
-      "KRAS G12D/G12V \u2014 no approved therapy; first-mover advantage available",
-      "STK11/KEAP1 co-mutated NSCLC \u2014 primary IO-resistance; glutamine metabolism (DRP-104) a novel approach",
-      "Post-osimertinib resistance biology (diverse mechanisms \u2014 no one-size-fits-all 2L)",
-      "FGFR-altered NSCLC \u2014 small subset, no approved agent",
+      "KRAS G12D/G12V — no approved therapy; first-mover advantage available",
+      "STK11/KEAP1 co-mutated NSCLC — primary IO-resistance; glutamine metabolism (DRP-104) a novel approach",
+      "Post-osimertinib resistance biology (diverse mechanisms — no one-size-fits-all 2L)",
+      "FGFR-altered NSCLC — small subset, no approved agent",
       "CD73/adenosine pathway (uliledlimab+toripalimab NCT06984588)"
     ],
     "notable_patent_expiries": [
-      "gefitinib (Iressa) \u2014 US patent expired; multiple generics available",
-      "erlotinib (Tarceva) \u2014 US patent expired; generics approved",
-      "pemetrexed (Alimta) \u2014 US patent expired ~2022; generics widely available",
-      "crizotinib (Xalkori) \u2014 patent expiry approaching; generic entry expected mid-2020s"
+      "gefitinib (Iressa) — US patent expired; multiple generics available",
+      "erlotinib (Tarceva) — US patent expired; generics approved",
+      "pemetrexed (Alimta) — US patent expired ~2022; generics widely available",
+      "crizotinib (Xalkori) — patent expiry approaching; generic entry expected mid-2020s"
     ],
     "pd1_vegf_bispecific_class": {
       "asset": "ivonescimab (AK112)",
@@ -2322,8 +2322,8 @@
       "target": "PD-1 x VEGF bispecific",
       "setting": "1L NSCLC all-comers (unselected), + chemotherapy vs PD-1 inhibitor monotherapy",
       "key_result": "OS HR ~0.66 (34% reduction in death risk); primary OS endpoint met at ASCO 2026. Clinically meaningful by <0.70 step-change threshold.",
-      "calibration_vs_benchmark": "Beats 1L bispecific OS HR bar of <0.75; meets <0.70 clinically meaningful threshold. China-enrolled population; comparator was PD-1 inhibitor monotherapy (not PD-1+chemo \u2014 Western FDA standard). Full peer-reviewed publication pending confirmation.",
-      "analyst_note": "China trial population generalisability to Western patients unconfirmed. BIOSECURE/COINS Act creates U.S. regulatory path overhang (see separate COINS Act HUMAN_REVIEW entry). TPP analysis confirms: FDA would likely require pembro+chemo comparator for Western NDA \u2014 HARMONi-3 comparator arm (PD-1 mono) may not satisfy FDA registration requirements without a separate global trial.",
+      "calibration_vs_benchmark": "Beats 1L bispecific OS HR bar of <0.75; meets <0.70 clinically meaningful threshold. China-enrolled population; comparator was PD-1 inhibitor monotherapy (not PD-1+chemo — Western FDA standard). Full peer-reviewed publication pending confirmation.",
+      "analyst_note": "China trial population generalisability to Western patients unconfirmed. BIOSECURE/COINS Act creates U.S. regulatory path overhang (see separate COINS Act HUMAN_REVIEW entry). TPP analysis confirms: FDA would likely require pembro+chemo comparator for Western NDA — HARMONi-3 comparator arm (PD-1 mono) may not satisfy FDA registration requirements without a separate global trial.",
       "source": "ASCO 2026 (May 31, 2026); KB event IDs 7, 8",
       "last_updated": "2026-06-05"
     },
@@ -2349,32 +2349,32 @@
           "confirmatory_trial": "HERTHENA-Lung02"
         }
       ],
-      "naming_disambiguation": "Both are DXd-payload ADCs from Daiichi Sankyo with same 2L+ EGFR-mutant NSCLC indication. Distinct assets \u2014 different targets (TROP2 vs HER3). 'Datroway' is the FDA brand for datopotamab only; patritumab has no approved brand name yet. See feedback_asset_identity_rule for the general principle.",
+      "naming_disambiguation": "Both are DXd-payload ADCs from Daiichi Sankyo with same 2L+ EGFR-mutant NSCLC indication. Distinct assets — different targets (TROP2 vs HER3). 'Datroway' is the FDA brand for datopotamab only; patritumab has no approved brand name yet. See feedback_asset_identity_rule for the general principle.",
       "source": "WS12 cycle 6 themes her3_adc_class_2026-06-05.md + her2_adc_pan_tumor_2026-06-05.md; verified by Katie 2026-06-08",
       "last_updated": "2026-06-08"
     },
-    "evoke03_halt_note": "Trodelvy EVOKE-03 (sacituzumab govitecan + pembrolizumab) Phase 3 halted June 2026 in 1L PD-L1-high NSCLC \u2014 primary endpoint not met. Removes sacituzumab govitecan (SG-ADC, Gilead/Merck) as a competitive entrant in 1L IO-combination space. Opens 1L PD-L1-high ADC combination space for Daiichi/AZ dato-DXd, sac-TMT (MK-2870), and future TROP2-IO programs. Source: event_ids 194/196/199 (priority 0.85-0.93), 2026-06-09.",
-    "gsk_nuvalent_acquisition_note": "GSK $10.6B acquisition of Nuvalent (announced 2026-06-09) \u2014 brings zidesamtinib (ROS1 3rd-gen, ARROS-1) and neladalkib (ALK 4th-gen, ALKOVE-1) NDA-stage precision NSCLC assets into Top-5 pharma. PDUFA decisions expected 2026. Reshapes ROS1 commercial (currently Pfizer crizotinib/lorlatinib + BMS repotrectinib) and post-lorlatinib ALK resistance (currently white-space). Acquisition premium ~30% over Nuvalent equity; establishes precedent for late-stage precision-oncology biotech acqui-hire pricing. Source: KB events 192/195/197 (priority 0.97-0.98), 2026-06-09.",
-    "adc_ici_combination_note": "Review-derived framing (Zippelius A et al. Nat Rev Cancer 25, 925-944, 2025; DOI 10.1038/s41568-025-00869-w): NSCLC is one of two indications (with mTNBC) where ADC-ICI synergy looks most promising. Lead non-randomised signals: sacituzumab govitecan + pembrolizumab in 1L PD-L1\u226550% mNSCLC (EVOKE-02 Cohort A) and datopotamab deruxtecan + pembrolizumab \u00b1 platinum in 1L aNSCLC (TROPION-Lung02 subgroup). Randomised confirmation ongoing; 1L mNSCLC is the next likely ADC-ICI battleground after urothelial. NB EVOKE-02 (1L combination signal) is distinct from EVOKE-03 (sac-govitecan + pembro 1L PD-L1-high Ph3, halted June 2026 \u2014 see evoke03_halt_note). Review also reframes the NSCLC ADC field as a converging TOPO1-payload crowd (TROP2 + HER3) where differentiation comes from biomarker selection, linker/payload tuning, or ADC-ICI architecture, not target novelty. analyst-known, verify.",
-    "vaccine_pipeline_density_note": "~24 NSCLC-targeted therapeutic cancer-vaccine agents across DC / peptide / mRNA platforms \u2014 second-most-pursued vaccine indication after melanoma. Platform diversity reflects TMB-driven neoantigen feasibility plus shared-TAA (MUC1, viral) optionality. Personalised-vs-shared mRNA fork in NSCLC: intismeran autogene (Moderna/Merck, personalised, Ph3 NCT06077760) vs BNT116 (BioNTech, 6 shared antigens, Ph1 NCT05142189). Sources: Nat Rev Drug Discov cancer-vaccine landscape (DOI 10.1038/d41573-026-00063-z), p.5; mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7). analyst-known, verify NCTs.",
-    "jak_io_potentiation_note": "Emerging non-cytotoxic ICB-combination axis in NSCLC: JAK1-selective inhibitor + PD-1 blockade. itacitinib + pembrolizumab Ph2 in treatment-naive NSCLC reported mPFS 23.8 mo / RR 67% (review-cited, verify). Mechanistic rationale (cGAS-STING + JAK-STAT reviews): chronic IFN-I responsiveness in patient T cells correlates with inferior survival; JAK inhibition dampens this and reduces CD8+ exhaustion, potentiating PD-1 \u2014 explains JAK-monotherapy failures vs JAK+IO signal. Distinct from dominant chemo-ICB and ADC-ICI paradigms. China sponsor signal: golidocitinib (Dizal, JAK1i, first-in-class in China r/r PTCL, Ph2 NSCLC). danvatirsen (Flamingo, STAT3 ASO) adds antisense modality. Sources: Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282; Nat Rev Cancer cGAS-STING review (DOI 10.1038/s41568-025-00894-9), p.209. analyst-known, verify.",
+    "evoke03_halt_note": "Trodelvy EVOKE-03 (sacituzumab govitecan + pembrolizumab) Phase 3 halted June 2026 in 1L PD-L1-high NSCLC — primary endpoint not met. Removes sacituzumab govitecan (SG-ADC, Gilead/Merck) as a competitive entrant in 1L IO-combination space. Opens 1L PD-L1-high ADC combination space for Daiichi/AZ dato-DXd, sac-TMT (MK-2870), and future TROP2-IO programs. Source: event_ids 194/196/199 (priority 0.85-0.93), 2026-06-09.",
+    "gsk_nuvalent_acquisition_note": "GSK $10.6B acquisition of Nuvalent (announced 2026-06-09) — brings zidesamtinib (ROS1 3rd-gen, ARROS-1) and neladalkib (ALK 4th-gen, ALKOVE-1) NDA-stage precision NSCLC assets into Top-5 pharma. PDUFA decisions expected 2026. Reshapes ROS1 commercial (currently Pfizer crizotinib/lorlatinib + BMS repotrectinib) and post-lorlatinib ALK resistance (currently white-space). Acquisition premium ~30% over Nuvalent equity; establishes precedent for late-stage precision-oncology biotech acqui-hire pricing. Source: KB events 192/195/197 (priority 0.97-0.98), 2026-06-09.",
+    "adc_ici_combination_note": "Review-derived framing (Zippelius A et al. Nat Rev Cancer 25, 925-944, 2025; DOI 10.1038/s41568-025-00869-w): NSCLC is one of two indications (with mTNBC) where ADC-ICI synergy looks most promising. Lead non-randomised signals: sacituzumab govitecan + pembrolizumab in 1L PD-L1≥50% mNSCLC (EVOKE-02 Cohort A) and datopotamab deruxtecan + pembrolizumab ± platinum in 1L aNSCLC (TROPION-Lung02 subgroup). Randomised confirmation ongoing; 1L mNSCLC is the next likely ADC-ICI battleground after urothelial. NB EVOKE-02 (1L combination signal) is distinct from EVOKE-03 (sac-govitecan + pembro 1L PD-L1-high Ph3, halted June 2026 — see evoke03_halt_note). Review also reframes the NSCLC ADC field as a converging TOPO1-payload crowd (TROP2 + HER3) where differentiation comes from biomarker selection, linker/payload tuning, or ADC-ICI architecture, not target novelty. analyst-known, verify.",
+    "vaccine_pipeline_density_note": "~24 NSCLC-targeted therapeutic cancer-vaccine agents across DC / peptide / mRNA platforms — second-most-pursued vaccine indication after melanoma. Platform diversity reflects TMB-driven neoantigen feasibility plus shared-TAA (MUC1, viral) optionality. Personalised-vs-shared mRNA fork in NSCLC: intismeran autogene (Moderna/Merck, personalised, Ph3 NCT06077760) vs BNT116 (BioNTech, 6 shared antigens, Ph1 NCT05142189). Sources: Nat Rev Drug Discov cancer-vaccine landscape (DOI 10.1038/d41573-026-00063-z), p.5; mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7). analyst-known, verify NCTs.",
+    "jak_io_potentiation_note": "Emerging non-cytotoxic ICB-combination axis in NSCLC: JAK1-selective inhibitor + PD-1 blockade. itacitinib + pembrolizumab Ph2 in treatment-naive NSCLC reported mPFS 23.8 mo / RR 67% (review-cited, verify). Mechanistic rationale (cGAS-STING + JAK-STAT reviews): chronic IFN-I responsiveness in patient T cells correlates with inferior survival; JAK inhibition dampens this and reduces CD8+ exhaustion, potentiating PD-1 — explains JAK-monotherapy failures vs JAK+IO signal. Distinct from dominant chemo-ICB and ADC-ICI paradigms. China sponsor signal: golidocitinib (Dizal, JAK1i, first-in-class in China r/r PTCL, Ph2 NSCLC). danvatirsen (Flamingo, STAT3 ASO) adds antisense modality. Sources: Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282; Nat Rev Cancer cGAS-STING review (DOI 10.1038/s41568-025-00894-9), p.209. analyst-known, verify.",
     "egfr_resistance_frontier_note": "Compound EGFR mutations (T790M+C797S, exon-20 insertions, exon19del+C797S) remain 'particularly difficult to treat' with kinase inhibitors. Multiple groups pursuing degrader strategies (CFT8919, HSK40118, ONPR-04); whether degraders achieve superior efficacy/durability vs next-gen inhibitors 'remains an open question' but represents 'a logical next step in overcoming therapeutic resistance in EGFR-driven malignancies'. China dominates the clinical-stage EGFR-PROTAC pipeline. Source: Rudolph J et al. Nat Rev Drug Discov 2026 (DOI 10.1038/s41573-026-01411-9), 'BRAF and EGFR'. analyst-known, verify.",
     "evoke03_disposition_2026_06": {
-      "disposition": "EVOKE-03 trial-level DISCONTINUED (neutral framing) \u2014 NOT a global Trodelvy/sacituzumab-govitecan discontinuation (S64-compliant).",
+      "disposition": "EVOKE-03 trial-level DISCONTINUED (neutral framing) — NOT a global Trodelvy/sacituzumab-govitecan discontinuation (S64-compliant).",
       "detail": "Merck/Gilead discontinued Ph3 KEYNOTE-D46/EVOKE-03 (NCT05609968) on 2026-06-08 per EDMC; sacituzumab govitecan + pembrolizumab did not improve on pembrolizumab monotherapy in 1L PD-L1-high mNSCLC; OS benefit considered unlikely.",
-      "read_across": "Reinforces that ADC+IO underdelivers in 1L lung. DISTINCT from sac-TMT (MK-2870) and Dato-DXd TROP2-IO programs still in pipeline \u2014 do NOT extrapolate the halt to those.",
+      "read_across": "Reinforces that ADC+IO underdelivers in 1L lung. DISTINCT from sac-TMT (MK-2870) and Dato-DXd TROP2-IO programs still in pipeline — do NOT extrapolate the halt to those.",
       "source": "Gilead/Merck 2026-06-08 release; NCT05609968 verified.",
       "as_of": "2026-06-14"
     },
     "gsk_nuvalent_valuation_readacross": "GSK/Nuvalent ~$10.6B acquisition (announced 2026-06-09; $124/share, ~40% premium; ~$9.4B net of cash) sets a valuation ceiling for near-approval CNS-penetrant next-gen ROS1/ALK inhibitors. Nuvalent assets: zidesamtinib (ROS1, NDA; FDA target action 2026-09-18) + neladalkib (ALK, NDA; FDA target action 2026-11-27), both BTD+Orphan. Read-across: prices de-risked CNS-active TKIs; pressure on Pfizer (lorlatinib/repotrectinib) and Roche (entrectinib). Deal CONFIRMED (citation-verified).",
-    "sigvotatug_p3_failure_2026_06": "Pfizer sigvotatug vedotin (SGN-B6A; integrin beta-6-targeting ADC) FAILED its Phase 3 NSCLC trial on OS/PFS primary endpoints (announced 2026-06-22) \u2014 the first pivotal readout of a Seagen-derived ADC after Pfizer's $43B Seagen acquisition, and a material negative for the Seagen-pipeline ROI thesis. Combined with the Evoke-03 halt (TROP2 sacituzumab govitecan + pembrolizumab, 1L PD-L1-high, 2026-06), this is the second 2026 NSCLC ADC pivotal disappointment in the IO/1L combination space, reinforcing class-level skepticism on ADC+IO 1L NSCLC combinations. Asset remains KB-only (not on our pipeline_assets); logged as competitive-dynamics class context, not a per-asset discontinuation."
+    "sigvotatug_p3_failure_2026_06": "Pfizer sigvotatug vedotin (SGN-B6A; integrin beta-6-targeting ADC) FAILED its Phase 3 NSCLC trial on OS/PFS primary endpoints (announced 2026-06-22) — the first pivotal readout of a Seagen-derived ADC after Pfizer's $43B Seagen acquisition, and a material negative for the Seagen-pipeline ROI thesis. Combined with the Evoke-03 halt (TROP2 sacituzumab govitecan + pembrolizumab, 1L PD-L1-high, 2026-06), this is the second 2026 NSCLC ADC pivotal disappointment in the IO/1L combination space, reinforcing class-level skepticism on ADC+IO 1L NSCLC combinations. Asset remains KB-only (not on our pipeline_assets); logged as competitive-dynamics class context, not a per-asset discontinuation."
   },
   "recent_conference_readouts": [
     {
       "drug": "amivantamab + lazertinib",
       "trial": "MARIPOSA (OS analysis)",
       "conference": "ESMO 2025 / NEJM Oct 2025",
-      "finding": "OS HR 0.75 (amivantamab-lazertinib vs osimertinib); mOS not reached vs 36.7 mo osimertinib \u2014 first EGFR 1L agent to show OS benefit vs osimertinib",
+      "finding": "OS HR 0.75 (amivantamab-lazertinib vs osimertinib); mOS not reached vs 36.7 mo osimertinib — first EGFR 1L agent to show OS benefit vs osimertinib",
       "source": "Yang JC et al. NEJM 2025; PMID 40923797",
       "sources": [
         {
@@ -2397,8 +2397,8 @@
       "drug": "osimertinib + pemetrexed + platinum",
       "trial": "FLAURA2 (OS analysis)",
       "conference": "ASCO 2025 / NEJM Jan 2026",
-      "finding": "MATURE OS (osi+chemo vs osi alone): mOS 47.5 mo vs 37.6 mo, OS HR 0.77, p=0.02 \u2014 statistically significant OS win; mPFS 25.5 mo vs 16.7 mo",
-      "source": "J\u00e4nne PA et al. NEJM 2026; PMID 41104938",
+      "finding": "MATURE OS (osi+chemo vs osi alone): mOS 47.5 mo vs 37.6 mo, OS HR 0.77, p=0.02 — statistically significant OS win; mPFS 25.5 mo vs 16.7 mo",
+      "source": "Jänne PA et al. NEJM 2026; PMID 41104938",
       "sources": [
         {
           "label": "PMID 41104938",
@@ -2456,7 +2456,7 @@
       ]
     },
     {
-      "drug": "ivonescimab (AK112, PD-1\u00d7VEGF bispecific)",
+      "drug": "ivonescimab (AK112, PD-1×VEGF bispecific)",
       "trial": "HARMONi-A",
       "conference": "JAMA Aug 2024",
       "finding": "Ivonescimab + chemo vs placebo + chemo in osimertinib-failed EGFR-mutated NSCLC: ORR 50% vs ~28% placebo+chemo control. Randomised Phase III data (China)",
@@ -2483,7 +2483,7 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/41629425/",
           "type": "pubmed",
           "date": "2026",
-          "quoted_metric": "Morning vs afternoon IO+chemo infusion timing improved PFS in Phase 3 RCT (novel mechanistic\u2026"
+          "quoted_metric": "Morning vs afternoon IO+chemo infusion timing improved PFS in Phase 3 RCT (novel mechanistic…"
         }
       ]
     },
@@ -2511,7 +2511,7 @@
       "source": "Pfizer ASCO 2026 presentation; event_id 185 (priority 0.82)",
       "sources": [
         {
-          "label": "ASCO 2026 \u2014 Lorlatinib neoadjuvant ALK+ (NCT03052608)",
+          "label": "ASCO 2026 — Lorlatinib neoadjuvant ALK+ (NCT03052608)",
           "url": "https://clinicaltrials.gov/study/NCT03052608",
           "type": "conference_abstract",
           "date": "2026-06-02",
@@ -2577,14 +2577,14 @@
           "url": "https://clinicaltrials.gov/study/NCT04035486",
           "type": "ctgov",
           "date": "2026",
-          "quoted_metric": "24-mo cumulative CNS progression by EGFR genotype: exon19del 30% vs L858R 47% vs atypical mutations\u2026"
+          "quoted_metric": "24-mo cumulative CNS progression by EGFR genotype: exon19del 30% vs L858R 47% vs atypical mutations…"
         },
         {
           "label": "ASCO 2026",
           "url": "",
           "type": "conference_abstract",
           "date": "2026",
-          "quoted_metric": "24-mo cumulative CNS progression by EGFR genotype: exon19del 30% vs L858R 47% vs atypical mutations\u2026"
+          "quoted_metric": "24-mo cumulative CNS progression by EGFR genotype: exon19del 30% vs L858R 47% vs atypical mutations…"
         }
       ]
     },
@@ -2623,7 +2623,7 @@
     {
       "drug": "intismeran autogene (mRNA-4157)",
       "trial": "NCT06077760 (Phase 3, adjuvant NSCLC)",
-      "conference": "WATCH \u2014 next major mRNA-vaccine readout outside melanoma (WS8-owned)",
+      "conference": "WATCH — next major mRNA-vaccine readout outside melanoma (WS8-owned)",
       "finding": "Forward-looking anchor: intismeran NSCLC Ph3 (Moderna/Merck, + pembrolizumab adjuvant) is the next major therapeutic-mRNA-vaccine readout beyond melanoma. No results yet; results to be filled by WS8 conference monitor.",
       "source": "Nat Rev Drug Discov mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7), Table 2. analyst-known, verify NCT06077760.",
       "sources": [
@@ -2672,7 +2672,7 @@
       "drug": "tarlatamab",
       "trial": "NCT06502977 (Phase 2, DLL3-expressing NSCLC)",
       "conference": "ASCO 2026",
-      "finding": "DLL3-expressing NSCLC: 6-mo OS 68.8% | 12-mo OS 54.6% | 24-mo OS 46.2%; median OS not reached at 2 years; CRS/pyrexia 42.1%. Primary endpoint met \u2014 first DLL3 BiTE OS signal in NSCLC.",
+      "finding": "DLL3-expressing NSCLC: 6-mo OS 68.8% | 12-mo OS 54.6% | 24-mo OS 46.2%; median OS not reached at 2 years; CRS/pyrexia 42.1%. Primary endpoint met — first DLL3 BiTE OS signal in NSCLC.",
       "source": "ASCO 2026; NCT06502977",
       "sources": [
         {
@@ -2752,8 +2752,8 @@
       "coins_act_biosecure_convergence": {
         "status": "Proposed legislation (not enacted as of June 2026); three-signal convergence as of cycle 6.",
         "signals": [
-          "COINS Act (House bill) \u2014 biotechnology investment review extension",
-          "House Appropriations Committee \u2014 FDA accelerated IND approvals citing China competition (signal 138, Jun 5 2026)",
+          "COINS Act (House bill) — biotechnology investment review extension",
+          "House Appropriations Committee — FDA accelerated IND approvals citing China competition (signal 138, Jun 5 2026)",
           "BIOSECURE opposition to lower-cost Chinese imports (signal 140, Jun 5 2026)"
         ],
         "nsclc_assets_affected": [
@@ -2799,20 +2799,20 @@
     },
     "schema_note": "This section is per Katie's S64 structural decision: regulatory_landscape becomes a standard top-level section across all 17 WS9 indication ETLMs. Future analyst patches may add policy_risks / pathway_risks / jurisdictional_considerations subkeys.",
     "section_created": "2026-06-08 (S64)",
-    "section_status": "S64 RATIFIED by Katie on 2026-06-08 \u2014 proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed.",
+    "section_status": "S64 RATIFIED by Katie on 2026-06-08 — proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed.",
     "ratified_by_katie": {
       "date": "2026-06-08",
       "session": "S64"
     },
     "ivonescimab_china_origin_2026_06": {
-      "asset": "ivonescimab (AK112, PD-1\u00d7VEGF bispecific; Akeso / Summit)",
-      "signal": "HARMONi-6 (Akeso, China): 1L SQUAMOUS NSCLC, ivonescimab+chemo vs tislelizumab+chemo \u2014 OS HR 0.66 (statistically significant). Context: HARMONi (global 2L+ EGFRm) OS HR 0.78; HARMONi-A (China 2L+ EGFRm) HR 0.74.",
+      "asset": "ivonescimab (AK112, PD-1×VEGF bispecific; Akeso / Summit)",
+      "signal": "HARMONi-6 (Akeso, China): 1L SQUAMOUS NSCLC, ivonescimab+chemo vs tislelizumab+chemo — OS HR 0.66 (statistically significant). Context: HARMONi (global 2L+ EGFRm) OS HR 0.78; HARMONi-A (China 2L+ EGFRm) HR 0.74.",
       "geo_origin_risk": {
         "origin": "China",
         "exposure": "BIOSECURE / COINS Act legislative + China-conducted-trial data-acceptance risk",
         "as_of": "2026-06-14"
       },
-      "caveat": "China-enrolled population + China PD-1 comparator (tislelizumab) \u2014 NOT a clean global 1L benchmark (treat exactly like the IBI310 HCC call). US path depends on Western-population confirmatory data + geopolitical overhang. Do NOT promote HARMONi-6 figures to a global efficacy_benchmark.",
+      "caveat": "China-enrolled population + China PD-1 comparator (tislelizumab) — NOT a clean global 1L benchmark (treat exactly like the IBI310 HCC call). US path depends on Western-population confirmatory data + geopolitical overhang. Do NOT promote HARMONi-6 figures to a global efficacy_benchmark.",
       "sources": [
         {
           "label": "Summit/Akeso HARMONi-6 OS interim (2026)",
@@ -2824,10 +2824,85 @@
       ]
     },
     "guardant360_cdx_zongertinib_2026_06": {
-      "note": "FDA approved Guardant360 CDx as a companion diagnostic for zongertinib (Hernexeos; Boehringer Ingelheim, HER2-mutant NSCLC). Plain regulatory note per Katie ruling 2026-06-18 (NOTE-IT) \u2014 no schema change, no pipeline_assets entry created here. The zongertinib asset itself is NOT yet in this ETLM's asset universe (asset-add queued separately, 2026-06-18). Significance: a liquid-biopsy CDx for a HER2-mutant NSCLC TKI \u2014 extends the Guardant360 CDx liquid-biopsy precedent (cf. first 1L-NSCLC liquid-biopsy CDx, macro #225) into the HER2-mutant segment.",
+      "note": "FDA approved Guardant360 CDx as a companion diagnostic for zongertinib (Hernexeos; Boehringer Ingelheim, HER2-mutant NSCLC). Plain regulatory note per Katie ruling 2026-06-18 (NOTE-IT) — no schema change, no pipeline_assets entry created here. The zongertinib asset itself is NOT yet in this ETLM's asset universe (asset-add queued separately, 2026-06-18). Significance: a liquid-biopsy CDx for a HER2-mutant NSCLC TKI — extends the Guardant360 CDx liquid-biopsy precedent (cf. first 1L-NSCLC liquid-biopsy CDx, macro #225) into the HER2-mutant segment.",
       "as_of": "2026-06-18",
       "ruling": "Katie NOTE-IT (2026-06-18); plain note added to existing regulatory_landscape section, no schema mutation",
-      "linked_asset_pending": "zongertinib (Hernexeos, BI 1810631) \u2014 NSCLC asset-add queued separately"
+      "linked_asset_pending": "zongertinib (Hernexeos, BI 1810631) — NSCLC asset-add queued separately"
+    }
+  },
+  "presentation_profile": {
+    "schema_version": 1,
+    "curated_by": "build_presentation_profiles.py (template baseline)",
+    "headline_table": {
+      "source": "approved_therapies",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "line",
+          "label": "Line / setting",
+          "from": "field",
+          "path": "indication_line"
+        },
+        {
+          "key": "orr",
+          "label": "ORR",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "orr",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "mpfs",
+          "label": "mPFS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "pfs",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "mos",
+          "label": "mOS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "_os",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "endpoint_glossary": {
+      "ORR": "Objective response rate",
+      "mPFS": "Median progression-free survival",
+      "mOS": "Median overall survival"
     }
   }
 }

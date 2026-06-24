@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Pill as PillIcon,
@@ -1220,6 +1220,140 @@ const SECTION_ORDER = [
   'novel_targets',
 ];
 
+/** Short nav labels — the in-page jump rail reads as a map legend. */
+const SECTION_LABEL: Record<string, string> = {
+  epidemiology: 'Epidemiology',
+  approved_therapies_novel: 'Novel approved',
+  approved_therapies_legacy: 'Legacy',
+  approved_therapies: 'Approved',
+  pipeline_assets: 'Pipeline',
+  recent_conference_readouts: 'Readouts',
+  mechanism_landscape: 'Mechanisms',
+  competitive_dynamics: 'Competitive',
+  unmet_needs: 'Unmet needs',
+  regulatory_landscape: 'Regulatory',
+  preclinical_watchlist: 'Preclinical',
+  novel_targets: 'Novel targets',
+};
+
+const sectionId = (key: string) => `sec-${key.replace(/_/g, '-')}`;
+
+function navLabel(key: string): string {
+  if (key.startsWith('efficacy_benchmarks_')) return 'Benchmarks';
+  return SECTION_LABEL[key] ?? key.replace(/_/g, ' ');
+}
+
+type NavItem = { id: string; label: string; count?: number };
+
+/** Sticky scroll-spy rail: jump to any section, see where you are. Keeps the
+ *  full report a single scroll (no tabs hiding content) while taming its length. */
+function ReportNav({ items }: { items: NavItem[] }) {
+  const [active, setActive] = useState<string>(items[0]?.id ?? '');
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-100px 0px -65% 0px', threshold: 0 },
+    );
+    items.forEach((it) => {
+      const el = document.getElementById(it.id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, [items]);
+
+  const jump = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    if (window.history.replaceState) window.history.replaceState(null, '', `#${id}`);
+    setActive(id);
+  };
+
+  if (items.length < 2) return null;
+
+  return (
+    <nav
+      aria-label="Sections"
+      className="sticky top-0 z-20 -mx-6 mb-8 border-b border-zinc-200 bg-white/85 px-6 py-2.5 backdrop-blur dark:border-white/10 dark:bg-zinc-950/80"
+    >
+      <div className="flex gap-1.5 overflow-x-auto">
+        {items.map((it) => {
+          const on = active === it.id;
+          return (
+            <button
+              key={it.id}
+              onClick={() => jump(it.id)}
+              aria-current={on ? 'true' : undefined}
+              className={`whitespace-nowrap rounded-full px-3 py-1 text-xs ring-1 transition-colors ${
+                on
+                  ? 'bg-zinc-900 text-zinc-50 ring-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:ring-zinc-100'
+                  : 'text-zinc-600 ring-zinc-200 hover:ring-zinc-400 dark:text-zinc-400 dark:ring-white/10 dark:hover:ring-white/30'
+              }`}
+            >
+              {it.label}
+              {typeof it.count === 'number' ? (
+                <span className="ml-1 opacity-60">{it.count}</span>
+              ) : null}
+            </button>
+          );
+        })}
+      </div>
+    </nav>
+  );
+}
+
+/** Render one section by key, or null if it should be suppressed. */
+function renderSection(
+  key: string,
+  etlm: Record<string, unknown>,
+  indicationCode: string,
+): React.ReactNode {
+  const val = etlm[key];
+  if (key === 'epidemiology' && isObj(val)) return <Epidemiology data={val} />;
+  if (key === 'approved_therapies_novel' && Array.isArray(val))
+    return <ApprovedTherapies data={val} sectionLabel="Novel Approved Therapies" />;
+  if (key === 'approved_therapies_legacy' && Array.isArray(val))
+    return <ApprovedTherapies data={val} sectionLabel="Legacy Approved Therapies" condensed />;
+  if (key === 'approved_therapies' && Array.isArray(val)) {
+    // Flat array is a subset once an indication splits novel/legacy — suppress it.
+    const hasSplit =
+      Array.isArray(etlm.approved_therapies_novel) ||
+      Array.isArray(etlm.approved_therapies_legacy);
+    if (hasSplit) return null;
+    return <ApprovedTherapies data={val} />;
+  }
+  if (key === 'pipeline_assets' && Array.isArray(val))
+    return <PipelineAssets data={val} indicationCode={indicationCode} />;
+  if (key === 'recent_conference_readouts' && Array.isArray(val))
+    return <RecentConferenceReadouts data={val} />;
+  if (key.startsWith('efficacy_benchmarks_') && isObj(val))
+    return <EfficacyBenchmarks data={val} schemaKey={key} />;
+  if (key === 'mechanism_landscape' && Array.isArray(val))
+    return <MechanismLandscape data={val} indicationCode={indicationCode} />;
+  if (key === 'competitive_dynamics' && isObj(val)) return <CompetitiveDynamics data={val} />;
+  if (key === 'unmet_needs' && Array.isArray(val)) return <UnmetNeeds data={val} />;
+  if (key === 'regulatory_landscape' && isObj(val)) return <RegulatoryLandscape data={val} />;
+  if (key === 'preclinical_watchlist' && Array.isArray(val)) return <PreclinicalWatchlist data={val} />;
+  if (key === 'novel_targets' && Array.isArray(val)) return <NovelTargets data={val} />;
+  return (
+    <section className="mb-10">
+      <SectionHeader icon={PillIcon} title={key.replace(/_/g, ' ')} />
+      <Card>
+        <pre className="text-[10px] text-zinc-600 dark:text-zinc-400 overflow-x-auto">
+          {JSON.stringify(val, null, 2).slice(0, 600)}
+        </pre>
+      </Card>
+    </section>
+  );
+}
+
 export function ETLMSections({ etlm, indicationCode }: Props) {
   const meta = etlmIndex.find((e) => e.indication_code === indicationCode);
   const linkedTpps = crossLinks.etlm_to_tpps?.[indicationCode] ?? [];
@@ -1232,8 +1366,20 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
     ),
   ];
 
+  const rendered = orderedKeys
+    .filter((k) => !SKIP_KEYS.has(k))
+    .map((key) => ({ key, node: renderSection(key, etlm, indicationCode) }))
+    .filter((r) => r.node !== null);
+
+  const navItems: NavItem[] = rendered.map(({ key }) => ({
+    id: sectionId(key),
+    label: navLabel(key),
+    count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
+  }));
+
   return (
     <div>
+      <ReportNav items={navItems} />
       {(linkedTpps.length > 0 || linkedThemes.length > 0) && (
         <section className="mb-10 rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
@@ -1262,72 +1408,11 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
         </section>
       )}
 
-      {orderedKeys.map((key) => {
-        if (SKIP_KEYS.has(key)) return null;
-        const val = etlm[key];
-
-        if (key === 'epidemiology' && isObj(val)) {
-          return <Epidemiology key={key} data={val} />;
-        }
-        if (key === 'approved_therapies_novel' && Array.isArray(val)) {
-          return <ApprovedTherapies key={key} data={val} sectionLabel="Novel Approved Therapies" />;
-        }
-        if (key === 'approved_therapies_legacy' && Array.isArray(val)) {
-          return <ApprovedTherapies key={key} data={val} sectionLabel="Legacy Approved Therapies" condensed />;
-        }
-        if (key === 'approved_therapies' && Array.isArray(val)) {
-          // The flat `approved_therapies` array is superseded when an indication
-          // splits its approved set into novel/legacy — rendering both duplicates
-          // rows (the flat array is a subset). Suppress it when a split exists.
-          const hasSplit =
-            Array.isArray(etlm.approved_therapies_novel) ||
-            Array.isArray(etlm.approved_therapies_legacy);
-          if (hasSplit) return null;
-          return <ApprovedTherapies key={key} data={val} />;
-        }
-        if (key === 'pipeline_assets' && Array.isArray(val)) {
-          return (
-            <PipelineAssets key={key} data={val} indicationCode={indicationCode} />
-          );
-        }
-        if (key === 'recent_conference_readouts' && Array.isArray(val)) {
-          return <RecentConferenceReadouts key={key} data={val} />;
-        }
-        if (key.startsWith('efficacy_benchmarks_') && isObj(val)) {
-          return <EfficacyBenchmarks key={key} data={val} schemaKey={key} />;
-        }
-        if (key === 'mechanism_landscape' && Array.isArray(val)) {
-          return (
-            <MechanismLandscape key={key} data={val} indicationCode={indicationCode} />
-          );
-        }
-        if (key === 'competitive_dynamics' && isObj(val)) {
-          return <CompetitiveDynamics key={key} data={val} />;
-        }
-        if (key === 'unmet_needs' && Array.isArray(val)) {
-          return <UnmetNeeds key={key} data={val} />;
-        }
-        if (key === 'regulatory_landscape' && isObj(val)) {
-          return <RegulatoryLandscape key={key} data={val} />;
-        }
-        if (key === 'preclinical_watchlist' && Array.isArray(val)) {
-          return <PreclinicalWatchlist key={key} data={val} />;
-        }
-        if (key === 'novel_targets' && Array.isArray(val)) {
-          return <NovelTargets key={key} data={val} />;
-        }
-
-        return (
-          <section key={key} className="mb-10">
-            <SectionHeader icon={PillIcon} title={key.replace(/_/g, ' ')} />
-            <Card>
-              <pre className="text-[10px] text-zinc-600 dark:text-zinc-400 overflow-x-auto">
-                {JSON.stringify(val, null, 2).slice(0, 600)}
-              </pre>
-            </Card>
-          </section>
-        );
-      })}
+      {rendered.map(({ key, node }) => (
+        <div key={key} id={sectionId(key)} className="scroll-mt-28">
+          {node}
+        </div>
+      ))}
 
       {meta && (
         <footer className="mt-12 pt-6 border-t border-zinc-200 dark:border-white/10 text-xs text-zinc-400 dark:text-zinc-500">
