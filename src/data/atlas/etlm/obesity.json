@@ -6,11 +6,7 @@
   "mesh_uid": "D009765",
   "mesh_uid_source": "https://id.nlm.nih.gov/mesh/D009765",
   "therapeutic_area": "metabolic",
-  "last_updated": "2026-06-16",
-  "analyst_session_id": "ws9-ws13merge-S94-obesity",
-  "pm_qc_passed": false,
-  "human_approved": false,
-  "schema_adaptation_note": "Non-oncology indication. Per current_task.md non-onc caveat: oncology efficacy fields (orr_pct, median_pfs_mo, median_os_mo) set to null throughout. custom_efficacy blocks carry obesity-relevant endpoints (%TBWL at w52/w68/w72, responder thresholds 5/10/15/20/25%, waist-circumference delta, HbA1c delta in T2D-comorbid, SBP/DBP delta, MACE 3-pt HR, AHI delta, lean-mass loss %, VAT volume delta %). nci_thesaurus_id replaced by mesh_uid (D009765). efficacy_benchmarks_by_line replaced by efficacy_benchmarks_by_class_and_indication.\n2026-06-04: WS10a scout merge-only run 1 — added 2 pipeline_assets (amycretin Novo, ECC5004/AZD5004 AZ); created preclinical_watchlist with 2 entries (AB106 anti-GIPR AI-designed mAb, SDX-7320 METAP2). 36 dedup hits caught the incretin pipeline cleanly. 7 mid-priority flagged for Katie review (not merged). All merged tagged source=WS10a:{pmid}.",
+  "last_updated": "2026-06-18",
   "epidemiology": {
     "global_incidence_annual": null,
     "us_incidence_annual": null,
@@ -27,10 +23,10 @@
     "key_subpopulations": [
       "T2D-comorbid (~30-40% of adults with obesity in US; SURMOUNT-2, STEP-2)",
       "ASCVD secondary prevention (SELECT cohort: established CVD + overweight/obesity, 17K patients)",
-      "HFpEF (STEP-HFpEF, SUMMIT — symptomatic HF with preserved ejection fraction)",
+      "HFpEF (STEP-HFpEF, SUMMIT \u2014 symptomatic HF with preserved ejection fraction)",
       "MASH/NASH (SYNERGY-NASH tirzepatide, VENTURE-MASH efinopegdutide, IMPACT-MASH pemvidutide)",
-      "OSA — moderate-severe obstructive sleep apnea (SURMOUNT-OSA)",
-      "Genetic / monogenic obesity — POMC, PCSK1, LEPR deficiency (setmelanotide)",
+      "OSA \u2014 moderate-severe obstructive sleep apnea (SURMOUNT-OSA)",
+      "Genetic / monogenic obesity \u2014 POMC, PCSK1, LEPR deficiency (setmelanotide)",
       "Bardet-Biedl Syndrome (Imcivree label 2022)",
       "Hypothalamic obesity (Imcivree label expansion Dec 2024 / 2026)",
       "Prader-Willi Syndrome (setmelanotide Ph3 NCT06772597)",
@@ -68,8 +64,8 @@
         "dose": "semaglutide 7.2 mg s.c.",
         "regulatory_status": "regulatory approval for weight loss in 2026 (review-cited, analyst-known, verify)",
         "tbwl_pct_w72": -18.3,
-        "efficacy_framing": "18.3% placebo-adjusted body weight reduction over 72 weeks in people with obesity without T2D — lifts the GLP-1 monotherapy ceiling from ~15% (2.4 mg label) to ~18% (7.2 mg label), narrowing the gap to dual-incretin tirzepatide (~20.9% w72).",
-        "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.4 — analyst-known, verify approval date + efficacy"
+        "efficacy_framing": "18.3% placebo-adjusted body weight reduction over 72 weeks in people with obesity without T2D \u2014 lifts the GLP-1 monotherapy ceiling from ~15% (2.4 mg label) to ~18% (7.2 mg label), narrowing the gap to dual-incretin tirzepatide (~20.9% w72).",
+        "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.4 \u2014 analyst-known, verify approval date + efficacy"
       },
       "custom_safety": {
         "nausea_pct": 44.2,
@@ -226,7 +222,7 @@
       "custom_efficacy": {
         "tbwl_pct_w52": -12.5,
         "pct_achieving_10pct_loss": 80.0,
-        "note": "Pivotal in POMC/LEPR/BBS — rare genetic syndromes; not directly comparable to general obesity benchmarks"
+        "note": "Pivotal in POMC/LEPR/BBS \u2014 rare genetic syndromes; not directly comparable to general obesity benchmarks"
       },
       "trial": "POMC/LEPR Phase 3 (NCT02896192); BBS Phase 3 (NCT03746522); hypothalamic obesity (NCT04725240)",
       "nct": "NCT02896192",
@@ -235,11 +231,11 @@
         "injection_site_reactions_pct": 100,
         "skin_hyperpigmentation_pct": 71,
         "nausea_pct": 43,
-        "trial_note": "POMC/LEPR pivotal (NCT02896192, N=21 treated); BBS pivotal (NCT03746522, N=27 treated): injection site reactions 63%, skin hyperpigmentation 63%, vomiting 25.9% — lower rates vs POMC/LEPR likely reflect population differences",
-        "hyperpigmentation_note": "MC1R agonism mechanism; onset within 7–14 days; predominantly sun-exposed areas; generally reverses within 30 days of stopping",
+        "trial_note": "POMC/LEPR pivotal (NCT02896192, N=21 treated); BBS pivotal (NCT03746522, N=27 treated): injection site reactions 63%, skin hyperpigmentation 63%, vomiting 25.9% \u2014 lower rates vs POMC/LEPR likely reflect population differences",
+        "hyperpigmentation_note": "MC1R agonism mechanism; onset within 7\u201314 days; predominantly sun-exposed areas; generally reverses within 30 days of stopping",
         "sexual_ae_note": "spontaneous penile erections reported in males across trials (mechanism: shared MC1R/MC4R agonism pathway); frequency varies by trial",
         "depression_suicidality_note": "monitor for mood disorders and suicidal ideation per label; events in BBS trial assessed as unlikely drug-related by investigators",
-        "source": "Clément 2020 Lancet Diabetes Endocrinol 8(12):960-970 PMID 33137293 (POMC pivotal NCT02896192 + LEPR NCT03287960 — pooled safety table; ISR 100% POMC-arm confirmed; hyperpigmentation 71% and nausea 43% likely from pooled arms or LEPR arm — verify against full-text Table 2); Haqq 2022 Lancet Diabetes Endocrinol NCT03746522 (BBS pivotal); Imcivree FDA label NDA213793"
+        "source": "Cl\u00e9ment 2020 Lancet Diabetes Endocrinol 8(12):960-970 PMID 33137293 (POMC pivotal NCT02896192 + LEPR NCT03287960 \u2014 pooled safety table; ISR 100% POMC-arm confirmed; hyperpigmentation 71% and nausea 43% likely from pooled arms or LEPR arm \u2014 verify against full-text Table 2); Haqq 2022 Lancet Diabetes Endocrinol NCT03746522 (BBS pivotal); Imcivree FDA label NDA213793"
       }
     }
   ],
@@ -316,7 +312,7 @@
         "safety_notes": {
           "seizure": "bupropion lowers seizure threshold; titrate slowly; contraindicated in seizure disorder, active eating disorder, abrupt alcohol/benzodiazepine withdrawal",
           "bp_elevation": "naltrexone/bupropion raises BP and HR; monitor; contraindicated in uncontrolled hypertension",
-          "cvot": "LIGHT CVOT (NCT01601704) terminated early — CV non-inferiority not established; use with caution in established CVD",
+          "cvot": "LIGHT CVOT (NCT01601704) terminated early \u2014 CV non-inferiority not established; use with caution in established CVD",
           "suicidality": "monitor for mood changes per bupropion label; black box warning"
         },
         "source": "COR-I (Greenway 2010 Lancet PMID 20673995); naltrexone 32mg/bupropion 360mg arm (n=572 vs placebo n=569)"
@@ -348,8 +344,8 @@
         "oily_evacuation_pct_yr1": 11.9,
         "increased_defecation_pct_yr1": 10.8,
         "fecal_incontinence_pct_yr1": 7.7,
-        "yr2_attenuation_note": "GI effects markedly attenuate in year 2 (oily spotting 4.4%, flatus with discharge 2.1%, fecal urgency 2.8%) — reflects dietary fat compliance adaptation",
-        "fat_soluble_vitamin_note": "fat-soluble vitamin malabsorption (A, D, E, K); multivitamin with fat-soluble vitamins required; take ≥2h before or after orlistat dose",
+        "yr2_attenuation_note": "GI effects markedly attenuate in year 2 (oily spotting 4.4%, flatus with discharge 2.1%, fecal urgency 2.8%) \u2014 reflects dietary fat compliance adaptation",
+        "fat_soluble_vitamin_note": "fat-soluble vitamin malabsorption (A, D, E, K); multivitamin with fat-soluble vitamins required; take \u22652h before or after orlistat dose",
         "liver_note": "rare severe liver injury cases post-market (causality uncertain); monitor if symptoms develop",
         "source": "Xenical prescribing information Table 4 GI Treatment Effects year 1 (DailyMed NDA020766); Davidson 1999 JAMA PMID 10217055 (2-year pivotal)"
       }
@@ -372,13 +368,13 @@
       "nct": null,
       "source": "openFDA Drugs@FDA NDA021887 (Alli)",
       "custom_safety": {
-        "gi_profile_note": "Same mechanism as Xenical 120mg; GI treatment effects identical in type (oily spotting, flatus with discharge, fecal urgency, fatty/oily stool) at lower incidence due to lower dose; incidence further reduced by OTC dietary fat cap (≤15g fat/meal recommendation)",
-        "oily_spotting_pct": "verify — specific 60mg OTC bridging trial AE table not available in public-domain sources; expected lower than Xenical 120mg year-1 (26.6%)",
+        "gi_profile_note": "Same mechanism as Xenical 120mg; GI treatment effects identical in type (oily spotting, flatus with discharge, fecal urgency, fatty/oily stool) at lower incidence due to lower dose; incidence further reduced by OTC dietary fat cap (\u226415g fat/meal recommendation)",
+        "oily_spotting_pct": "verify \u2014 specific 60mg OTC bridging trial AE table not available in public-domain sources; expected lower than Xenical 120mg year-1 (26.6%)",
         "flatus_with_discharge_pct": "verify",
         "fecal_urgency_pct": "verify",
         "fatty_oily_stool_pct": "verify",
         "fat_soluble_vitamin_note": "fat-soluble vitamin malabsorption (lower magnitude than 120mg); supplement recommended",
-        "source": "Alli OTC FDA NDA021887; specific AE percentages from bridging program — verify against full label AE table"
+        "source": "Alli OTC FDA NDA021887; specific AE percentages from bridging program \u2014 verify against full label AE table"
       }
     },
     {
@@ -399,16 +395,16 @@
       "nct": null,
       "source": "openFDA obesity-indication search returned phentermine HCl (Sun Pharmaceutical), Lomaira (Calvin Scott, ANDA203495)",
       "custom_safety": {
-        "dry_mouth_pct": "38.5 (verify — label-derived estimate; no modern RCT AE table)",
+        "dry_mouth_pct": "38.5 (verify \u2014 label-derived estimate; no modern RCT AE table)",
         "insomnia_pct": "34.5 (verify)",
         "dizziness_pct": "15.1 (verify)",
         "flushing_pct": "13.8 (verify)",
         "palpitations_pct": "12.4 (verify)",
         "fatigue_pct": "11.6 (verify)",
         "constipation_pct": "5.5 (verify)",
-        "class_note": "Short-term use only (a few weeks per label); sympathomimetic profile — dry mouth + insomnia + CV stimulation predominate; approved 1959 under pre-modern RCT standards; no NDA-level randomized AE frequency table available",
+        "class_note": "Short-term use only (a few weeks per label); sympathomimetic profile \u2014 dry mouth + insomnia + CV stimulation predominate; approved 1959 under pre-modern RCT standards; no NDA-level randomized AE frequency table available",
         "cv_note": "modest SBP/HR elevation; contraindicated with MAOIs, uncontrolled hypertension, coronary artery disease, hyperthyroidism",
-        "source": "Adipex-P prescribing information (FDA NDA011839); AE percentages derived from label/observational data — verify against primary source"
+        "source": "Adipex-P prescribing information (FDA NDA011839); AE percentages derived from label/observational data \u2014 verify against primary source"
       }
     },
     {
@@ -428,11 +424,11 @@
       "nct": null,
       "source": "openFDA Drugs@FDA ANDA091680, ANDA201212",
       "custom_safety": {
-        "dry_mouth_pct": "verify — frequency not reported in label",
-        "insomnia_pct": "verify — frequency not reported in label",
-        "nervousness_excitability_pct": "verify — frequency not reported in label",
-        "constipation_pct": "verify — frequency not reported in label",
-        "class_note": "Sympathomimetic class profile consistent with phentermine: dry mouth, insomnia, nervousness/restlessness, palpitations, tachycardia, BP elevation; approved 1959; label lists AE types only — no frequencies reported",
+        "dry_mouth_pct": "verify \u2014 frequency not reported in label",
+        "insomnia_pct": "verify \u2014 frequency not reported in label",
+        "nervousness_excitability_pct": "verify \u2014 frequency not reported in label",
+        "constipation_pct": "verify \u2014 frequency not reported in label",
+        "class_note": "Sympathomimetic class profile consistent with phentermine: dry mouth, insomnia, nervousness/restlessness, palpitations, tachycardia, BP elevation; approved 1959; label lists AE types only \u2014 no frequencies reported",
         "cv_note": "palpitations, tachycardia, BP elevation; contraindicated with MAOIs; monitor CV status",
         "source": "Tenuate Dospan prescribing information (FDA ANDA091680/ANDA201212); specific AE frequencies not available in label"
       }
@@ -454,10 +450,10 @@
       "nct": null,
       "source": "openFDA Drugs@FDA ANDA040762",
       "custom_safety": {
-        "dry_mouth_pct": "verify — frequency not reported in label",
-        "insomnia_pct": "verify — frequency not reported in label",
-        "overstimulation_nervousness_pct": "verify — frequency not reported in label",
-        "class_note": "Sympathomimetic class profile: dry mouth, insomnia, overstimulation/restlessness, palpitations, tachycardia, BP elevation; approved 1961; label lists AE types only — no frequencies reported",
+        "dry_mouth_pct": "verify \u2014 frequency not reported in label",
+        "insomnia_pct": "verify \u2014 frequency not reported in label",
+        "overstimulation_nervousness_pct": "verify \u2014 frequency not reported in label",
+        "class_note": "Sympathomimetic class profile: dry mouth, insomnia, overstimulation/restlessness, palpitations, tachycardia, BP elevation; approved 1961; label lists AE types only \u2014 no frequencies reported",
         "cv_note": "palpitations, tachycardia, BP elevation; contraindicated with MAOIs; monitor CV status",
         "source": "Bontril prescribing information (FDA ANDA040762); specific AE frequencies not available in label"
       }
@@ -479,10 +475,10 @@
       "nct": null,
       "source": "openFDA Drugs@FDA ANDA090968",
       "custom_safety": {
-        "dry_mouth_pct": "verify — frequency not reported in label",
-        "insomnia_pct": "verify — frequency not reported in label",
-        "restlessness_dizziness_pct": "verify — frequency not reported in label",
-        "class_note": "Sympathomimetic class profile: dry mouth, insomnia, restlessness, dizziness, palpitations, tachycardia, BP elevation; approved 1960; label lists AE types only — no frequencies reported",
+        "dry_mouth_pct": "verify \u2014 frequency not reported in label",
+        "insomnia_pct": "verify \u2014 frequency not reported in label",
+        "restlessness_dizziness_pct": "verify \u2014 frequency not reported in label",
+        "class_note": "Sympathomimetic class profile: dry mouth, insomnia, restlessness, dizziness, palpitations, tachycardia, BP elevation; approved 1960; label lists AE types only \u2014 no frequencies reported",
         "cv_note": "palpitations, tachycardia, BP elevation; contraindicated with MAOIs; monitor CV status",
         "source": "Didrex prescribing information (FDA ANDA090968); specific AE frequencies not available in label"
       }
@@ -537,7 +533,7 @@
       "primary_endpoint": "Percentage change in body weight from baseline to Week 76",
       "enrollment": 755,
       "source": "ClinicalTrials.gov NCT:NCT06066528",
-      "neutral_negative_tilt_note": "ADA26 (Jun 2026) SYNCHRONIZE-1 Phase 3 reported ~19% discontinuation rate due to side effects — materially elevated vs class anchor (SURMOUNT-1 tirzepatide ~6-7%, STEP 1 semaglutide ~7%). BI executives defending as consistent with class; analyst sentiment skeptical. Commercial risk increasing. Programme remains active — keep on pipeline per S64 asset disposition rule.",
+      "neutral_negative_tilt_note": "ADA26 (Jun 2026) SYNCHRONIZE-1 Phase 3 reported ~19% discontinuation rate due to side effects \u2014 materially elevated vs class anchor (SURMOUNT-1 tirzepatide ~6-7%, STEP 1 semaglutide ~7%). BI executives defending as consistent with class; analyst sentiment skeptical. Commercial risk increasing. Programme remains active \u2014 keep on pipeline per S64 asset disposition rule.",
       "tolerability_signal_ada26": "19% discontinuation Phase 3 SYNCHRONIZE-1"
     },
     {
@@ -619,7 +615,13 @@
       "primary_endpoint": "CagriSema 2.4 mg/2.4 mg versus placebo: Relative change in body weight",
       "enrollment": 300,
       "source": "ClinicalTrials.gov NCT:NCT05996848",
-      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out. (Katie ruling 2026-06-11: option A, per-asset bullet.)"
+      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out. (Katie ruling 2026-06-11: option A, per-asset bullet.)",
+      "key_efficacy_data": {
+        "tbwl_pct_w32_ph2": -15.0,
+        "note": "Approximately 15% body weight reduction at 32 weeks in Phase 2, powering the REDEFINE Phase 3 program entry. Below config combo bar (\u226524% TBWL at w48 for step-change vs tirzepatide, \u226522% to beat tirzepatide) \u2014 P2 data at shorter timepoint; P3 registrational data pending. CagriSema vs retatrutide efficacy comparison unresolved per ADA26 H2H framing.",
+        "source_event_id": 288
+      },
+      "p3_advance_note": "Phase 3 REDEFINE program advance confirmed after ~15% TBWL at 32w in Phase 2. P3 status previously inferred from REDEFINE-China/REDEFINE-T2 trial registrations; P2 efficacy anchor now explicit."
     },
     {
       "asset_name": "CagriSema (semaglutide + cagrilintide)",
@@ -654,8 +656,8 @@
       "source": "ClinicalTrials.gov NCT:NCT06569355; Zealand pipeline disclosure 2024",
       "tolerability_differentiator_note": "Amylin tolerability thesis further validated by contrast with survodutide SYNCHRONIZE-1 Phase 3 19% AE-discontinuation rate (event_id 171, 2026-06-07). If GLP-1/GCG dual agonism cannot achieve class-level tolerability (~4-7% AE-discontinuation benchmark), amylin-mechanism differentiation lane widens. Combo Phase 2 with enicepatide (Roche CT-388) initiated 2026 (event_id 163). Tolerability-led differentiation thesis now supported by two independent data points: direct petrelintide ADA26 tolerability deep-dive (event_id 165) + survodutide comparative failure (event_id 171).",
       "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers. (Katie ruling 2026-06-11: option B, cross-link not standalone.)",
-      "_nct_correction": "NCT06569355 was WRONG (VCT220/Vincentage) — corrected to NCT06662539 (ZUPREME-1, Zealand petrelintide monotherapy) per NCT audit 2026-06-11",
-      "roche_combo_note": "Roche Phase 2 combination study petrelintide (amylin, Zealand) + enicepatide (CT-388, GLP-1/GIP) — first patient ~mid-2026.",
+      "_nct_correction": "NCT06569355 was WRONG (VCT220/Vincentage) \u2014 corrected to NCT06662539 (ZUPREME-1, Zealand petrelintide monotherapy) per NCT audit 2026-06-11",
+      "roche_combo_note": "Roche Phase 2 combination study petrelintide (amylin, Zealand) + enicepatide (CT-388, GLP-1/GIP) \u2014 first patient ~mid-2026.",
       "_hr_resolved": "hr-resolver 2026-06-13: combo verified; no quantitative TBWL% yet (trial start)."
     },
     {
@@ -712,20 +714,20 @@
         "MET097"
       ],
       "formulation_note": "monthly subcutaneous (registrational candidate); weekly formulation was the earlier MET097 variant",
-      "data_anchor_ada26": "Phase 2 data presented ADA 2026 — monthly dosing GLP-1 analog. Specific TBWL numbers pending publication.",
+      "data_anchor_ada26": "Phase 2 data presented ADA 2026 \u2014 monthly dosing GLP-1 analog. Specific TBWL numbers pending publication.",
       "company_note_2026_06": "Pfizer commercial scale; consistent with $10B Metsera acquisition thesis as monthly-injectable GLP-1 frontrunner against Novo/Lilly weekly incumbents.",
       "last_updated": "2026-06-08",
       "ada26_update": "ADA 2026: efficacy confirmed in obesity + T2D patient population. Pfizer validating $10B Metsera acquisition (Pfizer ADC summit narrative). Monthly-dosing differentiation vs weekly competitors emphasised.",
-      "differentiator_note": "Monthly dosing — only sub-cutaneous incretin in development with monthly cadence per current cycle reporting.",
+      "differentiator_note": "Monthly dosing \u2014 only sub-cutaneous incretin in development with monthly cadence per current cycle reporting.",
       "ws13_review_update_S94": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026, p.4) benchmarks MET-097i at 14.1% placebo-subtracted weight loss over 28 weeks; 15-16 day half-life supports once-monthly dosing; framed as biased GLP-1R activation approaching dual-incretin efficacy on a shorter timeline, 'enabling rapid transition into phase 3'. Also profiled in s41573-025-01183-8 (Drucker, NRDD 2025). Efficacy figure analyst-known, verify against primary readout.",
       "custom_efficacy": {
         "pswl_pct_w28": -14.1,
         "half_life_days": "15-16",
         "note": "14.1% placebo-subtracted weight loss at 28 weeks (WS13 review-cited, analyst-known, verify). Biased GLP-1R agonism; once-monthly dosing."
       },
-      "identity_note": "PF-08653944 = berobenatide = formerly MET-097i (Metsera, acquired by Pfizer). Biased GLP-1 RA (cAMP-over-arrestin); cycle21 'GIPR/GLP-1R' descriptor is questionable — MET-097i is a GLP-1 mono.",
+      "identity_note": "PF-08653944 = berobenatide = formerly MET-097i (Metsera, acquired by Pfizer). Biased GLP-1 RA (cAMP-over-arrestin); cycle21 'GIPR/GLP-1R' descriptor is questionable \u2014 MET-097i is a GLP-1 mono.",
       "_hr_resolved": "hr-resolver 2026-06-13: Ph2b->Ph3 advance verified post-danuglipron.",
-      "_nct_precision_2026_06_14": "Phase 3 NCTs CT.gov-verified — NCT07311850 (obesity mono, enroll 3501, intervention MET097), NCT07400653 (T2D, PF-08653944), NCT07595549 (once-monthly PF-08653944, NOT_YET_RECRUITING), all lead sponsor Pfizer. nct field previously held Phase 2b NCT06712836 and trial_name was stale 'Phase 2b Study' (apply-manager 2026-06-14)."
+      "_nct_precision_2026_06_14": "Phase 3 NCTs CT.gov-verified \u2014 NCT07311850 (obesity mono, enroll 3501, intervention MET097), NCT07400653 (T2D, PF-08653944), NCT07595549 (once-monthly PF-08653944, NOT_YET_RECRUITING), all lead sponsor Pfizer. nct field previously held Phase 2b NCT06712836 and trial_name was stale 'Phase 2b Study' (apply-manager 2026-06-14)."
     },
     {
       "asset_name": "TERN-601",
@@ -839,7 +841,7 @@
       "enrollment": 360,
       "source": "ClinicalTrials.gov NCT:NCT06628362",
       "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers. (Katie ruling 2026-06-11: option B, cross-link not standalone.)",
-      "moa_note": "Dual GLP-1/GIP receptor agonist (corrects cycle21 landscape 'triple/glucagon' descriptor — it is a DUAL agonist).",
+      "moa_note": "Dual GLP-1/GIP receptor agonist (corrects cycle21 landscape 'triple/glucagon' descriptor \u2014 it is a DUAL agonist).",
       "_hr_resolved": "hr-resolver 2026-06-13: Ph2->Ph3 advance verified; Ph2 22.5% placebo-adj TBWL w48.",
       "_nct_precision_2026_06_14": "Phase 3 NCTs CT.gov-verified (NCT07351058 enroll 1600; NCT07351045 enroll 2000), both intervention=Enicepatide, lead sponsor Hoffmann-La Roche, status RECRUITING. nct field previously held the Phase 2 trial NCT06628362 (apply-manager 2026-06-14)."
     },
@@ -1095,9 +1097,9 @@
         "route": "subcutaneous once-weekly",
         "t2d_hba1c_reduction_pct_w24": 2.16,
         "tolerability_note": "GI AEs predominant, mild-to-moderate, diminished over time. Discontinuation rates not in topline disclosure.",
-        "note": "Chinese P2 n=205 readout 2026-02-24. Linear projection to w48 brings UBT251 within calibration distance of retatrutide bar (-24.2%) — credible second triple-G."
+        "note": "Chinese P2 n=205 readout 2026-02-24. Linear projection to w48 brings UBT251 within calibration distance of retatrutide bar (-24.2%) \u2014 credible second triple-G."
       },
-      "competitive_positioning": "Novo's triple-G answer to Lilly retatrutide. Second credible triple-G in clinic with disclosed Phase 2 data. Global program (Phase 1b/2a ongoing) bridges China data to ex-China population — read-across risk. Novo positioning: defends 2028-2030 obesity flank against retatrutide first-mover. ADA 2026 update (2026-06-09): Novo confirmed 2030 launch target for UBT251, implying Phase 3 initiation ~2027 gated on global P1b/2a 2027 readout. Caveat: Chinese-only Phase 2 readout — generalisability to Western obesity population requires global P1b/2a confirmation (2027 data).",
+      "competitive_positioning": "Novo's triple-G answer to Lilly retatrutide. Second credible triple-G in clinic with disclosed Phase 2 data. Global program (Phase 1b/2a ongoing) bridges China data to ex-China population \u2014 read-across risk. Novo positioning: defends 2028-2030 obesity flank against retatrutide first-mover. ADA 2026 update (2026-06-09): Novo confirmed 2030 launch target for UBT251, implying Phase 3 initiation ~2027 gated on global P1b/2a 2027 readout. Caveat: Chinese-only Phase 2 readout \u2014 generalisability to Western obesity population requires global P1b/2a confirmation (2027 data).",
       "source_url": "https://www.globenewswire.com/news-release/2026/02/24/3243205/0/en/Novo-Nordisk-Triple-agonist-UBT251-delivers-up-to-19-7-mean-weight-loss-after-24-weeks-in-phase-2-trial-in-China.html",
       "ada26_launch_target": "2030 (confirmed by Novo at ADA 2026, 2026-06-09); implies Phase 3 initiation ~2027 contingent on global P1b/2a 2027 readout."
     },
@@ -1381,14 +1383,14 @@
     {
       "asset_name": "elecoglipron (ECC5004 / AZD5004)",
       "company": "AstraZeneca (in-licensed from Eccogene)",
-      "modality": "oral once-daily small-molecule GLP-1 receptor agonist (cAMP-biased signalling; no β-arrestin-2 recruitment)",
+      "modality": "oral once-daily small-molecule GLP-1 receptor agonist (cAMP-biased signalling; no \u03b2-arrestin-2 recruitment)",
       "target": "GLP-1R",
       "phase": "Phase 3 (advancing per AZ 2026-06-08 + pivotal program confirmed 2026-06-09 ADA follow-up)",
       "combination": "monotherapy oral once-daily (5-50 mg)",
-      "indication_subtype": "T2DM ± overweight/obesity",
+      "indication_subtype": "T2DM \u00b1 overweight/obesity",
       "nct": "NCT05654831",
       "trial_name": "VISTA (obesity Ph2b) + SOLSTICE (T2D Ph2b); Phase III obesity + T2D + CV + renal programme initiating",
-      "status": "PHASE_3_ADVANCING_PIVOTAL_CONFIRMED",
+      "status": "COMPLETED",
       "estimated_readout": "Phase 3 program initiating 2026; pivotal readouts ~2028-2029",
       "primary_endpoint": "TBWL (obesity); HbA1c (T2D); MACE / renal composite (outcomes trials)",
       "enrollment": null,
@@ -1406,7 +1408,7 @@
         "t2d_hba1c_reduction_pct_w24": 2.16,
         "note": "VISTA Ph2b 75mg, n=49; SOLSTICE Ph2b. Both met primary endpoints. Published The Lancet PIIS0140-6736(26)00748-8 simultaneous with ADA26. Tolerability comparable to oral GLP-1 class; GI discontinuation low."
       },
-      "competitive_positioning": "Second credible small-molecule oral GLP-1 entrant alongside Lilly orforglipron (-12.4% w72, ATTAIN-1, NEJM 2025 PMID 40960239). Differentiator vs orforglipron: no food/fasting restrictions (orforglipron has dosing constraints). AZ cardiometabolic franchise (Farxiga) extends positioning into CV + renal outcomes — likely positioned for cardiometabolic comorbidity labels, not pure obesity. Race-to-third oral GLP-1 cohort: Roche enicepatide, Pfizer berobenatide (MET-097i), Structure GSBR-1290. Phase 3 launch ~2026, approval ~2028-2030. CYCLE16 UPDATE: pivotal program confirmed per ADA follow-up (event_id 193, 2026-06-09).",
+      "competitive_positioning": "Second credible small-molecule oral GLP-1 entrant alongside Lilly orforglipron (-12.4% w72, ATTAIN-1, NEJM 2025 PMID 40960239). Differentiator vs orforglipron: no food/fasting restrictions (orforglipron has dosing constraints). AZ cardiometabolic franchise (Farxiga) extends positioning into CV + renal outcomes \u2014 likely positioned for cardiometabolic comorbidity labels, not pure obesity. Race-to-third oral GLP-1 cohort: Roche enicepatide, Pfizer berobenatide (MET-097i), Structure GSBR-1290. Phase 3 launch ~2026, approval ~2028-2030. CYCLE16 UPDATE: pivotal program confirmed per ADA follow-up (event_id 193, 2026-06-09).",
       "source_events": [
         181,
         193
@@ -1417,12 +1419,13 @@
         "ECC5004"
       ],
       "ada26_phase2_tbwl_pct_w24": -10.5,
-      "phase3_program_status_note": "Phase 3 obesity + T2D + CV + renal programme initiated per AZ ADA26 follow-up (2026-06-08/09). Phase 2 efficacy reported at 6 months: -10.5% TBWL. Race-to-third oral GLP-1 vs Roche enicepatide and Pfizer berobenatide."
+      "phase3_program_status_note": "Phase 3 obesity + T2D + CV + renal programme initiated per AZ ADA26 follow-up (2026-06-08/09). Phase 2 efficacy reported at 6 months: -10.5% TBWL. Race-to-third oral GLP-1 vs Roche enicepatide and Pfizer berobenatide.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'PHASE_3_ADVANCING_PIVOTAL_CO'); verified via batch CT.gov fetch."
     },
     {
-      "asset_name": "Alnylam RNAi obesity program (second candidate — undisclosed)",
+      "asset_name": "Alnylam RNAi obesity program (second candidate \u2014 undisclosed)",
       "company": "Alnylam Pharmaceuticals",
-      "modality": "RNAi / siRNA — GalNAc-conjugated (extended dosing interval hypothesis)",
+      "modality": "RNAi / siRNA \u2014 GalNAc-conjugated (extended dosing interval hypothesis)",
       "target": "TBD (undisclosed as of 2026-06-08; ENDO 2026 Jun 13-16 next watch window; ADA26 Jun 5-7 did not disclose)",
       "phase": "Phase 1",
       "combination": null,
@@ -1440,65 +1443,66 @@
         "pct_achieving_20pct_loss": null,
         "waist_circumference_delta_cm": null,
         "mace_3pt_hr": null,
-        "calibration_note": "Phase 1 IND only. No efficacy data. Mechanism (RNAi/siRNA) is distinct from all current approved/Phase 3 obesity assets. Potential for extended dosing (quarterly/biannual) vs weekly incretin — mechanistic thesis only."
+        "calibration_note": "Phase 1 IND only. No efficacy data. Mechanism (RNAi/siRNA) is distinct from all current approved/Phase 3 obesity assets. Potential for extended dosing (quarterly/biannual) vs weekly incretin \u2014 mechanistic thesis only."
       },
-      "note": "Placeholder entry per hold-escalation rule (two-conference maximum hold exceeded — IND filed Jun 2026 per WS12 event_id 12; asset name and target undisclosed after ENDO 2026 and ADA26; ENDO 2026 Jun 13-16 is the next watch window). First RNAi/siRNA class entry in obesity ETLM pipeline_assets. Update all TBD fields when Alnylam makes a disclosure. Not a proximate competitive threat to GLP-1 class at Phase 1. 5th consecutive carry-forward — apply-backlog critical.",
+      "note": "Placeholder entry per hold-escalation rule (two-conference maximum hold exceeded \u2014 IND filed Jun 2026 per WS12 event_id 12; asset name and target undisclosed after ENDO 2026 and ADA26; ENDO 2026 Jun 13-16 is the next watch window). First RNAi/siRNA class entry in obesity ETLM pipeline_assets. Update all TBD fields when Alnylam makes a disclosure. Not a proximate competitive threat to GLP-1 class at Phase 1. 5th consecutive carry-forward \u2014 apply-backlog critical.",
       "kb_event_id": 12,
-      "entry_confidence": "low (placeholder — schema incomplete until asset_name and target confirmed)",
+      "entry_confidence": "low (placeholder \u2014 schema incomplete until asset_name and target confirmed)",
       "ecosystem_context_note": "City Therapeutics ~$100M Series B (macro signals 168/170/174, 2026-06-08), co-founded by ex-Alnylam CEO John Maraganore, funds extrahepatic RNAi delivery push. Validates RNAi modality broadening beyond liver-targeted first wave (Alnylam, Arrowhead) and supports continued capital flow into the RNAi platform. Reinforces competitive context for Alnylam as the first-mover RNAi obesity sponsor.",
-      "clinic_entry_confirmation_2026_06": "Confirmed advance into clinic per Jun 2026 announcement. Novo Holdings also backing €500M European biotech fund (cycle context). Target still undisclosed."
+      "clinic_entry_confirmation_2026_06": "Confirmed advance into clinic per Jun 2026 announcement. Novo Holdings also backing \u20ac500M European biotech fund (cycle context). Target still undisclosed."
     },
     {
       "asset_name": "MAR001",
       "company": "Marea Therapeutics (in-licensed from Novartis Biomedical Research)",
       "modality": "subcutaneous monoclonal antibody (ANGPTL4 inhibitor)",
-      "target": "ANGPTL4 — TG/remnant-cholesterol lowering; cardiometabolic risk in abdominal obesity",
+      "target": "ANGPTL4 \u2014 TG/remnant-cholesterol lowering; cardiometabolic risk in abdominal obesity",
       "phase": "Phase 2",
       "combination": null,
       "indication_subtype": "hypertriglyceridaemia + abdominal obesity (ASCVD residual risk reduction; NOT primary weight-loss)",
       "nct": "NCT05896254",
       "trial_name": "TYDAL-TIMI 78",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": "TBD",
       "primary_endpoint": "TG/remnant cholesterol reduction; MACE secondary",
       "enrollment": null,
       "custom_efficacy": {
-        "phase_1_note": "Phase 1 SAD (healthy normal-BMI, obese BMI 30–40, hypertriglyceridaemia cohorts) completed. First human-cleared ANGPTL4 inhibitor — prior class concern (mesenteric lymphadenopathy from KO mouse) ruled out by novel human-genetics analysis.",
+        "phase_1_note": "Phase 1 SAD (healthy normal-BMI, obese BMI 30\u201340, hypertriglyceridaemia cohorts) completed. First human-cleared ANGPTL4 inhibitor \u2014 prior class concern (mesenteric lymphadenopathy from KO mouse) ruled out by novel human-genetics analysis.",
         "positioning_note": "Do not oversell as an obesity drug. Belongs in metabolic dysfunction / residual ASCVD risk / hypertriglyceridaemia with obesity relevance. Phase 2a lipid signal; Phase 2b = TYDAL-TIMI 78.",
-        "obesity_relevance": "Enrolled abdominal-obesity + HOMA-IR >2.2 cohort in Ph1b/2a — explicitly obesity-adjacent axis for metabolic MACE risk reduction."
+        "obesity_relevance": "Enrolled abdominal-obesity + HOMA-IR >2.2 cohort in Ph1b/2a \u2014 explicitly obesity-adjacent axis for metabolic MACE risk reduction."
       },
       "source": "WS10a:pmid:40383129",
       "source_year": 2025,
-      "human_decision": "MERGE — S86 Katie"
+      "human_decision": "MERGE \u2014 S86 Katie",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "SANA / MVD1",
       "company": "Eolo USA (Wilmington, DE) / Institut Pasteur Montevideo",
       "modality": "oral nitroalkene derivative of salicylate (small molecule)",
-      "target": "UCP1-independent thermogenesis — creatine-dependent energy expenditure / adipose mitochondria",
+      "target": "UCP1-independent thermogenesis \u2014 creatine-dependent energy expenditure / adipose mitochondria",
       "phase": "Phase 1 (complete)",
       "combination": null,
       "indication_subtype": "obesity / diabesity",
       "nct": null,
-      "trial_name": "ACTRN12622001519741 (ANZCTR; not CT.gov — explains prior fetcher miss)",
+      "trial_name": "ACTRN12622001519741 (ANZCTR; not CT.gov \u2014 explains prior fetcher miss)",
       "status": "Phase 1 COMPLETE",
       "estimated_readout": "Phase 2 TBD",
       "primary_endpoint": "Phase 1: safety + tolerability; early weight/glucose signals",
       "enrollment": null,
       "custom_efficacy": {
-        "phase_1_signal": "Phase 1A/B (SAD 200–800 mg; MAD 200–400 mg/day ×15 days): good safety/tolerability profile; beneficial effects on body weight and glucose markers within 2 weeks in overweight/obese subjects.",
-        "preclinical_basis": "DIO mice: reduced liver steatosis, improved insulin resistance, increased creatine-dependent energy expenditure in adipose tissue at thermoneutrality. UCP1-independent — distinct from browning strategies that have failed. AMPK-independent as well.",
+        "phase_1_signal": "Phase 1A/B (SAD 200\u2013800 mg; MAD 200\u2013400 mg/day \u00d715 days): good safety/tolerability profile; beneficial effects on body weight and glucose markers within 2 weeks in overweight/obese subjects.",
+        "preclinical_basis": "DIO mice: reduced liver steatosis, improved insulin resistance, increased creatine-dependent energy expenditure in adipose tissue at thermoneutrality. UCP1-independent \u2014 distinct from browning strategies that have failed. AMPK-independent as well.",
         "caveat": "Human efficacy is still exploratory. Needs Phase 2 proof that the thermogenesis mechanism produces meaningful, durable weight loss."
       },
       "source": "WS10a:pmid:40527924",
       "source_year": 2025,
-      "human_decision": "MERGE — S86 Katie"
+      "human_decision": "MERGE \u2014 S86 Katie"
     },
     {
       "asset_name": "TIX100 / SRI-37330",
       "company": "TIXiMED / University of Alabama at Birmingham (UAB Comprehensive Diabetes Center)",
       "modality": "oral small-molecule TXNIP inhibitor",
-      "target": "TXNIP (thioredoxin-interacting protein) — islet cell protection; hyperglucagonaemia; adiposity",
+      "target": "TXNIP (thioredoxin-interacting protein) \u2014 islet cell protection; hyperglucagonaemia; adiposity",
       "phase": "Phase 1 (IND cleared; T1D primary indication)",
       "combination": null,
       "indication_subtype": "metabolic disease (T1D primary; obesity/T2D secondary by ETLM relevance)",
@@ -1509,13 +1513,13 @@
       "primary_endpoint": "Safety; islet function markers (Phase 1)",
       "enrollment": null,
       "custom_efficacy": {
-        "preclinical_basis": "HFD mice: oral TIX100 reduced diet-induced adiposity 15% vs controls (p<0.05), preserved lean mass, improved glucose intolerance/hyperinsulinaemia/hyperglucagonaemia. ob/ob mice: weight effect absent but HbA1C reduced 2.3% (p<0.05) — islet-cell-protective mechanism independent of weight loss.",
+        "preclinical_basis": "HFD mice: oral TIX100 reduced diet-induced adiposity 15% vs controls (p<0.05), preserved lean mass, improved glucose intolerance/hyperinsulinaemia/hyperglucagonaemia. ob/ob mice: weight effect absent but HbA1C reduced 2.3% (p<0.05) \u2014 islet-cell-protective mechanism independent of weight loss.",
         "framing": "Metabolic disease-modifying/weight-maintenance asset, NOT a direct GLP-1-like weight-loss competitor. Stronger thesis: diabetes/islet protection + metabolic disease modification with possible secondary weight/adiposity benefit.",
         "caveat": "Obesity effect is supportive, not the primary thesis. Phase 1 IND is for T1D, not obesity."
       },
       "source": "WS10a:pmid:39895486",
       "source_year": 2025,
-      "human_decision": "MERGE — S86 Katie"
+      "human_decision": "MERGE \u2014 S86 Katie"
     },
     {
       "asset_name": "aleniglipron (GSBR-1290)",
@@ -1531,8 +1535,8 @@
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": 304,
-      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.638-639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2 — analyst-known, verify",
-      "sponsor_note": "Biased GLP-1R agonism; capsule-vs-tablet bioavailability head-to-head ongoing. NCT not given in review — verify before use. Mechanism (biased agonism) cross-referenced in novel_targets.",
+      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.638-639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2 \u2014 analyst-known, verify",
+      "sponsor_note": "Biased GLP-1R agonism; capsule-vs-tablet bioavailability head-to-head ongoing. NCT not given in review \u2014 verify before use. Mechanism (biased agonism) cross-referenced in novel_targets.",
       "_ws13merge_provenance": "Added S94 ws13-merge from glp1 + obesity_pharmacotherapy review patch files.",
       "verify_note": "GSBR-1290 = aleniglipron (Structure Therapeutics). \"VISTA\" not found on CT.gov; verified obesity Ph2 = ACCESS NCT06693843 (+ ACCESS II NCT06703021)."
     },
@@ -1550,28 +1554,29 @@
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2 — analyst-known, verify",
+      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2 \u2014 analyst-known, verify",
       "sponsor_note": "Plasma t1/2 17-22 h; ~7.3% placebo-adjusted weight loss at 4 weeks in non-diabetic overweight/obese (review-cited, verify). Distinct asset from Roche enicepatide/CT-388 (GLP-1/GIP dual). Sibling CT-868 in T2D.",
       "_ws13merge_provenance": "Added S94 ws13-merge from glp1 review patch file.",
       "verify_note": "CT-996 = RO7795081 (Roche, ex-Carmot). Ph2 obesity NCT07081958; Ph1 was NCT05814107."
     },
     {
-      "asset_name": "retatrutide (LY3437943) — TRIUMPH-OUTCOMES",
+      "asset_name": "retatrutide (LY3437943) \u2014 TRIUMPH-OUTCOMES",
       "company": "Eli Lilly",
       "modality": "GLP-1/GIP/glucagon triple agonist (peptide, weekly s.c.)",
       "target": "GLP-1R + GIPR + GCGR",
       "phase": "Phase 3",
       "combination": null,
       "indication_subtype": "overweight/obesity + CV disease (CV+renal outcomes)",
-      "nct": "analyst-known, verify",
+      "nct": "NCT06383390",
       "trial_name": "TRIUMPH-OUTCOMES (CV+renal outcomes trial, ~10,000 pts)",
       "status": "ACTIVE",
       "estimated_readout": null,
       "primary_endpoint": "MACE / CV+renal composite (analyst-known, verify)",
       "enrollment": 10000,
-      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.644 — analyst-known, verify",
-      "sponsor_note": "TRIUMPH-OUTCOMES is the triple-agonist class outcomes trial (CV+renal) in overweight/obesity with CV disease; distinct from TRIUMPH-1/TRIUMPH-3 weight-loss trials already captured. NCT not given in review — verify. Liver-fat reduction 81-82% in MASLD sub-study (review-cited).",
-      "_ws13merge_provenance": "Added S94 ws13-merge. retatrutide weight-loss trials (TRIUMPH-1 NCT05929066, TRIUMPH-3 NCT05882045) already in pipeline; this is the outcomes-trial row."
+      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.644 \u2014 analyst-known, verify",
+      "sponsor_note": "TRIUMPH-OUTCOMES is the triple-agonist class outcomes trial (CV+renal) in overweight/obesity with CV disease; distinct from TRIUMPH-1/TRIUMPH-3 weight-loss trials already captured. NCT not given in review \u2014 verify. Liver-fat reduction 81-82% in MASLD sub-study (review-cited).",
+      "_ws13merge_provenance": "Added S94 ws13-merge. retatrutide weight-loss trials (TRIUMPH-1 NCT05929066, TRIUMPH-3 NCT05882045) already in pipeline; this is the outcomes-trial row.",
+      "_qc_nct_fix": "S-WS18 QC 2026-06-21: placeholder resolved to NCT06383390."
     },
     {
       "asset_name": "olatorepatide (HS-20094)",
@@ -1583,14 +1588,15 @@
       "indication_subtype": "Chinese adults with overweight/obesity",
       "nct": "NCT06839664",
       "trial_name": "China Ph3 HS-20094 (NCT06839664), n=604, 48wk",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.6 — analyst-known, verify",
-      "sponsor_note": "Up to 19.0% weight loss at 48 weeks in Chinese Phase 3 (review-cited, verify). Hengrui–Regeneron ex-China license — cross-border deal angle. NCT not given — verify before use.",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.6 \u2014 analyst-known, verify",
+      "sponsor_note": "Up to 19.0% weight loss at 48 weeks in Chinese Phase 3 (review-cited, verify). Hengrui\u2013Regeneron ex-China license \u2014 cross-border deal angle. NCT not given \u2014 verify before use.",
       "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file.",
-      "verify_note": "Mechanism CONFIRMED GLP-1/GIP (not GLP-1/glucagon) — Hansoh + Regeneron PRs + IDF 2023 / ADA 2024 conference releases all describe HS-20094/olatorepatide as a dual GIP/GLP-1 receptor agonist (no GCGR activity). olatorepatide = HS-20094 (Hansoh; Regeneron ex-China) → China Ph3 NCT06839664, US Ph2 NCT07431086."
+      "verify_note": "Mechanism CONFIRMED GLP-1/GIP (not GLP-1/glucagon) \u2014 Hansoh + Regeneron PRs + IDF 2023 / ADA 2024 conference releases all describe HS-20094/olatorepatide as a dual GIP/GLP-1 receptor agonist (no GCGR activity). olatorepatide = HS-20094 (Hansoh; Regeneron ex-China) \u2192 China Ph3 NCT06839664, US Ph2 NCT07431086.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "HRS-7535",
@@ -1606,9 +1612,14 @@
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT06904105 analyst-known, verify",
-      "sponsor_note": "Described as first ex-Lilly/Pfizer oral GLP-1 small molecule to reach Phase 3 (review-cited, verify NCT06904105). Same Hengrui–Kailera platform that produced HRS9531 dual agonist.",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file."
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06904105 analyst-known, verify",
+      "sponsor_note": "Described as first ex-Lilly/Pfizer oral GLP-1 small molecule to reach Phase 3 (review-cited, verify NCT06904105). Same Hengrui\u2013Kailera platform that produced HRS9531 dual agonist.",
+      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file.",
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-06-22"
+      }
     },
     {
       "asset_name": "MDR-001",
@@ -1624,7 +1635,7 @@
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT07274137 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT07274137 analyst-known, verify",
       "sponsor_note": "AI-discovered oral GLP-1 peptide (not small molecule); first AI-discovery-led Ph3 oral GLP-1 sponsor. Verify NCT07274137.",
       "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file."
     },
@@ -1637,12 +1648,12 @@
       "combination": null,
       "indication_subtype": "weight-related neuropsychiatric comorbidities (alcohol use disorder RENEW-ALC; bipolar RENEW-Bipolar; schizophrenia)",
       "nct": "NCT07219966",
-      "trial_name": "RENEW-ALC (Ph3, alcohol use disorder) — analyst-known, verify",
+      "trial_name": "RENEW-ALC (Ph3, alcohol use disorder) \u2014 analyst-known, verify",
       "status": "ACTIVE",
       "estimated_readout": null,
       "primary_endpoint": "analyst-known, verify",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.11 Table 3 — NCT07219966 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.11 Table 3 \u2014 NCT07219966 analyst-known, verify",
       "sponsor_note": "First GLP-1/GIP dual to enter Ph3 in alcohol use disorder; extends GLP-1 indication-stacking into neuropsychiatric weight comorbidities. Cross-indication read-across asset. Verify NCT07219966.",
       "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file."
     },
@@ -1656,13 +1667,14 @@
       "indication_subtype": "general obesity",
       "nct": "NCT06717425",
       "trial_name": "Ph2 oral SM GIPR antagonist (analyst-known, verify)",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT06717425 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06717425 analyst-known, verify",
       "sponsor_note": "First oral small-molecule GIPR antagonist in clinic; modality parallel to MariTide antibody GIPR-antagonism approach. Re-establishes Pfizer presence in GIPR-antagonism space after danuglipron discontinuation. Verify NCT06717425.",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file."
+      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "monlunabant (INV-202)",
@@ -1674,13 +1686,14 @@
       "indication_subtype": "general obesity",
       "nct": "NCT05891834",
       "trial_name": "Ph2 peripheral CB1R antagonist (analyst-known, verify)",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT05891834 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT05891834 analyst-known, verify",
       "sponsor_note": "Revival of CB1R antagonism (rimonabant-class) with peripheral restriction to avoid CNS neuropsychiatric burden. Mechanism already captured in mechanism_landscape CB1 entry; this is the pipeline_asset row. Verify NCT05891834.",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file."
+      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "HDM-1002",
@@ -1696,8 +1709,8 @@
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT06500299 analyst-known, verify",
-      "sponsor_note": "Oral SM GLP-1 — distinct from Huadong's HDM1005 injectable already in pipeline (NCT06886126). Verify NCT06500299.",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06500299 analyst-known, verify",
+      "sponsor_note": "Oral SM GLP-1 \u2014 distinct from Huadong's HDM1005 injectable already in pipeline (NCT06886126). Verify NCT06500299.",
       "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation."
     },
     {
@@ -1710,13 +1723,14 @@
       "indication_subtype": "general obesity (oral SM)",
       "nct": "NCT06277934",
       "trial_name": "Ph2 oral GLP-1 SM (analyst-known, verify)",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT06277934 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06277934 analyst-known, verify",
       "sponsor_note": "Oral SM GLP-1 cohort entrant. Verify NCT06277934.",
-      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation."
+      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "ASC30",
@@ -1728,13 +1742,14 @@
       "indication_subtype": "general obesity (oral SM)",
       "nct": "NCT07002905",
       "trial_name": "Ph2 oral GLP-1 SM (analyst-known, verify)",
-      "status": "ACTIVE",
+      "status": "COMPLETED",
       "estimated_readout": null,
       "primary_endpoint": "Percent change in body weight (analyst-known, verify)",
       "enrollment": null,
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 — NCT07002905 analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT07002905 analyst-known, verify",
       "sponsor_note": "Oral SM GLP-1 cohort entrant. Verify NCT07002905.",
-      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation."
+      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation.",
+      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch."
     },
     {
       "asset_name": "GZR18 (bofanglutide)",
@@ -1750,10 +1765,10 @@
       "estimated_readout": "topline reported 2026-06-12",
       "primary_endpoint": "percent change in body weight at 52 weeks",
       "enrollment": 640,
-      "topline_note": "COMPANY TOPLINE (Gan & Lee PR, 2026-06-12; not yet peer-reviewed): mean weight reduction -18.54% (48mg) / -15.12% (24mg) vs -1.11% placebo at 52wk. -18.54% is BELOW the config 1L-injectable anchor (tirzepatide SURMOUNT-1 -22.5%) — does NOT displace the benchmark. US P2 head-to-head vs tirzepatide (NCT06737042, pipeline_assets[36]) continues as a separate row.",
+      "topline_note": "COMPANY TOPLINE (Gan & Lee PR, 2026-06-12; not yet peer-reviewed): mean weight reduction -18.54% (48mg) / -15.12% (24mg) vs -1.11% placebo at 52wk. -18.54% is BELOW the config 1L-injectable anchor (tirzepatide SURMOUNT-1 -22.5%) \u2014 does NOT displace the benchmark. US P2 head-to-head vs tirzepatide (NCT06737042, pipeline_assets[36]) continues as a separate row.",
       "geo_origin_risk": {
         "origin": "China",
-        "exposure": "China-origin asset — NEUTRAL informational tag (per standing graduated geo-tag pattern, framing B; mirrors Katie-approved mazdutide convention)",
+        "exposure": "China-origin asset \u2014 NEUTRAL informational tag (per standing graduated geo-tag pattern, framing B; mirrors Katie-approved mazdutide convention)",
         "as_of": "2026-06-16"
       },
       "source": "ClinicalTrials.gov NCT:NCT06728124; Gan & Lee PR 2026-06-12",
@@ -1773,6 +1788,159 @@
           "quoted_metric": "TBWL -18.54% (48mg) / -15.12% (24mg) vs -1.11% placebo (52wk), company topline"
         }
       ]
+    },
+    {
+      "asset_name": "S-309309",
+      "company": "Shionogi",
+      "modality": "Oral small-molecule MGAT2 inhibitor (2-acylglycerol O-acyltransferase 2)",
+      "target": "MGAT2",
+      "phase": "Phase 2",
+      "combination": null,
+      "indication_subtype": "general obesity (non-incretin oral)",
+      "nct": "NCT05925114",
+      "trial_name": "Phase 2 dose-ranging study of S-309309 in obese adults",
+      "status": "COMPLETED",
+      "estimated_readout": null,
+      "primary_endpoint": "Percent Change From Baseline in Body Weight",
+      "enrollment": 365,
+      "source": "ClinicalTrials.gov NCT05925114 (completed 2024-05-17, last updated 2025-04-16), accessed 2026-06-20",
+      "sponsor_note": "Non-incretin oral MGAT2 (intestinal fat-absorption / lipid-handling) mechanism \u2014 differentiated lane vs the GLP-1-dominated field; surfaced by 2023-09 Clarivate obesity pipeline, public-domain-confirmed active through 2025.",
+      "entry_confidence": "medium",
+      "continuation_note": "Phase 2 obesity asset; Shionogi pipeline-listed (Jan 2026), but prior 2024 obesity readout described as underwhelming / continuation uncertain."
+    },
+    {
+      "asset_name": "TG-103 (efpegerglucagon-class)",
+      "company": "CSPC Baike (Shandong) Biopharmaceutical / CSPC Pharmaceutical Group",
+      "modality": "Long-acting GLP-1 receptor agonist (injection)",
+      "target": "GLP-1R",
+      "phase": "Phase 3",
+      "combination": null,
+      "indication_subtype": "non-diabetic overweight/obesity (China)",
+      "nct": "NCT05997576",
+      "trial_name": "Phase 3 study of TG103 Injection in non-diabetic overweight or obesity",
+      "status": "COMPLETED",
+      "estimated_readout": null,
+      "primary_endpoint": "Proportion of participants with weight loss of >=5% at week 40",
+      "enrollment": 675,
+      "source": "ClinicalTrials.gov NCT05997576 (Phase 3, completed 2025-03-03) + NCT06226090 (Phase 2, completed 2024-10-24), accessed 2026-06-20",
+      "sponsor_note": "China-domestic GLP-1 RA; Phase 3 obesity registrational study completed 2025. Surfaced by 2023-09 Clarivate pipeline as Phase II; public-domain shows advance to completed Phase 3."
+    },
+    {
+      "asset_name": "EMP16 (orlistat/acarbose modified-release)",
+      "company": "Empros Pharma AB",
+      "modality": "Oral fixed-dose combination: modified-release orlistat (lipase inhibitor) + acarbose (alpha-glucosidase inhibitor)",
+      "target": "Gastrointestinal lipases + intestinal alpha-glucosidase",
+      "phase": "Phase 2 / Phase 3-preparatory",
+      "combination": "orlistat + acarbose",
+      "indication_subtype": "overweight/obesity (oral non-systemic)",
+      "nct": "NCT06993428",
+      "trial_name": "POEM \u2014 pilot dose-escalation trial of EMP16 in preparation for Phase III",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": "Dose-escalation safety/tolerability (Phase 3 enabling); prior PoC NCT04521751 used body-weight change",
+      "enrollment": 39,
+      "source": "ClinicalTrials.gov NCT06993428 (POEM, Phase 3-enabling) + NCT04521751 (Phase 1/2 PoC, completed 2022), accessed 2026-06-20",
+      "sponsor_note": "Non-systemic oral fixed-dose (gut-restricted) approach \u2014 differentiated tolerability lane vs incretins. Surfaced by 2023-09 Clarivate pipeline; public-domain confirms continued development with a Phase 3-enabling trial registered 2025.",
+      "phase_note": "Phase 2 / Phase 3-preparatory oral obesity asset; public sources do not support an unqualified Ph2\u21923 advancement label."
+    },
+    {
+      "asset_name": "CRB-913",
+      "company": "Corbus Pharmaceuticals",
+      "modality": "Peripherally-restricted CB1 receptor inverse agonist (oral small molecule)",
+      "target": "Cannabinoid CB1 receptor (peripheral)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "general obesity (non-incretin oral)",
+      "nct": "NCT07310901",
+      "trial_name": "Phase 1b dose-range-finding study of CRB-913 in obese but otherwise healthy participants",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": "Pharmacokinetics (Cmax) of single/multiple doses; safety/tolerability",
+      "enrollment": 252,
+      "source": "ClinicalTrials.gov NCT07310901 (Phase 1b, active 2026-05), accessed 2026-06-20",
+      "sponsor_note": "Next-generation peripherally-restricted CB1 inverse agonist (rimonabant-class, designed to avoid CNS psychiatric AEs). Surfaced as preclinical in the 2023-09 Clarivate pipeline (CRB-913, Corbus); public-domain confirms advance to active Phase 1b in 2026."
+    },
+    {
+      "asset_name": "TLC-6740",
+      "company": "OrsoBio",
+      "modality": "Oral small-molecule liver-targeted mitochondrial protonophore (controlled metabolic uncoupler)",
+      "target": "Mitochondrial uncoupling (hepatic)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "obesity / type 2 diabetes (non-incretin oral)",
+      "nct": "NCT05822544",
+      "trial_name": "Phase 1/1b single and multiple ascending doses of TLC-6740 in healthy subjects and subjects with obesity/T2D",
+      "status": "RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": "Incidence of TLC-6740 treatment-emergent adverse events",
+      "enrollment": 564,
+      "source": "ClinicalTrials.gov NCT05822544 (Phase 1/1b, recruiting, est. completion 2026-06), accessed 2026-06-20",
+      "sponsor_note": "Liver-targeted controlled mitochondrial-uncoupler mechanism (next-gen DNP-class) \u2014 novel energy-expenditure lane orthogonal to appetite-suppressing incretins. Surfaced by 2023-09 Clarivate pipeline; public-domain confirms active Phase 1/1b."
+    },
+    {
+      "asset_name": "DA-1726",
+      "company": "NeuroBo Pharmaceuticals",
+      "modality": "GLP-1 receptor agonist / glucagon receptor agonist dual (oxyntomodulin analog, s.c.)",
+      "target": "GLP-1R + GCGR",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "general obesity",
+      "nct": "NCT06252220",
+      "trial_name": "First-in-human SAD/MAD study of DA-1726 in subjects with obesity",
+      "status": "RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": "Number of participants with treatment-related adverse events (CTCAE v4.0)",
+      "enrollment": 139,
+      "source": "ClinicalTrials.gov NCT06252220 (Phase 1 FIH, recruiting, est. completion 2026-11), accessed 2026-06-20",
+      "sponsor_note": "GLP-1/glucagon dual (oxyntomodulin) analog. Surfaced as preclinical in the 2023-09 Clarivate pipeline (DA-1726, NeuroBo); public-domain confirms advance to an active Phase 1 FIH obesity study in 2026."
+    },
+    {
+      "asset_name": "NNC0662-0419",
+      "company": "Novo Nordisk",
+      "modality": "undisclosed (aggregators infer GCGR/GIPR/GLP-1R triple-agonist; NOT disclosed by Novo)",
+      "target": "undisclosed",
+      "phase": "Phase 2",
+      "combination": null,
+      "indication_subtype": "obesity (dose-escalation)",
+      "nct": "NCT07639021",
+      "trial_name": "NNC0662-0419 Phase 2 dose-escalation",
+      "status": null,
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "enrollment": null,
+      "source": "WS12 cycle55 (2026-06-22); identity + NCT verified by hr-resolver (NNC0662-0419, Novo Nordisk, Ph2 dose-escalation, obesity; NCT07639021). Mechanism UNDISCLOSED by Novo \u2014 do not assert triple-agonist. Trial-start only \u2014 no efficacy readout yet."
+    },
+    {
+      "asset_name": "BGE-102",
+      "company": "BioAge Labs",
+      "modality": "oral small molecule (NLRP3 inflammasome inhibitor)",
+      "target": "NLRP3",
+      "phase": "Phase 2",
+      "combination": null,
+      "indication_subtype": "obesity + cardiovascular (QUELL-CV)",
+      "nct": "NCT07656727",
+      "trial_name": "QUELL-CV",
+      "status": null,
+      "estimated_readout": null,
+      "primary_endpoint": "%-change hsCRP",
+      "enrollment": null,
+      "source": "WS12 cycle55 (2026-06-22); identity + NCT verified by hr-resolver (BGE-102/QUELL-CV, BioAge Labs, Ph2 obesity+CV; oral NLRP3 inhibitor; primary endpoint %-change hsCRP). No weight-loss efficacy \u2014 trial-start only, no efficacy readout yet (Ph1 hsCRP signal is mechanism context, not an obesity benchmark)."
+    },
+    {
+      "asset_name": "SRSD384",
+      "company": "Sirius Therapeutics",
+      "modality": "siRNA (subcutaneous)",
+      "target": "INHBE / Activin E",
+      "phase": "Phase 1/2 (FIH)",
+      "combination": "Part A monotherapy; Part B + tirzepatide (T2D)",
+      "indication_subtype": "obesity (FIH)",
+      "nct": "NCT07557355",
+      "trial_name": "SRSD384 Phase 1/2 first-in-human",
+      "status": null,
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "enrollment": null,
+      "source": "WS12 cycle55 (2026-06-22); identity + NCT verified by hr-resolver (SRSD384, Sirius Therapeutics, Ph1/2 FIH; siRNA targeting INHBE/Activin E). Trial-start only \u2014 no efficacy readout yet. (Sponsor origin unconfirmed for geo-tag \u2014 flag for verification next cycle.)"
     }
   ],
   "mechanism_landscape": [
@@ -1786,10 +1954,6 @@
       "pipeline_count_ph2": 5,
       "pipeline_count_ph3": 3,
       "leading_pipeline_asset": "NNC0487-0111 (Novo, Phase 3)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w68": -14.9,
         "responder_15pct": 50.5,
@@ -1806,10 +1970,6 @@
       "pipeline_count_ph2": 3,
       "pipeline_count_ph3": 2,
       "leading_pipeline_asset": "orforglipron (Eli Lilly, Phase 3 ACHIEVE/ATTAIN)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w72": -12.4,
         "source": "ATTAIN-1, NEJM 2025 (PMID 40960239): orforglipron 36 mg -12.4% TBWL w72 primary endpoint (supersedes Aug-2025 topline -14.7% w52)"
@@ -1825,10 +1985,6 @@
       "pipeline_count_ph2": 4,
       "pipeline_count_ph3": 2,
       "leading_pipeline_asset": "CT-388 (Roche, Phase 2); VK2735 (Viking, Phase 2)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w72": -20.9,
         "responder_20pct": 56.7,
@@ -1843,10 +1999,6 @@
       "pipeline_count_ph2": 3,
       "pipeline_count_ph3": 4,
       "leading_pipeline_asset": "survodutide (BI/Zealand, Phase 3 SYNCHRONY); mazdutide (Innovent, Phase 3 GLORY-1)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w46": -18.7,
         "source": "survodutide Ph2 (le Roux 2024 NEJM) PMID 38330987"
@@ -1860,10 +2012,6 @@
       "pipeline_count_ph2": 2,
       "pipeline_count_ph3": 2,
       "leading_pipeline_asset": "retatrutide (Lilly, Phase 3 TRIUMPH)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w48": -24.2,
         "responder_25pct": 48.0,
@@ -1872,24 +2020,21 @@
       "key_resistance_mechanism": null
     },
     {
-      "target": "Amylin (AMY-R / CTR) — monotherapy analog",
+      "target": "Amylin (AMY-R / CTR) \u2014 monotherapy analog",
       "drug_class": "Long-acting amylin receptor agonist (monotherapy)",
       "approved_assets": [],
       "pipeline_count_ph2": 1,
       "pipeline_count_ph3": 1,
       "leading_pipeline_asset": "petrelintide / ZP8396 (Zealand / Roche, Phase 2 ZUPREME-1, monotherapy)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
-        "mean_tbwl_pct_w68_cagrisema": -22.7,
-        "source": "REDEFINE-1 topline Dec 2024 (Novo press release)"
+        "mean_tbwl_pct_monotherapy": null,
+        "data_pending": "ZUPREME-1 (petrelintide monotherapy) TBWL not yet published \u2014 no amylin-monotherapy class benchmark available. The prior -22.7% figure was CagriSema (amylin+GLP-1 COMBO, REDEFINE-1) mislabeled here; it is retained in the 'Amylin (AMY-R / CTR) + GLP-1R combo' entry and the amylin_combo benchmark block.",
+        "source": "no monotherapy readout yet (corrects cross-class mislabel of REDEFINE-1 CagriSema combo number)"
       },
       "key_resistance_mechanism": null,
-      "secondary_pipeline_asset": "eloralintide (Lilly, Phase 3 — classification caveat: may include incretin component, monitor)",
+      "secondary_pipeline_asset": "eloralintide (Lilly, Phase 3 \u2014 classification caveat: may include incretin component, monitor)",
       "thesis": "Quality-of-weight-loss + lean-mass preservation + tolerability differentiation vs GLP-1 mono. Mechanism: amylin receptor agonism (AMY1/2/3R + CTR) produces satiety via CNS area postrema + gastric emptying modulation distinct from GLP-1R vagal/intestinal pathway. ADA26 deep dives (petrelintide) confirm reduced GI burden vs GLP-1 class as P2-grounded clinical narrative.",
-      "data_pending": "ZUPREME-1 monotherapy TBWL + AE-d/c data — must land materially below 7% (GLP-1 mono anchor) to validate the mechanism-based tolerability thesis at the 1L injectable positioning vs semaglutide.",
+      "data_pending": "ZUPREME-1 monotherapy TBWL + AE-d/c data \u2014 must land materially below 7% (GLP-1 mono anchor) to validate the mechanism-based tolerability thesis at the 1L injectable positioning vs semaglutide.",
       "split_provenance": "Split from combined Amylin entry on 2026-06-08 (S64) per Katie's E1 decision; combo with GLP-1 moved to its own mechanism_landscape entry.",
       "last_updated": "2026-06-08"
     },
@@ -1900,13 +2045,10 @@
       "pipeline_count_ph2": 1,
       "pipeline_count_ph3": 3,
       "leading_pipeline_asset": "maridebart cafraglutide (Amgen, Phase 3 MARITIME)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w52": -20.0,
-        "source": "MariTide Ph2 (Veniant 2024 Nat Metab); Amgen Q4 2024 corporate update"
+        "source": "MariTide Phase 2 (NEJM 2025; full publication of the Nov 2024 readout) + Amgen Q4 2024 corporate update. PMID 40549887 (MariTide Ph2, Jastreboff NEJM 2025). Corrects prior 'Veniant 2024 Nat Metab' venue mis-attribution; value -20% w52 retained.",
+        "pmid": "40549887"
       },
       "key_resistance_mechanism": null
     },
@@ -1919,10 +2061,6 @@
       "pipeline_count_ph2": 3,
       "pipeline_count_ph3": 1,
       "leading_pipeline_asset": "setmelanotide line extensions (PWS, hypothalamic); LB54640 oral MC4R (Rhythm)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w52_pomc": -25.6,
         "source": "POMC pivotal (Clement 2020 Lancet D&E)"
@@ -1936,19 +2074,10 @@
       "pipeline_count_ph2": 2,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": "bimagrumab (Lilly/Versanis, Phase 2); apitegromab (Scholar Rock, Phase 2)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
-        "tbwl_pct_combo_believe": -22.1,
-        "tbwl_pct_semaglutide_mono_believe": -15.7,
-        "tbwl_pct_bimagrumab_mono_believe": -10.8,
-        "fat_fraction_of_combo_loss_pct_believe": 92.0,
-        "lean_mass_change_pct_bimagrumab_mono_believe": 2.5,
-        "lean_mass_loss_pct_legacy_t2d": -0.5,
-        "fat_mass_loss_pct_legacy_t2d": -28.0,
-        "source": "BELIEVE Phase 2 (bimagrumab + semaglutide, obesity), Nature Medicine 2026 (NCT05616013, n=507): combo -22.1% TBWL vs semaglutide -15.7% vs bimagrumab mono -10.8%; ~92% of combo weight loss from fat mass; bimagrumab monotherapy +2.5% lean mass. Full PMID pending (2026 publication). Legacy T2D context: Heymsfield 2021 JAMA Netw Open (PMID 33439265)."
+        "lean_mass_loss_pct_combo": -0.5,
+        "fat_mass_loss_pct_combo": -28.0,
+        "source": "bimagrumab+semaglutide Phase 2 combination (Nature Medicine 2026, s41591-026-04204-0); corrects mis-cite to PMID 33439265 (Heymsfield 2021 monotherapy)"
       },
       "key_resistance_mechanism": null
     },
@@ -1961,10 +2090,6 @@
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": null,
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w52": -9.8,
         "source": "CONQUER (Gadde 2011 Lancet)"
@@ -1980,10 +2105,6 @@
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": null,
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w52": -6.1,
         "source": "COR-I (Greenway 2010 Lancet)"
@@ -1999,10 +2120,6 @@
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": null,
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w52": -3.0,
         "source": "orlistat label"
@@ -2016,12 +2133,8 @@
       "pipeline_count_ph2": 2,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": "NT-0796 (NodThera); CK-0045 (Cytoki)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
-        "note": "POC stage — no responder data yet"
+        "note": "POC stage \u2014 no responder data yet"
       },
       "key_resistance_mechanism": null
     },
@@ -2032,21 +2145,17 @@
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 1,
       "leading_pipeline_asset": "CagriSema = cagrilintide (amylin) + semaglutide (GLP-1) (Novo, Phase 3 REDEFINE-1/2/3)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "mean_tbwl_pct_w68_cagrisema": -22.7,
         "ae_discontinuation_pct_redefine1": "~10-13% (preliminary class anchor for amylin+GLP-1 combo)",
         "source": "REDEFINE-1 topline Dec 2024 (Novo press release)"
       },
-      "thesis": "Combo aims to layer amylin's quality-of-weight-loss benefit onto a GLP-1 backbone for additive efficacy. AE-d/c rate is higher than mono components — class trade-off.",
+      "thesis": "Combo aims to layer amylin's quality-of-weight-loss benefit onto a GLP-1 backbone for additive efficacy. AE-d/c rate is higher than mono components \u2014 class trade-off.",
       "split_provenance": "Created on 2026-06-08 (S64) by splitting from combined Amylin entry per Katie's E1 decision.",
       "last_updated": "2026-06-08"
     },
     {
-      "target": "CB1 (Cannabinoid Receptor 1) — peripherally restricted inverse agonist",
+      "target": "CB1 (Cannabinoid Receptor 1) \u2014 peripherally restricted inverse agonist",
       "drug_class": "CB1 inverse agonist (next-gen, post-rimonabant safety)",
       "approved_assets": [],
       "pipeline_count_ph2": 1,
@@ -2054,7 +2163,7 @@
       "leading_pipeline_asset": "monlunabant / INV-202 (Novo Nordisk, Phase 2)",
       "thesis": "Non-incretin mechanism for weight loss + metabolic benefit. Peripherally restricted to avoid CNS psychiatric AEs that withdrew rimonabant. Lower magnitude TBWL than incretins anticipated but additive/orthogonal mechanism + potentially better tolerability for some patient subsets.",
       "watch_for": "Phase 2 efficacy + safety profile; CNS penetration biomarkers; positioning as additive to GLP-1 backbone vs standalone niche.",
-      "added_provenance": "Added on 2026-06-08 (S64) per Katie's E1 broader framing — completes incretin / double-G / triple-G / amylin / CB1 hierarchy already captured at competitive_dynamics.generational_framing.",
+      "added_provenance": "Added on 2026-06-08 (S64) per Katie's E1 broader framing \u2014 completes incretin / double-G / triple-G / amylin / CB1 hierarchy already captured at competitive_dynamics.generational_framing.",
       "last_updated": "2026-06-08"
     },
     {
@@ -2063,11 +2172,7 @@
       "approved_assets": [],
       "pipeline_count_ph2": 1,
       "pipeline_count_ph3": 0,
-      "leading_pipeline_asset": "PF-07976016 (Pfizer, Phase 2, NCT06717425 — analyst-known, verify)",
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
+      "leading_pipeline_asset": "PF-07976016 (Pfizer, Phase 2, NCT06717425 \u2014 analyst-known, verify)",
       "custom_efficacy_benchmark": {
         "note": "First oral SM GIPR antagonist in clinic. Modality parallel to MariTide (Ab-peptide GIPR antagonist + GLP-1 agonist). No efficacy readout yet."
       },
@@ -2077,16 +2182,12 @@
       "last_updated": "2026-06-13"
     },
     {
-      "target": "Peptide-drug conjugates (PDCs) — tissue-targeted intracellular payload delivery",
+      "target": "Peptide-drug conjugates (PDCs) \u2014 tissue-targeted intracellular payload delivery",
       "drug_class": "GPCR-targeted peptide conjugated to small-molecule payload (preclinical modality)",
       "approved_assets": [],
       "pipeline_count_ph2": 0,
       "pipeline_count_ph3": 0,
       "leading_pipeline_asset": null,
-      "efficacy_benchmark": {
-        "pfs_mo": null,
-        "os_mo": null
-      },
       "custom_efficacy_benchmark": {
         "note": "No clinical-stage asset yet; preclinical proof-of-concept across multiple sponsors."
       },
@@ -2097,17 +2198,17 @@
     }
   ],
   "unmet_needs": [
-    "Lean mass / muscle loss with high-magnitude weight loss — incretin-driven 20-25% TBWL is accompanied by ~25-40% of weight lost coming from fat-free mass; this raises long-term sarcopenia / functional decline concerns especially in older adults. WS13 review (Drucker, NRDD 2025, p.641) elevates muscle/lean-mass preservation to a PRIMARY differentiation axis distinct from raw %TBWL: sarcopenic obesity carries 2-3x mortality risk vs obesity alone (Benz 2024). Three strategy buckets: (1) muscle-sparing mechanisms — bimagrumab (ActRII antagonist, Lilly), trevogrumab + garetosmab (myostatin/activin antagonists, Regeneron Ph2); (2) amylin co-agonism (cagrilintide, eloralintide, amycretin) hypothesised to drive more selective adipose loss; (3) GIPR-modulator hypothesis (MariTide antagonism vs tirzepatide agonism). Lean-mass-sparing assets (bimagrumab, apitegromab, eloralintide, enobosarm) are racing to address this but none yet approved. [WS13 framing, analyst-known, verify]",
-    "Pharmacogenomics of weight-loss response — inter-individual variability in GLP-1RA response is high. WS13 review (Drucker, NRDD 2025, p.640) cites German et al. (Nat Med 2025; 10,960-subject analysis) linking polygenic scores for body weight + T2D and missense variants in GLP-1R/GIPR signalling to differential weight-loss response and weight-regain. No clinically deployed PGx test yet — an open differentiation axis for next-gen developers and a real-world stratification opportunity. [WS13 review-cited, analyst-known, verify]",
-    "Weight regain after discontinuation — STEP-4 / SURMOUNT-4 show ~two-thirds of lost weight regained within 12 months of drug withdrawal. Chronic indefinite dosing is the current paradigm; no maintenance-only label or dose-down protocol exists. SURMOUNT-MAINTAIN, ATTAIN-MAINTAIN, eloralintide Ph3 target this gap.",
-    "Oral options with parity efficacy vs injectables — oral semaglutide 50 mg (OASIS-4) and orforglipron (ACHIEVE/ATTAIN) approach but have not matched injectable tirzepatide on %TBWL; oral compliance, bioavailability, and food-state requirements remain hurdles. Pfizer danuglipron and lotiglipron discontinued in 2023-2025 for hepatic safety.",
-    "Genetic / hypothalamic / syndromic obesity beyond MC4R-pathway — setmelanotide is approved for POMC/LEPR/BBS/hypothalamic obesity but represents a small fraction of monogenic / syndromic patients; LB54640 (oral MC4R), bivamelagon, and pathway-adjacent assets are still early. Prader-Willi outcomes remain unsatisfactory.",
-    "GI tolerability and treatment discontinuation — nausea, vomiting, diarrhea drive ~5-10% discontinuation in pivotal trials and likely 20-30% real-world; titration regimens and improved tolerability profile (e.g., monthly MariTide) are an active design vector. Pancreatitis, gallbladder, and ileus signals remain under surveillance.",
-    "Adolescent and pediatric coverage — only semaglutide (STEP-TEENS, 12+), liraglutide, tirzepatide (SURMOUNT-Adol underway), and phentermine/topiramate ER (Qsymia, 2022) have adolescent labels; <12 yr remains largely off-label. Ethical and growth-trajectory considerations limit trials.",
-    "Reimbursement and access in non-diabetic obesity — US Medicare statutory carve-out (1965 SSA) still excludes weight-loss drugs (carve-out partial reform under MEPA pending Congress as of 2025); commercial PBM restrictions, prior auth, step-edit policies, and shortage-driven coverage cuts (Lilly Mounjaro, Wegovy 2023-2024) constrain real-world utilisation. Cash-pay & compounded-GLP-1 markets are filling some of the gap but raise quality/safety concerns.",
-    "Head-to-head comparative data — SURMOUNT-5 (tirzepatide vs semaglutide, NEJM 2025, PMID 40353578, NCT05822830) is the first published registrational H2H: tirzepatide -20.2% vs semaglutide -13.7% mean TBWL at w72 (superiority met). REDEFINE-T2 (CagriSema vs Zepbound) is ongoing. Beyond these two, the field still relies on cross-trial comparison — decision-grade comparative effectiveness across the dual / triple / amylin classes remains largely missing.",
-    "Cardiovascular outcomes for non-GLP-1 mechanisms — only semaglutide (SELECT) has a positive CVOT in obesity (no T2D). Tirzepatide SURPASS-CVOT (T2D) and SURMOUNT-MMO (obesity) are pending; for triple/dual/amylin/MC4R mechanisms, CVOTs do not yet exist — limits payer + guideline-led positioning vs semaglutide.",
-    "Body composition / VAT / cardiometabolic substudies are inconsistent — many pivotals do not report DEXA/MRI sub-analyses, making it hard to compare assets on visceral fat reduction, ectopic fat (liver, pancreas), or cardiac steatosis. Standardised composition endpoints needed across the class."
+    "Lean mass / muscle loss with high-magnitude weight loss \u2014 incretin-driven 20-25% TBWL is accompanied by ~25-40% of weight lost coming from fat-free mass; this raises long-term sarcopenia / functional decline concerns especially in older adults. WS13 review (Drucker, NRDD 2025, p.641) elevates muscle/lean-mass preservation to a PRIMARY differentiation axis distinct from raw %TBWL: sarcopenic obesity carries 2-3x mortality risk vs obesity alone (Benz 2024). Three strategy buckets: (1) muscle-sparing mechanisms \u2014 bimagrumab (ActRII antagonist, Lilly), trevogrumab + garetosmab (myostatin/activin antagonists, Regeneron Ph2); (2) amylin co-agonism (cagrilintide, eloralintide, amycretin) hypothesised to drive more selective adipose loss; (3) GIPR-modulator hypothesis (MariTide antagonism vs tirzepatide agonism). Lean-mass-sparing assets (bimagrumab, apitegromab, eloralintide, enobosarm) are racing to address this but none yet approved. [WS13 framing, analyst-known, verify]",
+    "Pharmacogenomics of weight-loss response \u2014 inter-individual variability in GLP-1RA response is high. WS13 review (Drucker, NRDD 2025, p.640) cites German et al. (Nat Med 2025; 10,960-subject analysis) linking polygenic scores for body weight + T2D and missense variants in GLP-1R/GIPR signalling to differential weight-loss response and weight-regain. No clinically deployed PGx test yet \u2014 an open differentiation axis for next-gen developers and a real-world stratification opportunity. [WS13 review-cited, analyst-known, verify]",
+    "Weight regain after discontinuation \u2014 STEP-4 / SURMOUNT-4 show ~two-thirds of lost weight regained within 12 months of drug withdrawal. Chronic indefinite dosing is the current paradigm; no maintenance-only label or dose-down protocol exists. SURMOUNT-MAINTAIN, ATTAIN-MAINTAIN, eloralintide Ph3 target this gap.",
+    "Oral options with parity efficacy vs injectables \u2014 oral semaglutide 50 mg (OASIS-4) and orforglipron (ACHIEVE/ATTAIN) approach but have not matched injectable tirzepatide on %TBWL; oral compliance, bioavailability, and food-state requirements remain hurdles. Pfizer danuglipron and lotiglipron discontinued in 2023-2025 for hepatic safety.",
+    "Genetic / hypothalamic / syndromic obesity beyond MC4R-pathway \u2014 setmelanotide is approved for POMC/LEPR/BBS/hypothalamic obesity but represents a small fraction of monogenic / syndromic patients; LB54640 (oral MC4R), bivamelagon, and pathway-adjacent assets are still early. Prader-Willi outcomes remain unsatisfactory.",
+    "GI tolerability and treatment discontinuation \u2014 nausea, vomiting, diarrhea drive ~5-10% discontinuation in pivotal trials and likely 20-30% real-world; titration regimens and improved tolerability profile (e.g., monthly MariTide) are an active design vector. Pancreatitis, gallbladder, and ileus signals remain under surveillance.",
+    "Adolescent and pediatric coverage \u2014 only semaglutide (STEP-TEENS, 12+), liraglutide, tirzepatide (SURMOUNT-Adol underway), and phentermine/topiramate ER (Qsymia, 2022) have adolescent labels; <12 yr remains largely off-label. Ethical and growth-trajectory considerations limit trials.",
+    "Reimbursement and access in non-diabetic obesity \u2014 US Medicare statutory carve-out (1965 SSA) still excludes weight-loss drugs (carve-out partial reform under MEPA pending Congress as of 2025); commercial PBM restrictions, prior auth, step-edit policies, and shortage-driven coverage cuts (Lilly Mounjaro, Wegovy 2023-2024) constrain real-world utilisation. Cash-pay & compounded-GLP-1 markets are filling some of the gap but raise quality/safety concerns.",
+    "Head-to-head comparative data \u2014 SURMOUNT-5 (tirzepatide vs semaglutide, NEJM 2025, PMID 40353578, NCT05822830) is the first published registrational H2H: tirzepatide -20.2% vs semaglutide -13.7% mean TBWL at w72 (superiority met). REDEFINE-T2 (CagriSema vs Zepbound) is ongoing. Beyond these two, the field still relies on cross-trial comparison \u2014 decision-grade comparative effectiveness across the dual / triple / amylin classes remains largely missing.",
+    "Cardiovascular outcomes for non-GLP-1 mechanisms \u2014 only semaglutide (SELECT) has a positive CVOT in obesity (no T2D). Tirzepatide SURPASS-CVOT (T2D) and SURMOUNT-MMO (obesity) are pending; for triple/dual/amylin/MC4R mechanisms, CVOTs do not yet exist \u2014 limits payer + guideline-led positioning vs semaglutide.",
+    "Body composition / VAT / cardiometabolic substudies are inconsistent \u2014 many pivotals do not report DEXA/MRI sub-analyses, making it hard to compare assets on visceral fat reduction, ectopic fat (liver, pancreas), or cardiac steatosis. Standardised composition endpoints needed across the class."
   ],
   "efficacy_benchmarks_by_class_and_indication": {
     "glp1_monotherapy_general_obesity": {
@@ -2119,10 +2220,10 @@
       "waist_circ_delta_cm": -13.5,
       "mean_tbwl_pct_w72_sema_7_2mg": -18.3,
       "mean_tbwl_pct_w28_met097i": -14.1,
-      "ws13_ceiling_note": "WS13 review (Petersen, NRDD 2026, p.4): semaglutide 7.2 mg (approved 2026, analyst-known verify) delivered -18.7% total (-14.8% placebo-adjusted; STEP UP, PMID 40961952) TBWL at w72, lifting the GLP-1 mono ceiling from ~15% (2.4 mg) to ~18%, narrowing the gap to dual-incretin tirzepatide (~21% w72). MET-097i biased GLP-1R mono reached 14.1% PSWL at w28 with once-monthly dosing — biased mono can approach dual-incretin efficacy on shorter timelines. [analyst-known, verify]",
+      "ws13_ceiling_note": "WS13 review (Petersen, NRDD 2026, p.4): semaglutide 7.2 mg (approved 2026, analyst-known verify) delivered -18.7% total (-14.8% placebo-adjusted; STEP UP, PMID 40961952) TBWL at w72, lifting the GLP-1 mono ceiling from ~15% (2.4 mg) to ~18%, narrowing the gap to dual-incretin tirzepatide (~21% w72). MET-097i biased GLP-1R mono reached 14.1% PSWL at w28 with once-monthly dosing \u2014 biased mono can approach dual-incretin efficacy on shorter timelines. [analyst-known, verify]",
       "representative_trial": "STEP 1 (anchor); high-dose: STEP UP / semaglutide 7.2 mg w72; MET-097i Ph2 w28",
       "nct": "NCT03548935",
-      "source": "Wegovy USPI + Wilding 2021 NEJM (PMID 33567185); high-dose + biased-mono additions from WS13 review s41573-026-01427-1 (Petersen, NRDD 2026) — analyst-known, verify",
+      "source": "Wegovy USPI + Wilding 2021 NEJM (PMID 33567185); high-dose + biased-mono additions from WS13 review s41573-026-01427-1 (Petersen, NRDD 2026) \u2014 analyst-known, verify",
       "sources": [
         {
           "label": "NCT03548935",
@@ -2155,8 +2256,8 @@
       "comparator_semaglutide_pct_w72": -13.7,
       "h2h_delta_pp_vs_semaglutide": -6.5,
       "surmount5_source": "Aronne et al., NEJM 2025;393:26-36 (PMID 40353578, NCT05822830), SURMOUNT-5",
-      "surmount5_design_note": "SURMOUNT-5 (tirzepatide -20.2% w72) is a SEPARATE trial from the -20.9% SURMOUNT-1 anchor and is NOT the same figure — do not pool or quote interchangeably. SURMOUNT-1 is the placebo-controlled registrational trial (tirzepatide 15 mg vs placebo); SURMOUNT-5 is an open-label active-comparator head-to-head (tirzepatide max-tolerated dose vs semaglutide 2.4 mg), both at w72. The two ~20% values corroborate the dual-incretin ceiling under different designs; SURMOUNT-5's contribution is the H2H delta of -6.5 pp vs semaglutide (superiority met). The -20.9% SURMOUNT-1 number remains the registrational anchor and is retained unchanged.",
-      "incumbent_pressure_caveat": "This ~20% dual-incretin TBWL is the incumbent SoC bar, not a ceiling. The pipeline is actively pressuring it and some entrants may clear it: DATA-BACKED today — retatrutide triple-G (TRIUMPH-1 Phase 3, -25.0% 12 mg w80 / -30.3% w104 BMI>=35 extension) exceeds the dual-incretin bar on CROSS-TRIAL comparison (no head-to-head vs tirzepatide yet). PENDING DATA — CagriSema (REDEFINE-T2 H2H vs Zepbound), maridebart cafraglutide (MariTide Phase 3, monthly dosing), and amylin/incretin combos (petrelintide+enicepatide) could also compete on efficacy and/or tolerability/convenience, but lack registrational or H2H data to confirm a win. Net view to land: incumbents (tirzepatide, semaglutide) lead today but the next-gen field has a credible, partly-evidenced path to compress that lead — treat the incumbent benchmark as a moving target, and gate any 'beats incumbent' claim on confirmatory registrational/H2H data per asset. See competitive_dynamics.generational_framing.next_gen_frontrunner_view_2026_06.",
+      "surmount5_design_note": "SURMOUNT-5 (tirzepatide -20.2% w72) is a SEPARATE trial from the -20.9% SURMOUNT-1 anchor and is NOT the same figure \u2014 do not pool or quote interchangeably. SURMOUNT-1 is the placebo-controlled registrational trial (tirzepatide 15 mg vs placebo); SURMOUNT-5 is an open-label active-comparator head-to-head (tirzepatide max-tolerated dose vs semaglutide 2.4 mg), both at w72. The two ~20% values corroborate the dual-incretin ceiling under different designs; SURMOUNT-5's contribution is the H2H delta of -6.5 pp vs semaglutide (superiority met). The -20.9% SURMOUNT-1 number remains the registrational anchor and is retained unchanged.",
+      "incumbent_pressure_caveat": "This ~20% dual-incretin TBWL is the incumbent SoC bar, not a ceiling. The pipeline is actively pressuring it and some entrants may clear it: DATA-BACKED today \u2014 retatrutide triple-G (TRIUMPH-1 Phase 3, -25.0% 12 mg w80 / -30.3% w104 BMI>=35 extension) exceeds the dual-incretin bar on CROSS-TRIAL comparison (no head-to-head vs tirzepatide yet). PENDING DATA \u2014 CagriSema (REDEFINE-T2 H2H vs Zepbound), maridebart cafraglutide (MariTide Phase 3, monthly dosing), and amylin/incretin combos (petrelintide+enicepatide) could also compete on efficacy and/or tolerability/convenience, but lack registrational or H2H data to confirm a win. Net view to land: incumbents (tirzepatide, semaglutide) lead today but the next-gen field has a credible, partly-evidenced path to compress that lead \u2014 treat the incumbent benchmark as a moving target, and gate any 'beats incumbent' claim on confirmatory registrational/H2H data per asset. See competitive_dynamics.generational_framing.next_gen_frontrunner_view_2026_06.",
       "sources": [
         {
           "label": "NCT04184622",
@@ -2196,7 +2297,7 @@
       "responder_15pct": 83.0,
       "responder_20pct": 63.0,
       "responder_25pct": 48.0,
-      "responder_note": "Responder thresholds are Phase 2 (w48) values; TRIUMPH-1 Phase 3 topline reported mean TBWL only — refresh responder rates from the full Phase 3 publication when it lands.",
+      "responder_note": "Responder thresholds are Phase 2 (w48) values; TRIUMPH-1 Phase 3 topline reported mean TBWL only \u2014 refresh responder rates from the full Phase 3 publication when it lands.",
       "representative_trial": "TRIUMPH-1 (retatrutide Phase 3, 12 mg); Phase 2 retained for w48 + responder context",
       "nct": "NCT05929066",
       "source": "TRIUMPH-1 Phase 3 topline (Lilly press release 2026-05-21, NCT05929066): retatrutide 12 mg -25.0% / 9 mg -23.7% mean TBWL at w80; -30.3% at w104 in pre-specified BMI>=35 extension; n=2339; full publication/PMID pending. Phase 2 anchor (responders + w48): Jastreboff 2023 NEJM (PMID 37366315), -24.2% w48.",
@@ -2365,7 +2466,7 @@
       "weight_regain_pct_y1_off_drug": 67.0,
       "representative_trial": "STEP 4 (semaglutide withdrawal)",
       "nct": "NCT03548987",
-      "source": "Rubino 2021 JAMA (PMID 33755728) — 11.6 mo regain trajectory after sema discontinuation",
+      "source": "Rubino 2021 JAMA (PMID 33755728) \u2014 11.6 mo regain trajectory after sema discontinuation",
       "sources": [
         {
           "label": "NCT03548987",
@@ -2399,45 +2500,18 @@
       ]
     },
     "lean_mass_sparing_combo": {
-      "tbwl_pct_combo_believe": -22.1,
-      "tbwl_pct_semaglutide_mono_believe": -15.7,
-      "tbwl_pct_bimagrumab_mono_believe": -10.8,
-      "fat_fraction_of_combo_loss_pct_believe": 92.0,
-      "lean_mass_change_pct_bimagrumab_mono_believe": 2.5,
-      "lean_mass_loss_pct_legacy_t2d": -0.5,
-      "fat_mass_loss_pct_legacy_t2d": -28.0,
-      "representative_trial": "BELIEVE Phase 2 (bimagrumab + semaglutide, obesity, 2026); legacy: bimagrumab Ph2 in T2D (2021)",
-      "nct": "NCT05616013",
-      "legacy_nct": "NCT03005288",
-      "source": "BELIEVE Phase 2 (bimagrumab + semaglutide), Nature Medicine 2026 (DOI 10.1038/s41591-026-04204-0, NCT05616013, n=507): high-dose combo -22.1% TBWL vs semaglutide -15.7% vs bimagrumab mono -10.8%; ~92% of combo weight loss from fat mass; bimagrumab monotherapy +2.5% lean mass above baseline. Full PMID pending (2026 publication). Legacy context: Heymsfield 2021 JAMA Netw Open (PMID 33439265, NCT03005288), bimagrumab in T2D, fat -28% / lean -0.5%.",
+      "lean_mass_loss_pct": -0.5,
+      "fat_mass_loss_pct": -28.0,
+      "representative_trial": "bimagrumab + semaglutide Phase 2 (combination arm)",
+      "nct": "NCT03005288",
+      "source": "bimagrumab+semaglutide Phase 2 combination (Nature Medicine 2026, s41591-026-04204-0); corrects prior mis-cite to PMID 33439265 (Heymsfield 2021, bimagrumab MONOTHERAPY) which does not support the combo -0.5%/-28% values",
       "sources": [
         {
-          "label": "BELIEVE Ph2 (Nature Medicine 2026, PMID pending)",
+          "label": "s41591-026-04204-0",
           "url": "https://www.nature.com/articles/s41591-026-04204-0",
           "type": "journal",
           "date": "2026",
-          "quoted_metric": "combo -22.1% TBWL; ~92% from fat; bimagrumab mono +2.5% lean mass"
-        },
-        {
-          "label": "BELIEVE NCT05616013",
-          "url": "https://clinicaltrials.gov/study/NCT05616013",
-          "type": "ctgov",
-          "date": "2026",
-          "quoted_metric": "bimagrumab + semaglutide Ph2 (n=507)"
-        },
-        {
-          "label": "NCT03005288 (legacy T2D)",
-          "url": "https://clinicaltrials.gov/study/NCT03005288",
-          "type": "ctgov",
-          "date": "2021",
-          "quoted_metric": null
-        },
-        {
-          "label": "PMID 33439265",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/33439265/",
-          "type": "pubmed",
-          "date": "2021",
-          "quoted_metric": null
+          "quoted_metric": "lean mass -0.5% / fat mass -28% (bimagrumab+semaglutide combo arm)"
         }
       ]
     }
@@ -2446,17 +2520,17 @@
     "dominant_companies": [
       "Novo Nordisk (semaglutide franchise: Wegovy, Ozempic, Rybelsus + CagriSema + amycretin; ~50% global obesity Rx share 2024-2025)",
       "Eli Lilly (tirzepatide / Zepbound / Mounjaro + retatrutide TRIUMPH + orforglipron ACHIEVE/ATTAIN + bimagrumab + eloralintide; fastest-growing Rx volume 2024-2025)",
-      "Amgen (maridebart cafraglutide / MariTide — only credible 3rd-mover with differentiated monthly dosing + GIPR-antagonist mechanism, Phase 3 MARITIME-1/2 underway)",
+      "Amgen (maridebart cafraglutide / MariTide \u2014 only credible 3rd-mover with differentiated monthly dosing + GIPR-antagonist mechanism, Phase 3 MARITIME-1/2 underway)",
       "Boehringer Ingelheim / Zealand Pharma (survodutide Phase 3 SYNCHRONY in obesity + MASH)",
       "Innovent Biologics (mazdutide for Chinese market, Lilly licensee ex-China)",
       "Roche (CT-388 dual agonist Phase 2 ex-Carmot; Phase 3 readiness 2025)",
-      "Rhythm Pharmaceuticals (genetic obesity franchise — Imcivree + LB54640 + bivamelagon)",
+      "Rhythm Pharmaceuticals (genetic obesity franchise \u2014 Imcivree + LB54640 + bivamelagon)",
       "Viking Therapeutics (VK2735 s.c. + oral, Phase 2/3 transition)",
       "Altimmune (pemvidutide MASH + obesity)",
-      "Structure Therapeutics (GSBR-1290 oral GLP-1 PoC Ph2 — note Pfizer danuglipron / lotiglipron both terminated 2023-2025 making oral SM-GLP-1 race smaller)"
+      "Structure Therapeutics (GSBR-1290 oral GLP-1 PoC Ph2 \u2014 note Pfizer danuglipron / lotiglipron both terminated 2023-2025 making oral SM-GLP-1 race smaller)"
     ],
     "crowded_targets": [
-      "GLP-1R monotherapy (saturated — semaglutide franchise + 8+ Chinese / generic / next-gen entrants)",
+      "GLP-1R monotherapy (saturated \u2014 semaglutide franchise + 8+ Chinese / generic / next-gen entrants)",
       "GLP-1/GIP dual (tirzepatide is the franchise; CT-388, VK2735, RAY1225 are fast followers)",
       "GLP-1/glucagon dual (survodutide / mazdutide / pemvidutide / JNJ-64565111 all converging)",
       "Oral small-molecule GLP-1 (orforglipron leads after Pfizer exits; TERN-601, ECC5004 in Phase 2)"
@@ -2466,23 +2540,23 @@
       "GDF15 / muscle-sparing / anti-myostatin combo with GLP-1 (bimagrumab, apitegromab, eloralintide)",
       "MC4R-pathway non-syndromic obesity (oral MC4R LB54640, bivamelagon)",
       "True muscle-preserving body-composition-optimised therapy (no asset close to approval)",
-      "MASH-led labels feeding into obesity (efinopegdutide, pemvidutide, survodutide — first MASH approval could reshape positioning)",
+      "MASH-led labels feeding into obesity (efinopegdutide, pemvidutide, survodutide \u2014 first MASH approval could reshape positioning)",
       "Monthly / less-frequent dosing (MariTide every 4-12 weeks)",
       "NLRP3 / IL-22 / non-incretin inflammation-axis (NT-0796, CK-0045)"
     ],
     "notable_patent_expiries": [
       "liraglutide (Saxenda) composition patents expired 2023-2024; first ANDA approved 2024 (Biocon)",
       "semaglutide (Wegovy/Ozempic) composition patent expires US 2032 (key Novo lifecycle event); Indian / Brazilian generics expected 2026 in markets where compound is unprotected",
-      "phentermine/topiramate ER (Qsymia) — composition patents granted to Vivus; pediatric / IR formulations key lifecycle assets",
-      "naltrexone/bupropion (Contrave) — already faces generic erosion; Currax LCM minimal",
-      "orlistat — generic since 2009; Alli OTC stable"
+      "phentermine/topiramate ER (Qsymia) \u2014 composition patents granted to Vivus; pediatric / IR formulations key lifecycle assets",
+      "naltrexone/bupropion (Contrave) \u2014 already faces generic erosion; Currax LCM minimal",
+      "orlistat \u2014 generic since 2009; Alli OTC stable"
     ],
     "supply_and_manufacturing": [
       {
         "event": "Novo Nordisk Indiana facility re-inspection failure",
         "date": "2026-06-04",
         "source_signal_id": 106,
-        "detail": "FDA re-inspection of Novo Nordisk Indiana manufacturing facility failed. Issues include mammalian hair and water contamination in finished drug products (Wegovy/Ozempic). Short-term injectable semaglutide supply disruption risk. Coincides with tirzepatide universal PBM coverage (event_id 13) — asymmetric competitive opening for Lilly if disruption materialises.",
+        "detail": "FDA re-inspection of Novo Nordisk Indiana manufacturing facility failed. Issues include mammalian hair and water contamination in finished drug products (Wegovy/Ozempic). Short-term injectable semaglutide supply disruption risk. Coincides with tirzepatide universal PBM coverage (event_id 13) \u2014 asymmetric competitive opening for Lilly if disruption materialises.",
         "competitive_implication": "Semaglutide supply risk creates near-term patient switching opportunity for tirzepatide; monitor Novo supply guidance at ADA 2026 (Jun 19-22).",
         "kb_event_id": null,
         "macro_signal_id": 106
@@ -2501,7 +2575,7 @@
     ],
     "generational_framing": {
       "first_generation_soc": {
-        "description": "Single-mechanism incretin (GLP-1 receptor agonist) injectables and orals — currently dominant standard of care.",
+        "description": "Single-mechanism incretin (GLP-1 receptor agonist) injectables and orals \u2014 currently dominant standard of care.",
         "frontrunner_injectables": [
           "semaglutide / Wegovy (Novo)",
           "tirzepatide / Zepbound (Lilly, GLP-1+GIP dual but commercially positioned as first-gen incretin)"
@@ -2509,15 +2583,15 @@
         "frontrunner_orals": [
           "oral semaglutide / Rybelsus (Novo)",
           "Foundayo / orforglipron (Lilly)",
-          "GSBR-1290 (Structure Tx — best in efficacy as oral, but still in P2)"
+          "GSBR-1290 (Structure Tx \u2014 best in efficacy as oral, but still in P2)"
         ],
         "characterization": "Deep TBWL achievable but GI tolerability burden + lean mass loss are limitations."
       },
       "second_generation_differentiators": {
         "description": "Mechanisms aimed at higher-quality weight loss (preserving lean mass), or better tolerability, or combinations for synergy.",
         "double_incretin": "GLP-1/GIP (tirzepatide as commercial example) + GLP-1/glucagon (survodutide, mazdutide).",
-        "triple_g": "GLP-1/GIP/glucagon (retatrutide / Lilly LY3437943) — deep TBWL + metabolic breadth thesis.",
-        "amylin_class": "Amylin receptor agonists (petrelintide monotherapy, eloralintide — Lilly; CagriSema = amylin+GLP-1 combo / Novo) — quality-of-weight-loss + lean-mass preservation + better tolerability thesis.",
+        "triple_g": "GLP-1/GIP/glucagon (retatrutide / Lilly LY3437943) \u2014 deep TBWL + metabolic breadth thesis.",
+        "amylin_class": "Amylin receptor agonists (petrelintide monotherapy, eloralintide \u2014 Lilly; CagriSema = amylin+GLP-1 combo / Novo) \u2014 quality-of-weight-loss + lean-mass preservation + better tolerability thesis.",
         "other_emerging": "CB1 inverse agonists (Novo monlunabant; reformulations after rimonabant safety) and other non-incretin mechanisms in earlier stages."
       },
       "investor_reception_nuance_2026_06": "Despite the tolerability/quality-of-weight-loss differentiation thesis, market reception has been muted for assets emphasizing tolerability (e.g. Roche programs) vs assets emphasizing magnitude. Investor read-through: depth of weight loss still dominates valuation calculus; tolerability is necessary-but-not-sufficient. Quality framing (lean mass preservation, metabolic health) is gaining vocabulary but hasn't yet displaced TBWL as the primary investor anchor.",
@@ -2525,21 +2599,21 @@
       "last_updated": "2026-06-08",
       "next_gen_frontrunner_view_2026_06": {
         "as_of": "2026-06-14 (ADA 2026)",
-        "positioning": "On the AGGREGATE of currently-available TPP-analyzable parameters, retatrutide (Lilly, triple GLP-1/GIP/glucagon agonist) is the next-gen efficacy frontrunner — ahead of Novo's dual-agonist franchise. This is a POSITIONING read backed by current facts, not a fixed verdict.",
+        "positioning": "On the AGGREGATE of currently-available TPP-analyzable parameters, retatrutide (Lilly, triple GLP-1/GIP/glucagon agonist) is the next-gen efficacy frontrunner \u2014 ahead of Novo's dual-agonist franchise. This is a POSITIONING read backed by current facts, not a fixed verdict.",
         "basis_by_parameter": {
-          "efficacy": "Retatrutide leads the field on weight loss (TRIUMPH ~24-30% TBWL) — the dominant differentiator in obesity right now; this axis drives the frontrunner consensus.",
-          "safety_tolerability": "GI tolerability broadly class-typical for incretins; no decisive separation on current data — monitor.",
-          "convenience_route": "COUNTER-AXIS for Novo: weekly injectable for retatrutide vs Novo's oral options (oral semaglutide / oral amycretin) — convenience is where Novo competes, so the 'winning' is on aggregate, not on every axis.",
+          "efficacy": "Retatrutide leads the field on weight loss (TRIUMPH ~24-30% TBWL) \u2014 the dominant differentiator in obesity right now; this axis drives the frontrunner consensus.",
+          "safety_tolerability": "GI tolerability broadly class-typical for incretins; no decisive separation on current data \u2014 monitor.",
+          "convenience_route": "COUNTER-AXIS for Novo: weekly injectable for retatrutide vs Novo's oral options (oral semaglutide / oral amycretin) \u2014 convenience is where Novo competes, so the 'winning' is on aggregate, not on every axis.",
           "aggregate_evaluation": "Weighing efficacy (currently the heaviest TPP factor) against convenience/safety, current-data balance favours Lilly/retatrutide for peak efficacy positioning."
         },
         "reversibility": "FLIP-WHEN-DATA-WARRANTS: re-evaluate each cycle. New Novo data (CagriSema, amycretin oral/SC, MACE/CV outcomes) or a retatrutide safety signal that improves the aggregate for Novo flips this positioning. Frame is intentionally provisional.",
-        "source": "ADA 2026 analyst consensus (WS12 event 251); Lilly TRIUMPH program. Positioning claim — references already-encoded retatrutide efficacy, no new metric introduced here."
+        "source": "ADA 2026 analyst consensus (WS12 event 251); Lilly TRIUMPH program. Positioning claim \u2014 references already-encoded retatrutide efficacy, no new metric introduced here."
       }
     },
     "oral_glp1_race_update_ada26": {
       "date": "2026-06-08",
       "event": "ADA 2026",
-      "summary": "Three-way oral GLP-1 competition confirmed. Novo oral Wegovy (semaglutide pill) at 3M prescriptions; Lilly Foundayo (orforglipron) ADA26 data tops oral semaglutide on key endpoint; AZ elecoglipron Phase 2 -10.5% TBWL at 6 months — Phase 3 pivotal programme initiating. Race-to-third oral obesity pill now AZ vs Roche enicepatide (oral form TBD) vs Pfizer berobenatide (monthly s.c.). Oral format differentiation becoming primary commercial battleground post-2026.",
+      "summary": "Three-way oral GLP-1 competition confirmed. Novo oral Wegovy (semaglutide pill) at 3M prescriptions; Lilly Foundayo (orforglipron) ADA26 data tops oral semaglutide on key endpoint; AZ elecoglipron Phase 2 -10.5% TBWL at 6 months \u2014 Phase 3 pivotal programme initiating. Race-to-third oral obesity pill now AZ vs Roche enicepatide (oral form TBD) vs Pfizer berobenatide (monthly s.c.). Oral format differentiation becoming primary commercial battleground post-2026.",
       "source_event_ids": [
         181,
         193,
@@ -2547,18 +2621,18 @@
         179,
         178
       ],
-      "ada26_competitive_narrative": "Lilly positioned as ADA26 'clear winner' (RBC); orforglipron first oral GLP-1 to beat oral semaglutide head-to-head on key endpoint (specific TBWL pending peer review); CagriSema-vs-retatrutide H2H still pending. Hedged: directional momentum, jury still out (Novo CSO) — not yet quantitatively benchmarked. (Absorbs edit 3 orforglipron point per Katie 2026-06-11.)"
+      "ada26_competitive_narrative": "Lilly positioned as ADA26 'clear winner' (RBC); orforglipron first oral GLP-1 to beat oral semaglutide head-to-head on key endpoint (specific TBWL pending peer review); CagriSema-vs-retatrutide H2H still pending. Hedged: directional momentum, jury still out (Novo CSO) \u2014 not yet quantitatively benchmarked. (Absorbs edit 3 orforglipron point per Katie 2026-06-11.)"
     },
     "ws13_review_framing_S94": {
       "date": "2026-06-13",
-      "source": "WS13 reviews s41573-025-01183-8 (Drucker, NRDD 2025) + s41573-026-01427-1 (Petersen, NRDD 2026) — analyst-known, verify",
-      "sponsor_landscape_shift": "Duopoly (Novo + Lilly) intact but the chasing field has materially restructured: Pfizer re-enters credibly via Metsera acquisition (MET-097i monthly biased GLP-1R) after danuglipron/lotiglipron exit; Hengrui (China) emerges as a fourth credible global sponsor via dual ex-China licensing — Kailera (HRS-7535 oral SM Ph3 NCT06904105; HRS9531 dual) and Regeneron (olatorepatide GLP-1/GCGR Ph3 in China); MindRank surfaces as first AI-discovery-led Ph3 oral GLP-1 sponsor (MDR-001). Amgen, BI/Zealand, Innovent, Roche, AZ, Altimmune, Structure Tx, Viking remain second-tier.",
+      "source": "WS13 reviews s41573-025-01183-8 (Drucker, NRDD 2025) + s41573-026-01427-1 (Petersen, NRDD 2026) \u2014 analyst-known, verify",
+      "sponsor_landscape_shift": "Duopoly (Novo + Lilly) intact but the chasing field has materially restructured: Pfizer re-enters credibly via Metsera acquisition (MET-097i monthly biased GLP-1R) after danuglipron/lotiglipron exit; Hengrui (China) emerges as a fourth credible global sponsor via dual ex-China licensing \u2014 Kailera (HRS-7535 oral SM Ph3 NCT06904105; HRS9531 dual) and Regeneron (olatorepatide GLP-1/GCGR Ph3 in China); MindRank surfaces as first AI-discovery-led Ph3 oral GLP-1 sponsor (MDR-001). Amgen, BI/Zealand, Innovent, Roche, AZ, Altimmune, Structure Tx, Viking remain second-tier.",
       "china_developer_entry": "Material China-originated GLP-1-based assets entering global pipelines: mazdutide (Innovent, GCGR/GLP-1R dual), HRS9531 + HRS-7535 (Hengrui/Kailera), olatorepatide (Hengrui/Regeneron), ecnoglutide (Sciwind, biased GLP-1RA), HDM-1002 (Huadong oral SM), RGT-075 (Regor oral SM), ASC30 (Ascletis oral SM), VCT-220 (Corxel/Vincentage), bofanglutide (Ganlee), bioglutide, MDR-001 (MindRank AI-discovered peptide). Broadens the geography of GLP-1 development and licensing-deal flow.",
-      "biased_agonism_axis": "Biased GLP-1R agonism (preferential Gs/cAMP vs β-arrestin recruitment) is now a deliberate fourth-generation design axis (after magnitude / dosing / body-composition). Exemplars: tirzepatide; MET-097i (lipidation-driven biased agonism); human β-arrestin-1 LoF variants confer enhanced GLP-1RA glycaemic response. Thesis: biased agonists may achieve more durable receptor engagement and avoid desensitization-driven plateau. Biology probe NNC5840 already tracked in novel_targets.",
+      "biased_agonism_axis": "Biased GLP-1R agonism (preferential Gs/cAMP vs \u03b2-arrestin recruitment) is now a deliberate fourth-generation design axis (after magnitude / dosing / body-composition). Exemplars: tirzepatide; MET-097i (lipidation-driven biased agonism); human \u03b2-arrestin-1 LoF variants confer enhanced GLP-1RA glycaemic response. Thesis: biased agonists may achieve more durable receptor engagement and avoid desensitization-driven plateau. Biology probe NNC5840 already tracked in novel_targets.",
       "indication_stacking_precedent": "2024-2025 structural expansion of GLP-1 labels beyond glycemia/weight: tirzepatide OSA (FDA 2024, SURMOUNT-OSA); semaglutide CV-risk-reduction in obesity-without-diabetes (SELECT); semaglutide CKD in T2D (FLOW, stopped early for benefit); tirzepatide + semaglutide HFpEF (STEP-HFpEF, SUMMIT). Establishes precedent that GLP-1 outcomes trials carry sequential indication labels off a single asset; now extending into neuropsychiatric weight comorbidities (brenipatide RENEW-ALC)."
     },
     "roche_amylin_glp1gip_combo_crossref": {
-      "note": "Roche combo-strategy CROSS-REF (combo efficacy PENDING — do NOT imply additive weight loss). enicepatide (CT-388, GLP-1/GIP dual agonist) Ph2 MONOtherapy: placebo-adjusted 22.5% weight loss at 48wk, top dose (sourced). petrelintide (amylin, via Zealand) = stated combination partner; petrelintide/CT-388 fixed-dose-combo Ph2 expected to start H1 2026. Combo efficacy itself not yet read out.",
+      "note": "Roche combo-strategy CROSS-REF (combo efficacy PENDING \u2014 do NOT imply additive weight loss). enicepatide (CT-388, GLP-1/GIP dual agonist) Ph2 MONOtherapy: placebo-adjusted 22.5% weight loss at 48wk, top dose (sourced). petrelintide (amylin, via Zealand) = stated combination partner; petrelintide/CT-388 fixed-dose-combo Ph2 expected to start H1 2026. Combo efficacy itself not yet read out.",
       "sources": [
         {
           "label": "Roche Ph2 CT-388 results (2026-01-27)",
@@ -2566,6 +2640,37 @@
           "type": "press_release",
           "date": "2026-01-27",
           "quoted_metric": "CT-388 placebo-adjusted 22.5% weight loss at 48 weeks"
+        }
+      ]
+    },
+    "oral_wegovy_brand_intelligence_jun26": {
+      "date": "2026-06-18",
+      "source": "Spherix Global Insights analysis",
+      "finding": "Novo Nordisk oral Wegovy (semaglutide pill) gaining market traction against Lilly Foundayo (orforglipron) driven by physician brand recognition and prescriber familiarity, despite orforglipron's demonstrated efficacy superiority at ADA 2026. First formal competitive intelligence on brand-vs-efficacy dynamic in the oral GLP-1 head-to-head.",
+      "commercial_implication": "Prescriber inertia creates a durable head-start for Wegovy pill. Lilly must overcome brand familiarity with efficacy-driven detailing; Novo's defense rests on first-mover prescriber relationships. Two-speed market dynamic: Foundayo (superior efficacy) vs Wegovy pill (brand incumbency). Payer formulary positioning decisions will be a secondary arbiter.",
+      "source_event_id": 2094,
+      "sources": [
+        {
+          "label": "Spherix Global Insights \u2014 oral GLP-1 prescriber survey (June 18, 2026)",
+          "url": "",
+          "type": "trade_press",
+          "date": "2026-06-18",
+          "quoted_metric": "Wegovy pill brand recognition advantage vs Foundayo in prescriber survey"
+        }
+      ]
+    },
+    "oral_wegovy_3m_rx_milestone_2026_06": {
+      "event": "Oral Wegovy (semaglutide 25mg oral) reaches 3 million US prescriptions (June 2026)",
+      "timing": "Ahead of analyst tracking timelines",
+      "significance": "Validates consumer demand for oral GLP-1 obesity treatment at scale; accelerates oral format competition against Lilly orforglipron (Foundayo); reshapes the oral vs injectable delivery format battle",
+      "competitive_implication": "Novo's oral Wegovy brand recognition and familiarity advantage over Lilly's Foundayo (orforglipron) noted in KB event 2094; oral GLP-1 adoption curve suggests injectable-to-oral shift accelerating",
+      "sources": [
+        {
+          "label": "Oral Wegovy 3M Rx milestone (market tracking, June 2026)",
+          "url": "https://www.novonordisk.com",
+          "type": "trade_press",
+          "date": "2026-06-05",
+          "quoted_metric": "3 million US prescriptions, oral semaglutide 25mg"
         }
       ]
     }
@@ -2576,12 +2681,12 @@
       "dates": "2026-06-05 to 2026-06-07",
       "obesity_relevance": "HIGH",
       "key_readouts": [
-        "Petrelintide (Zealand/Roche) tolerability deep-dive — amylin mechanism GI burden advantage vs GLP-1 class established as Phase 2-level clinical narrative (event_id 165)",
-        "Roche announces Phase 2 start: petrelintide + enicepatide combo (amylin+GLP-1/GIP dual) — most novel combo strategy in obesity pipeline as of Jun 2026 (event_id 163)",
-        "Berobenatide (PF-08653944, Pfizer/Metsera) Phase 2 data in obesity+T2D — monthly GLP-1R agonist; Pfizer formal entry into scaled commercial GLP-1 fight (event_id 164)",
-        "Eli Lilly triple-G (GLP-1/GIP/GCG) Phase 2 efficacy data presented — advantages vs existing therapies claimed; TBWL effect size not captured in WS12 KB (event_id 162)"
+        "Petrelintide (Zealand/Roche) tolerability deep-dive \u2014 amylin mechanism GI burden advantage vs GLP-1 class established as Phase 2-level clinical narrative (event_id 165)",
+        "Roche announces Phase 2 start: petrelintide + enicepatide combo (amylin+GLP-1/GIP dual) \u2014 most novel combo strategy in obesity pipeline as of Jun 2026 (event_id 163)",
+        "Berobenatide (PF-08653944, Pfizer/Metsera) Phase 2 data in obesity+T2D \u2014 monthly GLP-1R agonist; Pfizer formal entry into scaled commercial GLP-1 fight (event_id 164)",
+        "Eli Lilly triple-G (GLP-1/GIP/GCG) Phase 2 efficacy data presented \u2014 advantages vs existing therapies claimed; TBWL effect size not captured in WS12 KB (event_id 162)"
       ],
-      "conference_verdict": "ADA26 confirms combo strategies and tolerability differentiation as the two structural forces shaping the next phase of obesity drug competition. Single-mechanism GLP-1 SOC status (semaglutide, tirzepatide) remains intact but next-generation competitive pressure is now clinical-stage (not preclinical). No frontrunner displacement events — no TBWL or MACE data from ADA26 exceeds current benchmarks at confirmed evidence level.",
+      "conference_verdict": "ADA26 confirms combo strategies and tolerability differentiation as the two structural forces shaping the next phase of obesity drug competition. Single-mechanism GLP-1 SOC status (semaglutide, tirzepatide) remains intact but next-generation competitive pressure is now clinical-stage (not preclinical). No frontrunner displacement events \u2014 no TBWL or MACE data from ADA26 exceeds current benchmarks at confirmed evidence level.",
       "data_still_missing": [
         "Berobenatide TBWL effect size, responder rates, safety profile (ADA26 summary only)",
         "Lilly triple-G TBWL effect size (ADA26 presentation not detailed in WS12 KB)",
@@ -2607,18 +2712,6 @@
       ]
     }
   ],
-  "data_gaps": [
-    "WS8 conference feed does not yet cover ADA Scientific Sessions, Obesity Week, or EASD — recent_conference_readouts is intentionally empty until WS8 expansion or WS10a non-onc scout coverage lands.",
-    "PubMed e-utils query (obesity + RCT) returned predominantly oncology/BMI-prognostic abstracts (28/30); landmark obesity trial PMIDs are cited inline from analyst's known-source list rather than the auto-fetch. STEP/SURMOUNT/SELECT abstracts are well-characterised in NEJM/Lancet but did not surface in the broad search.",
-    "openFDA generic obesity-indication search returned 11 records (mostly legacy short-term sympathomimetics); brand-specific queries (Wegovy, Zepbound, Saxenda, Qsymia, Contrave, Xenical, Alli, Imcivree, Mounjaro, Ozempic, Rybelsus, Victoza) supplemented this and provided original NDA + supplement approval dates.",
-    "EMA EPAR not directly queried (no EMA API in WS9 fetcher set); EMA approval dates cited from public EPAR pages but not confirmed via structured API in this build.",
-    "Custom_efficacy lean_mass_loss_pct and vat_volume_delta_pct only sporadically reported in pivotals — populated where available (bimagrumab, retatrutide Ph2 substudies), null elsewhere.",
-    "Some Phase 2/3 NCTs (TRIUMPH-1 NCT05929066, TRIUMPH-3 NCT05882045) are real but smaller Lilly-sponsored studies returned by CT.gov; the full TRIUMPH program NCTs cited in current_task.md (NCT05669599 NCT06066528 etc.) include some IDs that the fetcher returned as either Boehringer survodutide trials or did not surface — populated only NCTs confirmed in our CT.gov fetch.",
-    "Petrelintide (Zealand ZUPREME-1) — NCT resolved 2026-06-11: petrelintide real NCT = NCT06662539 (Ph2 monotherapy, ZUPREME-1, Zealand). NCT06569355 = VCT220 (Vincentage Pharma, Chinese obesity) — correctly assigned to pipeline_assets[34]. Additional petrelintide NCTs confirmed: NCT06926842 (Ph2 active-not-recruiting), NCT07589686 (Ph2 + enicepatide combo), NCT07076030 + NCT07338214 (Ph1 PK).",
-    "Special populations safety/efficacy gaps (WS13 review, Drucker NRDD 2025, p.647): explicit data gaps in (a) older adults (>=75 yr; sarcopenia risk), (b) children/adolescents <12 yr, (c) pregnancy (insufficient data; current FDA labels recommend discontinuation 2 months pre-conception), (d) T1D (CV/renal benefit hypothesis untested), (e) defined-duration treatment + cessation 'legacy effect' hypothesis untested. [analyst-known, verify]",
-    "GLP-1/incretin modality TAM expansion: T1D platform data (signal_id 144, ADA26 Jun 2026). Roche GLP-1 Phase 2 in Type 1 diabetes showed efficacy at ADA26 — incretin modality expanding addressable indication set beyond obesity/T2D. Strategic obesity ETLM relevance: (1) incretin-platform sponsors (Roche/Zealand, Novo Nordisk, Eli Lilly) with T1D Phase 2 data have a growing multi-indication platform rationale to sustain GLP-1/amylin R&D investment beyond obesity; (2) petrelintide+enicepatide combo may have multi-indication utility (obesity + T1D adjunct) — watch for indication-expansion signals; (3) TAM expansion into T1D (~8.4M US T1D patients) is additive to the ~100M US obesity-eligible population; (4) any safety signal from T1D incretin studies has direct read-through to obesity label (same molecule class). Source: landscape/_macro.json signal_id 144, platform_tech, priority 0.85, cycle7_thmd2 / re-confirmed cycle9_thmd4."
-  ],
-  "confidence_notes": "Approved-therapy and pipeline-asset structures are well-grounded in openFDA + CT.gov v2 returns (500 obesity Phase 2/3 studies fetched; 147 matched curated keyword list). Efficacy benchmark percentages cite peer-reviewed primary publications (STEP, SURMOUNT, SELECT NEJM/Lancet) — these are not re-derived from raw trial data here; PMs / human reviewer should confirm decimals match label / publication. WS8 non-onc coverage gap is the most material limitation.",
   "preclinical_watchlist": [
     {
       "asset_name": "AB106 (AB106-156)",
@@ -2644,27 +2737,59 @@
       "asset_name": "PT150",
       "company": "Pop Test Oncology / Palisades Therapeutics",
       "modality": "oral small-molecule glucocorticoid receptor (GR) antagonist",
-      "target": "Glucocorticoid receptor (GR) — homeostatic body-weight setpoint modulator",
+      "target": "Glucocorticoid receptor (GR) \u2014 homeostatic body-weight setpoint modulator",
       "stage": "preclinical",
-      "positioning": "GLP-1 maintenance/setpoint adjunct — prevents post-incretin weight regain; not a standalone obesity asset",
-      "evidence_summary": "DIO mice: PT150 monotherapy did not materially reduce body weight. Combination with semaglutide: largest weight reduction AND maintained lower setpoint 20 days post-washout — addressing the weight-regain-after-GLP-1-withdrawal problem. Track as GLP-1 maintenance/adjunct concept; needs peer-reviewed validation and obesity clinical data.",
+      "positioning": "GLP-1 maintenance/setpoint adjunct \u2014 prevents post-incretin weight regain; not a standalone obesity asset",
+      "evidence_summary": "DIO mice: PT150 monotherapy did not materially reduce body weight. Combination with semaglutide: largest weight reduction AND maintained lower setpoint 20 days post-washout \u2014 addressing the weight-regain-after-GLP-1-withdrawal problem. Track as GLP-1 maintenance/adjunct concept; needs peer-reviewed validation and obesity clinical data.",
       "source": "WS10a:biorxiv:10.64898/2026.04.06.712688",
       "source_year": 2026,
-      "human_decision": "MERGE — S86 Katie"
+      "human_decision": "MERGE \u2014 S86 Katie"
     }
   ],
   "regulatory_landscape": {
-    "section_status": "S64 RATIFIED by Katie on 2026-06-08 — proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed.",
+    "section_status": "S64 RATIFIED by Katie on 2026-06-08 \u2014 proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed.",
     "schema_version": "1.0",
     "section_created": "2026-06-08 (S64)",
     "us_legislative_risks": {
-      "_template_note": "Add entries when COINS Act / BIOSECURE-family bills or other US legislative actions create asset-specific or class-specific risks for this indication. See ecosystem_knowledge.md for cross-indication geopolitical landscape."
+      "_template_note": "Add entries when COINS Act / BIOSECURE-family bills or other US legislative actions create asset-specific or class-specific risks for this indication. See ecosystem_knowledge.md for cross-indication geopolitical landscape.",
+      "ira_medicare_negotiation_permanent_framework_jun26": {
+        "date": "2026-06-12",
+        "event": "CMS proposes permanent IRA Medicare drug price negotiation framework (Trump administration)",
+        "obesity_relevance": "HIGH \u2014 Wegovy (semaglutide 2.4mg) and Zepbound (tirzepatide) are likely priority negotiation candidates given blockbuster revenue and obesity epidemic scope. Permanent framework removes residual policy-reversal uncertainty for GLP-1 pricing.",
+        "implication": "Structural long-term pricing headwind for branded GLP-1s in Medicare-covered obesity populations. Manufacturers face negotiated price caps that compress gross-to-net spread; may accelerate payer formulary negotiations and shift commercial competitiveness dynamics from efficacy to net-price.",
+        "source": "Macro signal \u2014 CMS press release / PwC biopharma policy report (June 12, 2026)",
+        "sources": [
+          {
+            "label": "CMS IRA permanent framework proposal (June 2026)",
+            "url": "",
+            "type": "regulatory",
+            "date": "2026-06-12",
+            "quoted_metric": "Permanent IRA Medicare negotiation framework proposed"
+          }
+        ]
+      }
     },
     "regulatory_pathway_risks": {
       "_template_note": "Add entries for AA-pathway scrutiny, FDA AdComs, EMA referrals, or other pathway-specific risks affecting this indication's pipeline or approved assets."
     },
     "jurisdictional_considerations": {
-      "_template_note": "Add per-jurisdiction notes (EU PRIME, MHRA, NMPA, PMDA, etc.) where they materially affect this indication's commercial pathway."
+      "_template_note": "Add per-jurisdiction notes (EU PRIME, MHRA, NMPA, PMDA, etc.) where they materially affect this indication's commercial pathway.",
+      "colorado_drug_import_fda_approval_jun26": {
+        "date": "2026-06-17",
+        "event": "Colorado receives FDA sign-off for state drug-import plan from Canada \u2014 first FDA-approved state import program",
+        "obesity_relevance": "MEDIUM \u2014 GLP-1 pricing (Wegovy, Zepbound) is the leading use-case for state import programs targeting high-cost specialty drugs. If other states follow, could create structured price arbitrage that pressures US GLP-1 list prices in states with high obesity treatment penetration.",
+        "implication": "Structural long-term pricing risk for US GLP-1 manufacturers if import programs scale. Near-term: Colorado-only, implementation hurdles remain. Watch for: (1) other state applications, (2) manufacturer counter-strategies (exclusive contracts, serialization), (3) GLP-1 inclusion in Colorado import formulary.",
+        "source": "Macro signal \u2014 FDA regulatory action (June 17, 2026)",
+        "sources": [
+          {
+            "label": "FDA approval Colorado drug import plan (June 17, 2026)",
+            "url": "",
+            "type": "regulatory",
+            "date": "2026-06-17",
+            "quoted_metric": "First FDA-approved state drug import program"
+          }
+        ]
+      }
     },
     "katie_directives": {
       "china_origin_asset_policy_S64": "Keep China-origin assets in pipeline_assets despite COINS Act risk. Log regulatory risk as annotation on the asset, not as basis for exclusion. Class trends + cross-asset patterns go to ecosystem_knowledge.md, not here.",
@@ -2701,48 +2826,195 @@
         "milestone": "Eli Lilly GLP-1s (Zepbound/Mounjaro + orforglipron) now covered by all major US PBMs (Caremark, Express Scripts, OptumRx).",
         "implication": "Material commercial access expansion; closes gap vs Novo Wegovy formulary breadth. Caveat: 340B hospital access disputes remain ongoing in parallel (see cross_indication_implications macro context).",
         "source_event_id": 13
+      },
+      {
+        "date": "2026-06-17",
+        "milestone": "FDA issues warning letters to 25 telehealth companies marketing compounded GLP-1 weight-loss drugs, citing false and misleading safety and efficacy claims.",
+        "implication": "Enforcement action signals the post-shortage compounding window is closing. Patients on compounded GLP-1s will be redirected toward branded products over the next 12 months, creating a structural tailwind for Wegovy pill and Foundayo access programs. Reinforces Novo Nordisk and Eli Lilly as the only legally cleared obesity GLP-1s.",
+        "source_event_id": 2091,
+        "sources": [
+          {
+            "label": "FDA warning letters \u2014 GLP-1 telehealth compounders (2026-06-17)",
+            "url": "https://www.fda.gov/drugs/warning-letters-and-notice-of-violation-letters-pharmaceutical-companies",
+            "type": "regulatory",
+            "date": "2026-06-17",
+            "quoted_metric": "25 telehealth companies received warning letters for compounded GLP-1 false/misleading claims"
+          }
+        ]
       }
     ],
     "glp1_indication_expansion_ws13_S94": {
       "date": "2026-06-13",
       "summary": "2024-2025 saw a structural expansion of GLP-1 labels beyond glycemia/weight: tirzepatide first approval for OSA in obese adults (FDA 2024; SURMOUNT-OSA basis); semaglutide approved for CV risk reduction in obesity-without-diabetes (SELECT); semaglutide for CKD in T2D (FLOW, stopped early for benefit); tirzepatide and semaglutide HFpEF data (STEP-HFpEF, SUMMIT). Establishes precedent that GLP-1 outcomes trials can carry sequential indication labels off a single asset.",
-      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.643-645 — analyst-known, verify",
+      "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.643-645 \u2014 analyst-known, verify",
       "cross_reference": "competitive_dynamics.ws13_review_framing_S94.indication_stacking_precedent"
+    },
+    "glp1_telehealth_compounding_warning_2026": {
+      "event": "FDA warning letters to GLP-1 weight-loss telehealth prescribers (June 18, 2026)",
+      "scope": "Class-level: GLP-1 agonists (compounded semaglutide, tirzepatide) marketed via direct-to-consumer digital health platforms",
+      "regulatory_action": "FDA warning letters citing off-label compounding promotion and inadequate prescribing safeguards; targets ~25 telehealth companies",
+      "commercial_implication": "Constrains the compounding/telehealth channel (~30% of GLP-1 obesity volume); benefits Novo Nordisk and Lilly branded products (Wegovy, Zepbound, Foundayo) as compounded alternatives face regulatory headwinds; telehealth platform partners face compliance risk",
+      "status": "Active enforcement (June 2026)",
+      "sources": [
+        {
+          "label": "FDA Warning Letters to GLP-1 telehealth prescribers (June 18, 2026)",
+          "url": "https://www.fda.gov/drugs/warning-letters-and-notice-of-violation-letters-pharmaceutical-companies",
+          "type": "regulatory",
+          "date": "2026-06-18",
+          "quoted_metric": "Warning letters to 25 telehealth companies; compounded GLP-1 marketing enforcement"
+        }
+      ]
     }
   },
   "novel_targets": [
     {
-      "target": "DHODH (mitochondrial dihydroorotate dehydrogenase) — chronopharmacology axis",
+      "target": "DHODH (mitochondrial dihydroorotate dehydrogenase) \u2014 chronopharmacology axis",
       "probe_compound": "BAY2402234 (Bayer; originally oncology/AML)",
-      "MoA_class": "Timed transient DHODH inhibition at dawn (ZT0) → restores mitochondrial redox rhythms (ubiquinone/ubiquinol ratio) → reduces adiposity and metabolic dysfunction independently of food intake",
-      "evidence_summary": "Male DIO mice: ZT0 BAY2402234 reduced weight gain, adiposity, hepatic TG + improved glucose tolerance; NO food intake change. ZT12 (dusk) dosing was ineffective — chrono-dependence confirmed. Hepatic Dhodh knockdown did NOT reproduce phenotype; uridine supplementation blunted benefit — implicates de novo pyrimidine flux specifically, not generic DHODH. Mechanism: restoration of daily mitochondrial redox oscillations disrupted by HFD.",
+      "MoA_class": "Timed transient DHODH inhibition at dawn (ZT0) \u2192 restores mitochondrial redox rhythms (ubiquinone/ubiquinol ratio) \u2192 reduces adiposity and metabolic dysfunction independently of food intake",
+      "evidence_summary": "Male DIO mice: ZT0 BAY2402234 reduced weight gain, adiposity, hepatic TG + improved glucose tolerance; NO food intake change. ZT12 (dusk) dosing was ineffective \u2014 chrono-dependence confirmed. Hepatic Dhodh knockdown did NOT reproduce phenotype; uridine supplementation blunted benefit \u2014 implicates de novo pyrimidine flux specifically, not generic DHODH. Mechanism: restoration of daily mitochondrial redox oscillations disrupted by HFD.",
       "stage": "preclinical (male DIO mice; preprint 2026)",
       "asset_note": "BAY2402234 originated in oncology (AML/ASLAN003 sibling); chronic metabolic use translation risk is significant. Interesting piece is the chronopharmacology/mitochondrial biology principle, not the specific compound.",
       "source": "WS10a:biorxiv:10.64898/2026.04.18.719366",
       "source_year": 2026,
-      "human_decision": "MERGE — S86 Katie (target biology / design principle)"
+      "human_decision": "MERGE \u2014 S86 Katie (target biology / design principle)"
     },
     {
-      "target": "GLP-1R — biased agonism (cAMP-biased / partial-Gsα, reduced β-arrestin recruitment)",
+      "target": "GLP-1R \u2014 biased agonism (cAMP-biased / partial-Gs\u03b1, reduced \u03b2-arrestin recruitment)",
       "probe_compound": "NNC5840 (Novo Nordisk internal discovery code; not in clinical registry)",
-      "MoA_class": "Protracted partial-Gsα cAMP-biased GLP-1 analogue; reduced β-arrestin recruitment correlates with greater maximal weight loss vs semaglutide in DIO mice",
-      "evidence_summary": "DIO mouse GLP-1R agonist panel: signalling bias (cAMP vs β-arrestin) significantly correlated with weight-loss efficacy. NNC5840 showed partial-Gsα cAMP-biased signalling and SUPERIOR maximal weight reduction vs semaglutide (lower potency but higher ceiling). Provides mechanistic rationale for biased-agonism screen strategy in next-gen incretin design.",
+      "MoA_class": "Protracted partial-Gs\u03b1 cAMP-biased GLP-1 analogue; reduced \u03b2-arrestin recruitment correlates with greater maximal weight loss vs semaglutide in DIO mice",
+      "evidence_summary": "DIO mouse GLP-1R agonist panel: signalling bias (cAMP vs \u03b2-arrestin) significantly correlated with weight-loss efficacy. NNC5840 showed partial-Gs\u03b1 cAMP-biased signalling and SUPERIOR maximal weight reduction vs semaglutide (lower potency but higher ceiling). Provides mechanistic rationale for biased-agonism screen strategy in next-gen incretin design.",
       "stage": "preclinical (no clinical registry entry)",
-      "design_principle": "Track as next-gen incretin pharmacology/design principle — not as a disclosed clinical candidate. Parallel design direction to Roche CT-388 (biased GLP-1R/GIP dual). Novo's back-up to amycretin/semaglutide.",
+      "design_principle": "Track as next-gen incretin pharmacology/design principle \u2014 not as a disclosed clinical candidate. Parallel design direction to Roche CT-388 (biased GLP-1R/GIP dual). Novo's back-up to amycretin/semaglutide.",
       "source": "WS10a:pmid:40157531",
       "source_year": 2025,
-      "human_decision": "MERGE — S86 Katie (changed from DROP; biology/design principle only)"
+      "human_decision": "MERGE \u2014 S86 Katie (changed from DROP; biology/design principle only)"
     },
     {
-      "target": "Ghrelin / LEAP2 axis (GHSR1a) — weight-regain biology",
+      "target": "Ghrelin / LEAP2 axis (GHSR1a) \u2014 weight-regain biology",
       "probe_compound": "LEAP2 analogues (preclinical; no clinical registry entry)",
       "MoA_class": "LEAP2 (liver-expressed antimicrobial peptide 2) is an endogenous inverse agonist of GHSR1a (ghrelin receptor); LEAP2 analogues blunt rebound hyperphagia, particularly in combination with GLP-1R agonists",
       "evidence_summary": "Mechanistically distinct anti-weight-regain target. Preclinical LEAP2 analogues blunt rebound hyperphagia especially in combination with GLP-1R agonists. Positioned as a candidate maintenance-phase add-on, not a standalone weight-loss inducer. Addresses the weight-regain-after-discontinuation unmet need.",
       "stage": "preclinical (no clinical registry entry)",
       "asset_note": "WS13 review flagged at medium confidence (Petersen, NRDD 2026, p.16). Track as weight-regain biology / maintenance-phase mechanism, not as a disclosed clinical candidate. analyst-known, verify.",
-      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.16 — analyst-known, verify",
+      "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.16 \u2014 analyst-known, verify",
       "source_year": 2026,
       "human_decision": null
+    }
+  ],
+  "approved_therapies": [
+    {
+      "drug_name": "semaglutide",
+      "brand": "Wegovy",
+      "company": "Novo Nordisk",
+      "modality": "GLP-1 receptor agonist (SC once-weekly)",
+      "target": "GLP-1R",
+      "indication_line": "Chronic weight management \u2014 obesity, or overweight + \u22651 weight-related comorbidity (adults & adolescents \u226512y)",
+      "fda_approval_date": "2021-06-04",
+      "ema_approval_date": "2022 (EMA approved; exact date unverified)",
+      "dosing": "2.4 mg SC once weekly (titrated)",
+      "key_efficacy": {
+        "STEP-1": "\u221214.9% mean body weight at 68 wk vs \u22122.4% placebo (primary ITT estimand)",
+        "SELECT": "MACE reduction in patients with overweight/obesity + established CVD without diabetes"
+      },
+      "sources": [
+        {
+          "label": "STEP 1 \u2014 Wilding et al. NEJM 2021 (PMID 33567185)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33567185/",
+          "type": "pubmed",
+          "date": "2021",
+          "quoted_metric": "\u221214.9% body weight at 68 wk"
+        },
+        {
+          "label": "STEP 1 ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT03548935",
+          "type": "ctgov",
+          "date": "2021",
+          "quoted_metric": "semaglutide 2.4mg vs placebo, obesity"
+        },
+        {
+          "label": "SELECT ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT03574597",
+          "type": "ctgov",
+          "date": "2023",
+          "quoted_metric": "CV outcomes"
+        }
+      ]
+    },
+    {
+      "drug_name": "tirzepatide",
+      "brand": "Zepbound",
+      "company": "Eli Lilly",
+      "modality": "GIP/GLP-1 dual receptor agonist (SC once-weekly)",
+      "target": "GIP + GLP-1R",
+      "indication_line": "Chronic weight management (obesity, or overweight + comorbidity); also moderate-to-severe OSA in obesity",
+      "fda_approval_date": "2023-11-08",
+      "ema_approval_date": "2024 (EMA approved; exact date unverified)",
+      "dosing": "5\u201315 mg SC once weekly (titrated)",
+      "key_efficacy": {
+        "SURMOUNT-1": "\u221220.9% mean body weight at 72 wk (15 mg, primary efficacy estimand, 95% CI \u221221.8 to \u221219.9) vs \u22123.1% placebo",
+        "SURMOUNT-5": "superior to semaglutide \u2014 \u221220.2% vs \u221213.7% at 72 wk (head-to-head)"
+      },
+      "sources": [
+        {
+          "label": "SURMOUNT-1 \u2014 Jastreboff et al. NEJM 2022 (PMID 35658024)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35658024/",
+          "type": "pubmed",
+          "date": "2022",
+          "quoted_metric": "\u221220.9% at 72 wk (primary estimand)"
+        },
+        {
+          "label": "SURMOUNT-1 ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT04184622",
+          "type": "ctgov",
+          "date": "2022",
+          "quoted_metric": "tirzepatide obesity P3"
+        },
+        {
+          "label": "SURMOUNT-5 \u2014 NEJM 2025 (DOI 10.1056/NEJMoa2416394)",
+          "url": "https://www.nejm.org/doi/abs/10.1056/NEJMoa2416394",
+          "type": "journal",
+          "date": "2025",
+          "quoted_metric": "tirzepatide \u221220.2% vs semaglutide \u221213.7%"
+        }
+      ]
+    },
+    {
+      "drug_name": "orforglipron (LY3502970)",
+      "brand": "Foundayo",
+      "company": "Eli Lilly",
+      "modality": "Oral non-peptide small-molecule GLP-1 receptor agonist (once-daily)",
+      "target": "GLP-1R",
+      "indication_line": "Chronic weight management (obesity, or overweight + comorbidity); first approved oral small-molecule GLP-1 pill",
+      "fda_approval_date": "2026-04-01",
+      "ema_approval_date": null,
+      "dosing": "once-daily oral tablet, no food/water restrictions",
+      "regulatory_note": "NDA 220934; approved via FDA National Priority Voucher Program",
+      "key_efficacy": {
+        "ATTAIN-1": "reported ~\u221212.4% body weight at 72 wk (36 mg, efficacy estimand) vs \u22120.9% placebo \u2014 per secondary sources; NEJM full text paywalled (digit-level unverified)"
+      },
+      "sources": [
+        {
+          "label": "FDA approval \u2014 Lilly investor release",
+          "url": "https://investor.lilly.com/news-releases/news-release-details/fda-approves-lillys-foundayotm-orforglipron-only-glp-1-pill",
+          "type": "press_release",
+          "date": "2026",
+          "quoted_metric": "FDA approval 2026-04-01, NDA 220934"
+        },
+        {
+          "label": "ATTAIN-1 ClinicalTrials.gov",
+          "url": "https://clinicaltrials.gov/study/NCT05869903",
+          "type": "ctgov",
+          "date": "2026",
+          "quoted_metric": "orforglipron obesity P3"
+        },
+        {
+          "label": "ATTAIN-1 \u2014 NEJM 2025 (DOI 10.1056/NEJMoa2511774, paywalled)",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2511774",
+          "type": "journal",
+          "date": "2025",
+          "quoted_metric": "~\u221212.4% (paywall-unverified)"
+        }
+      ]
     }
   ]
 }

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Sync Atlas deliverables from WS9/WS12 source dirs into kl-portfolio.
 
-Reads:
-  - ~/Projects/ws9-etlm/drafts/<indication>/<indication>.json
-  - ~/Projects/ws12_news_signal/landscape/tpp_*.md
-  - ~/Projects/ws12_news_signal/landscape/themes/*.md
-  - ~/Projects/ws12_news_signal/ecosystem_knowledge.md
+Reads (post-2026-06-13 project-home consolidation under ws_professional/):
+  - ~/Projects/ws_professional/ws9-etlm/drafts/<indication>/<indication>.json
+  - ~/Projects/ws_professional/ws12_news_signal/landscape/tpp_*.md
+  - ~/Projects/ws_professional/ws12_news_signal/landscape/themes/*.md
+  - ~/Projects/ws_professional/ws12_news_signal/ecosystem_knowledge.md
 
 Applies scripts/atlas-redaction-config.json (whitelists + key-strips).
 Writes into src/data/atlas/{etlm,tpp,theme}/ and src/data/atlas/ecosystem.md.
@@ -29,11 +29,12 @@ REPO = HERE.parent
 CONFIG_PATH = HERE / "atlas-redaction-config.json"
 DATA = REPO / "src" / "data" / "atlas"
 
-ETLM_SRC = Path.home() / "Projects" / "ws9-etlm" / "drafts"
-ETLM_APPROVED_SRC = Path.home() / "Projects" / "ws9-etlm" / "approved"
-LANDSCAPE_SRC = Path.home() / "Projects" / "ws12_news_signal" / "landscape"
+WS_ROOT = Path.home() / "Projects" / "ws_professional"
+ETLM_SRC = WS_ROOT / "ws9-etlm" / "drafts"
+ETLM_APPROVED_SRC = WS_ROOT / "ws9-etlm" / "approved"
+LANDSCAPE_SRC = WS_ROOT / "ws12_news_signal" / "landscape"
 THEMES_SRC = LANDSCAPE_SRC / "themes"
-ECOSYSTEM_SRC = Path.home() / "Projects" / "ws12_news_signal" / "ecosystem_knowledge.md"
+ECOSYSTEM_SRC = WS_ROOT / "ws12_news_signal" / "ecosystem_knowledge.md"
 
 
 def load_config() -> dict[str, Any]:

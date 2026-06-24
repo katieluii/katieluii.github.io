@@ -93,41 +93,138 @@ function isObj(v: unknown): v is Record<string, unknown> {
   return Boolean(v) && typeof v === 'object' && !Array.isArray(v);
 }
 
+/** Humanize an enum/status string: ACTIVE_NOT_RECRUITING -> "Active not recruiting".
+ *  Leaves free text (anything with lowercase letters) intact apart from underscores. */
+function humanizeEnum(s: unknown): string {
+  if (s === null || s === undefined) return '—';
+  const str = String(s).trim();
+  if (!str) return '—';
+  const spaced = str.replace(/_/g, ' ');
+  if (/[a-z]/.test(str)) return spaced; // already mixed/lowercase free text
+  const lower = spaced.toLowerCase();
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+/** Renders an ETLM `sources` array (`{label, url, type, quoted_metric}`) as a row
+ *  of links; entries without a usable url fall back to plain label text. */
+function SourceLinks({ sources, className }: { sources: unknown; className?: string }) {
+  if (!Array.isArray(sources)) return null;
+  const items = sources.filter(isObj);
+  if (items.length === 0) return null;
+  return (
+    <div
+      className={
+        className ??
+        'flex flex-wrap gap-x-3 gap-y-1 pt-1 text-[10px] text-zinc-400 dark:text-zinc-500'
+      }
+    >
+      {items.map((s, i) => {
+        const label = s.label ? String(s.label) : s.url ? String(s.url) : 'source';
+        const url = typeof s.url === 'string' && s.url.trim() ? s.url.trim() : null;
+        return url ? (
+          <a
+            key={i}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 underline decoration-dotted underline-offset-4 hover:text-indigo-700"
+          >
+            {label}
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        ) : (
+          <span key={i} className="italic">
+            {label}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Keys inside an efficacy_benchmark object that are NOT scalar metrics
+ *  (provenance, prose notes, oncology placeholders kept null for non-onc). */
+const BENCH_SKIP_KEY = /(^source$|^sources$|_source$|_note$|^data_pending$|^ws13)/i;
+
+/** Returns the displayable scalar metric pairs from a benchmark object,
+ *  dropping nulls, source/note keys, and nested objects. */
+function benchmarkEntries(obj: unknown): Array<[string, unknown]> {
+  if (!isObj(obj)) return [];
+  return Object.entries(obj).filter(
+    ([k, v]) =>
+      v !== null &&
+      v !== undefined &&
+      v !== '' &&
+      typeof v !== 'object' &&
+      !BENCH_SKIP_KEY.test(k),
+  );
+}
+
+/** Long prose notes that some benchmark objects carry alongside metrics. */
+function benchmarkNotes(obj: unknown): string[] {
+  if (!isObj(obj)) return [];
+  return Object.entries(obj)
+    .filter(([k, v]) => /_note$|^data_pending$|^ws13/i.test(k) && typeof v === 'string' && v)
+    .map(([, v]) => String(v));
+}
+
 function Epidemiology({ data }: { data: Record<string, unknown> }) {
-  const stats: Array<[string, unknown]> = [
-    ['Global incidence (annual)', data['global_incidence_annual']],
-    ['US incidence (annual)', data['us_incidence_annual']],
-    ['5-yr survival', data['5yr_survival_pct'] ? `${data['5yr_survival_pct']}%` : null],
-    ['Median age at dx', data['median_age_at_diagnosis']],
-    ['Global prevalence', data['global_prevalence']],
-  ];
-  const segments = data['key_genomic_segments'];
+  // Scalar stats: numbers/strings that aren't provenance (*_source) keys.
+  const stats = Object.entries(data).filter(
+    ([k, v]) =>
+      v !== null &&
+      v !== undefined &&
+      v !== '' &&
+      (typeof v === 'number' || typeof v === 'string') &&
+      !/_source$/.test(k),
+  );
+  // Array fields render as bulleted lists (subpopulations, genomic segments, …).
+  const lists = Object.entries(data).filter(
+    ([, v]) => Array.isArray(v) && v.length > 0,
+  ) as Array<[string, unknown[]]>;
+  // Provenance strings shown as muted footnotes.
+  const provenance = Object.entries(data)
+    .filter(([k, v]) => /_source$/.test(k) && typeof v === 'string' && v)
+    .map(([, v]) => String(v));
+
+  // Don't render an empty section.
+  if (stats.length === 0 && lists.length === 0) return null;
 
   return (
     <section className="mb-10">
       <SectionHeader icon={Users} title="Epidemiology" />
       <Card>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {stats.map(([k, v]) =>
-            v !== null && v !== undefined ? (
+        {stats.length > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {stats.map(([k, v]) => (
               <KV
                 key={k}
-                label={k}
+                label={k.replace(/_/g, ' ')}
                 value={typeof v === 'number' ? v.toLocaleString() : String(v)}
               />
-            ) : null,
-          )}
-        </div>
-        {Array.isArray(segments) && segments.length > 0 && (
-          <div className="mt-5 pt-4 border-t border-zinc-200 dark:border-white/10">
+            ))}
+          </div>
+        )}
+        {lists.map(([k, arr]) => (
+          <div
+            key={k}
+            className="mt-5 pt-4 border-t border-zinc-200 dark:border-white/10 first:mt-0 first:border-0 first:pt-0"
+          >
             <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
-              Key genomic / clinical segments
+              {k.replace(/_/g, ' ')}
             </div>
             <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4">
-              {segments.map((s, i) => (
+              {arr.map((s, i) => (
                 <li key={i}>{String(s)}</li>
               ))}
             </ul>
+          </div>
+        ))}
+        {provenance.length > 0 && (
+          <div className="mt-4 pt-3 border-t border-zinc-200 dark:border-white/10 space-y-0.5 text-[10px] text-zinc-400 dark:text-zinc-500">
+            {provenance.map((p, i) => (
+              <div key={i}>{p}</div>
+            ))}
           </div>
         )}
       </Card>
@@ -250,7 +347,7 @@ function ApprovedTherapies({ data, sectionLabel }: { data: unknown[]; sectionLab
 }
 
 type SortDir = 'asc' | 'desc';
-type SortKey = 'asset_name' | 'company' | 'modality' | 'target' | 'phase' | 'status' | 'trial_name' | 'estimated_readout';
+type SortKey = 'asset_name' | 'population' | 'company' | 'modality' | 'target' | 'phase' | 'status' | 'trial_name' | 'estimated_readout';
 
 const PHASE_ORDER: Record<string, number> = {
   'Phase 1': 1, 'Phase 1/2': 2, 'Phase 2': 3, 'Phase 2/3': 4, 'Phase 3': 5, 'NDA/BLA': 6, 'Approved': 7,
@@ -287,6 +384,9 @@ function PipelineAssets({
         if (sortKey === 'phase') {
           av = PHASE_ORDER[String(a.phase ?? '')] ?? 0;
           bv = PHASE_ORDER[String(b.phase ?? '')] ?? 0;
+        } else if (sortKey === 'population') {
+          av = String(a.population ?? a.indication_subtype ?? '').toLowerCase();
+          bv = String(b.population ?? b.indication_subtype ?? '').toLowerCase();
         } else {
           av = String(a[sortKey] ?? '').toLowerCase();
           bv = String(b[sortKey] ?? '').toLowerCase();
@@ -333,6 +433,7 @@ function PipelineAssets({
           <thead>
             <tr>
               <SortTh col="asset_name" label="Asset" />
+              <SortTh col="population" label="Population" />
               <SortTh col="company" label="Company" className="hidden sm:table-cell" />
               <SortTh col="modality" label="Modality" className="hidden md:table-cell" />
               <SortTh col="target" label="Target" className="hidden md:table-cell" />
@@ -357,11 +458,9 @@ function PipelineAssets({
                     <div className="font-medium text-zinc-900 dark:text-zinc-100">
                       {String(entry.asset_name ?? entry.drug_name ?? '—')}
                     </div>
-                    {entry.indication_subtype ? (
-                      <div className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-0.5">
-                        {String(entry.indication_subtype)}
-                      </div>
-                    ) : null}
+                  </td>
+                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 max-w-[180px]">
+                    {String(entry.population ?? entry.indication_subtype ?? '—')}
                   </td>
                   <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
                     {String(entry.company ?? entry.sponsor ?? '—')}
@@ -380,7 +479,7 @@ function PipelineAssets({
                     </span>
                   </td>
                   <td className="px-3 py-2.5 align-top text-zinc-500 dark:text-zinc-400 hidden lg:table-cell whitespace-nowrap">
-                    {String(entry.status ?? '—')}
+                    {humanizeEnum(entry.status)}
                   </td>
                   <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden lg:table-cell">
                     {String(entry.trial_name ?? '—')}
@@ -444,26 +543,30 @@ function EfficacyBenchmarks({
                 {line.replace(/_/g, ' ')}
               </div>
               <div className="space-y-1.5">
-                {Object.entries(val).map(([k, v]) => {
-                  if (k === 'source') return null;
-                  return (
-                    <div key={k} className="flex justify-between text-xs gap-3">
-                      <span className="text-zinc-500 dark:text-zinc-400">
-                        {k.replace(/_/g, ' ')}
-                      </span>
-                      <span className="text-zinc-800 dark:text-zinc-200 font-medium text-right">
-                        {typeof v === 'object'
-                          ? JSON.stringify(v).slice(0, 80)
-                          : String(v)}
-                      </span>
-                    </div>
-                  );
-                })}
-                {val.source ? (
+                {benchmarkEntries(val).map(([k, v]) => (
+                  <div key={k} className="flex justify-between text-xs gap-3">
+                    <span className="text-zinc-500 dark:text-zinc-400">
+                      {k.replace(/_/g, ' ')}
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200 font-medium text-right">
+                      {String(v)}
+                    </span>
+                  </div>
+                ))}
+                {benchmarkNotes(val).map((note, ni) => (
+                  <div
+                    key={`note-${ni}`}
+                    className="text-[10px] text-zinc-500 dark:text-zinc-400 pt-1 italic leading-relaxed"
+                  >
+                    {note}
+                  </div>
+                ))}
+                {val.source && typeof val.source === 'string' ? (
                   <div className="text-[10px] text-zinc-400 dark:text-zinc-500 pt-1 italic">
                     {String(val.source)}
                   </div>
                 ) : null}
+                <SourceLinks sources={val.sources} />
               </div>
             </Card>
           );
@@ -490,69 +593,90 @@ function MechanismLandscape({
         subtitle="Targets and drug classes mapped to assets"
         count={data.length}
       />
-      <div className="space-y-3">
-        {data.map((entry, i) => {
-          if (!isObj(entry)) return null;
-          const eff = isObj(entry.efficacy_benchmark) ? entry.efficacy_benchmark : {};
-          const approved = Array.isArray(entry.approved_assets) ? entry.approved_assets : [];
-          return (
-            <Card key={i}>
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div>
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                    {String(entry.target ?? '—')}
-                  </div>
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
-                    {String(entry.drug_class ?? '')}
-                  </div>
-                </div>
-                <div className="flex flex-col items-end gap-1 text-[10px]">
-                  {typeof entry.pipeline_count_ph2 === 'number' && (
-                    <span className="text-zinc-500 dark:text-zinc-400">
-                      Ph2: <span className="font-semibold">{entry.pipeline_count_ph2}</span>
-                    </span>
-                  )}
-                  {typeof entry.pipeline_count_ph3 === 'number' && (
-                    <span className="text-zinc-500 dark:text-zinc-400">
-                      Ph3: <span className="font-semibold">{entry.pipeline_count_ph3}</span>
-                    </span>
-                  )}
-                </div>
-              </div>
-              {approved.length > 0 && (
-                <div className="mb-2 text-xs">
-                  <span className="text-zinc-500 dark:text-zinc-400">Approved: </span>
-                  <span className="text-zinc-800 dark:text-zinc-200">
-                    {approved.map(String).join(', ')}
-                  </span>
-                </div>
-              )}
-              {entry.leading_pipeline_asset ? (
-                <div className="text-xs mb-2">
-                  <span className="text-zinc-500 dark:text-zinc-400">Leading pipeline: </span>
-                  <span className="text-zinc-800 dark:text-zinc-200">
-                    {String(entry.leading_pipeline_asset)}
-                  </span>
-                </div>
-              ) : null}
-              {Object.keys(eff).length > 0 && (
-                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs mb-2">
-                  {Object.entries(eff).map(([k, v]) => (
-                    <span key={k}>
-                      <span className="text-zinc-500 dark:text-zinc-400">{k}:</span>{' '}
-                      <span className="font-medium">{String(v)}</span>
-                    </span>
-                  ))}
-                </div>
-              )}
-              {entry.key_resistance_mechanism ? (
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 italic">
-                  Resistance: {String(entry.key_resistance_mechanism)}
-                </div>
-              ) : null}
-            </Card>
-          );
-        })}
+      <div className="overflow-x-auto rounded-xl ring-1 ring-zinc-200 dark:ring-white/10">
+        <table className="w-full text-left text-xs">
+          <thead className="bg-zinc-50 dark:bg-white/5 text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            <tr>
+              <th className="px-3 py-2.5 font-medium">Target / Class</th>
+              <th className="px-3 py-2.5 font-medium">Approved</th>
+              <th className="px-3 py-2.5 font-medium whitespace-nowrap">Pipeline</th>
+              <th className="px-3 py-2.5 font-medium">Lead candidate</th>
+              <th className="px-3 py-2.5 font-medium">Headline efficacy</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-zinc-200 dark:divide-white/10">
+            {data.map((entry, i) => {
+              if (!isObj(entry)) return null;
+              const approved = Array.isArray(entry.approved_assets) ? entry.approved_assets : [];
+              const custom = benchmarkEntries(entry.custom_efficacy_benchmark);
+              const benchPairs =
+                custom.length > 0 ? custom : benchmarkEntries(entry.efficacy_benchmark);
+              return (
+                <tr key={i} className="align-top">
+                  <td className="px-3 py-2.5">
+                    <div className="font-semibold text-zinc-900 dark:text-zinc-100">
+                      {String(entry.target ?? '—')}
+                    </div>
+                    {entry.drug_class ? (
+                      <div className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        {String(entry.drug_class)}
+                      </div>
+                    ) : null}
+                  </td>
+                  <td className="px-3 py-2.5 text-zinc-700 dark:text-zinc-300">
+                    {approved.length > 0 ? approved.map(String).join(', ') : '—'}
+                  </td>
+                  <td className="px-3 py-2.5 whitespace-nowrap">
+                    <div className="flex flex-col gap-1 text-[10px] text-zinc-500 dark:text-zinc-400">
+                      {typeof entry.pipeline_count_ph2 === 'number' && (
+                        <span>
+                          Ph2{' '}
+                          <span className="font-semibold text-zinc-800 dark:text-zinc-200">
+                            {entry.pipeline_count_ph2}
+                          </span>
+                        </span>
+                      )}
+                      {typeof entry.pipeline_count_ph3 === 'number' && (
+                        <span>
+                          Ph3{' '}
+                          <span className="font-semibold text-zinc-800 dark:text-zinc-200">
+                            {entry.pipeline_count_ph3}
+                          </span>
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-3 py-2.5 text-zinc-700 dark:text-zinc-300">
+                    {entry.leading_pipeline_asset ? String(entry.leading_pipeline_asset) : '—'}
+                  </td>
+                  <td className="px-3 py-2.5">
+                    {benchPairs.length > 0 ? (
+                      <div className="flex flex-col gap-0.5">
+                        {benchPairs.map(([k, v]) => (
+                          <span key={k} className="text-zinc-700 dark:text-zinc-300">
+                            <span className="text-zinc-500 dark:text-zinc-400">
+                              {k.replace(/_/g, ' ')}:
+                            </span>{' '}
+                            <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                              {String(v)}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="text-zinc-400 dark:text-zinc-500">—</span>
+                    )}
+                    {entry.key_resistance_mechanism ? (
+                      <div className="text-[10px] text-zinc-500 dark:text-zinc-400 italic mt-1">
+                        Resistance: {String(entry.key_resistance_mechanism)}
+                      </div>
+                    ) : null}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
       {linkedThemes.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
@@ -595,29 +719,71 @@ function RecentConferenceReadouts({ data }: { data: unknown[] }) {
         <div className="space-y-3">
           {data.map((entry, i) => {
             if (!isObj(entry)) return null;
+            const relevanceKey = Object.keys(entry).find((k) => /_relevance$/.test(k));
+            const relevance = relevanceKey ? entry[relevanceKey] : null;
+            const keyReadouts = Array.isArray(entry.key_readouts) ? entry.key_readouts : [];
+            const stillMissing = Array.isArray(entry.data_still_missing)
+              ? entry.data_still_missing
+              : [];
+            const verdict = entry.conference_verdict ?? entry.finding;
+            const heading = entry.conference ?? entry.drug ?? entry.asset ?? '—';
             return (
               <Card key={i} accent="ring-rose-200/60 dark:ring-rose-500/20">
                 <div className="flex items-baseline justify-between gap-2 mb-1.5">
                   <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                    {String(entry.drug ?? entry.asset ?? '—')}
+                    {String(heading)}
                   </div>
-                  <span className="text-[10px] uppercase tracking-wider text-rose-700 dark:text-rose-400">
-                    {String(entry.conference ?? '')}
-                  </span>
+                  {relevance ? (
+                    <span className="text-[10px] uppercase tracking-wider text-rose-700 dark:text-rose-400">
+                      {humanizeEnum(relevance)} relevance
+                    </span>
+                  ) : null}
                 </div>
+                {entry.dates ? (
+                  <div className="text-[11px] text-zinc-500 dark:text-zinc-400 mb-2">
+                    {String(entry.dates)}
+                  </div>
+                ) : null}
                 {entry.trial ? (
                   <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
                     Trial: <span className="font-medium">{String(entry.trial)}</span>
                   </div>
                 ) : null}
-                <div className="text-xs text-zinc-700 dark:text-zinc-300 mb-2">
-                  {String(entry.finding ?? '')}
-                </div>
-                {entry.source ? (
+                {keyReadouts.length > 0 && (
+                  <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4 mb-2">
+                    {keyReadouts.map((r, ri) => (
+                      <li key={ri}>{String(r)}</li>
+                    ))}
+                  </ul>
+                )}
+                {verdict ? (
+                  <div className="text-xs text-zinc-700 dark:text-zinc-300 mb-2 leading-relaxed">
+                    {String(verdict)}
+                  </div>
+                ) : null}
+                {stillMissing.length > 0 && (
+                  <div className="mb-2">
+                    <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
+                      Still missing
+                    </div>
+                    <ul className="text-[11px] text-zinc-500 dark:text-zinc-400 space-y-0.5 list-disc pl-4">
+                      {stillMissing.map((m, mi) => (
+                        <li key={mi}>{String(m)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {entry.next_catalyst_window_note ? (
+                  <div className="text-[11px] text-zinc-600 dark:text-zinc-400 italic mb-1">
+                    Next catalyst: {String(entry.next_catalyst_window_note)}
+                  </div>
+                ) : null}
+                {entry.source && typeof entry.source === 'string' ? (
                   <div className="text-[10px] text-zinc-400 dark:text-zinc-500 italic">
                     {String(entry.source)}
                   </div>
                 ) : null}
+                <SourceLinks sources={entry.sources} />
               </Card>
             );
           })}
@@ -1044,6 +1210,13 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
           return <ApprovedTherapies key={key} data={val} sectionLabel="Legacy Approved Therapies" />;
         }
         if (key === 'approved_therapies' && Array.isArray(val)) {
+          // The flat `approved_therapies` array is superseded when an indication
+          // splits its approved set into novel/legacy — rendering both duplicates
+          // rows (the flat array is a subset). Suppress it when a split exists.
+          const hasSplit =
+            Array.isArray(etlm.approved_therapies_novel) ||
+            Array.isArray(etlm.approved_therapies_legacy);
+          if (hasSplit) return null;
           return <ApprovedTherapies key={key} data={val} />;
         }
         if (key === 'pipeline_assets' && Array.isArray(val)) {

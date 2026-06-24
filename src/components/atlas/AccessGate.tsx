@@ -29,7 +29,7 @@ function markRequested() {
 
 /** Email capture for Atlas access. Posts to Formspree when configured, else
  *  opens a prefilled mailto. Submitting captures the lead and confirms — it
- *  does NOT unlock the content (access is by subscription). */
+ *  does NOT unlock the content inline; I send the report to the captured email. */
 export function AccessRequestForm({ context }: { context: string }) {
   const [email, setEmail] = useState('');
   const [state, setState] = useState<FormState>(() => (alreadyRequested() ? 'done' : 'idle'));
@@ -41,9 +41,9 @@ export function AccessRequestForm({ context }: { context: string }) {
 
     if (!FORMSPREE_ENDPOINT) {
       // No backend configured — fall back to the visitor's mail client.
-      const subject = encodeURIComponent(`Atlas access — ${context}`);
+      const subject = encodeURIComponent(`Atlas report — ${context}`);
       const body = encodeURIComponent(
-        `Hi Katie,\n\nI'd like access details and pricing for the Atlas deliverable: ${context}.\n\nMy email: ${email}\n\nThanks.`,
+        `Hi Katie,\n\nI'd like the report for the Atlas deliverable: ${context}.\n\nMy email: ${email}\n\nThanks.`,
       );
       window.location.href = `mailto:${ACCESS_CONTACT_EMAIL}?subject=${subject}&body=${body}`;
       markRequested();
@@ -70,8 +70,8 @@ export function AccessRequestForm({ context }: { context: string }) {
       <div className="flex items-start gap-2.5 text-left">
         <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
         <p className="text-[13px] leading-relaxed text-zinc-600 dark:text-zinc-300">
-          Thanks — I'll send access details and pricing
-          {email.trim() ? <> to <span className="font-medium text-zinc-900 dark:text-zinc-100">{email.trim()}</span></> : ''}.
+          Thanks — I'll send you the report
+          {email.trim() ? <> at <span className="font-medium text-zinc-900 dark:text-zinc-100">{email.trim()}</span></> : ''}.
         </p>
       </div>
     );
@@ -94,7 +94,7 @@ export function AccessRequestForm({ context }: { context: string }) {
           disabled={state === 'submitting'}
           className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-500 disabled:opacity-60"
         >
-          {state === 'submitting' ? 'Sending…' : 'Request access'}
+          {state === 'submitting' ? 'Sending…' : 'Send me the report'}
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
       </div>
@@ -106,11 +106,7 @@ export function AccessRequestForm({ context }: { context: string }) {
           </a>{' '}
           and I'll set you up.
         </p>
-      ) : (
-        <p className="text-[11px] text-zinc-400 dark:text-zinc-500">
-          No spam — one email about Atlas access.
-        </p>
-      )}
+      ) : null}
     </form>
   );
 }
@@ -126,7 +122,7 @@ export function GateCard({ context }: { context: string }) {
             <Lock className="h-3.5 w-3.5" />
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
-            Subscriber access
+            Request access
           </span>
         </div>
         <div>
@@ -134,8 +130,7 @@ export function GateCard({ context }: { context: string }) {
             Unlock the full {context}
           </h3>
           <p className="mt-1 text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-            Atlas deliverables are available by subscription. Drop your email and I'll send access
-            details and pricing.
+            Drop your email and I'll send you the report.
           </p>
         </div>
         <AccessRequestForm context={context} />

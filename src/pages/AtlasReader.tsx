@@ -90,13 +90,13 @@ export function AtlasReader() {
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Open previews are free; full deliverables are by subscription."
+      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Open previews are free; request the full report on any locked deliverable."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
       <div className="flex flex-wrap items-center gap-2 mb-10">
         <Pill variant="status-wip">Preview</Pill>
-        <Pill variant="tech">Subscriber access</Pill>
+        <Pill variant="tech">Request access</Pill>
         <Pill variant="tech">
           {totalIndications} indications · {etlmIndex.length} open previews · {tppIndex.length} TPPs ·{' '}
           {themeIndex.length} themes
@@ -236,18 +236,6 @@ export function AtlasReader() {
           )}
         </section>
       ))}
-
-      <section className="rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50 dark:bg-white/5 p-6">
-        <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
-          What's free, what's gated
-        </h3>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[72ch]">
-          Each deliverable opens with a free briefing — the verdict, the headline facts, the top of
-          the table. The full landscape, competitive set, and analytical detail are available by
-          subscription. Internal analyst notes and decision rationale are never published. Request
-          access on any locked deliverable and I'll send pricing.
-        </p>
-      </section>
 
       <AccessGateModal context={gateFor} onClose={() => setGateFor(null)} />
     </ProjectPageLayout>
