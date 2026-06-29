@@ -1,55 +1,55 @@
 {
-  "updated": "2026-06-22",
-  "intro": "Five themes moving drug development this week — ranked, with a point of view and the sources behind them. Refreshed every Monday.",
+  "updated": "2026-06-29",
+  "intro": "Five themes moving drug development this week — a quiet clinical cycle, so the heat is in financing and the platform map. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "KRAS is still the most crowded target in oncology — and the crowd is reaching pivotal stage",
-      "detail": "Four modalities are now pressing on the same target across PDAC and NSCLC at once: allele-specific small molecules (zoldonrasib's G12D Phase 3 enrolling alongside daraxonrasib, sotorasib and adagrasib, with VS-7375 behind in Phase 2), J&J's $1B Firefly Bio KRAS-ADC platform, and the standing neoantigen-vaccine lane (autogene cevumeran, ELI-002). Per pancreatic cancer's Phase 3 graveyard, none of it is de-risked — every read this cycle is an entrant or a phase advance, not validated efficacy. The crowding is the story; ESMO in September is where the cluster gets tested.",
+      "headline": "Oral GLP-1 is the most crowded frontier in metabolic — and it just took on another entrant",
+      "detail": "Corxel reported 'competitive' Phase 2 oral GLP-1 data and lined up a global pivotal, slotting into a field that already runs Novo's oral Wegovy, AstraZeneca's elecoglipron, Pfizer's berobenatide and Structure Therapeutics. No efficacy number is out yet, so this is an entrant signal rather than a validated read — but the direction is unmistakable, and Evaluate's ~$2T-by-2032 forecast names obesity as the single biggest growth driver behind it. When a frontier this dense keeps adding names, the scarce asset is differentiation, not another molecule.",
       "momentum": "Hot",
       "sources": [
-        { "label": "J&J press releases", "url": "https://www.jnj.com/media-center/press-releases" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
-        { "label": "KRAS inhibitor trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=KRAS%20inhibitor" }
+        { "label": "Oral GLP-1 obesity trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=oral%20GLP-1%20obesity" },
+        { "label": "Evaluate (market forecast)", "url": "https://www.evaluate.com/" },
+        { "label": "Novo Nordisk", "url": "https://www.novonordisk.com/" }
       ]
     },
     {
-      "headline": "Oral SERDs have settled where they actually win — and it isn't 1L monotherapy",
-      "detail": "Roche's three same-cycle giredestrant reads land the point the class has been circling: pionERA failed in 1L monotherapy versus letrozole (PFS HR 0.89), while adjuvant lidERA cleared its bar (IDFS HR 0.65) and the post-CDK4/6 everolimus combination hit (PFS HR 0.56). The class — elacestrant, camizestrant and imlunestrant included — is consolidating around adjuvant and combination positioning rather than the AI-displacement fight it keeps losing. It's the clearest in-period signal yet of where these drugs belong.",
-      "momentum": "Confirmed",
-      "sources": [
-        { "label": "Roche media releases", "url": "https://www.roche.com/media/releases" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
-        { "label": "Giredestrant trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=giredestrant" }
-      ]
-    },
-    {
-      "headline": "CD19 antibodies just broke into frontline DLBCL",
-      "detail": "Tafasitamab's frontMIND read is the first CD19 antibody to win in frontline DLBCL (PFS HR 0.75), arriving with a fresh epcoritamab OS cut versus immunochemotherapy and the standing mosunetuzumab-plus-pola benchmark (PFS HR 0.41). After several cycles of bispecific and CD-targeting dominance confined to relapsed/refractory disease, the frontline door is now open too. The entrant tail — sonrotoclax, tazemetostat, allo-NK CD19 — is still early.",
+      "headline": "The IPO window is reopening — but only for proven late-stage stories",
+      "detail": "Kardigan's $400M raise and BIO bankers reading an opening 2026 IPO window point the same way, with the explicit caveat that the door is open only to de-risked late-stage assets and track-record teams. In the same cycle Sangamo filed for bankruptcy after a three-decade run with no approved therapy — the early-stage casualty that sharpens the contrast (its assets are still wanted, with Lilly and Astellas bidding, so it reads as a sponsor exit, not a science verdict). The thaw is real but selective: capital is flowing to proven late-stage and starving the unproven, and the gap between the two is widening.",
       "momentum": "Hot",
       "sources": [
-        { "label": "Incyte press releases", "url": "https://investor.incyte.com/press-releases" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
-        { "label": "frontMIND / tafasitamab trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=tafasitamab%20frontMIND" }
+        { "label": "BIO (Biotechnology Innovation Organization)", "url": "https://www.bio.org/" },
+        { "label": "Sangamo Therapeutics", "url": "https://www.sangamo.com/" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
       ]
     },
     {
-      "headline": "HER2+ metastatic breast turns into an ADC-vs-TKI contest",
-      "detail": "A tucatinib-plus-trastuzumab-and-pertuzumab triplet cleared Phase 3 in HER2-positive metastatic breast (PFS HR 0.641; 24.9 vs 16.3 months), giving the setting a credible TKI-anchored alternative to the T-DXd ADC standard. HER2+ MBC is now an ADC-versus-TKI-combination fight rather than ADC-only — a useful counterweight in a year when nearly every other modality story bends toward ADCs.",
+      "headline": "China-origin assets keep arriving through US NewCos — now reaching the gene-editing frontier",
+      "detail": "Serapha Bio launched with $230M around SERP-01, an in-vivo base-editing program for AATD in-licensed from China's YolTech — the same in-license-into-a-US-NewCo structure as Pfizer/Innovent, now extended from antibodies into editing. Innovent's mazdutide turning up across both a MASH read and a new colorectal trial-start in the same window underscores how far that supply now reaches. Evaluate names China's rising pipeline as one of two primary growth drivers to 2032; in the deal feed, China-origin sourcing has become the most durable structural pattern of the run.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "Pfizer newsroom", "url": "https://www.pfizer.com/newsroom" },
-        { "label": "Tucatinib trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=tucatinib%20HER2%20metastatic" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" }
+        { "label": "mazdutide trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=mazdutide" },
+        { "label": "Evaluate (market forecast)", "url": "https://www.evaluate.com/" }
       ]
     },
     {
-      "headline": "The ADC benefit-risk bar is quietly tightening even as the class proliferates",
-      "detail": "The Zynlonta Phase 3 three-fold death-rate signal was flagged independently this cycle by both the breast review — read across T-DXd, Dato-DXd, sacituzumab and patritumab-DXd — and the AML/MDS feed framing the CD123-ADCs pivekimab and BL-M11D1. It's a class-wide scrutiny signal rather than a single-asset miss, and worth watching precisely because so much of the rest of the pipeline is leaning on the modality.",
+      "headline": "Alpha-1 antitrypsin deficiency is becoming a multi-modality proving ground",
+      "detail": "SERP-01 puts in-vivo base editing into AATD, a target already contested by RNAi (Wave, Arrowhead), AAV gene therapy (Krystal) and AI-enabled early detection. The modality story underneath is the shift from ex-vivo editing (Beam, Verve) toward in-vivo, liver-directed work — earlier and riskier, but where the platform has to go to matter at scale. Worth watching as the indication where these approaches finally get measured against each other.",
       "momentum": "Watch",
       "sources": [
-        { "label": "ADC Therapeutics (Zynlonta)", "url": "https://ir.adctherapeutics.com/" },
-        { "label": "ASCO Annual Meeting", "url": "https://meetings.asco.org/" },
-        { "label": "EHA Congress", "url": "https://ehaweb.org/" }
+        { "label": "Alpha-1 antitrypsin deficiency trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=alpha-1%20antitrypsin%20deficiency" },
+        { "label": "Beam Therapeutics", "url": "https://www.beamtx.com/" },
+        { "label": "Fierce Biotech", "url": "https://www.fiercebiotech.com/" }
+      ]
+    },
+    {
+      "headline": "Cardiovascular is quietly turning back into a place capital wants to build",
+      "detail": "Two cardio financing datapoints landed in one cycle — Merck KGaA's Versant-backed cardio NewCo and Kardigan's $400M cardiac IPO — with Osanni's $190M ophthalmology-plus-cardiology round adding a third nearby. After years of cardiology running deal-cold while obesity absorbed the cardiometabolic dollars, this looks like the early edge of a rotation back toward the heart itself. Two cycles isn't a trend, but it's enough to put on the watch list.",
+      "momentum": "Watch",
+      "sources": [
+        { "label": "Merck KGaA (Merck Group) news", "url": "https://www.merckgroup.com/en/news.html" },
+        { "label": "Kardigan", "url": "https://kardigan.com/" },
+        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
       ]
     }
   ]
