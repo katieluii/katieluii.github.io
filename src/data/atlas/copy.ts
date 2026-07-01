@@ -73,7 +73,8 @@ export const DETAIL_HOOK = {
 // Funnel flag. While false, the WS15 /work-with-me pages stay OFF the live site
 // AND the Atlas page's "Work with me" CTA stays hidden. Flip to true in ONE place
 // to relaunch both together.
-// 2026-06-25: flipped ON. Staleness audit run on the 3 showcase artifacts — IC memo
-// clean; obesity ETLM corrected (orforglipron + MariTide estimands, primary-source
-// verified); obesity 1L TPP PULLED pending refresh (re-add when its redraft passes QC).
-export const WWM_LIVE = true;
+// 2026-07-01: flipped back OFF — WWM pages HELD pending a design rework (current
+// layout is not client-ready; whole design may be reconsidered). The Atlas redaction
+// model, obesity ETLM refresh, and QC'd 1L TPP stay live; only /work-with-me/* + the
+// Atlas "Work with me" CTA go dark. Re-flip to true after the WWM redesign ships.
+export const WWM_LIVE = false;
