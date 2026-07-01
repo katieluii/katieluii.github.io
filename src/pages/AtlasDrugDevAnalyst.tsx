@@ -84,7 +84,7 @@ const GOVERNANCE = [
 // real samples in the reader — slugs verified against src/data/atlas/
 const SELECTED_WORK = [
   { title: 'Obesity competitive landscape', kind: 'ETLM', href: '/atlas-reader/etlm/obesity' },
-  { title: '1L injectable, BMI ≥ 30', kind: 'Target Product Profile', href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05' },
+  { title: 'TPP — 1L injectable, BMI ≥ 30', kind: 'TPP', href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05' },
   { title: 'GLP-1 class — competitive supply', kind: 'Thematic synthesis', href: '/atlas-reader/theme/glp1_class_competitive_supply_2026-06-05' },
 ];
 

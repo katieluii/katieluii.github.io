@@ -110,11 +110,14 @@ const ETLM: WorkItem = {
   cta: 'Read the landscape',
   image: '/images/wwm_etlm_sample.png',
 };
+// TPP refreshed + QC-cleared 2026-06-30 (all 6 flagged figures resolved against
+// primary sources; efficacy bar re-anchored to the 2026 frontier) and restored.
+// Shown gated (summary slice + wall) like the other TPPs — not in UNGATED_TPP.
 const TPP: WorkItem = {
   eyebrow: 'Target Product Profile · Obesity',
   title: 'TPP — 1L Injectable, BMI ≥ 30',
-  dek: 'The bar a new asset must clear, benchmarked to semaglutide (STEP-1) and tirzepatide (SURMOUNT-1): the efficacy bar, the safety bar, and the axes that separate winners.',
-  meta: 'Sample deliverable · 2026',
+  dek: 'The bar a new 1L injectable must clear — re-anchored to the current frontier (retatrutide TRIUMPH-1, −28% Ph3) with tirzepatide the covered incumbent: the efficacy bar, the safety bar, and the axes that separate winners.',
+  meta: 'Sample deliverable · Refreshed Jun 2026',
   href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05',
   cta: 'Open the TPP',
 };
@@ -197,13 +200,13 @@ export const TEAMS: WwmContent = {
     { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'artifact' },
   ],
   dataflow: DATAFLOW,
-  work: [ETLM, TPP, MEMO],
+  work: [ETLM, TPP, MEMO], // TPP restored 2026-06-30 after QC
   workFootnote: 'Other work, from full landscape builds to regulatory drafts, is scoped in conversation.',
   credibility: 'Nothing I deliver is generated.',
   trust: TRUST,
-  ctaHeadline: 'I take on a few design partners at a reduced rate.',
-  ctaBody: 'In exchange for a reference once the work earns it. Send me your lead indication, and you will get a sample back before you spend anything.',
-  ctaBullets: ['A sample back before you spend anything', 'Every claim sourced to the primary record', 'On your deadline'],
+  ctaHeadline: 'I take on a few founding partners at a reduced rate.',
+  ctaBody: 'In exchange for a reference once the work earns it. Send me your lead indication, and you will get a sourced sample back before you spend anything.',
+  ctaBullets: ['A sourced sample back before you spend anything', 'Every claim sourced to the primary record', 'On your deadline'],
 };
 
 export const INVESTORS: WwmContent = {
@@ -220,13 +223,13 @@ export const INVESTORS: WwmContent = {
     { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'memo' },
   ],
   underwrite: UNDERWRITE,
-  work: [MEMO, ETLM, TPP],
+  work: [MEMO, ETLM, TPP], // TPP restored 2026-06-30 after QC
   workFootnote: 'Other work, from landscape deep-dives to portfolio monitoring, is scoped in conversation.',
   credibility: 'Nothing I deliver is generated.',
   trust: TRUST,
-  ctaHeadline: 'I take on a few design partners at a reduced rate.',
-  ctaBody: 'In exchange for a reference once the work earns it. Send me a live deal, and you will get a sample memo back before you spend anything.',
-  ctaBullets: ['A sample memo back before you spend anything', 'Every claim sourced to the primary record', 'On your deal-flow timeline'],
+  ctaHeadline: 'Three founding partners, this quarter.',
+  ctaBody: 'A standing edge on the names you’re live in — the landscape kept current, the comparator set and citations organised before IC, not reconstructed the night before. Founding partners lock a reduced rate in exchange for a reference once the work earns it. Send a live name and you will get a sourced landscape grid back — current as of that day — so you can judge the rigor before you spend anything.',
+  ctaBullets: ['A sourced landscape grid on a live name — before you spend anything', 'Every claim sourced to the primary record', 'Kept current on your deal-flow timeline'],
 };
 
 export const WWM: Record<'teams' | 'investors', WwmContent> = {

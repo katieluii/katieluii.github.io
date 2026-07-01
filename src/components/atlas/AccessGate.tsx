@@ -6,6 +6,7 @@ import {
   PREVIEW_MAX_HEIGHT,
   ACCESS_REQUESTED_KEY,
 } from '../../data/atlas/gating';
+import { DETAIL_HOOK } from '../../data/atlas/copy';
 
 // --- Email-capture form -------------------------------------------------------
 
@@ -136,6 +137,67 @@ export function GateCard({ context }: { context: string }) {
         <AccessRequestForm context={context} />
       </div>
     </div>
+  );
+}
+
+// --- Detail hook: OPEN value tease under a redacted summary (no blur wall) ----
+
+/** Sits at the foot of a redacted ETLM summary. Names what the open view shows
+ *  vs. what the paid full map adds, then captures a lead. Unlike RedactionGate
+ *  this never blurs or blocks — the summary above stays fully readable. */
+export function DetailHook({ context }: { context: string }) {
+  return (
+    <section className="mt-10 overflow-hidden rounded-2xl border-t-2 border-indigo-500 bg-white/70 ring-1 ring-zinc-200 dark:bg-white/[0.03] dark:ring-white/10">
+      <div className="grid gap-6 p-6 md:grid-cols-2 md:p-7">
+        <div className="space-y-2">
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+            {DETAIL_HOOK.shownLabel}
+          </span>
+          <p className="text-[13px] leading-relaxed text-zinc-600 dark:text-zinc-300">
+            {DETAIL_HOOK.shown}
+          </p>
+        </div>
+        <div className="space-y-2">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+            <Lock className="h-3 w-3" />
+            {DETAIL_HOOK.withheldLabel}
+          </span>
+          <ul className="space-y-1.5">
+            {DETAIL_HOOK.withheld.map((line) => (
+              <li
+                key={line}
+                className="flex gap-2 text-[13px] leading-relaxed text-zinc-700 dark:text-zinc-200"
+              >
+                <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-indigo-500" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-zinc-200/70 px-6 py-5 dark:border-white/10 md:px-7">
+        <p className="mb-2 text-[13px] font-medium text-zinc-900 dark:text-zinc-100">
+          {DETAIL_HOOK.cta} — {context}
+        </p>
+        <p className="mb-3 text-[12px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+          {DETAIL_HOOK.ctaNote}
+        </p>
+        <AccessRequestForm context={context} />
+      </div>
+    </section>
+  );
+}
+
+/** Inline glyph standing in for a redacted benchmark cell. */
+export function RedactedValue() {
+  return (
+    <span
+      title="In the full landscape map"
+      className="inline-flex items-center text-zinc-300 dark:text-zinc-600"
+      aria-label="redacted"
+    >
+      <Lock className="h-3 w-3" />
+    </span>
   );
 }
 

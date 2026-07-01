@@ -1,14 +1,19 @@
 // Access-gating config for the Atlas Reader.
 //
-// The reader shows a free top slice of each deliverable, then blurs the rest
-// behind an email-capture access gate (see components/atlas/AccessGate.tsx).
+// Model (2026-06-30): REDACT, don't block. Every previewable ETLM is openly
+// viewable as a SUMMARY — the shape of the landscape (asset names, sponsors,
+// targets, route, approval status). The DETAILS — head-to-head efficacy/safety
+// benchmarks, the pipeline read, and the so-what — are the paid layer that lives
+// in the knowledge base, surfaced via a DetailHook value tease (no blur wall on
+// the summary). The deep full-report route stays behind RedactionGate as the
+// paid detail layer.
 //
-// Two safety rules encoded here:
+// Safety rules still encoded here:
 //  1. Only PREVIEWABLE indications ship real ETLM JSON (via the sync whitelist).
 //     Everything else is a LOCKED catalog card — title only, no data in the
-//     bundle — so unvetted/unapproved drafts never leak through a blurred div.
+//     bundle — so unvetted/unapproved drafts never leak.
 //  2. The email form posts to Formspree when configured; otherwise it falls
-//     back to a mailto: so the gate still works on a fresh checkout.
+//     back to a mailto: so lead capture still works on a fresh checkout.
 
 /** Formspree endpoint for the Atlas access form. This is a public client-side
  *  endpoint (not a secret), so it lives in the committed build. Override per
@@ -24,11 +29,16 @@ export const ACCESS_CONTACT_EMAIL = 'katieluikakiu@gmail.com';
  *  Must match `etlm_whitelist` in scripts/atlas-redaction-config.json. */
 export const PREVIEWABLE_INDICATIONS = new Set<string>(['nsclc', 'obesity']);
 
-/** Showcase samples linked from the portfolio "Selected work" — fully OPEN,
- *  no gate, so a prospect can read one complete deliverable end to end.
- *  Keep in sync with SELECTED_WORK in src/pages/AtlasDrugDevAnalyst.tsx. */
-export const UNGATED_ETLM = new Set<string>(['obesity']);
-export const UNGATED_TPP = new Set<string>(['tpp_obesity_1L_injectable_bmi30_2026-06-05']);
+/** ETLMs shown with FULL detail (benchmarks un-redacted, per-row drill-down,
+ *  deep report open). Empty by default: under the redact-don't-block model every
+ *  previewable ETLM shows a redacted summary + DetailHook, and the benchmarks are
+ *  the paid layer. Add an indication code here only to deliberately open one end
+ *  to end (e.g. a time-boxed showcase). Keep in sync with SELECTED_WORK in
+ *  src/pages/AtlasDrugDevAnalyst.tsx. */
+export const FULL_DETAIL_ETLM = new Set<string>([]);
+// tpp_obesity_1L_injectable_bmi30_2026-06-05 removed 2026-06-25 — pulled pending refresh
+// (staleness audit: stale efficacy bar + broken citations). Re-add when the redraft passes QC.
+export const UNGATED_TPP = new Set<string>([]);
 export const UNGATED_THEME = new Set<string>(['glp1_class_competitive_supply_2026-06-05']);
 
 /** Mature drafts surfaced as locked catalog cards (no data shipped).

@@ -9,8 +9,7 @@ import { DataTable, type Column, type Row } from '../components/atlas/briefing/D
 import { Collapsible } from '../components/atlas/briefing/Collapsible';
 import { SeverityTag, type Severity } from '../components/atlas/briefing/SeverityTag';
 import { getEtlmSummary } from '../data/atlas/summaries';
-import { RedactionGate } from '../components/atlas/AccessGate';
-import { UNGATED_ETLM } from '../data/atlas/gating';
+import { DetailHook } from '../components/atlas/AccessGate';
 import {
   getProfile,
   profileColumns,
@@ -30,6 +29,77 @@ const SEVERITY_MAP: Record<string, Severity> = {
   moderate: 'Medium',
 };
 const SEVERITY_RANK: Record<Severity, number> = { Critical: 0, High: 1, Medium: 2 };
+
+/** Short, human label for a structured source by type. */
+function srcTypeLabel(type: string): string {
+  const t = type.toLowerCase();
+  if (t.includes('pubmed')) return 'PubMed';
+  if (t.includes('ctgov') || t.includes('clinicaltrials')) return 'CT.gov';
+  if (t.includes('journal')) return 'Journal';
+  if (t.includes('fda')) return 'FDA';
+  return 'Source';
+}
+
+/** Inline provenance cell — clickable links to where the benchmark data came
+ *  from. Prefers the structured `sources[]` (PubMed/CT.gov/journal w/ quoted
+ *  metric); falls back to the entry's NCT → ClinicalTrials.gov. */
+function sourceCell(entry: unknown): React.ReactNode {
+  const e = isObj(entry) ? entry : {};
+  const structured = Array.isArray(e.sources) ? e.sources.filter(isObj) : [];
+  const linkCls =
+    'inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-400 underline decoration-dotted underline-offset-2 whitespace-nowrap';
+  if (structured.length > 0) {
+    return (
+      <div className="flex flex-col gap-0.5">
+        {structured.slice(0, 3).map((s, i) => (
+          <a
+            key={i}
+            href={String(s.url)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`${String(s.label ?? '')}${s.quoted_metric ? ` — ${String(s.quoted_metric)}` : ''}`}
+            className={linkCls}
+          >
+            {srcTypeLabel(String(s.type ?? ''))}
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        ))}
+      </div>
+    );
+  }
+  const nct = e.nct ? String(e.nct) : '';
+  if (nct) {
+    const trial = String(e.trial ?? '').split(/[;(]/)[0].trim();
+    return (
+      <a
+        href={`https://clinicaltrials.gov/study/${nct}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={String(e.trial ?? nct)}
+        className={linkCls}
+      >
+        {trial ? (trial.length > 22 ? trial.slice(0, 21) + '…' : trial) : 'CT.gov'}
+        <ExternalLink className="w-3 h-3" />
+      </a>
+    );
+  }
+  return <span className="text-zinc-400 dark:text-zinc-500">—</span>;
+}
+
+/** Append a clickable Source column, keyed positionally to the therapy entries
+ *  (rows are built in entry order). Generic across both table builders. */
+function withSourceColumn(
+  table: { columns: Column[]; rows: Row[] },
+  therapies: unknown[],
+): { columns: Column[]; rows: Row[] } {
+  return {
+    columns: [...table.columns, { key: 'source', label: 'Source', sortable: false }],
+    rows: table.rows.map((r, i) => ({
+      ...r,
+      cells: { ...r.cells, source: sourceCell(therapies[i]) },
+    })),
+  };
+}
 
 function num(v: unknown): number | undefined {
   return typeof v === 'number' ? v : undefined;
@@ -432,17 +502,37 @@ function buildTherapiesTableFromProfile(
   return { columns, rows };
 }
 
-function topUnmetNeeds(etlm: Record<string, unknown>) {
+type UnmetNeedCard = { need: string; severity?: Severity; note?: string };
+
+/** Surface the top unmet needs with their reasoning. Handles BOTH shapes the
+ *  corpus uses: structured objects (need/severity/patient_fraction) and the
+ *  free-text "Need title — reasoning" strings (obesity et al.). String-form
+ *  needs carry no clinical severity, so we render no severity tag rather than
+ *  inventing one, and keep their authored (priority) order. */
+function topUnmetNeeds(etlm: Record<string, unknown>): UnmetNeedCard[] {
   const needs = Array.isArray(etlm.unmet_needs) ? etlm.unmet_needs : [];
-  return needs
-    .filter(isObj)
-    .map((u) => ({
-      need: String(u.need ?? '—'),
-      severity: SEVERITY_MAP[String(u.severity ?? '').toLowerCase()] ?? 'Medium',
-      note: u.patient_fraction ? String(u.patient_fraction) : undefined,
-    }))
-    .sort((a, b) => SEVERITY_RANK[a.severity] - SEVERITY_RANK[b.severity])
-    .slice(0, 3);
+  const cards: UnmetNeedCard[] = needs
+    .map((u): UnmetNeedCard | null => {
+      if (isObj(u)) {
+        return {
+          need: String(u.need ?? '—'),
+          severity: SEVERITY_MAP[String(u.severity ?? '').toLowerCase()] ?? 'Medium',
+          note: u.patient_fraction ? String(u.patient_fraction) : undefined,
+        };
+      }
+      if (typeof u === 'string') {
+        const [head, ...rest] = u.split(/\s+[—–]\s+/); // em/en-dash separates title from reasoning
+        return { need: head.trim(), note: rest.join(' — ').trim() || undefined };
+      }
+      return null;
+    })
+    .filter((c): c is UnmetNeedCard => Boolean(c));
+  // Severity-ranked where known; unranked (string-form) keep authored order after.
+  return cards
+    .map((c, i) => ({ c, rank: c.severity ? SEVERITY_RANK[c.severity] : 90 + i }))
+    .sort((a, b) => a.rank - b.rank)
+    .slice(0, 3)
+    .map((x) => x.c);
 }
 
 export function AtlasReaderETLM() {
@@ -480,10 +570,17 @@ export function AtlasReaderETLM() {
       ? (etlm[profileSource] as unknown[])
       : novelList ?? (flatList.length ? flatList : legacyList);
   const showLegacyBlock = Boolean(novelList) && legacyList.length > 0;
-  const table =
+  // Public summary = the SOURCED benchmark grid for the top assets (the credibility
+  // proof) + unmet-need reasoning. What stays paid is the so-what: competitive
+  // positioning, the full pipeline read, and the deep landscape report.
+  const TOP_N = 10;
+  const topTherapies = headlineTherapies.slice(0, TOP_N);
+  const table = withSourceColumn(
     profile?.headline_table
-      ? buildTherapiesTableFromProfile(headlineTherapies, profile, summary?.anchorAssets ?? [])
-      : buildTherapiesTable(headlineTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? ''));
+      ? buildTherapiesTableFromProfile(topTherapies, profile, summary?.anchorAssets ?? [])
+      : buildTherapiesTable(topTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? '')),
+    topTherapies,
+  );
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
   const segments = Array.isArray((epi as any).key_genomic_segments)
@@ -516,14 +613,13 @@ export function AtlasReaderETLM() {
       >
         <span className="flex items-center gap-2.5 text-sm font-medium">
           <Layers className="w-4 h-4" />
-          Open the full landscape map — pipeline, mechanisms, benchmarks, competitive & regulatory
+          Open the full landscape map — full pipeline read, mechanisms, competitive positioning & regulatory
         </span>
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </Link>
 
       {keyFacts.length > 0 && <KeyFactsStrip facts={keyFacts} />}
 
-      <RedactionGate context={`${meta.indication} landscape map`} bypass={UNGATED_ETLM.has(indication)}>
       {/* Approved therapies — the standard-of-care anchor */}
       {table.rows.length > 0 && (
         <section className="mb-10">
@@ -540,8 +636,9 @@ export function AtlasReaderETLM() {
           </div>
           <DataTable columns={table.columns} rows={table.rows} />
           <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
-            Sort any column; click a row for modality, trial, and full efficacy. Highlighted rows
-            are standard-of-care anchors.
+            Sort any column; click a row for full efficacy, safety & trial detail. The Source column
+            links each asset to ClinicalTrials.gov / its pivotal publication. Highlighted rows are
+            standard-of-care anchors.
           </p>
         </section>
       )}
@@ -633,12 +730,12 @@ export function AtlasReaderETLM() {
                 key={i}
                 className="rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-white/60 dark:bg-white/5 p-4 flex flex-col gap-2"
               >
-                <SeverityTag severity={need.severity} />
+                {need.severity && <SeverityTag severity={need.severity} />}
                 <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
                   {need.need}
                 </div>
                 {need.note && (
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-4">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-5">
                     {need.note}
                   </p>
                 )}
@@ -647,7 +744,8 @@ export function AtlasReaderETLM() {
           </div>
         </section>
       )}
-      </RedactionGate>
+
+      <DetailHook context={`${meta.indication} landscape map`} />
     </ProjectPageLayout>
   );
 }
