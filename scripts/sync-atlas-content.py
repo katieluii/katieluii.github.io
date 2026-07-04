@@ -49,6 +49,50 @@ def strip_keys(obj: Any, strip: set[str]) -> Any:
     return obj
 
 
+# --- Value-content scrub (client-facing) -----------------------------------
+# A key-strip can't touch editorial prose embedded INSIDE a value string
+# (e.g. "Phase 3 (analyst-known, verify)" or "…finalize before shipping").
+# The shipped bundle is fully inspectable, so we remove editorial clauses from
+# every string before writing the client copy. Editor notes stay in the WS9
+# draft (source of truth); only the synced client copy is scrubbed.
+# Ordered highest-signal first; paren-guarded patterns are safe (only fire when
+# an editorial token is inside the parens / after a clause separator).
+_EDITORIAL_TOKENS = (
+    r"analyst-known|review-cited|NEEDS PRIMARY VERIFICATION|pull suppl\.?|"
+    r"finalize before shipping|digit-level unverified|were pooled-label|"
+    r"pooled-label-mislabel\w*|mislabel of|reconcile[^.;)\]]*next pass|"
+    r"TODO|FIXME|INTERNAL:"
+)
+# 1) bracketed/parenthetical group containing an editorial token → drop whole group
+_GRP_EDITORIAL = re.compile(
+    r"\s*[(\[][^)\]]*(?:" + _EDITORIAL_TOKENS + r")[^)\]]*[)\]]", re.I
+)
+# 2) editorial clause from the token to the next sentence end, with any leading
+#    separator/space (comma, period-space, dash, semicolon, colon) → drop clause
+_CLAUSE_EDITORIAL = re.compile(
+    r"\s*[,;:—-]?\s*(?:" + _EDITORIAL_TOKENS + r")[^.]*\.?", re.I
+)
+
+
+def _scrub_str(s: str) -> str:
+    prev = None
+    while prev != s:
+        prev = s
+        s = _GRP_EDITORIAL.sub("", s)
+        s = _CLAUSE_EDITORIAL.sub("", s)
+    return re.sub(r"\s{2,}", " ", s).strip().rstrip(" .;,—-").strip() or s.strip()
+
+
+def scrub_values(obj: Any) -> Any:
+    if isinstance(obj, dict):
+        return {k: scrub_values(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [scrub_values(v) for v in obj]
+    if isinstance(obj, str):
+        return _scrub_str(obj)
+    return obj
+
+
 def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     out_dir = DATA / "etlm"
     if out_dir.exists():
@@ -75,7 +119,7 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
             continue
         is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
-        sanitised = strip_keys(data, strip)
+        sanitised = scrub_values(strip_keys(data, strip))
         dst = out_dir / f"{code}.json"
         dst.write_text(json.dumps(sanitised, indent=2))
         written.append(code)
