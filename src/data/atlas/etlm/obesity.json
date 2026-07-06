@@ -2333,7 +2333,7 @@
       "ema_approval_date": "2009-01-21",
       "key_efficacy": {},
       "custom_efficacy": {
-        "tbwl_pct_w52": -2.0,
+        "tbwl_pct_w52": -2.9,
         "note": "Lower dose vs Xenical; OTC switch"
       },
       "trial": "Bridging program from Xenical",
@@ -2363,6 +2363,15 @@
           "type": "pubmed",
           "label": "No FDA Alli label or primary 60 mg trial reports an exact -2% TBWL at 52 weeks. Alli (NDA0",
           "url": "https://www.sciencedirect.com/topics/neuroscience/orlistat"
+        },
+        {
+          "id": "hauptman2000",
+          "type": "pubmed",
+          "label": "Hauptman J et al. Orlistat 60/120 mg 2-yr primary-care RCT. Arch Fam Med 2000 - 60 mg arm",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/10693734/",
+          "pmid": "10693734",
+          "verified": true,
+          "resolved_title": "Orlistat in the long-term treatment of obesity in primary care settings"
         }
       ],
       "endpoint_sources": {
@@ -2373,13 +2382,20 @@
       "endpoint_provenance": {
         "tbwl_pct_w52": [
           {
-            "source_id": "pubmed_sciencedirectorlistatoverview",
-            "quoted_metric": "tbwl_pct_w52 = -2.0 \u2014 52-wk placebo-subtracted TBWL imprecise in primary",
-            "estimand": "52-wk placebo-subtracted TBWL imprecise in primary sources (~-2.6 to -3.1 pp); stored -2 kept, not verified to a single figure",
-            "location": "No FDA Alli label or primary 60 mg trial reports an exact -2% TBWL at 52 weeks. Alli (NDA021887) was approved by bridging from Xenical (orlistat 120 mg, NDA020766); the 60 mg dose has no standalone 52-week %-TBWL registrational efficacy table. 52-week 60 mg figures appear in dose-ranging/review sources (ScienceDirect orlistat overview: 60 mg completers 9.6 kg vs placebo 7.0 kg at 1 yr) and Healthline research-review (2.5 kg / ~3.1% placebo-subtracted at 12 months). Anderson 2006 (PMID 16940406) is 16-week only",
+            "source_id": "hauptman2000",
+            "corroborating_source_ids": [
+              "hauptman2000",
+              "pubmed_sciencedirectorlistatoverview"
+            ],
+            "quoted_metric": "60 mg arm yr-1 ITT-LOCF -7.08 kg vs placebo -4.14 kg -> placebo-subtracted -2.94 kg ~= -2.9% of ~100 kg baseline",
+            "estimand": "orlistat 60 mg tid, 52 wk, ITT-LOCF, placebo-subtracted (% derived from printed kg; baseline ~100 kg)",
+            "location": "Hauptman 2000, Arch Fam Med 9:160-167 (PMID 10693734), Results/Table yr-1 (60 mg arm)",
+            "dose": "60 mg TID",
+            "dose_basis": "registrational",
             "verification": "secondary",
             "value_verified": false,
-            "verified_on": "2026-07-02"
+            "note": "% is derived from the trial's exact kg values (no printed 52-wk %-TBWL table for 60 mg; alli bridged from Xenical). Corroborated ~-2.5 to -3.6% across secondary sources",
+            "verified_on": "2026-07-06"
           }
         ]
       }
@@ -2823,6 +2839,13 @@
           "nct": "NCT07311850",
           "resolved_title": "Evaluating The Efficacy and Safety of MET097, a Fully-Biased, Ultra Long-Acting GLP-1RA, In People With Overweight or Obesity: A Phase 3, Multi-Center Randomized, Controlled Trial (VESPER-4)",
           "verified": true
+        },
+        {
+          "id": "metsera_pr_20250929",
+          "type": "press_release",
+          "label": "Metsera reports positive Ph2b VESPER-1 results for MET-097i, 2025-09-29 (GlobeNewswire)",
+          "url": "https://www.globenewswire.com/news-release/2025/09/29/3158095/0/en/Metsera-Reports-Positive-Phase-2b-Results-for-First-and-Best-in-Class-Ultra-long-Acting-GLP-1-RA-Candidate-MET-097i-Enabling-Rapid-Transition-into-Phase-3.html",
+          "verified": true
         }
       ],
       "endpoint_sources": {
@@ -2830,7 +2853,26 @@
           "vesper1"
         ]
       },
-      "drug_name": "MET097 (PF-08653944 / berobenatide)"
+      "drug_name": "MET097 (PF-08653944 / berobenatide)",
+      "endpoint_provenance": {
+        "pswl_pct_w28": [
+          {
+            "source_id": "metsera_pr_20250929",
+            "corroborating_source_ids": [
+              "metsera_pr_20250929",
+              "vesper1"
+            ],
+            "quoted_metric": "placebo-subtracted mean weight loss up to 14.1% at 28 weeks (1.2 mg WEEKLY dose level), VESPER-1 Ph2b",
+            "estimand": "placebo-subtracted %WL, week 28, 1.2 mg once-WEEKLY top dose (VESPER-1). NOTE asset is also developed as monthly (VESPER-3), whose placebo-adjusted loss is lower (~10-12%); -14.1% represents the weekly lead-dose readout, not the monthly regimen",
+            "location": "Metsera PR 2025-09-29, topline efficacy paragraph (VESPER-1 dose-dependent WL); also presented ADA 2026",
+            "dose": "1.2 mg once-weekly",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ]
+      }
     },
     {
       "asset_name": "TERN-601",
@@ -3244,10 +3286,79 @@
           "url": "https://clinicaltrials.gov/study/NCT07395687",
           "resolved_title": "A Study Investigating Safety, Tolerability and Efficacy of UBT251 in Participants Living With Overweight or Obesity",
           "verified": true
+        },
+        {
+          "id": "novo_pr_obesity_20260224",
+          "type": "press_release",
+          "label": "Novo Nordisk: UBT251 up to 19.7% mean weight loss at 24 weeks, China Ph2 obesity, 2026-02-24 (GlobeNewswire)",
+          "url": "https://www.globenewswire.com/news-release/2026/02/24/3243205/0/en/",
+          "verified": true
+        },
+        {
+          "id": "novo_pr_t2d_20260325",
+          "type": "press_release",
+          "label": "Novo Nordisk: UBT251 mean HbA1c reduction up to 2.16% at 24 weeks, China Ph2 T2D, 2026-03-25 (GlobeNewswire)",
+          "url": "https://www.globenewswire.com/news-release/2026/03/25/3261925/0/en/",
+          "verified": true
         }
       ],
       "endpoint_sources": {},
-      "drug_name": "UBT251 (Novo Nordisk triple-G; ex-TUL/United Biotechnology)"
+      "drug_name": "UBT251 (Novo Nordisk triple-G; ex-TUL/United Biotechnology)",
+      "endpoint_provenance": {
+        "tbwl_pct_w24": [
+          {
+            "source_id": "novo_pr_obesity_20260224",
+            "quoted_metric": "up to 19.7% mean weight loss at 24 weeks vs 2.0% placebo (highest dose)",
+            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication)",
+            "location": "Novo PR 2026-02-24, topline",
+            "dose": "6 mg QW",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "note": "single sponsor topline; no independent corroboration/publication yet",
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "absolute_weight_kg_loss_w24": [
+          {
+            "source_id": "novo_pr_obesity_20260224",
+            "quoted_metric": "-17.5 kg vs -1.6 kg placebo (baseline 92.2 kg)",
+            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication); note 17.5/92.2=19.0% vs the 19.7% mean-% (each its own MMRM estimand)",
+            "location": "Novo PR 2026-02-24",
+            "dose": "6 mg QW",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "baseline_weight_kg": [
+          {
+            "source_id": "novo_pr_obesity_20260224",
+            "quoted_metric": "mean baseline body weight 92.2 kg",
+            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication)",
+            "location": "Novo PR 2026-02-24",
+            "dose": "cohort baseline",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "t2d_hba1c_reduction_pct_w24": [
+          {
+            "source_id": "novo_pr_t2d_20260325",
+            "quoted_metric": "mean HbA1c reduction up to 2.16% at 24 weeks (vs sema 1 mg -1.77%, placebo -0.66%; baseline 8.12%)",
+            "estimand": "SEPARATE Ph2 China T2D trial (n=211), 6 mg QW highest dose, week 24 - distinct from the obesity readout; sponsor topline",
+            "location": "Novo PR 2026-03-25, topline",
+            "dose": "6 mg QW",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ]
+      }
     },
     {
       "asset_name": "VCT220 / CX11",
@@ -3569,8 +3680,8 @@
         "ae_constipation_pct_75mg": 41,
         "ae_diarrhoea_pct_75mg": 35,
         "ae_vomiting_pct_75mg": 29,
-        "t2d_hba1c_reduction_pct_w24": 2.16,
-        "note": "VISTA Ph2b 75mg, n=49; SOLSTICE Ph2b. Both met primary endpoints. Published The Lancet PIIS0140-6736(26)00748-8 simultaneous with ADA26. Tolerability comparable to oral GLP-1 class; GI discontinuation low"
+        "note": "VISTA Ph2b 75mg, n=49; SOLSTICE Ph2b. Both met primary endpoints. Published The Lancet PIIS0140-6736(26)00748-8 simultaneous with ADA26. Tolerability comparable to oral GLP-1 class; GI discontinuation low",
+        "t2d_hba1c_reduction_pct_w26": 1.9
       },
       "competitive_positioning": "Second credible small-molecule oral GLP-1 entrant alongside Lilly orforglipron (-11.2% w72 ITT primary, ATTAIN-1, NEJM 2025 PMID 40960239). Differentiator vs orforglipron: no food/fasting restrictions (orforglipron has dosing constraints). AZ cardiometabolic franchise (Farxiga) extends positioning into CV + renal outcomes \u2014 likely positioned for cardiometabolic comorbidity labels, not pure obesity. Race-to-third oral GLP-1 cohort: Roche enicepatide, Pfizer berobenatide (MET-097i), Structure GSBR-1290. Phase 3 launch ~2026, approval ~2028-2030. CYCLE16 UPDATE: pivotal program confirmed per ADA follow-up (event_id 193, 2026-06-09)",
       "source_events": [
@@ -3661,7 +3772,129 @@
           "vista_lancet"
         ]
       },
-      "drug_name": "elecoglipron (ECC5004 / AZD5004)"
+      "drug_name": "elecoglipron (ECC5004 / AZD5004)",
+      "endpoint_provenance": {
+        "tbwl_pct_w26": [
+          {
+            "source_id": "vista_lancet",
+            "quoted_metric": "mean %change body weight -10.5% at week 26 (75 mg) vs -0.6% placebo",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 26, absolute mean %change",
+            "location": "VISTA, Lancet 2026 abstract/Results, PMID 42259337",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "pct_achieving_5pct_loss_w26": [
+          {
+            "source_id": "vista_lancet",
+            "quoted_metric": ">=5% responders 88.8% at week 26 (75 mg) vs 15.6% placebo",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 26 responder analysis",
+            "location": "VISTA, Lancet 2026 abstract, PMID 42259337",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "tbwl_pct_w36": [
+          {
+            "source_id": "vista_lancet",
+            "corroborating_source_ids": [
+              "vista_lancet"
+            ],
+            "quoted_metric": "11.8% mean weight loss at week 36 (75 mg) vs 0.3% placebo",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 36 (extension)",
+            "location": "AZ press release / ADA 2026; VISTA Lancet full text (figure not seen - 403 paywall)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "note": "peer-reviewed VISTA exists but the w36 figure was not seen in the accessible abstract; corroborated by AZ topline/ADA",
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "t2d_hba1c_reduction_pct_w26": [
+          {
+            "source_id": "solstice_lancet",
+            "quoted_metric": "HbA1c reduction ~1.9% at week 26 (75 mg) vs 0.2% placebo (SOLSTICE T2D)",
+            "estimand": "SOLSTICE Ph2b T2D, 75 mg top dose, week 26; The Lancet 2026 (PMID 42259343); CORRECTED from a mis-copied 2.16 (that value belongs to UBT251's T2D trial)",
+            "location": "SOLSTICE, Lancet 2026, PMID 42259343 (via AZ topline/ADA 2026)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "ae_nausea_pct_75mg": [
+          {
+            "source_id": "vista_lancet",
+            "corroborating_source_ids": [
+              "vista_lancet"
+            ],
+            "quoted_metric": "nausea 55% at 75 mg (VISTA)",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
+            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "ae_constipation_pct_75mg": [
+          {
+            "source_id": "vista_lancet",
+            "corroborating_source_ids": [
+              "vista_lancet"
+            ],
+            "quoted_metric": "constipation 41% at 75 mg (VISTA)",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
+            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "ae_diarrhoea_pct_75mg": [
+          {
+            "source_id": "vista_lancet",
+            "corroborating_source_ids": [
+              "vista_lancet"
+            ],
+            "quoted_metric": "diarrhoea 35% at 75 mg (VISTA)",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
+            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "ae_vomiting_pct_75mg": [
+          {
+            "source_id": "vista_lancet",
+            "corroborating_source_ids": [
+              "vista_lancet"
+            ],
+            "quoted_metric": "vomiting 29% at 75 mg (VISTA)",
+            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
+            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
+            "dose": "75 mg",
+            "dose_basis": "lead-pipeline",
+            "verification": "secondary",
+            "value_verified": false,
+            "verified_on": "2026-07-06"
+          }
+        ]
+      }
     },
     {
       "asset_name": "ALN-6222",

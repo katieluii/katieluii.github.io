@@ -962,11 +962,11 @@
       "key_efficacy": {
         "orr_pct": 39,
         "median_pfs_mo": 8.2,
-        "median_os_mo": 22.1
+        "median_os_mo": null
       },
       "trial": "EMPOWER-Lung 1 (PD-L1\u226550%); EMPOWER-Lung 3 (+chemo)",
       "nct": null,
-      "source": "Sezer A et al. Lancet 2021; PMID 33581821 (PD-L1\u226550%): ORR 37%, mPFS 8.2 mo, mOS 22.1 mo. Gogishvili M et al. Nat Med 2022; PMID 36008722 (+chemo)",
+      "source": "Sezer A et al. Lancet 2021; PMID 33581821 (EMPOWER-Lung 1, PD-L1>=50%): ORR 39%, mPFS 8.2 mo, OS not reached (95% CI 17.9-NE), HR 0.57 (0.42-0.77), p=0.0002 vs chemo. Gogishvili M et al. Nat Med 2022; PMID 36008722 (+chemo)",
       "sources": [
         {
           "id": "empower_lung1",
@@ -1018,13 +1018,16 @@
         ],
         "median_os_mo": [
           {
-            "source_id": "pubmed_pmid33581821",
-            "quoted_metric": "median_os_mo = 22.1 \u2014 ITT population OS (PD-L1>=50% pop OS not reached a",
-            "estimand": "ITT population OS (PD-L1>=50% pop OS not reached at primary analysis)",
-            "location": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results/abstract \u2014 PD-L1>=50% population",
-            "verification": "secondary",
+            "source_id": "empower_lung1",
+            "quoted_metric": "median OS not reached (95% CI 17.9-NE); HR 0.57 (0.42-0.77) vs chemo, p=0.0002",
+            "estimand": "PD-L1>=50% population, primary analysis (median follow-up 13.1 mo); OS censored/not reached",
+            "location": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results - PD-L1>=50% primary analysis",
+            "dose": "cemiplimab 350 mg IV q3w",
+            "dose_basis": "registrational",
+            "verification": "primary",
             "value_verified": false,
-            "verified_on": "2026-07-02"
+            "note": "endpoint is censored (not reached) - no scalar to store; median_os_mo set null. Prior stored 22.1 was the ITT-population OS, mixed onto this PD-L1>=50% row",
+            "verified_on": "2026-07-06"
           }
         ],
         "median_pfs_mo": [
@@ -2375,12 +2378,12 @@
       "ema_approval_date": null,
       "key_efficacy": {
         "orr_pct": 9,
-        "median_pfs_mo": 2.7,
-        "median_os_mo": 8.1
+        "median_pfs_mo": 4.0,
+        "median_os_mo": 8.5
       },
       "trial": "Standard-of-care 2L comparator",
       "nct": null,
-      "source": "FDA label NDA022234; used as 2L comparator in multiple trials. ORR ~9-13% 2L setting (CodeBreaK 200 docetaxel arm 13% ORR)",
+      "source": "KEYNOTE-010 docetaxel comparator arm (Herbst RS et al. Lancet 2016;387:1540-1550; PMID 26762738): ORR 9%, mPFS 4.0 mo, mOS 8.5 mo - canonical pan-histology 2L post-platinum historical control. (CodeBreaK 200 doc arm ORR 13.2% / mPFS 4.5 mo for KRAS-G12C context.)",
       "sources": [
         {
           "id": "fda_label_docetaxel",
@@ -2401,45 +2404,81 @@
           "resolved_title": "Study to Compare AMG 510 (Sotorasib) With Docetaxel in NSCLC (CodeBreaK 200); docetaxel arm ORR 13.2%, mPFS 4.5 mo"
         },
         {
-          "id": "fda_keynote010herbstetallancet2016fd",
+          "id": "keynote010",
+          "type": "pubmed",
+          "label": "Herbst RS et al. Pembrolizumab vs docetaxel 2L NSCLC (KEYNOTE-010). Lancet 2016 - docetaxel comparator arm",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26762738/",
+          "pmid": "26762738",
+          "verified": true,
+          "resolved_title": "Pembrolizumab versus docetaxel for previously treated, PD-L1-positive, advanced non-small-cell lung cancer (KEYNOTE-010)"
+        },
+        {
+          "id": "fda_kn010_summary",
           "type": "fda_label",
-          "label": "The stored triple does not co-occur in any single authoritative source. Best-matching real",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5679831/"
+          "label": "FDA/PMC5679831 KEYNOTE-010 approval summary (docetaxel arm ORR 9% by BIRC)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5679831/",
+          "verified": true
         }
       ],
-      "endpoint_sources": {},
+      "endpoint_sources": {
+        "orr_pct": [
+          "fda_kn010_summary"
+        ],
+        "median_pfs_mo": [
+          "keynote010"
+        ],
+        "median_os_mo": [
+          "keynote010"
+        ]
+      },
       "endpoint_provenance": {
         "orr_pct": [
           {
-            "source_id": "fda_keynote010herbstetallancet2016fd",
-            "quoted_metric": "orr_pct = 9 \u2014 comparator arm; ORR 9% (KEYNOTE-010); PFS/OS from",
-            "estimand": "comparator arm; ORR 9% (KEYNOTE-010); PFS/OS from different comparator trials \u2014 do not co-occur in one study",
-            "location": "The stored triple does not co-occur in any single authoritative source. Best-matching real trial = KEYNOTE-010 (pembrolizumab vs docetaxel, 2L PD-L1+ NSCLC): docetaxel arm ORR 9% (FDA approval summary PMC5679831, 'Objective response rates per RECIST 1.1 by BIRC were 18% for both pembrolizumab arms and 9% in the docetaxel arm'), median PFS 4.0 mo, median OS 8.5 mo (Lancet 2016 Herbst, median follow-up 13 mo). ORR 9% also confirmed in CheckMate 017 docetaxel arm (squamous), which has PFS 2.8 mo, OS 6.0 mo",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
+            "source_id": "fda_kn010_summary",
+            "quoted_metric": "docetaxel-arm ORR 9% (RECIST 1.1 by BIRC)",
+            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
+            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
+            "dose": "docetaxel 75 mg/m2 IV q3w",
+            "dose_basis": "registrational",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
           }
         ],
         "median_pfs_mo": [
           {
-            "source_id": "fda_keynote010herbstetallancet2016fd",
-            "quoted_metric": "median_pfs_mo = 2.7 \u2014 comparator-arm value, mixed source",
-            "estimand": "comparator-arm value, mixed source",
-            "location": "The stored triple does not co-occur in any single authoritative source. Best-matching real trial = KEYNOTE-010 (pembrolizumab vs docetaxel, 2L PD-L1+ NSCLC): docetaxel arm ORR 9% (FDA approval summary PMC5679831, 'Objective response rates per RECIST 1.1 by BIRC were 18% for both pembrolizumab arms and 9% in the docetaxel arm'), median PFS 4.0 mo, median OS 8.5 mo (Lancet 2016 Herbst, median follow-up 13 mo). ORR 9% also confirmed in CheckMate 017 docetaxel arm (squamous), which has PFS 2.8 mo, OS 6.0 mo",
+            "source_id": "keynote010",
+            "corroborating_source_ids": [
+              "keynote010",
+              "fda_kn010_summary"
+            ],
+            "quoted_metric": "docetaxel-arm median PFS 4.0 mo",
+            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
+            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
+            "dose": "docetaxel 75 mg/m2 IV q3w",
+            "dose_basis": "registrational",
             "verification": "secondary",
             "value_verified": false,
-            "verified_on": "2026-07-02"
+            "note": "Lancet full text paywalled (403); 4.0 mo corroborated across multiple reports of KEYNOTE-010",
+            "verified_on": "2026-07-06"
           }
         ],
         "median_os_mo": [
           {
-            "source_id": "fda_keynote010herbstetallancet2016fd",
-            "quoted_metric": "median_os_mo = 8.1 \u2014 comparator-arm value, mixed source",
-            "estimand": "comparator-arm value, mixed source",
-            "location": "The stored triple does not co-occur in any single authoritative source. Best-matching real trial = KEYNOTE-010 (pembrolizumab vs docetaxel, 2L PD-L1+ NSCLC): docetaxel arm ORR 9% (FDA approval summary PMC5679831, 'Objective response rates per RECIST 1.1 by BIRC were 18% for both pembrolizumab arms and 9% in the docetaxel arm'), median PFS 4.0 mo, median OS 8.5 mo (Lancet 2016 Herbst, median follow-up 13 mo). ORR 9% also confirmed in CheckMate 017 docetaxel arm (squamous), which has PFS 2.8 mo, OS 6.0 mo",
+            "source_id": "keynote010",
+            "corroborating_source_ids": [
+              "keynote010",
+              "fda_kn010_summary"
+            ],
+            "quoted_metric": "docetaxel-arm median OS 8.5 mo",
+            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
+            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
+            "dose": "docetaxel 75 mg/m2 IV q3w",
+            "dose_basis": "registrational",
             "verification": "secondary",
             "value_verified": false,
-            "verified_on": "2026-07-02"
+            "note": "Lancet full text paywalled (403); 8.5 mo corroborated across multiple reports of KEYNOTE-010",
+            "verified_on": "2026-07-06"
           }
         ]
       }
@@ -2454,13 +2493,13 @@
       "fda_approval_date": "2004-02-05",
       "ema_approval_date": null,
       "key_efficacy": {
-        "orr_pct": 30,
-        "median_pfs_mo": null,
-        "median_os_mo": null
+        "orr_pct": 9.1,
+        "median_pfs_mo": 2.9,
+        "median_os_mo": 8.3
       },
       "trial": "Multiple registrational trials",
       "nct": null,
-      "source": "FDA label NDA215179/ANDA202596/NDA209472. ORR ~30% non-sq as component of pembro+pemetrexed+platinum backbone (KEYNOTE-189)",
+      "source": "Hanna N et al. JCO 2004; PMID 15117980 (JMEI, pemetrexed 500 mg/m2 vs docetaxel, 2L non-squamous NSCLC): pemetrexed-arm ORR 9.1%, mPFS 2.9 mo, mOS 8.3 mo. FDA NDA215179/209472 (label refs)",
       "sources": [
         {
           "id": "fda_215179",
@@ -2485,15 +2524,70 @@
           "type": "pubmed",
           "label": "KEYNOTE-189 5-Year Outcomes (Garassino et al., JCO 2023), Results > Efficacy Outcomes subs",
           "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10082311/"
+        },
+        {
+          "id": "jmei",
+          "type": "pubmed",
+          "label": "Hanna N et al. Pemetrexed vs docetaxel 2L NSCLC (JMEI). JCO 2004 - pemetrexed arm",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15117980/",
+          "pmid": "15117980",
+          "verified": true,
+          "resolved_title": "Randomized phase III trial of pemetrexed versus docetaxel in patients with non-small-cell lung cancer previously treated with chemotherapy"
         }
       ],
       "endpoint_sources": {
         "orr_pct": [
-          "fda_215179",
-          "fda_209472"
+          "jmei"
+        ],
+        "median_pfs_mo": [
+          "jmei"
+        ],
+        "median_os_mo": [
+          "jmei"
         ]
       },
-      "endpoint_provenance": {}
+      "endpoint_provenance": {
+        "orr_pct": [
+          {
+            "source_id": "jmei",
+            "quoted_metric": "pemetrexed-arm ORR 9.1%",
+            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
+            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
+            "dose": "pemetrexed 500 mg/m2 IV q3w",
+            "dose_basis": "registrational",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "median_pfs_mo": [
+          {
+            "source_id": "jmei",
+            "quoted_metric": "pemetrexed-arm median PFS 2.9 mo",
+            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
+            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
+            "dose": "pemetrexed 500 mg/m2 IV q3w",
+            "dose_basis": "registrational",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
+          }
+        ],
+        "median_os_mo": [
+          {
+            "source_id": "jmei",
+            "quoted_metric": "pemetrexed-arm median OS 8.3 mo",
+            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
+            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
+            "dose": "pemetrexed 500 mg/m2 IV q3w",
+            "dose_basis": "registrational",
+            "verification": "primary",
+            "value_verified": true,
+            "verified_on": "2026-07-06"
+          }
+        ]
+      },
+      "note": "Stored figures are pemetrexed MONOTHERAPY 2L non-squamous (JMEI; Hanna 2004). Pemetrexed's modern role is a chemo-backbone component; the pembrolizumab+pemetrexed+platinum TRIPLET (KEYNOTE-189) ORR 47.6% is a distinct regimen tracked in efficacy_benchmarks_by_line (1L_all_comers_chemo_IO_nonsquamous), not attributed to pemetrexed alone"
     }
   ],
   "pipeline_assets": [
@@ -2977,12 +3071,24 @@
       "company": "Blueprint Medicines",
       "target": "EGFR exon 20 insertion (highly selective TKI; minimal wild-type EGFR binding)",
       "setting": "2L+ NSCLC, EGFR exon 20 insertion",
-      "key_result": "ORR ~40% (Phase 1/2 expansion; analyst-knowledge-based); manageable tolerability; minimal wild-type EGFR inhibition",
+      "key_result": "ORR 35.2% (BICR, n=176 previously-treated; primary endpoint) \u2014 40% in the platinum-only subset (n=125), 30% prior-amivantamab subset; mDOR 8.8 mo, mPFS 9.4 mo, DCR 90%; manageable tolerability; minimal wild-type EGFR inhibition (REZILIENT1 Ph2b)",
       "significance": "Best-in-class tolerability design among oral exon 20ins TKIs. Phase 3 decision pending Phase 2 expansion data (~ASCO/ESMO 2026). Blueprint Medicines has established precedent in NSCLC precision oncology (selpercatinib, pralsetinib). Non-China-origin \u2014 COINS Act-insulated",
       "analyst_note": "Analyst-knowledge-grounded. Requires verification of NCT and ORR before final ETLM commit",
-      "source": "exon 20ins theme 2026-06-05; Blueprint Medicines pipeline",
+      "source": "REZILIENT1 (NCT04036682); Yu HA et al. J Clin Oncol 2025, PMID 40450572 (DOI 10.1200/JCO-25-00763); ASCO 2025 abstract 8503; Taiho/Cullinan PR 2025-05-22",
       "last_updated": "2026-06-05",
-      "drug_name": "zipalertinib (BLU-451)"
+      "drug_name": "zipalertinib (BLU-451)",
+      "sources": [
+        {
+          "id": "rezilient1",
+          "type": "pubmed",
+          "label": "REZILIENT1 Ph2b zipalertinib exon20ins NSCLC \u2014 Yu HA et al. JCO 2025 (primary-endpoint ORR 35.2% BICR)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40450572/",
+          "pmid": "40450572",
+          "nct": "NCT04036682",
+          "verified": true
+        }
+      ],
+      "evidence_status": "sourced_primary_2026-07-06"
     },
     {
       "asset_name": "sunvozertinib (DZD9008)",
