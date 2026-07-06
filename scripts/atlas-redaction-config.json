@@ -1,5 +1,8 @@
 {
-  "etlm_whitelist": ["nsclc", "obesity"],
+  "etlm_whitelist": [
+    "nsclc",
+    "obesity"
+  ],
   "etlm_strip_keys": [
     "analyst_session_id",
     "analyst_notes",
@@ -9,7 +12,15 @@
     "pm_qc_passed",
     "human_approved",
     "data_gaps",
-    "schema_adaptation_note"
+    "schema_adaptation_note",
+    "_flat_mirror",
+    "source_note",
+    "endpoint_sources_gaps",
+    "correctionHistory",
+    "editorialNotes",
+    "alternates",
+    "verified_by",
+    "presentation_profile"
   ],
   "tpp_whitelist": [
     "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05.md",

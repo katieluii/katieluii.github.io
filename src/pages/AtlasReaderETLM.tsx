@@ -9,12 +9,16 @@ import { DataTable, type Column, type Row } from '../components/atlas/briefing/D
 import { Collapsible } from '../components/atlas/briefing/Collapsible';
 import { SeverityTag, type Severity } from '../components/atlas/briefing/SeverityTag';
 import { getEtlmSummary } from '../data/atlas/summaries';
+import { SOC_OVERLAYS } from '../data/atlas/soc/obesity.soc';
+import { PROFILE_OVERRIDES } from '../data/atlas/soc/profiles';
+import { indicationClassOf, isRankable, classifyEndpoint } from '../data/atlas/soc/classify';
 import { DetailHook } from '../components/atlas/AccessGate';
 import {
   getProfile,
   profileColumns,
   resolveEntry,
   entryCaveat,
+  pickMetricKey,
   type PresentationProfile,
 } from '../data/atlas/presentationProfile';
 
@@ -84,6 +88,136 @@ function sourceCell(entry: unknown): React.ReactNode {
     );
   }
   return <span className="text-zinc-400 dark:text-zinc-500">—</span>;
+}
+
+/** Per-endpoint provenance chips.
+ *  Prefers schema v2 `endpoint_provenance[epKey]` (value-anchored: each entry carries
+ *  source_id + quoted_metric + location + estimand + value_verified) and renders a chip
+ *  whose tooltip shows exactly what the source says and where. Value-verified chips are
+ *  solid; unverified are muted. Falls back to legacy v1 `endpoint_sources[epKey]` (citation
+ *  only) rendered as a muted "cite" chip. Renders nothing when the endpoint has no source. */
+function endpointChips(entry: Record<string, unknown>, epKey: string): React.ReactNode {
+  const sources = Array.isArray(entry.sources) ? (entry.sources.filter(isObj) as Record<string, unknown>[]) : [];
+  if (sources.length === 0) return null;
+  const byId = new Map(sources.map((s) => [String(s.id), s]));
+
+  const wrap = (children: React.ReactNode) => (
+    <span className="inline-flex flex-wrap items-center gap-0.5 ml-1 align-baseline">{children}</span>
+  );
+
+  // ---- v2: endpoint_provenance (value-anchored) ----
+  const prov = isObj(entry.endpoint_provenance) ? (entry.endpoint_provenance as Record<string, unknown>) : null;
+  const provList = prov && Array.isArray(prov[epKey]) ? (prov[epKey] as unknown[]).filter(isObj) : [];
+  if (provList.length > 0) {
+    const tipRow = (label: string, val: unknown) =>
+      val ? (
+        <span className="block text-zinc-300 dark:text-zinc-300">
+          <span className="mr-1 text-[8px] font-semibold uppercase tracking-wide text-zinc-400">{label}</span>
+          {String(val)}
+        </span>
+      ) : null;
+    return wrap(
+      (provList as Record<string, unknown>[]).map((p, i) => {
+        const s = byId.get(String(p.source_id));
+        if (!s) return null;
+        const verified = p.value_verified === true;
+        const secondary = !verified && p.verification === 'secondary';
+        const head = verified
+          ? 'Verified against primary source'
+          : secondary
+            ? 'Secondary-corroborated (≥2 sources; primary paywalled)'
+            : 'Sourced — value not yet verified';
+        const cls = verified
+          ? 'text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40'
+          : 'text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-800 hover:bg-amber-50 dark:hover:bg-amber-950/40';
+        return (
+          <span key={i} className="group relative inline-flex">
+            <a
+              href={String(s.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-0.5 text-[9px] font-medium uppercase tracking-wide leading-none border rounded px-1 py-0.5 no-underline ${cls}`}
+            >
+              {verified ? '✓ ' : secondary ? '~ ' : ''}
+              {srcTypeLabel(String(s.type ?? ''))}
+              <ExternalLink className="w-2.5 h-2.5" />
+            </a>
+            {/* Hover / focus / tap details box (replaces native title) */}
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute bottom-full left-0 z-30 mb-1.5 hidden w-max max-w-[280px] whitespace-normal rounded-md bg-zinc-900 p-2 text-left text-[10px] font-normal normal-case leading-snug tracking-normal text-zinc-50 shadow-xl group-hover:block group-focus-within:block dark:bg-zinc-800"
+            >
+              <span className="mb-0.5 block text-[9px] font-semibold uppercase tracking-wide">{head}</span>
+              {p.quoted_metric ? (
+                <span className="mb-1 block italic text-zinc-200">“{String(p.quoted_metric)}”</span>
+              ) : null}
+              {tipRow('Location', p.location)}
+              {tipRow('Estimand', p.estimand)}
+              {tipRow('Dose', p.dose)}
+              {tipRow('Verified', p.verified_on)}
+            </span>
+          </span>
+        );
+      }),
+    );
+  }
+
+  // ---- v1 fallback: endpoint_sources (citation only, value NOT verified) ----
+  const map = isObj(entry.endpoint_sources) ? (entry.endpoint_sources as Record<string, unknown>) : null;
+  const ids = map && Array.isArray(map[epKey]) ? (map[epKey] as unknown[]).map(String) : [];
+  const chips = ids.map((id) => byId.get(id)).filter(Boolean) as Record<string, unknown>[];
+  if (chips.length === 0) return null;
+  return wrap(
+    chips.map((s, i) => (
+      <a
+        key={i}
+        href={String(s.url)}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`${String(s.label ?? '')} — citation only; value not yet verified against source`}
+        className="inline-flex items-center gap-0.5 text-[9px] font-medium uppercase tracking-wide leading-none text-zinc-500 dark:text-zinc-400 border border-dashed border-zinc-300 dark:border-zinc-700 rounded px-1 py-0.5 no-underline hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
+      >
+        {srcTypeLabel(String(s.type ?? ''))}
+        <ExternalLink className="w-2.5 h-2.5" />
+      </a>
+    )),
+  );
+}
+
+/** Per-metric verification dot for a T0 summary-row cell. Resolves the SAME endpoint
+ *  key the renderer displays (pickMetricKey), classifies it, and returns a small
+ *  colored dot: indigo = verified-primary, amber = sourced/secondary, grey = none.
+ *  This is the spec's #1 fix — a state signal on every headline number. */
+function metricStateDot(
+  entry: Record<string, unknown>,
+  object: string,
+  match: string,
+  pick: 'latest_week' | 'first' | 'max' | 'min' | undefined,
+): React.ReactNode {
+  const key = pickMetricKey(entry[object], match, pick);
+  if (!key) return null;
+  const st = classifyEndpoint(entry, key);
+  const tone =
+    st.verification === 'verified-primary'
+      ? 'bg-indigo-500'
+      : st.secondary || st.verification === 'sourced-unverified'
+        ? 'bg-amber-400'
+        : 'bg-zinc-300 dark:bg-zinc-600';
+  const label =
+    st.verification === 'verified-primary'
+      ? 'Verified against primary source'
+      : st.secondary
+        ? 'Secondary-corroborated'
+        : st.verification === 'sourced-unverified'
+          ? 'Sourced — value not yet verified against source'
+          : 'No source on file';
+  return (
+    <span
+      className={`ml-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full align-middle ${tone}`}
+      title={label}
+      aria-label={label}
+    />
+  );
 }
 
 /** Append a clickable Source column, keyed positionally to the therapy entries
@@ -295,7 +429,7 @@ function buildTherapiesTable(
         <div className="space-y-2 text-[13px] text-zinc-600 dark:text-zinc-400">
           {e.drug_name && e.brand ? (
             <div>
-              <span className="text-zinc-500">Generic: </span>
+              <span className="text-zinc-500">General name: </span>
               {String(e.drug_name)}
             </div>
           ) : null}
@@ -337,6 +471,7 @@ function buildTherapiesTable(
                     <span key={k}>
                       <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                      {endpointChips(e, k)}
                     </span>
                   ))}
               </div>
@@ -354,6 +489,7 @@ function buildTherapiesTable(
                     <span key={k}>
                       <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                      {endpointChips(e, k)}
                     </span>
                   ))}
               </div>
@@ -399,9 +535,14 @@ function buildTherapiesTableFromProfile(
     for (const c of profile.headline_table?.columns ?? []) {
       const r = resolved[c.key];
       sortValues[c.key] = r?.sort ?? '';
-      // Attach the caveat tag to the first (asset) column.
+      const isFirst = c === profile.headline_table?.columns[0];
+      // Per-metric verification dot on every headline number (spec #1).
+      const dot =
+        c.from === 'metric' && c.object
+          ? metricStateDot(e, c.object, c.match ?? '', c.pick)
+          : null;
       cells[c.key] =
-        c === profile.headline_table?.columns[0] && cav ? (
+        isFirst && cav ? (
           <span>
             {r?.display}
             <span
@@ -410,6 +551,11 @@ function buildTherapiesTableFromProfile(
             >
               {cav.tag}
             </span>
+          </span>
+        ) : dot ? (
+          <span className="inline-flex items-center">
+            {r?.display ?? '—'}
+            {dot}
           </span>
         ) : (
           r?.display ?? '—'
@@ -426,7 +572,7 @@ function buildTherapiesTableFromProfile(
         <div className="space-y-2 text-[13px] text-zinc-600 dark:text-zinc-400">
           {e.drug_name && e.brand ? (
             <div>
-              <span className="text-zinc-500">Generic: </span>
+              <span className="text-zinc-500">General name: </span>
               {String(e.drug_name)}
             </div>
           ) : null}
@@ -462,6 +608,7 @@ function buildTherapiesTableFromProfile(
                     <span key={k}>
                       <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                      {endpointChips(e, k)}
                     </span>
                   ))}
               </div>
@@ -479,6 +626,7 @@ function buildTherapiesTableFromProfile(
                     <span key={k}>
                       <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
+                      {endpointChips(e, k)}
                     </span>
                   ))}
               </div>
@@ -555,7 +703,9 @@ export function AtlasReaderETLM() {
   // Headline table = current/novel agents only. The TBWL% / nausea% endpoints
   // are only meaningful for the incretin-era agents; legacy (pre-incretin)
   // agents are surfaced as a collapsed, low-granularity block below.
-  const profile = getProfile(etlm);
+  // Prefer the repo-owned sidecar profile (sync-safe); fall back to any profile still
+  // embedded in the ETLM JSON (pre-relocation indications).
+  const profile = (indication ? PROFILE_OVERRIDES[indication] : undefined) ?? getProfile(etlm);
   const novelList = Array.isArray(etlm.approved_therapies_novel)
     ? etlm.approved_therapies_novel
     : null;
@@ -574,13 +724,28 @@ export function AtlasReaderETLM() {
   // proof) + unmet-need reasoning. What stays paid is the so-what: competitive
   // positioning, the full pipeline read, and the deep landscape report.
   const TOP_N = 10;
-  const topTherapies = headlineTherapies.slice(0, TOP_N);
-  const table = withSourceColumn(
-    profile?.headline_table
-      ? buildTherapiesTableFromProfile(topTherapies, profile, summary?.anchorAssets ?? [])
-      : buildTherapiesTable(topTherapies, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? '')),
-    topTherapies,
-  );
+  // Ranking exclusion (SoC comparability): only for indications with a SoC overlay
+  // (obesity). rare-genetic / unclassified assets are pulled OUT of the ranked table
+  // into a separate "not directly comparable" group — never ranked head-to-head against
+  // the mass-market incretins. Indications without an overlay are unchanged (all ranked).
+  const socOverlay = SOC_OVERLAYS[indication ?? ''] ?? [];
+  const hasOverlay = socOverlay.length > 0;
+  const rankableTherapies = hasOverlay
+    ? headlineTherapies.filter((a) => isRankable(indicationClassOf(isObj(a) ? a : {}, socOverlay)))
+    : headlineTherapies;
+  const nonComparableTherapies = hasOverlay
+    ? headlineTherapies.filter((a) => !isRankable(indicationClassOf(isObj(a) ? a : {}, socOverlay)))
+    : [];
+  const topTherapies = rankableTherapies.slice(0, TOP_N);
+  const buildTable = (arr: unknown[]) =>
+    withSourceColumn(
+      profile?.headline_table
+        ? buildTherapiesTableFromProfile(arr, profile, summary?.anchorAssets ?? [])
+        : buildTherapiesTable(arr, summary?.anchorAssets ?? [], String(etlm.therapeutic_area ?? '')),
+      arr,
+    );
+  const table = buildTable(topTherapies);
+  const nonComparableTable = nonComparableTherapies.length ? buildTable(nonComparableTherapies) : null;
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
   const segments = Array.isArray((epi as any).key_genomic_segments)
@@ -638,8 +803,28 @@ export function AtlasReaderETLM() {
           <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
             Sort any column; click a row for full efficacy, safety & trial detail. The Source column
             links each asset to ClinicalTrials.gov / its pivotal publication. Highlighted rows are
-            standard-of-care anchors.
+            standard-of-care anchors. Cross-trial, non-head-to-head — compare at each asset's
+            representative dose; hover a source chip for the exact figure, location, estimand & dose.
           </p>
+        </section>
+      )}
+
+      {/* Not directly comparable — rare-genetic / different-population assets, pulled
+          OUT of the ranked table so their efficacy isn't read head-to-head. */}
+      {nonComparableTable && nonComparableTable.rows.length > 0 && (
+        <section className="mb-10">
+          <div className="mb-3">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-500">
+              Not directly comparable — different population
+            </h2>
+            <p className="mt-1 max-w-[72ch] text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+              Rare-genetic / distinct-population agents (e.g. MC4R-pathway obesity). Fully sourced,
+              but <span className="font-medium">excluded from the ranking above</span> — their trial
+              population, denominators and endpoints are not head-to-head with the mass-market
+              incretins. Read the numbers on their own terms.
+            </p>
+          </div>
+          <DataTable columns={nonComparableTable.columns} rows={nonComparableTable.rows} />
         </section>
       )}
 

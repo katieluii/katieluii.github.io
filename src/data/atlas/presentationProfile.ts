@@ -99,6 +99,26 @@ function pickMetric(
   return obj[keys[0]] as number;
 }
 
+/** The KEY that pickMetric resolves to (so a state dot / provenance lookup uses the
+ *  SAME endpoint the renderer displays — renderer and integrity gate can't diverge). */
+export function pickMetricKey(
+  obj: unknown,
+  match: string,
+  strategy: ColumnSpec['pick'] = 'latest_week',
+): string | undefined {
+  if (!isObj(obj)) return undefined;
+  const m = match.toLowerCase();
+  const keys = Object.keys(obj).filter(
+    (k) => k.toLowerCase().includes(m) && typeof obj[k] === 'number',
+  );
+  if (keys.length === 0) return undefined;
+  if (strategy === 'first') return keys[0];
+  if (strategy === 'max') return keys.reduce((a, b) => ((obj[a] as number) >= (obj[b] as number) ? a : b));
+  if (strategy === 'min') return keys.reduce((a, b) => ((obj[a] as number) <= (obj[b] as number) ? a : b));
+  keys.sort((a, b) => weekOf(b) - weekOf(a)); // latest_week
+  return keys[0];
+}
+
 function fmt(v: unknown, format: ColumnSpec['format']): string {
   if (v == null || v === '') return '—';
   switch (format) {
