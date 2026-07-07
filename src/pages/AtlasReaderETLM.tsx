@@ -1,3 +1,5 @@
+import { useState, useRef, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowRight, Layers, ExternalLink } from 'lucide-react';
 import { ProjectPageLayout } from '../components/ProjectPageLayout';
@@ -90,6 +92,74 @@ function sourceCell(entry: unknown): React.ReactNode {
   return <span className="text-zinc-400 dark:text-zinc-500">—</span>;
 }
 
+/** Hover/focus tooltip that portals to <body> and positions itself with fixed
+ *  coords so it can never be clipped by an ancestor's `overflow` (the provenance
+ *  chips live inside DataTable's `overflow-x-auto` wrapper) or run off the viewport.
+ *  Prefers opening ABOVE the anchor; flips below when there's no room at the top,
+ *  and clamps horizontally into view. Replaces the old pure-CSS `absolute bottom-full`
+ *  box that clipped near the viewport top/edges. */
+function HoverTip({ anchor, children }: { anchor: React.ReactNode; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLSpanElement>(null);
+  const tipRef = useRef<HTMLSpanElement>(null);
+  const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
+
+  useLayoutEffect(() => {
+    if (!open || !anchorRef.current || !tipRef.current) return;
+    const a = anchorRef.current.getBoundingClientRect();
+    const t = tipRef.current.getBoundingClientRect();
+    const pad = 8;
+    const gap = 6;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    // Vertical: prefer above; flip below if it would clip the top; final clamp.
+    let top = a.top - t.height - gap;
+    if (top < pad) top = a.bottom + gap;
+    if (top + t.height > vh - pad) top = Math.max(pad, vh - pad - t.height);
+    // Horizontal: align to the anchor's left edge, then clamp both sides.
+    let left = a.left;
+    if (left + t.width > vw - pad) left = vw - pad - t.width;
+    if (left < pad) left = pad;
+    setPos({ top, left });
+  }, [open]);
+
+  const show = () => setOpen(true);
+  const hide = () => {
+    setOpen(false);
+    setPos(null);
+  };
+
+  return (
+    <span
+      ref={anchorRef}
+      className="relative inline-flex"
+      onMouseEnter={show}
+      onMouseLeave={hide}
+      onFocus={show}
+      onBlur={hide}
+    >
+      {anchor}
+      {open &&
+        createPortal(
+          <span
+            ref={tipRef}
+            role="tooltip"
+            style={{
+              position: 'fixed',
+              top: pos ? pos.top : -9999,
+              left: pos ? pos.left : -9999,
+              visibility: pos ? 'visible' : 'hidden',
+            }}
+            className="pointer-events-none z-[100] w-max max-w-[280px] whitespace-normal rounded-md bg-zinc-900 p-2 text-left text-[10px] font-normal normal-case leading-snug tracking-normal text-zinc-50 shadow-xl dark:bg-zinc-800"
+          >
+            {children}
+          </span>,
+          document.body,
+        )}
+    </span>
+  );
+}
+
 /** Per-endpoint provenance chips.
  *  Prefers schema v2 `endpoint_provenance[epKey]` (value-anchored: each entry carries
  *  source_id + quoted_metric + location + estimand + value_verified) and renders a chip
@@ -131,32 +201,30 @@ function endpointChips(entry: Record<string, unknown>, epKey: string): React.Rea
           ? 'text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40'
           : 'text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-800 hover:bg-amber-50 dark:hover:bg-amber-950/40';
         return (
-          <span key={i} className="group relative inline-flex">
-            <a
-              href={String(s.url)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-0.5 text-[9px] font-medium uppercase tracking-wide leading-none border rounded px-1 py-0.5 no-underline ${cls}`}
-            >
-              {verified ? '✓ ' : secondary ? '~ ' : ''}
-              {srcTypeLabel(String(s.type ?? ''))}
-              <ExternalLink className="w-2.5 h-2.5" />
-            </a>
-            {/* Hover / focus / tap details box (replaces native title) */}
-            <span
-              role="tooltip"
-              className="pointer-events-none absolute bottom-full left-0 z-30 mb-1.5 hidden w-max max-w-[280px] whitespace-normal rounded-md bg-zinc-900 p-2 text-left text-[10px] font-normal normal-case leading-snug tracking-normal text-zinc-50 shadow-xl group-hover:block group-focus-within:block dark:bg-zinc-800"
-            >
-              <span className="mb-0.5 block text-[9px] font-semibold uppercase tracking-wide">{head}</span>
-              {p.quoted_metric ? (
-                <span className="mb-1 block italic text-zinc-200">“{String(p.quoted_metric)}”</span>
-              ) : null}
-              {tipRow('Location', p.location)}
-              {tipRow('Estimand', p.estimand)}
-              {tipRow('Dose', p.dose)}
-              {tipRow('Verified', p.verified_on)}
-            </span>
-          </span>
+          <HoverTip
+            key={i}
+            anchor={
+              <a
+                href={String(s.url)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-0.5 text-[9px] font-medium uppercase tracking-wide leading-none border rounded px-1 py-0.5 no-underline ${cls}`}
+              >
+                {verified ? '✓ ' : secondary ? '~ ' : ''}
+                {srcTypeLabel(String(s.type ?? ''))}
+                <ExternalLink className="w-2.5 h-2.5" />
+              </a>
+            }
+          >
+            <span className="mb-0.5 block text-[9px] font-semibold uppercase tracking-wide">{head}</span>
+            {p.quoted_metric ? (
+              <span className="mb-1 block italic text-zinc-200">“{String(p.quoted_metric)}”</span>
+            ) : null}
+            {tipRow('Location', p.location)}
+            {tipRow('Estimand', p.estimand)}
+            {tipRow('Dose', p.dose)}
+            {tipRow('Verified', p.verified_on)}
+          </HoverTip>
         );
       }),
     );
