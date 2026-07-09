@@ -28,6 +28,7 @@ export interface Project {
   links: ProjectLinks;
   sections?: ProjectSection[];
   hideFromTimeline?: boolean;
+  order?: number;
 }
 
 export const projects: Project[] = [
@@ -256,6 +257,7 @@ export const projects: Project[] = [
     title: "Clinical Development Monitoring Agent",
     themes: ["AI/ML & Automation", "Biopharma Strategy"],
     status: "Live",
+    order: 1,
     yearStart: 2026,
     yearEnd: 2026,
     summary: "LLM-powered agent that fetches clinical development news from RSS feeds and extracts structured events — data readouts, regulatory decisions, pipeline changes — bucketed by therapeutic area, indication, and sponsor.",
@@ -269,6 +271,7 @@ export const projects: Project[] = [
     title: "Multi-Agent Investment Memo Generation Tool",
     themes: ["AI/ML & Automation", "Biopharma Strategy"],
     status: "Live",
+    order: 2,
     yearStart: 2026,
     yearEnd: 2026,
     summary: "A multi-agent investment memo generation tool for biotech VCs — upload proprietary documents, run six specialist analyst agents, add your own intelligence at human checkpoints, and generate a structured investment memo.",
@@ -295,6 +298,7 @@ export const projects: Project[] = [
     title: "Biotech Conference Catalyst Monitor",
     themes: ["AI/ML & Automation", "Biopharma Strategy"],
     status: "Live",
+    order: 3,
     yearStart: 2026,
     yearEnd: 2026,
     summary: "Give it the indications you cover; it tracks the Phase 2/3 trials reading out at ASCO, ESMO, AACR, and ASH for exactly those, attaches each abstract, and extracts the primary-endpoint result plus key efficacy numbers (ORR, mPFS, OS, hazard ratios) — a focused watchlist, not a catch-all.",
@@ -308,6 +312,7 @@ export const projects: Project[] = [
     title: "Atlas — Strategic intelligence for drug development",
     themes: ["AI/ML & Automation", "Biopharma Strategy"],
     status: "Live",
+    order: 4,
     yearStart: 2026,
     yearEnd: 2026,
     summary: "Atlas tracks every indication in your scope — approvals, pipeline, data readouts, and regulatory moves — and produces deliverables for your teams. You get a decision, not a reading list.",
@@ -347,6 +352,7 @@ export const projects: Project[] = [
     title: "Conference Partner Prioritisation Engine",
     themes: ["AI/ML & Automation", "Biopharma Strategy"],
     status: "WIP",
+    order: 5,
     yearStart: 2026,
     yearEnd: 2026,
     summary:
@@ -397,6 +403,9 @@ export function groupProjectsByYear(projectList: Project[]): Map<number, Project
       const statusOrder = { Live: 0, WIP: 1, Archived: 2 };
       if (statusOrder[a.status] !== statusOrder[b.status]) {
         return statusOrder[a.status] - statusOrder[b.status];
+      }
+      if (a.order !== undefined && b.order !== undefined && a.order !== b.order) {
+        return a.order - b.order;
       }
       return a.title.localeCompare(b.title);
     });
