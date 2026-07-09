@@ -1032,7 +1032,7 @@ export default function ClinicalNewsMon() {
       ];
 
   return (
-    <ProjectPageLayout title="Clinical Development Monitoring Agent" subtitle="Weekly RSS digest · LLM-extracted events">
+    <ProjectPageLayout title="Clinical Development Monitoring Agent" subtitle="A weekly digest of clinical development news.">
       <div className="space-y-8">
 
         {/* Pills */}

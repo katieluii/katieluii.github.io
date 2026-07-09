@@ -549,7 +549,7 @@ export default function BiotechFundraising() {
   ];
 
   return (
-    <ProjectPageLayout title="Biotech Fundraising Tracker" subtitle="Early-stage deal flow · SEC Form D · NIH SBIR/STTR · ClinicalTrials.gov">
+    <ProjectPageLayout title="Biotech Fundraising Tracker" subtitle="Early signal on biotech fundraising.">
       <div className="space-y-8">
 
         {/* Pills */}

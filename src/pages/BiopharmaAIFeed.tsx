@@ -325,7 +325,7 @@ export function BiopharmaAIFeed() {
   ];
 
   return (
-    <ProjectPageLayout title="AI Deal Monitoring Agent" subtitle="Live monitor · LLM-extracted deal & adoption intelligence">
+    <ProjectPageLayout title="AI Deal Monitoring Agent" subtitle="Adoption tracking for AI in biopharma.">
       <div className="space-y-8">
 
         {/* Pills */}

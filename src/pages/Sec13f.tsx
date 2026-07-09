@@ -213,7 +213,7 @@ export function Sec13f() {
                 SEC 13F Fund Analysis
               </Rise>
               <Rise as="p" index={1} className="mt-2 text-sm text-slate-600 dark:text-zinc-400">
-                Source: SEC EDGAR 13F-HR filings
+                Concentration risk across institutional funds.
               </Rise>
             </div>
 
