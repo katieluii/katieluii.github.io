@@ -5,6 +5,7 @@ import { FilterChips } from '../components/FilterChips';
 import { ProjectTimeline } from '../components/ProjectTimeline';
 import { useReveal } from '../hooks/useReveal';
 import { getUniqueThemes, filterProjectsByTheme, groupProjectsByYear, type ProjectTheme } from '../data/projects';
+import { WWM_LIVE } from '../data/atlas/copy';
 
 export function Home() {
   const [selectedTheme, setSelectedTheme] = useState<ProjectTheme | null>(null);
@@ -68,7 +69,16 @@ export function Home() {
               >
                 Interests
               </a>
-              {/* WS15 "Work with me" link removed — pages disconnected pending review */}
+              {/* WS15 "Work with me" — single quiet link, gated on WWM_LIVE so it
+                  toggles with the pages themselves (hidden while WWM is dark). */}
+              {WWM_LIVE && (
+                <a
+                  href="/work-with-me/teams"
+                  className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                >
+                  Work with me
+                </a>
+              )}
             </nav>
           </div>
 

@@ -19,7 +19,7 @@ import { Pill } from '../components/Pill';
 import { getProjectBySlug } from '../data/projects';
 import { Reveal } from '../components/shared/craft';
 import AtlasDataflow from '../components/atlas/AtlasDataflow';
-import { WWM_LIVE } from '../data/atlas/copy';
+import { WWM_LIVE, POSITIONING } from '../data/atlas/copy';
 import { INDICATIONS, type Indication } from '../data/indications';
 
 interface Capability {
@@ -523,6 +523,22 @@ export default function AtlasDrugDevAnalyst() {
           </a>
         </Reveal>
 
+        {/* INTERIM (2026-07): remove when WWM_LIVE flips — see WWM_REDESIGN_PROMPT.md.
+            Positioning-only surfacing while the /work-with-me pages are dark. Rendered
+            from the shared POSITIONING constant (single source of truth with WWM). NO
+            founding-partner ask here; contact stays the existing low-key mailto. */}
+        <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-3">
+          <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
+            {POSITIONING.framingLabel}
+          </h2>
+          <p className="text-[15px] sm:text-[16px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
+            {POSITIONING.oneLiner}
+          </p>
+          <p className="text-[13.5px] text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
+            {POSITIONING.framing}
+          </p>
+        </Reveal>
+
         {/* Close */}
         <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-4">
           <p className="text-[15px] sm:text-[16px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
@@ -546,7 +562,7 @@ export default function AtlasDrugDevAnalyst() {
               </a>
             )}
             <a
-              href="mailto:katieluikakiu@gmail.com?subject=Atlas%20—%20enquiry"
+              href="mailto:katieluikakiu@gmail.com?subject=Atlas%20—%20enquiry&body=Which%20indication%20are%20you%20working%20in%3F"
               className="text-[13px] text-zinc-700 dark:text-zinc-300 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
             >
               Get in touch →

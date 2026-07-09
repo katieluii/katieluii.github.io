@@ -1,14 +1,15 @@
 import type { ReactNode } from 'react';
-import { ConnectorV } from '../shared/craft';
+import { ConnectorH, ConnectorV } from '../shared/craft';
 import type { Underwrite } from '../../data/workWithMe';
 
 /* ── Shared diligence-funnel diagram ──────────────────────────────────────────
    The WS4 underwrite architecture: input modules → agents → IC memo → pipeline
    wrapper. Rendered on TWO pages with different design systems:
      • variant="warm" — the /work-with-me/investors sales page (oxblood + Fraunces,
-       paper canvas). Reproduces the original look exactly.
+       paper canvas). Reproduces the original look exactly — untouched below.
      • variant="cool" — the /investment-memo showcase page (zinc + dark mode, indigo
-       accent), inside ProjectPageLayout.
+       accent), inside ProjectPageLayout. Flows horizontally (inputs → agents → memo)
+       rather than the warm variant's vertical stack.
    Returns a fragment — each page supplies its own <section> wrapper (warm adds the
    reveal animation + TwoModeStrip + CTA; those stay page-level / sales-only). */
 
@@ -40,130 +41,179 @@ function ModuleIcon({ name, color }: { name: 'doc' | 'market' | 'cap' | 'team'; 
   }
 }
 
-export default function UnderwriteFunnel({ data: u, variant = 'warm' }: { data: Underwrite; variant?: Variant }) {
-  const warm = variant === 'warm';
-  const connectorColor = warm ? INK_META : '#a1a1aa'; // zinc-400
-  const iconColor = warm ? ACCENT : '#6366f1';        // indigo-500
+interface AgentDetail {
+  name: string;
+  detail: string;
+}
 
+/* responsive flow connector for the cool horizontal layout — vertical arrow stacked,
+   horizontal arrow side-by-side (lg+), matching AtlasDataflow's Connector pattern */
+function CoolConnector() {
+  return (
+    <div className="flex items-center justify-center py-2 lg:py-0 lg:px-1 text-zinc-300 dark:text-zinc-600" aria-hidden>
+      <span className="lg:hidden">
+        <ConnectorV color="currentColor" height={28} />
+      </span>
+      <span className="hidden lg:inline">
+        <ConnectorH color="currentColor" />
+      </span>
+    </div>
+  );
+}
+
+export default function UnderwriteFunnel({
+  data: u,
+  variant = 'warm',
+  agentDetails,
+  hideEyebrow,
+  snapshots,
+}: {
+  data: Underwrite;
+  variant?: Variant;
+  agentDetails?: AgentDetail[];
+  hideEyebrow?: boolean;
+  snapshots?: ReactNode;
+}) {
+  if (variant !== 'warm') {
+    // ── cool — horizontal flow (inputs → agents → memo) ──
+    const iconColor = '#6366f1'; // indigo-500
+
+    return (
+      <>
+        {!hideEyebrow && (
+          <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">{u.eyebrow}</h2>
+        )}
+
+        <p className={`${hideEyebrow ? '' : 'mt-3'} text-[19px] sm:text-[22px] leading-snug max-w-2xl font-semibold text-zinc-900 dark:text-zinc-100`}>
+          {u.lead}
+        </p>
+
+        <div className="mt-8 flex flex-col lg:flex-row lg:items-stretch gap-3">
+          {/* inputs column */}
+          <div className="lg:flex-[0.85] flex flex-col">
+            <p className="text-[11px] uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400 mb-3">Feeds in</p>
+            <div className="grid grid-cols-2 gap-2.5 flex-1">
+              {u.inputs.map((m) => (
+                <div key={m.label} className="rounded-xl px-3.5 py-3.5 ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80">
+                  <ModuleIcon name={m.icon} color={iconColor} />
+                  <p className="mt-2.5 text-[13.5px] font-semibold text-zinc-900 dark:text-zinc-100">{m.label}</p>
+                  <p className="mt-1 text-[11.5px] leading-[1.4] text-zinc-500 dark:text-zinc-400">{m.dek}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <CoolConnector />
+
+          {/* agents column — the hub */}
+          <div className="lg:flex-[1.35] rounded-xl px-5 py-5 ring-1 ring-indigo-200/70 dark:ring-indigo-900/40 bg-indigo-50/40 dark:bg-indigo-950/10 flex flex-col justify-center">
+            <p className="text-[16px] font-semibold text-zinc-900 dark:text-zinc-100">{u.agentsLabel}</p>
+            <p className="mt-1 text-[13px] leading-[1.5] text-zinc-500 dark:text-zinc-400">{u.agentsSub}</p>
+            {agentDetails ? (
+              <div className="mt-4 grid grid-cols-2 gap-2.5">
+                {agentDetails.map((a) => (
+                  <div key={a.name} className="rounded-lg px-3 py-2.5 ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80">
+                    <p className="text-[12.5px] font-semibold text-zinc-900 dark:text-zinc-100">{a.name}</p>
+                    <p className="mt-0.5 text-[10.5px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 leading-snug">{a.detail}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {u.agents.map((a) => (
+                  <span key={a} className="text-[12.5px] px-3 py-1.5 rounded-md text-zinc-700 dark:text-zinc-300 ring-1 ring-zinc-200 dark:ring-zinc-700 bg-white dark:bg-zinc-900/40">{a}</span>
+                ))}
+              </div>
+            )}
+            {u.reviewLabel && (
+              <div className="mt-4 flex justify-center">
+                <span className="text-[10.5px] font-medium px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 text-center">
+                  ◆ {u.reviewLabel}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <CoolConnector />
+
+          {/* memo column — the payoff */}
+          <div className="lg:flex-[0.75] rounded-xl px-5 py-5 bg-zinc-900 dark:bg-zinc-100 flex flex-col justify-center lg:items-center lg:text-center">
+            <p className="text-[18px] font-semibold text-white dark:text-zinc-900">{u.output.label}</p>
+            <p className="mt-1 text-[13px] text-white/70 dark:text-zinc-600">{u.output.dek}</p>
+          </div>
+        </div>
+
+        {/* wrapper — pipeline + deal-page tracking layer */}
+        <div className="mt-10 pt-8 border-t border-zinc-200/80 dark:border-white/10">
+          <p className="text-[15px] leading-[1.6] max-w-xl text-zinc-600 dark:text-zinc-400">{u.wrapper}</p>
+          {snapshots ? (
+            <div className="mt-5">{snapshots}</div>
+          ) : (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {u.wrapperTags.map((t) => (
+                <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md text-zinc-600 dark:text-zinc-400 ring-1 ring-zinc-200 dark:ring-zinc-700">{t}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </>
+    );
+  }
+
+  // ── warm — original vertical layout, reproduced exactly for /work-with-me/investors ──
   const FlowLabel = ({ children }: { children: ReactNode }) => (
     <div className="flex flex-col items-center py-4" aria-hidden>
-      <ConnectorV color={connectorColor} height={30} />
-      {warm ? (
-        <span className="mt-2 text-[11px] uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>{children}</span>
-      ) : (
-        <span className="mt-2 text-[11px] uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">{children}</span>
-      )}
+      <ConnectorV color={INK_META} height={30} />
+      <span className="mt-2 text-[11px] uppercase" style={{ color: INK_META, letterSpacing: '0.1em' }}>{children}</span>
     </div>
   );
 
   return (
     <>
-      {/* eyebrow */}
-      {warm ? (
-        <p className="text-[11.5px] font-semibold uppercase" style={{ color: INK_META, letterSpacing: '0.09em' }}>{u.eyebrow}</p>
-      ) : (
-        <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">{u.eyebrow}</h2>
-      )}
+      <p className="text-[11.5px] font-semibold uppercase" style={{ color: INK_META, letterSpacing: '0.09em' }}>{u.eyebrow}</p>
 
-      {/* lead */}
-      {warm ? (
-        <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>{u.lead}</p>
-      ) : (
-        <p className="mt-3 text-[19px] sm:text-[22px] leading-snug max-w-2xl font-semibold text-zinc-900 dark:text-zinc-100">{u.lead}</p>
-      )}
+      <p className="mt-5 text-[23px] sm:text-[27px] leading-[1.4] max-w-2xl opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 450, color: INK }}>{u.lead}</p>
 
-      {/* tier 1 — input modules */}
       <div className="mt-11 grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-        {u.inputs.map((m) => warm ? (
+        {u.inputs.map((m) => (
           <div key={m.label} className="rounded-xl px-4 py-4" style={{ border: `1px solid ${HAIR}` }}>
-            <ModuleIcon name={m.icon} color={iconColor} />
+            <ModuleIcon name={m.icon} color={ACCENT} />
             <p className="mt-3 text-[14.5px] font-semibold" style={{ color: INK }}>{m.label}</p>
             <p className="mt-1 text-[12px] leading-[1.4]" style={{ color: INK_META }}>{m.dek}</p>
-          </div>
-        ) : (
-          <div key={m.label} className="rounded-xl px-4 py-4 ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80">
-            <ModuleIcon name={m.icon} color={iconColor} />
-            <p className="mt-3 text-[14.5px] font-semibold text-zinc-900 dark:text-zinc-100">{m.label}</p>
-            <p className="mt-1 text-[12px] leading-[1.4] text-zinc-500 dark:text-zinc-400">{m.dek}</p>
           </div>
         ))}
       </div>
 
       <FlowLabel>Feed into</FlowLabel>
 
-      {/* tier 2 — the diligence agents */}
-      {warm ? (
-        <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
-          <p className="text-[16px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
-          <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {u.agents.map((a) => (
-              <span key={a} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}`, background: BG }}>{a}</span>
-            ))}
-          </div>
+      <div className="rounded-xl px-5 py-5" style={{ border: `1px solid ${HAIR}`, background: 'rgba(110,36,51,0.035)' }}>
+        <p className="text-[16px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: INK }}>{u.agentsLabel}</p>
+        <p className="mt-1 text-[13px] leading-[1.5]" style={{ color: INK_META }}>{u.agentsSub}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {u.agents.map((a) => (
+            <span key={a} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}`, background: BG }}>{a}</span>
+          ))}
         </div>
-      ) : (
-        <div className="rounded-xl px-5 py-5 ring-1 ring-indigo-200/70 dark:ring-indigo-900/40 bg-indigo-50/40 dark:bg-indigo-950/10">
-          <p className="text-[16px] font-semibold text-zinc-900 dark:text-zinc-100">{u.agentsLabel}</p>
-          <p className="mt-1 text-[13px] leading-[1.5] text-zinc-500 dark:text-zinc-400">{u.agentsSub}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {u.agents.map((a) => (
-              <span key={a} className="text-[12.5px] px-3 py-1.5 rounded-md text-zinc-700 dark:text-zinc-300 ring-1 ring-zinc-200 dark:ring-zinc-700 bg-white dark:bg-zinc-900/40">{a}</span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* optional human-in-the-loop checkpoint (cool/showcase only, via reviewLabel) */}
-      {!warm && u.reviewLabel && (
-        <div className="flex justify-center pt-4">
-          <span className="text-[10.5px] font-medium px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
-            ◆ {u.reviewLabel}
-          </span>
-        </div>
-      )}
+      </div>
 
       <FlowLabel>Synthesised into</FlowLabel>
 
-      {/* tier 3 — the IC memo (the payoff) */}
-      {warm ? (
-        <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
-          <div>
-            <p className="text-[19px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
-            <p className="mt-0.5 text-[13px]" style={{ color: 'rgba(255,255,255,0.72)' }}>{u.output.dek}</p>
-          </div>
-          <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
+      <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4" style={{ background: ACCENT }}>
+        <div>
+          <p className="text-[19px] opsz-auto" style={{ fontFamily: 'var(--d)', fontWeight: 500, color: '#fff' }}>{u.output.label}</p>
+          <p className="mt-0.5 text-[13px]" style={{ color: 'rgba(255,255,255,0.72)' }}>{u.output.dek}</p>
         </div>
-      ) : (
-        <div className="rounded-xl px-6 py-5 flex items-center justify-between gap-4 bg-zinc-900 dark:bg-zinc-100">
-          <div>
-            <p className="text-[19px] font-semibold text-white dark:text-zinc-900">{u.output.label}</p>
-            <p className="mt-0.5 text-[13px] text-white/70 dark:text-zinc-600">{u.output.dek}</p>
-          </div>
-          <span className="text-[22px] text-white/55 dark:text-zinc-500" aria-hidden>↳</span>
-        </div>
-      )}
+        <span className="text-[22px]" style={{ color: 'rgba(255,255,255,0.6)' }} aria-hidden>↳</span>
+      </div>
 
-      {/* wrapper — pipeline + deal-page tracking layer */}
-      {warm ? (
-        <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
-          <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {u.wrapperTags.map((t) => (
-              <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
-            ))}
-          </div>
+      <div className="mt-12 pt-10" style={{ borderTop: `1px solid ${HAIR}` }}>
+        <p className="text-[16px] leading-[1.6] max-w-xl" style={{ color: INK_BODY }}>{u.wrapper}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {u.wrapperTags.map((t) => (
+            <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md" style={{ color: INK_BODY, border: `1px solid ${HAIR}` }}>{t}</span>
+          ))}
         </div>
-      ) : (
-        <div className="mt-12 pt-10 border-t border-zinc-200/80 dark:border-white/10">
-          <p className="text-[15px] leading-[1.6] max-w-xl text-zinc-600 dark:text-zinc-400">{u.wrapper}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {u.wrapperTags.map((t) => (
-              <span key={t} className="text-[12.5px] px-3 py-1.5 rounded-md text-zinc-600 dark:text-zinc-400 ring-1 ring-zinc-200 dark:ring-zinc-700">{t}</span>
-            ))}
-          </div>
-        </div>
-      )}
+      </div>
     </>
   );
 }

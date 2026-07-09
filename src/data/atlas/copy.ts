@@ -70,6 +70,20 @@ export const DETAIL_HOOK = {
   ctaNote: "Drop your email and I'll send the complete, source-linked report — or set up a walkthrough.",
 } as const;
 
+// ── Shared positioning (single source of truth) ────────────────────────────────
+// The one-line positioning + the "facts free, judgment is the paid product" framing.
+// Consumed BOTH by the live Atlas page's interim positioning block AND by the WS15
+// /work-with-me pages, so the two surfaces can never drift. Edit here, both update.
+export const POSITIONING = {
+  // one-line positioning — what the work is, in a sentence
+  oneLiner:
+    'A living memory of your therapeutic field, curated by an analyst — turned into the decision your next move is built on.',
+  // the redaction principle, stated plainly
+  framingLabel: 'Sourced facts are free. The judgment is the product.',
+  framing:
+    'The sourced record — who is in development, the trials, the readouts — is open. What you pay for is the judgment on top: where the bar sits, who clears it, and what it means for your next decision.',
+} as const;
+
 // Funnel flag. While false, the WS15 /work-with-me pages stay OFF the live site
 // AND the Atlas page's "Work with me" CTA stays hidden. Flip to true in ONE place
 // to relaunch both together.

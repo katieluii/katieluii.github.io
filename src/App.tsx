@@ -67,10 +67,12 @@ function App() {
             routes render nothing and /work-with-me/* stays blank — expected, not a bug. */}
         {WWM_LIVE && (
           <>
+            {/* teams + investors are the real audience surfaces; bare /work-with-me
+                is a light redirect to teams (hub-as-chooser retired). */}
             <Route path="/work-with-me" element={<WorkWithMeHub />} />
             <Route path="/work-with-me/teams" element={<WorkWithMe variant="teams" />} />
             <Route path="/work-with-me/investors" element={<WorkWithMe variant="investors" />} />
-            <Route path="/work" element={<Navigate to="/work-with-me" replace />} />
+            <Route path="/work" element={<Navigate to="/work-with-me/teams" replace />} />
           </>
         )}
 

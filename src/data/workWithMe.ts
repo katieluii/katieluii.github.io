@@ -1,39 +1,197 @@
-// WS15 — content for the two audience pages + hub. One canonical consultancy
-// flow (hero → POV → how it works → selected work → CTA), differing by framing
-// and which deliverable leads. Lean content; the layout carries the weight.
+// WS15 — content for the two audience pages (teams / investors), authored in the
+// Atlas zinc/editorial design SYSTEM (folded into /atlas-drug-dev-analyst's look —
+// zinc palette, light+dark, system sans, lucide icons). Copy carries the
+// differentiation; the layout is shared, path-swapped by audience.
+//
+// House rules baked in (do not relitigate — WWM_REDESIGN_PROMPT.md hardened plan):
+//  • NO price numbers, either audience.
+//  • Entry SKU = a fixed-scope PAID PILOT (named deliverable + turnaround + the
+//    decision it informs) that converts to the living subscription.
+//  • Teams = fixed-scope ladder framing (loss framing OK). Funds = value-anchored,
+//    edge / asymmetry-of-information register (NOT cost-of-mistake).
+//  • Founding cohort = CAPACITY SCARCITY. No "reference in exchange for discount".
+//  • Proof = capability proof only (live Atlas product + real sample deliverables).
+//    NO fabricated outcomes / numbers / testimonials.
+
+// ── Katie-editable constants ────────────────────────────────────────────────────
+// Capacity-scarcity N — the number of founding engagements taken this quarter.
+export const COHORT_N = 3; /* TODO: Katie to set N */
 
 export interface WorkItem {
-  eyebrow: string;   // DELIVERABLE TYPE · DOMAIN
+  kind: string;      // deliverable type badge (e.g. 'ETLM landscape')
   title: string;
-  dek: string;       // quantified, describes real contents
+  dek: string;       // what it contains — real, sourced, no fabricated figures
   meta: string;      // date / status
-  href: string;      // points at the REAL rendered artifact
-  cta: string;       // verb on the artifact
-  image?: string;    // cropped screenshot of the real artifact (featured card only)
+  href: string;      // points at the REAL rendered artifact in the reader
 }
 
-// the "two ways to run it" value strip — shared shape across both pages
-export interface TwoMode {
-  eyebrow: string;
-  a: { label: string; dek: string }; // the core / ready offering
-  b: { label: string; dek: string }; // the deploy-on-your-stack option
+// the fixed-scope paid pilot — the entry SKU, gripping surface, per audience
+export interface Pilot {
+  deliverable: string;   // the named first deliverable
+  turnaround: string;    // how fast it comes back
+  decision: string;      // the decision it informs
+  converts: string;      // how it becomes the living subscription
 }
 
-// teams "how it works" — the ATLAS living-memory dataflow (inputs → memory → output)
-export interface Dataflow {
-  eyebrow: string;
-  lead: string;            // Fraunces headline
-  sub: string;             // body line under it
-  inputs: string[];        // continuous feeds (abstracted — never scrapers/DBs)
-  hubName: string;         // 'ATLAS'
-  hubLine: string;
-  outputs: string[];       // the deliverables that fall out
-  closer: string;
-  modes: TwoMode;          // public-record vs on-your-systems
-  button: { label: string; href: string };
+// one differentiator line + supporting detail (the "what you actually get" grid)
+export interface Point {
+  icon: string;      // lucide icon name, resolved via the page's icon registry
+  title: string;
+  detail: string;
 }
 
-// investors "how it works" — the Underwrite diligence engine (WS4 tool architecture)
+export interface WwmContent {
+  variant: 'teams' | 'investors';
+  navOther: { label: string; href: string };
+  // hero — OUTCOME headline + one proof point (differentiation survives a skim)
+  outcome: string;         // the outcome headline
+  sub: string;             // one supporting line
+  proofPoint: string;      // the single hero proof point (capability, not a result)
+  // job-to-be-done, stated in words for this audience
+  jobLabel: string;
+  job: string;
+  // the fixed-scope paid pilot
+  pilot: Pilot;
+  // what you actually get — differentiator points
+  points: Point[];
+  // proof = real sample deliverables (restyled as proof, not catalog)
+  work: WorkItem[];        // [0] leads
+  workLead: string;        // one line framing the proof
+  // how-it-works caption (the demoted, below-the-fold diagram)
+  howLabel: string;
+  howLead: string;
+  // close
+  closeHeadline: string;
+  closeBody: string;
+}
+
+// ── the real sample deliverables (shared; ordered differently per page) ──────────
+// hrefs point at REAL rendered artifacts in the Atlas Reader. No fabricated figures.
+const ETLM: WorkItem = {
+  kind: 'ETLM landscape',
+  title: 'Obesity competitive landscape',
+  dek: 'The approved therapies, the active pipeline, the mechanism map, and the differentiation axes — every claim linked to its primary source, kept current against new trials and congress readouts.',
+  meta: 'Living document · updated Jun 2026',
+  href: '/atlas-reader/etlm/obesity',
+};
+const TPP: WorkItem = {
+  kind: 'Target product profile',
+  title: 'TPP — 1L injectable, BMI ≥ 30',
+  dek: 'The bar a new first-line injectable has to clear — the efficacy bar, the safety bar, and the axes that separate winners — anchored to the current frontier and named comparators.',
+  meta: 'Sample deliverable · refreshed Jun 2026',
+  href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05',
+};
+const THEME: WorkItem = {
+  kind: 'Thematic synthesis',
+  title: 'GLP-1 class — competitive supply',
+  dek: 'A cross-asset read on the class: where supply is concentrating, which mechanisms are crowding, and what that means for a differentiated entrant.',
+  meta: 'Sample deliverable · Jun 2026',
+  href: '/atlas-reader/theme/glp1_class_competitive_supply_2026-06-05',
+};
+
+// ── TEAMS ────────────────────────────────────────────────────────────────────────
+// buys: a decision they'll build a program on. Fixed-scope ladder + loss framing OK.
+export const TEAMS: WwmContent = {
+  variant: 'teams',
+  navOther: { label: 'For investors', href: '/work-with-me/investors' },
+  outcome: 'Walk into the next program decision with the landscape already settled.',
+  sub: 'Competitive landscapes, target product profiles, and positioning for the teams building drugs — current, sourced, on your deadline.',
+  proofPoint: 'The same engine behind the live Atlas product — 40+ indications held on one architecture, every claim traced to its primary source.',
+  jobLabel: 'The job',
+  job: 'A program decision you commit to — where the bar sits, who already clears it, and which axis you differentiate on — resolved into an artifact you can put in front of your board without a caveat.',
+  pilot: {
+    deliverable: 'A sourced competitive-landscape grid on your lead indication — the leading assets, head-to-head on efficacy and safety, each linked to its pivotal trial.',
+    turnaround: 'Back within days, not weeks.',
+    decision: 'So you can see exactly where a new entrant has to land before you commit the program.',
+    converts: 'It stands alone. If it earns its place, it becomes the living memory of your field — re-baselined as new readouts land, so the picture is never last quarter’s.',
+  },
+  points: [
+    {
+      icon: 'gauge',
+      title: 'A decision, not a deck',
+      detail: 'You get the artifact your next call is built on — the landscape, the TPP, the positioning — not a pile of slides to still interpret.',
+    },
+    {
+      icon: 'layers',
+      title: 'The whole field, not a snapshot',
+      detail: 'A living memory of your indication, kept current as trials read out — so you are never rebuilding the picture from scratch the week before a decision.',
+    },
+    {
+      icon: 'shield-check',
+      title: 'Defensible to the primary source',
+      detail: 'Every number, comparator, and readout traces to ClinicalTrials.gov, FDA, or the publication. Modelled figures are flagged as modelled. Auditable, not a black box.',
+    },
+    {
+      icon: 'lock',
+      title: 'Walled from the other side of the table',
+      detail: 'I also work with investors. Biotech-side and investor-side engagements are kept behind a strict information barrier — your pipeline, questions, and data never cross.',
+    },
+  ],
+  work: [ETLM, TPP, THEME],
+  workLead: 'Real deliverables, straight from the Atlas Reader — redacted samples of exactly what lands.',
+  howLabel: 'How it works',
+  howLead: 'Four streams feed one living memory; the deliverables fall out of it — which is why they stay current and agree with each other.',
+  closeHeadline: 'Founding engagements are limited.',
+  closeBody: 'I take on a small number of founding partners so each gets the depth. Send your lead indication and you get a sourced sample back before you commit to anything.',
+};
+
+// ── INVESTORS ─────────────────────────────────────────────────────────────────────
+// buys: a position that survives IC. Value-anchored, edge / asymmetry register.
+export const INVESTORS: WwmContent = {
+  variant: 'investors',
+  navOther: { label: 'For biotech teams', href: '/work-with-me/teams' },
+  outcome: 'Hold a position on the science before the rest of the table has read the record.',
+  sub: 'IC-grade diligence and scientific underwrites for biotech investors — sourced to the primary record, current with your deal flow.',
+  proofPoint: 'Built on the live Atlas engine — the same source-linked landscape memory, pointed at the names you are underwriting.',
+  jobLabel: 'The job',
+  job: 'A position that survives the committee — the comparator set, the citations, and the what-has-to-be-true assembled before IC, not reconstructed the night before — so your conviction rests on the science holding up, not on the pitch.',
+  pilot: {
+    deliverable: 'A source-linked landscape grid on one live name — the competitive set head-to-head, every claim tied to its trial and publication, the comparators the deck left out surfaced.',
+    turnaround: 'Current as of the day it lands, back on your deal-flow timeline.',
+    decision: 'So you can judge where the asset actually sits in its class before you take it to the partners.',
+    converts: 'It stands alone. If it earns its place, it becomes a standing edge on the names you are live in — the landscape kept current, so you are reading the field ahead of the room.',
+  },
+  points: [
+    {
+      icon: 'target',
+      title: 'An edge, assembled ahead of the room',
+      detail: 'The comparator set and the citations organised before IC — an information advantage on the asset, not a reconstruction the night before the meeting.',
+    },
+    {
+      icon: 'shield-check',
+      title: 'Every claim underwritten to source',
+      detail: 'Clinical claims trace to the primary record; modelled figures are flagged as modelled. A position you can defend line by line when the committee probes it.',
+    },
+    {
+      icon: 'refresh-cw',
+      title: 'Current with your deal flow',
+      detail: 'The landscape is re-baselined as trials read out — so the read is current as of the day it lands, not last quarter’s.',
+    },
+    {
+      icon: 'lock',
+      title: 'A wall between you and the assets',
+      detail: 'I also work with biotech teams. Investor-side and company-side engagements sit behind a strict information barrier — what you are diligencing, and what you conclude, never crosses.',
+    },
+  ],
+  work: [THEME, ETLM, TPP],
+  workLead: 'Real deliverables, straight from the Atlas Reader — redacted samples of the rigor you get on a live name.',
+  howLabel: 'How the underwrite works',
+  howLead: 'Structured diligence in — the data room, the market, the cap table, the team — fact-checked by agents, refined by hand, synthesised into one committee-ready read.',
+  closeHeadline: `Limited to ${COHORT_N} founding engagements this quarter.`,
+  closeBody: 'A small cohort, so each name gets the depth. Send a live name and you get a source-linked landscape grid back — current as of that day — so you can judge the rigor before you commit to anything.',
+};
+
+export const WWM: Record<'teams' | 'investors', WwmContent> = {
+  teams: TEAMS,
+  investors: INVESTORS,
+};
+
+// ── Underwrite funnel data ────────────────────────────────────────────────────────
+// Standalone — consumed by the LIVE /investment-memo project page (InvestmentMemo.tsx)
+// via the shared <UnderwriteFunnel/> diagram (cool variant). Kept decoupled from the
+// WWM audience content above (the WWM investor page describes the track plainly and does
+// NOT use the coined "underwrite funnel" phrasing). Do not remove — /investment-memo
+// renders from this.
 export interface Underwrite {
   eyebrow: string;
   lead: string;
@@ -42,121 +200,12 @@ export interface Underwrite {
   agentsSub: string;
   agents: string[];
   output: { label: string; dek: string };
-  reviewLabel?: string;    // human-in-the-loop checkpoint label (rendered on the showcase variant only)
+  reviewLabel?: string;
   wrapper: string;
   wrapperTags: string[];
-  modes: TwoMode;          // ready-to-run vs on-your-systems
-  button: { label: string; href: string };
 }
 
-// engagement steps — "what working with me looks like" (sits above the diagram)
-export interface Step {
-  n: string;       // '01' | '02' | '03'
-  label: string;   // the action
-  body: string;    // one line
-  icon: string;    // lucide icon name (resolved via the page's icon registry)
-}
-
-// trust pillars — the provenance story, elevated into its own section
-export interface TrustPillar {
-  label: string;
-  body: string;
-  icon: string;    // lucide icon name
-}
-
-export interface WwmContent {
-  variant: 'teams' | 'investors';
-  navOther: { label: string; href: string };
-  hero: { h1: string; sub: string };
-  pov: string;             // short conviction statement
-  steps: Step[];           // engagement flow, above the how-it-works diagram
-  dataflow?: Dataflow;     // teams only
-  underwrite?: Underwrite; // investors only
-  work: WorkItem[];        // [0] is featured
-  workFootnote: string;
-  credibility: string;     // short lead-in line above the trust pillars
-  trust: TrustPillar[];    // 3 provenance pillars
-  ctaHeadline: string;
-  ctaBody: string;
-  ctaBullets: string[];    // concrete "what you get" bullets on the CTA
-}
-
-// the provenance pillars are shared across both audiences — one verification story
-const TRUST: TrustPillar[] = [
-  {
-    label: 'Sourced to the primary record',
-    body: 'Every number, comparator, and readout traces to PubMed, ClinicalTrials.gov, or the congress record. No unsourced claims.',
-    icon: 'sourced',
-  },
-  {
-    label: 'Human-checked, never generated',
-    body: 'The models do the breadth; the judgment and the sourcing are mine. Modelled figures are flagged as modelled.',
-    icon: 'checked',
-  },
-  {
-    label: 'Current as the field moves',
-    body: 'Refreshed against new trials and readouts, so the evidence is current every time — not last quarter’s deck.',
-    icon: 'current',
-  },
-];
-
-// ── the three real sample deliverables (shared; ordered differently per page) ──
-const ETLM: WorkItem = {
-  eyebrow: 'ETLM Landscape · Obesity',
-  title: 'Obesity Competitive Landscape',
-  dek: 'Eight approved therapies, the active pipeline, mechanism landscape, and differentiation axes. 90+ primary sources, refreshed against trials and congress readouts.',
-  meta: 'Updated Jun 2026 · Living document',
-  href: '/atlas-reader/etlm/obesity',
-  cta: 'Read the landscape',
-  image: '/images/wwm_etlm_sample.png',
-};
-// TPP refreshed + QC-cleared 2026-06-30 (all 6 flagged figures resolved against
-// primary sources; efficacy bar re-anchored to the 2026 frontier) and restored.
-// Shown gated (summary slice + wall) like the other TPPs — not in UNGATED_TPP.
-const TPP: WorkItem = {
-  eyebrow: 'Target Product Profile · Obesity',
-  title: 'TPP — 1L Injectable, BMI ≥ 30',
-  dek: 'The bar a new 1L injectable must clear — re-anchored to the current frontier (retatrutide TRIUMPH-1, −28% Ph3) with tirzepatide the covered incumbent: the efficacy bar, the safety bar, and the axes that separate winners.',
-  meta: 'Sample deliverable · Refreshed Jun 2026',
-  href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05',
-  cta: 'Open the TPP',
-};
-const MEMO: WorkItem = {
-  eyebrow: 'IC Memo · Investment',
-  title: 'A GLP-1 Asset Entering Obesity',
-  dek: 'An IC-grade read on the competitive bar, the clinical evidence, and the risks behind a financing decision. Every clinical claim sourced; modelled figures flagged.',
-  meta: 'Sample deliverable · 2026',
-  href: '/atlas-reader/memo/obesity-glp1',
-  cta: 'Read the memo',
-  image: '/images/wwm_memo_sample.png',
-};
-
-// teams: the living-memory dataflow that sits behind every deliverable
-const DATAFLOW: Dataflow = {
-  eyebrow: 'How it works',
-  lead: 'Most analysis is a snapshot. This one isn’t.',
-  sub: 'It runs on a living memory of your field — continuously fed by the latest data, so the evidence is current every time.',
-  inputs: ['Published literature', 'Clinical trial registries', 'Congress readouts', 'Trade & deal-flow press'],
-  hubName: 'ATLAS',
-  hubLine: 'Every asset, mechanism, and readout tied to its source — and kept current as the field moves.',
-  outputs: ['Competitive landscape', 'Target product profile', 'Deep thematic synthesis'],
-  closer: 'The same memory sits behind every deliverable — which is why they stay current, and agree with each other.',
-  modes: {
-    eyebrow: 'Two ways to run it',
-    a: {
-      label: 'On the public record',
-      dek: 'A proprietary agentic harness builds and maintains this memory continuously from public sources — shaped to your field, your pipeline, your questions.',
-    },
-    b: {
-      label: 'On your systems',
-      dek: 'Or the same architecture, deployed on your stack — folding your proprietary data and internal signals into the same living picture.',
-    },
-  },
-  button: { label: 'See what it produces', href: '#work' },
-};
-
-// investors: the Underwrite diligence engine — structured modules → agents → memo
-const UNDERWRITE: Underwrite = {
+export const UNDERWRITE: Underwrite = {
   eyebrow: 'How the underwrite works',
   lead: 'Structured diligence in, one memo your committee can’t pick apart.',
   inputs: [
@@ -172,67 +221,4 @@ const UNDERWRITE: Underwrite = {
   reviewLabel: 'Reviewed & annotated by hand',
   wrapper: 'Every deal rolls up to a deal page, inside a pipeline you read at a glance — so partners and analysts track the book and see what they should be seeing.',
   wrapperTags: ['Pipeline view', 'Deal page'],
-  modes: {
-    eyebrow: 'Two ways to run it',
-    a: {
-      label: 'Ready to run',
-      dek: 'The tools and agents above, ready to underwrite your analysis and diligence from day one.',
-    },
-    b: {
-      label: 'On your systems',
-      dek: 'Or the same agentic architecture, deployed on your stack — so your proprietary data and signals feed the diligence.',
-    },
-  },
-  button: { label: 'Read a sample memo', href: '#work' },
-};
-
-export const TEAMS: WwmContent = {
-  variant: 'teams',
-  navOther: { label: 'For investors', href: '/work-with-me/investors' },
-  hero: {
-    h1: 'Drug-development analysis you can defend.',
-    sub: 'Competitive landscapes, target product profiles, and positioning for the teams building drugs. Current, sourced, on your deadline.',
-  },
-  pov: 'Good development calls come from current evidence, not last quarter’s deck. I keep a living memory of your field and turn it into the artifact your next decision needs.',
-  steps: [
-    { n: '01', label: 'Send your lead indication', body: 'What you’re building, and the questions you need answered.', icon: 'indication' },
-    { n: '02', label: 'I build your field’s living memory', body: 'Every asset, mechanism, and readout, tied to its source and kept current.', icon: 'memory' },
-    { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'artifact' },
-  ],
-  dataflow: DATAFLOW,
-  work: [ETLM, TPP, MEMO], // TPP restored 2026-06-30 after QC
-  workFootnote: 'Other work, from full landscape builds to regulatory drafts, is scoped in conversation.',
-  credibility: 'Nothing I deliver is generated.',
-  trust: TRUST,
-  ctaHeadline: 'I take on a few founding partners at a reduced rate.',
-  ctaBody: 'In exchange for a reference once the work earns it. Send me your lead indication, and you will get a sourced sample back before you spend anything.',
-  ctaBullets: ['A sourced sample back before you spend anything', 'Every claim sourced to the primary record', 'On your deadline'],
-};
-
-export const INVESTORS: WwmContent = {
-  variant: 'investors',
-  navOther: { label: 'For biotech teams', href: '/work-with-me/teams' },
-  hero: {
-    h1: 'Underwrite the science, not the story.',
-    sub: 'IC-grade memos and scientific diligence for biotech investors. Sourced to the primary record, fast enough to keep up with your deal flow.',
-  },
-  pov: 'Conviction comes from the science holding up, not the pitch. I underwrite the evidence, source every claim, and hand you a memo your committee cannot pick apart.',
-  steps: [
-    { n: '01', label: 'Send a live deal', body: 'The data room, the asset, and the thesis you need tested.', icon: 'deal' },
-    { n: '02', label: 'I underwrite the science', body: 'Structured diligence, every claim fact-checked against the primary record.', icon: 'underwrite' },
-    { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'memo' },
-  ],
-  underwrite: UNDERWRITE,
-  work: [MEMO, ETLM, TPP], // TPP restored 2026-06-30 after QC
-  workFootnote: 'Other work, from landscape deep-dives to portfolio monitoring, is scoped in conversation.',
-  credibility: 'Nothing I deliver is generated.',
-  trust: TRUST,
-  ctaHeadline: 'Three founding partners, this quarter.',
-  ctaBody: 'A standing edge on the names you’re live in — the landscape kept current, the comparator set and citations organised before IC, not reconstructed the night before. Founding partners lock a reduced rate in exchange for a reference once the work earns it. Send a live name and you will get a sourced landscape grid back — current as of that day — so you can judge the rigor before you spend anything.',
-  ctaBullets: ['A sourced landscape grid on a live name — before you spend anything', 'Every claim sourced to the primary record', 'Kept current on your deal-flow timeline'],
-};
-
-export const WWM: Record<'teams' | 'investors', WwmContent> = {
-  teams: TEAMS,
-  investors: INVESTORS,
 };
