@@ -31,7 +31,7 @@ export function PartnerPrioritisation() {
   return (
     <ProjectPageLayout
       title="Conference Partner Prioritisation Engine"
-      subtitle="Who to meet at BIO / JPM / BioEquity — scored from company profiles"
+      subtitle="Meeting intelligence for conference season."
     >
       <div className="space-y-8">
         {/* Pills */}

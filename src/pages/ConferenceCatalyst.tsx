@@ -107,7 +107,7 @@ export default function ConferenceCatalyst() {
   }
 
   return (
-    <ProjectPageLayout title={project.title} subtitle="Indication-scoped readout tracking · LLM efficacy extraction">
+    <ProjectPageLayout title={project.title} subtitle="Readout tracking across major conferences.">
       <div className="space-y-10">
 
         {/* Status pills */}

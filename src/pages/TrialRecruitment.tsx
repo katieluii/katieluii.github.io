@@ -17,7 +17,7 @@ export function TrialRecruitment() {
   }
 
   return (
-    <ProjectPageLayout title={project.title} subtitle="Source: ClinicalTrials.gov">
+    <ProjectPageLayout title={project.title} subtitle="Predictive timelines for clinical trial recruitment.">
       <div className="space-y-8">
         {/* Status + theme pills */}
         <div className="flex items-center gap-2 flex-wrap">

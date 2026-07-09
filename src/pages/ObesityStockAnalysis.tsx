@@ -62,7 +62,7 @@ export default function ObesityStockAnalysis() {
   return (
     <ProjectPageLayout
       title={project.title}
-      subtitle="yfinance · ClinicalTrials.gov · statsmodels · ARIMA"
+      subtitle="Market intelligence for the obesity drug race."
       containerClassName="max-w-5xl mx-auto px-6"
     >
       <div className="space-y-8">
