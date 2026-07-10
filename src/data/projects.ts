@@ -147,7 +147,7 @@ export const projects: Project[] = [
   //   id: "biotech-fundraising",
   //   slug: "biotech-fundraising-tracker",
   //   title: "Biotech Fundraising Tracker",
-  //   themes: ["AI/ML & Automation", "Investing & Strategy"],
+  //   themes: ["AI/ML & Automation", "Investing", "Biotech/Biopharma Strategy"],
   //   status: "WIP",
   //   yearStart: 2025,
   //   yearEnd: 2026,
