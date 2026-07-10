@@ -175,7 +175,7 @@ export const INVESTORS: WwmContent = {
   ],
   work: [THEME, ETLM, TPP],
   workLead: 'Real deliverables, straight from the Atlas Reader — redacted samples of the rigor you get on a live name.',
-  howLabel: 'How the underwrite works',
+  howLabel: 'How it works',
   howLead: 'Structured diligence in — the data room, the market, the cap table, the team — fact-checked by agents, refined by hand, synthesised into one committee-ready read.',
   closeHeadline: `Limited to ${COHORT_N} founding engagements this quarter.`,
   closeBody: 'A small cohort, so each name gets the depth. Send a live name and you get a source-linked landscape grid back — current as of that day — so you can judge the rigor before you commit to anything.',

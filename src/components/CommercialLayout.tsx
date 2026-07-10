@@ -21,7 +21,7 @@ export default function CommercialLayout({ children }: { children: ReactNode }) 
 
       {/* minimal commercial header — wordmark scrolls to top, Atlas, Contact */}
       <header className="border-b border-zinc-200/70 dark:border-white/10 bg-white/40 backdrop-blur-sm dark:bg-white/5">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between gap-4">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-5 flex items-center justify-between gap-4">
           <a
             href="#top"
             className="text-sm font-medium tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-70 transition-opacity"
@@ -47,12 +47,12 @@ export default function CommercialLayout({ children }: { children: ReactNode }) 
         </div>
       </header>
 
-      <main id="top" className="max-w-3xl mx-auto px-6 sm:px-8 py-14 sm:py-16">
+      <main id="top" className="max-w-4xl mx-auto px-6 sm:px-8 py-14 sm:py-16">
         {children}
       </main>
 
       <footer className="border-t border-zinc-200/70 dark:border-white/10 bg-white/40 backdrop-blur-sm dark:bg-white/5 mt-16">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-zinc-500 dark:text-zinc-400">© 2026 Katie Lui. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400">
             <a
