@@ -286,4 +286,4 @@ export const KEYSTONE: TracedName[] = [
   },
 ];
 
-export const FULL_LANDSCAPE_ROUTE = '/pharma-landscape/full';
+export const FULL_LANDSCAPE_ROUTE = '/demos/pharma-landscape.html';

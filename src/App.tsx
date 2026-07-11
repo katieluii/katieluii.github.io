@@ -43,7 +43,6 @@ import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
 import ConferenceCatalyst from './pages/ConferenceCatalyst';
 import PartnerPrioritisation from './pages/PartnerPrioritisation';
 import PharmaLandscape from './pages/PharmaLandscape';
-import PharmaLandscapeFull from './pages/PharmaLandscapeFull';
 import AtlasReader from './pages/AtlasReader';
 import AtlasReaderETLM from './pages/AtlasReaderETLM';
 import AtlasReaderETLMReport from './pages/AtlasReaderETLMReport';
@@ -113,9 +112,8 @@ function App() {
         <Route path="/partner-prioritisation" element={<PartnerPrioritisation />} />
         <Route path="/projects/partner-prioritisation" element={<PartnerPrioritisation />} />
 
-        {/* AI-Native Pharma Equity Research — case study + full-bleed sample-run product */}
+        {/* Bellwether — case study; the full landscape is the static demo HTML */}
         <Route path="/pharma-landscape" element={<PharmaLandscape />} />
-        <Route path="/pharma-landscape/full" element={<PharmaLandscapeFull />} />
         <Route path="/projects/pharma-landscape" element={<PharmaLandscape />} />
 
         {/* Atlas Reader — rendered deliverables preview */}

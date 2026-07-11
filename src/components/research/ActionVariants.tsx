@@ -87,7 +87,7 @@ export function ActionSignals() {
         <h3 className="mt-1 text-xl font-bold text-zinc-900 dark:text-zinc-100">{f.headline} <span className="text-xs font-medium text-zinc-400 tabular-nums">{f.ticker}</span></h3>
         <p className="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{f.detail}</p>
         <p className="mt-2.5 text-[13px] font-medium text-zinc-800 dark:text-zinc-200">{f.proof}</p>
-        <a href={FULL_LANDSCAPE_ROUTE} className="mt-3 inline-flex items-center gap-1 text-xs font-medium opacity-80 hover:opacity-100">Open the read <ArrowRight className="w-3.5 h-3.5" /></a>
+        <a href={FULL_LANDSCAPE_ROUTE} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1 text-xs font-medium opacity-80 hover:opacity-100">Open the read <ArrowRight className="w-3.5 h-3.5" /></a>
       </div>
     );
   };

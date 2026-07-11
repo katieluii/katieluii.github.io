@@ -83,6 +83,8 @@ export function PharmaLandscape() {
         <section className="flex flex-wrap items-center gap-3 pt-2">
           <a
             href={FULL_LANDSCAPE_ROUTE}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-600 text-white text-sm font-medium hover:bg-teal-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50"
           >
             Explore the full landscape <ExternalLink className="w-4 h-4" />
