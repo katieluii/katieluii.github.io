@@ -1,0 +1,763 @@
+<title>Large-Cap Pharma Landscape</title>
+<style>
+  :root{
+    --paper:#F4F6F9; --surface:#FFFFFF; --surface-2:#EEF2F7;
+    --ink:#16202E; --ink-soft:#4A586B; --ink-faint:#8494A8;
+    --line:#DCE3EC; --line-soft:#E8EDF3;
+    --accent:#0E7C86; --accent-ink:#0A5B62; --accent-wash:#0E7C860F;
+    --crit:#BE3A2B; --warn:#A9700A; --low:#2C8567;
+    --catA:#0E7C86; --catB:#5CB0AE; --catC:#3E6FB0; --catD:#B9800F; --catE:#BE3A2B;
+    --serif:'Iowan Old Style','Palatino Linotype','Palatino',Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono','Menlo','Consolas',monospace;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 4px 16px rgba(22,32,46,.05);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0D131B; --surface:#151E29; --surface-2:#1B2632;
+      --ink:#E7ECF3; --ink-soft:#A6B4C6; --ink-faint:#69798E;
+      --line:#26323F; --line-soft:#1F2A36;
+      --accent:#37C6B1; --accent-ink:#5FD6C4; --accent-wash:#37C6B114;
+      --crit:#E86A5C; --warn:#DFA333; --low:#46C79C;
+      --catA:#37C6B1; --catB:#2C8981; --catC:#5E92D6; --catD:#DFA333; --catE:#E86A5C;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#F4F6F9; --surface:#FFFFFF; --surface-2:#EEF2F7;
+    --ink:#16202E; --ink-soft:#4A586B; --ink-faint:#8494A8;
+    --line:#DCE3EC; --line-soft:#E8EDF3;
+    --accent:#0E7C86; --accent-ink:#0A5B62; --accent-wash:#0E7C860F;
+    --crit:#BE3A2B; --warn:#A9700A; --low:#2C8567;
+    --catA:#0E7C86; --catB:#5CB0AE; --catC:#3E6FB0; --catD:#B9800F; --catE:#BE3A2B;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 4px 16px rgba(22,32,46,.05);
+  }
+  :root[data-theme="dark"]{
+    --paper:#0D131B; --surface:#151E29; --surface-2:#1B2632;
+    --ink:#E7ECF3; --ink-soft:#A6B4C6; --ink-faint:#69798E;
+    --line:#26323F; --line-soft:#1F2A36;
+    --accent:#37C6B1; --accent-ink:#5FD6C4; --accent-wash:#37C6B114;
+    --crit:#E86A5C; --warn:#DFA333; --low:#46C79C;
+    --catA:#37C6B1; --catB:#2C8981; --catC:#5E92D6; --catD:#DFA333; --catE:#E86A5C;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.28);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;font-size:15px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  section{padding:44px 0;border-top:1px solid var(--line-soft)}
+  section:first-of-type{border-top:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;letter-spacing:-.01em}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-ink);font-weight:600;margin:0 0 10px}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .tk{font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.02em;
+    background:var(--accent-wash);color:var(--accent-ink);border:1px solid var(--line);
+    padding:2px 7px;border-radius:5px;white-space:nowrap}
+  .lede{color:var(--ink-soft);max-width:64ch;font-size:16px}
+
+  /* Masthead */
+  .mast{padding:52px 0 40px}
+  .mast h1{font-size:clamp(32px,5vw,50px);margin:0 0 14px;line-height:1.04}
+  .mast h1 .hl{color:var(--accent)}
+  .mast .sub{font-size:17px;color:var(--ink-soft);max-width:60ch;margin:0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:4px;min-width:0}
+  .stat b{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--ink);line-height:1}
+  .stat span{font-size:12px;color:var(--ink-faint);line-height:1.35}
+  @media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .mast h1{animation:fadeUp .5s ease both}
+  .mast .sub{animation:fadeUp .5s .07s ease both}
+  .stat{animation:fadeUp .45s ease both}
+  .stat:nth-child(1){animation-delay:.10s} .stat:nth-child(2){animation-delay:.16s}
+  .stat:nth-child(3){animation-delay:.22s} .stat:nth-child(4){animation-delay:.28s}
+  .note{margin-top:22px;font-size:12.5px;color:var(--ink-faint);max-width:76ch;
+    border-left:2px solid var(--line);padding-left:12px}
+
+  /* actionable buy/sell signals */
+  .signals{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+  .signal{border-radius:14px;padding:20px 22px;border:1px solid var(--line);box-shadow:var(--shadow);
+    cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+  .signal:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(22,32,46,.14)}
+  .signal:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .signal.buy{background:linear-gradient(180deg,color-mix(in srgb,var(--low) 9%,var(--surface)),var(--surface))}
+  .signal.sell{background:linear-gradient(180deg,color-mix(in srgb,var(--crit) 9%,var(--surface)),var(--surface))}
+  .signal .tag{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+  .signal.buy .tag{color:var(--low)} .signal.sell .tag{color:var(--crit)}
+  .signal .who{display:flex;align-items:baseline;gap:10px;margin:8px 0 6px;flex-wrap:wrap}
+  .signal .who h3{margin:0;font-size:20px}
+  .signal .why{font-family:var(--serif);font-size:15px;color:var(--ink);line-height:1.45;margin:0 0 12px}
+  .signal ul{list-style:none;padding:0;margin:0}
+  .signal li{padding-left:19px;position:relative;font-size:13px;color:var(--ink-soft);margin-bottom:8px;line-height:1.45}
+  .signal li::before{content:"→";position:absolute;left:0;font-family:var(--mono);font-weight:700}
+  .signal.buy li::before{color:var(--low)} .signal.sell li::before{color:var(--crit)}
+  .signal li b{color:var(--ink)}
+  .signal .prov{font-size:11px;color:var(--ink-faint);border-top:1px solid var(--line-soft);
+    padding-top:11px;margin-top:14px;font-family:var(--mono);line-height:1.5}
+  .signal .prov b{color:var(--ink-soft)}
+  .signal .more{font-size:11.5px;color:var(--accent-ink);font-weight:600;margin-top:10px}
+  .signals-disc{font-size:12px;color:var(--ink-faint);margin-top:14px}
+  @media (prefers-color-scheme:dark){.signal:hover{box-shadow:0 8px 26px rgba(0,0,0,.4)}}
+  @media (max-width:720px){.signals{grid-template-columns:1fr}}
+
+  /* Timeline */
+  .cliff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .era{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 16px 18px;box-shadow:var(--shadow)}
+  .era-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+    padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line-soft)}
+  .era-h .yr{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--ink)}
+  .era-h .cap{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}
+  .cliff-row{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line-soft)}
+  .cliff-row:first-of-type{border-top:none}
+  .dot{width:9px;height:9px;border-radius:50%;margin-top:5px;flex:none}
+  .dot.high{background:var(--crit)} .dot.med{background:var(--warn)} .dot.low{background:var(--low)}
+  .cliff-row .co{flex:1;min-width:0}
+  .cliff-row .co .tk{font-size:11px;padding:1px 6px}
+  .cliff-row .asset{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:3px}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-size:12px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+  /* Convergence */
+  .conv{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  .theme{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;box-shadow:var(--shadow)}
+  .theme-h{display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+  .theme-h h3{margin:0;font-size:18px}
+  .count{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent-ink);
+    background:var(--accent-wash);border:1px solid var(--line);border-radius:20px;padding:2px 10px}
+  .theme p{margin:2px 0 12px;font-size:13.5px;color:var(--ink-soft);max-width:70ch}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .bar-track{height:5px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin:10px 0 12px}
+  .bar-fill{height:100%;background:var(--accent);border-radius:3px}
+
+  /* Table */
+  .tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:840px;background:var(--surface)}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  thead th{position:sticky;top:0;background:var(--surface-2);font-size:11px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--ink-soft);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+  thead th:hover{color:var(--accent-ink)}
+  thead th .ar{opacity:.4;font-size:10px}
+  thead th[aria-sort="ascending"] .ar,thead th[aria-sort="descending"] .ar{opacity:1;color:var(--accent)}
+  tbody tr:hover{background:var(--accent-wash)}
+  tbody tr:last-child td{border-bottom:none}
+  td .co-name{font-weight:600;color:var(--ink)}
+  td .thesis{font-size:12.5px;color:var(--ink-soft);max-width:40ch;line-height:1.4}
+  .badge{display:inline-block;font-size:10.5px;font-family:var(--mono);font-weight:600;
+    padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--ink-soft);margin-right:3px}
+  .badge.on{background:var(--accent-wash);color:var(--accent-ink);border-color:var(--accent)}
+  /* franchise stacked bar */
+  .fbar{display:flex;height:12px;width:132px;border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+  .fbar i{display:block;height:100%}
+  .fbar .a{background:var(--catA)} .fbar .b{background:var(--catB)} .fbar .c{background:var(--catC)}
+  .fbar .d{background:var(--catD)} .fbar .e{background:var(--catE)}
+  .fnums{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-top:3px}
+  .flegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:12px;color:var(--ink-soft)}
+  .flegend span{display:inline-flex;align-items:center;gap:6px}
+  .flegend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* Valuation ladder */
+  .ladder{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .rung{display:grid;grid-template-columns:118px 1fr 132px;align-items:center;gap:14px;
+    padding:9px 4px;border-bottom:1px solid var(--line-soft)}
+  .rung:last-child{border-bottom:none}
+  .rung .lab{display:flex;align-items:center;gap:8px}
+  .rung .lab small{color:var(--ink-faint);font-size:11px}
+  .pe-track{background:var(--surface-2);border-radius:4px;height:22px;position:relative;overflow:hidden}
+  .pe-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-ink));
+    display:flex;align-items:center;justify-content:flex-end;padding-right:8px;min-width:34px}
+  .pe-fill b{font-family:var(--mono);font-size:11.5px;color:#fff;font-weight:600}
+  .rung .meta{font-size:11.5px;color:var(--ink-soft);text-align:right;font-family:var(--mono)}
+  .val-note{font-size:12.5px;color:var(--ink-faint);margin-top:14px;max-width:76ch}
+
+  /* Bull/bear cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin-top:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .card-h{display:flex;align-items:center;gap:9px}
+  .card-h .co-name{font-weight:600;font-size:14px}
+  .card-h .exp{margin-left:auto;font-size:10px;font-family:var(--mono);text-transform:uppercase;
+    letter-spacing:.05em;padding:2px 7px;border-radius:20px;font-weight:600}
+  .exp.high{background:var(--crit);color:#fff} .exp.med{background:var(--warn);color:#fff}
+  .exp.low{background:var(--low);color:#fff}
+  .bb{font-size:12.5px;line-height:1.45;padding-left:16px;position:relative;color:var(--ink-soft)}
+  .bb::before{position:absolute;left:0;top:0;font-family:var(--mono);font-weight:700}
+  .bb.bull::before{content:"+";color:var(--low)}
+  .bb.bear::before{content:"–";color:var(--crit)}
+  .bb b{color:var(--ink);font-weight:600}
+
+  footer{padding:36px 0 56px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:12.5px}
+  footer b{color:var(--ink-soft)}
+  a{color:var(--accent-ink)}
+  @media (max-width:820px){
+    .cliff-grid{grid-template-columns:1fr}
+    .rung{grid-template-columns:104px 1fr;gap:10px}
+    .rung .meta{grid-column:2;text-align:left}
+  }
+  /* interactive rows/cards + hover float */
+  tbody tr{cursor:pointer}
+  .card{cursor:pointer}
+  .stat,.era,.theme,.card{transition:transform .16s ease,box-shadow .16s ease}
+  .stat:hover,.era:hover,.theme:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(22,32,46,.13)}
+  .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(22,32,46,.14)}
+  .tk{transition:transform .12s ease}
+  .chips .tk:hover{transform:translateY(-2px)}
+  tbody tr:focus-visible,.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media (prefers-color-scheme:dark){
+    .stat:hover,.era:hover,.theme:hover,.card:hover{box-shadow:0 8px 26px rgba(0,0,0,.4)}}
+
+  /* drawer */
+  .drawer-scrim{position:fixed;inset:0;background:rgba(10,16,24,.42);z-index:40;
+    opacity:0;transition:opacity .2s ease}
+  .drawer-scrim.show{opacity:1}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,92vw);z-index:41;
+    background:var(--surface);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(10,16,24,.22);
+    transform:translateX(100%);transition:transform .24s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;padding:26px 26px 40px}
+  .drawer.show{transform:translateX(0)}
+  .drawer-x{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:8px;
+    border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);cursor:pointer;
+    font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
+  .drawer-x:hover{color:var(--ink);border-color:var(--accent)}
+  .dh{display:flex;align-items:center;gap:10px;margin:2px 40px 4px 0;flex-wrap:wrap}
+  .dh h3{margin:0;font-size:22px}
+  .dh .exp{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;
+    padding:2px 8px;border-radius:20px;font-weight:600;color:#fff}
+  .dh .exp.high{background:var(--crit)} .dh .exp.med{background:var(--warn)} .dh .exp.low{background:var(--low)}
+  .d-thesis{font-family:var(--serif);font-size:15px;color:var(--ink-soft);line-height:1.5;
+    margin:10px 0 20px;padding-bottom:18px;border-bottom:1px solid var(--line-soft)}
+  .d-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+  .d-kpi{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:9px;padding:11px 13px}
+  .d-kpi span{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin-bottom:3px}
+  .d-kpi b{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+  .d-kpi b.pos{color:var(--low)} .d-kpi b.neg{color:var(--crit)}
+  .d-sec{margin-bottom:18px}
+  .d-sec>h4{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--accent-ink);
+    margin:0 0 8px;font-family:var(--sans);font-weight:700}
+  .d-bb{font-size:13px;line-height:1.5;padding-left:16px;position:relative;color:var(--ink-soft);margin-bottom:8px}
+  .d-bb::before{position:absolute;left:0;top:0;font-family:var(--mono);font-weight:700}
+  .d-bb.bull::before{content:"+";color:var(--low)} .d-bb.bear::before{content:"–";color:var(--crit)}
+  .d-bb b{color:var(--ink)}
+  .d-dev{font-size:13px;line-height:1.5;color:var(--ink-soft);padding:8px 0;border-top:1px solid var(--line-soft)}
+  .d-dev:first-child{border-top:none}
+  .d-dev .dt{font-family:var(--mono);font-size:11px;color:var(--accent-ink);font-weight:600;margin-right:6px}
+  .d-fbar{margin:2px 0 4px}
+  .d-loe{font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .d-loe b{color:var(--ink)}
+
+  /* scatter / positioning map */
+  .scatter-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .toggle{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:3px;gap:2px}
+  .toggle button{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink-soft);background:none;
+    border:none;padding:6px 13px;border-radius:6px;cursor:pointer;white-space:nowrap}
+  .toggle button[aria-pressed="true"]{background:var(--surface);color:var(--accent-ink);box-shadow:var(--shadow)}
+  .toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .scatter-wrap{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    box-shadow:var(--shadow);padding:8px}
+  .scatter-wrap svg{width:100%;height:auto;display:block}
+  .sc-grid{stroke:var(--line-soft)} .sc-ref{stroke:var(--ink-faint);stroke-dasharray:3 3;opacity:.45}
+  .sc-tick{fill:var(--ink-faint);font-family:var(--mono);font-size:11px}
+  .sc-axlabel{fill:var(--ink-soft);font-family:var(--sans);font-size:12px;font-weight:600}
+  .sc-pt{cursor:pointer;transition:r .12s ease}
+  .sc-pt:hover{r:9}
+  .sc-pt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .sc-lab{fill:var(--ink-soft);font-family:var(--mono);font-size:10.5px;font-weight:600;pointer-events:none}
+  .sc-tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-size:12px;
+    padding:7px 10px;border-radius:7px;opacity:0;transition:opacity .12s;max-width:220px;z-index:5;line-height:1.4}
+  .sc-tip b{color:var(--paper)}
+  .sc-note{font-size:12px;color:var(--ink-faint);margin-top:12px;max-width:60ch;line-height:1.5}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}
+    .drawer{transition:none}}
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <h1>Large-Cap Pharma <span class="hl">Landscape</span></h1>
+    <p class="sub">A comparative read across the 13 largest names. Every one is managing a patent cliff between now and 2031 — and their pipelines are converging on the same handful of shots. <b>Click any company</b> for the full read.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section style="border-top:none;padding-top:8px">
+    <p class="eyebrow">The call · strongest signals on the screen</p>
+    <h2 style="font-size:26px;margin:0 0 14px">If you read one thing</h2>
+    <div class="signals" id="signals"></div>
+    <p class="signals-disc">A systematic read of the screen's own metrics — momentum, valuation and the freshest catalysts. <b>Educational, not investment advice.</b> Click either card for the full company detail.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The organizing tension</p>
+    <h2 style="font-size:26px;margin:0 0 8px">The patent cliff, mapped</h2>
+    <p class="lede" style="margin-bottom:22px">Loss-of-exclusivity on a top franchise is the defining risk for almost every name. What separates them is <em>when</em> the cliff hits and how credible the bridge is. Dot colour is the profile's exposure rating.</p>
+    <div class="cliff-grid" id="cliff"></div>
+    <div class="legend">
+      <span><i style="background:var(--crit)"></i> High exposure</span>
+      <span><i style="background:var(--warn)"></i> Medium</span>
+      <span><i style="background:var(--low)"></i> Low / well-defended</span>
+      <span style="color:var(--ink-faint)">Era = timing of the key LOE named in each profile</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Where the industry is crowding</p>
+    <h2 style="font-size:26px;margin:0 0 8px">Everyone is chasing the same three shots</h2>
+    <p class="lede" style="margin-bottom:8px">Aggregating the named pipeline assets across all 13 profiles, the bets concentrate hard. Obesity/incretins and ADCs/radiopharma each pull in more than half the field; the PD-1×VEGF bispecific is the newest pile-on.</p>
+    <div class="conv" id="conv"></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Positioning</p>
+    <h2 style="font-size:26px;margin:0 0 8px">Valuation vs momentum</h2>
+    <p class="lede" style="margin-bottom:16px">Each name plotted by what the market pays (forward P/E) against how fast it's growing this quarter. The market pays up only for growth it believes in — Lilly sits alone top-right; the cliff names cluster cheap and flat. <b>Click any point</b> for the full read; use the toggle to swap the vertical axis to each portfolio's future-pipeline weight.</p>
+    <div class="scatter-head">
+      <div class="toggle" id="scToggle" role="group" aria-label="Vertical axis">
+        <button data-y="growth" aria-pressed="true">Revenue growth</button>
+        <button data-y="future" aria-pressed="false">Future-pipeline weight</button>
+      </div>
+      <div class="legend" style="margin:0">
+        <span><i style="background:var(--crit)"></i> High LOE</span>
+        <span><i style="background:var(--warn)"></i> Med</span>
+        <span><i style="background:var(--low)"></i> Low</span>
+      </div>
+    </div>
+    <div class="scatter-wrap"><svg id="scatter" viewBox="0 0 800 470" role="img" aria-label="Scatter plot of valuation versus momentum; click a point for detail"></svg><div class="sc-tip" id="scTip"></div></div>
+    <p class="sc-note" id="scNote"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The roster</p>
+    <h2 style="font-size:26px;margin:0 0 8px">All 13, side by side</h2>
+    <p class="lede" style="margin-bottom:18px">Click any column header to sort. The franchise bar shows each portfolio's maturity mix from the profile's A–E classification — how much is core growth today versus mature/LOE-exposed versus future pipeline.</p>
+    <div class="tbl-scroll">
+      <table id="roster">
+        <thead><tr>
+          <th data-k="ticker">Company <span class="ar">↕</span></th>
+          <th data-k="ccy">Ccy <span class="ar">↕</span></th>
+          <th data-k="nta" data-num="1">TAs <span class="ar">↕</span></th>
+          <th data-k="model">Model <span class="ar">↕</span></th>
+          <th data-k="mix">Franchise mix (A→E) <span class="ar">↕</span></th>
+          <th data-k="thesis">One-line thesis</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="flegend">
+      <span><i style="background:var(--catA)"></i> A · core growth engine</span>
+      <span><i style="background:var(--catB)"></i> B · lifecycle protection</span>
+      <span><i style="background:var(--catC)"></i> C · future value driver</span>
+      <span><i style="background:var(--catD)"></i> D · mature / LOE-exposed</span>
+      <span><i style="background:var(--catE)"></i> E · watchlist risk</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Valuation ladder</p>
+    <h2 style="font-size:26px;margin:0 0 8px">The re-rating gap the whole debate prices through</h2>
+    <p class="lede" style="margin-bottom:6px">Ranked cheap → rich on the forward P/E each profile cites. The spread is enormous: <b>Lilly ~27×</b> for GLP-1 dominance against <b>GSK, Pfizer and Sanofi at ~6–9×</b>, where the market has already written down the cliff. P/E is currency-neutral, so this ranking holds across listings; the figures still come from mixed brokers and dates.</p>
+    <div class="ladder" id="ladder"></div>
+    <p class="val-note" id="valnote"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The debate in a line each</p>
+    <h2 style="font-size:26px;margin:0 0 8px">Bull vs bear</h2>
+    <p class="lede" style="margin-bottom:6px">The sharpest bull and bear point from each profile, with the key LOE exposure flagged.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer>
+    <p id="footdate"></p>
+    <p style="margin-top:8px">Directional intelligence for internal use. Not investment advice; verify against primary filings before any client-facing use.</p>
+  </footer>
+
+  <!-- company detail drawer -->
+  <div class="drawer-scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Company detail" tabindex="-1">
+    <button class="drawer-x" id="drawerX" aria-label="Close">✕</button>
+    <div id="drawerBody"></div>
+  </aside>
+
+</div>
+
+<script>
+const D=[
+ {ticker:"LLY",name:"Eli Lilly",ccy:"USD",dx:0,dev:0,nta:4,ph:[4,0,3,1,0],
+  loeAsset:"Tirzepatide (Mounjaro/Zepbound)",era:"2029-31",exp:"med",
+  q:"Q1 2026",qdate:"30 Apr 2026",rev:"$19.8B",gr:"+56%",
+  fpe:33,ev:"fwd P/E ~33× · EV/EBIT ~43×",yld:null,stance:"Consensus Buy; avg target ~$1,270",
+  thesis:"GLP-1 dominance — now extended to oral orforglipron — driving historic growth; the debate is diversification and US pricing before early-2030s cliffs.",
+  bull:"Oral orforglipron is now approved and launching, extending the obesity franchise beyond injectables and widening the lead over Novo after CagriSema's miss.",
+  bear:"US MFN/TrumpRx concessions compress GLP-1 net prices, and a ~33× forward multiple leaves little room for any volume or reimbursement disappointment.",
+  dev:[["Apr 2026","FDA approved oral orforglipron (Foundayo) — first oral GLP-1 for weight loss (~12.4% loss)"],["Nov 2025","MFN / TrumpRx pricing deal — Zepbound & oral to ~$346/mo"],["Q1 2026","Mounjaro $8.7B (+125%), Zepbound $4.2B; FY26 guide raised to $82–85B rev, $35.50–37.00 EPS"]]},
+ {ticker:"JNJ",name:"Johnson & Johnson",ccy:"USD",dx:0,dev:1,nta:10,ph:[8,0,1,1,1],
+  loeAsset:"Stelara (ustekinumab)",era:"now",exp:"high",
+  q:"Q1 2026",qdate:"14 Apr 2026",rev:"$24.1B",gr:"+9.9%",
+  fpe:17.9,ev:"fwd P/E ~17.9×",yld:null,stance:"Buy/Hold split; targets ~$210–238",
+  thesis:"Healthcare's only Pharma+MedTech giant proving it can 'grow through' the Stelara cliff — against a reopened talc overhang.",
+  bull:"Drug-cycle strength (Darzalex, Tremfya, Rybrevant, Caplyta) plus a MedTech recovery drove a raised FY outlook despite Stelara.",
+  bear:"The Stelara cliff is biting harder and the talc overhang reverted to open-ended tort litigation after the bankruptcy was thrown out — widening the tail risk.",
+  dev:[["Q1 2026","Rev +9.9% (Innovative Medicine +11%, MedTech +8%); FY26 guide raised, dividend +3.1%"],["Dec 2025","Record $1.5B Baltimore talc verdict; ~68,000 MDL claims after the bankruptcy path was dismissed"],["2026","Stelara erosion accelerating — 8 US biosimilars + a 66% IRA Medicare price cut now live"]]},
+ {ticker:"ABBV",name:"AbbVie",ccy:"USD",dx:0,dev:1,nta:5,ph:[5,0,4,3,1],
+  loeAsset:"Humira (adalimumab)",era:"now",exp:"high",
+  q:"Q1 2026",qdate:"29 Apr 2026",rev:"$15.0B",gr:"+12.4%",
+  fpe:14.4,ev:"fwd P/E ~14× (growth premium)",yld:"~3.0%",stance:"~33 Buy / 9 Hold; target ~$229",
+  thesis:"The template for a successful cliff transition — Skyrizi+Rinvoq now more than offset Humira; the debate shifts to their own end-of-decade LOE.",
+  bull:"Skyrizi/Rinvoq now drive sector-leading double-digit growth with margins inflecting; Apogee plus obesity/neuroscience optionality extend the runway past Humira.",
+  bear:"The valuation prices in sustained execution — any Skyrizi/Rinvoq deceleration or pipeline miss leaves little margin for error.",
+  dev:[["Q1 2026","Skyrizi ~$4.5B (+~30%) + Rinvoq ~$2.1B (+~20%) more than offset Humira −40%; FY26 guide raised"],["Jun 2026","Apogee acquisition (long-acting IL-13) to extend immunology leadership"],["2026","Early obesity data for amylin ABBV-295 (~10% at 12 wks); tavapadon Parkinson's approval ~Q3"]]},
+ {ticker:"NVS",name:"Novartis",ccy:"USD",dx:0,dev:0,nta:8,ph:[7,0,1,1,1],
+  loeAsset:"Entresto (sacubitril/valsartan)",era:"now",exp:"high",
+  q:"Q1 2026",qdate:"28 Apr 2026",rev:"$13.1B",gr:"−1% (−5% cc)",
+  fpe:16.4,ev:"fwd P/E ~16.4×",yld:null,stance:"Strongly Buy-tilted; targets ~$154–170",
+  thesis:"Pure-play innovative medicines now in its Entresto-cliff trough year — can the growth cohort + Avidity re-accelerate once generics lap?",
+  bull:"2026 is a guided trough — once Entresto laps, the Kisqali/Pluvicto/Scemblix/Leqvio/Kesimpta cohort plus Avidity should re-accelerate growth, backed by a large buyback.",
+  bear:"Q1 missed on both sales and EPS with core income guided to decline — the growth brands haven't yet proven they can fully cover Entresto/Promacta/Tasigna erosion.",
+  dev:[["Q1 2026","Entresto −44% on US generics; Q1 missed (rev −5% cc, core EPS −13%)"],["2026","~$12B Avidity (RNA/neuromuscular) acquisition to rebuild the pipeline; ~$7.5B buyback YTD"],["FY2026","Guided trough — sales low-single-digit growth, core operating income low-single-digit decline"]]},
+ {ticker:"AZN",name:"AstraZeneca",ccy:"USD",dx:0,dev:0,nta:5,ph:[7,0,4,2,1],
+  loeAsset:"Tagrisso + oncology cohort",era:"2026-28",exp:"med",
+  q:"Q1 2026",qdate:"29 Apr 2026",rev:"$15.3B",gr:"+8%",
+  fpe:17.9,ev:"fwd P/E ~17.9×",yld:null,stance:"Buy/Strong Buy; targets ~$205–235",
+  thesis:"Diversified pharma toward an $80bn 2030 target on pipeline breadth — can depth offset oncology concentration and a US regulatory wobble?",
+  bull:"Deep late-stage oncology + rare-disease engine driving double-digit core EPS, now adding an obesity/cardiometabolic leg via the CSPC deal.",
+  bear:"The camizestrant ODAC 3–6 vote + PDUFA extension is a real US regulatory setback for a key growth asset, and a revenue-reporting-basis question dents transparency.",
+  dev:[["Q1 2026","Rev +8%; Oncology $6.8B (+16%), core EPS $2.58 beat; core gross margin 83%"],["Early 2026","Camizestrant (SERENA-6): FDA ODAC voted 3–6 against + PDUFA extended, though EU CHMP positive"],["Apr 2026","$1.2B CSPC obesity/T2D collaboration; Datroway (Dato-DXd TROP2 ADC) approved in 1L TNBC"]]},
+ {ticker:"MRK",name:"Merck & Co.",ccy:"USD",dx:0,dev:0,nta:8,ph:[6,1,1,1,1],
+  loeAsset:"Keytruda (pembrolizumab)",era:"2026-28",exp:"high",
+  q:"Q1 2026",qdate:"30 Apr 2026",rev:"$16.3B",gr:"+5%",
+  fpe:14.4,ev:"fwd P/E ~14.4× · ~3.1% yield",yld:"~3.1%",stance:"Lean-bullish; avg target ~$127",
+  thesis:"The industry's largest cliff: Keytruda >50% of revenue, US LOE 2028 — can Qlex + 20+ drivers + M&A replace it in time?",
+  bull:"Cheap ~14× multiple, Keytruda still growing double-digits, and Qlex subcutaneous + Winrevair + M&A (Verona, Cidara) build a credible post-2028 bridge.",
+  bear:"The 2028 Keytruda cliff (~half of revenue) remains the dominant risk — 'a huge, huge amount to replace' with as-yet-unproven pipeline.",
+  dev:[["Q1 2026","Keytruda $8.03B (+12%), incl. subcutaneous Qlex; Winrevair $525M (+88%)"],["Jan 2026","Closed Cidara (~$9.2B, long-acting flu antiviral); Verona / Ohtuvayre added Jul 2025"],["FY2026","Guidance raised — revenue $65.8–67.0B, adjusted EPS $5.04–5.16"]]},
+ {ticker:"PFE",name:"Pfizer",ccy:"USD",dx:0,dev:0,nta:4,ph:[7,1,3,4,1],
+  loeAsset:"Ibrance + small-molecule portfolio",era:"2026-28",exp:"high",
+  q:"Q1 2026",qdate:"5 May 2026",rev:"$14.5B",gr:"+2% op (+7% ex-COVID)",
+  fpe:9,ev:"fwd P/E ~9× · ~6% yield",yld:"~6.0%",stance:"ICICI Buy; target ~$29",
+  thesis:"Post-COVID turnaround now betting on obesity (Metsera) and ADCs — can new platforms offset the 2026–30 cliff before COVID fades?",
+  bull:"Metsera re-establishes an obesity platform (monthly dosing), the ex-COVID base is growing +7%, and a ~9× forward P/E with a ~6% yield is deep value.",
+  bear:"Obesity re-entry is early and unproven (a Phase 2 disappointment already hit shares), MFN/TrumpRx pressures the base, and the 2028 Eliquis cliff still looms.",
+  dev:[["Nov 2025","Closed Metsera (~$7B EV) — re-enters obesity with monthly injectable incretins"],["Sep 2025","MFN pricing deal + 3-yr tariff exemption; TrumpRx participation"],["Q1 2026","Ex-COVID base +7%; a Seagen-derived ADC missed OS in late-stage NSCLC — a knock to the thesis"]]},
+ {ticker:"BMY",name:"Bristol-Myers Squibb",ccy:"USD",dx:0,dev:0,nta:5,ph:[8,1,0,4,1],
+  loeAsset:"Eliquis · Opdivo (Revlimid done)",era:"2026-28",exp:"high",
+  q:"Q1 2026",qdate:"late Apr 2026",rev:"$11.5B",gr:"+1%",
+  fpe:8.7,ev:"fwd P/E ~8.7× · ~4.6% yield",yld:"~4.6%",stance:"Hold-leaning; target ~$61–63",
+  thesis:"Sequential LOE of its biggest drivers — and in Q1 2026 the Growth Portfolio finally crossed above the Legacy bucket.",
+  bull:"The Growth Portfolio now out-earns Legacy, and with H2 2026 Cobenfy/milvexian readouts plus a single-digit P/E and 4.6% yield the market may be over-discounting the bridge.",
+  bear:"The 2027–2029 Eliquis/Opdivo cliff (~$38B at-risk) still dwarfs the growth engine, and no guidance raise signals the offset isn't yet proven.",
+  dev:[["Q1 2026","Growth Portfolio ($6.23B) crossed above Legacy ($5.28B) — the pivotal bridge milestone"],["Q1 2026","Cobenfy ~$56M (+107%); broad Alzheimer's-psychosis label-expansion program underway"],["H2 2026","Pivotal Cobenfy (adjunctive schizophrenia) + milvexian (FXIa) readouts define the trajectory"]]},
+ {ticker:"RHHBY",name:"Roche",ccy:"CHF",dx:1,dev:0,nta:6,ph:[7,0,5,2,1],
+  loeAsset:"Avastin / Herceptin / Rituxan",era:"now",exp:"high",
+  q:"Q1 2026",qdate:"23 Apr 2026",rev:"CHF 14.7B",gr:"+6% cc (−5% CHF)",
+  fpe:null,ev:"P/E ~20× trailing (fwd n/a) · ADR target ~$56",yld:null,stance:"Mixed; ~12% implied upside",
+  thesis:"The only integrated pharma+diagnostics player — and it has just assembled a credible top-3 obesity + MASH portfolio to bridge the cliff.",
+  bull:"Roche has assembled a credible top-3 obesity + MASH cardiometabolic portfolio (CT-388, petrelintide, pegozafermin) — a genuinely new growth narrative.",
+  bear:"FX translation drag, China diagnostics pricing and a still-real biosimilar/LOE step-down persist while the obesity bets remain unproven at Phase 3.",
+  dev:[["Q4 2025","Closed 89bio (~$2.4B) — pegozafermin (FGF21) Ph3 MASH, pivotal readout expected H1 2027"],["Jan–Mar 2026","Obesity Ph2 wins — CT-388 (54% obesity resolution) + petrelintide; Ph3 CT-388 started Q1"],["2024–25","TIGIT (tiragolumab) program scrapped after SKYSCRAPER failures — a now-settled negative"]]},
+ {ticker:"NVO",name:"Novo Nordisk",ccy:"DKK",dx:0,dev:1,nta:7,ph:[3,2,6,2,1],
+  loeAsset:"Semaglutide (patents into 2030s)",era:"2029-31",exp:"low",
+  q:"Q1 2026",qdate:"6 May 2026",rev:"DKK",gr:"−4% cc underlying",
+  fpe:null,ev:"NTM P/E ~13× (vs ~28× 3-yr avg) · Hold, ~DKK310",yld:null,stance:"Consensus Hold (18 hold / 6 buy)",
+  thesis:"Dominant GLP-1 franchise now on the defensive — CagriSema lost its head-to-head to Zepbound, flipping the case from momentum to share defence vs Lilly.",
+  bull:"Massive, still-expanding market — oral Wegovy uptake plus Alzheimer's / MASH / CV indication expansion — on a de-rated ~13× multiple.",
+  bear:"CagriSema's head-to-head miss, negative guided growth, US price cuts and Lilly's oral lead have turned Novo into a share-loser story with a Hold consensus.",
+  dev:[["Feb 2026","CagriSema FAILED REDEFINE-4 head-to-head vs Zepbound (−20% vs −24%); stock −16%"],["Jan 2026","Oral Wegovy launched in the US (~$354M in Q1); amycretin renamed zenagamtide, entering late-stage"],["FY2026","Guidance still negative (−4% to −12% cc); underlying sales ex one-off fell ~4%"]]},
+ {ticker:"BIIB",name:"Biogen",ccy:"USD",dx:0,dev:1,nta:4,ph:[3,1,2,4,0],
+  loeAsset:"Tysabri · Tecfidera (biosimilar/generic)",era:"now",exp:"high",
+  q:"Q1 2026",qdate:"29 Apr 2026",rev:"$2.48B",gr:"+2%",
+  fpe:12.5,ev:"fwd P/E ~12–13× (trailing ~17×)",yld:null,stance:"Buy; target ~$220",
+  thesis:"Polarized transformation — now buying growth (Apellis) to outrun MS erosion while a deep Ph3 stack and a contested Leqembi decide the re-rating.",
+  bull:"Apellis adds ophthalmology + rare-disease revenue, Leqembi subcutaneous/China broadens the ramp, and a deep 2026–27 Ph3 stack could re-rate a low-teens multiple.",
+  bear:"MS decline still sets the top-line down mid-single-digits, Leqembi uptake stays slow, and growth is being bought with ~$2B debt + IPR&D dilution rather than earned.",
+  dev:[["May 2026","Completed Apellis (~$5.6B) — adds SYFOVRE (geographic atrophy) + EMPAVELI (rare disease)"],["Mar 2026","High-dose SPINRAZA FDA-approved — defends the SMA franchise vs Roche's Evrysdi"],["FY2026","Guide cut to $14.25–15.25 (~$1 IPR&D dilution); revenue guided to a mid-single-digit decline"]]},
+ {ticker:"SNY",name:"Sanofi",ccy:"EUR",dx:0,dev:0,nta:6,ph:[3,0,2,0,0],
+  loeAsset:"Dupixent (2031)",era:"2029-31",exp:"high",
+  q:"Q1 2026",qdate:"23 Apr 2026",rev:"€10.5B",gr:"+13.6% cc",
+  fpe:null,ev:"~9× FY26E P/E (est.) · ADR target ~$56–60",yld:null,stance:"Buy/Hold, no sells",
+  thesis:"Immunology-driven transformation on Dupixent — building an innovation-led launch cohort to diversify before the 2031 cliff.",
+  bull:"Dupixent +31% plus a maturing launch cohort (amlitelimab Ph3 wins, Blueprint/Dynavax) diversifies the growth base ahead of the 2031 cliff.",
+  bear:"The thesis still hinges on replacing Dupixent's ~40% revenue concentration before 2031 — the launches are progressing but not yet proven at scale.",
+  dev:[["Q1 2026","Dupixent €4.17B (+31% cc); new launches €1.2B (+50%), now ~14% of revenue; business EPS +14%"],["Mar 2026","Amlitelimab positive Ph3 (COAST 1/2, SHORE) in atopic dermatitis; submissions H2 2026"],["2026","Blueprint + Dynavax acquisitions now contributing to the launch cohort"]]},
+ {ticker:"GSK",name:"GSK",ccy:"GBP",dx:0,dev:1,nta:4,ph:[5,0,1,1,1],
+  loeAsset:"Upcoming key expiries (unspecified)",era:"2026-28",exp:"med",
+  q:"Q1 2026",qdate:"29 Apr 2026",rev:"£7.6B",gr:"+5%",
+  fpe:11,ev:"fwd P/E ~11× (cheapest of the EU majors)",yld:null,stance:"Hold; target ~$57",
+  thesis:"Post-Haleon focused biopharma under a new product-centric CEO; Specialty Medicines (+14%) is the growth engine, still on a deep peer discount.",
+  bull:"A new product-centric CEO plus a validated specialty engine (Blenrep back on market, Specialty +14%) on a low-double-digit P/E leaves clear re-rating room.",
+  bear:"General Medicines drag, a Hold consensus, and execution/continuity risk through the leadership handover keep it a show-me story.",
+  dev:[["Jan 2026","Luke Miels became CEO (product-centric strategy); Emma Walmsley departed"],["Q4 2025","Blenrep (myeloma ADC) FDA-approved — a comeback after its 2022 withdrawal; 5/5 FDA approvals in 2025"],["Q1 2026","Specialty Medicines +14% now the primary growth engine; core EPS +9%"]]}
+];
+
+const eras={
+  "now":{yr:"2023–2025",cap:"Active erosion now"},
+  "2026-28":{yr:"2026–2028",cap:"Cliff approaching"},
+  "2029-31":{yr:"2029–2031+",cap:"Later this decade"}
+};
+const convThemes=[
+ {name:"Obesity & incretins",n:6,tk:["LLY","NVO","RHHBY","PFE","AZN","ABBV"],
+  desc:"Leadership decisively shifted to Lilly — oral orforglipron was approved (Apr 2026) while Novo's CagriSema lost its head-to-head to Zepbound (Feb 2026). Roche has emerged as a credible #3 (CT-388, petrelintide); Pfizer re-entered via Metsera. Amylin is the next battleground. (Merck dropped out — its obesity GLP-1 was discontinued.)"},
+ {name:"ADCs & radiopharmaceuticals",n:7,tk:["MRK","AZN","BMY","NVS","JNJ","PFE","GSK"],
+  desc:"Targeted oncology payloads — Datroway (TROP2) was approved in 1L TNBC (2026) and radioligand deals keep coming (Pluvicto ~$2B, +42%). Not all wins: a Seagen-derived Pfizer ADC missed OS in NSCLC."},
+ {name:"PD-1/PD-L1 × VEGF bispecifics",n:4,tk:["BMY","PFE","MRK","SNY"],
+  desc:"The newest IO pile-on — capital keeps pouring in (Pfizer paid $1.25B for SSGJ-707; BMS's ~$11B BNT327), but the decisive Western Phase 3 overall-survival proof is still pending. The pile-on partly rests on faith."},
+ {name:"Next-gen immunology (I&I)",n:6,tk:["SNY","NVS","BIIB","MRK","LLY","ABBV"],
+  desc:"Long-acting biologics, oral IL-17/integrin, TL1A, BTK and in-vivo cell therapy across derm, IBD, lupus and kidney disease. Sanofi's amlitelimab and Biogen's felzartamab posted Ph3/Ph3-program progress in 2026."},
+ {name:"Cardiovascular — Lp(a) / FXI / anti-inflammatory",n:1,tk:["NVS"],
+  desc:"Distinctly a Novartis lane — pelacarsen (Lp(a)), abelacimab (FXI), pacibekitug (IL-6) target residual CV risk, alongside a ~$12B Avidity deal to rebuild the pipeline."}
+];
+
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+
+// data currency stamp
+const DATA_ASOF="Q1 2026";        // latest reported quarter reflected below
+const REFRESHED="Jul 2026";
+// stats — each number carries part of the thesis: scale · risk · dispersion · freshness
+const peVals=D.map(d=>d.fpe).filter(v=>v!=null);
+const peLo=Math.min(...peVals),peHi=Math.max(...peVals);
+[["13","companies profiled"],
+ [D.filter(d=>d.exp=="high").length,"on a high-exposure patent cliff"],
+ [`${peLo}–${peHi}×`,"forward-P/E spread, cheap to rich"],
+ [DATA_ASOF,"latest reported quarter"]].forEach(s=>{
+  $("#stats").appendChild(el("div","stat",`<b>${s[0]}</b><span>${s[1]}</span>`));
+});
+$("#footdate").innerHTML=`Data current to the <b>${DATA_ASOF}</b> reported quarter (refreshed ${REFRESHED}). Valuation multiples span different brokers, dates and currencies — read as directional, not precise comparables.`;
+
+// actionable buy/sell signals
+const SIGNALS={
+ buy:{tk:"ABBV",name:"AbbVie",tag:"Highest buy signal",
+   why:"The patent cliff is already behind it — and growth re-accelerated anyway.",
+   pts:["Humira's loss of exclusivity is fully in the numbers, yet <b>Skyrizi (+~30%) + Rinvoq (+~20%)</b> drove sector-leading <b>+12.4%</b> revenue growth in Q1 2026.",
+     "Management <b>raised FY2026 guidance</b> — the transition is confirmed, not hoped for.",
+     "At <b>~14× forward P/E</b> it sits in the cheap-and-growing quadrant, without Lilly's 33× premium or a near-term cliff (Skyrizi/Rinvoq LOE is next decade)."],
+   prov:"Q1 2026 results (29 Apr 2026) · FY26 guidance raise · forward P/E on FY26 EPS guide"},
+ sell:{tk:"NVO",name:"Novo Nordisk",tag:"Highest sell signal",
+   why:"The moat cracked and the guide is for shrinking sales.",
+   pts:["<b>CagriSema failed its head-to-head vs Lilly's Zepbound</b> (Feb 2026) — the efficacy-leadership premium that justified the stock is gone.",
+     "FY2026 guidance is for <b>negative underlying growth (−4% to −12%)</b>; Q1 underlying sales fell ~4%.",
+     "Lilly's <b>oral orforglipron approval</b> + US MFN pricing compound the share loss; consensus has been cut to <b>Hold</b>."],
+   prov:"Q1 2026 (6 May 2026) · REDEFINE-4 readout (Feb 2026) · orforglipron FDA approval (Apr 2026)"}
+};
+["buy","sell"].forEach(k=>{
+  const s=SIGNALS[k],co=D.find(x=>x.ticker==s.tk);
+  const card=el("div","signal "+k);
+  card.tabIndex=0;
+  card.innerHTML=`<div class="tag">${s.tag}</div>
+    <div class="who"><span class="tk">${s.tk}</span><h3>${s.name}</h3></div>
+    <p class="why">${s.why}</p>
+    <ul>${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul>
+    <div class="prov"><b>Provenance:</b> ${s.prov}</div>
+    <div class="more">Open ${s.tk} detail →</div>`;
+  card.addEventListener("click",()=>openDrawer(co,card));
+  card.addEventListener("keydown",e=>{if(e.key=="Enter"){e.preventDefault();openDrawer(co,card);}});
+  $("#signals").appendChild(card);
+});
+
+// cliff
+Object.keys(eras).forEach(k=>{
+  const box=el("div","era");
+  box.appendChild(el("div","era-h",`<span class="yr">${eras[k].yr}</span><span class="cap">${eras[k].cap}</span>`));
+  D.filter(d=>d.era==k).sort((a,b)=>({high:0,med:1,low:2})[a.exp]-({high:0,med:1,low:2})[b.exp]).forEach(d=>{
+    const row=el("div","cliff-row",
+      `<span class="dot ${d.exp}"></span><span class="co"><span class="tk">${d.ticker}</span><span class="asset">${d.loeAsset}</span></span>`);
+    box.appendChild(row);
+  });
+  $("#cliff").appendChild(box);
+});
+
+// convergence
+const maxN=Math.max(...convThemes.map(t=>t.n));
+convThemes.forEach(t=>{
+  const box=el("div","theme");
+  box.appendChild(el("div","theme-h",`<h3>${t.name}</h3><span class="count">${t.n} of 13</span>`));
+  box.appendChild(el("p",null,t.desc));
+  const track=el("div","bar-track");track.appendChild(el("div","bar-fill"));
+  track.firstChild.style.width=(t.n/maxN*100)+"%";box.appendChild(track);
+  const chips=el("div","chips");
+  t.tk.forEach(k=>chips.appendChild(el("span","tk",k)));
+  box.appendChild(chips);
+  $("#conv").appendChild(box);
+});
+
+// ---- positioning scatter ----
+const POS={LLY:{g:56,pe:33},JNJ:{g:9.9,pe:17.9},ABBV:{g:12.4,pe:14.4},NVS:{g:-1,pe:16.4},
+ AZN:{g:8,pe:17.9},MRK:{g:5,pe:14.4},PFE:{g:2,pe:9},BMY:{g:1,pe:8.7},RHHBY:{g:6,pe:20,est:1},
+ NVO:{g:-4,pe:13,est:1},BIIB:{g:2,pe:12.5},SNY:{g:13.6,pe:9,est:1},GSK:{g:5,pe:11}};
+const scSvg=$("#scatter"),scTip=$("#scTip");
+let yMode="growth";
+const SC={w:800,h:470,l:66,r:30,t:22,b:52};
+const SVGNS="http://www.w3.org/2000/svg";
+const ns=(t,a)=>{const e=document.createElementNS(SVGNS,t);for(const k in(a||{}))e.setAttribute(k,a[k]);return e;};
+const xScale=pe=>SC.l+(pe-6)/(36-6)*(SC.w-SC.l-SC.r);
+const yDom=()=>yMode=="growth"?[-10,60]:[0,55];
+const yScale=v=>{const[a,b]=yDom();return (SC.h-SC.b)-(v-a)/(b-a)*(SC.h-SC.b-SC.t);};
+const yVal=d=>yMode=="growth"?POS[d.ticker].g:(d.ph[2]/(d.ph.reduce((p,c)=>p+c,0)||1)*100);
+const reduceMotion=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function drawScatter(animate){
+  scSvg.innerHTML="";
+  const yticks=yMode=="growth"?[-10,0,10,20,30,40,50,60]:[0,10,20,30,40,50];
+  yticks.forEach(t=>{const y=yScale(t);
+    scSvg.appendChild(ns("line",{x1:SC.l,x2:SC.w-SC.r,y1:y,y2:y,class:t===0?"sc-ref":"sc-grid"}));
+    const tx=ns("text",{x:SC.l-9,y:y+3,"text-anchor":"end",class:"sc-tick"});tx.textContent=t+"%";scSvg.appendChild(tx);});
+  [8,12,16,20,24,28,32,36].forEach(t=>{const x=xScale(t);
+    const tx=ns("text",{x,y:SC.h-SC.b+18,"text-anchor":"middle",class:"sc-tick"});tx.textContent=t+"×";scSvg.appendChild(tx);});
+  const xref=xScale(15);
+  scSvg.appendChild(ns("line",{x1:xref,x2:xref,y1:SC.t,y2:SC.h-SC.b,class:"sc-ref"}));
+  const xl=ns("text",{x:(SC.l+SC.w-SC.r)/2,y:SC.h-8,"text-anchor":"middle",class:"sc-axlabel"});
+  xl.textContent="Forward P/E  →  the market pays more";scSvg.appendChild(xl);
+  const yl=ns("text",{transform:`translate(15,${(SC.t+SC.h-SC.b)/2}) rotate(-90)`,"text-anchor":"middle",class:"sc-axlabel"});
+  yl.textContent=yMode=="growth"?"Latest-quarter revenue growth":"Future-pipeline weight (C-tier % of franchises)";scSvg.appendChild(yl);
+  const doPop=animate&&!reduceMotion;
+  D.forEach((d,i)=>{const p=POS[d.ticker],cx=xScale(p.pe),cy=yScale(yVal(d));
+    const col=d.exp=="high"?"var(--crit)":d.exp=="med"?"var(--warn)":"var(--low)";
+    const c=ns("circle",{cx,cy,r:doPop?0:7,fill:col,class:"sc-pt",tabindex:0,role:"button","aria-label":d.name+" — click for detail"});
+    if(doPop){c.style.transition=`r .34s cubic-bezier(.34,1.35,.5,1) ${i*26}ms`;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>c.setAttribute("r",7)));}
+    if(p.est){c.setAttribute("fill-opacity",".26");c.setAttribute("stroke",col);c.setAttribute("stroke-width","1.6");c.setAttribute("stroke-dasharray","3 2");}
+    else{c.setAttribute("stroke","var(--surface)");c.setAttribute("stroke-width","1.5");}
+    const lab=ns("text",{x:cx+10,y:cy+3.5,class:"sc-lab"});lab.textContent=d.ticker;
+    const show=()=>{const sx=scSvg.clientWidth/SC.w,sy=scSvg.clientHeight/SC.h;
+      scTip.innerHTML=`<b>${d.ticker} · ${d.name}</b><br>P/E ~${p.pe}×${p.est?" (est)":""} · ${yMode=="growth"?"growth "+d.gr:"C-tier "+Math.round(yVal(d))+"% of franchises"}`;
+      let lx=scSvg.offsetLeft+cx*sx+14; lx=Math.min(lx,scSvg.offsetLeft+scSvg.clientWidth-150);
+      scTip.style.left=lx+"px";scTip.style.top=(scSvg.offsetTop+cy*sy-12)+"px";scTip.style.opacity="1";};
+    c.addEventListener("mouseenter",show);c.addEventListener("mousemove",show);
+    c.addEventListener("mouseleave",()=>scTip.style.opacity="0");
+    c.addEventListener("click",()=>openDrawer(d,c));
+    c.addEventListener("keydown",e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();openDrawer(d,c);}});
+    scSvg.appendChild(c);scSvg.appendChild(lab);});
+}
+drawScatter(true);
+document.querySelectorAll("#scToggle button").forEach(b=>{
+  b.addEventListener("click",()=>{yMode=b.dataset.y;
+    document.querySelectorAll("#scToggle button").forEach(x=>x.setAttribute("aria-pressed",x==b?"true":"false"));
+    drawScatter(false);});
+});
+$("#scNote").innerHTML="X-axis: forward P/E — <b>hollow points are estimated multiples</b> (Novo ~13× NTM, Roche ~20× trailing, Sanofi ~9× est.). The dashed vertical line marks the ~15× peer median. Toggle the Y-axis to compare each portfolio's <b>future-pipeline weight</b> — the share of its franchises classified C (future value driver).";
+
+// roster
+const modelOf=d=>d.dx?"Pharma + Dx":(d.dev?"Pharma + devices":"Pure-play Rx");
+function fbar(ph){
+  const tot=ph.reduce((a,b)=>a+b,0)||1;const cl=["a","b","c","d","e"];
+  let s='<div class="fbar">';ph.forEach((v,i)=>{if(v)s+=`<i class="${cl[i]}" style="width:${v/tot*100}%"></i>`});
+  return s+`</div><div class="fnums">${ph.join(' · ')}</div>`;
+}
+let sortK="exp",sortDir=1;
+const expRank={high:0,med:1,low:2};
+function renderRoster(){
+  const tb=$("#roster tbody");tb.innerHTML="";
+  const rows=[...D].sort((a,b)=>{
+    let x,y;
+    if(sortK=="mix"){x=a.ph[0]/a.ph.reduce((p,c)=>p+c,0);y=b.ph[0]/b.ph.reduce((p,c)=>p+c,0);}
+    else if(sortK=="model"){x=modelOf(a);y=modelOf(b);}
+    else {x=a[sortK];y=b[sortK];}
+    if(typeof x=="string")return x.localeCompare(y)*sortDir;
+    return (x-y)*sortDir;
+  });
+  rows.forEach(d=>{
+    const tr=el("tr");
+    tr.appendChild(el("td",null,`<span class="tk">${d.ticker}</span> <span class="co-name">${d.name}</span>`));
+    tr.appendChild(el("td","mono",d.ccy));
+    tr.appendChild(el("td","mono",d.nta));
+    tr.appendChild(el("td",null,
+      `<span class="badge ${d.dx?'on':''}">Dx</span><span class="badge ${d.dev?'on':''}">Dev</span><br><small style="color:var(--ink-faint);font-size:11px">${modelOf(d)}</small>`));
+    tr.appendChild(el("td",null,fbar(d.ph)));
+    tr.appendChild(el("td",null,`<div class="thesis">${d.thesis}</div>`));
+    tr.tabIndex=0;
+    tr.addEventListener("click",()=>openDrawer(d,tr));
+    tr.addEventListener("keydown",e=>{if(e.key=="Enter"){e.preventDefault();openDrawer(d,tr);}});
+    tb.appendChild(tr);
+  });
+  document.querySelectorAll("#roster th").forEach(th=>{
+    th.setAttribute("aria-sort",th.dataset.k==sortK?(sortDir==1?"ascending":"descending"):"none");
+  });
+}
+document.querySelectorAll("#roster th").forEach(th=>{
+  th.tabIndex=0;
+  const go=()=>{const k=th.dataset.k;if(k=="thesis")return;
+    if(sortK==k)sortDir*=-1;else{sortK=k;sortDir=1;}renderRoster();};
+  th.addEventListener("click",go);
+  th.addEventListener("keydown",e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();go();}});
+});
+renderRoster();
+
+// valuation ladder
+const withPE=D.filter(d=>d.fpe!=null).sort((a,b)=>a.fpe-b.fpe);
+const noPE=D.filter(d=>d.fpe==null);
+const maxPE=Math.max(...withPE.map(d=>d.fpe));
+withPE.forEach(d=>{
+  const rung=el("div","rung");
+  rung.appendChild(el("div","lab",`<span class="tk">${d.ticker}</span> <small>${d.name}</small>`));
+  const track=el("div","pe-track");
+  const fill=el("div","pe-fill",`<b>${d.fpe}×</b>`);fill.style.width=Math.max(d.fpe/maxPE*100,14)+"%";
+  track.appendChild(fill);rung.appendChild(track);
+  rung.appendChild(el("div","meta",d.ev||""));
+  $("#ladder").appendChild(rung);
+});
+$("#valnote").innerHTML="Forward P/E on FY2026 estimates where a clean figure exists. <b>Novo, Roche and Sanofi are off the ladder</b> — a clean forward multiple couldn't be sourced this cycle (Novo ~13× NTM but de-rating post-CagriSema; Roche ~20× trailing, forward n/a; Sanofi ~9× FY26E est.). Figures span different brokers, dates and currencies; treat as directional, not precise comparables.";
+
+// cards (bull/bear) — order by exposure then name
+[...D].sort((a,b)=>expRank[a.exp]-expRank[b.exp]||a.name.localeCompare(b.name)).forEach(d=>{
+  const c=el("div","card");
+  c.appendChild(el("div","card-h",
+    `<span class="tk">${d.ticker}</span><span class="co-name">${d.name}</span><span class="exp ${d.exp}">${d.exp=="med"?"med":d.exp} LOE</span>`));
+  c.appendChild(el("div","bb bull",`<b>Bull.</b> ${d.bull}`));
+  c.appendChild(el("div","bb bear",`<b>Bear.</b> ${d.bear}`));
+  c.tabIndex=0;
+  c.addEventListener("click",()=>openDrawer(d,c));
+  c.addEventListener("keydown",e=>{if(e.key=="Enter"){e.preventDefault();openDrawer(d,c);}});
+  $("#cards").appendChild(c);
+});
+
+// ---- company detail drawer ----
+const scrim=$("#scrim"),drawer=$("#drawer"),drawerBody=$("#drawerBody");
+let lastTrigger=null;
+const expLabel={high:"High LOE",med:"Med LOE",low:"Low LOE"};
+function grClass(g){return /−|-\d/.test(g)?"neg":(/\+/.test(g)?"pos":"");}
+function drawerHTML(d){
+  const mix=fbar(d.ph);
+  const kpis=[
+    ["Latest quarter",d.q||"—"],
+    ["Revenue ("+(d.q||"q")+")",`${d.rev||"—"}${d.gr?` <small class="${grClass(d.gr)}" style="font-size:12px">${d.gr}</small>`:""}`],
+    ["Forward P/E",d.fpe!=null?`~${d.fpe}×`:"n/a"],
+    ["Model",modelOf(d)]
+  ].map(k=>`<div class="d-kpi"><span>${k[0]}</span><b>${k[1]}</b></div>`).join("");
+  const devs=(d.dev||[]).map(x=>`<div class="d-dev"><span class="dt">${x[0]}</span>${x[1]}</div>`).join("")
+    ||`<div class="d-dev" style="color:var(--ink-faint)">No dated updates recorded.</div>`;
+  return `
+   <div class="dh"><span class="tk">${d.ticker}</span><h3>${d.name}</h3><span class="exp ${d.exp}">${expLabel[d.exp]}</span></div>
+   <p class="d-thesis">${d.thesis}</p>
+   <div class="d-kpis">${kpis}</div>
+   <div class="d-sec"><h4>Patent cliff</h4><p class="d-loe"><b>${d.loeAsset}</b> · ${eras[d.era].yr} · ${expLabel[d.exp].toLowerCase()} exposure</p></div>
+   <div class="d-sec"><h4>Franchise mix (A → E)</h4><div class="d-fbar">${mix}</div></div>
+   <div class="d-sec"><h4>The debate</h4>
+     <div class="d-bb bull"><b>Bull.</b> ${d.bull}</div>
+     <div class="d-bb bear"><b>Bear.</b> ${d.bear}</div></div>
+   <div class="d-sec"><h4>Recent developments</h4>${devs}</div>
+   <div class="d-sec"><h4>Valuation</h4><p class="d-loe">${d.ev||"—"}${d.stance?` · <b>${d.stance}</b>`:""}</p></div>`;
+}
+function openDrawer(d,trigger){
+  lastTrigger=trigger||null;
+  drawerBody.innerHTML=drawerHTML(d);
+  drawer.scrollTop=0;
+  scrim.hidden=false;
+  requestAnimationFrame(()=>{scrim.classList.add("show");drawer.classList.add("show");});
+  drawer.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  $("#drawerX").focus();
+}
+function closeDrawer(){
+  scrim.classList.remove("show");drawer.classList.remove("show");
+  drawer.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+  setTimeout(()=>{scrim.hidden=true;},240);
+  if(lastTrigger&&lastTrigger.focus)lastTrigger.focus();
+}
+$("#drawerX").addEventListener("click",closeDrawer);
+scrim.addEventListener("click",closeDrawer);
+document.addEventListener("keydown",e=>{if(e.key=="Escape"&&drawer.classList.contains("show"))closeDrawer();});
+</script>
