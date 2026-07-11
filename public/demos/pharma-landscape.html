@@ -279,16 +279,17 @@
 <div class="wrap">
 
   <header class="mast">
+    <p class="eyebrow" style="margin-bottom:10px">Q1 2026 reviewed sample run · full landscape</p>
     <h1>Large-Cap Pharma <span class="hl">Landscape</span></h1>
-    <p class="sub">A comparative read across the 13 largest names. Every one is managing a patent cliff between now and 2031 — and their pipelines are converging on the same handful of shots. <b>Click any company</b> for the full read.</p>
+    <p class="sub">Each of the 13 largest names is classified and run through the fitting valuation engine — the large-pharma LOE/earnings engine here — then normalised onto a single comparative screen. Every name is managing a patent cliff to 2031, and their pipelines are converging on the same handful of shots. <b>Click any company</b> for the full read.</p>
     <div class="stats" id="stats"></div>
   </header>
 
   <section style="border-top:none;padding-top:8px">
-    <p class="eyebrow">The call · strongest signals on the screen</p>
-    <h2 style="font-size:26px;margin:0 0 14px">If you read one thing</h2>
+    <p class="eyebrow">How the agent scores each name</p>
+    <h2 style="font-size:26px;margin:0 0 14px">Signal strength, scored</h2>
     <div class="signals" id="signals"></div>
-    <p class="signals-disc">A systematic read of the screen's own metrics — momentum, valuation and the freshest catalysts. <b>Educational, not investment advice.</b> Click either card for the full company detail.</p>
+    <p class="signals-disc">The agent scores every name on three axes — earnings momentum, valuation against growth, and the freshest dated catalyst. The two cards are the extremes it surfaces this quarter, shown to illustrate the scoring method. <b>Illustrative and directional — not investment advice.</b> Click either for the full company detail.</p>
   </section>
 
   <section>
@@ -373,7 +374,7 @@
 
   <footer>
     <p id="footdate"></p>
-    <p style="margin-top:8px">Directional intelligence for internal use. Not investment advice; verify against primary filings before any client-facing use.</p>
+    <p style="margin-top:8px">A rendered sample output of the two-engine equity-research agent. Illustrative and directional — <b>not investment advice</b>.</p>
   </footer>
 
   <!-- company detail drawer -->
@@ -394,7 +395,7 @@ const D=[
   thesis:"GLP-1 dominance — now extended to oral orforglipron — driving historic growth; the debate is diversification and US pricing before early-2030s cliffs.",
   bull:"Oral orforglipron is now approved and launching, extending the obesity franchise beyond injectables and widening the lead over Novo after CagriSema's miss.",
   bear:"US MFN/TrumpRx concessions compress GLP-1 net prices, and a ~33× forward multiple leaves little room for any volume or reimbursement disappointment.",
-  dev:[["Apr 2026","FDA approved oral orforglipron (Foundayo) — first oral GLP-1 for weight loss (~12.4% loss)"],["Nov 2025","MFN / TrumpRx pricing deal — Zepbound & oral to ~$346/mo"],["Q1 2026","Mounjaro $8.7B (+125%), Zepbound $4.2B; FY26 guide raised to $82–85B rev, $35.50–37.00 EPS"]]},
+  dev:[["Apr 2026","FDA approved oral orforglipron (Foundayo) — first oral GLP-1 with no food/water restriction (~12.4% loss)"],["Nov 2025","MFN / TrumpRx pricing deal — orforglipron pill to ~$346/mo"],["Q1 2026","Mounjaro $8.7B (+125%), Zepbound $4.2B; FY26 guide raised to $82–85B rev, $35.50–37.00 EPS"]]},
  {ticker:"JNJ",name:"Johnson & Johnson",ccy:"USD",dx:0,dev:1,nta:10,ph:[8,0,1,1,1],
   loeAsset:"Stelara (ustekinumab)",era:"now",exp:"high",
   q:"Q1 2026",qdate:"14 Apr 2026",rev:"$24.1B",gr:"+9.9%",
@@ -418,7 +419,7 @@ const D=[
   thesis:"Pure-play innovative medicines now in its Entresto-cliff trough year — can the growth cohort + Avidity re-accelerate once generics lap?",
   bull:"2026 is a guided trough — once Entresto laps, the Kisqali/Pluvicto/Scemblix/Leqvio/Kesimpta cohort plus Avidity should re-accelerate growth, backed by a large buyback.",
   bear:"Q1 missed on both sales and EPS with core income guided to decline — the growth brands haven't yet proven they can fully cover Entresto/Promacta/Tasigna erosion.",
-  dev:[["Q1 2026","Entresto −44% on US generics; Q1 missed (rev −5% cc, core EPS −13%)"],["2026","~$12B Avidity (RNA/neuromuscular) acquisition to rebuild the pipeline; ~$7.5B buyback YTD"],["FY2026","Guided trough — sales low-single-digit growth, core operating income low-single-digit decline"]]},
+  dev:[["Q1 2026","Entresto −42% (−46% cc) on US generics; Q1 missed (rev −5% cc, core EPS −13%)"],["2026","~$12B Avidity (RNA/neuromuscular) acquisition to rebuild the pipeline; ~$1.6B Q1 buyback (~$3.9B cumulative on the $10B program)"],["FY2026","Guidance: low-single-digit sales growth, low-single-digit core-operating-income decline (analysts frame 2026 as the trough)"]]},
  {ticker:"AZN",name:"AstraZeneca",ccy:"USD",dx:0,dev:0,nta:5,ph:[7,0,4,2,1],
   loeAsset:"Tagrisso + oncology cohort",era:"2026-28",exp:"med",
   q:"Q1 2026",qdate:"29 Apr 2026",rev:"$15.3B",gr:"+8%",
@@ -426,7 +427,7 @@ const D=[
   thesis:"Diversified pharma toward an $80bn 2030 target on pipeline breadth — can depth offset oncology concentration and a US regulatory wobble?",
   bull:"Deep late-stage oncology + rare-disease engine driving double-digit core EPS, now adding an obesity/cardiometabolic leg via the CSPC deal.",
   bear:"The camizestrant ODAC 3–6 vote + PDUFA extension is a real US regulatory setback for a key growth asset, and a revenue-reporting-basis question dents transparency.",
-  dev:[["Q1 2026","Rev +8%; Oncology $6.8B (+16%), core EPS $2.58 beat; core gross margin 83%"],["Early 2026","Camizestrant (SERENA-6): FDA ODAC voted 3–6 against + PDUFA extended, though EU CHMP positive"],["Apr 2026","$1.2B CSPC obesity/T2D collaboration; Datroway (Dato-DXd TROP2 ADC) approved in 1L TNBC"]]},
+  dev:[["Q1 2026","Rev +8%; Oncology $6.8B (+16%), core EPS $2.58 beat; core gross margin 83%"],["Early 2026","Camizestrant (SERENA-6): FDA ODAC voted 6–3 against + PDUFA extended, though EU CHMP positive"],["Apr 2026","$1.2B-upfront CSPC obesity/T2D deal (up to ~$5.3B); Datroway (TROP2 ADC) approved 1L TNBC (immunotherapy-ineligible subset)"]]},
  {ticker:"MRK",name:"Merck & Co.",ccy:"USD",dx:0,dev:0,nta:8,ph:[6,1,1,1,1],
   loeAsset:"Keytruda (pembrolizumab)",era:"2026-28",exp:"high",
   q:"Q1 2026",qdate:"30 Apr 2026",rev:"$16.3B",gr:"+5%",
@@ -434,7 +435,7 @@ const D=[
   thesis:"The industry's largest cliff: Keytruda >50% of revenue, US LOE 2028 — can Qlex + 20+ drivers + M&A replace it in time?",
   bull:"Cheap ~14× multiple, Keytruda still growing double-digits, and Qlex subcutaneous + Winrevair + M&A (Verona, Cidara) build a credible post-2028 bridge.",
   bear:"The 2028 Keytruda cliff (~half of revenue) remains the dominant risk — 'a huge, huge amount to replace' with as-yet-unproven pipeline.",
-  dev:[["Q1 2026","Keytruda $8.03B (+12%), incl. subcutaneous Qlex; Winrevair $525M (+88%)"],["Jan 2026","Closed Cidara (~$9.2B, long-acting flu antiviral); Verona / Ohtuvayre added Jul 2025"],["FY2026","Guidance raised — revenue $65.8–67.0B, adjusted EPS $5.04–5.16"]]},
+  dev:[["Q1 2026","Keytruda $8.03B (+12%), incl. subcutaneous Keytruda Qlex; Winrevair $525M (+88%)"],["Jan 2026","Closed Cidara (~$9.2B, long-acting flu antiviral); Verona / Ohtuvayre closed Oct 2025"],["FY2026","Guidance raised — revenue $65.8–67.0B, adjusted EPS $5.04–5.16"]]},
  {ticker:"PFE",name:"Pfizer",ccy:"USD",dx:0,dev:0,nta:4,ph:[7,1,3,4,1],
   loeAsset:"Ibrance + small-molecule portfolio",era:"2026-28",exp:"high",
   q:"Q1 2026",qdate:"5 May 2026",rev:"$14.5B",gr:"+2% op (+7% ex-COVID)",
@@ -442,18 +443,18 @@ const D=[
   thesis:"Post-COVID turnaround now betting on obesity (Metsera) and ADCs — can new platforms offset the 2026–30 cliff before COVID fades?",
   bull:"Metsera re-establishes an obesity platform (monthly dosing), the ex-COVID base is growing +7%, and a ~9× forward P/E with a ~6% yield is deep value.",
   bear:"Obesity re-entry is early and unproven (a Phase 2 disappointment already hit shares), MFN/TrumpRx pressures the base, and the 2028 Eliquis cliff still looms.",
-  dev:[["Nov 2025","Closed Metsera (~$7B EV) — re-enters obesity with monthly injectable incretins"],["Sep 2025","MFN pricing deal + 3-yr tariff exemption; TrumpRx participation"],["Q1 2026","Ex-COVID base +7%; a Seagen-derived ADC missed OS in late-stage NSCLC — a knock to the thesis"]]},
+  dev:[["Nov 2025","Closed Metsera (up to ~$10B; won vs Novo) — re-enters obesity with monthly injectable incretins"],["Sep 2025","MFN pricing deal + 3-yr tariff exemption; TrumpRx participation"],["Q1 2026","Seagen-derived ADC (sigvotatug vedotin) missed OS in late-stage NSCLC — a knock to the thesis (Q1 ex-COVID base +7%)"]]},
  {ticker:"BMY",name:"Bristol-Myers Squibb",ccy:"USD",dx:0,dev:0,nta:5,ph:[8,1,0,4,1],
   loeAsset:"Eliquis · Opdivo (Revlimid done)",era:"2026-28",exp:"high",
   q:"Q1 2026",qdate:"late Apr 2026",rev:"$11.5B",gr:"+1%",
-  fpe:8.7,ev:"fwd P/E ~8.7× · ~4.6% yield",yld:"~4.6%",stance:"Hold-leaning; target ~$61–63",
+  fpe:8.7,ev:"fwd P/E ~8.7× · ~4.4% yield",yld:"~4.4%",stance:"Hold-leaning; target ~$61–63",
   thesis:"Sequential LOE of its biggest drivers — and in Q1 2026 the Growth Portfolio finally crossed above the Legacy bucket.",
-  bull:"The Growth Portfolio now out-earns Legacy, and with H2 2026 Cobenfy/milvexian readouts plus a single-digit P/E and 4.6% yield the market may be over-discounting the bridge.",
-  bear:"The 2027–2029 Eliquis/Opdivo cliff (~$38B at-risk) still dwarfs the growth engine, and no guidance raise signals the offset isn't yet proven.",
-  dev:[["Q1 2026","Growth Portfolio ($6.23B) crossed above Legacy ($5.28B) — the pivotal bridge milestone"],["Q1 2026","Cobenfy ~$56M (+107%); broad Alzheimer's-psychosis label-expansion program underway"],["H2 2026","Pivotal Cobenfy (adjunctive schizophrenia) + milvexian (FXIa) readouts define the trajectory"]]},
+  bull:"The Growth Portfolio now out-earns Legacy, and with H2 2026 milvexian (FXIa) readouts plus a single-digit P/E and a ~4.4% yield the market may be over-discounting the bridge.",
+  bear:"The 2027–2029 Eliquis/Opdivo cliff — the largest growth gap in big pharma — still dwarfs the growth engine, and no guidance raise signals the offset isn't yet proven.",
+  dev:[["Q1 2026","Growth Portfolio ($6.23B) crossed above Legacy ($5.28B) — the pivotal bridge milestone"],["Q1 2026","Cobenfy ~$56M (+107%) in its launch indication (adjunctive-schizophrenia ARISE trial missed in 2025)"],["H2 2026","Milvexian (FXIa) pivotal readouts — LIBREXIA-AF / -STROKE — define the trajectory"]]},
  {ticker:"RHHBY",name:"Roche",ccy:"CHF",dx:1,dev:0,nta:6,ph:[7,0,5,2,1],
   loeAsset:"Avastin / Herceptin / Rituxan",era:"now",exp:"high",
-  q:"Q1 2026",qdate:"23 Apr 2026",rev:"CHF 14.7B",gr:"+6% cc (−5% CHF)",
+  q:"Q1 2026",qdate:"23 Apr 2026",rev:"CHF 14.7B (group)",gr:"+6% cc (group; pharma +7%)",
   fpe:null,ev:"P/E ~20× trailing (fwd n/a) · ADR target ~$56",yld:null,stance:"Mixed; ~12% implied upside",
   thesis:"The only integrated pharma+diagnostics player — and it has just assembled a credible top-3 obesity + MASH portfolio to bridge the cliff.",
   bull:"Roche has assembled a credible top-3 obesity + MASH cardiometabolic portfolio (CT-388, petrelintide, pegozafermin) — a genuinely new growth narrative.",
@@ -462,7 +463,7 @@ const D=[
  {ticker:"NVO",name:"Novo Nordisk",ccy:"DKK",dx:0,dev:1,nta:7,ph:[3,2,6,2,1],
   loeAsset:"Semaglutide (patents into 2030s)",era:"2029-31",exp:"low",
   q:"Q1 2026",qdate:"6 May 2026",rev:"DKK",gr:"−4% cc underlying",
-  fpe:null,ev:"NTM P/E ~13× (vs ~28× 3-yr avg) · Hold, ~DKK310",yld:null,stance:"Consensus Hold (18 hold / 6 buy)",
+  fpe:null,ev:"NTM P/E ~13× (vs ~28× 3-yr avg) · Hold, ~DKK310",yld:null,stance:"Mixed consensus (Hold-to-Buy)",
   thesis:"Dominant GLP-1 franchise now on the defensive — CagriSema lost its head-to-head to Zepbound, flipping the case from momentum to share defence vs Lilly.",
   bull:"Massive, still-expanding market — oral Wegovy uptake plus Alzheimer's / MASH / CV indication expansion — on a de-rated ~13× multiple.",
   bear:"CagriSema's head-to-head miss, negative guided growth, US price cuts and Lilly's oral lead have turned Novo into a share-loser story with a Hold consensus.",
@@ -482,7 +483,7 @@ const D=[
   thesis:"Immunology-driven transformation on Dupixent — building an innovation-led launch cohort to diversify before the 2031 cliff.",
   bull:"Dupixent +31% plus a maturing launch cohort (amlitelimab Ph3 wins, Blueprint/Dynavax) diversifies the growth base ahead of the 2031 cliff.",
   bear:"The thesis still hinges on replacing Dupixent's ~40% revenue concentration before 2031 — the launches are progressing but not yet proven at scale.",
-  dev:[["Q1 2026","Dupixent €4.17B (+31% cc); new launches €1.2B (+50%), now ~14% of revenue; business EPS +14%"],["Mar 2026","Amlitelimab positive Ph3 (COAST 1/2, SHORE) in atopic dermatitis; submissions H2 2026"],["2026","Blueprint + Dynavax acquisitions now contributing to the launch cohort"]]},
+  dev:[["Q1 2026","Dupixent €4.17B (+31% cc); new launches €1.2B (+50%), now ~14% of revenue; business EPS +14%"],["Mar 2026","Amlitelimab Ph3 in atopic dermatitis — COAST 1 & SHORE positive, COAST 2 mixed; submissions H2 2026"],["2026","Blueprint + Dynavax acquisitions now contributing to the launch cohort"]]},
  {ticker:"GSK",name:"GSK",ccy:"GBP",dx:0,dev:1,nta:4,ph:[5,0,1,1,1],
   loeAsset:"Upcoming key expiries (unspecified)",era:"2026-28",exp:"med",
   q:"Q1 2026",qdate:"29 Apr 2026",rev:"£7.6B",gr:"+5%",
@@ -500,9 +501,9 @@ const eras={
 };
 const convThemes=[
  {name:"Obesity & incretins",n:6,tk:["LLY","NVO","RHHBY","PFE","AZN","ABBV"],
-  desc:"Leadership decisively shifted to Lilly — oral orforglipron was approved (Apr 2026) while Novo's CagriSema lost its head-to-head to Zepbound (Feb 2026). Roche has emerged as a credible #3 (CT-388, petrelintide); Pfizer re-entered via Metsera. Amylin is the next battleground. (Merck dropped out — its obesity GLP-1 was discontinued.)"},
+  desc:"Leadership decisively shifted to Lilly — oral orforglipron was approved (Apr 2026) while Novo's CagriSema lost its head-to-head to Zepbound (Feb 2026). Roche has emerged as a credible #3 (CT-388, petrelintide); Pfizer re-entered via Metsera. Amylin is the next battleground."},
  {name:"ADCs & radiopharmaceuticals",n:7,tk:["MRK","AZN","BMY","NVS","JNJ","PFE","GSK"],
-  desc:"Targeted oncology payloads — Datroway (TROP2) was approved in 1L TNBC (2026) and radioligand deals keep coming (Pluvicto ~$2B, +42%). Not all wins: a Seagen-derived Pfizer ADC missed OS in NSCLC."},
+  desc:"Targeted oncology payloads — Datroway (TROP2) was approved in 1L TNBC (2026) and radioligand deals keep coming (Pluvicto ~$2B FY2025, +42%). Not all wins: a Seagen-derived Pfizer ADC missed OS in NSCLC."},
  {name:"PD-1/PD-L1 × VEGF bispecifics",n:4,tk:["BMY","PFE","MRK","SNY"],
   desc:"The newest IO pile-on — capital keeps pouring in (Pfizer paid $1.25B for SSGJ-707; BMS's ~$11B BNT327), but the decisive Western Phase 3 overall-survival proof is still pending. The pile-on partly rests on faith."},
  {name:"Next-gen immunology (I&I)",n:6,tk:["SNY","NVS","BIIB","MRK","LLY","ABBV"],
@@ -526,17 +527,17 @@ const peLo=Math.min(...peVals),peHi=Math.max(...peVals);
  [DATA_ASOF,"latest reported quarter"]].forEach(s=>{
   $("#stats").appendChild(el("div","stat",`<b>${s[0]}</b><span>${s[1]}</span>`));
 });
-$("#footdate").innerHTML=`Data current to the <b>${DATA_ASOF}</b> reported quarter (refreshed ${REFRESHED}). Valuation multiples span different brokers, dates and currencies — read as directional, not precise comparables.`;
+$("#footdate").innerHTML=`Data reflects the <b>${DATA_ASOF}</b> reported quarter — the latest available across all 13. Page last reviewed ${REFRESHED}. Valuation multiples span different brokers, dates and currencies — read as directional, not precise comparables.`;
 
 // actionable buy/sell signals
 const SIGNALS={
- buy:{tk:"ABBV",name:"AbbVie",tag:"Highest buy signal",
+ buy:{tk:"ABBV",name:"AbbVie",tag:"Strongest positive score",
    why:"The patent cliff is already behind it — and growth re-accelerated anyway.",
    pts:["Humira's loss of exclusivity is fully in the numbers, yet <b>Skyrizi (+~30%) + Rinvoq (+~20%)</b> drove sector-leading <b>+12.4%</b> revenue growth in Q1 2026.",
      "Management <b>raised FY2026 guidance</b> — the transition is confirmed, not hoped for.",
      "At <b>~14× forward P/E</b> it sits in the cheap-and-growing quadrant, without Lilly's 33× premium or a near-term cliff (Skyrizi/Rinvoq LOE is next decade)."],
    prov:"Q1 2026 results (29 Apr 2026) · FY26 guidance raise · forward P/E on FY26 EPS guide"},
- sell:{tk:"NVO",name:"Novo Nordisk",tag:"Highest sell signal",
+ sell:{tk:"NVO",name:"Novo Nordisk",tag:"Weakest score this quarter",
    why:"The moat cracked and the guide is for shrinking sales.",
    pts:["<b>CagriSema failed its head-to-head vs Lilly's Zepbound</b> (Feb 2026) — the efficacy-leadership premium that justified the stock is gone.",
      "FY2026 guidance is for <b>negative underlying growth (−4% to −12%)</b>; Q1 underlying sales fell ~4%.",

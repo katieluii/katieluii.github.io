@@ -283,17 +283,17 @@ export const projects: Project[] = [
   {
     id: "pharma-landscape",
     slug: "pharma-landscape",
-    title: "Large-Cap Pharma Landscape",
+    title: "Bellwether — AI-Native Pharma Equity Research",
     themes: ["Biotech/Biopharma Strategy", "Investing"],
     status: "Live",
     order: 6,
     yearStart: 2026,
     yearEnd: 2026,
     summary:
-      "An educational map of the 13 largest pharma companies — how each is navigating a patent cliff between now and 2031, the three pipeline bets the whole industry is crowding into, and how the market prices the gap. Built to teach the sector's shape at a glance.",
+      "Bellwether is a research system that routes 13 large-cap pharma companies through the valuation model that fits each — earnings/LOE for the majors, asset-NPV for pipeline-led names — normalises the outputs, and surfaces re-rating gaps, patent-cliff exposure and pipeline crowding on one comparable view. Shown as a Q1 2026 reviewed sample run.",
     longDescription:
-      "A teaching-first view of the large-cap pharma sector, distilled from a per-company profile knowledge base into one interactive page. It opens on an actionable read — the screen's strongest buy and sell signal, each with a plain-English rationale and its data provenance — then works down into the detail. The organising tension is that nearly every major is managing a loss-of-exclusivity cliff: the page maps who is exposed and when, aggregates every named pipeline asset to show the three bets the industry is crowding into (obesity/incretins, ADCs & radiopharmaceuticals, and PD-1×VEGF bispecifics), and plots each company by valuation against momentum so the re-rating gap reads at a glance. Every company opens to a detail drawer — latest-quarter revenue, its patent-cliff bridge, franchise-maturity mix, the bull and bear in a line each, and dated recent developments. The intent is a learning instrument: someone new to the sector can grasp its shape in a few minutes, and someone who knows it can pressure-test their mental model. Data is refreshed to the latest reported quarter; it is directional and educational, not investment advice.",
-    tags: ["Biopharma", "Equity Research", "Data Visualisation", "Patent Cliff", "Interactive", "Educational"],
+      "Traditional equity research evaluates pharma companies one at a time, and a $200bn major can't be valued the way a clinical-stage biotech is. Bellwether makes them comparable: a deterministic classifier routes each name to the valuation model that fits it — a loss-of-exclusivity / earnings / comps engine for revenue-generating majors, an asset-NPV analysis for pre-commercial, pipeline-led names — then normalises the outputs into one decision view. Across the 13 largest names it pulls the latest reported quarter, decomposes each portfolio into an A–E franchise mix (core growth → mature/LOE-exposed → future pipeline), scores momentum, valuation and the freshest dated catalyst, and assembles a comparable landscape: who faces a patent cliff and when, the three modalities the field is crowding into (obesity/incretins, ADCs & radiopharmaceuticals, PD-1/VEGF bispecifics), and where valuation sits against momentum. Every claim carries a dated-source provenance tag, and sourced facts are kept distinct from model-generated conclusions. The case study foregrounds the outcome and one name traced end-to-end; the full landscape is a fixed, reviewed Q1 2026 sample run. Directional and educational — not investment advice.",
+    tags: ["Equity Research", "Valuation Modelling", "Patent Cliff", "Data Visualisation", "Provenance"],
     links: { live: "/pharma-landscape" },
   },
 ];
