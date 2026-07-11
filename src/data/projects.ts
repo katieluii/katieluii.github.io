@@ -280,6 +280,22 @@ export const projects: Project[] = [
     tags: ["Python", "Claude API", "Scoring Engine", "Web Scraping", "JavaScript", "Outreach", "BD"],
     links: { live: "/partner-prioritisation" },
   },
+  {
+    id: "pharma-landscape",
+    slug: "pharma-landscape",
+    title: "Large-Cap Pharma Landscape",
+    themes: ["Biotech/Biopharma Strategy", "Investing"],
+    status: "Live",
+    order: 6,
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "An educational map of the 13 largest pharma companies — how each is navigating a patent cliff between now and 2031, the three pipeline bets the whole industry is crowding into, and how the market prices the gap. Built to teach the sector's shape at a glance.",
+    longDescription:
+      "A teaching-first view of the large-cap pharma sector, distilled from a per-company profile knowledge base into one interactive page. It opens on an actionable read — the screen's strongest buy and sell signal, each with a plain-English rationale and its data provenance — then works down into the detail. The organising tension is that nearly every major is managing a loss-of-exclusivity cliff: the page maps who is exposed and when, aggregates every named pipeline asset to show the three bets the industry is crowding into (obesity/incretins, ADCs & radiopharmaceuticals, and PD-1×VEGF bispecifics), and plots each company by valuation against momentum so the re-rating gap reads at a glance. Every company opens to a detail drawer — latest-quarter revenue, its patent-cliff bridge, franchise-maturity mix, the bull and bear in a line each, and dated recent developments. The intent is a learning instrument: someone new to the sector can grasp its shape in a few minutes, and someone who knows it can pressure-test their mental model. Data is refreshed to the latest reported quarter; it is directional and educational, not investment advice.",
+    tags: ["Biopharma", "Equity Research", "Data Visualisation", "Patent Cliff", "Interactive", "Educational"],
+    links: { live: "/pharma-landscape" },
+  },
 ];
 
 export function getUniqueStartYears(): number[] {

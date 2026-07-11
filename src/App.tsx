@@ -42,6 +42,7 @@ import BiotechFundraising from './pages/BiotechFundraising';
 import AtlasDrugDevAnalyst from './pages/AtlasDrugDevAnalyst';
 import ConferenceCatalyst from './pages/ConferenceCatalyst';
 import PartnerPrioritisation from './pages/PartnerPrioritisation';
+import PharmaLandscape from './pages/PharmaLandscape';
 import AtlasReader from './pages/AtlasReader';
 import AtlasReaderETLM from './pages/AtlasReaderETLM';
 import AtlasReaderETLMReport from './pages/AtlasReaderETLMReport';
@@ -110,6 +111,10 @@ function App() {
 
         <Route path="/partner-prioritisation" element={<PartnerPrioritisation />} />
         <Route path="/projects/partner-prioritisation" element={<PartnerPrioritisation />} />
+
+        {/* Large-Cap Pharma Landscape — educational sector map */}
+        <Route path="/pharma-landscape" element={<PharmaLandscape />} />
+        <Route path="/projects/pharma-landscape" element={<PharmaLandscape />} />
 
         {/* Atlas Reader — rendered deliverables preview */}
         <Route path="/atlas-reader" element={<AtlasReader />} />
