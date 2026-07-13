@@ -1,55 +1,55 @@
 {
-  "updated": "2026-06-29",
-  "intro": "Five themes moving drug development this week — a quiet clinical cycle, so the heat is in financing and the platform map. Refreshed every Monday.",
+  "updated": "2026-07-13",
+  "intro": "Five themes moving drug development this week — the clinical pulse is quiet again, so the signal is in platform breakouts and a deal tape that has cooled to mid-cap. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "Oral GLP-1 is the most crowded frontier in metabolic — and it just took on another entrant",
-      "detail": "Corxel reported 'competitive' Phase 2 oral GLP-1 data and lined up a global pivotal, slotting into a field that already runs Novo's oral Wegovy, AstraZeneca's elecoglipron, Pfizer's berobenatide and Structure Therapeutics. No efficacy number is out yet, so this is an entrant signal rather than a validated read — but the direction is unmistakable, and Evaluate's ~$2T-by-2032 forecast names obesity as the single biggest growth driver behind it. When a frontier this dense keeps adding names, the scarce asset is differentiation, not another molecule.",
+      "headline": "CAR-T breaks out of hematology — and the first solid-tumor approval lands in China",
+      "detail": "CARsgen's CLDN18.2-directed satri-cel (CT041) cleared China's NMPA as the world's first solid-tumor CAR-T — the precedent Western solid-tumor programs and their manufacturing financiers will now cite. It arrives alongside ICG415 pushing a CD33/CLL1 bispecific CAR-T into AML and a ~$1.1B wave of cell-therapy-automation financing (Cellares, Ori) — capacity capital following the platform, not leading it. CAR-T is no longer a hematology story; it is a cross-domain one, and China set the regulatory pace.",
       "momentum": "Hot",
       "sources": [
-        { "label": "Oral GLP-1 obesity trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=oral%20GLP-1%20obesity" },
-        { "label": "Evaluate (market forecast)", "url": "https://www.evaluate.com/" },
-        { "label": "Novo Nordisk", "url": "https://www.novonordisk.com/" }
-      ]
-    },
-    {
-      "headline": "The IPO window is reopening — but only for proven late-stage stories",
-      "detail": "Kardigan's $400M raise and BIO bankers reading an opening 2026 IPO window point the same way, with the explicit caveat that the door is open only to de-risked late-stage assets and track-record teams. In the same cycle Sangamo filed for bankruptcy after a three-decade run with no approved therapy — the early-stage casualty that sharpens the contrast (its assets are still wanted, with Lilly and Astellas bidding, so it reads as a sponsor exit, not a science verdict). The thaw is real but selective: capital is flowing to proven late-stage and starving the unproven, and the gap between the two is widening.",
-      "momentum": "Hot",
-      "sources": [
-        { "label": "BIO (Biotechnology Innovation Organization)", "url": "https://www.bio.org/" },
-        { "label": "Sangamo Therapeutics", "url": "https://www.sangamo.com/" },
-        { "label": "Endpoints News", "url": "https://endpts.com/" }
-      ]
-    },
-    {
-      "headline": "China-origin assets keep arriving through US NewCos — now reaching the gene-editing frontier",
-      "detail": "Serapha Bio launched with $230M around SERP-01, an in-vivo base-editing program for AATD in-licensed from China's YolTech — the same in-license-into-a-US-NewCo structure as Pfizer/Innovent, now extended from antibodies into editing. Innovent's mazdutide turning up across both a MASH read and a new colorectal trial-start in the same window underscores how far that supply now reaches. Evaluate names China's rising pipeline as one of two primary growth drivers to 2032; in the deal feed, China-origin sourcing has become the most durable structural pattern of the run.",
-      "momentum": "Confirmed",
-      "sources": [
-        { "label": "Pfizer newsroom", "url": "https://www.pfizer.com/newsroom" },
-        { "label": "mazdutide trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=mazdutide" },
-        { "label": "Evaluate (market forecast)", "url": "https://www.evaluate.com/" }
-      ]
-    },
-    {
-      "headline": "Alpha-1 antitrypsin deficiency is becoming a multi-modality proving ground",
-      "detail": "SERP-01 puts in-vivo base editing into AATD, a target already contested by RNAi (Wave, Arrowhead), AAV gene therapy (Krystal) and AI-enabled early detection. The modality story underneath is the shift from ex-vivo editing (Beam, Verve) toward in-vivo, liver-directed work — earlier and riskier, but where the platform has to go to matter at scale. Worth watching as the indication where these approaches finally get measured against each other.",
-      "momentum": "Watch",
-      "sources": [
-        { "label": "Alpha-1 antitrypsin deficiency trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=alpha-1%20antitrypsin%20deficiency" },
-        { "label": "Beam Therapeutics", "url": "https://www.beamtx.com/" },
+        { "label": "CARsgen Therapeutics", "url": "https://www.carsgen.com/" },
+        { "label": "satri-cel (CT041) trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=satri-cel" },
         { "label": "Fierce Biotech", "url": "https://www.fiercebiotech.com/" }
       ]
     },
     {
-      "headline": "Cardiovascular is quietly turning back into a place capital wants to build",
-      "detail": "Two cardio financing datapoints landed in one cycle — Merck KGaA's Versant-backed cardio NewCo and Kardigan's $400M cardiac IPO — with Osanni's $190M ophthalmology-plus-cardiology round adding a third nearby. After years of cardiology running deal-cold while obesity absorbed the cardiometabolic dollars, this looks like the early edge of a rotation back toward the heart itself. Two cycles isn't a trend, but it's enough to put on the watch list.",
+      "headline": "China-origin pipeline replenishment is now being read as financial structuring",
+      "detail": "The China-origin asset wave is the dominant net-new crowding vector this cycle, spanning CD47, NK-cell and bispecific axes at once — SKB575, SM17, NK521 and AK117 all surface inside the tracked slices, atop the standing Pfizer/Innovent and Lilly/Abbisko deals. What is new is the framing: one analysis this window recast Chinese licensing and acquisition deals as a financial-structuring play 'analogous to tax inversions of the 2010s,' a sharper lens than the earlier policy-versus-capital read. The supply is structural now; the open question is what it is optimising for.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "Pfizer newsroom", "url": "https://www.pfizer.com/newsroom" },
+        { "label": "CLDN18.2 asset trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=CLDN18.2" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
+      ]
+    },
+    {
+      "headline": "Big deals, small products — the integration-failure counternarrative hardens",
+      "detail": "The counterweight to the megadeal wave keeps collecting datapoints: Biogen has halted most of the Apellis ($5.6B) programs less than 18 months after closing, while Pfizer's Seagen ($43B) ADC franchise continues to underperform. Read together they have set into a named recurring theme — large-cap deal value is not guaranteed product value, and ADC oncology is proving the hardest to commercialise. A useful corrective to keep beside every new nine-figure headline.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "Biogen", "url": "https://www.biogen.com/" },
+        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
+      ]
+    },
+    {
+      "headline": "The megadeal well is dry — the action has dropped a tier to mid-cap and distressed roll-ups",
+      "detail": "For the third straight window there is no net-new transaction above $10B; the marquee set (Pfizer/Innovent, AbbVie/Apogee, Merck KGaA/Bio-Techne) is all carry-forward. The fresh activity sits one tier down — Ipsen/Kartos $1.7B on MDM2 in myelofibrosis, Zymeworks/Theravance $929M as a distressed cardiovascular roll-up, and Roche's ~$2.3B bexobrutideg BTK-degrader deal. The archetype has shifted to mid-cap consolidation and distressed roll-ups; the megadeal well, for now, is dry.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "Ipsen news", "url": "https://www.ipsen.com/" },
+        { "label": "Roche media", "url": "https://www.roche.com/media" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
+      ]
+    },
+    {
+      "headline": "Cell therapy is crossing into autoimmune — on capital, not yet on data",
+      "detail": "Cell therapy's move into autoimmune is deepening on financing well ahead of readouts. Beeline Medicines added a $126M Series A extension barely two-and-a-half months after a $300M launch — five autoimmune programs spun out of BMS, backed by Bain and CPPIB — alongside Cabaletta's EULAR durability data and the Cartesian/Grit non-oncology cluster. The conviction in the cap table is real; the pivotal data that would justify it is not here yet, which is exactly why it stays on watch.",
       "momentum": "Watch",
       "sources": [
-        { "label": "Merck KGaA (Merck Group) news", "url": "https://www.merckgroup.com/en/news.html" },
-        { "label": "Kardigan", "url": "https://kardigan.com/" },
-        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
+        { "label": "Cabaletta Bio", "url": "https://www.cabalettabio.com/" },
+        { "label": "Descartes-08 trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=Descartes-08" },
+        { "label": "Fierce Biotech", "url": "https://www.fiercebiotech.com/" }
       ]
     }
   ]
