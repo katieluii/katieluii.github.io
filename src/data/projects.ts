@@ -72,7 +72,7 @@ export const projects: Project[] = [
     yearStart: 2024,
     yearEnd: 2024,
     summary: "Interactive dashboard tracking institutional investor holdings from SEC 13F filings with quarter-over-quarter analysis.",
-    longDescription: "Analysis of portfolio concentration metrics from SEC EDGAR 13F filings. Visualises fund holdings, concentration levels, and risk indicators across institutional investors. Features automated data pipeline with Python, quarterly updates via GitHub Actions, and interactive React visualization.",
+    longDescription: "Analysis of portfolio concentration metrics from SEC EDGAR 13F filings. Visualises fund holdings, concentration levels, and risk indicators across institutional investors. Features automated data pipeline with Python, quarterly updates via GitHub Actions, and an interactive web visualization.",
     tags: ["Python", "Pandas", "SEC EDGAR API", "ETL", "XML Parsing"],
     links: {
       live: "/sec-13f"
@@ -109,10 +109,11 @@ export const projects: Project[] = [
       "I built two daily news agents that turn noisy domain headlines into a consolidated and comprehensive source-linked morning brief, with further potential for theme-specific specification. Each workflow ingests from curated RSS feeds, dedupes and time-filters items, then uses an LLM summariser to collapse overlapping coverage into a tight set of clickable headlines with timestamps and 1-2 line factual summaries.\n\nFor crypto, a second LLM QA step cross-checks against Google Programmable Search results and flags major missing stories with links. Both workflows generate clean HTML + plain-text email output and deliver via SMTP.",
     tags: [
       "n8n",
-      "RSS",
-      "LLM Summarization",
       "Prompt Engineering",
-      "LLM QA"
+      "Few-shot Prompting",
+      "LLM Summarisation",
+      "LLM QA",
+      "RSS"
     ],
     links: {},
     sections: [
@@ -163,10 +164,10 @@ export const projects: Project[] = [
     yearStart: 2025,
     yearEnd: 2026,
     summary:
-      "Live tracker of private biotech financing rounds — daily RSS ingestion, Claude Haiku classification, and a filterable deal feed with round-type, therapeutic area, and amount filters.",
+      "Live tracker of private biotech financing rounds — daily RSS ingestion, LLM-based classification, and a filterable deal feed with round-type, therapeutic area, and amount filters.",
     longDescription:
-      "I built this tool to continuously monitor private biotech fundraising from five daily RSS sources. Claude Haiku runs a strict inclusion filter to keep only private, therapeutic-asset-centric financings — pre-seed through Series G, venture rounds, convertible notes, debt financing, and NIH/BARDA grants — explicitly excluding public-market transactions (IPOs, shelf offerings), M&A deals, and platform-only raises. Each deal is tagged with therapeutic area, round type, disclosed amount normalised to USD, and lead investor. A FastAPI backend stores all deals in SQLite and serves a filterable feed; a React frontend shows deal cards, a monthly trends chart, and round-type filter chips.",
-    tags: ["Python", "Claude API", "FastAPI", "SQLite", "RSS", "React"],
+      "I built this tool to continuously monitor private biotech fundraising from five daily RSS sources. An LLM runs a strict inclusion filter to keep only private, therapeutic-asset-centric financings — pre-seed through Series G, venture rounds, convertible notes, debt financing, and NIH/BARDA grants — explicitly excluding public-market transactions (IPOs, shelf offerings), M&A deals, and platform-only raises. Each deal is tagged with therapeutic area, round type, disclosed amount normalised to USD, and lead investor. A FastAPI backend stores all deals in SQLite and serves a filterable feed; a web frontend shows deal cards, a monthly trends chart, and round-type filter chips.",
+    tags: ["Python", "FastAPI", "LLM", "SQLite", "RSS"],
     links: { live: "/biotech-fundraising" },
   },
   {
@@ -194,7 +195,7 @@ export const projects: Project[] = [
     yearEnd: 2026,
     summary: "A multi-agent investment memo generation tool for biotech VCs — upload proprietary documents, run six specialist analyst agents, add your own intelligence at human checkpoints, and generate a structured investment memo.",
     longDescription: "A multi-agent investment memo generation tool built for biotech VCs. Six specialised analyst agents — fund-fit, scientific diligence, competitive intelligence, clinical & regulatory, financing & valuation, and IP / freedom-to-operate — combine publicly available biopharma intelligence with your proprietary documents to surface opportunities, risks, and diligence questions. Human checkpoints let analysts inject network intelligence, founder meeting notes, and a structured team assessment before generating a structured Markdown investment memo.",
-    tags: ["LLM", "FastAPI", "SQLite", "SQLAlchemy", "Next.js"],
+    tags: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Multi-agent LLM"],
     links: { live: "/investment-memo" },
   },
   {
@@ -221,7 +222,7 @@ export const projects: Project[] = [
     yearEnd: 2026,
     summary: "Give it the indications you cover; it tracks the Phase 2/3 trials reading out at ASCO, ESMO, AACR, and ASH for exactly those, attaches each abstract, and extracts the primary-endpoint result plus key efficacy numbers (ORR, mPFS, OS, hazard ratios) — a focused watchlist, not a catch-all.",
     longDescription: "An indication-scoped readout tracker for the four major oncology/hematology congresses (ASCO, ESMO, AACR, ASH). Rather than ingesting every abstract, it takes a coverage list — here, the indications our drug-development analysts follow — and pulls only the Phase 2/3 trials in those indications from ClinicalTrials.gov by primary-completion window. When a meeting releases its programme, the matching abstract is attached to each tracked asset and an LLM extracts the numbers that move the read: whether the primary endpoint was met, plus ORR, mPFS, OS, hazard ratios and p-values. The frontend renders an asset database scoped to your coverage, with the endpoint result and key data surfaced inline and expandable rows for the full abstract.",
-    tags: ["Python", "FastAPI", "LLM", "SQLite", "React", "Railway"],
+    tags: ["Python", "FastAPI", "LLM", "SQLite", "ClinicalTrials.gov API"],
     links: { live: "/conference-catalyst" },
   },
   {
@@ -235,7 +236,7 @@ export const projects: Project[] = [
     yearEnd: 2026,
     summary: "Atlas tracks every indication in your scope — approvals, pipeline, data readouts, and regulatory moves — and produces deliverables for your teams. You get a decision, not a reading list.",
     longDescription: "Atlas holds a living strategic intelligence layer per indication — the Emerging Therapeutic Landscape Map (ETLM) — built from clinical registries, peer-reviewed literature, trade press, and conference readouts. From that intelligence layer it generates the strategic outputs your team needs, and returns evidence-anchored verdicts to strategic questions with the citations already organised. The output is a decision, not a reading list.",
-    tags: ["LLM", "Multi-agent", "Python"],
+    tags: ["Python", "Multi-agent LLM", "Pipeline Automation"],
     links: { live: "/atlas-drug-dev-analyst" },
   },
   {
@@ -248,7 +249,7 @@ export const projects: Project[] = [
     yearStart: 2026,
     yearEnd: 2026,
     summary: "Redacted preview of what Atlas's deliverables look like — landscape maps, target product profiles, and class-level theses, with cross-links between them.",
-    tags: ["React", "Vite", "Markdown"],
+    tags: [],
     links: { live: "/atlas-reader" },
   },
   {
@@ -260,8 +261,8 @@ export const projects: Project[] = [
     yearStart: 2025,
     yearEnd: 2026,
     summary: "Live monitor of AI adoption across biopharma — RSS ingestion, LLM relevance filtering, and structured deal/entity extraction surfacing AI partnerships, acquisitions, and platform collaborations.",
-    longDescription: "An AI-powered intelligence feed that tracks how AI is being adopted across the biopharma industry. The system ingests RSS from nine biopharma and health-tech sources, applies a LLM-based relevance classifier to discard noise, then runs structured extraction on kept articles to pull out AI application area, deal type, companies involved, and disclosed deal values. A hybrid view lets you browse all AI adoption news or toggle to deals-only and disclosed-value-only views. Built with FastAPI + SQLite on the backend and React on the frontend, with a daily refresh script deployable via Railway cron.",
-    tags: ["Python", "FastAPI", "RSS", "SQLite", "LLM Extraction", "React"],
+    longDescription: "An AI-powered intelligence feed that tracks how AI is being adopted across the biopharma industry. The system ingests RSS from nine biopharma and health-tech sources, applies a LLM-based relevance classifier to discard noise, then runs structured extraction on kept articles to pull out AI application area, deal type, companies involved, and disclosed deal values. A hybrid view lets you browse all AI adoption news or toggle to deals-only and disclosed-value-only views. Built with FastAPI + SQLite on the backend and a web frontend, with a daily refresh script deployable via Railway cron.",
+    tags: ["Python", "FastAPI", "RSS", "SQLite", "LLM"],
     links: { live: "/ai-biopharma-feed" },
   },
   {
@@ -277,7 +278,7 @@ export const projects: Project[] = [
       "Tells a biotech or consultancy which companies to prioritise meeting at a partnering conference (BIO, JPM, BioEquity) — scoring every attending company against the client's own positioning, then drafting tailored outreach in a client portal.",
     longDescription:
       "Partnering conferences put thousands of companies in one place, and the platform's own AI matchmaker is generic. This engine builds the prioritisation matrix from company profiles instead: it takes a client's positioning from the public domain (their website), pulls the conference's attending-company list, and scores each company against what the client is actually looking for. Scoring is two-tier and deterministic — hard MUST filters (partner type, therapeutic-area fit, deal type) gate the universe, then weighted PREFER rules (stage fit, strategic complementarity, BD appetite, financial capacity) produce a 0–100 fit score, so every rank comes with a readable rationale rather than a black-box number. The same engine reshapes itself per client: for a therapeutic-agnostic drug-development consultancy it drops the disease filters and rewards an early-clinical stage band instead. On a real run it pulled all 1,654 BIO 2026 exhibitors live, classified each from its public blurb, and surfaced ~90 priority early-clinical biotechs from the noise. The output is a client-facing portal: a priority-list tab, a live re-ranking control (edit your purpose or the levers and the list re-scores in-browser), and a card per company with the rank rationale plus an editable first-touch outreach draft to approve, edit and send.",
-    tags: ["Python", "Claude API", "Scoring Engine", "Web Scraping", "JavaScript", "Outreach", "BD"],
+    tags: ["Python", "Prompt Engineering", "LLM Classification"],
     links: { live: "/partner-prioritisation" },
   },
   {
@@ -285,7 +286,7 @@ export const projects: Project[] = [
     slug: "pharma-landscape",
     title: "Bellwether — AI-Native Pharma Equity Research",
     themes: ["Biotech/Biopharma Strategy", "Investing"],
-    status: "Live",
+    status: "WIP",
     order: 6,
     yearStart: 2026,
     yearEnd: 2026,
@@ -293,7 +294,7 @@ export const projects: Project[] = [
       "Bellwether is a research system that routes 13 large-cap pharma companies through the valuation model that fits each — earnings/LOE for the majors, asset-NPV for pipeline-led names — normalises the outputs, and surfaces re-rating gaps, patent-cliff exposure and pipeline crowding on one comparable view. Shown as a Q1 2026 reviewed sample run.",
     longDescription:
       "Traditional equity research evaluates pharma companies one at a time, and a $200bn major can't be valued the way a clinical-stage biotech is. Bellwether makes them comparable: a deterministic classifier routes each name to the valuation model that fits it — a loss-of-exclusivity / earnings / comps engine for revenue-generating majors, an asset-NPV analysis for pre-commercial, pipeline-led names — then normalises the outputs into one decision view. Across the 13 largest names it pulls the latest reported quarter, decomposes each portfolio into an A–E franchise mix (core growth → mature/LOE-exposed → future pipeline), scores momentum, valuation and the freshest dated catalyst, and assembles a comparable landscape: who faces a patent cliff and when, the three modalities the field is crowding into (obesity/incretins, ADCs & radiopharmaceuticals, PD-1/VEGF bispecifics), and where valuation sits against momentum. Every claim carries a dated-source provenance tag, and sourced facts are kept distinct from model-generated conclusions. The case study foregrounds the outcome and one name traced end-to-end; the full landscape is a fixed, reviewed Q1 2026 sample run. Directional and educational — not investment advice.",
-    tags: ["Equity Research", "Valuation Modelling", "Patent Cliff", "Data Visualisation", "Provenance"],
+    tags: ["Python", "FastAPI", "LLM"],
     links: { live: "/pharma-landscape" },
   },
 ];
