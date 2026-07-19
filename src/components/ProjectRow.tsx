@@ -17,10 +17,18 @@ interface ProjectRowProps {
 
 export function ProjectRow({ title, description, status, href, tags, isYearHighlighted, onHover }: ProjectRowProps) {
   const navigate = useNavigate();
+  const isExternal = /^https?:\/\//.test(href);
+  const handleOpen = () => {
+    if (isExternal) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(href);
+    }
+  };
 
   return (
     <div
-      onClick={() => navigate(href)}
+      onClick={handleOpen}
       onMouseEnter={() => onHover?.(true)}
       onMouseLeave={() => onHover?.(false)}
       className={`group relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 cursor-pointer transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 ring-1 hover:ring-zinc-300 dark:bg-white/5 dark:hover:ring-white/20 ${
