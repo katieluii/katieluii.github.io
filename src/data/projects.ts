@@ -297,6 +297,21 @@ export const projects: Project[] = [
     tags: ["Python", "FastAPI", "LLM"],
     links: { live: "/pharma-landscape" },
   },
+  {
+    id: "femme-pcos-care",
+    slug: "femme-pcos-care",
+    title: "Femme — passive PCOS care (eMed × OpenAI hackathon)",
+    themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
+    status: "WIP",
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "PCOS care that works from the passive wearable and cycle data a woman already owns. Before diagnosis it drafts a consent-gated GP letter; after diagnosis it runs a gentle weekly check-in. A rules engine makes every call and the model only handles the wording, so nothing is diagnosed without a clinician. A hackathon team project at eMed × OpenAI, where I led the clinical and product side.",
+    longDescription:
+      "A hackathon project at eMed × OpenAI, where I led the clinical and product side. PCOS affects 10–13% of women and up to 70% are never diagnosed (WHO, 2026). Of those who are, a third waited more than two years and nearly half saw three or more clinicians first (Teede/Dokras, JCEM 2017). The data that could catch it earlier already sits unused in cycle-tracking apps.\n\nFemme reads 120 days of passive wearable and cycle data, learns a woman's own baseline, and turns it into six plain-English signals. A rules engine, not the model, decides whether the pattern is worth a clinician's review. The model only writes the wording, and it can never diagnose, name a condition, or read hormones or mood from the data. Before diagnosis it drafts a consent-gated GP letter that leads with the differential. After diagnosis it runs a gentle weekly check-in that looks for one small useful action, where 'nothing today' is a fine answer.\n\nMy part: the two-flow concept and clinical positioning, the safety guardrails that keep it wellness rather than a diagnostic, an adversarial design-review pass to harden it, an offline prototype of the flow, and the pitch. I am now extending it with a post-diagnosis voice check-in that calls the patient each week and prepares a clinician-ready summary.",
+    tags: ["Digital health", "Clinical AI safety", "Wearable data"],
+    links: { live: "https://femme-pcos-demo-production.up.railway.app" },
+  },
 ];
 
 export function getUniqueStartYears(): number[] {
