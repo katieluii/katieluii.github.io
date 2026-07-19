@@ -6,10 +6,12 @@ import { Pill } from '../components/Pill';
 import { getTheme, themeIndex } from '../data/atlas/index';
 import { themeShortLabel } from '../data/atlas/taxonomy';
 import { MarkdownView } from '../components/atlas/MarkdownView';
+import { useNoindex } from '../hooks/useNoindex';
 import { RedactionGate } from '../components/atlas/AccessGate';
 import { UNGATED_THEME } from '../data/atlas/gating';
 
 export function AtlasReaderThemeReport() {
+  useNoindex();
   const { slug } = useParams<{ slug: string }>();
   const { hash } = useLocation();
   const md = slug ? getTheme(slug) : undefined;

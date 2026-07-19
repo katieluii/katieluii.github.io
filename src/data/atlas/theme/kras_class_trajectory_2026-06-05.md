@@ -179,10 +179,10 @@ Key implication: combination strategies (KRAS-i + SHP2-i, KRAS-i + EGFR-i, KRAS-
 
 ```
 G12C (covalent) ──────────── Combination era ──────→ Resistance biology defines winners
-                             (EGFR-i, ICI, SHP2-i)
+ (EGFR-i, ICI, SHP2-i)
 
-G12D / pan-RAS ──────────── De novo access to      ──────→ Therapeutic window + PDAC OS
-(non-covalent RAS-ON)        90% KRAS PDAC                   = registration readout 2027-28
+G12D / pan-RAS ──────────── De novo access to ──────→ Therapeutic window + PDAC OS
+(non-covalent RAS-ON) 90% KRAS PDAC = registration readout 2027-28
 ```
 
 The class is not converging — it is diverging. G12C agents fight a differentiated combination battle in NSCLC and an approval-timing battle in CRC. Pan-RAS / G12D agents are writing a new chapter in PDAC where no prior drug class has meaningfully worked. The risk profiles are different: G12C risks are clinical (resistance, combo tolerability); pan-RAS risks are biological (therapeutic window vs WT RAS).

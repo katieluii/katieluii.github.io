@@ -4,7 +4,6 @@
   "icd10": "C34",
   "nci_thesaurus_id": "C2926",
   "last_updated": "2026-06-15",
-  "provenance_note": "2026-06-15 staleness-audit pass: refreshed 5 efficacy_benchmarks_by_line entries to \u22643yr-current evidence (2L_KRAS_G12C \u2192 KRYSTAL-12 Ph3 PMID 40783289; 1L_ALK_positive \u2192 CROWN 7-yr PMID 42217582; 1L_PD-L1_ge50_mono \u2192 KN-024 5-yr OS 26.3mo PMID 33872070; stage3_consolidation \u2192 PACIFIC 5-yr PMID 35108059 + LAURA cross-link; 1L_EGFR_combination MARIPOSA date/metric fix). All PMIDs independently verified vs PubMed; routed via WS12-style Cat-1/2/3 funnel. Backup: nsclc.staleness-backup-20260615T005049.json",
   "epidemiology": {
     "global_incidence_annual": 2200000,
     "us_incidence_annual": 234580,
@@ -85,44 +84,6 @@
           "flaura_nejm2020",
           "flaura_nct"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_soriajcetalnejm2018378113125p",
-            "quoted_metric": "orr_pct = 80",
-            "location": "FLAURA primary analysis, Soria et al NEJM 2018 (NEJMoa1713137, PMID 29151359), Results / efficacy table \u2014 OVERALL population (not Asian subset)",
-            "dose": "80 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_soriajcetalnejm2018378113125p",
-            "quoted_metric": "median_pfs_mo = 18.9",
-            "location": "FLAURA primary analysis, Soria et al NEJM 2018 (NEJMoa1713137, PMID 29151359), Results / efficacy table \u2014 OVERALL population (not Asian subset)",
-            "dose": "80 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "pubmed_soriajcetalnejm2018378113125p",
-            "quoted_metric": "median_os_mo = 38.6",
-            "location": "FLAURA primary analysis, Soria et al NEJM 2018 (NEJMoa1713137, PMID 29151359), Results / efficacy table \u2014 OVERALL population (not Asian subset)",
-            "dose": "80 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -190,42 +151,6 @@
           "nejm_mariposa",
           "ct_mariposa"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_chobcetalnejm2024pmid38924756",
-            "quoted_metric": "orr_pct=86, median_pfs_mo=23.7",
-            "estimand": "ITT, 1L EGFR-mutant (exon19del/L858R); PFS by BICR (primary endpoint); ORR confirmed response",
-            "location": "MARIPOSA (NCT04487080), Cho BC et al. NEJM 2024;391:1486-1498 (PMID 38924756). ORR: Efficacy/Response results \u2014 'Objective response rates were similar across both arms (85% for osimertinib and 86% for amivantamab plus lazertinib)'. Median PFS: primary endpoint \u2014 23.7 mo amivantamab-lazertinib vs 16.6 mo osimertinib, HR 0.70 (95% CI 0.58-0.85)",
-            "dose": "amivantamab 1050/1400 mg IV + lazertinib 240 mg PO daily (registrational MARIPOSA regimen)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_chobcetalnejm2024pmid38924756_c1",
-              "pubmed_chobcetalnejm2024pmid38924756_c2"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_chobcetalnejm2024pmid38924756",
-            "quoted_metric": "orr_pct=86, median_pfs_mo=23.7",
-            "estimand": "ITT, 1L EGFR-mutant (exon19del/L858R); PFS by BICR (primary endpoint); ORR confirmed response",
-            "location": "MARIPOSA (NCT04487080), Cho BC et al. NEJM 2024;391:1486-1498 (PMID 38924756). ORR: Efficacy/Response results \u2014 'Objective response rates were similar across both arms (85% for osimertinib and 86% for amivantamab plus lazertinib)'. Median PFS: primary endpoint \u2014 23.7 mo amivantamab-lazertinib vs 16.6 mo osimertinib, HR 0.70 (95% CI 0.58-0.85)",
-            "dose": "amivantamab 1050/1400 mg IV + lazertinib 240 mg PO daily (registrational MARIPOSA regimen)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_chobcetalnejm2024pmid38924756_c1",
-              "pubmed_chobcetalnejm2024pmid38924756_c2"
-            ]
-          }
-        ]
       }
     },
     {
@@ -289,30 +214,6 @@
           "peters_nejm_2017",
           "alex_ctgov"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_moktetalannoncol2020pmid32418",
-            "quoted_metric": "orr_pct = 82.9",
-            "estimand": "ALEX final analysis, Mok T et al. Ann Oncol 2020 (PMID 32418886). median PFS 34.8 mo stated verbatim in the PubMed abstract Results ('34.8 versus 10.9 months crizotinib'). ORR 82.9% (vs 75.5% crizotinib) in full-text Results (secondary endpoints); not printed in abstract",
-            "location": "ALEX final analysis, Mok T et al. Ann Oncol 2020 (PMID 32418886). median PFS 34.8 mo stated verbatim in the PubMed abstract Results ('34.8 versus 10.9 months crizotinib'). ORR 82.9% (vs 75.5% crizotinib) in full-text Results (secondary endpoints); not printed in abstract",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_moktetalannoncol2020pmid32418",
-            "quoted_metric": null,
-            "estimand": "ALEX final analysis, Mok T et al. Ann Oncol 2020 (PMID 32418886). median PFS 34.8 mo stated verbatim in the PubMed abstract Results ('34.8 versus 10.9 months crizotinib'). ORR 82.9% (vs 75.5% crizotinib) in full-text Results (secondary endpoints); not printed in abstract",
-            "location": "ALEX final analysis, Mok T et al. Ann Oncol 2020 (PMID 32418886). median PFS 34.8 mo stated verbatim in the PubMed abstract Results ('34.8 versus 10.9 months crizotinib'). ORR 82.9% (vs 75.5% crizotinib) in full-text Results (secondary endpoints); not printed in abstract",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -374,25 +275,6 @@
         "orr_pct": [
           "crown_nejm",
           "crown_nct"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_shawatetalfirstlinelorlatinib",
-            "quoted_metric": "orr_pct=76",
-            "estimand": "confirmed ORR by blinded independent central review, ITT 1L ALK-positive NSCLC",
-            "location": "CROWN trial primary publication, NEJM 2020 (NEJMoa2027187), Results \u2014 Objective Response section / Table 2; ORR 76% lorlatinib vs 58% crizotinib",
-            "dose": "lorlatinib 100 mg orally once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_shawatetalfirstlinelorlatinib_c1",
-              "pubmed_shawatetalfirstlinelorlatinib_c2"
-            ]
-          }
         ]
       }
     },
@@ -460,42 +342,6 @@
           "alta1l_pub",
           "alta1l_nct"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_nda208772alunbrigbrigatinibsecti",
-            "quoted_metric": "Median (months) (95% CI) 24.0 (18.5, NE) [PFS]; Confirmed Overall Response Rate, % (95% CI) 74% (66, 81)",
-            "estimand": "BIRC-assessed, ITT (N=137), ALTA-1L 1L ALK+ metastatic NSCLC",
-            "location": "FDA label (Drugs@FDA / openFDA) NDA 208772, Section 14 Clinical Studies, ALTA-1L efficacy table \u2014 'Efficacy Parameters ALUNBRIG N=137'",
-            "dose": "180 mg orally once daily with 7-day lead-in at 90 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda208772alunbrigbrigatinibsecti_c1",
-              "fda_nda208772alunbrigbrigatinibsecti_c2"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_nda208772alunbrigbrigatinibsecti",
-            "quoted_metric": "Median (months) (95% CI) 24.0 (18.5, NE) [PFS]; Confirmed Overall Response Rate, % (95% CI) 74% (66, 81)",
-            "estimand": "BIRC-assessed, ITT (N=137), ALTA-1L 1L ALK+ metastatic NSCLC",
-            "location": "FDA label (Drugs@FDA / openFDA) NDA 208772, Section 14 Clinical Studies, ALTA-1L efficacy table \u2014 'Efficacy Parameters ALUNBRIG N=137'",
-            "dose": "180 mg orally once daily with 7-day lead-in at 90 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda208772alunbrigbrigatinibsecti_c1",
-              "fda_nda208772alunbrigbrigatinibsecti_c2"
-            ]
-          }
-        ]
       }
     },
     {
@@ -557,30 +403,6 @@
         "orr_pct": [
           "pub_horn2021",
           "ct_exalt3"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_ensacoveensartinibfdalabelblanda",
-            "quoted_metric": "orr_pct = 74",
-            "estimand": "FDA ENSACOVE label, Clinical Studies section, Table 6 (eXALT3 / NCT02767804 efficacy results)",
-            "location": "FDA ENSACOVE label, Clinical Studies section, Table 6 (eXALT3 / NCT02767804 efficacy results)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_ensacoveensartinibfdalabelblanda",
-            "quoted_metric": null,
-            "estimand": "FDA ENSACOVE label, Clinical Studies section, Table 6 (eXALT3 / NCT02767804 efficacy results)",
-            "location": "FDA ENSACOVE label, Clinical Studies section, Table 6 (eXALT3 / NCT02767804 efficacy results)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -645,30 +467,6 @@
         "orr_pct": [
           "profile1001_ros1_pub"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_solomonbjetalnejm201437123216",
-            "quoted_metric": "orr_pct = 74",
-            "estimand": "Solomon et al., NEJM 2014;371(23):2167-77 (PROFILE 1014), Results: 'objective response rates were 74% for crizotinib and 45% for chemotherapy'; median PFS 10.9 vs 7.0 months. Corroborated by FDA XALKORI label Clinical Studies (Study 1) and PMC4630528",
-            "location": "Solomon et al., NEJM 2014;371(23):2167-77 (PROFILE 1014), Results: 'objective response rates were 74% for crizotinib and 45% for chemotherapy'; median PFS 10.9 vs 7.0 months. Corroborated by FDA XALKORI label Clinical Studies (Study 1) and PMC4630528",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_solomonbjetalnejm201437123216",
-            "quoted_metric": null,
-            "estimand": "Solomon et al., NEJM 2014;371(23):2167-77 (PROFILE 1014), Results: 'objective response rates were 74% for crizotinib and 45% for chemotherapy'; median PFS 10.9 vs 7.0 months. Corroborated by FDA XALKORI label Clinical Studies (Study 1) and PMC4630528",
-            "location": "Solomon et al., NEJM 2014;371(23):2167-77 (PROFILE 1014), Results: 'objective response rates were 74% for crizotinib and 45% for chemotherapy'; median PFS 10.9 vs 7.0 months. Corroborated by FDA XALKORI label Clinical Studies (Study 1) and PMC4630528",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -732,43 +530,6 @@
         "orr_pct": [
           "kn024_reck_nejm2016"
         ]
-      },
-      "endpoint_provenance": {
-        "median_os_mo": [
-          {
-            "source_id": "pubmed_keynote024recknejm2016pmid277",
-            "quoted_metric": "median_os_mo = 26.3",
-            "estimand": "KEYNOTE-024 results \u2014 ORR 44.8% at primary readout; 45.5% at 5-year update",
-            "location": "KEYNOTE-024 results \u2014 ORR 44.8% at primary readout; 45.5% at 5-year update",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "orr_pct": [
-          {
-            "source_id": "pubmed_keynote024recknejm2016pmid277",
-            "quoted_metric": "orr_pct = 45",
-            "location": "KEYNOTE-024 results \u2014 ORR 44.8% at primary readout; 45.5% at 5-year update",
-            "dose": "pembrolizumab 200 mg IV Q3W (registrational monotherapy)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_keynote024recknejm2016pmid277",
-            "quoted_metric": "median_pfs_mo = 10.3",
-            "location": "KEYNOTE-024 results \u2014 ORR 44.8% at primary readout; 45.5% at 5-year update",
-            "dose": "pembrolizumab 200 mg IV Q3W (registrational monotherapy)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -823,42 +584,6 @@
         ],
         "orr_pct": [
           "cm017_sq"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_bmsopdivohcpefficacycheckmate057",
-            "quoted_metric": "orr_pct = 19",
-            "estimand": "BMS OPDIVO HCP efficacy page, CheckMate 057 non-squamous NSCLC ITT; corroborated by ASCO Post CheckMate 057 report and FDA-label-derived summary (19.2% vs 12.4%, P=0.0246)",
-            "location": "BMS OPDIVO HCP efficacy page, CheckMate 057 non-squamous NSCLC ITT; corroborated by ASCO Post CheckMate 057 report and FDA-label-derived summary (19.2% vs 12.4%, P=0.0246)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_bmsopdivohcpefficacycheckmate057",
-            "quoted_metric": "median_pfs_mo = 2.3",
-            "estimand": "BMS OPDIVO HCP efficacy page, CheckMate 057 non-squamous NSCLC ITT; corroborated by ASCO Post CheckMate 057 report and FDA-label-derived summary (19.2% vs 12.4%, P=0.0246)",
-            "location": "BMS OPDIVO HCP efficacy page, CheckMate 057 non-squamous NSCLC ITT; corroborated by ASCO Post CheckMate 057 report and FDA-label-derived summary (19.2% vs 12.4%, P=0.0246)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "fda_bmsopdivohcpefficacycheckmate057",
-            "quoted_metric": "median_os_mo = 12.2",
-            "location": "BMS OPDIVO HCP efficacy page, CheckMate 057 non-squamous NSCLC ITT; corroborated by ASCO Post CheckMate 057 report and FDA-label-derived summary (19.2% vs 12.4%, P=0.0246)",
-            "dose": "nivolumab 3 mg/kg IV q2w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -928,26 +653,6 @@
         "median_pfs_mo": [
           "pacific_pfs"
         ]
-      },
-      "endpoint_provenance": {
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_antoniasjetalnejm201737719191",
-            "quoted_metric": "median PFS 16.8 mo durvalumab vs 5.6 mo placebo",
-            "estimand": "median PFS, durvalumab consolidation arm, PACIFIC Ph3 (Antonia NEJM 2017, PMID 28885881)",
-            "location": "PACIFIC primary PFS readout, Antonia SJ et al. NEJM 2017;377:1919-1929 (PMID 28885881); Results / PFS paragraph",
-            "dose": "10 mg/kg IV q2w (consolidation, up to 12 months)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_antoniasjetalnejm201737719191_c1",
-              "pubmed_antoniasjetalnejm201737719191_c2",
-              "pubmed_antoniasjetalnejm201737719191_c3"
-            ]
-          }
-        ]
       }
     },
     {
@@ -1002,45 +707,6 @@
         ],
         "orr_pct": [
           "empower_lung1"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_pmid33581821",
-            "quoted_metric": "orr_pct = 39",
-            "estimand": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results/abstract \u2014 PD-L1>=50% population",
-            "location": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results/abstract \u2014 PD-L1>=50% population",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "empower_lung1",
-            "quoted_metric": "median OS not reached (95% CI 17.9-NE); HR 0.57 (0.42-0.77) vs chemo, p=0.0002",
-            "estimand": "PD-L1>=50% population, primary analysis (median follow-up 13.1 mo); OS censored/not reached",
-            "location": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results - PD-L1>=50% primary analysis",
-            "dose": "cemiplimab 350 mg IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": false,
-            "note": "endpoint is censored (not reached) - no scalar to store; median_os_mo set null. Prior stored 22.1 was the ITT-population OS, mixed onto this PD-L1>=50% row",
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_pmid33581821",
-            "quoted_metric": "median_pfs_mo = 8.2",
-            "location": "Sezer et al., Lancet 2021, PMID 33581821 (EMPOWER-Lung 1), Results/abstract \u2014 PD-L1>=50% population",
-            "dose": "cemiplimab 350 mg IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -1120,42 +786,6 @@
           "pmid_cb200",
           "ct_cb200"
         ]
-      },
-      "endpoint_provenance": {
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_pmc10123019codebreak200commen",
-            "quoted_metric": "median_pfs_mo = 5.6",
-            "estimand": "CodeBreaK 200 Phase III primary results \u2014 efficacy/response section (sotorasib arm)",
-            "location": "CodeBreaK 200 Phase III primary results \u2014 efficacy/response section (sotorasib arm)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "pubmed_pmc10123019codebreak200commen",
-            "quoted_metric": "median_os_mo = 10.6",
-            "estimand": "CodeBreaK 200 Phase III primary results \u2014 efficacy/response section (sotorasib arm)",
-            "location": "CodeBreaK 200 Phase III primary results \u2014 efficacy/response section (sotorasib arm)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "orr_pct": [
-          {
-            "source_id": "journal_pmc10123019codebreak200comme",
-            "quoted_metric": "orr_pct = 28",
-            "location": "CodeBreaK 200 Phase III primary results \u2014 efficacy/response section (sotorasib arm)",
-            "dose": "960 mg once daily oral",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -1222,59 +852,6 @@
         "orr_pct": [
           "nejm_krystal1",
           "fda_label_krazati"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_jnnepaetaladagrasibinnonsmallcel",
-            "quoted_metric": "ORR 42.9% (95% CI 33.5-52.6) [1 CR]; median PFS 6.5 mo (95% CI 4.7-8.4); median OS 12.6 mo (95% CI 9.2-19.2)",
-            "estimand": "ORR/mPFS/mOS in previously-treated (2L+, prior platinum chemo + PD-1/PD-L1) KRAS G12C-mutated NSCLC; measurable-disease efficacy population, single-arm",
-            "location": "KRYSTAL-1 Phase II NSCLC efficacy population (n=112 with measurable disease at baseline); J\u00e4nne et al. NEJM 2022 Results; mirrors FDA label NDA216340 Clinical Studies section 14.1",
-            "dose": "600 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_jnnepaetaladagrasibinnonsmallcel_c1",
-              "fda_jnnepaetaladagrasibinnonsmallcel_c2"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_jnnepaetaladagrasibinnonsmallcel",
-            "quoted_metric": "ORR 42.9% (95% CI 33.5-52.6) [1 CR]; median PFS 6.5 mo (95% CI 4.7-8.4); median OS 12.6 mo (95% CI 9.2-19.2)",
-            "estimand": "ORR/mPFS/mOS in previously-treated (2L+, prior platinum chemo + PD-1/PD-L1) KRAS G12C-mutated NSCLC; measurable-disease efficacy population, single-arm",
-            "location": "KRYSTAL-1 Phase II NSCLC efficacy population (n=112 with measurable disease at baseline); J\u00e4nne et al. NEJM 2022 Results; mirrors FDA label NDA216340 Clinical Studies section 14.1",
-            "dose": "600 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_jnnepaetaladagrasibinnonsmallcel_c1",
-              "fda_jnnepaetaladagrasibinnonsmallcel_c2"
-            ]
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "fda_jnnepaetaladagrasibinnonsmallcel",
-            "quoted_metric": "ORR 42.9% (95% CI 33.5-52.6) [1 CR]; median PFS 6.5 mo (95% CI 4.7-8.4); median OS 12.6 mo (95% CI 9.2-19.2)",
-            "estimand": "ORR/mPFS/mOS in previously-treated (2L+, prior platinum chemo + PD-1/PD-L1) KRAS G12C-mutated NSCLC; measurable-disease efficacy population, single-arm",
-            "location": "KRYSTAL-1 Phase II NSCLC efficacy population (n=112 with measurable disease at baseline); J\u00e4nne et al. NEJM 2022 Results; mirrors FDA label NDA216340 Clinical Studies section 14.1",
-            "dose": "600 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_jnnepaetaladagrasibinnonsmallcel_c1",
-              "fda_jnnepaetaladagrasibinnonsmallcel_c2"
-            ]
-          }
         ]
       }
     },
@@ -1358,44 +935,6 @@
           "label",
           "nejm2020",
           "ctgov"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_nda213591table5nejm101056nejmoa2",
-            "quoted_metric": "orr_pct=68, median_pfs_mo=12.4",
-            "estimand": "BIRC-assessed ORR (RECIST 1.1), treatment-naive cohort; median PFS treatment-naive cohort",
-            "location": "orr_pct: FDA label NDA213591, Clinical Studies Section 14, Table 5, treatment-naive cohort (N=60), ORR 68% (95% CI 55-80). median_pfs_mo: NOT in FDA label; NEJM primary (Wolf et al., NEJMoa2002787), treatment-naive cohort, median PFS 12.4 mo (95% CI 8.2-NE)",
-            "dose": "400 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda213591table5nejm101056nejmoa2_c1",
-              "fda_nda213591table5nejm101056nejmoa2_c2",
-              "fda_nda213591table5nejm101056nejmoa2_c3"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_nda213591table5nejm101056nejmoa2",
-            "quoted_metric": "orr_pct=68, median_pfs_mo=12.4",
-            "estimand": "BIRC-assessed ORR (RECIST 1.1), treatment-naive cohort; median PFS treatment-naive cohort",
-            "location": "orr_pct: FDA label NDA213591, Clinical Studies Section 14, Table 5, treatment-naive cohort (N=60), ORR 68% (95% CI 55-80). median_pfs_mo: NOT in FDA label; NEJM primary (Wolf et al., NEJMoa2002787), treatment-naive cohort, median PFS 12.4 mo (95% CI 8.2-NE)",
-            "dose": "400 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda213591table5nejm101056nejmoa2_c1",
-              "fda_nda213591table5nejm101056nejmoa2_c2",
-              "fda_nda213591table5nejm101056nejmoa2_c3"
-            ]
-          }
         ]
       }
     },
@@ -1483,51 +1022,6 @@
           "paik_nejm2020",
           "vision_nct"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_paiketalnejm2020383931943",
-            "quoted_metric": "The response rate by independent review was 46% (95% CI, 36 to 57)",
-            "estimand": "Confirmed ORR by independent review (RECIST v1.1), combined liquid+tissue biopsy efficacy population, primary analysis (n=99, data cut Jan 1 2020 / ~152 with 9mo follow-up)",
-            "location": "NEJM 2020 (Paik et al., NEJMoa2004407), Results \u2014 combined-biopsy group; corroborated in ASCO Post Sep 25 2020",
-            "dose": "500 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_paiketalnejm2020383931943_c1"
-            ]
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "pubmed_mazieresetaljamaoncol2023visi",
-            "quoted_metric": "mOS 19.6 (95% CI, 16.2-22.9) months",
-            "estimand": "Median OS, overall METex14 population, combined cohorts A+C (n=313), median follow-up 32.6 mo. NOTE: value is from the MATURE combined follow-up, a different analysis from the NEJM 2020 primary that produced the 46% ORR; stored provenance string conflates the two readouts although the 19.6 value itself is accurate",
-            "location": "PMC10240398 (Mazieres et al., JAMA Oncology 2023, VISION long-term follow-up), Results + outcomes-by-line-of-therapy table",
-            "dose": "500 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_mazieresetaljamaoncol2023visi_c1"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_paiketalnejm2020383931943",
-            "quoted_metric": "median_pfs_mo = 8.5",
-            "estimand": "NEJM 2020 (Paik et al., NEJMoa2004407), Results \u2014 combined-biopsy group; corroborated in ASCO Post Sep 25 2020",
-            "location": "NEJM 2020 (Paik et al., NEJMoa2004407), Results \u2014 combined-biopsy group; corroborated in ASCO Post Sep 25 2020",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -1604,46 +1098,6 @@
         "orr_pct": [
           "pmid_libretto431"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_orrlillyhcplibretto431efficac",
-            "quoted_metric": "orr_pct=84, median_pfs_mo=22",
-            "estimand": "First-line/treatment-naive RET fusion-positive NSCLC. ORR 84% confirmed in BOTH LIBRETTO-431 ITT-pembrolizumab population (Zhou NEJM 2023, n=129) and LIBRETTO-001 treatment-naive subgroup. Median PFS 22.0 mo is the LIBRETTO-001 treatment-naive value; LIBRETTO-431 reports 24.8 mo",
-            "location": "ORR 84%: Lilly HCP LIBRETTO-431 efficacy page, ITT-pembrolizumab n=129, 95% CI 76-90; also LIBRETTO-001 tx-naive (JCO 2022, PMID 36122315). Median PFS 22.0 mo: LIBRETTO-001 treatment-naive NSCLC, PMID 36122315 / JCO 2022 update",
-            "dose": "160 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_orrlillyhcplibretto431efficac_c1",
-              "pubmed_orrlillyhcplibretto431efficac_c2",
-              "pubmed_orrlillyhcplibretto431efficac_c3",
-              "pubmed_orrlillyhcplibretto431efficac_c4"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_orrlillyhcplibretto431efficac",
-            "quoted_metric": "orr_pct=84, median_pfs_mo=22",
-            "estimand": "First-line/treatment-naive RET fusion-positive NSCLC. ORR 84% confirmed in BOTH LIBRETTO-431 ITT-pembrolizumab population (Zhou NEJM 2023, n=129) and LIBRETTO-001 treatment-naive subgroup. Median PFS 22.0 mo is the LIBRETTO-001 treatment-naive value; LIBRETTO-431 reports 24.8 mo",
-            "location": "ORR 84%: Lilly HCP LIBRETTO-431 efficacy page, ITT-pembrolizumab n=129, 95% CI 76-90; also LIBRETTO-001 tx-naive (JCO 2022, PMID 36122315). Median PFS 22.0 mo: LIBRETTO-001 treatment-naive NSCLC, PMID 36122315 / JCO 2022 update",
-            "dose": "160 mg orally twice daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_orrlillyhcplibretto431efficac_c1",
-              "pubmed_orrlillyhcplibretto431efficac_c2",
-              "pubmed_orrlillyhcplibretto431efficac_c3",
-              "pubmed_orrlillyhcplibretto431efficac_c4"
-            ]
-          }
-        ]
       }
     },
     {
@@ -1693,19 +1147,6 @@
         "orr_pct": [
           "arrow_ct",
           "fda_label"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_nda213721table11clinicalstudies1",
-            "quoted_metric": "orr_pct = 78",
-            "estimand": "FDA label NDA213721, Clinical Studies section 14.1, Table 11 (treatment-naive). Previously-treated ORR = 63% (95% CI 54-71%), n=130, Table 10",
-            "location": "FDA label NDA213721, Clinical Studies section 14.1, Table 11 (treatment-naive). Previously-treated ORR = 63% (95% CI 54-71%), n=130, Table 10",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -1770,62 +1211,6 @@
         ],
         "orr_pct": [
           "jco_tropionlung01"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "pubmed_ahnmjetaljclinoncol2025tropio",
-            "quoted_metric": "orr_pct=26, median_pfs_mo=4.4, median_os_mo=12.9",
-            "estimand": "TROPION-Lung01 ITT / full-analysis-set (all-comers, previously treated advanced/metastatic NSCLC), Dato-DXd 6 mg/kg vs docetaxel 75 mg/m2. NOTE: this is NOT the FDA-approved registrational estimand for Datroway \u2014 the accelerated approval indication is the EGFR-mutated subgroup (pooled TROPION-Lung05+Lung01, n=114) where the FDA label ORR is 45% (95% CI 35-54), DOR 6.5 mo. Stored numbers correctly match the ITT-vs-docetaxel arm that the stored provenance note itself cites, so confirmed against that stated estimand, but flagging the estimand differs from the label indication population",
-            "location": "PMID 39250535 abstract (Ahn MJ et al., JCO 2025, TROPION-Lung01 Phase III) \u2014 PFS and OS quoted verbatim in abstract results; ORR 26.4% from JCO full-text results/Table (corroborated by two independent secondaries)",
-            "dose": "6 mg/kg IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_ahnmjetaljclinoncol2025tropio_c1",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c2",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c3"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "pubmed_ahnmjetaljclinoncol2025tropio",
-            "quoted_metric": "orr_pct=26, median_pfs_mo=4.4, median_os_mo=12.9",
-            "estimand": "TROPION-Lung01 ITT / full-analysis-set (all-comers, previously treated advanced/metastatic NSCLC), Dato-DXd 6 mg/kg vs docetaxel 75 mg/m2. NOTE: this is NOT the FDA-approved registrational estimand for Datroway \u2014 the accelerated approval indication is the EGFR-mutated subgroup (pooled TROPION-Lung05+Lung01, n=114) where the FDA label ORR is 45% (95% CI 35-54), DOR 6.5 mo. Stored numbers correctly match the ITT-vs-docetaxel arm that the stored provenance note itself cites, so confirmed against that stated estimand, but flagging the estimand differs from the label indication population",
-            "location": "PMID 39250535 abstract (Ahn MJ et al., JCO 2025, TROPION-Lung01 Phase III) \u2014 PFS and OS quoted verbatim in abstract results; ORR 26.4% from JCO full-text results/Table (corroborated by two independent secondaries)",
-            "dose": "6 mg/kg IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_ahnmjetaljclinoncol2025tropio_c1",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c2",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c3"
-            ]
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "pubmed_ahnmjetaljclinoncol2025tropio",
-            "quoted_metric": "orr_pct=26, median_pfs_mo=4.4, median_os_mo=12.9",
-            "estimand": "TROPION-Lung01 ITT / full-analysis-set (all-comers, previously treated advanced/metastatic NSCLC), Dato-DXd 6 mg/kg vs docetaxel 75 mg/m2. NOTE: this is NOT the FDA-approved registrational estimand for Datroway \u2014 the accelerated approval indication is the EGFR-mutated subgroup (pooled TROPION-Lung05+Lung01, n=114) where the FDA label ORR is 45% (95% CI 35-54), DOR 6.5 mo. Stored numbers correctly match the ITT-vs-docetaxel arm that the stored provenance note itself cites, so confirmed against that stated estimand, but flagging the estimand differs from the label indication population",
-            "location": "PMID 39250535 abstract (Ahn MJ et al., JCO 2025, TROPION-Lung01 Phase III) \u2014 PFS and OS quoted verbatim in abstract results; ORR 26.4% from JCO full-text results/Table (corroborated by two independent secondaries)",
-            "dose": "6 mg/kg IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_ahnmjetaljclinoncol2025tropio_c1",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c2",
-              "pubmed_ahnmjetaljclinoncol2025tropio_c3"
-            ]
-          }
         ]
       }
     },
@@ -1900,42 +1285,6 @@
         ],
         "orr_pct": [
           "fda_label"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_fdalabelbla761352bizengritable9o",
-            "quoted_metric": "ORR 33% (95% CI 22%, 46%); median PFS 6.8 months (95% CI 5.3, 7.5)",
-            "estimand": "NSCLC NRG1 fusion-positive cohort; ORR by BICR/RECIST v1.1 (FDA label efficacy population n=64, previously treated); median PFS from eNRGy publication (NSCLC cohort n=93)",
-            "location": "orr_pct=33: FDA label BLA761352 (Bizengri), Table 9 \u2014 'Confirmed overall response rate assessed by BICR (95% CI) 33% (22%, 46%)', n=64 previously-treated NSCLC. median_pfs_mo=6.8: FDA label does NOT report PFS (reports DOR median 7.4 mo instead); the 6.8-mo figure is from the eNRGy NEJM publication (PMC11878197), Table 2 / Results \u2014 median PFS 6.8 months (95% CI 5.3-7.5) for NSCLC cohort. Both at registrational 750 mg q2w dose",
-            "dose": "750 mg IV every 2 weeks",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_fdalabelbla761352bizengritable9o_c1",
-              "fda_fdalabelbla761352bizengritable9o_c2"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_fdalabelbla761352bizengritable9o",
-            "quoted_metric": "ORR 33% (95% CI 22%, 46%); median PFS 6.8 months (95% CI 5.3, 7.5)",
-            "estimand": "NSCLC NRG1 fusion-positive cohort; ORR by BICR/RECIST v1.1 (FDA label efficacy population n=64, previously treated); median PFS from eNRGy publication (NSCLC cohort n=93)",
-            "location": "orr_pct=33: FDA label BLA761352 (Bizengri), Table 9 \u2014 'Confirmed overall response rate assessed by BICR (95% CI) 33% (22%, 46%)', n=64 previously-treated NSCLC. median_pfs_mo=6.8: FDA label does NOT report PFS (reports DOR median 7.4 mo instead); the 6.8-mo figure is from the eNRGy NEJM publication (PMC11878197), Table 2 / Results \u2014 median PFS 6.8 months (95% CI 5.3-7.5) for NSCLC cohort. Both at registrational 750 mg q2w dose",
-            "dose": "750 mg IV every 2 weeks",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_fdalabelbla761352bizengritable9o_c1",
-              "fda_fdalabelbla761352bizengritable9o_c2"
-            ]
-          }
         ]
       }
     },
@@ -2014,41 +1363,6 @@
           "fda_label",
           "ctgov_chrysalis"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_parkketaljco2021chrysalisdoi1012",
-            "quoted_metric": null,
-            "estimand": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "location": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_parkketaljco2021chrysalisdoi1012",
-            "quoted_metric": "median_pfs_mo = 8.3",
-            "estimand": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "location": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "fda_parkketaljco2021chrysalisdoi1012",
-            "quoted_metric": null,
-            "estimand": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "location": "CHRYSALIS Phase I (Park et al., JCO 2021, DOI 10.1200/JCO.21.00662), Table 1 / Clinical Trial Efficacy section; corroborated by FDA Approval Summary (PMC10523842) Table 2. ORR 40% and DOR 11.1 mo (95% CI 6.9-NR) also in FDA RYBREVANT label. NOTE: stored median_pfs_mo=6.9 is a value-slot confusion \u2014 6.9 is the LOWER 95% CI BOUND of the median DOR (11.1 mo), not the median PFS. True median PFS = 8.3 mo",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -2112,30 +1426,6 @@
         "orr_pct": [
           "ifum"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_nda206995iressalabel",
-            "quoted_metric": "orr_pct = 67",
-            "estimand": "FDA IRESSA (gefitinib) label, CLINICAL STUDIES section, Study 2 (IPASS). Verbatim: 'objective response rate was 67% (95% CI: 56, 77) for IRESSA-treated patients' and 'median PFS of 10.9 months for the IRESSA-treated patients'. Study 1 ORR 'Determined by RECIST v1.1 (95% CI) 50% (41,59)' BICR and '70% (61,78)' investigator",
-            "location": "FDA IRESSA (gefitinib) label, CLINICAL STUDIES section, Study 2 (IPASS). Verbatim: 'objective response rate was 67% (95% CI: 56, 77) for IRESSA-treated patients' and 'median PFS of 10.9 months for the IRESSA-treated patients'. Study 1 ORR 'Determined by RECIST v1.1 (95% CI) 50% (41,59)' BICR and '70% (61,78)' investigator",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_nda206995iressalabel",
-            "quoted_metric": "median_pfs_mo = 10.9",
-            "estimand": "FDA IRESSA (gefitinib) label, CLINICAL STUDIES section, Study 2 (IPASS). Verbatim: 'objective response rate was 67% (95% CI: 56, 77) for IRESSA-treated patients' and 'median PFS of 10.9 months for the IRESSA-treated patients'. Study 1 ORR 'Determined by RECIST v1.1 (95% CI) 50% (41,59)' BICR and '70% (61,78)' investigator",
-            "location": "FDA IRESSA (gefitinib) label, CLINICAL STUDIES section, Study 2 (IPASS). Verbatim: 'objective response rate was 67% (95% CI: 56, 77) for IRESSA-treated patients' and 'median PFS of 10.9 months for the IRESSA-treated patients'. Study 1 ORR 'Determined by RECIST v1.1 (95% CI) 50% (41,59)' BICR and '70% (61,78)' investigator",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -2187,30 +1477,6 @@
         ],
         "orr_pct": [
           "fda_approval_summary"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_anda211960erlotinibclinicalstudi",
-            "quoted_metric": null,
-            "estimand": "FDA label ANDA211960 (Erlotinib tablets), CLINICAL STUDIES section, first-line EGFR-mutant metastatic NSCLC study (EURTAC): 'Median PFS in Months (95% CI) 10.4 (8.7, 12.9)' [erlotinib] vs 5.2 [chemo], HR 0.34 (0.23, 0.49); 'Objective Response Rate (95% CI) 65% (54.1%, 75.1%)' [erlotinib] vs 16%",
-            "location": "FDA label ANDA211960 (Erlotinib tablets), CLINICAL STUDIES section, first-line EGFR-mutant metastatic NSCLC study (EURTAC): 'Median PFS in Months (95% CI) 10.4 (8.7, 12.9)' [erlotinib] vs 5.2 [chemo], HR 0.34 (0.23, 0.49); 'Objective Response Rate (95% CI) 65% (54.1%, 75.1%)' [erlotinib] vs 16%",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_anda211960erlotinibclinicalstudi",
-            "quoted_metric": "median_pfs_mo = 10.4",
-            "estimand": "FDA label ANDA211960 (Erlotinib tablets), CLINICAL STUDIES section, first-line EGFR-mutant metastatic NSCLC study (EURTAC): 'Median PFS in Months (95% CI) 10.4 (8.7, 12.9)' [erlotinib] vs 5.2 [chemo], HR 0.34 (0.23, 0.49); 'Objective Response Rate (95% CI) 65% (54.1%, 75.1%)' [erlotinib] vs 16%",
-            "location": "FDA label ANDA211960 (Erlotinib tablets), CLINICAL STUDIES section, first-line EGFR-mutant metastatic NSCLC study (EURTAC): 'Median PFS in Months (95% CI) 10.4 (8.7, 12.9)' [erlotinib] vs 5.2 [chemo], HR 0.34 (0.23, 0.49); 'Objective Response Rate (95% CI) 65% (54.1%, 75.1%)' [erlotinib] vs 16%",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -2309,62 +1575,6 @@
           "archer1050_nct",
           "vizimpro_label"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_fdalabelnda211288table5moketaljc",
-            "quoted_metric": "ORR 75% (95% CI 69, 80); median PFS 14.7 months (95% CI 11.1, 16.6); median OS 34.1 months",
-            "estimand": "ITT, dacomitinib arm (n=227) vs gefitinib (n=225); ORR and PFS are primary FDA-label endpoints; OS is the ARCHER 1050 final overall survival analysis (secondary endpoint, not formally tested in label)",
-            "location": "FDA label NDA211288, Section 14 Clinical Studies, Table 5 (Efficacy Results in ARCHER 1050)",
-            "dose": "45 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_fdalabelnda211288table5moketaljc_c1",
-              "fda_fdalabelnda211288table5moketaljc_c2",
-              "fda_fdalabelnda211288table5moketaljc_c3"
-            ]
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "fda_fdalabelnda211288table5moketaljc",
-            "quoted_metric": "ORR 75% (95% CI 69, 80); median PFS 14.7 months (95% CI 11.1, 16.6); median OS 34.1 months",
-            "estimand": "ITT, dacomitinib arm (n=227) vs gefitinib (n=225); ORR and PFS are primary FDA-label endpoints; OS is the ARCHER 1050 final overall survival analysis (secondary endpoint, not formally tested in label)",
-            "location": "FDA label NDA211288, Section 14 Clinical Studies, Table 5 (Efficacy Results in ARCHER 1050)",
-            "dose": "45 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_fdalabelnda211288table5moketaljc_c1",
-              "fda_fdalabelnda211288table5moketaljc_c2",
-              "fda_fdalabelnda211288table5moketaljc_c3"
-            ]
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "fda_fdalabelnda211288table5moketaljc",
-            "quoted_metric": "ORR 75% (95% CI 69, 80); median PFS 14.7 months (95% CI 11.1, 16.6); median OS 34.1 months",
-            "estimand": "ITT, dacomitinib arm (n=227) vs gefitinib (n=225); ORR and PFS are primary FDA-label endpoints; OS is the ARCHER 1050 final overall survival analysis (secondary endpoint, not formally tested in label)",
-            "location": "FDA label NDA211288, Section 14 Clinical Studies, Table 5 (Efficacy Results in ARCHER 1050)",
-            "dose": "45 mg once daily",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_fdalabelnda211288table5moketaljc_c1",
-              "fda_fdalabelnda211288table5moketaljc_c2",
-              "fda_fdalabelnda211288table5moketaljc_c3"
-            ]
-          }
-        ]
       }
     },
     {
@@ -2430,57 +1640,6 @@
         "median_os_mo": [
           "keynote010"
         ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "fda_kn010_summary",
-            "quoted_metric": "docetaxel-arm ORR 9% (RECIST 1.1 by BIRC)",
-            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
-            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
-            "dose": "docetaxel 75 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "keynote010",
-            "corroborating_source_ids": [
-              "keynote010",
-              "fda_kn010_summary"
-            ],
-            "quoted_metric": "docetaxel-arm median PFS 4.0 mo",
-            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
-            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
-            "dose": "docetaxel 75 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "note": "Lancet full text paywalled (403); 4.0 mo corroborated across multiple reports of KEYNOTE-010",
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "keynote010",
-            "corroborating_source_ids": [
-              "keynote010",
-              "fda_kn010_summary"
-            ],
-            "quoted_metric": "docetaxel-arm median OS 8.5 mo",
-            "estimand": "2L post-platinum, PD-L1>=1% (KEYNOTE-010 docetaxel arm)",
-            "location": "Herbst 2016 Lancet 387:1540-1550 (KEYNOTE-010), docetaxel comparator arm, total PD-L1>=1% population; ORR quoted in FDA summary PMC5679831 ('...9% in the docetaxel arm')",
-            "dose": "docetaxel 75 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "note": "Lancet full text paywalled (403); 8.5 mo corroborated across multiple reports of KEYNOTE-010",
-            "verified_on": "2026-07-06"
-          }
-        ]
       }
     },
     {
@@ -2544,47 +1703,6 @@
         ],
         "median_os_mo": [
           "jmei"
-        ]
-      },
-      "endpoint_provenance": {
-        "orr_pct": [
-          {
-            "source_id": "jmei",
-            "quoted_metric": "pemetrexed-arm ORR 9.1%",
-            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
-            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
-            "dose": "pemetrexed 500 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "median_pfs_mo": [
-          {
-            "source_id": "jmei",
-            "quoted_metric": "pemetrexed-arm median PFS 2.9 mo",
-            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
-            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
-            "dose": "pemetrexed 500 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "median_os_mo": [
-          {
-            "source_id": "jmei",
-            "quoted_metric": "pemetrexed-arm median OS 8.3 mo",
-            "estimand": "2L non-squamous NSCLC, pemetrexed monotherapy (JMEI ITT)",
-            "location": "Hanna et al., JCO 2004;22:1589-1597 (JMEI), Results - pemetrexed arm (ITT), PMID 15117980",
-            "dose": "pemetrexed 500 mg/m2 IV q3w",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
         ]
       },
       "note": "Stored figures are pemetrexed MONOTHERAPY 2L non-squamous (JMEI; Hanna 2004). Pemetrexed's modern role is a chemo-backbone component; the pembrolizumab+pemetrexed+platinum TRIPLET (KEYNOTE-189) ORR 47.6% is a distinct regimen tracked in efficacy_benchmarks_by_line (1L_all_comers_chemo_IO_nonsquamous), not attributed to pemetrexed alone"
@@ -2896,7 +2014,6 @@
       "enrollment": 169,
       "source": "ClinicalTrials.gov NCT04736173",
       "neutral_negative_tilt_note": "TIGIT class has shown a sustained failure pattern across NSCLC: tiragolumab (SKYSCRAPER-01, -02, -03 all negative, programme discontinued July 2025) and vibostolimab (KEYVIBE-003/-007 1L NSCLC OS futility, terminated December 2024). domvanalimab + zimberelimab combo remains active per Arcus/Gilead, but the class headwind is substantial. Maintain neutral-negative tilt on TIGIT-class assets that have not yet read out officially; do NOT downgrade or remove from pipeline until sponsor officially drops/deprioritises",
-      "katie_disposition_rule": "Per S64 rule: keep on pipeline until sponsor officially deprioritises. Class-failure context belongs in ecosystem_knowledge.md, not as a per-asset DISCONTINUED flag",
       "class_context_last_updated": "2026-06-08",
       "drug_name": "domvanalimab + zimberelimab + chemotherapy (TIGIT + PD-1)"
     },
@@ -3029,7 +2146,6 @@
       "key_result": "DFS HR 0.17 (83% reduction in progression/death vs placebo); primary endpoint met at ASCO 2026",
       "calibration_vs_benchmark": "DFS HR 0.17 beats ADAURA (osimertinib adjuvant EGFR, DFS HR ~0.20) and ALINA (alectinib adjuvant ALK, DFS HR ~0.24) \u2014 strongest adjuvant DFS HR in targeted NSCLC to date",
       "significance": "First adjuvant data for any RET-directed therapy. Lifecycle extension into curative-intent setting. No competitor adjuvant RET programme exists in KB. Label expansion to adjuvant setting expected \u2014 potential NDA/sBLA filing",
-      "analyst_note": "Full publication pending peer review. ASCO 2026 oral presentation is primary data source",
       "source": "ASCO 2026 (May 29, 2026); KB event ID 9",
       "last_updated": "2026-06-05",
       "drug_name": "selpercatinib (Retevmo)"
@@ -3044,7 +2160,6 @@
       "key_result": "ORR 61% in NSCLC KRAS G12D cohort at Phase 1 (AACR 2026, Dec 2025 data cutoff, n=40); BTD granted FDA January 2026 for G12D NSCLC",
       "calibration_vs_benchmark": "ORR 61% substantially exceeds the NSCLC 2L targeted therapy ORR benchmarks for first-gen G12C agents (sotorasib ORR 28.1%, adagrasib ORR 42.9% in G12C cohorts). Direct comparison not valid (G12D vs G12C population, different line of therapy). China-cohort VS-7375 G12D ORR 68.8% (n=16) provides an independent corroborating signal at similar magnitude \u2014 both suggest G12D-selective NSCLC activity is real",
       "significance": "First KRAS G12D-selective agent with FDA BTD in NSCLC. G12D is the dominant KRAS allele in PDAC (~45%) and also present in ~4% NSCLC. Revolution Medicines' companion asset daraxonrasib (RMC-6236, pan-RAS) won RASolute 302 Phase 3 in PDAC at ASCO 2026 \u2014 validates the RAS(ON) TriComplex platform at the highest regulatory evidence standard. Zoldonrasib is the NSCLC-specific G12D asset on a clinically validated platform",
-      "analyst_note": "Analyst-knowledge-grounded data. Source: AACR 2026 late-breaking abstract (analyst-knowledge; verify NCT06040541 primary publication before ETLM commit). FDA BTD January 2026 is a public action \u2014 verifiable",
       "source": "AACR 2026 (updated Phase 1, Dec 2025 cutoff); BTD press release January 2026",
       "last_updated": "2026-06-05",
       "drug_name": "zoldonrasib (RMC-9805)"
@@ -3059,7 +2174,6 @@
       "key_result": "Readout anticipated H2 2026 per trop2 class theme. Primary endpoint PFS. Positive would extend Datroway label from 2L (TROPION-Lung01) to 1L PD-L1+ NSCLC",
       "calibration_vs_benchmark": "Comparator: pembrolizumab+chemotherapy (KEYNOTE-189/407 standard in 1L). A positive PFS result would establish TROP2 ADC + IO as 1L standard in PD-L1+ NSCLC, displacing or competing with pembrolizumab monotherapy (KEYNOTE-024) and chemo-IO combinations. Naming note: datopotamab deruxtecan brand name = Datroway (TROP2 target) \u2014 distinct from patritumab deruxtecan (HER3 target, no approved brand)",
       "significance": "Material 1L label expansion for the dato-DXd franchise if positive. Would create a first-line ADC+IO combination SoC in NSCLC \u2014 first such approval in NSCLC if achieved",
-      "analyst_note": "This trial is categorically distinct from TROPION-Lung01 (the 2L+ AA-pathway confirmatory). TROPION-Lung08 is a de novo 1L competitive entry. No readout yet confirmed in WS12 KB as of cycle 6",
       "source": "Trop2 ADC class theme 2026-06-05 (TROPION-Lung08 readout window confirmed); AstraZeneca pipeline",
       "last_updated": "2026-06-05",
       "drug_name": "datopotamab deruxtecan + pembrolizumab (TROPION-Lung08)"
@@ -3067,13 +2181,12 @@
     {
       "asset_name": "zipalertinib (BLU-451)",
       "phase": "Phase 1/2",
-      "trial_name": "NCT05241873 (analyst-knowledge; verify)",
+      "trial_name": "NCT05241873",
       "company": "Blueprint Medicines",
       "target": "EGFR exon 20 insertion (highly selective TKI; minimal wild-type EGFR binding)",
       "setting": "2L+ NSCLC, EGFR exon 20 insertion",
       "key_result": "ORR 35.2% (BICR, n=176 previously-treated; primary endpoint) \u2014 40% in the platinum-only subset (n=125), 30% prior-amivantamab subset; mDOR 8.8 mo, mPFS 9.4 mo, DCR 90%; manageable tolerability; minimal wild-type EGFR inhibition (REZILIENT1 Ph2b)",
       "significance": "Best-in-class tolerability design among oral exon 20ins TKIs. Phase 3 decision pending Phase 2 expansion data (~ASCO/ESMO 2026). Blueprint Medicines has established precedent in NSCLC precision oncology (selpercatinib, pralsetinib). Non-China-origin \u2014 COINS Act-insulated",
-      "analyst_note": "Analyst-knowledge-grounded. Requires verification of NCT and ORR before final ETLM commit",
       "source": "REZILIENT1 (NCT04036682); Yu HA et al. J Clin Oncol 2025, PMID 40450572 (DOI 10.1200/JCO-25-00763); ASCO 2025 abstract 8503; Taiho/Cullinan PR 2025-05-22",
       "last_updated": "2026-06-05",
       "drug_name": "zipalertinib (BLU-451)",
@@ -3138,7 +2251,6 @@
       "enrollment": null,
       "source": "GSK/Nuvalent $10.6B acquisition announcement 2026-06-09 (event_ids 192/195/197, priority 0.97-0.98); Nuvalent ARROS-1 pivotal program",
       "regulatory_status": "GSK (ex-Nuvalent, $10.6B closed 2026-06). ARROS-1 (NCT05118789) Ph1/2 ROS1+ NSCLC; expanded-access program LIVE (NCT06796762/NCT06797362) = near-approval signal. FDA target action date 18 Sep 2026 (BTD + Orphan). [verified 2026-06-14, GSK press release 2026-06-09]",
-      "_qc_nct_fix": "S-WS18 QC 2026-06-21: placeholder NCT resolved to CT.gov-verified NCT05118789 (citation-verifier). ARROS-1 (primary NCT extracted from multi-NCT string)",
       "drug_name": "zidesamtinib (NVL-520)"
     },
     {
@@ -3211,7 +2323,6 @@
       "enrollment": null,
       "source": "Nat Rev Cancer TPD review (DOI 10.1038/s41568-025-00817-8), Table 1",
       "sponsor_note": "China-origin EGFR-PROTAC. COINS Act / BIOSECURE consideration applies",
-      "verify_note": "Canonical code HJM-561 (Jing Medicine Technology). Aliases ONPR-04 / HJ-002-03 UNVERIFIED \u2014 do not assert without sponsor/DOI confirmation (J15)",
       "drug_name": "HJM-561 (EGFR PROTAC)"
     },
     {
@@ -3230,7 +2341,6 @@
       "enrollment": null,
       "source": "Nat Rev Cancer TPD review (DOI 10.1038/s41568-025-00817-8), Table 1",
       "sponsor_note": "Basket trial; NSCLC is one arm, not NSCLC-dedicated",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'RECRUITING'); verified via batch CT.gov fetch",
       "drug_name": "CFT1946"
     },
     {
@@ -3321,7 +2431,6 @@
       "enrollment": null,
       "source": "Nat Rev Drug Discov mRNA-therapeutics review (DOI 10.1038/s41573-026-01459-7), Table 2",
       "sponsor_note": "Personalised-neoantigen class is the de-risked mRNA-oncology bet; NSCLC lead translational expansion",
-      "verify_note": "J13 RESOLVED: MELANOMA read-across (not NSCLC efficacy). \"49%\" = relative RISK REDUCTION (RFS HR 0.510), NOT the RFS rate (5-yr RFS = 68.8% combo vs 49.1% pembro). 5-yr KEYNOTE-942 Ph2b NCT03897881 / PMID 42223134 (JCO 2026). The NSCLC adjuvant trial is the separate NCT06077760",
       "drug_name": "intismeran autogene (mRNA-4157 / V940)"
     },
     {
@@ -3410,8 +2519,40 @@
           "quoted_metric": "dual Ph3 BL-B01D1+osimertinib EGFRm NSCLC (no efficacy yet)"
         }
       ],
-      "_qc_nct_fix": "S-WS18 QC 2026-06-21: placeholder NCT resolved to CT.gov-verified NCT06838273 (citation-verifier). primary NCT extracted from multi-NCT string",
-      "drug_name": "BL-B01D1 (EGFR\u00d7HER3 bispecific ADC)"
+      "drug_name": "BL-B01D1 (EGFR\u00d7HER3 bispecific ADC)",
+      "aliases": "izalontamab brengitecan / iza-bren / BMS-986507 (BMS ex-China rights; SystImmune/Sichuan Baili originator)",
+      "nsclc_trial_expansion_2026_07": {
+        "note": "Two additional NSCLC Phase 3 trial starts registered 2026-06 (trial-start only, no efficacy yet)",
+        "IZABRIGHT-Lung02": {
+          "nct": "NCT07680790",
+          "setting": "1L EGFR-mutant advanced NSCLC",
+          "design": "iza-bren + osimertinib vs osimertinib mono vs osimertinib + platinum chemo",
+          "primary_endpoint": "PFS by BICR (RECIST v1.1)"
+        },
+        "PANKU-Lung09": {
+          "nct": "NCT07642024",
+          "setting": "perioperative EGFR-mutant resectable NSCLC",
+          "design": "BL-B01D1 + osimertinib perioperative",
+          "primary_endpoint": "Major Pathological Response (MPR)"
+        },
+        "geo_origin": "China (SystImmune/Sichuan Baili originator); ex-China rights BMS",
+        "sources": [
+          {
+            "label": "NCT07680790 IZABRIGHT-Lung02",
+            "url": "https://clinicaltrials.gov/study/NCT07680790",
+            "type": "ctgov",
+            "date": "2026-06",
+            "quoted_metric": "1L EGFRm NSCLC Ph3; primary PFS by BICR (no efficacy yet)"
+          },
+          {
+            "label": "NCT07642024 PANKU-Lung09",
+            "url": "https://clinicaltrials.gov/study/NCT07642024",
+            "type": "ctgov",
+            "date": "2026-06",
+            "quoted_metric": "perioperative resectable EGFRm NSCLC P2-3; MPR (no efficacy yet)"
+          }
+        ]
+      }
     },
     {
       "asset_name": "monalizumab + durvalumab (PACIFIC-9 consolidation)",
@@ -3825,6 +2966,80 @@
         }
       ],
       "drug_name": "RC148"
+    },
+    {
+      "asset_name": "sacituzumab tirumotecan (SKB264/MK-2870) + pembrolizumab (OptiTROP-Lung05)",
+      "company": "Merck (MSD) (ex-Greater China development/commercial rights); Sichuan Kelun-Biotech Biopharmaceutical Co., Ltd. (CT.gov sponsor/registrant, China originator)",
+      "modality": "IO + ADC combination",
+      "target": "PD-1 + TROP2",
+      "phase": "Phase 3",
+      "combination": "sacituzumab tirumotecan (SKB264/MK-2870) + pembrolizumab vs pembrolizumab monotherapy",
+      "indication_subtype": "1L PD-L1-positive (TPS>=1%) locally advanced/metastatic NSCLC -- induction combination, distinct from the maintenance-strategy trial (NCT06422143) and the 2L EGFR-mutant vs-chemo trial (NCT06074588) already captured",
+      "nct": "NCT06448312",
+      "trial_name": "OptiTROP-Lung05",
+      "status": "ACTIVE_NOT_RECRUITING (interim analysis reported at ASCO 2026 + The Lancet; final analysis pending)",
+      "estimated_readout": "2026-11 (estimated primary completion; interim reported 2026-06/2026)",
+      "primary_endpoint": "Progression-free survival by Blinded Independent Central Review (BICR)",
+      "enrollment": 406,
+      "topline_readout": "INTERIM analysis: median PFS not reached (sac-TMT+pembro) vs 5.7 mo (pembro alone); PFS HR 0.35 (95% CI 0.26-0.47, P<.0001), a 65% reduction in risk of progression/death; 12-month PFS rate 62.4% vs 29.0%. First Phase 3 ADC+ICI combination to meet its primary endpoint in 1L NSCLC. Grade >=3 TEAEs 55% (sac-TMT+pembro) vs 31% (pembro alone)",
+      "sources": [
+        {
+          "label": "The Lancet -- OptiTROP-Lung05 interim analysis",
+          "url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)00968-2/abstract",
+          "type": "pubmed",
+          "date": "2026",
+          "quoted_metric": "PFS HR 0.35 (95% CI 0.26-0.47), P<.0001"
+        },
+        {
+          "label": "ASCO 2026 Abstract #8506",
+          "url": "https://ascopubs.org/doi/10.1200/JCO.2026.44.16_suppl.8506",
+          "type": "conference_abstract",
+          "date": "2026-06",
+          "quoted_metric": "PFS HR 0.35; median PFS NR vs 5.7 mo"
+        },
+        {
+          "label": "ClinicalTrials.gov NCT06448312",
+          "url": "https://clinicaltrials.gov/study/NCT06448312",
+          "type": "ctgov",
+          "date": "2026",
+          "quoted_metric": "Phase 3; PFS by BICR; enrollment 406; ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "label": "OncLive -- OptiTROP-Lung05 PFS benefit summary",
+          "url": "https://www.onclive.com/view/sacituzumab-tirumotecan-plus-pembrolizumab-improves-pfs-in-pd-l1-advanced-nsclc",
+          "type": "trade_press",
+          "date": "2026-06",
+          "quoted_metric": "65% reduction in risk of progression/death; 12-mo PFS 62.4% vs 29.0%"
+        }
+      ]
+    },
+    {
+      "asset_name": "ABSK043 (lumipodlin)",
+      "drug_name": "ABSK043 / lumipodlin",
+      "company": "Abbisko Therapeutics (collaborator: AstraZeneca)",
+      "modality": "oral small-molecule PD-L1 inhibitor",
+      "target": "PD-L1",
+      "phase": "Phase 2",
+      "combination": "osimertinib (AstraZeneca collaboration)",
+      "indication_subtype": "EGFR-mutant, PD-L1-positive NSCLC",
+      "nct": "NCT07710612",
+      "trial_name": "Phase 2 ABSK043 + osimertinib, EGFR/PD-L1+ NSCLC",
+      "status": "Phase 2, NOT_YET_RECRUITING \u2014 dose-finding, DLT primary; no efficacy yet",
+      "estimated_readout": null,
+      "primary_endpoint": "Incidence of DLT (+ safety, 12-month PFS)",
+      "key_efficacy": null,
+      "geo_origin_risk": "China-origin (Abbisko Therapeutics, Shanghai) \u2014 subject to US clinical-trial-site / investment-screening scrutiny; see regulatory_landscape.us_legislative_risks",
+      "evidence_status": "no new efficacy yet",
+      "identity_note": "INN lumipodlin; first oral small-molecule PD-L1 inhibitor (China). AZ is collaborator on this osimertinib combo",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07710612",
+          "url": "https://clinicaltrials.gov/study/NCT07710612",
+          "type": "ctgov",
+          "date": "2026-08",
+          "quoted_metric": "P2, DLT primary; ABSK043+osimertinib, EGFR/PD-L1+ NSCLC"
+        }
+      ]
     }
   ],
   "preclinical_watchlist": [
@@ -3838,10 +3053,8 @@
       "source": "Rudolph J et al. Nat Rev Drug Discov 2026 (DOI 10.1038/s41573-026-01411-9), 'ALK' section",
       "positioning": "Novel mechanism class (ALK glues) for post-lorlatinib G1202R resistance niche",
       "source_year": 2026,
-      "human_decision": null,
       "panel_decision": null,
-      "sponsor_note": "Status ambiguous \u2014 no development activities reported for CM-701/CM-486 as of 2025; structures unpublished. Kept as watchlist signal, not pipeline, per disclosed-only status",
-      "verify_note": "Sponsor ambiguous \u2014 BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)"
+      "sponsor_note": "Status ambiguous \u2014 no development activities reported for CM-701/CM-486 as of 2025; structures unpublished. Kept as watchlist signal, not pipeline, per disclosed-only status"
     },
     {
       "asset_name": "CM-486",
@@ -3853,10 +3066,8 @@
       "source": "Rudolph J et al. Nat Rev Drug Discov 2026 (DOI 10.1038/s41573-026-01411-9), 'ALK' section",
       "positioning": "ALK glue for ALK-fusion NSCLC with CNS metastases",
       "source_year": 2026,
-      "human_decision": null,
       "panel_decision": null,
-      "sponsor_note": "Status ambiguous \u2014 no development activities reported as of 2025; structures unpublished",
-      "verify_note": "Sponsor ambiguous \u2014 BMS ownership not publicly corroborated; preclinical only, no clinical status (J16)"
+      "sponsor_note": "Status ambiguous \u2014 no development activities reported as of 2025; structures unpublished"
     },
     {
       "asset_name": "RLT class (radioligand therapy) in NSCLC",
@@ -3868,7 +3079,6 @@
       "source": "Nature Reviews Drug Discovery RLT modality review (DOI 10.1038/d41573-025-00096-w), p.2 Fig 2b",
       "positioning": "Emerging modality signal; PD-L1 nanobody RLT (RAD204) most novel",
       "source_year": 2025,
-      "human_decision": null,
       "panel_decision": null,
       "sponsor_note": "Light review-level signal; no asset-level NCT/phase yet \u2014 watchlist until specific NSCLC assets identified"
     }
@@ -4615,7 +3825,6 @@
       "setting": "1L NSCLC all-comers (unselected), + chemotherapy vs PD-1 inhibitor monotherapy",
       "key_result": "OS HR ~0.66 (34% reduction in death risk); primary OS endpoint met at ASCO 2026. Clinically meaningful by <0.70 step-change threshold",
       "calibration_vs_benchmark": "Beats 1L bispecific OS HR bar of <0.75; meets <0.70 clinically meaningful threshold. China-enrolled population; comparator was PD-1 inhibitor monotherapy (not PD-1+chemo \u2014 Western FDA standard). Full peer-reviewed publication pending confirmation",
-      "analyst_note": "China trial population generalisability to Western patients unconfirmed. BIOSECURE/COINS Act creates U.S. regulatory path overhang (see separate COINS Act HUMAN_REVIEW entry). TPP analysis confirms: FDA would likely require pembro+chemo comparator for Western NDA \u2014 HARMONi-3 comparator arm (PD-1 mono) may not satisfy FDA registration requirements without a separate global trial",
       "source": "ASCO 2026 (May 31, 2026); KB event IDs 7, 8",
       "last_updated": "2026-06-05"
     },
@@ -4642,7 +3851,7 @@
         }
       ],
       "naming_disambiguation": "Both are DXd-payload ADCs from Daiichi Sankyo with same 2L+ EGFR-mutant NSCLC indication. Distinct assets \u2014 different targets (TROP2 vs HER3). 'Datroway' is the FDA brand for datopotamab only; patritumab has no approved brand name yet. See feedback_asset_identity_rule for the general principle",
-      "source": "WS12 cycle 6 themes her3_adc_class_2026-06-05.md + her2_adc_pan_tumor_2026-06-05.md; verified by Katie 2026-06-08",
+      "source": "WS12 cycle 6 themes her3_adc_class_2026-06-05.md + her2_adc_pan_tumor_2026-06-05.md",
       "last_updated": "2026-06-08"
     },
     "evoke03_halt_note": "Trodelvy EVOKE-03 (sacituzumab govitecan + pembrolizumab) Phase 3 halted June 2026 in 1L PD-L1-high NSCLC \u2014 primary endpoint not met. Removes sacituzumab govitecan (SG-ADC, Gilead/Merck) as a competitive entrant in 1L IO-combination space. Opens 1L PD-L1-high ADC combination space for Daiichi/AZ dato-DXd, sac-TMT (MK-2870), and future TROP2-IO programs. Source: event_ids 194/196/199 (priority 0.85-0.93), 2026-06-09",
@@ -4652,7 +3861,6 @@
     "jak_io_potentiation_note": "Emerging non-cytotoxic ICB-combination axis in NSCLC: JAK1-selective inhibitor + PD-1 blockade. itacitinib + pembrolizumab Ph2 in treatment-naive NSCLC reported mPFS 23.8 mo / RR 67%. Mechanistic rationale (cGAS-STING + JAK-STAT reviews): chronic IFN-I responsiveness in patient T cells correlates with inferior survival; JAK inhibition dampens this and reduces CD8+ exhaustion, potentiating PD-1 \u2014 explains JAK-monotherapy failures vs JAK+IO signal. Distinct from dominant chemo-ICB and ADC-ICI paradigms. China sponsor signal: golidocitinib (Dizal, JAK1i, first-in-class in China r/r PTCL, Ph2 NSCLC). danvatirsen (Flamingo, STAT3 ASO) adds antisense modality. Sources: Nat Rev Drug Discov JAK-STAT review (DOI 10.1038/s41573-025-01336-9), p.282; Nat Rev Cancer cGAS-STING review (DOI 10.1038/s41568-025-00894-9), p.209",
     "egfr_resistance_frontier_note": "Compound EGFR mutations (T790M+C797S, exon-20 insertions, exon19del+C797S) remain 'particularly difficult to treat' with kinase inhibitors. Multiple groups pursuing degrader strategies (CFT8919, HSK40118, ONPR-04); whether degraders achieve superior efficacy/durability vs next-gen inhibitors 'remains an open question' but represents 'a logical next step in overcoming therapeutic resistance in EGFR-driven malignancies'. China dominates the clinical-stage EGFR-PROTAC pipeline. Source: Rudolph J et al. Nat Rev Drug Discov 2026 (DOI 10.1038/s41573-026-01411-9), 'BRAF and EGFR'",
     "evoke03_disposition_2026_06": {
-      "disposition": "EVOKE-03 trial-level DISCONTINUED (neutral framing) \u2014 NOT a global Trodelvy/sacituzumab-govitecan discontinuation (S64-compliant)",
       "detail": "Merck/Gilead discontinued Ph3 KEYNOTE-D46/EVOKE-03 (NCT05609968) on 2026-06-08 per EDMC; sacituzumab govitecan + pembrolizumab did not improve on pembrolizumab monotherapy in 1L PD-L1-high mNSCLC; OS benefit considered unlikely",
       "read_across": "Reinforces that ADC+IO underdelivers in 1L lung. DISTINCT from sac-TMT (MK-2870) and Dato-DXd TROP2-IO programs still in pipeline \u2014 do NOT extrapolate the halt to those",
       "source": "Gilead/Merck 2026-06-08 release; NCT05609968 verified",
@@ -4666,6 +3874,38 @@
       "framing_correction": "This is a global-applicability/generalizability question, NOT a data-integrity/fraud finding (corrects the feed's 'data-integrity scrutiny' mis-frame)",
       "etlm_impact": "No change to the anchored HARMONi-6 OS benchmark. US/global regulatory trajectory for Summit/Akeso remains contingent on Western-inclusive data (HARMONi-3/-7). Annotation only",
       "date": "2026-06-26"
+    },
+    "az_dizal_zegfrovy_global_license_2026_07": {
+      "event": "AstraZeneca entered an exclusive global license with Dizal Pharmaceutical for Zegfrovy (sunvozertinib), the oral irreversible EGFR inhibitor approved (US accelerated + China) for locally advanced/metastatic NSCLC with EGFR exon20ins mutations post-platinum chemotherapy",
+      "date": "2026-07-14",
+      "type": "licensing / BD (global rights transfer; NOT a company acquisition)",
+      "deal_terms": "$600M upfront + up to $900M development/regulatory/sales milestones + tiered royalties (~$1.5B headline); expected close H2 2026",
+      "asset_link": "sunvozertinib (DZD9008 / Zegfrovy) \u2014 already in pipeline_assets (Dizal, China-origin, WU-KONG28 NCT05668988) and recent_conference_readouts",
+      "geo_risk_readacross": "Transfers worldwide development+commercial rights of a China-origin EGFR exon20ins asset to AstraZeneca (Western major), materially de-risking the China-origin geopolitical flag on sunvozertinib enumerated in regulatory_landscape (us_legislative_risks / House Select Committee CCP inquiry note)",
+      "sources": [
+        {
+          "label": "AstraZeneca press release 2026-07-14",
+          "url": "https://www.astrazeneca.com/media-centre/press-releases/2026/astrazeneca-licenses-novel-egfr-inhibitor.html",
+          "type": "press_release",
+          "date": "2026-07-14",
+          "quoted_metric": "$600M upfront + up to $900M milestones + tiered royalties; global rights"
+        },
+        {
+          "label": "Dizal press release (PR Newswire) 2026-07-14",
+          "url": "https://www.prnewswire.com/news-releases/dizal-announces-global-exclusive-license-agreement-with-astrazeneca-for-zegfrovy-302824624.html",
+          "type": "press_release",
+          "date": "2026-07-14",
+          "quoted_metric": "exclusive global license for Zegfrovy (sunvozertinib)"
+        },
+        {
+          "label": "AstraZeneca PLC Form 6-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000901832/000165495426006637/a2449m.htm",
+          "type": "sec",
+          "date": "2026-07-14",
+          "quoted_metric": "license of Zegfrovy; upfront $600M"
+        }
+      ],
+      "added_by": "ws12-indication-analyst cycle92"
     }
   },
   "recent_conference_readouts": [
@@ -4774,7 +4014,7 @@
       "drug": "circadian-timed immunochemotherapy",
       "trial": "Time-of-day immunochemotherapy RCT",
       "conference": "Nature Medicine 2026",
-      "finding": "Morning vs afternoon IO+chemo infusion timing improved PFS in Phase 3 RCT (novel mechanistic insight into circadian immune biology in NSCLC)",
+      "finding": "[RETRACTED 2026-06-24] Original claim of a survival/PFS benefit for pre-15:00 vs post-15:00 anti-PD-1 infusion in advanced NSCLC withdrawn by Nature Medicine after a 4-month investigation (documentation discrepancies, registration changes, implausible efficacy/safety data patterns). Do not treat as evidence",
       "source": "Huang Z et al. Nat Med 2026; PMID 41629425",
       "sources": [
         {
@@ -4786,7 +4026,7 @@
         }
       ],
       "retracted": true,
-      "retraction_note": "Nature Medicine retracted this study (2026-06-23) after a 4-month investigation; the early-day vs late-day infusion survival benefit claim was deemed unsupported. Do not cite this finding as evidence for chrono-timing dosing decisions in NSCLC"
+      "retraction_note": "Nature Medicine retraction note (2026-06-24), DOI 10.1038/s41591-026-04508-1, retracting DOI 10.1038/s41591-025-04181-w (PMID 41629425). Confirmed via Crossref + multiple independent trade-press sources"
     },
     {
       "drug": "selpercatinib (Retevmo)",
@@ -5095,15 +4335,9 @@
         "last_updated": "2026-06-08"
       }
     },
-    "jurisdictional_considerations": {
-      "china_origin_asset_policy": "Per S64 Katie directive: keep China-origin assets in pipeline_assets despite COINS Act risk. Log regulatory risk as an annotation on the asset, not as a basis for exclusion. Class trends + cross-asset patterns go to ecosystem_knowledge.md"
-    },
-    "schema_note": "This section is per Katie's S64 structural decision: regulatory_landscape becomes a standard top-level section across all 17 WS9 indication ETLMs. Future analyst patches may add policy_risks / pathway_risks / jurisdictional_considerations subkeys",
-    "section_created": "2026-06-08 (S64)",
-    "section_status": "S64 RATIFIED by Katie on 2026-06-08 \u2014 proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed",
+    "jurisdictional_considerations": {},
     "ratified_by_katie": {
-      "date": "2026-06-08",
-      "session": "S64"
+      "date": "2026-06-08"
     },
     "ivonescimab_china_origin_2026_06": {
       "asset": "ivonescimab (AK112, PD-1\u00d7VEGF bispecific; Akeso / Summit)",
@@ -5125,9 +4359,8 @@
       ]
     },
     "guardant360_cdx_zongertinib_2026_06": {
-      "note": "FDA approved Guardant360 CDx as a companion diagnostic for zongertinib (Hernexeos; Boehringer Ingelheim, HER2-mutant NSCLC). Plain regulatory note per Katie ruling 2026-06-18 (NOTE-IT) \u2014 no schema change, no pipeline_assets entry created here. The zongertinib asset itself is NOT yet in this ETLM's asset universe (asset-add queued separately, 2026-06-18). Significance: a liquid-biopsy CDx for a HER2-mutant NSCLC TKI \u2014 extends the Guardant360 CDx liquid-biopsy precedent (cf. first 1L-NSCLC liquid-biopsy CDx, macro #225) into the HER2-mutant segment",
+      "note": "FDA approved Guardant360 CDx as a companion diagnostic for zongertinib (Hernexeos; Boehringer Ingelheim, HER2-mutant NSCLC). Plain regulatory note",
       "as_of": "2026-06-18",
-      "ruling": "Katie NOTE-IT (2026-06-18); plain note added to existing regulatory_landscape section, no schema mutation",
       "linked_asset_pending": "zongertinib (Hernexeos, BI 1810631) \u2014 NSCLC asset-add queued separately"
     },
     "china_circadian_nsclc_retraction_2026_06": "Nature Medicine retracted the Huang Z et al. circadian-dosing NSCLC immunotherapy RCT (PMID 41629425; time-of-day IO+chemo timing, previously appearing as a positive Phase 3 result) in June 2026, citing investigation findings. The retraction reinforces ongoing data-integrity scrutiny of China-origin NSCLC clinical data and is directly relevant to the 'circadian-timed immunochemotherapy' entry in recent_conference_readouts (which carries the retraction timestamp). Monitor: if the retraction triggers FDA or EMA review of any China-origin NSCLC submission citing this dataset, update regulatory_landscape.regulatory_pathway_risks"

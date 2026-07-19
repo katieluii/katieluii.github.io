@@ -6,13 +6,19 @@
   "etlm_strip_keys": [
     "analyst_session_id",
     "analyst_notes",
+    "analyst_note",
     "internal_confidence",
     "decision_calibrations",
     "confidence_notes",
     "pm_qc_passed",
     "human_approved",
+    "human_decision",
     "data_gaps",
     "schema_adaptation_note",
+    "schema_note",
+    "framing_note",
+    "provenance_note",
+    "verify_note",
     "_flat_mirror",
     "source_note",
     "endpoint_sources_gaps",
@@ -20,14 +26,39 @@
     "editorialNotes",
     "alternates",
     "verified_by",
-    "presentation_profile"
+    "presentation_profile",
+    "ruling",
+    "disposition",
+    "katie_disposition_rule",
+    "section_status",
+    "section_created",
+    "session",
+    "china_origin_asset_policy"
+  ],
+  "etlm_strip_key_patterns": [
+    "^_",
+    "_provenance$",
+    "^ws13_review_update"
+  ],
+  "etlm_value_scrub_extra_tokens": [
+    "analyst-knowledge[\\w-]*",
+    "UNVERIFIED",
+    "do not assert",
+    "do-not-assert"
+  ],
+  "tpp_theme_strip_markers": [
+    "INTERNAL:",
+    "Katie note:",
+    "PM note:",
+    "Katie editorial",
+    "Source data:",
+    "analyst review cycle"
   ],
   "tpp_whitelist": [
     "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05.md",
     "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05.md",
     "tpp_obesity_1L_injectable_bmi30_2026-06-05.md",
-    "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05.md",
-    "tpp_nhl_dlbcl_3L_post_cart_post_zynlonta_2026-06-05.md"
+    "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05.md"
   ],
   "theme_whitelist": [
     "adc_class_state_2026-06-05.md",

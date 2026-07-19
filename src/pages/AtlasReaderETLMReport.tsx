@@ -6,9 +6,11 @@ import { Pill } from '../components/Pill';
 import { getETLM, etlmIndex } from '../data/atlas/index';
 import { ETLMSections } from '../components/atlas/ETLMSections';
 import { RedactionGate } from '../components/atlas/AccessGate';
+import { useNoindex } from '../hooks/useNoindex';
 import { FULL_DETAIL_ETLM } from '../data/atlas/gating';
 
 export function AtlasReaderETLMReport() {
+  useNoindex();
   const { indication } = useParams<{ indication: string }>();
   const { hash } = useLocation();
   const etlm = indication ? getETLM(indication) : undefined;

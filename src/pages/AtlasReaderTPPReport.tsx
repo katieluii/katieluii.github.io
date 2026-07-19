@@ -6,9 +6,11 @@ import { Pill } from '../components/Pill';
 import { getTPP, tppIndex } from '../data/atlas/index';
 import { MarkdownView } from '../components/atlas/MarkdownView';
 import { RedactionGate } from '../components/atlas/AccessGate';
+import { useNoindex } from '../hooks/useNoindex';
 import { UNGATED_TPP } from '../data/atlas/gating';
 
 export function AtlasReaderTPPReport() {
+  useNoindex();
   const { slug } = useParams<{ slug: string }>();
   const { hash } = useLocation();
   const md = slug ? getTPP(slug) : undefined;
