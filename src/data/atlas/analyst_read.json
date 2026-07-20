@@ -1,55 +1,55 @@
 {
-  "updated": "2026-07-13",
-  "intro": "Five themes moving drug development this week — the clinical pulse is quiet again, so the signal is in platform breakouts and a deal tape that has cooled to mid-cap. Refreshed every Monday.",
+  "updated": "2026-07-20",
+  "intro": "Five themes moving drug development this week — with the deal tape frozen and the calendar between conferences, the signal is all in the pipeline: an oral-TYK2 head-to-head, a crowding TL1A race, and classes pushing into their hardest settings. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "CAR-T breaks out of hematology — and the first solid-tumor approval lands in China",
-      "detail": "CARsgen's CLDN18.2-directed satri-cel (CT041) cleared China's NMPA as the world's first solid-tumor CAR-T — the precedent Western solid-tumor programs and their manufacturing financiers will now cite. It arrives alongside ICG415 pushing a CD33/CLL1 bispecific CAR-T into AML and a ~$1.1B wave of cell-therapy-automation financing (Cellares, Ori) — capacity capital following the platform, not leading it. CAR-T is no longer a hematology story; it is a cross-domain one, and China set the regulatory pace.",
+      "headline": "Oral TYK2 gets its head-to-head — zasocitinib beats Sotyktu on the way to a second-mover launch",
+      "detail": "Takeda's zasocitinib (TAK-279) posted a positive Ph3 in plaque psoriasis with head-to-head superiority over first-in-class deucravacitinib (Sotyktu) on PASI 100 at week 16 — a second mover beating the incumbent on its own turf. The topline is AAD-2026 vintage and not yet peer-reviewed, but a clean H2H win is the datapoint that reorders an oral class, and it reads across as TYK2 validation into IBD. The frontrunner-displacement question in oral TYK2 is now genuinely open.",
       "momentum": "Hot",
       "sources": [
-        { "label": "CARsgen Therapeutics", "url": "https://www.carsgen.com/" },
-        { "label": "satri-cel (CT041) trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=satri-cel" },
+        { "label": "Takeda newsroom", "url": "https://www.takeda.com/newsroom/" },
+        { "label": "zasocitinib (TAK-279) trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=zasocitinib" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
+      ]
+    },
+    {
+      "headline": "TL1A is suddenly the crowded target in IBD — and tulisokibart clears its first Ph3",
+      "detail": "A dense anti-TL1A field surfaced across Crohn's and ulcerative colitis in a single cycle: Merck's tulisokibart (MK-7240) met the ATLAS-UC Ph3 primary, with Sanofi's duvakitug in Ph3 induction-and-maintenance and Biocad's BCD-261 behind them. Merck has disclosed only that the endpoint was hit — no efficacy numbers until UEGW in October — so the first-to-market race-string can't be benchmarked yet. But the crowding is real, and TL1A has moved from thesis to late-stage race.",
+      "momentum": "Hot",
+      "sources": [
+        { "label": "Merck news", "url": "https://www.merck.com/news/" },
+        { "label": "tulisokibart trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=tulisokibart" },
+        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
+      ]
+    },
+    {
+      "headline": "FGF21 pushes into the hardest MASH setting as GSK buys its way in",
+      "detail": "efimosfermin alfa opened two Ph3 pivotals in compensated (F4) cirrhosis — one histology, one on a liver-related clinical-outcome composite — carrying FGF21 from earlier-stage MASH into the highest-unmet-need registration setting. The sponsor is now GSK, following its acquisition of Boston Pharmaceuticals, making the move an M&A read-through as much as a clinical one. The class is maturing toward its hardest endpoints, and big pharma is paying to be in it.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "GSK media", "url": "https://www.gsk.com/en-gb/media/" },
+        { "label": "efimosfermin trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=efimosfermin" },
+        { "label": "Endpoints News", "url": "https://endpts.com/" }
+      ]
+    },
+    {
+      "headline": "The P2X3 chronic-cough thesis cools — GSK discontinues camlipixant",
+      "detail": "GSK has discontinued camlipixant, the P2X3 antagonist it acquired in a roughly $2B deal, after mixed Ph3 data — the second setback for the class after gefapixant's regulatory struggles. Two failures in, the idea that P2X3 antagonism can carry chronic cough is proving harder to demonstrate than the deal multiples implied. A useful reminder that a validated target and a validated drug are not the same thing.",
+      "momentum": "Confirmed",
+      "sources": [
+        { "label": "GSK media", "url": "https://www.gsk.com/en-gb/media/" },
+        { "label": "camlipixant trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=camlipixant" },
         { "label": "Fierce Biotech", "url": "https://www.fiercebiotech.com/" }
       ]
     },
     {
-      "headline": "China-origin pipeline replenishment is now being read as financial structuring",
-      "detail": "The China-origin asset wave is the dominant net-new crowding vector this cycle, spanning CD47, NK-cell and bispecific axes at once — SKB575, SM17, NK521 and AK117 all surface inside the tracked slices, atop the standing Pfizer/Innovent and Lilly/Abbisko deals. What is new is the framing: one analysis this window recast Chinese licensing and acquisition deals as a financial-structuring play 'analogous to tax inversions of the 2010s,' a sharper lens than the earlier policy-versus-capital read. The supply is structural now; the open question is what it is optimising for.",
-      "momentum": "Confirmed",
-      "sources": [
-        { "label": "Pfizer newsroom", "url": "https://www.pfizer.com/newsroom" },
-        { "label": "CLDN18.2 asset trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=CLDN18.2" },
-        { "label": "Endpoints News", "url": "https://endpts.com/" }
-      ]
-    },
-    {
-      "headline": "Big deals, small products — the integration-failure counternarrative hardens",
-      "detail": "The counterweight to the megadeal wave keeps collecting datapoints: Biogen has halted most of the Apellis ($5.6B) programs less than 18 months after closing, while Pfizer's Seagen ($43B) ADC franchise continues to underperform. Read together they have set into a named recurring theme — large-cap deal value is not guaranteed product value, and ADC oncology is proving the hardest to commercialise. A useful corrective to keep beside every new nine-figure headline.",
-      "momentum": "Confirmed",
-      "sources": [
-        { "label": "Biogen", "url": "https://www.biogen.com/" },
-        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" },
-        { "label": "Endpoints News", "url": "https://endpts.com/" }
-      ]
-    },
-    {
-      "headline": "The megadeal well is dry — the action has dropped a tier to mid-cap and distressed roll-ups",
-      "detail": "For the third straight window there is no net-new transaction above $10B; the marquee set (Pfizer/Innovent, AbbVie/Apogee, Merck KGaA/Bio-Techne) is all carry-forward. The fresh activity sits one tier down — Ipsen/Kartos $1.7B on MDM2 in myelofibrosis, Zymeworks/Theravance $929M as a distressed cardiovascular roll-up, and Roche's ~$2.3B bexobrutideg BTK-degrader deal. The archetype has shifted to mid-cap consolidation and distressed roll-ups; the megadeal well, for now, is dry.",
-      "momentum": "Confirmed",
-      "sources": [
-        { "label": "Ipsen news", "url": "https://www.ipsen.com/" },
-        { "label": "Roche media", "url": "https://www.roche.com/media" },
-        { "label": "Endpoints News", "url": "https://endpts.com/" }
-      ]
-    },
-    {
-      "headline": "Cell therapy is crossing into autoimmune — on capital, not yet on data",
-      "detail": "Cell therapy's move into autoimmune is deepening on financing well ahead of readouts. Beeline Medicines added a $126M Series A extension barely two-and-a-half months after a $300M launch — five autoimmune programs spun out of BMS, backed by Bain and CPPIB — alongside Cabaletta's EULAR durability data and the Cartesian/Grit non-oncology cluster. The conviction in the cap table is real; the pivotal data that would justify it is not here yet, which is exactly why it stays on watch.",
+      "headline": "Complement inhibition broadens into lupus nephritis, on the heels of Fabhalta's IgAN nod",
+      "detail": "Q32 Bio's ADX-097, a C3d-targeted complement inhibitor, opened a Ph2 basket spanning IgA nephropathy, lupus nephritis and C3G — a novel complement mechanism entering the lupus-nephritis conversation just as Novartis's Fabhalta secured full FDA approval in IgAN. The renal-complement thread now has both a fresh approval anchoring it and a new candidate widening it. The lupus-nephritis read is still Ph2 and ahead of data, which is exactly why it stays on watch.",
       "momentum": "Watch",
       "sources": [
-        { "label": "Cabaletta Bio", "url": "https://www.cabalettabio.com/" },
-        { "label": "Descartes-08 trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=Descartes-08" },
-        { "label": "Fierce Biotech", "url": "https://www.fiercebiotech.com/" }
+        { "label": "Q32 Bio", "url": "https://www.q32bio.com/" },
+        { "label": "Novartis news", "url": "https://www.novartis.com/news" },
+        { "label": "ADX-097 trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=ADX-097" }
       ]
     }
   ]
