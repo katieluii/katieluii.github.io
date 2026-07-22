@@ -2480,14 +2480,15 @@
       "indication_subtype": "KRAS G12C-mutant NSCLC",
       "nct": "NCT07541170",
       "trial_name": "Divarasib P3 NSCLC",
-      "status": "NOT_YET_RECRUITING",
+      "status": "Phase 3 positive topline (2L KRAS G12C, H2H vs approved SoC); numeric results pending",
       "estimated_readout": null,
       "primary_endpoint": "PFS",
       "enrollment": null,
       "key_efficacy": null,
       "note": "trial_start only \u2014 no efficacy readout yet (WS12 HR batch 2026-06-14, no-efficacy pipeline add)",
       "source": "ClinicalTrials.gov NCT07541170",
-      "drug_name": "divarasib"
+      "drug_name": "divarasib",
+      "topline_readout": "KRASCENDO-1 Ph3 (NCT06497556, n=338) POSITIVE topline announced 2026-07-02: first global head-to-head Phase 3 of KRAS G12C inhibitors -- divarasib vs approved sotorasib or adagrasib in previously-treated KRAS G12C advanced/metastatic NSCLC. Met primary endpoint (PFS) and key secondary endpoint (OS) with statistically significant, clinically meaningful superiority. NO numeric HR/PFS/OS, response rates, subgroup or full safety data released; not yet presented at a medical meeting or peer-reviewed. Safety consistent with prior data, no new signals. Do NOT infer an HR from 'superiority' language"
     },
     {
       "asset_name": "BL-B01D1 (EGFR\u00d7HER3 bispecific ADC)",
@@ -4363,6 +4364,62 @@
       "as_of": "2026-06-18",
       "linked_asset_pending": "zongertinib (Hernexeos, BI 1810631) \u2014 NSCLC asset-add queued separately"
     },
-    "china_circadian_nsclc_retraction_2026_06": "Nature Medicine retracted the Huang Z et al. circadian-dosing NSCLC immunotherapy RCT (PMID 41629425; time-of-day IO+chemo timing, previously appearing as a positive Phase 3 result) in June 2026, citing investigation findings. The retraction reinforces ongoing data-integrity scrutiny of China-origin NSCLC clinical data and is directly relevant to the 'circadian-timed immunochemotherapy' entry in recent_conference_readouts (which carries the retraction timestamp). Monitor: if the retraction triggers FDA or EMA review of any China-origin NSCLC submission citing this dataset, update regulatory_landscape.regulatory_pathway_risks"
+    "china_circadian_nsclc_retraction_2026_06": "Nature Medicine retracted the Huang Z et al. circadian-dosing NSCLC immunotherapy RCT (PMID 41629425; time-of-day IO+chemo timing, previously appearing as a positive Phase 3 result) in June 2026, citing investigation findings. The retraction reinforces ongoing data-integrity scrutiny of China-origin NSCLC clinical data and is directly relevant to the 'circadian-timed immunochemotherapy' entry in recent_conference_readouts (which carries the retraction timestamp). Monitor: if the retraction triggers FDA or EMA review of any China-origin NSCLC submission citing this dataset, update regulatory_landscape.regulatory_pathway_risks",
+    "harmoni_june2026_os_cut_western_convergence_2026_07": {
+      "event": "Summit released an updated OS analysis of the global Phase 3 HARMONi trial (ivonescimab + platinum-doublet chemo vs placebo + chemo, 2L+ EGFR-mutant non-squamous NSCLC post-3G-TKI, n=219/219). June-2026 data cut-off: OS HR 0.76 in the ITT population and 0.76 in the Western subgroup (n=83 vs 82)",
+      "date": "2026-07-22",
+      "trial": "HARMONi (global, NCT06396065) -- distinct from HARMONi-A (China 2L+ EGFRm, HR 0.74) and HARMONi-6 (China 1L squamous, HR 0.66)",
+      "western_subgroup_hr_trajectory": {
+        "2025-04_primary_analysis": {
+          "hr": 0.98,
+          "median_followup_months": 9.2
+        },
+        "2025-09_analysis": {
+          "hr": 0.84,
+          "median_followup_months": 13.7
+        },
+        "2026-06_analysis": {
+          "hr": 0.76,
+          "median_followup_months": 23.2
+        }
+      },
+      "itt_hr_trajectory": {
+        "2025-04": 0.79,
+        "2025-09": 0.78,
+        "2026-06": 0.76
+      },
+      "prior_disclosed_detail": "Apr-2025 primary: ITT HR 0.79 (95% CI 0.62-1.01; p=0.057), median OS 16.8 vs 14.0 mo -- positive trend, NOT statistically significant. Sept-2025: ITT HR 0.78 (95% CI 0.62-0.98; nominal p=0.0332)",
+      "calibration_scoring": "HR 0.76 clears the config POSITIVE bar (<0.80); does NOT reach the MATERIAL bar (<0.70)",
+      "interpretation_caveat": "IMPORTANT -- the Asian-vs-Western 'consistency' is NOT a like-for-like comparison. Asian patients were LOCKED at the April-2025 primary analysis (median follow-up 32.7 mo, unchanged across all three cuts); only the Western cohort accrued further follow-up (9.2 -> 13.7 -> 23.2 mo). The Western HR convergence from 0.98 to 0.76 is therefore driven entirely by maturing Western follow-up against a frozen Asian comparator, at non-contemporaneous data cuts. Western subgroup is small (n=165 total), so the HR is unstable. No CI, p-value, or median OS disclosed for the June-2026 cut -- deferred to an upcoming medical meeting. Treat Summit's 'clear consistency between Asian and western patients' framing as a sponsor claim, not an established finding",
+      "etlm_relevance": "Directly addresses the global-applicability/generalizability question flagged in competitive_dynamics.ivonescimab_asco2026_applicability_note (ASCO 2026 discussants Brahmer/Spigel). First HARMONi readout with an explicit Western-subgroup HR trajectory. Regulatory stakes: Summit's BLA rests on HARMONi, PDUFA goal date 2026-11-14; this analysis has been made available to the FDA",
+      "etlm_impact": "ADDITIVE annotation. Does NOT overwrite the anchored HARMONi OS HR 0.78 (regulatory_landscape.ivonescimab_china_origin_2026_06) -- that value is the Sept-2025 cut and remains correct as-of. The June-2026 cut (HR 0.76) supersedes it as the latest available, but no efficacy_benchmarks_* row changes until CIs/medians publish",
+      "sources": [
+        {
+          "label": "Summit Therapeutics 8-K EX-99.1 (2026-07-22) -- HARMONi updated OS analysis",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001599298/000159929826000058/a2026_prx0722xharmonidat.htm",
+          "type": "sec_filing",
+          "date": "2026-07-22",
+          "quoted_metric": "Western Patients Achieved OS HR of 0.76, Consistent with Asian Patients; Hazard Ratio ITT 0.79 -> 0.78 -> 0.76; Western 0.98 -> 0.84 -> 0.76"
+        },
+        {
+          "label": "ClinicalTrials.gov NCT06396065 -- HARMONi global Phase 3",
+          "url": "https://clinicaltrials.gov/study/NCT06396065",
+          "type": "trial_registry",
+          "quoted_metric": "Phase 3, Summit Therapeutics, AK112 or placebo + pemetrexed/carboplatin, EGFR-mutant non-squamous NSCLC, ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "label": "Endpoints News -- Summit reports two-year survival data for Western patients, though context lacking",
+          "url": "https://endpoints.news/summit-reports-two-year-survival-data-for-western-patients-though-context-lacking/",
+          "type": "trade_press",
+          "date": "2026-07-22"
+        },
+        {
+          "label": "FiercePharma -- Summit's global PD-1xVEGF data challenge regional consistency claims",
+          "url": "https://www.fiercepharma.com/pharma/summit-global-pd-1xvegf-data-challenge-regional-consistency-claims-new-promising-survival",
+          "type": "trade_press",
+          "date": "2026-07-22"
+        }
+      ]
+    }
   }
 }

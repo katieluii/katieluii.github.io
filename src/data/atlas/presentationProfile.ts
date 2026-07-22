@@ -48,6 +48,15 @@ export type PresentationProfile = {
   headline_table?: {
     source: string;       // which array drives the table, e.g. "approved_therapies_novel"
     columns: ColumnSpec[];
+    /** Optional curated ordering for the TOP_N summary slice. Each string is
+     *  matched (case-insensitive substring) against brand|drug_name|asset_name;
+     *  matched rows sort first, in the order listed, and everything else keeps
+     *  its existing relative order. Opt-in per indication: without it the array
+     *  order is used unchanged, so already-published profiles are unaffected.
+     *  Exists because the source arrays are often chronological, which can push
+     *  a whole modern class below the TOP_N cut (mm: all six BCMA/GPRC5D
+     *  T-cell redirectors sat at index 10+). */
+    order_by?: string[];
   };
   collapse?: CollapseSpec[];
   caveats?: CaveatSpec[];

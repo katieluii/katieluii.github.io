@@ -2,7 +2,9 @@
   "etlm_whitelist": [
     "nsclc",
     "obesity",
-    "nhl_dlbcl"
+    "nhl_dlbcl",
+    "mm",
+    "crc"
   ],
   "etlm_strip_keys": [
     "analyst_session_id",

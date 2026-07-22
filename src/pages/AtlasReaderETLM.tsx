@@ -438,9 +438,9 @@ function buildTherapiesTable(
     const cells: Record<string, React.ReactNode> = isMetabolic
       ? {
           asset: rareGenetic ? (
-            <span>
-              {asset}
-              <span className="ml-1.5 text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
+            <span className="block">
+              <span className="block">{asset}</span>
+              <span className="mt-0.5 block text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400">
                 rare genetic
               </span>
             </span>
@@ -611,10 +611,13 @@ function buildTherapiesTableFromProfile(
           : null;
       cells[c.key] =
         isFirst && cav ? (
-          <span>
-            {r?.display}
+          // Positioning tag sits on its OWN line under the asset name. Inline, a
+          // long tag ("SOC anchor (pre-2023)") wrapped mid-phrase and broke the
+          // column's reading rhythm.
+          <span className="block">
+            <span className="block">{r?.display}</span>
             <span
-              className="ml-1.5 text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400"
+              className="mt-0.5 block text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400"
               title={cav.why}
             >
               {cav.tag}
@@ -804,7 +807,26 @@ export function AtlasReaderETLM() {
   const nonComparableTherapies = hasOverlay
     ? headlineTherapies.filter((a) => !isRankable(indicationClassOf(isObj(a) ? a : {}, socOverlay)))
     : [];
-  const topTherapies = rankableTherapies.slice(0, TOP_N);
+  // Curated summary ordering (opt-in via the profile). Source arrays are often
+  // chronological, so a whole modern class can fall below the TOP_N cut — in mm
+  // all six BCMA/GPRC5D T-cell redirectors sat at index 10+, i.e. the entire
+  // modern story was invisible on the summary page. Indications that don't
+  // declare order_by are untouched.
+  const orderBy = profile?.headline_table?.order_by ?? [];
+  const orderRank = (entry: unknown) => {
+    if (orderBy.length === 0) return 0;
+    const o = isObj(entry) ? entry : {};
+    const name = String(o.brand ?? o.drug_name ?? o.asset_name ?? '').toLowerCase();
+    if (!name) return Number.MAX_SAFE_INTEGER;
+    const i = orderBy.findIndex((t) => name.includes(t.toLowerCase()));
+    return i === -1 ? Number.MAX_SAFE_INTEGER : i;
+  };
+  // Array.prototype.sort is stable, so unmatched rows keep their relative order.
+  const orderedTherapies =
+    orderBy.length > 0
+      ? [...rankableTherapies].sort((a, b) => orderRank(a) - orderRank(b))
+      : rankableTherapies;
+  const topTherapies = orderedTherapies.slice(0, TOP_N);
   const buildTable = (arr: unknown[]) =>
     withSourceColumn(
       profile?.headline_table

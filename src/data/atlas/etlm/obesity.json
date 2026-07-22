@@ -3554,6 +3554,21 @@
           "quoted_metric": "P3, obesity+knee OA; co-primary WOMAC pain + %body-weight @68w; sponsor Fujian Shengdi"
         }
       ]
+    },
+    {
+      "asset_name": "HRS-7535 / KAI-7535",
+      "company": "Hengrui Pharma (originator, China) / Kailera Therapeutics (ex-China license, US)",
+      "sponsor_note": "geo_origin_risk: China-origin asset (Hengrui, Jiangsu). Kailera holds ex-China rights. HARBOR-1 pivotal Phase 3 conducted in China; ex-China commercial/regulatory pathway (global Phase 2 NCT07497880 in US/Australia) still developing. Identity confirmed via CT.gov (NCT06904105/NCT07497880) + named Kailera IR sources -- not inferred from code prefix",
+      "modality": "Oral small-molecule GLP-1 receptor agonist",
+      "target": "GLP-1R",
+      "phase": "Phase 3 (China, obesity + T2D); global Phase 2 ex-China",
+      "indication_subtype": "Overweight / obesity (BMI>=30)",
+      "nct": "NCT06904105 (P3 obesity), NCT07497880 (global P2 obesity)",
+      "trial_name": "HARBOR-1 (P3 China obesity); OUTSTAND-2 (P3 China T2D)",
+      "status": "ACTIVE_NOT_RECRUITING (P3) / RECRUITING (global P2)",
+      "key_efficacy": "HARBOR-1 P3 topline (Kailera PR 2026-07-07, NOT yet published): mean weight loss up to 10.9% at W44 / 11.1% at W50 (efficacy estimand); 120mg 9.5% and 180mg 10.9% at W44 vs 2.5% placebo. NOTE: ~11% W50 TBWL is BELOW the config's competitive 1L-oral bar (w36 TBWL% >= -15%); trails injectable rivals",
+      "caveat": "Efficacy is press-release topline only (high-materiality, no publication/registry results as of 2026-07-21). China-origin asset with unresolved ex-China commercial positioning -- staged for Katie's seed/await decision",
+      "source": "ClinicalTrials.gov NCT06904105 & NCT07497880 (identity); Kailera IR / GlobeNewswire 2026-07-07 (efficacy topline)"
     }
   ],
   "mechanism_landscape": [

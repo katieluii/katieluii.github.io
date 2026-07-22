@@ -14,3 +14,4 @@ dist/
 
 # Alternative lockfile (CI uses npm + package-lock.json)
 bun.lock
+__pycache__/

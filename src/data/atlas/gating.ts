@@ -55,10 +55,8 @@ export const UNGATED_THEME = new Set<string>(['glp1_class_competitive_supply_202
 export const LOCKED_INDICATIONS: string[] = [
   'breast',
   'aml_mds',
-  'crc',
   'prostate',
   'melanoma',
-  'mm',
   'hcc',
   'ovarian',
   'parkinsons',
