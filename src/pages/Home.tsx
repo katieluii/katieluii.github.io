@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { FilterChips } from '../components/FilterChips';
 import { ProjectTimeline } from '../components/ProjectTimeline';
@@ -81,6 +81,16 @@ export function Home() {
               className="p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/10 transition-colors"
             >
               <Linkedin className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://github.com/katieluii"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub profile"
+              className="p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/10 transition-colors"
+            >
+              <Github className="w-4 h-4" />
             </a>
 
             {/* TODO: Replace with your actual email address */}
@@ -172,6 +182,14 @@ export function Home() {
               className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
             >
               LinkedIn
+            </a>
+            <a
+              href="https://github.com/katieluii"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            >
+              GitHub
             </a>
             <a
               href="mailto:katieluikakiu@gmail.com"

@@ -157,8 +157,8 @@ Novo announced multi-billion-dollar capital investment programs:
 The US obesity drug market features a structural paradox: drugs with the strongest clinical evidence in the history of weight management face the most restrictive payer coverage of any modern drug class. The core barriers:
 
 1. **Medicare statutory exclusion (SSA 1965):** The Social Security Act explicitly prohibits Medicare Part D from covering "drugs for anorexia, weight loss, or weight gain." This exclusion predates modern GLP-1 drugs by decades and was written for amphetamine-era appetite suppressants. It creates a ceiling on Medicare market access even as ~60% of US adults with obesity are ≥65.
-   - MEPA (Treat and Reduce Obesity Act / Medicare Drug Coverage Parity Act): proposed legislation to lift the exclusion has been introduced in multiple Congressional sessions; as of 2025, not passed. Budget-scoring challenges (~$25-40B over 10 years per CBO estimates) have prevented passage.
-   - Partial carve-out: Medicare can cover Wegovy for the SELECT CV-risk-reduction indication (MACE reduction), as this is a cardiovascular indication, not a "weight loss drug" per the statutory language — this represents Novo's clever regulatory workaround, though prescribers and CMS are still navigating implementation.
+ - MEPA (Treat and Reduce Obesity Act / Medicare Drug Coverage Parity Act): proposed legislation to lift the exclusion has been introduced in multiple Congressional sessions; as of 2025, not passed. Budget-scoring challenges (~$25-40B over 10 years per CBO estimates) have prevented passage.
+ - Partial carve-out: Medicare can cover Wegovy for the SELECT CV-risk-reduction indication (MACE reduction), as this is a cardiovascular indication, not a "weight loss drug" per the statutory language — this represents Novo's clever regulatory workaround, though prescribers and CMS are still navigating implementation.
 
 2. **Medicaid:** ~50% of states cover GLP-1 obesity drugs; wide variation. Several large Medicaid programs (including California, Ohio) imposed prior-auth restrictions or deleted obesity drugs from formulary citing budget pressure (2024-2025).
 
@@ -326,7 +326,7 @@ Three scenarios for the GLP-1R-PD cross-indication thesis:
 
 | Scenario | Probability (qualitative) | Trigger | Strategic consequence |
 |---|---|---|---|
-| **Oslo semaglutide positive; liraglutide Cedars-Sinai positive → Ph3 IND filed** | ~25% | Both trials positive; clear class effect | Novo/Lilly each pursue PD Ph3; Novo has the compound and manufacturing; Lilly has retatrutide GLP-1R component; 5-7yr path to DMT label; CNS-specialised formulation needed | 
+| **Oslo semaglutide positive; liraglutide Cedars-Sinai positive → Ph3 IND filed** | ~25% | Both trials positive; clear class effect | Novo/Lilly each pursue PD Ph3; Novo has the compound and manufacturing; Lilly has retatrutide GLP-1R component; 5-7yr path to DMT label; CNS-specialised formulation needed |
 | **Mixed (one positive, one negative) → hypothesis weakened; larger investigator trial needed** | ~45% | One positive, one negative | PD continues as investigator-led science; no commercial sponsor files IND; BIIB/Roche/AbbVie (incumbent PD players) not disrupted; GLP-1R PD remains academic curiosity for 3-5 yr |
 | **Both negative → GLP-1R PD hypothesis largely closed** | ~30% | Both trials negative or negative/inconclusive | Attention returns to LRRK2, α-syn, GBA1 pathways as the only viable DMT routes; exenatide-PD3 precedent confirmed as representative |
 

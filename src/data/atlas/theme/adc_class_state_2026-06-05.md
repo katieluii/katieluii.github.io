@@ -9,7 +9,7 @@
 - **Post-Zynlonta inflection:** The loncastuximab tesirine Phase 3 DLBCL confirmatory death-rate signal (3x control; signal_id 79/111, Jun 4 2026) is the most consequential ADC class event in the WS12 KB to date; it has now echoed across 6 of 12 tracked indications, raising the FDA confirmatory trial bar for the entire class — but particularly hematologic and AA-pathway solid-tumour ADCs.
 - **Class bifurcation confirmed:** Investment and clinical momentum are bifurcating cleanly into (a) next-gen solid-tumour ADCs with validated DXd/SN-38 payloads (T-DXd, dato-DXd, sac-gov in TNBC, EV) — actively advancing — versus (b) legacy hematologic/PBD-class AA-pathway assets (loncastuximab, belantamab) under elevated scrutiny or withdrawal risk.
 - **Who is winning by target:** TROP2 is splitting within the class — sac-gov TNBC leading (ASCENT-04 1L TNBC positive), dato-DXd HR+ weakening (TROPION-Breast01 OS NS); HER2/DXd franchise (T-DXd/AZ-Daiichi) is the single most dominant ADC franchise across the KB, now spanning breast 1L HER2+, HER2-low, urothelial pan-tumour, and CRC HER2+; Nectin-4 (EV) owns la/mUC 1L with the best HR in solid-tumour oncology in the past decade (OS HR 0.47).
-- **CLDN18.2 ADC class gets its first Phase 3 anchor:** IBI343 gastric success (Innovent/Takeda $1.2B, signal_id 139) validates CLDN18.2 as a druggable GI ADC target — but gastric-to-PDAC translation is uncertain due to stroma and lower surface density; CRC expression is even lower (~10-15%).
+- **CLDN18.2 ADC class gets its first Phase 3
 - **Watch flags:** Dato-DXd TROPION-Lung01 confirmatory in NSCLC is the highest single near-term regulatory risk in the solid-tumour ADC class; DREAMM-7 final OS for belantamab is the highest-urgency hematologic ADC data gap; and the absence of any ADC in gastric outside CLDN18.2 (HER2 ADC disitamab vedotin has separate urothelial momentum) marks the class frontier.
 
 ---
@@ -81,11 +81,11 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 ### Phase 2 / Earlier Notable
 
-- **T-DXd HER2-ultralow breast:** DESTINY-Breast06 ORR 57.3% in HR+/HER2-ultralow — expanding the HER2 addressable population below IHC 1+ to encompass tumours with detectable HER2 by any threshold. Analyst-knowledge-based caveat.
+- **T-DXd HER2-ultralow breast:** DESTINY-Breast06 ORR 57.3% in HR+/HER2-ultralow — expanding the HER2 addressable population below IHC 1+ to encompass tumours with detectable HER2 by any threshold.
 - **Raludotatug deruxtecan (CDH6 ADC):** Phase 2 in recurrent HGSC ovarian; CDH6 target is novel to WS12 KB; DXd payload class.
 - **Ifinatamab deruxtecan (B7-H3 ADC):** Phase 2 in SCLC (two separate expansion cohorts in WS12 KB), Phase 2 in ovarian. B7-H3 is a pan-tumour target.
 - **ADCT-602 (CD22 PBD-dimer ADC):** Phase 2 NHL/DLBCL; same ADC Therapeutics platform as Zynlonta — confirmatory trial risk flagged by NHL analyst (D-NHL-002).
-- **Ona Therapeutics next-gen ADC:** $87M Series B (signal_id 80, Jun 2026), breast/CRC focus, target undisclosed. Next-gen design positioned against legacy TROP2/HER2 crowding.
+- **Ona Therapeutics next-gen ADC:** $87M Series B, breast/CRC focus, target undisclosed. Next-gen design positioned against legacy TROP2/HER2 crowding.
 
 ---
 
@@ -95,14 +95,14 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 - **DESTINY-Breast09 (T-DXd+pertuzumab) mPFS ~28 mo at ASCO 2026** (breast_analyst_review edit_index 0): beats CLEOPATRA THP bar of 18.7 mo — largest single ADC frontrunner displacement in WS12 breast KB. Anchors T-DXd as 1L HER2+ standard candidate if NEJM confirms.
 - **ASCENT-04 positive 1L TNBC PD-L1+** (breast_analyst_review cycle 3): sacituzumab govitecan + pembrolizumab meets primary endpoint; establishes TROP2+IO as 1L TNBC standard if mPFS > KEYNOTE-355 bar of 9.7 mo (mPFS TBD — ASCO post-buzz window closes Jun 12).
-- **IBI343 CLDN18.2 ADC Phase 3 gastric positive + Takeda $1.2B deal** (signal_id 139): first Phase 3 validation of CLDN18.2 ADC class; enables downstream read-across to PDAC and CRC (with important caveats on expression levels).
+- **IBI343 CLDN18.2 ADC Phase 3 gastric positive + Takeda $1.2B deal**: first Phase 3 validation of CLDN18.2 ADC class; enables downstream read-across to PDAC and CRC (with important caveats on expression levels).
 - **Enfortumab vedotin + pembro 1L la/mUC:** EV-302 data is the class baseline anchor — no new cycle 4 clinical data but the OS HR 0.47 remains the structural floor for all new urothelial ADC entrants.
 - **Mirvetuximab full approval MIRASOL ovarian:** Confirmed in ovarian analyst cycle 4 — solid-tumour ADC class positive validation outside breast.
-- **Ona Therapeutics Series B ($87M)** (signal_id 80): next-gen ADC investment active despite class-level safety caution.
+- **Ona Therapeutics Series B ($87M)**: next-gen ADC investment active despite class-level safety caution.
 
 ### Negative Signals
 
-- **Zynlonta Phase 3 DLBCL confirmatory ~3x death rate** (signal_id 79/111, Jun 4 2026): ADC accelerated-approval confirmatory trial standard permanently raised. NHL analyst decision D-NHL-001 URGENT: withdrawal imminent. -50%+ stock for ADC Therapeutics.
+- **Zynlonta Phase 3 DLBCL confirmatory ~3x death rate**: ADC accelerated-approval confirmatory trial standard permanently raised. NHL analyst decision D-NHL-001 URGENT: withdrawal imminent. -50%+ stock for ADC Therapeutics.
 - **TROPION-Breast01 OS HR ~0.84 NS at ASCO 2026** (breast_analyst_review cycle 3): dato-DXd fails to show OS benefit in HR+/HER2- breast — weakens TROP2 ADC investment thesis in HR+ breast, especially versus competitor sac-gov in TNBC.
 - **Sacituzumab govitecan urothelial WITHDRAWN 2024** (TROPiCS-04 OS HR 1.06, urothelial.md): TROP2 ADC fails in urothelial confirmatory — second class-level confirmatory setback for TROP2 in a non-breast setting.
 - **LEAP-002 pembro+lenvatinib 1L HCC NEGATIVE** (HCC analyst RJ-01): not an ADC but establishes a pattern: IO+TKI 1L combinations without a validated ADC partner have underperformed.
@@ -116,13 +116,13 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 ## Cross-Indication Dynamics
 
-**NHL/DLBCL:** Zynlonta is effectively removed from the 3L+ DLBCL competitive landscape (NHL analyst D-NHL-001 AUTO_APPLY URGENT). The ADC segment at 3L+ DLBCL is now vacant — bispecifics (glofitamab, epcoritamab) are the primary beneficiaries. Polatuzumab vedotin (1L DLBCL, pola+R-CHP) is unaffected — it is a full approval, not AA-pathway. The class risk in DLBCL is now specifically PBD-class hematologic ADCs under AA pathway. ADCT-602 (CD22 PBD ADC, ADC Therapeutics) inherits indirect platform scrutiny (D-NHL-002).
+**NHL/DLBCL:** Zynlonta is effectively removed from the 3L+ DLBCL competitive landscape (NHL analyst D-NHL-001 URGENT). The ADC segment at 3L+ DLBCL is now vacant — bispecifics (glofitamab, epcoritamab) are the primary beneficiaries. Polatuzumab vedotin (1L DLBCL, pola+R-CHP) is unaffected — it is a full approval, not AA-pathway. The class risk in DLBCL is now specifically PBD-class hematologic ADCs under AA pathway. ADCT-602 (CD22 PBD ADC, ADC Therapeutics) inherits indirect platform scrutiny (D-NHL-002).
 
 **MM:** Belantamab mafodotin is the sole ADC in the WS12 MM KB. DREAMM-10 (NDMM-TE Phase 3 confirmatory) is the principal at-risk design. The Zynlonta precedent elevates scrutiny because (a) DREAMM-10 is a confirmatory design and (b) DREAMM-7 final OS is absent — a gap the MM analyst has escalated to data_gaps rank 1. The GSK relationship to ADCC/MMAF payload (microtubule disruption, not PBD) does provide some biological differentiation from loncastuximab's PBD chemistry, but class-level regulatory caution will apply regardless of payload class. Net: belantamab re-approval is preserved, confirmatory execution risk is elevated.
 
 **Breast:** The most active ADC battleground in the WS12 KB. Three simultaneous competitive dynamics: (1) T-DXd HER2 franchise expanding 1L (DESTINY-Breast09), (2) sac-gov TNBC TROP2+IO leading (ASCENT-04), (3) dato-DXd weakening in HR+ (TROPION-Breast01 OS NS). TROP2 ADC class is bifurcating by payload: sac-gov's SN-38 payload showing durable OS in TNBC; dato-DXd's DXd payload underperforming OS vs HR+ expectations. This is a within-class payload differentiation story, not a class-level failure. Breast solid-tumour ADC confirmatory designs (ASCENT-05 adj, TROPION-Breast01/02) are monitored for the Zynlonta trigger but the ovarian mirvetuximab approval is the class's solid-tumour validation evidence.
 
-**NSCLC:** Dato-DXd TROPION-Lung01 is the single highest-stakes post-AA ADC confirmatory in solid tumours within the WS12 KB. It was approved via AA on ORR/DOR basis and now must show PFS/OS in the confirmatory setting. The MM/NSCLC analysts concur: if FDA applies Zynlonta-level post-AA scrutiny to solid-tumour ADC confirmatory trials, dato-DXd is the most exposed asset. Schema decision deferred to Katie (option A new `regulatory_risk` section vs option B nested note in `competitive_dynamics`). Sacituzumab tirumotecan (sac-TMT) is a next-gen TROP2 competitor entering Phase 3 in both NSCLC and urothelial simultaneously — monitoring both confirmatory tracks is important.
+**NSCLC:** Dato-DXd TROPION-Lung01 is the single highest-stakes post-AA ADC confirmatory in solid tumours within the WS12 KB. It was approved via AA on ORR/DOR basis and now must show PFS/OS in the confirmatory setting. The MM/NSCLC analysts concur: if FDA applies Zynlonta-level post-AA scrutiny to solid-tumour ADC confirmatory trials, dato-DXd is the most exposed asset.. Sacituzumab tirumotecan (sac-TMT) is a next-gen TROP2 competitor entering Phase 3 in both NSCLC and urothelial simultaneously — monitoring both confirmatory tracks is important.
 
 **Urothelial:** The class story here is one of clear success followed by a confirmatory failure. EV + pembro (OS HR 0.47) is the class's best solid-tumour readout globally. Sac-gov's urothelial withdrawal (TROPiCS-04 2024) is the class's most recent confirmatory failure in a solid tumour before Zynlonta. The two failures together (urothelial sac-gov + DLBCL Zynlonta) bookend the AA-pathway risk narrative. Next-generation assets in urothelial (sac-TMT Phase 3, ASG-22ME-19 next-gen EV) are being designed with improved chemistry specifically to avoid TROPiCS-04-type OS failures. Disitamab vedotin HER2 franchise is China-origin (COINS Act watch) but clinically compelling.
 
@@ -140,9 +140,9 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 **Imminent readouts:**
 
-1. **Dato-DXd TROPION-Lung01 confirmatory endpoint** (NSCLC AA-pathway): If a DSMB safety signal or FDA hold were issued, this would be the first solid-tumour ADC regulatory action following Zynlonta and would require immediate HUMAN_REVIEW chain across NSCLC + breast (TROPION-Breast01/02) + CRC (M9140 class note). No FDA action confirmed as of Jun 5 2026.
+1. **Dato-DXd TROPION-Lung01 confirmatory endpoint** (NSCLC AA-pathway): If a DSMB safety signal or FDA hold were issued, this would be the first solid-tumour ADC regulatory action following Zynlonta and would require immediate chain across NSCLC + breast (TROPION-Breast01/02) + CRC (M9140 class note). No FDA action confirmed as of Jun 5 2026.
 
-2. **DESTINY-Breast09 NEJM full publication** (Q3-Q4 2026 est.): Will confirm mPFS exact value and subgroup data for T-DXd+pertuzumab 1L HER2+. If mPFS > 28 mo confirmed and OS data shows trend benefit, this converts to AUTO_APPLY for 1L HER2+ benchmark revision and competitive_dynamics frontrunner displacement (breast_analyst cycle 3 Edit 0).
+2. **DESTINY-Breast09 NEJM full publication** (Q3-Q4 2026 est.): Will confirm mPFS exact value and subgroup data for T-DXd+pertuzumab 1L HER2+. If mPFS > 28 mo confirmed and OS data shows trend benefit, this converts to for 1L HER2+ benchmark revision and competitive_dynamics frontrunner displacement (breast_analyst cycle 3 Edit 0).
 
 3. **ASCENT-04 mPFS confirmation** (ASCO post-buzz window, Jun 12 deadline): Full mPFS publication from NEJM/Lancet Oncol will set the sac-gov+pembro 1L TNBC benchmark. If mPFS > 12 mo, KEYNOTE-355 (9.7 mo) is displaced as the 1L TNBC TROP2 anchor.
 
@@ -152,7 +152,7 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 **Regulatory decisions pending:**
 
-- **FDA response to Zynlonta confirmatory safety signal**: No formal FDA communication (clinical hold, safety communication, or class-label scrutiny memo) has been issued as of Jun 5 2026. The NHL analyst notes the exact death-rate numerics and FDA response timeline are not yet public. If FDA issues a class-wide ADC AA confirmatory safety communication, it would trigger immediate HUMAN_REVIEW chain for dato-DXd (NSCLC), ASCENT-05 (breast adj sac-gov), and any other ADC AA-pathway confirmatory program in the KB.
+- **FDA response to Zynlonta confirmatory safety signal**: No formal FDA communication (clinical hold, safety communication, or class-label scrutiny memo) has been issued as of Jun 5 2026. The NHL analyst notes the exact death-rate numerics and FDA response timeline are not yet public. If FDA issues a class-wide ADC AA confirmatory safety communication, it would trigger immediate chain for dato-DXd (NSCLC), ASCENT-05 (breast adj sac-gov), and any other ADC AA-pathway confirmatory program in the KB.
 
 - **TROPION-Lung01 confirmatory FDA action**: Dato-DXd received AA approval in NSCLC on ORR/DOR basis; the confirmatory trial is ongoing. If FDA requires interim safety review following Zynlonta precedent, this is the most proximate solid-tumour ADC regulatory event.
 
@@ -160,10 +160,10 @@ The Zynlonta signal (Jun 2026) has created the most significant class-level regu
 
 **Deal flow / M&A signals:**
 
-- **Ona Therapeutics $87M Series B** (signal_id 80): Next-gen ADC with breast/CRC focus and undisclosed target. Investor confidence in next-gen ADC design is intact despite class safety signal. This is the clearest evidence of ADC investment bifurcation toward post-legacy designs.
-- **Regeneron CytomX Probody ADC expansion** (signal_id 117): Probody technology conditionally activates the antibody in the tumour microenvironment — a structural approach to reduce systemic ADC toxicity. If Probody reduces off-target bystander effect in normal tissue, it directly addresses the safety concern raised by the Zynlonta signal.
+- **Ona Therapeutics $87M Series B**: Next-gen ADC with breast/CRC focus and undisclosed target. Investor confidence in next-gen ADC design is intact despite class safety signal. This is the clearest evidence of ADC investment bifurcation toward post-legacy designs.
+- **Regeneron CytomX Probody ADC expansion**: Probody technology conditionally activates the antibody in the tumour microenvironment — a structural approach to reduce systemic ADC toxicity. If Probody reduces off-target bystander effect in normal tissue, it directly addresses the safety concern raised by the Zynlonta signal.
 - **Innovent-Takeda IBI343 gastric deal ($1.2B)**: Despite COINS Act headwinds, China-origin ADC platform deals remain commercially viable at scale. This is a key datapoint for the counter-thesis that geopolitical risk de-rates China ADC deals completely.
-- **Patent cliff M&A** (signal_id 87, 131): ADC/bispecific/RLT are the dominant modalities in 2026 M&A. ADC acqui-hire targets in the WS12 KB context include ImmunoGen (AbbVie, already closed), Daiichi Sankyo (full AZ partnering), and second-tier acqui-hire candidates (Immunomedics/Gilead, Sutro Biopharma) — analyst-knowledge-based caveat, not KB-anchored.
+- **Patent cliff M&A**: ADC/bispecific/RLT are the dominant modalities in 2026 M&A. ADC acqui-hire targets in the WS12 KB context include ImmunoGen (AbbVie, already closed), Daiichi Sankyo (full AZ partnering), and second-tier acqui-hire candidates (Immunomedics/Gilead, Sutro Biopharma)
 
 ---
 
@@ -179,7 +179,7 @@ The next generation of competition for ADCs is not IO, small molecules, or CAR-T
 
 **In vivo cell therapy as long-horizon disruptor:**
 
-Legend Biotech's in vivo lymphoma near-complete responses (signal_id 81) eliminate the manufacturing bottleneck that has historically constrained ex vivo ADC-competing modalities (CAR-T, bispecifics). If in vivo cell therapy achieves solid-tumour expansion (currently hematologic only) and targets overlap with ADC antigens (CD19, BCMA, HER2, TROP2), the premium placed on ADC as the "easiest to manufacture targeted cytotoxic" erodes. This is a 5-7 year horizon, not cycle-level, but the structural threat is real for haematologic ADCs specifically.
+Legend Biotech's in vivo lymphoma near-complete responses eliminate the manufacturing bottleneck that has historically constrained ex vivo ADC-competing modalities (CAR-T, bispecifics). If in vivo cell therapy achieves solid-tumour expansion (currently hematologic only) and targets overlap with ADC antigens (CD19, BCMA, HER2, TROP2), the premium placed on ADC as the "easiest to manufacture targeted cytotoxic" erodes. This is a 5-7 year horizon, not cycle-level, but the structural threat is real for haematologic ADCs specifically.
 
 **China-origin ADC platform may survive COINS Act intact:**
 
@@ -191,19 +191,19 @@ The Innovent-Takeda $1.2B deal closed despite COINS Act/BIOSECURE escalation. If
 
 **NSCLC ETLM:** The ADC schema decision deferred by Katie (Edit 4 carry-forward: option_a new `regulatory_risk` section vs option_b competitive_dynamics sub-key) blocks the most important ADC safety update. This is the highest-priority schema decision in the NSCLC ETLM. Until resolved, dato-DXd TROPION-Lung01 confirmatory risk is undocumented in the ETLM.
 
-**MM ETLM:** AUTO_APPLY ready (C4-ETLM-001): Zynlonta confirmatory signal + DREAMM-10 risk note + DREAMM-7 OS rank elevation. This requires a WS9 MM session.
+**MM ETLM:** ready (C4-ETLM-001): Zynlonta confirmatory signal + DREAMM-10 risk note + DREAMM-7 OS rank elevation. This requires a WS9 MM session.
 
-**NHL/DLBCL ETLM:** AUTO_APPLY URGENT (D-NHL-001): Zynlonta removal from active 3L+ DLBCL comps + ADCT-602 risk flag. Highest-urgency ADC ETLM update in the KB.
+**NHL/DLBCL ETLM:** URGENT (D-NHL-001): Zynlonta removal from active 3L+ DLBCL comps + ADCT-602 risk flag. Highest-urgency ADC ETLM update in the KB.
 
-**Breast ETLM:** Cycle 3 HUMAN_REVIEW backlog (DESTINY-Breast09, TROPION-Breast01 OS, ASCENT-04 mPFS) remains fully open. The ASCO post-buzz window closes Jun 12 — publications this week are the trigger.
+**Breast ETLM:** Cycle 3 backlog (DESTINY-Breast09, TROPION-Breast01 OS, ASCENT-04 mPFS) remains fully open. The ASCO post-buzz window closes Jun 12 — publications this week are the trigger.
 
 **Urothelial ETLM:** Sac-gov urothelial withdrawal should already be reflected (TROPHY-U-01/TROPiCS-04 withdrawal confirmed in urothelial.md approved_therapies); verify ETLM `withdrawn` flag is current. Sac-TMT Phase 3 re-entry is the key new pipeline entry.
 
-**CRC ETLM:** ETLM-CRC-003 (ADC safety class note) is HUMAN_REVIEW-pending at medium urgency. No immediate clinical data point — annotation only.
+**CRC ETLM:** ETLM-CRC-003 (ADC safety class note) is -pending at medium urgency. No immediate clinical data point — annotation only.
 
 **PDAC ETLM:** ADC class is largely inferential for PDAC; IBI343 gastric validation is relevant (competitive_dynamics.cldn18_2 update, HR-PDAC signal_id 139). KB quality gap (9 blank events) blocks evidence-graded PDAC ADC assessment.
 
-**AML ETLM:** AUTO_APPLY ready (ETLM-AML-001): ADC class safety note for Mylotarg section + novel AML ADC confirmatory bar elevation.
+**AML ETLM:** ready (ETLM-AML-001): ADC class safety note for Mylotarg section + novel AML ADC confirmatory bar elevation.
 
 **Ovarian ETLM:** Mirvetuximab full MIRASOL approval is a class positive — confirm ovarian ETLM has updated from AA to full approval status. Raludotatug deruxtecan (CDH6 DXd-ADC) and ifinatamab (B7-H3 ADC) are phase 2 pipeline additions pending schema add.
 
@@ -230,15 +230,15 @@ A new asset entering the ADC class in 2026 faces the following differentiation r
 - **signal_ids:** 79, 80, 82, 111, 117, 121, 130, 131, 138, 139, 140
 - **event_ids:** (via analyst reviews) NSCLC events 7, 8, 9, 14; NHL events 89–100; Breast events 16–26 (stub anchors); MM events (DREAMM-7 anchor)
 - **ETLM sections referenced:**
-  - NSCLC: competitive_dynamics, pipeline_assets, regulatory_risk (schema pending)
-  - Breast: efficacy_benchmarks_by_line (1L_HER2+, 1L_TNBC PD-L1+), competitive_dynamics, data_gaps
-  - MM: competitive_dynamics (ADC Safety), data_gaps (DREAMM-7 OS rank 1)
-  - NHL/DLBCL: approved_therapies (Zynlonta), pipeline_assets (ADCT-602), competitive_dynamics
-  - Urothelial: approved_therapies (sac-gov withdrawn, EV standard), pipeline_assets (sac-TMT, disitamab vedotin)
-  - CRC: competitive_dynamics (ADC safety note pending), pipeline_assets (T-DXd, BL-B01D1, M9140)
-  - PDAC: competitive_dynamics.cldn18_2 (IBI343 read-across)
-  - AML/MDS: competitive_dynamics.aml_immunotherapy.adc_class_safety, approved_therapies (Mylotarg)
-  - Ovarian: approved_therapies (mirvetuximab full approval), pipeline_assets (raludotatug, ifinatamab)
+ - NSCLC: competitive_dynamics, pipeline_assets, regulatory_risk (schema pending)
+ - Breast: efficacy_benchmarks_by_line (1L_HER2+, 1L_TNBC PD-L1+), competitive_dynamics, data_gaps
+ - MM: competitive_dynamics (ADC Safety), data_gaps (DREAMM-7 OS rank 1)
+ - NHL/DLBCL: approved_therapies (Zynlonta), pipeline_assets (ADCT-602), competitive_dynamics
+ - Urothelial: approved_therapies (sac-gov withdrawn, EV standard), pipeline_assets (sac-TMT, disitamab vedotin)
+ - CRC: competitive_dynamics (ADC safety note pending), pipeline_assets (T-DXd, BL-B01D1, M9140)
+ - PDAC: competitive_dynamics.cldn18_2 (IBI343 read-across)
+ - AML/MDS: competitive_dynamics.aml_immunotherapy.adc_class_safety, approved_therapies (Mylotarg)
+ - Ovarian: approved_therapies (mirvetuximab full approval), pipeline_assets (raludotatug, ifinatamab)
 - **ecosystem_knowledge.md entries:** 2026-06-05 cycles 1, 3, and 4 (modality trajectory sections; ADC safety class entries; deal climate; CLDN18.2 ADC gastric validation)
 - **Analyst reviews used (cycle 4):** nsclc, breast (cycle 4 + cycle 3 references), mm, nhl_dlbcl, crc, pdac, aml_mds, hcc
 - **ETLM drafts read:** urothelial.md (sections 2-4); breast.md, nsclc.md, mm.md (referenced via analyst reviews)

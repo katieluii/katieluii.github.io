@@ -62,6 +62,35 @@ function Card({ children, accent }: { children: React.ReactNode; accent?: string
   );
 }
 
+/** Cap a long list to `cap` items with a Show all / Show less toggle, so the
+ *  public landscape map stays skimmable. Applied pipeline-wide (every ETLM). */
+function useShowMore<T>(items: T[], cap: number) {
+  const [expanded, setExpanded] = useState(false);
+  const shown = expanded ? items : items.slice(0, cap);
+  const hiddenCount = items.length - shown.length;
+  return { shown, hiddenCount, expanded, toggle: () => setExpanded((v) => !v) };
+}
+
+function ShowMore({
+  hiddenCount,
+  expanded,
+  onClick,
+}: {
+  hiddenCount: number;
+  expanded: boolean;
+  onClick: () => void;
+}) {
+  if (hiddenCount <= 0 && !expanded) return null;
+  return (
+    <button
+      onClick={onClick}
+      className="mt-3 text-xs font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+    >
+      {expanded ? '− Show less' : `+ Show all (${hiddenCount} more)`}
+    </button>
+  );
+}
+
 function KV({ label, value }: { label: string; value: React.ReactNode }) {
   if (value === null || value === undefined || value === '') return null;
   return (
@@ -103,6 +132,21 @@ function humanizeEnum(s: unknown): string {
   if (/[a-z]/.test(str)) return spaced; // already mixed/lowercase free text
   const lower = spaced.toLowerCase();
   return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+/** Render ANY value as skimmable text — never raw JSON. A public landscape map
+ *  must never dump `{...}`, so objects become "key value · key value" and arrays
+ *  join their humanized items. Bounded depth so a deep object can't explode. */
+function humanizeValue(v: unknown, depth = 0): string {
+  if (v === null || v === undefined) return '—';
+  if (Array.isArray(v)) return v.map((x) => humanizeValue(x, depth + 1)).filter(Boolean).join(', ');
+  if (isObj(v)) {
+    if (depth >= 2) return Object.values(v).map((x) => humanizeValue(x, depth + 1)).filter(Boolean).join(', ');
+    return Object.entries(v)
+      .map(([k, val]) => `${humanizeEnum(k)}: ${humanizeValue(val, depth + 1)}`)
+      .join(' · ');
+  }
+  return String(v);
 }
 
 /** Renders an ETLM `sources` array (`{label, url, type, quoted_metric}`) as a row
@@ -263,6 +307,9 @@ function ApprovedTherapies({
     ? 'Current standard-of-care and active agents'
     : 'The standard-of-care anchor';
 
+  const cards = data.filter(isObj);
+  const { shown, hiddenCount, expanded, toggle } = useShowMore(cards, 8);
+
   // Condensed mode: one line per agent (no per-drug efficacy / safety / trial
   // cards) — legacy agents don't warrant equal granularity to active agents.
   if (condensed) {
@@ -314,7 +361,7 @@ function ApprovedTherapies({
         count={data.length}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {data.map((entry, i) => {
+        {shown.map((entry, i) => {
           if (!isObj(entry)) return null;
           const eff = isObj(entry.key_efficacy) ? entry.key_efficacy : {};
           return (
@@ -408,6 +455,7 @@ function ApprovedTherapies({
           );
         })}
       </div>
+      <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
     </section>
   );
 }
@@ -463,6 +511,8 @@ function PipelineAssets({
       })
     : rows;
 
+  const { shown, hiddenCount, expanded, toggle } = useShowMore(sorted, 12);
+
   function handleSort(key: SortKey) {
     if (sortKey === key) {
       if (sortDir === 'asc') setSortDir('desc');
@@ -513,7 +563,7 @@ function PipelineAssets({
             </tr>
           </thead>
           <tbody>
-            {sorted.map((entry, i) => {
+            {shown.map((entry, i) => {
               const phase = String(entry.phase ?? '—');
               return (
                 <tr
@@ -562,6 +612,7 @@ function PipelineAssets({
           </tbody>
         </table>
       </div>
+      <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
       {linkedTpps.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
           Related TPPs in this preview:{' '}
@@ -765,6 +816,7 @@ function MechanismLandscape({
 }
 
 function RecentConferenceReadouts({ data }: { data: unknown[] }) {
+  const { shown, hiddenCount, expanded, toggle } = useShowMore(data, 8);
   return (
     <section className="mb-10">
       <SectionHeader
@@ -783,7 +835,7 @@ function RecentConferenceReadouts({ data }: { data: unknown[] }) {
         </Card>
       ) : (
         <div className="space-y-3">
-          {data.map((entry, i) => {
+          {shown.map((entry, i) => {
             if (!isObj(entry)) return null;
             const relevanceKey = Object.keys(entry).find((k) => /_relevance$/.test(k));
             const relevance = relevanceKey ? entry[relevanceKey] : null;
@@ -853,6 +905,7 @@ function RecentConferenceReadouts({ data }: { data: unknown[] }) {
               </Card>
             );
           })}
+          <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
         </div>
       )}
     </section>
@@ -876,7 +929,7 @@ function CompetitiveDynamics({ data }: { data: Record<string, unknown> }) {
             {Array.isArray(val) ? (
               <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4">
                 {val.slice(0, 8).map((v, i) => (
-                  <li key={i}>{typeof v === 'object' ? JSON.stringify(v) : String(v)}</li>
+                  <li key={i}>{humanizeValue(v)}</li>
                 ))}
               </ul>
             ) : isObj(val) ? (
@@ -887,11 +940,7 @@ function CompetitiveDynamics({ data }: { data: Record<string, unknown> }) {
                       {k.replace(/_/g, ' ')}:
                     </span>{' '}
                     <span className="text-zinc-800 dark:text-zinc-200">
-                      {typeof v === 'object'
-                        ? Array.isArray(v)
-                          ? (v as unknown[]).map(String).join(', ')
-                          : JSON.stringify(v).slice(0, 200)
-                        : String(v)}
+                      {humanizeValue(v)}
                     </span>
                   </div>
                 ))}
@@ -1184,6 +1233,60 @@ function NovelTargets({ data }: { data: unknown[] }) {
   );
 }
 
+/** Early watchlist signals — annotation only (not a placed benchmark or pipeline
+ *  asset). Kept public but rendered as clean cards; internal analyst-governance
+ *  tails ("Per governing call …", "(Katie NOTE call)") are stripped from display. */
+function EmergingSignals({ data }: { data: unknown[] }) {
+  const items = data.filter(isObj);
+  if (items.length === 0) return null;
+  const cleanCaveat = (s: string) =>
+    s.replace(/[.;]?\s*Per (?:governing call|Katie)\b.*$/i, '').trim();
+  return (
+    <section className="mb-10">
+      <SectionHeader
+        icon={AlertTriangle}
+        title="Emerging signals"
+        subtitle="On the watchlist — annotation only; not yet a placed benchmark or pipeline asset"
+        count={items.length}
+      />
+      <div className="space-y-3">
+        {items.map((s, i) => (
+          <Card key={i} accent="ring-amber-200/60 dark:ring-amber-500/20">
+            <div className="flex items-baseline justify-between gap-2 mb-1">
+              <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                {String(s.asset ?? s.drug_name ?? '—')}
+              </div>
+              {s.status ? (
+                <span className="text-[10px] uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                  {humanizeEnum(s.status)}
+                </span>
+              ) : null}
+            </div>
+            <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+              {[s.company, s.modality].filter(Boolean).map(String).join(' · ')}
+            </div>
+            {s.indication_subtype ? (
+              <div className="mb-2">
+                <span className="inline-block text-[10px] px-2 py-0.5 rounded-full ring-1 bg-amber-50 text-amber-700 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30">
+                  {String(s.indication_subtype)}
+                </span>
+              </div>
+            ) : null}
+            {s.data ? (
+              <div className="text-xs text-zinc-700 dark:text-zinc-300 mb-2">{String(s.data)}</div>
+            ) : null}
+            {s.caveat ? (
+              <div className="text-[11px] text-zinc-500 dark:text-zinc-400 italic leading-relaxed">
+                {cleanCaveat(String(s.caveat))}
+              </div>
+            ) : null}
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 const SKIP_KEYS = new Set([
   'analyst_session_id',
   'human_approved',
@@ -1200,6 +1303,10 @@ const SKIP_KEYS = new Set([
   'schema_adaptation_note',
   'data_gaps',
   'analyst_notes',
+  // `allogeneic_cell_therapy_pipeline` is suppressed: its unique asset is folded
+  // into `pipeline_assets`, so it needs no standalone section. (`emerging_signals`
+  // IS shown — it has a dedicated renderer below.)
+  'allogeneic_cell_therapy_pipeline',
 ]);
 
 const SECTION_ORDER = [
@@ -1214,6 +1321,7 @@ const SECTION_ORDER = [
   'efficacy_benchmarks_by_stage',
   'mechanism_landscape',
   'competitive_dynamics',
+  'emerging_signals',
   'unmet_needs',
   'regulatory_landscape',
   'preclinical_watchlist',
@@ -1230,6 +1338,7 @@ const SECTION_LABEL: Record<string, string> = {
   recent_conference_readouts: 'Readouts',
   mechanism_landscape: 'Mechanisms',
   competitive_dynamics: 'Competitive',
+  emerging_signals: 'Emerging signals',
   unmet_needs: 'Unmet needs',
   regulatory_landscape: 'Regulatory',
   preclinical_watchlist: 'Preclinical',
@@ -1247,7 +1356,7 @@ type NavItem = { id: string; label: string; count?: number };
 
 /** Sticky scroll-spy rail: jump to any section, see where you are. Keeps the
  *  full report a single scroll (no tabs hiding content) while taming its length. */
-function ReportNav({ items }: { items: NavItem[] }) {
+function ReportNav({ items, onJump }: { items: NavItem[]; onJump?: (id: string) => void }) {
   const [active, setActive] = useState<string>(items[0]?.id ?? '');
 
   useEffect(() => {
@@ -1268,6 +1377,7 @@ function ReportNav({ items }: { items: NavItem[] }) {
   }, [items]);
 
   const jump = (id: string) => {
+    onJump?.(id); // expand the (possibly collapsed) target before scrolling
     const el = document.getElementById(id);
     if (!el) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1281,9 +1391,11 @@ function ReportNav({ items }: { items: NavItem[] }) {
   return (
     <nav
       aria-label="Sections"
-      className="sticky top-0 z-20 -mx-6 mb-8 border-b border-zinc-200 bg-white/85 px-6 py-2.5 backdrop-blur dark:border-white/10 dark:bg-zinc-950/80"
+      className="sticky top-0 z-20 -mx-6 mb-8 border-b border-zinc-200 bg-white/85 px-6 py-1.5 backdrop-blur dark:border-white/10 dark:bg-zinc-950/80"
     >
-      <div className="flex gap-1.5 overflow-x-auto">
+      {/* py-1 gives the pill ring vertical room — an overflow-x scroll box clips
+          overflow-y, which was cutting off the top/bottom of the ring outline. */}
+      <div className="flex gap-1.5 overflow-x-auto py-1">
         {items.map((it) => {
           const on = active === it.id;
           return (
@@ -1306,6 +1418,236 @@ function ReportNav({ items }: { items: NavItem[] }) {
         })}
       </div>
     </nav>
+  );
+}
+
+const SECTION_ICON: Record<string, React.ComponentType<{ className?: string }>> = {
+  epidemiology: Users,
+  approved_therapies_novel: Shield,
+  approved_therapies_legacy: Shield,
+  approved_therapies: Shield,
+  pipeline_assets: TestTube,
+  recent_conference_readouts: Calendar,
+  mechanism_landscape: Network,
+  competitive_dynamics: Swords,
+  emerging_signals: AlertTriangle,
+  unmet_needs: AlertTriangle,
+  regulatory_landscape: Shield,
+  preclinical_watchlist: TestTube,
+  novel_targets: TestTube,
+};
+
+function iconFor(key: string): React.ComponentType<{ className?: string }> {
+  if (key.startsWith('efficacy_benchmarks_')) return Gauge;
+  return SECTION_ICON[key] ?? PillIcon;
+}
+
+function asList(v: unknown): Record<string, unknown>[] {
+  return Array.isArray(v) ? v.filter(isObj) : [];
+}
+
+function firstStr(o: Record<string, unknown>, keys: string[]): string | null {
+  for (const k of keys) {
+    const val = o[k];
+    if (typeof val === 'string' && val.trim()) return val.trim();
+    if (typeof val === 'number') return String(val);
+  }
+  return null;
+}
+
+/** Best-effort one-line headline for a section, derived from its own data — the
+ *  ETLM JSON carries no curated summary field, so the "At a glance" exec summary
+ *  computes each line from the section's own shape. Defensive: unknown shapes
+ *  fall back to a static descriptor, never throw, never dump JSON. Same code
+ *  runs for every indication (released or not). */
+function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
+  const val = etlm[key];
+
+  if (key === 'epidemiology' && isObj(val)) {
+    const bits: string[] = [];
+    const push = (s: string) => {
+      if (bits.length < 2 && s) bits.push(s);
+    };
+    const inc = val.us_incidence_annual ?? val.global_incidence_annual;
+    if (typeof inc === 'number') push(`~${inc.toLocaleString('en-US')} cases/yr`);
+    const prev = val.us_prevalence_pct_adults ?? val.global_prevalence_pct_adults_obese;
+    if (bits.length < 2 && typeof prev === 'number') push(`${prev}% adult prevalence`);
+    const surv = val['5yr_survival_pct'];
+    if (typeof surv === 'number') push(`5-yr survival ${surv}%`);
+    // Fallback: first labeled numeric fields if the known keys are absent.
+    if (bits.length === 0) {
+      for (const [k, v] of Object.entries(val)) {
+        if (bits.length >= 2) break;
+        if ((typeof v === 'string' || typeof v === 'number') && /\d/.test(String(v))) {
+          let t = String(v).replace(/\s+/g, ' ').trim();
+          if (t.length > 44) t = `${t.slice(0, 44).replace(/\s+\S*$/, '')}…`;
+          push(`${humanizeEnum(k)}: ${t}`);
+        }
+      }
+    }
+    return bits.length ? bits.join(' · ') : 'Incidence, staging & survival context';
+  }
+
+  if (key.startsWith('approved_therapies')) {
+    const rows = asList(val);
+    const soc = rows.find(
+      (r) => /soc.?anchor/i.test(String(r.benchmark_status ?? '')) || r.is_soc === true,
+    );
+    const socName = soc ? firstStr(soc, ['drug_name', 'asset_name', 'name', 'regimen']) : null;
+    return socName
+      ? `${rows.length} agents · SOC anchor: ${socName}`
+      : `${rows.length} approved agent${rows.length === 1 ? '' : 's'}`;
+  }
+
+  if (key === 'pipeline_assets') {
+    const rows = asList(val);
+    const ph3 = rows.filter((r) => /(^|[^0-9])3([^0-9]|$)|III/.test(String(r.phase ?? ''))).length;
+    return `${rows.length} pipeline asset${rows.length === 1 ? '' : 's'}${
+      ph3 ? ` · ${ph3} in Phase 3` : ''
+    }`;
+  }
+
+  if (key === 'recent_conference_readouts') {
+    const rows = asList(val);
+    // Arrays are recency-ordered in these drafts, so [0] is the freshest.
+    const label = rows[0]
+      ? firstStr(rows[0], ['trial', 'trial_name', 'asset', 'drug_name', 'title', 'venue'])
+      : null;
+    return label
+      ? `${rows.length} readouts · latest: ${label}`
+      : `${rows.length} conference readout${rows.length === 1 ? '' : 's'}`;
+  }
+
+  if (key.startsWith('efficacy_benchmarks_')) {
+    const n = isObj(val) ? Object.keys(val).length : Array.isArray(val) ? val.length : 0;
+    return n
+      ? `Efficacy benchmarks across ${n} line${n === 1 ? '' : 's'} of therapy`
+      : 'Efficacy benchmarks by line of therapy';
+  }
+
+  if (key === 'mechanism_landscape') {
+    const n = Array.isArray(val) ? val.length : 0;
+    return `${n} target${n === 1 ? '' : 's'} / drug classes mapped to assets`;
+  }
+
+  if (key === 'competitive_dynamics') {
+    const n = isObj(val) ? Object.keys(val).length : 0;
+    return n
+      ? `${n} competitive dimension${n === 1 ? '' : 's'}: crowded targets, white space, LoE`
+      : 'Crowded targets, white space & patent expiries';
+  }
+
+  if (key === 'unmet_needs') {
+    const rows = asList(val);
+    const top = rows[0] ? firstStr(rows[0], ['need', 'title', 'label', 'gap']) : null;
+    return top
+      ? `${rows.length} unmet needs · e.g. ${top}`
+      : `${rows.length} unmet need${rows.length === 1 ? '' : 's'}`;
+  }
+
+  if (key === 'regulatory_landscape') return 'Pathway risks, designations & label scope';
+
+  if (key === 'preclinical_watchlist') {
+    const n = Array.isArray(val) ? val.length : 0;
+    return `${n} preclinical asset${n === 1 ? '' : 's'} on watch`;
+  }
+
+  if (key === 'novel_targets') {
+    const n = Array.isArray(val) ? val.length : 0;
+    return `${n} novel target${n === 1 ? '' : 's'}`;
+  }
+
+  if (key === 'emerging_signals') {
+    const rows = asList(val);
+    const first = rows[0]
+      ? firstStr(rows[0], ['asset', 'drug_name', 'company', 'indication_subtype'])
+      : null;
+    return first
+      ? `Watchlist${rows.length > 1 ? ` (${rows.length})` : ''}: ${first}`
+      : 'Early watchlist signals';
+  }
+
+  const n = Array.isArray(val) ? val.length : isObj(val) ? Object.keys(val).length : 0;
+  return n ? `${n} item${n === 1 ? '' : 's'}` : navLabel(key);
+}
+
+type SummaryRow = {
+  key: string;
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  count?: number;
+  headline: string;
+};
+
+/** "At a glance" — the report's landing view. One row per section (heading +
+ *  count + derived headline); a click expands that section and scrolls to it,
+ *  or collapses it if already open. Expand/Collapse-all toggle the whole map.
+ *  Lets the reader see every section's so-what without scrolling the full map. */
+function ExecSummary({
+  rows,
+  open,
+  onRow,
+  onExpandAll,
+  onCollapseAll,
+}: {
+  rows: SummaryRow[];
+  open: Record<string, boolean>;
+  onRow: (key: string) => void;
+  onExpandAll: () => void;
+  onCollapseAll: () => void;
+}) {
+  if (rows.length === 0) return null;
+  return (
+    <section className="mb-10 rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-4 sm:p-5">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          At a glance
+        </h2>
+        <div className="flex items-center gap-2 text-xs">
+          <button
+            onClick={onExpandAll}
+            className="font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+          >
+            Expand all
+          </button>
+          <span className="text-zinc-300 dark:text-zinc-600">·</span>
+          <button
+            onClick={onCollapseAll}
+            className="font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+          >
+            Collapse all
+          </button>
+        </div>
+      </div>
+      <ul className="divide-y divide-zinc-200/70 dark:divide-white/5">
+        {rows.map(({ key, icon: Icon, title, count, headline }) => {
+          const on = !!open[key];
+          return (
+            <li key={key}>
+              <button
+                onClick={() => onRow(key)}
+                aria-expanded={on}
+                className="group flex w-full items-start gap-3 py-2.5 text-left"
+              >
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300" />
+                <span className="w-32 shrink-0 text-xs font-semibold text-zinc-900 dark:text-zinc-100 sm:w-44">
+                  {title}
+                  {typeof count === 'number' ? (
+                    <span className="ml-1 font-normal text-zinc-400 dark:text-zinc-500">{count}</span>
+                  ) : null}
+                </span>
+                <span className="flex-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
+                  {headline}
+                </span>
+                <span className="shrink-0 text-xs text-zinc-400 transition-colors group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300">
+                  {on ? '▾' : '▸'}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
@@ -1342,16 +1684,15 @@ function renderSection(
   if (key === 'regulatory_landscape' && isObj(val)) return <RegulatoryLandscape data={val} />;
   if (key === 'preclinical_watchlist' && Array.isArray(val)) return <PreclinicalWatchlist data={val} />;
   if (key === 'novel_targets' && Array.isArray(val)) return <NovelTargets data={val} />;
-  return (
-    <section className="mb-10">
-      <SectionHeader icon={PillIcon} title={key.replace(/_/g, ' ')} />
-      <Card>
-        <pre className="text-[10px] text-zinc-600 dark:text-zinc-400 overflow-x-auto">
-          {JSON.stringify(val, null, 2).slice(0, 600)}
-        </pre>
-      </Card>
-    </section>
-  );
+  if (key === 'emerging_signals' && Array.isArray(val)) return <EmergingSignals data={val} />;
+  // No dedicated renderer → suppress. A public landscape map must NEVER dump raw
+  // JSON. Any section worth showing gets a real renderer above (and add it to
+  // SECTION_LABEL for a Title-Case nav label); everything else is hidden.
+  if (import.meta.env?.DEV) {
+    // eslint-disable-next-line no-console
+    console.warn(`[ETLMSections] no renderer for section "${key}" — suppressed from public report`);
+  }
+  return null;
 }
 
 export function ETLMSections({ etlm, indicationCode }: Props) {
@@ -1371,15 +1712,61 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
     .map((key) => ({ key, node: renderSection(key, etlm, indicationCode) }))
     .filter((r) => r.node !== null);
 
+  // Parent owns collapse state so the exec summary and the nav rail can drive it.
+  // Every section starts collapsed — the report leads with the "At a glance" map.
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+
+  const setAll = (val: boolean) =>
+    setOpen(Object.fromEntries(rendered.map((r) => [r.key, val])));
+
+  const scrollToKey = (key: string) => {
+    // Wait for the just-opened section to mount before scrolling to it.
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        const el = document.getElementById(sectionId(key));
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        el?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      }),
+    );
+  };
+
+  // Exec-summary row / nav pill click: toggle if open, else open + scroll to it.
+  const onRow = (key: string) => {
+    if (open[key]) {
+      setOpen((o) => ({ ...o, [key]: false }));
+    } else {
+      setOpen((o) => ({ ...o, [key]: true }));
+      scrollToKey(key);
+    }
+  };
+
+  const idToKey: Record<string, string> = Object.fromEntries(
+    rendered.map((r) => [sectionId(r.key), r.key]),
+  );
+
   const navItems: NavItem[] = rendered.map(({ key }) => ({
     id: sectionId(key),
     label: navLabel(key),
     count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
   }));
 
+  const summaryRows: SummaryRow[] = rendered.map(({ key }) => ({
+    key,
+    icon: iconFor(key),
+    title: navLabel(key),
+    count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
+    headline: sectionHeadline(key, etlm),
+  }));
+
   return (
     <div>
-      <ReportNav items={navItems} />
+      <ReportNav
+        items={navItems}
+        onJump={(id) => {
+          const key = idToKey[id];
+          if (key) setOpen((o) => ({ ...o, [key]: true }));
+        }}
+      />
       {(linkedTpps.length > 0 || linkedThemes.length > 0) && (
         <section className="mb-10 rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
@@ -1408,9 +1795,17 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
         </section>
       )}
 
+      <ExecSummary
+        rows={summaryRows}
+        open={open}
+        onRow={onRow}
+        onExpandAll={() => setAll(true)}
+        onCollapseAll={() => setAll(false)}
+      />
+
       {rendered.map(({ key, node }) => (
         <div key={key} id={sectionId(key)} className="scroll-mt-28">
-          {node}
+          {open[key] ? node : null}
         </div>
       ))}
 

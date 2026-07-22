@@ -1,6 +1,8 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Lock, X } from 'lucide-react';
 import {
+  ACCESS_WALL_ENABLED,
   FORMSPREE_ENDPOINT,
   ACCESS_CONTACT_EMAIL,
   PREVIEW_MAX_HEIGHT,
@@ -33,11 +35,20 @@ function markRequested() {
  *  does NOT unlock the content inline; I send the report to the captured email. */
 export function AccessRequestForm({ context }: { context: string }) {
   const [email, setEmail] = useState('');
+  // Honeypot: a hidden field real users never fill. Bots that auto-fill every
+  // input trip it and we drop the submit silently (Formspree also treats a
+  // filled `_gotcha` as spam). Pair with reCAPTCHA in the Formspree dashboard.
+  const [gotcha, setGotcha] = useState('');
   const [state, setState] = useState<FormState>(() => (alreadyRequested() ? 'done' : 'idle'));
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!email.trim()) return;
+    if (gotcha) {
+      // Bot filled the honeypot — pretend success, send nothing.
+      setState('done');
+      return;
+    }
     setState('submitting');
 
     if (!FORMSPREE_ENDPOINT) {
@@ -56,7 +67,8 @@ export function AccessRequestForm({ context }: { context: string }) {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), deliverable: context }),
+        // `deliverable` is code-supplied (the page context), not free user input.
+        body: JSON.stringify({ email: email.trim(), deliverable: context, _gotcha: gotcha }),
       });
       if (!res.ok) throw new Error(String(res.status));
       markRequested();
@@ -80,6 +92,17 @@ export function AccessRequestForm({ context }: { context: string }) {
 
   return (
     <form onSubmit={onSubmit} className="space-y-2">
+      {/* Honeypot — visually hidden, off-screen, not tabbable, autocomplete off. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        value={gotcha}
+        onChange={(e) => setGotcha(e.target.value)}
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+      />
       <div className="flex items-center gap-2">
         <input
           type="email"
@@ -145,7 +168,35 @@ export function GateCard({ context }: { context: string }) {
 /** Sits at the foot of a redacted ETLM summary. Names what the open view shows
  *  vs. what the paid full map adds, then captures a lead. Unlike RedactionGate
  *  this never blurs or blocks — the summary above stays fully readable. */
-export function DetailHook({ context }: { context: string }) {
+export function DetailHook({ context, reportHref }: { context: string; reportHref?: string }) {
+  // Wall off (2026-07-19): the full report is openly viewable, so the
+  // "withheld / paid layer" tease no longer applies. Render an open closing CTA
+  // into the full report (keeps the summary from ending on a bare grid) instead
+  // of the email tease.
+  if (!ACCESS_WALL_ENABLED) {
+    if (!reportHref) return null;
+    return (
+      <section className="mt-10 overflow-hidden rounded-2xl border-t-2 border-indigo-500 bg-white/70 ring-1 ring-zinc-200 dark:bg-white/[0.03] dark:ring-white/10">
+        <div className="flex flex-col gap-3 p-6 md:flex-row md:items-center md:justify-between md:p-7">
+          <div>
+            <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+              Read the full {context}
+            </h3>
+            <p className="mt-1 text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+              Full pipeline read, head-to-head benchmarks, mechanisms, competitive positioning &amp; regulatory — openly available.
+            </p>
+          </div>
+          <Link
+            to={reportHref}
+            className="inline-flex flex-shrink-0 items-center gap-1.5 self-start rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-indigo-500 md:self-auto"
+          >
+            Open the full report
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className="mt-10 overflow-hidden rounded-2xl border-t-2 border-indigo-500 bg-white/70 ring-1 ring-zinc-200 dark:bg-white/[0.03] dark:ring-white/10">
       <div className="grid gap-6 p-6 md:grid-cols-2 md:p-7">
@@ -217,7 +268,10 @@ export function RedactionGate({
   maxHeight?: number;
   bypass?: boolean;
 }) {
-  if (bypass) return <>{children}</>;
+  // Access wall removed 2026-07-19 (Katie): reports are openly viewable to gain
+  // traction — no email signup required to read pipelines or reports. Flip
+  // ACCESS_WALL_ENABLED back to true (in gating.ts) to restore the blur + gate.
+  if (!ACCESS_WALL_ENABLED || bypass) return <>{children}</>;
   return (
     <div className="relative" style={{ maxHeight }}>
       <div className="overflow-hidden" style={{ maxHeight }} aria-hidden>

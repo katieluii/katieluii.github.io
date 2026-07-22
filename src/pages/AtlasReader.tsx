@@ -19,7 +19,7 @@ import {
   indicationDisplay,
   type TherapeuticArea,
 } from '../data/atlas/taxonomy';
-import { LOCKED_INDICATIONS } from '../data/atlas/gating';
+import { LOCKED_INDICATIONS, ACCESS_WALL_ENABLED } from '../data/atlas/gating';
 import { AccessGateModal } from '../components/atlas/AccessGate';
 
 type IndicationGroup = {
@@ -90,15 +90,14 @@ export function AtlasReader() {
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Open previews are free; request the full report on any locked deliverable."
+      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Every published deliverable opens in full; a few indications are still in draft and marked as such."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
       <div className="flex flex-wrap items-center gap-2 mb-10">
-        <Pill variant="status-wip">Preview</Pill>
-        <Pill variant="tech">Request access</Pill>
+        <Pill variant="tech">Open access</Pill>
         <Pill variant="tech">
-          {totalIndications} indications · {etlmIndex.length} open previews · {tppIndex.length} TPPs ·{' '}
+          {totalIndications} indications · {etlmIndex.length} landscape maps · {tppIndex.length} TPPs ·{' '}
           {themeIndex.length} themes
         </Pill>
       </div>
@@ -169,7 +168,7 @@ export function AtlasReader() {
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
                   </Link>
-                ) : ind.locked ? (
+                ) : ind.locked && ACCESS_WALL_ENABLED ? (
                   <button
                     type="button"
                     onClick={() => setGateFor(`${ind.short} landscape map`)}
@@ -180,6 +179,15 @@ export function AtlasReader() {
                     </span>
                     <Lock className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-500 transition-colors" />
                   </button>
+                ) : ind.locked ? (
+                  <div className="flex w-full items-center justify-between rounded-lg ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.03] px-3 py-2 mb-3">
+                    <span className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                      Landscape map (ETLM)
+                    </span>
+                    <span className="text-[10px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                      In draft
+                    </span>
+                  </div>
                 ) : (
                   <p className="text-xs text-zinc-400 dark:text-zinc-500 mb-3 ml-6 italic">
                     No landscape map in this preview

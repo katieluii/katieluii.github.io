@@ -41,11 +41,16 @@ def load_config() -> dict[str, Any]:
     return json.loads(CONFIG_PATH.read_text())
 
 
-def strip_keys(obj: Any, strip: set[str]) -> Any:
+def strip_keys(obj: Any, strip: set[str], patterns: list[re.Pattern[str]] | None = None) -> Any:
+    patterns = patterns or []
+
+    def _drop(k: str) -> bool:
+        return k in strip or any(p.search(k) for p in patterns)
+
     if isinstance(obj, dict):
-        return {k: strip_keys(v, strip) for k, v in obj.items() if k not in strip}
+        return {k: strip_keys(v, strip, patterns) for k, v in obj.items() if not _drop(k)}
     if isinstance(obj, list):
-        return [strip_keys(v, strip) for v in obj]
+        return [strip_keys(v, strip, patterns) for v in obj]
     return obj
 
 
@@ -72,6 +77,61 @@ _GRP_EDITORIAL = re.compile(
 _CLAUSE_EDITORIAL = re.compile(
     r"\s*[,;:—-]?\s*(?:" + _EDITORIAL_TOKENS + r")[^.]*\.?", re.I
 )
+# 3) stray "verify" QC directive. Careful: preserve any real caveat that shares
+#    the parenthetical. "(verify — label-derived estimate)" → "(label-derived
+#    estimate)" (keep the why-to-distrust caveat); "(verify final label)" → drop
+#    (pure directive); "(verify)" → drop; trailing "; verify …" → drop.
+_VERIFY_KEEP_CAVEAT = re.compile(r"\(\s*verify\s*[—-]\s*([^)]*)\)", re.I)
+_VERIFY_PAREN = re.compile(r"\s*\(\s*verify\b[^)]*\)", re.I)
+_VERIFY_CLAUSE = re.compile(r"\s*[;,]\s*verify\b[^.)\]\"]*", re.I)
+
+
+def _strip_verify(s: str) -> str:
+    s = _VERIFY_KEEP_CAVEAT.sub(r"(\1)", s)  # keep the caveat, drop the "verify —"
+    s = _VERIFY_PAREN.sub("", s)             # pure "(verify …)" directive
+    s = _VERIFY_CLAUSE.sub("", s)            # trailing "; verify …"
+    return s
+
+# Extra config-driven editorial tokens (atlas-redaction-config.json →
+# etlm_value_scrub_extra_tokens). Compiled once via configure_scrub(); default
+# empty so the module is safe to import standalone.
+_EXTRA_GRP: re.Pattern[str] | None = None
+_EXTRA_CLAUSE: re.Pattern[str] | None = None
+
+
+def configure_scrub(extra_tokens: list[str]) -> None:
+    """Fold config-supplied editorial tokens into the value scrubbers."""
+    global _EXTRA_GRP, _EXTRA_CLAUSE
+    if not extra_tokens:
+        _EXTRA_GRP = _EXTRA_CLAUSE = None
+        return
+    alt = "|".join(extra_tokens)
+    _EXTRA_GRP = re.compile(r"\s*[(\[][^)\]]*(?:" + alt + r")[^)\]]*[)\]]", re.I)
+    _EXTRA_CLAUSE = re.compile(r"\s*[,;:—-]?\s*(?:" + alt + r")[^.]*\.?", re.I)
+
+
+# Surgical removal of internal analyst/PM editorial woven INTO otherwise-client
+# values (attribution, session refs, human rulings, workflow state). Each pattern
+# includes its own leading connective ("verified by", "per", "deferred to") so
+# the scrub leaves a clean value, not a dangling "verified by ". These target the
+# author's name and internal process — never clinical content.
+_INTERNAL_PHRASES = [
+    # whole parenthetical human-ruling annotation → drop the balanced paren
+    re.compile(r"\s*\(\s*(?:per\s+)?Katie (?:ruling|directive|disposition|NOTE-IT)\b[^)]*\)", re.I),
+    # trailing inline human-ruling clause → consume to end of value
+    re.compile(r"\s*[;,—-]?\s*(?:per\s+)?Katie (?:ruling|directive|disposition|NOTE-IT)\b.*$", re.I),
+    re.compile(r"\s*[;,]?\s*verified by Katie\b[^.\"]*", re.I),
+    re.compile(r"\s*[;,]?\s*(?:Schema decision\s+)?deferred to Katie\b[^.\"]*", re.I),
+    re.compile(r"\s*[;,]?\s*per S\d+\b[^.\"]*?\brule\b", re.I),
+    re.compile(r"\s*\(?\bNOTE-IT\b\)?", re.I),
+    re.compile(r"\bHUMAN_REVIEW\b|\bAUTO_APPLY\b", re.I),
+]
+
+
+def _strip_internal_phrases(s: str) -> str:
+    for pat in _INTERNAL_PHRASES:
+        s = pat.sub("", s)
+    return s
 
 
 def _scrub_str(s: str) -> str:
@@ -80,6 +140,11 @@ def _scrub_str(s: str) -> str:
         prev = s
         s = _GRP_EDITORIAL.sub("", s)
         s = _CLAUSE_EDITORIAL.sub("", s)
+        s = _strip_verify(s)
+        s = _strip_internal_phrases(s)
+        if _EXTRA_GRP is not None:
+            s = _EXTRA_GRP.sub("", s)
+            s = _EXTRA_CLAUSE.sub("", s)
     return re.sub(r"\s{2,}", " ", s).strip().rstrip(" .;,—-").strip() or s.strip()
 
 
@@ -100,6 +165,7 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     strip = set(cfg["etlm_strip_keys"])
+    patterns = [re.compile(p) for p in cfg.get("etlm_strip_key_patterns", [])]
     written: list[str] = []
     for code in cfg["etlm_whitelist"]:
         # PREFER the human-approved copy; fall back to the working draft.
@@ -119,7 +185,7 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
             continue
         is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
-        sanitised = scrub_values(strip_keys(data, strip))
+        sanitised = scrub_values(strip_keys(data, strip, patterns))
         dst = out_dir / f"{code}.json"
         dst.write_text(json.dumps(sanitised, indent=2))
         written.append(code)
@@ -128,12 +194,26 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     return written
 
 
+def _scrub_markdown(text: str, markers: list[str]) -> str:
+    """Client-safe copy of a TPP/theme markdown: drop any line carrying an
+    internal marker (e.g. 'Source data:', 'analyst review cycle', 'INTERNAL:')
+    and strip inline provenance/workflow tokens from the rest. TPP/theme files
+    were previously copied verbatim — this closes that gap."""
+    out: list[str] = []
+    for line in text.splitlines():
+        if any(m in line for m in markers):
+            continue
+        out.append(_scrub_inline(line))
+    return "\n".join(out)
+
+
 def sync_tpps(cfg: dict[str, Any]) -> list[str]:
     out_dir = DATA / "tpp"
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    markers = cfg.get("tpp_theme_strip_markers", [])
     written: list[str] = []
     for fname in cfg["tpp_whitelist"]:
         src = LANDSCAPE_SRC / fname
@@ -142,7 +222,7 @@ def sync_tpps(cfg: dict[str, Any]) -> list[str]:
             continue
         slug = fname.removesuffix(".md")
         dst = out_dir / f"{slug}.md"
-        dst.write_text(src.read_text())
+        dst.write_text(_scrub_markdown(src.read_text(), markers))
         written.append(slug)
         print(f"  ok tpp/{slug}.md")
     return written
@@ -154,6 +234,7 @@ def sync_themes(cfg: dict[str, Any]) -> list[str]:
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    markers = cfg.get("tpp_theme_strip_markers", [])
     written: list[str] = []
     for fname in cfg["theme_whitelist"]:
         src = THEMES_SRC / fname
@@ -162,7 +243,7 @@ def sync_themes(cfg: dict[str, Any]) -> list[str]:
             continue
         slug = fname.removesuffix(".md")
         dst = out_dir / f"{slug}.md"
-        dst.write_text(src.read_text())
+        dst.write_text(_scrub_markdown(src.read_text(), markers))
         written.append(slug)
         print(f"  ok theme/{slug}.md")
     return written
@@ -217,6 +298,10 @@ def _scrub_inline(line: str) -> str:
     line = _PROVENANCE_RE.sub("", line)
     line = _IDPAREN_RE.sub("", line)
     line = _WORKFLOW_RE.sub("", line)
+    line = _strip_internal_phrases(line)
+    if _EXTRA_GRP is not None:
+        line = _EXTRA_GRP.sub("", line)
+        line = _EXTRA_CLAUSE.sub("", line)
     # tidy artifacts left by token removal
     line = re.sub(r",\s*\)", ")", line)
     line = re.sub(r"\(\s*,?\s*\)", "", line)
@@ -279,9 +364,9 @@ def sync_ecosystem(cfg: dict[str, Any]) -> bool:
         if not sub_kept:
             continue
 
-        out_lines.append(f"\n## {h2_heading}\n")
+        out_lines.append(f"\n## {_scrub_inline(h2_heading)}\n")
         for h3_heading, sub_body in sub_kept:
-            out_lines.append(f"### {h3_heading}\n")
+            out_lines.append(f"### {_scrub_inline(h3_heading)}\n")
             out_lines.extend(sub_body)
             out_lines.append("")
             kept_total += 1
@@ -371,9 +456,54 @@ def build_cross_links(
     }
 
 
+# Forbidden markers that must never appear in the shipped client bundle. The
+# leak-gate greps every written file for these and fails the sync if any survive,
+# so schema drift (a new internal key/token) can't silently ship again.
+# Specific internal phrases (not the bare name "Katie", so the legitimate
+# "© / Katie Lui sign-off" copyright byline is allowed through).
+_LEAK_MARKERS = [
+    "UNVERIFIED",
+    "do not assert",
+    "do-not-assert",
+    "staleness-backup",
+    "HUMAN-APPROVED",
+    "HUMAN_REVIEW",
+    "AUTO_APPLY",
+    "analyst-knowledge",
+    "(verify)",
+    "verified by Katie",
+    "deferred to Katie",
+    "Katie ruling",
+    "Katie directive",
+    "Katie disposition",
+    "per S64",
+    "RATIFIED",
+    "NOTE-IT",
+    "Source data:",
+    "analyst review cycle",
+]
+
+
+def leak_gate() -> list[str]:
+    """Grep every shipped Atlas file for forbidden internal markers. Returns a
+    list of 'file: marker → snippet' hits (empty = clean)."""
+    hits: list[str] = []
+    for path in sorted(DATA.rglob("*")):
+        if not path.is_file() or path.suffix not in (".json", ".md"):
+            continue
+        text = path.read_text()
+        for marker in _LEAK_MARKERS:
+            idx = text.find(marker)
+            if idx != -1:
+                snippet = text[max(0, idx - 30) : idx + len(marker) + 30].replace("\n", " ")
+                hits.append(f"{path.relative_to(REPO)}: '{marker}' → …{snippet}…")
+    return hits
+
+
 def main() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     cfg = load_config()
+    configure_scrub(cfg.get("etlm_value_scrub_extra_tokens", []))
     print(f"Sync target: {DATA}")
     print("ETLMs:")
     etlms = sync_etlms(cfg)
@@ -390,6 +520,15 @@ def main() -> int:
         f"Cross-links: tpp_to_etlm={len(cross['tpp_to_etlm'])} "
         f"theme_to_indications={len(cross['theme_to_indications'])}"
     )
+
+    print("Leak gate:")
+    hits = leak_gate()
+    if hits:
+        print(f"  ✗ {len(hits)} forbidden marker(s) survived into the shipped bundle:", file=sys.stderr)
+        for h in hits[:40]:
+            print(f"    - {h}", file=sys.stderr)
+        return 1
+    print("  ✓ clean — no forbidden internal markers in shipped Atlas files")
     return 0
 
 

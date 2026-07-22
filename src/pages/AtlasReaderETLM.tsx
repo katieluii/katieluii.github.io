@@ -998,7 +998,7 @@ export function AtlasReaderETLM() {
         </section>
       )}
 
-      <DetailHook context={`${meta.indication} landscape map`} />
+      <DetailHook context={`${meta.indication} landscape map`} reportHref={reportBase} />
     </ProjectPageLayout>
   );
 }

@@ -5,6 +5,104 @@
 import type { PresentationProfile } from '../presentationProfile';
 
 export const PROFILE_OVERRIDES: Record<string, PresentationProfile> = {
+  "nhl_dlbcl": {
+    "schema_version": 1,
+    "curated_by_skill": true,
+    "curated_by": "etlm-curator (nhl_dlbcl)",
+    "cut_rationale": "DLBCL/NHL efficacy is comparable only WITHIN a class and line, so Target + Line are the read axes that group the field into CD19 CAR-T, CD20xCD3 bispecific, CD79b/CD19 ADC, chemoimmunotherapy, and BTKi/BCL2 orals; the ORR->mPFS->mOS triple shows response depth-> durability->survival. Every registrational trial here is single-arm, so rows are CROSS-TRIAL ONLY and NOT head-to-head (a one-time CAR-T ORR is not comparable to a chemoimmunotherapy ORR). CR -- the value-driving endpoint for CAR-T and bispecifics -- is a data gap (cr_pct keyed on only 2/32 rows), so no CR column is shown rather than render 30 misleading blanks; mOS is blank where OS is immature / not-reached, common in the curative-intent CAR-T and bispecific rows.",
+    "headline_table": {
+      "source": "approved_therapies",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "line",
+          "label": "Line / setting",
+          "from": "field",
+          "path": "indication_line"
+        },
+        {
+          "key": "orr",
+          "label": "ORR",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "orr",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "mpfs",
+          "label": "mPFS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "pfs",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "mos",
+          "label": "mOS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "median_os",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "caveats": [
+      {
+        "match_field": "modality",
+        "match_regex": "CAR[- ]?T",
+        "tag": "cell therapy (single-arm)",
+        "why": "One-time autologous CD19 CAR-T; registrational data is single-arm -- comparable only cross-trial, never head-to-head with chemoimmunotherapy or bispecifics."
+      },
+      {
+        "match_field": "modality",
+        "match_regex": "bispecific",
+        "tag": "T-cell engager (single-arm)",
+        "why": "CD20xCD3 T-cell engager; single-arm registrational data -- cross-trial comparison only; OS frequently immature at approval."
+      },
+      {
+        "match_field": "modality",
+        "match_regex": "1st[- ]?gen",
+        "tag": "superseded",
+        "why": "First-generation agent displaced within its class (e.g. 1st-gen covalent BTKi superseded by 2nd-gen / non-covalent BTKi)."
+      }
+    ],
+    "endpoint_glossary": {
+      "ORR": "Objective response rate -- depth of response; reported on nearly all rows (29/32).",
+      "CR": "Complete response -- the value-driving endpoint for CAR-T and bispecifics; currently keyed on only 2/32 approved rows (analyst data gap), so shown here as context, not as a column.",
+      "mPFS": "Median progression-free survival, months (durability); blank where not reported.",
+      "mOS": "Median overall survival, months; blank where OS not yet mature / not reached -- common in curative-intent CAR-T and bispecific rows."
+    }
+  },
   "obesity": {
     "schema_version": 1,
     "curated_by": "build_presentation_profiles.py (template baseline)",

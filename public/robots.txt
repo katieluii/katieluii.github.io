@@ -1,0 +1,9 @@
+# katieluii.github.io — crawling allowed site-wide.
+#
+# The Atlas Reader deep-report routes (/atlas-reader/*/report) are served with a
+# per-page `noindex, nofollow` meta (src/hooks/useNoindex.ts) rather than a
+# robots Disallow — a Disallow would stop crawlers from ever seeing the noindex.
+# So: crawl is permitted, indexing of the deep reports is declined at the page
+# level, while the catalog and summary pages stay indexable for discoverability.
+User-agent: *
+Allow: /

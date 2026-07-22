@@ -1,26 +1,35 @@
 // Access-gating config for the Atlas Reader.
 //
-// Model (2026-06-30): REDACT, don't block. Every previewable ETLM is openly
-// viewable as a SUMMARY — the shape of the landscape (asset names, sponsors,
-// targets, route, approval status). The DETAILS — head-to-head efficacy/safety
-// benchmarks, the pipeline read, and the so-what — are the paid layer that lives
-// in the knowledge base, surfaced via a DetailHook value tease (no blur wall on
-// the summary). The deep full-report route stays behind RedactionGate as the
-// paid detail layer.
+// Model (2026-07-19): OPEN for traction. The email/lead-capture wall is OFF
+// (ACCESS_WALL_ENABLED = false) — every published deliverable (summary + deep
+// report) is fully viewable with no email required. The gate UI is retained
+// behind the flag so it can be restored in one line.
 //
-// Safety rules still encoded here:
-//  1. Only PREVIEWABLE indications ship real ETLM JSON (via the sync whitelist).
-//     Everything else is a LOCKED catalog card — title only, no data in the
-//     bundle — so unvetted/unapproved drafts never leak.
-//  2. The email form posts to Formspree when configured; otherwise it falls
-//     back to a mailto: so lead capture still works on a fresh checkout.
+// TWO independent layers — do not conflate:
+//  1. UI/signup wall (this file, ACCESS_WALL_ENABLED). Currently OFF. Pure
+//     lead-capture friction; toggling it never changes WHAT data ships.
+//  2. QC/data-publish gate (scripts/atlas-redaction-config.json + the sync).
+//     This decides which drafts ship at all (etlm_whitelist = nsclc, obesity)
+//     and strips internal keys/notes. Unvetted/unapproved drafts never enter
+//     the bundle — so they can't leak regardless of the wall.
 
-/** Formspree endpoint for the Atlas access form. This is a public client-side
- *  endpoint (not a secret), so it lives in the committed build. Override per
- *  environment with VITE_FORMSPREE_ENDPOINT if needed. */
+/** Master switch for the email/lead-capture access wall.
+ *  Set false 2026-07-19 (Katie) to open pipelines + reports for traction — no
+ *  email signup required to view. When false: RedactionGate passes through, the
+ *  DetailHook email tease becomes an open "read the full report" CTA, and locked
+ *  catalog cards render as a non-interactive "In draft" chip (no email modal).
+ *  Flip back to true to restore the full gate. NOTE: this is the UI/signup wall
+ *  only — it does NOT publish drafts that aren't in the sync whitelist. */
+export const ACCESS_WALL_ENABLED = false;
+
+/** Formspree endpoint for the Atlas access form. Env-only: with the wall off the
+ *  form isn't shown, so no token ships in the public bundle. Set
+ *  VITE_FORMSPREE_ENDPOINT to re-enable server capture; otherwise the form falls
+ *  back to a mailto. (The old hardcoded token was retired 2026-07-19 — rotate it
+ *  in the Formspree dashboard and enable its captcha/honeypot before reusing.) */
 const ENV_ENDPOINT = (import.meta.env as Record<string, string | undefined>)
   .VITE_FORMSPREE_ENDPOINT?.trim();
-export const FORMSPREE_ENDPOINT = ENV_ENDPOINT || 'https://formspree.io/f/xjgqkjnp';
+export const FORMSPREE_ENDPOINT = ENV_ENDPOINT || '';
 
 /** Fallback inbox when Formspree isn't configured. */
 export const ACCESS_CONTACT_EMAIL = 'katieluikakiu@gmail.com';
@@ -44,7 +53,6 @@ export const UNGATED_THEME = new Set<string>(['glp1_class_competitive_supply_202
 /** Mature drafts surfaced as locked catalog cards (no data shipped).
  *  Display names + therapeutic areas resolve via taxonomy.ts. */
 export const LOCKED_INDICATIONS: string[] = [
-  'nhl_dlbcl',
   'breast',
   'aml_mds',
   'crc',

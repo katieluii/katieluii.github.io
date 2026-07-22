@@ -111,126 +111,7 @@
           "resolved_title": "WEGOVY (semaglutide) NDA 215256",
           "verified": true
         }
-      ],
-      "endpoint_provenance": {
-        "tbwl_pct_w68_or_72": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": "-14.9% mean body-weight change wk68 vs -2.4% placebo",
-            "estimand": "primary, treatment-policy (ITT) estimand; semaglutide 2.4 mg",
-            "location": "NEJM 2021;384:989-1002, Table 2 (co-primary endpoints)",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": ">=5% weight loss: 86.4% (1047/1212)",
-            "estimand": "confirmatory secondary; on-treatment",
-            "location": "NEJM Table 2 + Fig. 1C",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": ">=10% weight loss: 69.1% (838/1212)",
-            "estimand": "confirmatory secondary; on-treatment",
-            "location": "NEJM Table 2 + Fig. 1C",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "pct_achieving_15pct_loss": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": ">=15% weight loss: 50.5% (612/1212)",
-            "estimand": "confirmatory secondary; on-treatment",
-            "location": "NEJM Table 2 + Fig. 1C",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "pct_achieving_20pct_loss": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": ">=20% weight loss: 32.0% (388/1212)",
-            "estimand": "supportive secondary; overall population",
-            "location": "NEJM Table 2",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": "Nausea 577 (44.2%)",
-            "estimand": "all-grade AE; semaglutide 2.4 mg N=1306",
-            "location": "NEJM Table 3 (AEs in >=10%)",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "vomiting_pct": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": "Vomiting 324 (24.8%)",
-            "estimand": "all-grade AE; N=1306",
-            "location": "NEJM Table 3",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "diarrhea_pct": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": "Diarrhea 412 (31.5%)",
-            "estimand": "all-grade AE; N=1306",
-            "location": "NEJM Table 3",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ],
-        "constipation_pct": [
-          {
-            "source_id": "step1_pub",
-            "quoted_metric": "Constipation 306 (23.4%)",
-            "estimand": "all-grade AE; N=1306",
-            "location": "NEJM Table 3",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "semaglutide 2.4 mg s.c. (weekly)",
-            "dose_basis": "registrational",
-            "dose_note": "higher dose in dev: 7.2 mg s.c. (~-18.3% w72) \u2014 ceiling rising"
-          }
-        ]
-      }
+      ]
     },
     {
       "drug_name": "tirzepatide",
@@ -350,203 +231,7 @@
           "label": "corroborating",
           "url": "https://www.prnewswire.com/news-releases/lillys-surmount-1-results-published-in-the-new-england-journal-of-medicine-show-tirzepatide-achieved-between-16-0-and-22-5-weight-loss-in-adults-with-obesity-or-overweight-301561327.html"
         }
-      ],
-      "endpoint_provenance": {
-        "tbwl_pct_w68_or_72": [
-          {
-            "source_id": "fda_nda217806",
-            "quoted_metric": "% Change from baseline -20.9 (ZEPBOUND 15 mg, Study 1)",
-            "estimand": "15 mg \u00b7 ITT / treatment-regimen estimand \u00b7 Week 72 (NOT the -22.5% efficacy/on-treatment estimand)",
-            "location": "FDA label \u00a714.1 Table 2 (Changes in Body Weight at Week 72 in Studies 1 and 2), Study 1 / ZEPBOUND 15 mg / ITT column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "\u22655% reduction: 91% vs 35% placebo (15 mg, treatment-regimen estimand)",
-            "estimand": "15 mg \u00b7 treatment-regimen (ITT) estimand \u00b7 Week 72",
-            "location": "SURMOUNT-1 NEJM results / Lilly-PRNewswire results table, treatment-regimen estimand; FDA label \u00a714.1 states 15 mg > placebo for \u22655% (Figure 1)",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "fda_nda217806",
-            "quoted_metric": "\"the vertical line arising from -10% in Figure 1 intersects the ZEPBOUND 15 mg ... curves at approximately 83.5%\"",
-            "estimand": "15 mg \u00b7 treatment-regimen (ITT) estimand \u00b7 Week 72",
-            "location": "FDA label \u00a714.1 Figure 1 explanatory note (15 mg, -10% threshold); corroborated by SURMOUNT-1 treatment-regimen estimand (\u226510% = 84% rounded)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda217806_c1"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_15pct_loss": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "\u226515% reduction: 71% vs 9% placebo (15 mg, treatment-regimen estimand)",
-            "estimand": "15 mg \u00b7 treatment-regimen (ITT) estimand \u00b7 Week 72",
-            "location": "SURMOUNT-1 NEJM Table 2 / Lilly-PRNewswire results table, treatment-regimen estimand (rounded 71%; precise 70.6% per NEJM)",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_20pct_loss": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "\u226520% reduction: 57% vs 3.1% placebo (15 mg, treatment-regimen estimand)",
-            "estimand": "15 mg \u00b7 treatment-regimen (ITT) estimand \u00b7 Week 72",
-            "location": "SURMOUNT-1 NEJM Table 2 / Lilly-PRNewswire results table, treatment-regimen estimand (rounded 57%; precise 56.7% per NEJM)",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_25pct_loss": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "\u226525% body weight reduction: 36.2% (not controlled for type 1 error) vs 1.5% placebo",
-            "estimand": "15 mg \u00b7 treatment-regimen (ITT) estimand \u00b7 Week 72 (secondary, not type-I-error controlled)",
-            "location": "SURMOUNT-1 NEJM / Lilly-PRNewswire results, treatment-regimen estimand, 15 mg",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "waist_circumference_delta_cm": [
-          {
-            "source_id": "fda_nda217806",
-            "quoted_metric": "Waist Circumference (cm) Change from baseline -18.5 (ZEPBOUND 15 mg, Study 1)",
-            "estimand": "15 mg \u00b7 ITT / treatment-regimen estimand \u00b7 Week 72 (NOT the -19.9 cm efficacy estimand)",
-            "location": "FDA label \u00a714.1 Table 3 (Changes in Anthropometry and Cardiometabolic Parameters at Week 72 in Studies 1 and 2), Study 1 / 15 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_nda217806_c1"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "apnea_hypopnea_index_delta": [
-          {
-            "source_id": "fda_nda217806",
-            "quoted_metric": "AHI (events/hr) Change from baseline -29.3 (ZEPBOUND MTD 10/15 mg, Study 6 / on-PAP)",
-            "estimand": "MTD (10 or 15 mg) \u00b7 Study 6 (patients on PAP therapy) \u00b7 mITT \u00b7 Week 52. NOTE: Study 5 (PAP-untreated) arm was -25.3, not -29.3",
-            "location": "FDA label \u00a714.2 Table 9 (Changes in AHI, Hypoxic Burden, and Body Weight at Week 52 in Study 5 and Study 6), Study 6 ZEPBOUND MTD column (SURMOUNT-OSA / NCT05412004)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "Nausea 31.0% (tirzepatide 15 mg, SURMOUNT-1)",
-            "estimand": "15 mg \u00b7 SURMOUNT-1 safety population \u00b7 on-treatment (NOT pooled 5/10/15 mg; the pooled FDA figure is 28%)",
-            "location": "SURMOUNT-1 NEJM safety (AE by dose); corroborated by Lilly-PRNewswire (Nausea 15 mg 31.0%). FDA pooled label \u00a76.1 table rounds this arm-pool differently (Nausea 8/25/29/28 for placebo/5/10/15 mg, pooled Studies 1+2)",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "vomiting_pct": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "Vomiting 12.2% (tirzepatide 15 mg, SURMOUNT-1)",
-            "estimand": "correct value = 15 mg \u00b7 SURMOUNT-1 on-treatment = 12.2%. Stored 15.1 is unsourceable to any dose/estimand",
-            "location": "SURMOUNT-1 NEJM AE-by-dose / Lilly-PRNewswire (Vomiting 15 mg 12.2%); FDA label \u00a76.1 pooled table Vomiting placebo/5/10/15 = 2/8/11/13%",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "diarrhea_pct": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "Diarrhea 23.0% (tirzepatide 15 mg, SURMOUNT-1)",
-            "estimand": "correct value = 15 mg \u00b7 SURMOUNT-1 on-treatment = 23.0% (or pooled FDA 15mg = 23%). Stored 22.0 matches no dose",
-            "location": "SURMOUNT-1 NEJM AE-by-dose / Lilly-PRNewswire (Diarrhea 15 mg 23.0%); FDA label \u00a76.1 pooled table Diarrhea placebo/5/10/15 = 8/19/21/23%",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "constipation_pct": [
-          {
-            "source_id": "pubmed_pmid35658024",
-            "quoted_metric": "Constipation 11.7% (tirzepatide 15 mg, SURMOUNT-1)",
-            "estimand": "correct value for the 15 mg arm = 11.7%. Stored 17.6 matches no dose/estimand (closest is 5 mg 16.8% or 10 mg 17.1%, still not 17.6)",
-            "location": "SURMOUNT-1 NEJM AE-by-dose / Lilly-PRNewswire (Constipation 15 mg 11.7%); FDA label \u00a76.1 pooled table Constipation placebo/5/10/15 = 5/17/14/11%",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "pubmed_pmid35658024_c1",
-              "pubmed_pmid35658024_c2"
-            ],
-            "dose": "tirzepatide 15 mg s.c. (weekly)",
-            "dose_basis": "registrational"
-          }
-        ]
-      }
+      ]
     },
     {
       "drug_name": "oral semaglutide 50 mg",
@@ -554,7 +239,7 @@
       "company": "Novo Nordisk",
       "modality": "GLP-1 receptor agonist (oral peptide, daily)",
       "target": "GLP-1R",
-      "indication_line": "Chronic weight management in adults with obesity (BMI >=30) or overweight (BMI >=27) with weight-related comorbidity; no T2D (verify final label)",
+      "indication_line": "Chronic weight management in adults with obesity (BMI >=30) or overweight (BMI >=27) with weight-related comorbidity; no T2D",
       "fda_approval_date": "2025-12-22",
       "ema_approval_date": "2026-05-22",
       "key_efficacy": {},
@@ -565,20 +250,19 @@
         "pct_achieving_10pct_loss": 69.4,
         "pct_achieving_15pct_loss": 53.6,
         "waist_circumference_delta_cm": "verify",
-        "efficacy_note": "OASIS 1 50mg arm (obesity, no T2D); verify final label dose and readout week"
+        "efficacy_note": "OASIS 1 50mg arm (obesity, no T2D)"
       },
       "custom_safety": {
         "nausea_pct": 51.8,
         "vomiting_pct": 24.3,
         "diarrhea_pct": 26.0,
-        "safety_note": "Higher nausea vs s.c. semaglutide due to oral GI-first delivery; OASIS 1 50mg; verify",
+        "safety_note": "Higher nausea vs s.c. semaglutide due to oral GI-first delivery; OASIS 1 50mg",
         "source": "OASIS 1 (Kosiborod 2023 NEJM PMID 37351474)"
       },
       "trial": "OASIS 1 (obesity, no T2D); OASIS 2 (obesity + T2D)",
       "nct": "NCT05035095",
       "source": "FDA NDA 218316; FDA approval letter / prescribing information for Wegovy (semaglutide) tablets; ClinicalTrials.gov NCT05035095 (OASIS 1) + Kosiborod 2023 NEJM PMID 37351474",
       "source_status": "confirmed",
-      "analyst_note": "Added 2026-06-16 (human-confirmed approved). Distinct from Rybelsus 14mg (T2D). FDA approved 2025-12-22 (NDA 218316; label 218316Orig1s000lbl.pdf); EMA approved 2026-05-22. NDA human-confirmed 2026-06-18",
       "sources": [
         {
           "id": "knop2023",
@@ -706,126 +390,8 @@
           "doi_oasis1"
         ]
       },
-      "endpoint_provenance": {
-        "tbwl_pct_w68": [
-          {
-            "source_id": "press_novonordiskoasis1backgroun",
-            "quoted_metric": "mean bodyweight reduction of 15.1% (treatment policy estimand) at week 68; placebo 2.4%",
-            "estimand": "treatment_policy (all randomised, regardless of adherence)",
-            "location": "OASIS 1 Novo Nordisk backgrounder, 'Key data from OASIS 1' block, treatment policy estimand row ('a weight loss of 15.1% compared to a 2.4% reduction with placebo'); Lancet 2023 headline primary result. Note: ClinicalTrials.gov posted results give -15.8% for the trial-product/efficacy set; -15.1 is the treatment-policy headline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "press_novonordiskoasis1backgroun_c1",
-              "press_novonordiskoasis1backgroun_c2"
-            ],
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsou",
-            "quoted_metric": "269/317 = 84.9% achieved >=5% weight loss (sema 50mg)",
-            "estimand": "trial_product / efficacy analysis set (denominator 317)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Outcome Measures > 'Number of Participants Who Achieved Weight Loss >=5%': Oral Semaglutide 50mg 269 yes / 48 no (denom 317) = 84.9%. Lancet reports 269/317 (85%)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "ctgov_nct05035095postedresultsou_c1"
-            ],
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsou",
-            "quoted_metric": "220/317 = 69.4% achieved >=10% weight loss (sema 50mg)",
-            "estimand": "trial_product / efficacy analysis set (denom 317)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Outcome Measure 'Achieved >=10%': Oral Semaglutide 50mg 220 yes / 97 no (denom 317) = 69.4%. ACC/pace-cme report 69% vs 12% placebo",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "ctgov_nct05035095postedresultsou_c1"
-            ],
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_15pct_loss": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsou",
-            "quoted_metric": "170/317 = 53.6% achieved >=15% weight loss (sema 50mg)",
-            "estimand": "trial_product / efficacy analysis set (denom 317)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Outcome Measure 'Achieved >=15%': Oral Semaglutide 50mg 170 yes / 147 no (denom 317) = 53.6%. Published sources round to 54%. Stored 54.4 does not match the exact 53.6 posted value (nor 54.0); likely a transcription/rounding drift. Recommend correcting to 53.6",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "ctgov_nct05035095postedresultsou_c1"
-            ],
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsad",
-            "quoted_metric": "Nausea 173/334 = 51.8% (oral sema 50mg arm)",
-            "estimand": "on-treatment safety analysis set (N=334)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Adverse Events (Other, threshold 5%): Nausea, Oral Semaglutide 50mg 173/334 = 51.8% (placebo 51/333=15.3%). Stored 58.1% is materially higher than the posted 51.8%; does not match. (Press summaries cite a pooled 46.6% figure across analyses.)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "vomiting_pct": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsad",
-            "quoted_metric": "Vomiting 80/334 = 24.0% (oral sema 50mg arm)",
-            "estimand": "on-treatment safety analysis set (N=334)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Adverse Events (Other): Vomiting, Oral Semaglutide 50mg 80/334 = 23.95% ~ 24.0% (placebo 12/333=3.6%). Stored 24.3% matches within rounding (0.3pp of the posted 24.0%)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "diarrhea_pct": [
-          {
-            "source_id": "ctgov_nct05035095postedresultsad",
-            "quoted_metric": "Diarrhoea 89/334 = 26.6% (oral sema 50mg arm)",
-            "estimand": "on-treatment safety analysis set (N=334)",
-            "location": "ClinicalTrials.gov NCT05035095 posted Results > Adverse Events (Other): Diarrhoea, Oral Semaglutide 50mg 89/334 = 26.6% (placebo 56/333=16.8%). Stored 26.0% matches within rounding (0.6pp of the posted 26.6%)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "oral semaglutide 50 mg (daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "vs_placebo_tbwl_pct": [
-          {
-            "source_id": "journal_101016s0140673623011856",
-            "quoted_metric": "placebo-adjusted TBWL -12.7 pp (sema 15.1% - placebo 2.4%, treatment-policy)",
-            "estimand": "treatment-policy placebo-adjusted difference",
-            "location": "OASIS 1 (Novo Nordisk backgrounder + Lancet 2023)",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "journal_101016s0140673623011856_c1"
-            ]
-          }
-        ]
-      }
+      "ec_marketing_authorization_date": "2026-07-15",
+      "ec_marketing_authorization_note": "EC granted EU-wide marketing authorisation on 2026-07-15 for the oral Wegovy pill (registered maintenance dose 25 mg; new oral tablet form/route, strengths 1.5/4/9/25 mg) \u2014 first oral GLP-1 approved EU-wide (EU is the 5th market after US/UK/UAE/Bahrain). This is the formal EC legal grant; the `ema_approval_date` (2026-05-22) reflects the prior CHMP positive opinion, NOT the EC decision. The higher-dose semaglutide 7.2 mg s.c. pen was also EC-approved. HELD PER STANDING POLICY (annotation only, NOT applied as a benchmark): OASIS 4 (the 25 mg, comorbidity-required, w64 trial underlying this EU authorisation) efficacy \u2014 ITT/treatment-policy -13.61% vs on-treatment ~-17% \u2014 needs estimand reconciliation before any efficacy_benchmarks change; the existing OASIS 1 50 mg efficacy in this row and the -18.3% w72 glp1_monotherapy_general_obesity benchmark are left untouched. Pre-existing inconsistency flagged for curator (not corrected here): drug_name reads '50 mg' (OASIS 1 source) while the EU/US registered maintenance dose is 25 mg"
     },
     {
       "drug_name": "orforglipron (LY3502970)",
@@ -868,7 +434,6 @@
       "nct": "NCT05869903",
       "source": "FDA NDA 220934; Foundayo (orforglipron) FDA approval letter + prescribing information; ATTAIN-1",
       "source_status": "confirmed",
-      "analyst_note": "IDENTITY CORRECTED 2026-06-18: Foundayo = orforglipron (LY3502970), Eli Lilly's oral non-peptide small-molecule GLP-1R agonist (once-daily, no food/water restriction) - NOT 'oral tirzepatide' as previously recorded. FDA approved 2026-04-01 under the National Priority Voucher Program, NDA 220934. Obesity pivotal = ATTAIN-1 (NCT05869903); ATTAIN-2 (NCT05872620) = obesity+T2D. Not EMA approved as of 2026-06-18. Efficacy/safety human-confirmed from FDA label 2026-06-18",
       "sources": [
         {
           "id": "label",
@@ -973,180 +538,6 @@
         ],
         "pct_achieving_15pct_loss": [
           "label"
-        ]
-      },
-      "endpoint_provenance": {
-        "tbwl_pct_w72": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% Change from baseline, FOUNDAYO 17.2 mg once daily = -11.1",
-            "estimand": "treatment-regimen estimand (regardless of adherence)",
-            "location": "FDA label NDA220934, Section 14 Clinical Studies, Trial 1 (NCT05869903) ITT efficacy table, Body Weight row '% Change from baseline', 17.2 mg column (N=730)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_openfdanda220934clinicalstud_c1"
-            ],
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "vs_placebo_tbwl_pct": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "Placebo once daily % Change from baseline = -2.1",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, Body Weight '% Change from baseline', Placebo column (N=949)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "placebo_adjusted_pp": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% difference from placebo (95% CI) = -9 (-10, -8.1), p<0.001",
-            "estimand": "treatment-regimen estimand (ANCOVA-adjusted, controlled for multiplicity)",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, Body Weight '% difference from placebo', 17.2 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=5% body weight, 17.2 mg = 71.5",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=5% body weight', 17.2 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_5pct_loss_placebo": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=5% body weight, Placebo = 26.8",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=5% body weight', Placebo column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=10% body weight, 17.2 mg = 54.5",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=10% body weight', 17.2 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_10pct_loss_placebo": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=10% body weight, Placebo = 13",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=10% body weight', Placebo column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_15pct_loss": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=15% body weight, 17.2 mg = 35.9",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=15% body weight', 17.2 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_15pct_loss_placebo": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=15% body weight, Placebo = 6",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=15% body weight', Placebo column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_20pct_loss": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=20% body weight, 17.2 mg = 18.4",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=20% body weight', 17.2 mg column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "pct_achieving_20pct_loss_placebo": [
-          {
-            "source_id": "fda_openfdanda220934clinicalstud",
-            "quoted_metric": "% of patients who lost >=20% body weight, Placebo = 2.9",
-            "estimand": "treatment-regimen estimand",
-            "location": "FDA label NDA220934, Section 14, Trial 1 ITT table, '% of patients who lost >=20% body weight', Placebo column",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "ae_discontinuation_pct": [
-          {
-            "source_id": "fda_openfdanda220934adversereact",
-            "quoted_metric": "'Across both trials, 8% of patients treated with FOUNDAYO (5.5 mg, 6%; 9 mg, 9%; and 17.2 mg, 10%) once daily permanently discontinued treatment as a result of adverse reactions compared to 3% of patients receiving placebo'",
-            "estimand": "pooled Trials 1+2, all FOUNDAYO doses combined",
-            "location": "FDA label NDA220934, Section 6 Adverse Reactions, pooled Trials 1+2 discontinuation narrative",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "ae_discontinuation_pct_placebo": [
-          {
-            "source_id": "fda_openfdanda220934adversereact",
-            "quoted_metric": "'...compared to 3% of patients receiving placebo'",
-            "estimand": "pooled Trials 1+2 placebo",
-            "location": "FDA label NDA220934, Section 6 Adverse Reactions, pooled Trials 1+2 discontinuation narrative",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "dose": "orforglipron 17.2 mg (oral, daily)",
-            "dose_basis": "registrational"
-          }
         ]
       }
     },
@@ -1281,68 +672,6 @@
           "clement2020",
           "fda_label"
         ]
-      },
-      "endpoint_provenance": {
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "fda_imcivreepinda213793section14",
-            "quoted_metric": "Patients Achieving at Least 10% Weight Loss at Year 1, n (%): Trial 3 (POMC or PCSK1, N=10) = 8 (80%); Trial 4 (LEPR, N=11) = 5 (46%)",
-            "estimand": "POMC/PCSK1 arm (Trial 3 / NCT02896192), N=10, NOT pooled. LEPR arm (Trial 4, N=11) = 46%. Stored value is the POMC arm figure",
-            "location": "FDA label Section 14.3, Table 15 'Proportion ... Who Achieved at Least 10% Weight Loss from Baseline at 1 Year in Trials 3 and 4'; also body text 14.3: 'In Trial 3, 80% of patients ... met the primary endpoint, achieving a \u226510% weight loss after 1 year'",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02",
-            "corroborating_source_ids": [
-              "fda_imcivreepinda213793section14_c1"
-            ],
-            "dose": "setmelanotide weight-based s.c. (up to 3 mg daily)",
-            "dose_basis": "registrational"
-          }
-        ],
-        "tbwl_pct_w52": [
-          {
-            "source_id": "fda_nda213793",
-            "quoted_metric": "Percent change from baseline to 1 year -23.1 (POMC/PCSK1, N=10)",
-            "estimand": "POMC/PCSK1 arm (Trial 3), N=10 \u2014 anchored to same arm as the 80% responder rate",
-            "location": "IMCIVREE FDA label \u00a714.3 Table 16",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "injection_site_reactions_pct": [
-          {
-            "source_id": "fda_nda213793",
-            "quoted_metric": "Injection site reaction 96%",
-            "estimand": "pooled Trials 3+4, N=27",
-            "location": "IMCIVREE FDA label \u00a76.1 Table 7 (pooled POMC/PCSK1/LEPR, N=27)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "skin_hyperpigmentation_pct": [
-          {
-            "source_id": "fda_nda213793",
-            "quoted_metric": "Skin hyperpigmentation 78%",
-            "estimand": "pooled Trials 3+4, N=27",
-            "location": "IMCIVREE FDA label \u00a76.1 Table 7 (pooled, N=27)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "fda_nda213793",
-            "quoted_metric": "Nausea 56%",
-            "estimand": "pooled Trials 3+4, N=27",
-            "location": "IMCIVREE FDA label \u00a76.1 Table 7 (pooled, N=27)",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     }
   ],
@@ -1441,103 +770,6 @@
         "nausea_pct": [
           "saxenda_label",
           "pisunyer2015"
-        ]
-      },
-      "endpoint_provenance": {
-        "nausea_pct": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "nausea_pct = 39.3",
-            "estimand": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "tbwl_pct_w68_or_72": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "tbwl_pct_w68_or_72 = -8.0",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "pct_achieving_5pct_loss = 63.2",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "pct_achieving_10pct_loss = 33.1",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "waist_circumference_delta_cm": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "waist_circumference_delta_cm = -8.2",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "vomiting_pct": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "vomiting_pct = 15.7",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "diarrhea_pct": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "diarrhea_pct = 20.9",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "constipation_pct": [
-          {
-            "source_id": "pubmed_pisunyeretalarandomizedcontro",
-            "quoted_metric": "constipation_pct = 19.4",
-            "location": "SCALE Obesity & Prediabetes, week 56 primary endpoint (mean % weight change from baseline). Sign convention: stored as -8 (loss); source states 8% loss",
-            "dose": "3.0 mg once daily subcutaneous",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
         ]
       }
     },
@@ -1670,200 +902,6 @@
         "nausea_pct": [
           "qsymia_label"
         ]
-      },
-      "endpoint_provenance": {
-        "tbwl_pct_w52": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "tbwl_pct_w52 = -9.8",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "pct_achieving_5pct_loss = 70.0",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "pct_achieving_10pct_loss = 48.0",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "paresthesia_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "paresthesia_pct = 20",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "dry_mouth_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "dry_mouth_pct = 19",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "constipation_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "constipation_pct = 16",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "headache_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "headache_pct = 11",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "insomnia_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "insomnia_pct = 9",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "dysgeusia_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "dysgeusia_pct = 9",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "dizziness_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "dizziness_pct = 9",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "nausea_pct = 7",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "depression_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "depression_pct = 4",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "anxiety_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "anxiety_pct = 4",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "disturbance_in_attention_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "disturbance_in_attention_pct = 4",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "alopecia_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "alopecia_pct = 4",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "palpitations_pct": [
-          {
-            "source_id": "fda_conquergaddeetallancet2011fdanda",
-            "quoted_metric": "palpitations_pct = 2",
-            "location": "CONQUER trial (Study 2 on FDA label NDA022580, section 14 Clinical Studies), 15/92 arm, ITT-LOCF",
-            "dose": "phentermine 15 mg / topiramate 92 mg ER (recommended/top dose)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -1973,138 +1011,6 @@
         "nausea_pct": [
           "greenway2010_cori"
         ]
-      },
-      "endpoint_provenance": {
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "pct_achieving_5pct_loss = 48",
-            "estimand": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "pct_achieving_10pct_loss = 25",
-            "estimand": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "tbwl_pct_w52": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "tbwl_pct_w52 = -6.1",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "nausea_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "nausea_pct = 29.8",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "constipation_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "constipation_pct = 19.2",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "headache_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "headache_pct = 17.6",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "vomiting_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "vomiting_pct = 10.7",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "dizziness_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "dizziness_pct = 9.9",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "insomnia_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "insomnia_pct = 9.2",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "dry_mouth_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "dry_mouth_pct = 8.1",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "diarrhea_pct": [
-          {
-            "source_id": "pubmed_greenway2010coripmc6444555",
-            "quoted_metric": "diarrhea_pct = 7.1",
-            "location": "COR-I (Greenway 2010 Lancet 376:595-605), efficacy results / Table 2 as reproduced in review PMC6444555 Table 2",
-            "dose": "naltrexone SR 32 mg / bupropion SR 360 mg (registrational/label-max)",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -2198,128 +1104,6 @@
         "flatus_with_discharge_pct_yr1": [
           "label"
         ]
-      },
-      "endpoint_provenance": {
-        "tbwl_pct_w52": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "tbwl_pct_w52 = -3.0",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_5pct_loss": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "pct_achieving_5pct_loss = 35.5",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "pct_achieving_10pct_loss": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "pct_achieving_10pct_loss = 16.4",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "oily_spotting_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "oily_spotting_pct_yr1 = 26.6",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "flatus_with_discharge_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "flatus_with_discharge_pct_yr1 = 23.9",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "fecal_urgency_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "fecal_urgency_pct_yr1 = 22.1",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "fatty_oily_stool_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "fatty_oily_stool_pct_yr1 = 20.0",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "oily_evacuation_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "oily_evacuation_pct_yr1 = 11.9",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "increased_defecation_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "increased_defecation_pct_yr1 = 10.8",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ],
-        "fecal_incontinence_pct_yr1": [
-          {
-            "source_id": "fda_nda020766xenical",
-            "quoted_metric": "fecal_incontinence_pct_yr1 = 7.7",
-            "location": "FDA label NDA020766, CLINICAL STUDIES, one-year pooled results",
-            "dose": "120 mg TID",
-            "dose_basis": "registrational",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-02"
-          }
-        ]
       }
     },
     {
@@ -2378,26 +1162,6 @@
         "tbwl_pct_w52": [
           "nda_alli"
         ]
-      },
-      "endpoint_provenance": {
-        "tbwl_pct_w52": [
-          {
-            "source_id": "hauptman2000",
-            "corroborating_source_ids": [
-              "hauptman2000",
-              "pubmed_sciencedirectorlistatoverview"
-            ],
-            "quoted_metric": "60 mg arm yr-1 ITT-LOCF -7.08 kg vs placebo -4.14 kg -> placebo-subtracted -2.94 kg ~= -2.9% of ~100 kg baseline",
-            "estimand": "orlistat 60 mg tid, 52 wk, ITT-LOCF, placebo-subtracted (% derived from printed kg; baseline ~100 kg)",
-            "location": "Hauptman 2000, Arch Fam Med 9:160-167 (PMID 10693734), Results/Table yr-1 (60 mg arm)",
-            "dose": "60 mg TID",
-            "dose_basis": "registrational",
-            "verification": "secondary",
-            "value_verified": false,
-            "note": "% is derived from the trial's exact kg values (no printed 52-wk %-TBWL table for 60 mg; alli bridged from Xenical). Corroborated ~-2.5 to -3.6% across secondary sources",
-            "verified_on": "2026-07-06"
-          }
-        ]
       }
     },
     {
@@ -2418,13 +1182,13 @@
       "nct": null,
       "source": "openFDA obesity-indication search returned phentermine HCl (Sun Pharmaceutical), Lomaira (Calvin Scott, ANDA203495)",
       "custom_safety": {
-        "dry_mouth_pct": "38.5 (verify \u2014 label-derived estimate; no modern RCT AE table)",
-        "insomnia_pct": "34.5 (verify)",
-        "dizziness_pct": "15.1 (verify)",
-        "flushing_pct": "13.8 (verify)",
-        "palpitations_pct": "12.4 (verify)",
-        "fatigue_pct": "11.6 (verify)",
-        "constipation_pct": "5.5 (verify)",
+        "dry_mouth_pct": "38.5 (label-derived estimate; no modern RCT AE table)",
+        "insomnia_pct": "34.5",
+        "dizziness_pct": "15.1",
+        "flushing_pct": "13.8",
+        "palpitations_pct": "12.4",
+        "fatigue_pct": "11.6",
+        "constipation_pct": "5.5",
         "class_note": "Short-term use only (a few weeks per label); sympathomimetic profile \u2014 dry mouth + insomnia + CV stimulation predominate; approved 1959 under pre-modern RCT standards; no NDA-level randomized AE frequency table available",
         "cv_note": "modest SBP/HR elevation; contraindicated with MAOIs, uncontrolled hypertension, coronary artery disease, hyperthyroidism",
         "source": "Adipex-P prescribing information (FDA NDA011839); AE percentages derived from label/observational data \u2014 verify against primary source"
@@ -2449,8 +1213,7 @@
           "resolved_title": "LOMAIRA \u2014 PHENTERMINE HYDROCHLORIDE 8MG (openFDA drugsfda)"
         }
       ],
-      "endpoint_sources": {},
-      "endpoint_provenance": {}
+      "endpoint_sources": {}
     },
     {
       "drug_name": "diethylpropion HCl extended-release",
@@ -2581,7 +1344,7 @@
       "primary_endpoint": "Percent Change From Baseline in Body Weight",
       "enrollment": 2335,
       "source": "ClinicalTrials.gov NCT:NCT05929066",
-      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out. (Katie ruling 2026-06-11: option A, per-asset bullet.)",
+      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out",
       "drug_name": "retatrutide (LY3437943)"
     },
     {
@@ -2616,7 +1379,7 @@
       "primary_endpoint": "Percentage change in body weight from baseline to Week 76",
       "enrollment": 755,
       "source": "ClinicalTrials.gov NCT:NCT06066528",
-      "neutral_negative_tilt_note": "ADA26 (Jun 2026) SYNCHRONIZE-1 Phase 3 reported ~19% discontinuation rate due to side effects \u2014 materially elevated vs class anchor (SURMOUNT-1 tirzepatide ~6-7%, STEP 1 semaglutide ~7%). BI executives defending as consistent with class; analyst sentiment skeptical. Commercial risk increasing. Programme remains active \u2014 keep on pipeline per S64 asset disposition rule",
+      "neutral_negative_tilt_note": "ADA26 (Jun 2026) SYNCHRONIZE-1 Phase 3 reported ~19% discontinuation rate due to side effects \u2014 materially elevated vs class anchor (SURMOUNT-1 tirzepatide ~6-7%, STEP 1 semaglutide ~7%). BI executives defending as consistent with class; analyst sentiment skeptical. Commercial risk increasing. Programme remains active \u2014 keep on pipeline",
       "tolerability_signal_ada26": "19% discontinuation Phase 3 SYNCHRONIZE-1",
       "drug_name": "survodutide (BI 456906)"
     },
@@ -2703,7 +1466,7 @@
       "primary_endpoint": "CagriSema 2.4 mg/2.4 mg versus placebo: Relative change in body weight",
       "enrollment": 300,
       "source": "ClinicalTrials.gov NCT:NCT05996848",
-      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out. (Katie ruling 2026-06-11: option A, per-asset bullet.)",
+      "ada26_h2h_note": "ADA26 H2H framing: CagriSema (amylin-combo) vs retatrutide (triple-G) comparison pending; Novo CSO acknowledges jury out",
       "key_efficacy_data": {
         "tbwl_pct_w32_ph2": -15.0,
         "note": "Approximately 15% body weight reduction at 32 weeks in Phase 2, powering the REDEFINE Phase 3 program entry. Below config combo bar (\u226524% TBWL at w48 for step-change vs tirzepatide, \u226522% to beat tirzepatide) \u2014 P2 data at shorter timepoint; P3 registrational data pending. CagriSema vs retatrutide efficacy comparison unresolved per ADA26 H2H framing",
@@ -2745,10 +1508,8 @@
       "enrollment": 250,
       "source": "ClinicalTrials.gov NCT:NCT06569355; Zealand pipeline disclosure 2024",
       "tolerability_differentiator_note": "Amylin tolerability thesis further validated by contrast with survodutide SYNCHRONIZE-1 Phase 3 19% AE-discontinuation rate (event_id 171, 2026-06-07). If GLP-1/GCG dual agonism cannot achieve class-level tolerability (~4-7% AE-discontinuation benchmark), amylin-mechanism differentiation lane widens. Combo Phase 2 with enicepatide (Roche CT-388) initiated 2026 (event_id 163). Tolerability-led differentiation thesis now supported by two independent data points: direct petrelintide ADA26 tolerability deep-dive (event_id 165) + survodutide comparative failure (event_id 171)",
-      "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers. (Katie ruling 2026-06-11: option B, cross-link not standalone.)",
-      "_nct_correction": "NCT06569355 was WRONG (VCT220/Vincentage) \u2014 corrected to NCT06662539 (ZUPREME-1, Zealand petrelintide monotherapy) per NCT audit 2026-06-11",
+      "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers",
       "roche_combo_note": "Roche Phase 2 combination study petrelintide (amylin, Zealand) + enicepatide (CT-388, GLP-1/GIP) \u2014 first patient ~mid-2026",
-      "_hr_resolved": "hr-resolver 2026-06-13: combo verified; no quantitative TBWL% yet (trial start)",
       "drug_name": "petrelintide (ZP8396)"
     },
     {
@@ -2812,15 +1573,12 @@
       "last_updated": "2026-06-08",
       "ada26_update": "ADA 2026: efficacy confirmed in obesity + T2D patient population. Pfizer validating $10B Metsera acquisition (Pfizer ADC summit narrative). Monthly-dosing differentiation vs weekly competitors emphasised",
       "differentiator_note": "Monthly dosing \u2014 only sub-cutaneous incretin in development with monthly cadence per current cycle reporting",
-      "ws13_review_update_S94": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026, p.4) benchmarks MET-097i at 14.1% placebo-subtracted weight loss over 28 weeks; 15-16 day half-life supports once-monthly dosing; framed as biased GLP-1R activation approaching dual-incretin efficacy on a shorter timeline, 'enabling rapid transition into phase 3'. Also profiled in s41573-025-01183-8 (Drucker, NRDD 2025). Efficacy figure",
       "custom_efficacy": {
         "pswl_pct_w28": -14.1,
         "half_life_days": "15-16",
         "note": "14.1% placebo-subtracted weight loss at 28 weeks. Biased GLP-1R agonism; once-monthly dosing"
       },
       "identity_note": "PF-08653944 = berobenatide = formerly MET-097i (Metsera, acquired by Pfizer). Biased GLP-1 RA (cAMP-over-arrestin); cycle21 'GIPR/GLP-1R' descriptor is questionable \u2014 MET-097i is a GLP-1 mono",
-      "_hr_resolved": "hr-resolver 2026-06-13: Ph2b->Ph3 advance verified post-danuglipron",
-      "_nct_precision_2026_06_14": "Phase 3 NCTs CT.gov-verified \u2014 NCT07311850 (obesity mono, enroll 3501, intervention MET097), NCT07400653 (T2D, PF-08653944), NCT07595549 (once-monthly PF-08653944, NOT_YET_RECRUITING), all lead sponsor Pfizer. nct field previously held Phase 2b NCT06712836 and trial_name was stale 'Phase 2b Study' (apply-manager 2026-06-14)",
       "sources": [
         {
           "id": "vesper1",
@@ -2853,26 +1611,7 @@
           "vesper1"
         ]
       },
-      "drug_name": "MET097 (PF-08653944 / berobenatide)",
-      "endpoint_provenance": {
-        "pswl_pct_w28": [
-          {
-            "source_id": "metsera_pr_20250929",
-            "corroborating_source_ids": [
-              "metsera_pr_20250929",
-              "vesper1"
-            ],
-            "quoted_metric": "placebo-subtracted mean weight loss up to 14.1% at 28 weeks (1.2 mg WEEKLY dose level), VESPER-1 Ph2b",
-            "estimand": "placebo-subtracted %WL, week 28, 1.2 mg once-WEEKLY top dose (VESPER-1). NOTE asset is also developed as monthly (VESPER-3), whose placebo-adjusted loss is lower (~10-12%); -14.1% represents the weekly lead-dose readout, not the monthly regimen",
-            "location": "Metsera PR 2025-09-29, topline efficacy paragraph (VESPER-1 dose-dependent WL); also presented ADA 2026",
-            "dose": "1.2 mg once-weekly",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ]
-      }
+      "drug_name": "MET097 (PF-08653944 / berobenatide)"
     },
     {
       "asset_name": "TERN-601",
@@ -2991,10 +1730,8 @@
       "primary_endpoint": "Percent Change in Body Weight from Baseline to Week 36",
       "enrollment": 360,
       "source": "ClinicalTrials.gov NCT:NCT06628362",
-      "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers. (Katie ruling 2026-06-11: option B, cross-link not standalone.)",
+      "combo_tilt_note": "Roche petrelintide + enicepatide combination in development (ADA26 cycle). Cross-linked here pending NCT registration; promote to a standalone combo pipeline_assets row once the combo trial registers",
       "moa_note": "Dual GLP-1/GIP receptor agonist (corrects cycle21 landscape 'triple/glucagon' descriptor \u2014 it is a DUAL agonist)",
-      "_hr_resolved": "hr-resolver 2026-06-13: Ph2->Ph3 advance verified; Ph2 22.5% placebo-adj TBWL w48",
-      "_nct_precision_2026_06_14": "Phase 3 NCTs CT.gov-verified (NCT07351058 enroll 1600; NCT07351045 enroll 2000), both intervention=Enicepatide, lead sponsor Hoffmann-La Roche, status RECRUITING. nct field previously held the Phase 2 trial NCT06628362 (apply-manager 2026-06-14)",
       "drug_name": "enicepatide (CT-388)"
     },
     {
@@ -3303,62 +2040,7 @@
         }
       ],
       "endpoint_sources": {},
-      "drug_name": "UBT251 (Novo Nordisk triple-G; ex-TUL/United Biotechnology)",
-      "endpoint_provenance": {
-        "tbwl_pct_w24": [
-          {
-            "source_id": "novo_pr_obesity_20260224",
-            "quoted_metric": "up to 19.7% mean weight loss at 24 weeks vs 2.0% placebo (highest dose)",
-            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication)",
-            "location": "Novo PR 2026-02-24, topline",
-            "dose": "6 mg QW",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "note": "single sponsor topline; no independent corroboration/publication yet",
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "absolute_weight_kg_loss_w24": [
-          {
-            "source_id": "novo_pr_obesity_20260224",
-            "quoted_metric": "-17.5 kg vs -1.6 kg placebo (baseline 92.2 kg)",
-            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication); note 17.5/92.2=19.0% vs the 19.7% mean-% (each its own MMRM estimand)",
-            "location": "Novo PR 2026-02-24",
-            "dose": "6 mg QW",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "baseline_weight_kg": [
-          {
-            "source_id": "novo_pr_obesity_20260224",
-            "quoted_metric": "mean baseline body weight 92.2 kg",
-            "estimand": "Ph2 dose-ranging China obesity trial (n=205), 6 mg once-weekly highest-dose arm vs 2.0% placebo, week 24; sponsor topline (pre-publication)",
-            "location": "Novo PR 2026-02-24",
-            "dose": "cohort baseline",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "t2d_hba1c_reduction_pct_w24": [
-          {
-            "source_id": "novo_pr_t2d_20260325",
-            "quoted_metric": "mean HbA1c reduction up to 2.16% at 24 weeks (vs sema 1 mg -1.77%, placebo -0.66%; baseline 8.12%)",
-            "estimand": "SEPARATE Ph2 China T2D trial (n=211), 6 mg QW highest dose, week 24 - distinct from the obesity readout; sponsor topline",
-            "location": "Novo PR 2026-03-25, topline",
-            "dose": "6 mg QW",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ]
-      }
+      "drug_name": "UBT251 (Novo Nordisk triple-G; ex-TUL/United Biotechnology)"
     },
     {
       "asset_name": "VCT220 / CX11",
@@ -3695,7 +2377,6 @@
       ],
       "ada26_phase2_tbwl_pct_w24": -10.5,
       "phase3_program_status_note": "Phase 3 obesity + T2D + CV + renal programme initiated per AZ ADA26 follow-up (2026-06-08/09). Phase 2 efficacy reported at 6 months: -10.5% TBWL. Race-to-third oral GLP-1 vs Roche enicepatide and Pfizer berobenatide",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'PHASE_3_ADVANCING_PIVOTAL_CO'); verified via batch CT.gov fetch",
       "sources": [
         {
           "id": "vista_lancet",
@@ -3772,129 +2453,7 @@
           "vista_lancet"
         ]
       },
-      "drug_name": "elecoglipron (ECC5004 / AZD5004)",
-      "endpoint_provenance": {
-        "tbwl_pct_w26": [
-          {
-            "source_id": "vista_lancet",
-            "quoted_metric": "mean %change body weight -10.5% at week 26 (75 mg) vs -0.6% placebo",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 26, absolute mean %change",
-            "location": "VISTA, Lancet 2026 abstract/Results, PMID 42259337",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "pct_achieving_5pct_loss_w26": [
-          {
-            "source_id": "vista_lancet",
-            "quoted_metric": ">=5% responders 88.8% at week 26 (75 mg) vs 15.6% placebo",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 26 responder analysis",
-            "location": "VISTA, Lancet 2026 abstract, PMID 42259337",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "primary",
-            "value_verified": true,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "tbwl_pct_w36": [
-          {
-            "source_id": "vista_lancet",
-            "corroborating_source_ids": [
-              "vista_lancet"
-            ],
-            "quoted_metric": "11.8% mean weight loss at week 36 (75 mg) vs 0.3% placebo",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, week 36 (extension)",
-            "location": "AZ press release / ADA 2026; VISTA Lancet full text (figure not seen - 403 paywall)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "note": "peer-reviewed VISTA exists but the w36 figure was not seen in the accessible abstract; corroborated by AZ topline/ADA",
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "t2d_hba1c_reduction_pct_w26": [
-          {
-            "source_id": "solstice_lancet",
-            "quoted_metric": "HbA1c reduction ~1.9% at week 26 (75 mg) vs 0.2% placebo (SOLSTICE T2D)",
-            "estimand": "SOLSTICE Ph2b T2D, 75 mg top dose, week 26; The Lancet 2026 (PMID 42259343); CORRECTED from a mis-copied 2.16 (that value belongs to UBT251's T2D trial)",
-            "location": "SOLSTICE, Lancet 2026, PMID 42259343 (via AZ topline/ADA 2026)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "ae_nausea_pct_75mg": [
-          {
-            "source_id": "vista_lancet",
-            "corroborating_source_ids": [
-              "vista_lancet"
-            ],
-            "quoted_metric": "nausea 55% at 75 mg (VISTA)",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
-            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "ae_constipation_pct_75mg": [
-          {
-            "source_id": "vista_lancet",
-            "corroborating_source_ids": [
-              "vista_lancet"
-            ],
-            "quoted_metric": "constipation 41% at 75 mg (VISTA)",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
-            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "ae_diarrhoea_pct_75mg": [
-          {
-            "source_id": "vista_lancet",
-            "corroborating_source_ids": [
-              "vista_lancet"
-            ],
-            "quoted_metric": "diarrhoea 35% at 75 mg (VISTA)",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
-            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ],
-        "ae_vomiting_pct_75mg": [
-          {
-            "source_id": "vista_lancet",
-            "corroborating_source_ids": [
-              "vista_lancet"
-            ],
-            "quoted_metric": "vomiting 29% at 75 mg (VISTA)",
-            "estimand": "VISTA Ph2b obesity (n=310), 75 mg top dose vs placebo; The Lancet 2026 (PMID 42259337), simultaneous ADA 2026, 75 mg most-common AEs",
-            "location": "AZ press release / ADA 2026; VISTA Lancet (AE table not seen - paywall)",
-            "dose": "75 mg",
-            "dose_basis": "lead-pipeline",
-            "verification": "secondary",
-            "value_verified": false,
-            "verified_on": "2026-07-06"
-          }
-        ]
-      }
+      "drug_name": "elecoglipron (ECC5004 / AZD5004)"
     },
     {
       "asset_name": "ALN-6222",
@@ -3956,8 +2515,6 @@
       },
       "source": "WS10a:pmid:40383129",
       "source_year": 2025,
-      "human_decision": "MERGE \u2014 S86 Katie",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "sources": [
         {
           "id": "lancet_mar001",
@@ -4002,7 +2559,6 @@
       },
       "source": "WS10a:pmid:40527924",
       "source_year": 2025,
-      "human_decision": "MERGE \u2014 S86 Katie",
       "sources": [
         {
           "id": "nat_metab_sana",
@@ -4038,7 +2594,6 @@
       },
       "source": "WS10a:pmid:39895486",
       "source_year": 2025,
-      "human_decision": "MERGE \u2014 S86 Katie",
       "sources": [
         {
           "id": "tix100_dom2025",
@@ -4069,8 +2624,6 @@
       "enrollment": 304,
       "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.638-639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2",
       "sponsor_note": "Biased GLP-1R agonism; capsule-vs-tablet bioavailability head-to-head ongoing. NCT not given in review \u2014 verify before use. Mechanism (biased agonism) cross-referenced in novel_targets",
-      "_ws13merge_provenance": "Added S94 ws13-merge from glp1 + obesity_pharmacotherapy review patch files",
-      "verify_note": "GSBR-1290 = aleniglipron (Structure Therapeutics). \"VISTA\" not found on CT.gov; verified obesity Ph2 = ACCESS NCT06693843 (+ ACCESS II NCT06703021)",
       "sources": [
         {
           "label": "CT.gov NCT07654361",
@@ -4098,8 +2651,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.639; also s41573-026-01427-1 (Petersen, NRDD 2026) Table 2",
       "sponsor_note": "Plasma t1/2 17-22 h; ~7.3% placebo-adjusted weight loss at 4 weeks in non-diabetic overweight/obese. Distinct asset from Roche enicepatide/CT-388 (GLP-1/GIP dual). Sibling CT-868 in T2D",
-      "_ws13merge_provenance": "Added S94 ws13-merge from glp1 review patch file",
-      "verify_note": "CT-996 = RO7795081 (Roche, ex-Carmot). Ph2 obesity NCT07081958; Ph1 was NCT05814107",
       "drug_name": "CT-996"
     },
     {
@@ -4118,8 +2669,6 @@
       "enrollment": 10000,
       "source": "WS13 review s41573-025-01183-8 (Drucker, NRDD 2025), p.644",
       "sponsor_note": "TRIUMPH-OUTCOMES is the triple-agonist class outcomes trial (CV+renal) in overweight/obesity with CV disease; distinct from TRIUMPH-1/TRIUMPH-3 weight-loss trials already captured. NCT not given in review \u2014 verify. Liver-fat reduction 81-82% in MASLD sub-study",
-      "_ws13merge_provenance": "Added S94 ws13-merge. retatrutide weight-loss trials (TRIUMPH-1 NCT05929066, TRIUMPH-3 NCT05882045) already in pipeline; this is the outcomes-trial row",
-      "_qc_nct_fix": "S-WS18 QC 2026-06-21: placeholder resolved to NCT06383390",
       "drug_name": "retatrutide (LY3437943) \u2014 TRIUMPH-OUTCOMES"
     },
     {
@@ -4138,9 +2687,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.6",
       "sponsor_note": "Up to 19.0% weight loss at 48 weeks in Chinese Phase 3. Hengrui\u2013Regeneron ex-China license \u2014 cross-border deal angle. NCT not given \u2014 verify before use",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
-      "verify_note": "Mechanism CONFIRMED GLP-1/GIP (not GLP-1/glucagon) \u2014 Hansoh + Regeneron PRs + IDF 2023 / ADA 2024 conference releases all describe HS-20094/olatorepatide as a dual GIP/GLP-1 receptor agonist (no GCGR activity). olatorepatide = HS-20094 (Hansoh; Regeneron ex-China) \u2192 China Ph3 NCT06839664, US Ph2 NCT07431086",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "drug_name": "olatorepatide (HS-20094)"
     },
     {
@@ -4159,7 +2705,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06904105",
       "sponsor_note": "Described as first ex-Lilly/Pfizer oral GLP-1 small molecule to reach Phase 3. Same Hengrui\u2013Kailera platform that produced HRS9531 dual agonist",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
       "geo_origin_risk": {
         "origin": "China",
         "exposure": "COINS Act / BIOSECURE legislative risk",
@@ -4188,7 +2733,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT07274137",
       "sponsor_note": "AI-discovered oral GLP-1 peptide (not small molecule); first AI-discovery-led Ph3 oral GLP-1 sponsor. Verify NCT07274137",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
       "drug_name": "MDR-001"
     },
     {
@@ -4207,7 +2751,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.11 Table 3 \u2014 NCT07219966",
       "sponsor_note": "First GLP-1/GIP dual to enter Ph3 in alcohol use disorder; extends GLP-1 indication-stacking into neuropsychiatric weight comorbidities. Cross-indication read-across asset. Verify NCT07219966",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
       "drug_name": "brenipatide"
     },
     {
@@ -4226,8 +2769,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06717425",
       "sponsor_note": "First oral small-molecule GIPR antagonist in clinic; modality parallel to MariTide antibody GIPR-antagonism approach. Re-establishes Pfizer presence in GIPR-antagonism space after danuglipron discontinuation. Verify NCT06717425",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "drug_name": "PF-07976016"
     },
     {
@@ -4246,8 +2787,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT05891834",
       "sponsor_note": "Revival of CB1R antagonism (rimonabant-class) with peripheral restriction to avoid CNS neuropsychiatric burden. Mechanism already captured in mechanism_landscape CB1 entry; this is the pipeline_asset row. Verify NCT05891834",
-      "_ws13merge_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch file",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "drug_name": "monlunabant (INV-202)"
     },
     {
@@ -4266,7 +2805,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06500299",
       "sponsor_note": "Oral SM GLP-1 \u2014 distinct from Huadong's HDM1005 injectable already in pipeline (NCT06886126). Verify NCT06500299",
-      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation",
       "drug_name": "HDM-1002"
     },
     {
@@ -4285,8 +2823,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06277934",
       "sponsor_note": "Oral SM GLP-1 cohort entrant. Verify NCT06277934",
-      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "drug_name": "RGT-075"
     },
     {
@@ -4305,8 +2841,6 @@
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT07002905",
       "sponsor_note": "Oral SM GLP-1 cohort entrant. Verify NCT07002905",
-      "_ws13merge_provenance": "Added S94 ws13-merge; part of oral GLP-1 SM Ph2 cohort consolidation",
-      "_qc_status_refresh": "S-WS18 QC 2026-06-21: CT.gov status COMPLETED (was 'ACTIVE'); verified via batch CT.gov fetch",
       "drug_name": "ASC30"
     },
     {
@@ -4473,7 +3007,7 @@
       "estimated_readout": null,
       "primary_endpoint": null,
       "enrollment": null,
-      "source": "WS12 cycle55 (2026-06-22); identity + NCT verified by hr-resolver (NNC0662-0419, Novo Nordisk, Ph2 dose-escalation, obesity; NCT07639021). Mechanism UNDISCLOSED by Novo \u2014 do not assert triple-agonist. Trial-start only \u2014 no efficacy readout yet",
+      "source": "WS12 cycle55 (2026-06-22); identity + NCT verified by hr-resolver (NNC0662-0419, Novo Nordisk, Ph2 dose-escalation, obesity; NCT07639021). Mechanism UNDISCLOSED by Novo Trial-start only \u2014 no efficacy readout yet",
       "drug_name": "NNC0662-0419"
     },
     {
@@ -4814,6 +3348,212 @@
         }
       ],
       "drug_name": "HRS-7535 \u2014 hypertension + overweight/obesity (Phase 3)"
+    },
+    {
+      "asset_name": "REGN20934",
+      "company": "Regeneron Pharmaceuticals",
+      "modality": "undisclosed (Regeneron obesity candidate; mechanism not yet reported)",
+      "target": "undisclosed",
+      "phase": "Phase 1",
+      "combination": false,
+      "indication_subtype": "overweight/obesity",
+      "nct": "NCT07594093",
+      "trial_name": "Safety and Drug Concentrations of REGN20934 in Adults With Overweight or Obesity",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "Net-new Regeneron Phase 1 obesity candidate (FIH safety/PK). Mechanism undisclosed. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07594093",
+          "url": "https://clinicaltrials.gov/study/NCT07594093",
+          "type": "ctgov",
+          "date": "2026-06-15",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "VX-201 (semaglutide microarray patch)",
+      "company": "Terrestrial Bio, Inc",
+      "modality": "GLP-1R agonist (semaglutide) \u2014 epi-intradermal microarray-patch delivery",
+      "target": "GLP-1R",
+      "phase": "Phase 1",
+      "combination": false,
+      "indication_subtype": "overweight/obesity (novel delivery route)",
+      "lifecycle_stage": "new_route_formulation",
+      "nct": "NCT07673900",
+      "trial_name": "Semaglutide Delivered Epi-Intradermally by Microarray Patch (VX-201) Versus Subcutaneous Administration in Healthy Overweight and Obese Participants",
+      "status": "RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "Net-new needle-free microarray-patch delivery of semaglutide vs SC in overweight/obese participants \u2014 a delivery-route innovation on an established GLP-1. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07673900",
+          "url": "https://clinicaltrials.gov/study/NCT07673900",
+          "type": "ctgov",
+          "date": "2026-06-15",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "BI 3034701",
+      "company": "Boehringer Ingelheim",
+      "modality": "undisclosed (mechanism not yet reported)",
+      "target": "undisclosed",
+      "phase": "Phase 2",
+      "combination": false,
+      "indication_subtype": "overweight/obesity",
+      "nct": "NCT07662122",
+      "trial_name": "A Study to Test Whether BI 3034701 Helps People to Lose Weight Who Live With Obesity or Overweight",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "Net-new Boehringer Phase 2 weight-loss candidate; second BI obesity program alongside survodutide. Mechanism undisclosed. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07662122",
+          "url": "https://clinicaltrials.gov/study/NCT07662122",
+          "type": "ctgov",
+          "date": "2026-06-29",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "BIO101 (20-hydroxyecdysone / 20E)",
+      "company": "Biophytis",
+      "modality": "oral small molecule (20-hydroxyecdysone) \u2014 muscle-preserving adjunct to GLP-1",
+      "target": "MAS receptor (Mas1) axis",
+      "phase": "Phase 2",
+      "combination": true,
+      "combination_context": "add-on to semaglutide (GLP-1) for muscle preservation during weight loss",
+      "indication_subtype": "obesity \u2014 lean-mass preservation adjunct",
+      "nct": "NCT07411378",
+      "trial_name": "Testing the Efficacy, Safety, and PK of 20E in Patients With Obesity Who Are Starting Treatment With the GLP-1 Agonist Semaglutide for Weight Loss",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "Net-new Biophytis Phase 2 of 20E (BIO101) as a muscle-preserving add-on to semaglutide \u2014 targets the GLP-1-class lean-mass-loss liability. Combination context explicit. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07411378",
+          "url": "https://clinicaltrials.gov/study/NCT07411378",
+          "type": "ctgov",
+          "date": "2026-07-01",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "enicepatide (CT-388) \u2014 obesity +/- T2D (Phase 3)",
+      "company": "Hoffmann-La Roche (via Carmot Therapeutics)",
+      "modality": "GLP-1R/GIPR dual agonist (injectable)",
+      "target": "GLP-1R + GIPR",
+      "phase": "Phase 3",
+      "combination": false,
+      "indication_subtype": "obesity or overweight, with or without type 2 diabetes",
+      "nct": "NCT07670416",
+      "trial_name": "A Study to Evaluate the Effects of Enicepatide in Participants With Obesity or Overweight, With or Without Type 2 Diabetes",
+      "status": "RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "Distinct new Phase 3 enicepatide trial spanning obesity +/- T2D, additional to the Enith1/Enith2 pivotals already captured. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07670416",
+          "url": "https://clinicaltrials.gov/study/NCT07670416",
+          "type": "ctgov",
+          "date": "2026-06-25",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "elecoglipron (ECC5004/AZD5004) \u2014 Phase 3 master protocol",
+      "company": "AstraZeneca (in-licensed from Eccogene)",
+      "modality": "oral GLP-1 small molecule",
+      "target": "GLP-1R",
+      "phase": "Phase 3",
+      "combination": false,
+      "indication_subtype": "obesity or overweight, with or without T2DM",
+      "lifecycle_stage": "new_line_setting",
+      "nct": "NCT07667803",
+      "trial_name": "A Master Protocol to Investigate Efficacy and Safety of Elecoglipron in Participants With Obesity or Overweight With or Without T2DM",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "note": "AstraZeneca advances oral GLP-1 elecoglipron from Ph2b (VISTA/SOLSTICE) into a Phase 3 master protocol \u2014 AZ's pivotal entry into the oral-GLP-1 race (vs Lilly orforglipron, Roche CT-996, Structure aleniglipron). Trial-start only \u2014 no efficacy readout yet; Ph2b ADA-2026 signal was ~10.5% at 6 mo (already in recent_conference_readouts)",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07667803",
+          "url": "https://clinicaltrials.gov/study/NCT07667803",
+          "type": "ctgov",
+          "date": "2026-07-06",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "bofanglutide (GZR18) \u2014 BALANCE-OBS (Latin America Phase 3)",
+      "company": "Carnot Laboratories (Latin America licensee) / Gan & Lee Pharmaceuticals (originator)",
+      "modality": "long-acting GLP-1 receptor agonist (injectable)",
+      "target": "GLP-1R",
+      "phase": "Phase 3",
+      "combination": false,
+      "indication_subtype": "overweight/obesity (Latin American population; H2H vs semaglutide)",
+      "nct": "NCT07622810",
+      "trial_name": "BALANCE-OBS: Bofanglutide (GZR18) Versus Semaglutide in Latin American Adults With Overweight or Obesity",
+      "status": "NOT_YET_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin molecule (Gan & Lee GZR18); regional Phase 3 via Latin American licensee Carnot \u2014 commercial read primarily ex-US regional",
+      "note": "Distinct new head-to-head Phase 3 of bofanglutide (GZR18) vs semaglutide in Latin America, additional to GRADUAL-1 (China) already captured; extends the asset's geographic development. Trial-start only \u2014 no efficacy readout yet",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07622810",
+          "url": "https://clinicaltrials.gov/study/NCT07622810",
+          "type": "ctgov",
+          "date": "2026-09-01",
+          "quoted_metric": "trial-start (no efficacy yet)"
+        }
+      ]
+    },
+    {
+      "asset_name": "ribupatide (KAI-9531)",
+      "drug_name": "ribupatide injection / KAI-9531",
+      "company": "Jiangsu Hengrui / Fujian Shengdi (originator); Kailera Therapeutics (ex-China licensee)",
+      "modality": "GLP-1/GIP dual receptor agonist (once-weekly injectable)",
+      "target": "GLP-1R / GIPR (dual agonist)",
+      "phase": "Phase 3",
+      "combination": null,
+      "indication_subtype": "obesity + knee osteoarthritis (comorbidity pivotal)",
+      "nct": "NCT07709910",
+      "trial_name": "Ribupatide P3 in obesity + knee OA (WOMAC primary)",
+      "status": "Phase 3, NOT_YET_RECRUITING \u2014 OA-comorbidity pivotal; no efficacy yet",
+      "primary_endpoint": "Change in WOMAC pain and % change in body weight at 68 weeks (co-primary)",
+      "key_efficacy": null,
+      "geo_origin_risk": "China-origin (Fujian Shengdi, a Jiangsu Hengrui subsidiary); ex-China rights licensed to Kailera Therapeutics (US, KAI-9531)",
+      "evidence_status": "no new efficacy yet (trial start)",
+      "positioning_note": "Mechanism CONFIRMED GLP-1/GIP dual agonist (NOT GLP-1 mono \u2014 do not infer). This NCT is the OA-comorbidity pivotal (WOMAC pain primary), not a pure TBWL registrational readout; broad-obesity registrational signal routes to Kailera's KaiNETIC P3 (e.g. NCT07284901). Prior China Ph2 injectable reported ~23.6% body-weight reduction",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07709910",
+          "url": "https://clinicaltrials.gov/study/NCT07709910",
+          "type": "ctgov",
+          "date": "2026-07",
+          "quoted_metric": "P3, obesity+knee OA; co-primary WOMAC pain + %body-weight @68w; sponsor Fujian Shengdi"
+        }
+      ]
     }
   ],
   "mechanism_landscape": [
@@ -4831,8 +3571,7 @@
         "mean_tbwl_pct_w68": -14.9,
         "responder_15pct": 50.5,
         "mean_tbwl_pct_w72_h2h_surmount5": -13.7,
-        "source": "STEP 1 registrational anchor (Wilding 2021 NEJM, PMID 33567185): -14.9% TBWL w68. Current paired evidence: the semaglutide 2.4 mg arm of SURMOUNT-5 (Aronne et al., NEJM 2025, PMID 40353578, NCT05822830) gave -13.7% TBWL at w72 head-to-head vs tirzepatide -20.2% (semaglutide inferior). STEP 1 remains the registrational anchor; SURMOUNT-5 is the current ( 2025) comparative readout. See competitive_dynamics for the full H2H context",
-        "_staleness_pairing_2026_06_15": "Paired the 2021 STEP 1 registrational benchmark with the 2025 SURMOUNT-5 semaglutide arm so the newest cited evidence for this incumbent is <=3yr (staleness-audit, both PMIDs verified vs PubMed 2026-06-15)"
+        "source": "STEP 1 registrational anchor (Wilding 2021 NEJM, PMID 33567185): -14.9% TBWL w68. Current paired evidence: the semaglutide 2.4 mg arm of SURMOUNT-5 (Aronne et al., NEJM 2025, PMID 40353578, NCT05822830) gave -13.7% TBWL at w72 head-to-head vs tirzepatide -20.2% (semaglutide inferior). STEP 1 remains the registrational anchor; SURMOUNT-5 is the current ( 2025) comparative readout. See competitive_dynamics for the full H2H context"
       },
       "key_resistance_mechanism": null
     },
@@ -4908,7 +3647,6 @@
       "secondary_pipeline_asset": "eloralintide (Lilly, Phase 3 \u2014 classification caveat: may include incretin component, monitor)",
       "thesis": "Quality-of-weight-loss + lean-mass preservation + tolerability differentiation vs GLP-1 mono. Mechanism: amylin receptor agonism (AMY1/2/3R + CTR) produces satiety via CNS area postrema + gastric emptying modulation distinct from GLP-1R vagal/intestinal pathway. ADA26 deep dives (petrelintide) confirm reduced GI burden vs GLP-1 class as P2-grounded clinical narrative",
       "data_pending": "ZUPREME-1 monotherapy TBWL + AE-d/c data \u2014 must land materially below 7% (GLP-1 mono anchor) to validate the mechanism-based tolerability thesis at the 1L injectable positioning vs semaglutide",
-      "split_provenance": "Split from combined Amylin entry on 2026-06-08 (S64) per Katie's E1 decision; combo with GLP-1 moved to its own mechanism_landscape entry",
       "last_updated": "2026-06-08"
     },
     {
@@ -5025,7 +3763,6 @@
         "source": "REDEFINE-1 topline Dec 2024 (Novo press release)"
       },
       "thesis": "Combo aims to layer amylin's quality-of-weight-loss benefit onto a GLP-1 backbone for additive efficacy. AE-d/c rate is higher than mono components \u2014 class trade-off",
-      "split_provenance": "Created on 2026-06-08 (S64) by splitting from combined Amylin entry per Katie's E1 decision",
       "last_updated": "2026-06-08"
     },
     {
@@ -5037,7 +3774,6 @@
       "leading_pipeline_asset": "monlunabant / INV-202 (Novo Nordisk, Phase 2)",
       "thesis": "Non-incretin mechanism for weight loss + metabolic benefit. Peripherally restricted to avoid CNS psychiatric AEs that withdrew rimonabant. Lower magnitude TBWL than incretins anticipated but additive/orthogonal mechanism + potentially better tolerability for some patient subsets",
       "watch_for": "Phase 2 efficacy + safety profile; CNS penetration biomarkers; positioning as additive to GLP-1 backbone vs standalone niche",
-      "added_provenance": "Added on 2026-06-08 (S64) per Katie's E1 broader framing \u2014 completes incretin / double-G / triple-G / amylin / CB1 hierarchy already captured at competitive_dynamics.generational_framing",
       "last_updated": "2026-06-08"
     },
     {
@@ -5052,7 +3788,6 @@
       },
       "key_resistance_mechanism": null,
       "thesis": "Oral small-molecule realisation of the GIPR-antagonism weight-loss hypothesis (contrast tirzepatide GIPR agonism). Differentiated from MariTide's antibody-conjugate route by oral route + monotherapy GIPR-antagonist design",
-      "added_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch (s41573-026-01427-1, p.9)",
       "last_updated": "2026-06-13"
     },
     {
@@ -5067,7 +3802,6 @@
       },
       "key_resistance_mechanism": null,
       "thesis": "Emerging modality combining GPCR-driven tissue targeting with small-molecule payload delivery: GLP-1-based PDCs delivering glucocorticoid-receptor agonists; glucagon-based PDCs delivering thyroid hormones to liver; GLP-1-estrogen conjugates for tissue-selective body-composition effects. Differentiation axis = decoupling tissue-restricted intracellular action from systemic peptide-receptor agonism. Pre-emptive scaffold for when first clinical-stage PDC reads out",
-      "added_provenance": "Added S94 ws13-merge from obesity_pharmacotherapy review patch (s41573-026-01427-1, p.14, Emerging treatment concepts)",
       "last_updated": "2026-06-13"
     }
   ],
@@ -5207,8 +3941,6 @@
       "representative_trial": "ATTAIN-1 (orforglipron 36 mg, w72 primary)",
       "nct": "NCT05869903",
       "source": "ATTAIN-1, NEJM 2025 (PMID 40960239): orforglipron 36 mg -11.2% TBWL at w72 (treatment-regimen/ITT primary endpoint; 95% CI -12.0 to -10.4; placebo -2.1%; placebo-adjusted -9.1 pp). -12.4% is the efficacy estimand (on-treatment). Dose-response (ITT): 6 mg -7.5%, 12 mg -8.4%, 36 mg -11.2%. SUPERSEDES prior -14.7% w52 Aug-2025 topline press-release",
-      "_correction_2026_06_25": "estimand correction (primary-source verified): headline set to the -11.2% treatment-regimen/ITT PRIMARY endpoint (36 mg); the prior -12.4% headline was the efficacy estimand, retained as mean_tbwl_pct_w72_efficacy_estimand. Removed the false 'mean across doses -11.2%' label (-11.2% is the 36 mg ITT figure, NOT a cross-dose mean). Placebo corrected -0.9 -> -2.1 (ITT). Verified vs ATTAIN-1 NEJM 2025 (PMID 40960239)",
-      "_correction_2026_06_15": "staleness-audit refresh: (1) efficacy -14.7% w52 (press release) -> -12.4% w72 (published NEJM primary, 36 mg); (2) NCT NCT05803421 -> NCT05869903. NCT05803421 = ACHIEVE-4 (orforglipron vs insulin glargine, T2D + CV risk), NOT ATTAIN-1. Both verified via CT.gov v2 API 2026-06-15. Prior responder_15pct (60.0) was tied to the superseded topline and has been replaced with the published 39.6 (36 mg)",
       "sources": [
         {
           "label": "PMID 40960239 (ATTAIN-1, NEJM 2025)",
@@ -5555,7 +4287,6 @@
       "positioning": "GLP-1 tolerability / adherence enabler \u2014 antiemetic adjunct to PREVENT GLP-1RA-induced nausea & vomiting; NOT a standalone weight-loss agent (no weight endpoint)",
       "evidence": "Phase 2 PoC NCT06804603 (overweight/obese volunteers, GLP-1RA-induced N/V) COMPLETED; Vanda-reported topline (press release, not posted on CT.gov): vomiting 29.3% tradipitant vs 58.6% placebo (p=0.0016, ~50% relative reduction). Phase 3 'Thetis' initiated (high-dose GLP-1RA; vomiting-free proportion primary; topline guided ~Q4) \u2014 Thetis NCT not yet public",
       "relevance": "Addresses the GI-tolerability gap that is the GLP-1 class's key weakness; an adherence adjunct, not a weight-loss competitor",
-      "framing_note": "HUMAN-APPROVED ANNOTATE (Katie 2026-06-25, Framing B) \u2014 captured as competitive_dynamics antiemetic-adjunct note, deliberately NOT a pipeline_assets weight-loss row. NK-1 antiemetic readout does not tilt any weight-loss benchmark. NOTE: queue-passed NCT07321886 was WRONG (that is Lilly ENLIGHTEN-1 eloralintide); corrected to Vanda tradipitant NCT06804603",
       "sources": [
         "NCT06804603",
         "https://www.prnewswire.com/news-releases/vanda-pharmaceuticals-reports-positive-results-for-tradipitant-in-preventing-glp-1-induced-nausea-and-vomiting-302617739.html"
@@ -5637,16 +4368,12 @@
       "positioning": "GLP-1 maintenance/setpoint adjunct \u2014 prevents post-incretin weight regain; not a standalone obesity asset",
       "evidence_summary": "DIO mice: PT150 monotherapy did not materially reduce body weight. Combination with semaglutide: largest weight reduction AND maintained lower setpoint 20 days post-washout \u2014 addressing the weight-regain-after-GLP-1-withdrawal problem. Track as GLP-1 maintenance/adjunct concept; needs peer-reviewed validation and obesity clinical data",
       "source": "WS10a:biorxiv:10.64898/2026.04.06.712688",
-      "source_year": 2026,
-      "human_decision": "MERGE \u2014 S86 Katie"
+      "source_year": 2026
     }
   ],
   "regulatory_landscape": {
-    "section_status": "S64 RATIFIED by Katie on 2026-06-08 \u2014 proceed with population of us_legislative_risks / regulatory_pathway_risks / jurisdictional_considerations as cross-indication signals land. No further ratification needed",
     "schema_version": "1.0",
-    "section_created": "2026-06-08 (S64)",
     "us_legislative_risks": {
-      "_template_note": "Add entries when COINS Act / BIOSECURE-family bills or other US legislative actions create asset-specific or class-specific risks for this indication. See ecosystem_knowledge.md for cross-indication geopolitical landscape",
       "ira_medicare_negotiation_permanent_framework_jun26": {
         "date": "2026-06-12",
         "event": "CMS proposes permanent IRA Medicare drug price negotiation framework (Trump administration)",
@@ -5664,11 +4391,8 @@
         ]
       }
     },
-    "regulatory_pathway_risks": {
-      "_template_note": "Add entries for AA-pathway scrutiny, FDA AdComs, EMA referrals, or other pathway-specific risks affecting this indication's pipeline or approved assets"
-    },
+    "regulatory_pathway_risks": {},
     "jurisdictional_considerations": {
-      "_template_note": "Add per-jurisdiction notes (EU PRIME, MHRA, NMPA, PMDA, etc.) where they materially affect this indication's commercial pathway",
       "colorado_drug_import_fda_approval_jun26": {
         "date": "2026-06-17",
         "event": "Colorado receives FDA sign-off for state drug-import plan from Canada \u2014 first FDA-approved state import program",
@@ -5691,8 +4415,7 @@
       "fda_approval_scope_S64": "FDA approvals are line/setting/tumor-type specific. When proposing pipeline_assets -> approved_therapies moves, specify the exact approval scope and keep the asset in pipeline_assets for any other setting/line/tumor where development continues"
     },
     "ratified_by_katie": {
-      "date": "2026-06-08",
-      "session": "S64"
+      "date": "2026-06-08"
     },
     "pbm_coverage_glp1_us_2026": {
       "date": "2026-06-03",
@@ -5791,8 +4514,7 @@
       "stage": "preclinical (male DIO mice; preprint 2026)",
       "asset_note": "BAY2402234 originated in oncology (AML/ASLAN003 sibling); chronic metabolic use translation risk is significant. Interesting piece is the chronopharmacology/mitochondrial biology principle, not the specific compound",
       "source": "WS10a:biorxiv:10.64898/2026.04.18.719366",
-      "source_year": 2026,
-      "human_decision": "MERGE \u2014 S86 Katie (target biology / design principle)"
+      "source_year": 2026
     },
     {
       "target": "GLP-1R \u2014 biased agonism (cAMP-biased / partial-Gs\u03b1, reduced \u03b2-arrestin recruitment)",
@@ -5802,8 +4524,7 @@
       "stage": "preclinical (no clinical registry entry)",
       "design_principle": "Track as next-gen incretin pharmacology/design principle \u2014 not as a disclosed clinical candidate. Parallel design direction to Roche CT-388 (biased GLP-1R/GIP dual). Novo's back-up to amycretin/semaglutide",
       "source": "WS10a:pmid:40157531",
-      "source_year": 2025,
-      "human_decision": "MERGE \u2014 S86 Katie (changed from DROP; biology/design principle only)"
+      "source_year": 2025
     },
     {
       "target": "Ghrelin / LEAP2 axis (GHSR1a) \u2014 weight-regain biology",
@@ -5813,8 +4534,7 @@
       "stage": "preclinical (no clinical registry entry)",
       "asset_note": "WS13 review flagged at medium confidence (Petersen, NRDD 2026, p.16). Track as weight-regain biology / maintenance-phase mechanism, not as a disclosed clinical candidate",
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.16",
-      "source_year": 2026,
-      "human_decision": null
+      "source_year": 2026
     }
   ]
 }
