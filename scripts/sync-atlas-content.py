@@ -18,6 +18,7 @@ Run after any ETLM/TPP/theme change you want reflected in the reader.
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import sys
@@ -28,6 +29,70 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 CONFIG_PATH = HERE / "atlas-redaction-config.json"
 DATA = REPO / "src" / "data" / "atlas"
+
+# --- transactional output (D2) -------------------------------------------------
+# The sync used to rmtree the live output dirs and write final paths, THEN run the
+# leak gate — so a failed gate left rejected content in the working tree, staged and
+# committable, with nothing downstream re-checking it. Now every writer emits into a
+# staging dir; the gate runs against staging; only on a clean pass is the result
+# promoted onto the live tree.
+#
+# Promotion is PER-ARTIFACT, never a whole-dir replace: src/data/atlas also holds 12
+# repo-owned .ts files (gating.ts, index.ts, soc/profiles.ts, …) plus memo/ and
+# analyst_read.json, none of which the sync produces. Replacing the directory
+# wholesale would delete them.
+SYNC_ARTIFACTS = ["etlm", "tpp", "theme", "ecosystem.md", "cross_link_map.json"]
+
+_OUT_ROOT: Path = DATA
+STAGING = DATA.parent / ".atlas-staging"
+
+
+class SyncAborted(Exception):
+    """Raised when the sync must not proceed. Always raised BEFORE the live tree is
+    touched, so aborting leaves src/data/atlas byte-identical to what was committed."""
+
+
+def out() -> Path:
+    """Current output root — the staging dir mid-sync, the live tree otherwise.
+    Every write site and every read-back of a just-written file must use this."""
+    return _OUT_ROOT
+
+
+def promote(staging: Path) -> list[str]:
+    """Move the validated staging artifacts onto the live tree, one artifact at a
+    time, keeping a backup of each so a mid-promotion failure can be rolled back.
+
+    Only names in SYNC_ARTIFACTS are touched — repo-owned .ts files, memo/ and
+    analyst_read.json under src/data/atlas are never candidates for replacement.
+    """
+    backups: list[tuple[Path, Path]] = []   # (live_path, backup_path)
+    promoted: list[str] = []
+    try:
+        for name in SYNC_ARTIFACTS:
+            staged = staging / name
+            if not staged.exists():
+                continue  # artifact not produced this run (e.g. no themes) — leave live copy
+            live = DATA / name
+            backup = DATA / f".{name}.bak-{os.getpid()}"
+            if live.exists():
+                os.replace(live, backup)
+                backups.append((live, backup))
+            os.replace(staged, live)
+            promoted.append(name)
+    except Exception:
+        # roll back whatever we already swapped, then re-raise
+        for live, backup in reversed(backups):
+            if backup.exists():
+                if live.exists():
+                    shutil.rmtree(live) if live.is_dir() else live.unlink()
+                os.replace(backup, live)
+        raise
+    # success — drop the backups
+    for _, backup in backups:
+        if backup.exists():
+            shutil.rmtree(backup) if backup.is_dir() else backup.unlink()
+    return promoted
+
 
 WS_ROOT = Path.home() / "Projects" / "ws_professional"
 ETLM_SRC = WS_ROOT / "ws9-etlm" / "drafts"
@@ -159,14 +224,21 @@ def scrub_values(obj: Any) -> Any:
 
 
 def sync_etlms(cfg: dict[str, Any]) -> list[str]:
-    out_dir = DATA / "etlm"
+    out_dir = out() / "etlm"
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     strip = set(cfg["etlm_strip_keys"])
     patterns = [re.compile(p) for p in cfg.get("etlm_strip_key_patterns", [])]
-    written: list[str] = []
+
+    # D3 — resolve EVERY whitelisted source before writing anything. Previously a
+    # missing source printed to stderr, `continue`d, and the sync exited 0 — with
+    # that report already deleted by the rmtree above. Under D2's staging model the
+    # failure would be worse, not better: an incomplete staging set gets promoted
+    # atomically, i.e. the report is deleted cleanly. Fail closed instead.
+    resolved: list[tuple[str, Path]] = []
+    missing: list[str] = []
     for code in cfg["etlm_whitelist"]:
         # PREFER the human-approved copy; fall back to the working draft.
         # Each dir uses nested <code>/<code>.json (post-2026-06 layout) with a
@@ -181,8 +253,19 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
         ]
         src = next((p for p in candidates if p.exists()), None)
         if src is None:
-            print(f"  ! ETLM source missing (approved+drafts): {code}", file=sys.stderr)
-            continue
+            missing.append(code)
+        else:
+            resolved.append((code, src))
+    if missing:
+        raise SyncAborted(
+            "ETLM source missing for whitelisted code(s): "
+            + ", ".join(missing)
+            + " — searched approved/ then drafts/. Publishing a shrunken set would "
+            "silently delete these reports from the live site."
+        )
+
+    written: list[str] = []
+    for code, src in resolved:
         is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
         sanitised = scrub_values(strip_keys(data, strip, patterns))
@@ -208,7 +291,7 @@ def _scrub_markdown(text: str, markers: list[str]) -> str:
 
 
 def sync_tpps(cfg: dict[str, Any]) -> list[str]:
-    out_dir = DATA / "tpp"
+    out_dir = out() / "tpp"
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -229,7 +312,7 @@ def sync_tpps(cfg: dict[str, Any]) -> list[str]:
 
 
 def sync_themes(cfg: dict[str, Any]) -> list[str]:
-    out_dir = DATA / "theme"
+    out_dir = out() / "theme"
     if out_dir.exists():
         shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -371,7 +454,7 @@ def sync_ecosystem(cfg: dict[str, Any]) -> bool:
             out_lines.append("")
             kept_total += 1
 
-    dst = DATA / "ecosystem.md"
+    dst = out() / "ecosystem.md"
     dst.write_text("\n".join(out_lines))
     print(f"  ok ecosystem.md ({kept_total} subsections kept across {len(entries)} entries)")
     return kept_total > 0
@@ -440,7 +523,7 @@ def build_cross_links(
     theme_to_indications: dict[str, list[str]] = {}
     etlm_to_themes: dict[str, list[str]] = {code: [] for code in etlms}
     for slug in themes:
-        md_path = DATA / "theme" / f"{slug}.md"
+        md_path = out() / "theme" / f"{slug}.md"
         if not md_path.exists():
             continue
         codes = theme_indications(md_path.read_text(), etlm_set)
@@ -515,35 +598,69 @@ def main() -> int:
     if "--verify-only" in sys.argv:
         return verify_only()
 
+    global _OUT_ROOT
+    dry_run = "--dry-run" in sys.argv
+
     DATA.mkdir(parents=True, exist_ok=True)
     cfg = load_config()
     configure_scrub(cfg.get("etlm_value_scrub_extra_tokens", []))
-    print(f"Sync target: {DATA}")
-    print("ETLMs:")
-    etlms = sync_etlms(cfg)
-    print("TPPs:")
-    tpps = sync_tpps(cfg)
-    print("Themes:")
-    themes = sync_themes(cfg)
-    print("Ecosystem:")
-    sync_ecosystem(cfg)
 
-    cross = build_cross_links(cfg, etlms, tpps, themes)
-    (DATA / "cross_link_map.json").write_text(json.dumps(cross, indent=2))
-    print(
-        f"Cross-links: tpp_to_etlm={len(cross['tpp_to_etlm'])} "
-        f"theme_to_indications={len(cross['theme_to_indications'])}"
-    )
+    # Build the ENTIRE replacement set in staging. Nothing under src/data/atlas is
+    # touched until the gate passes.
+    if STAGING.exists():
+        shutil.rmtree(STAGING)
+    STAGING.mkdir(parents=True, exist_ok=True)
+    _OUT_ROOT = STAGING
 
-    print("Leak gate:")
-    hits = leak_gate()
-    if hits:
-        print(f"  ✗ {len(hits)} forbidden marker(s) survived into the shipped bundle:", file=sys.stderr)
-        for h in hits[:40]:
-            print(f"    - {h}", file=sys.stderr)
+    try:
+        print(f"Sync target: {DATA}")
+        print(f"Staging:     {STAGING}")
+        print("ETLMs:")
+        etlms = sync_etlms(cfg)
+        print("TPPs:")
+        tpps = sync_tpps(cfg)
+        print("Themes:")
+        themes = sync_themes(cfg)
+        print("Ecosystem:")
+        sync_ecosystem(cfg)
+
+        cross = build_cross_links(cfg, etlms, tpps, themes)
+        (out() / "cross_link_map.json").write_text(json.dumps(cross, indent=2))
+        print(
+            f"Cross-links: tpp_to_etlm={len(cross['tpp_to_etlm'])} "
+            f"theme_to_indications={len(cross['theme_to_indications'])}"
+        )
+
+        # Gate STAGING, before promotion. A failure here leaves the live tree
+        # byte-identical to what was committed — nothing to revert, nothing
+        # committable, no possibility of pushing rejected content.
+        print("Leak gate (staging):")
+        hits = leak_gate(STAGING)
+        if hits:
+            print(f"  ✗ {len(hits)} forbidden marker(s) in the candidate bundle — NOT promoted:", file=sys.stderr)
+            for h in hits[:40]:
+                print(f"    - {h}", file=sys.stderr)
+            print(f"  live tree untouched: {DATA}", file=sys.stderr)
+            return 1
+        print("  ✓ clean — no forbidden internal markers in the candidate bundle")
+
+        if dry_run:
+            print(f"\n--dry-run: candidate bundle built and gated, NOT promoted.")
+            print(f"  inspect: {STAGING}")
+            return 0
+
+        promoted = promote(STAGING)
+        print(f"Promoted: {', '.join(promoted)}")
+        return 0
+
+    except SyncAborted as e:
+        print(f"\n  ✗ sync aborted: {e}", file=sys.stderr)
+        print(f"  live tree untouched: {DATA}", file=sys.stderr)
         return 1
-    print("  ✓ clean — no forbidden internal markers in shipped Atlas files")
-    return 0
+    finally:
+        _OUT_ROOT = DATA
+        if STAGING.exists() and not dry_run:
+            shutil.rmtree(STAGING, ignore_errors=True)
 
 
 if __name__ == "__main__":
