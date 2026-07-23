@@ -221,7 +221,7 @@ export function StandardProjectPage() {
   }
 
   return (
-    <ProjectPageLayout title={project.title} subtitle={project.source}>
+    <ProjectPageLayout title={project.title}>
       <div className="space-y-8">
         {/* Meta row */}
         <div className="flex items-center gap-2 flex-wrap">

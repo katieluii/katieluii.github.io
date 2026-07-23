@@ -20,7 +20,7 @@ import { getProjectBySlug } from '../data/projects';
 import { Reveal } from '../components/shared/craft';
 import AtlasDataflow from '../components/atlas/AtlasDataflow';
 import { WWM_LIVE } from '../data/atlas/copy';
-import { INDICATIONS, type Indication } from '../data/indications';
+import { INDICATIONS } from '../data/indications';
 
 interface Capability {
   id: string;

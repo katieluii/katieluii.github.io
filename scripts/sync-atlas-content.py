@@ -461,34 +461,21 @@ def build_cross_links(
 # so schema drift (a new internal key/token) can't silently ship again.
 # Specific internal phrases (not the bare name "Katie", so the legitimate
 # "© / Katie Lui sign-off" copyright byline is allowed through).
-_LEAK_MARKERS = [
-    "UNVERIFIED",
-    "do not assert",
-    "do-not-assert",
-    "staleness-backup",
-    "HUMAN-APPROVED",
-    "HUMAN_REVIEW",
-    "AUTO_APPLY",
-    "analyst-knowledge",
-    "(verify)",
-    "verified by Katie",
-    "deferred to Katie",
-    "Katie ruling",
-    "Katie directive",
-    "Katie disposition",
-    "per S64",
-    "RATIFIED",
-    "NOTE-IT",
-    "Source data:",
-    "analyst review cycle",
-]
+#
+# The vocabulary now lives in scripts/atlas-leak-markers.json so this gate and the
+# build-time TS gate (atlas-integrity-plugin.ts) share ONE list and cannot drift.
+MARKERS_PATH = HERE / "atlas-leak-markers.json"
+_LEAK_MARKERS: list[str] = json.loads(MARKERS_PATH.read_text())["leak_markers"]
 
 
-def leak_gate() -> list[str]:
+def leak_gate(root: Path | None = None) -> list[str]:
     """Grep every shipped Atlas file for forbidden internal markers. Returns a
-    list of 'file: marker → snippet' hits (empty = clean)."""
+    list of 'file: marker → snippet' hits (empty = clean).
+
+    `root` defaults to the live output dir. Pass a staging dir to gate a
+    replacement set BEFORE it is promoted onto the live tree (see D2)."""
     hits: list[str] = []
-    for path in sorted(DATA.rglob("*")):
+    for path in sorted((root or DATA).rglob("*")):
         if not path.is_file() or path.suffix not in (".json", ".md"):
             continue
         text = path.read_text()
@@ -500,7 +487,34 @@ def leak_gate() -> list[str]:
     return hits
 
 
+def verify_only() -> int:
+    """Gate the COMMITTED tree without writing anything.
+
+    This is what CI runs. The full sync is a local developer step that reads the
+    analyst repo (absent in CI) and rewrites src/data/atlas; this mode re-reads
+    what is actually committed — i.e. what actually deploys — and fails on any
+    forbidden marker. Without it the leak gate only ever ran at the discretion of
+    whoever happened to run the sync locally.
+    """
+    print(f"Verify-only (no writes). Scanning: {DATA}")
+    if not DATA.exists():
+        print(f"  ✗ {DATA} does not exist", file=sys.stderr)
+        return 1
+    hits = leak_gate()
+    if hits:
+        print(f"  ✗ {len(hits)} forbidden marker(s) in the committed Atlas bundle:", file=sys.stderr)
+        for h in hits[:40]:
+            print(f"    - {h}", file=sys.stderr)
+        return 1
+    scanned = sum(1 for p in DATA.rglob("*") if p.is_file() and p.suffix in (".json", ".md"))
+    print(f"  ✓ clean — {scanned} shipped Atlas file(s), no forbidden internal markers")
+    return 0
+
+
 def main() -> int:
+    if "--verify-only" in sys.argv:
+        return verify_only()
+
     DATA.mkdir(parents=True, exist_ok=True)
     cfg = load_config()
     configure_scrub(cfg.get("etlm_value_scrub_extra_tokens", []))

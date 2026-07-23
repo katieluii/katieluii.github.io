@@ -348,7 +348,7 @@ export function groupProjectsByYear(projectList: Project[]): Map<number, Project
     grouped.get(year)!.push(project);
   });
 
-  grouped.forEach((projects, year) => {
+  grouped.forEach((projects) => {
     projects.sort((a, b) => {
       const statusOrder = { Live: 0, WIP: 1, Archived: 2 };
       if (statusOrder[a.status] !== statusOrder[b.status]) {

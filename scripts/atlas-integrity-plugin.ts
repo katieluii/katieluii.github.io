@@ -17,10 +17,42 @@ import { classifyEndpoint } from '../src/data/atlas/soc/classify';
 import { PROFILE_OVERRIDES } from '../src/data/atlas/soc/profiles';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const ETLM_DIR = path.join(HERE, '..', 'src', 'data', 'atlas', 'etlm');
+const ATLAS_DIR = path.join(HERE, '..', 'src', 'data', 'atlas');
+const ETLM_DIR = path.join(ATLAS_DIR, 'etlm');
 
-// editorial-marker vocabulary that must never reach the shipped bundle
-const EDITORIAL = /analyst-known|NEEDS PRIMARY VERIFICATION|pull suppl|finalize before shipping|review-cited|were pooled-label|digit-level unverified|TODO|FIXME|INTERNAL:/i;
+// Vocabulary is loaded from scripts/atlas-leak-markers.json so this gate and the
+// Python leak_gate() share ONE list and cannot drift. Previously the two were
+// hand-maintained copies and the TS side was the narrower of the two.
+const MARKERS = JSON.parse(
+  fs.readFileSync(path.join(HERE, 'atlas-leak-markers.json'), 'utf8'),
+) as { leak_markers: string[]; editorial_patterns: string[] };
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const EDITORIAL = new RegExp(MARKERS.editorial_patterns.map(escapeRe).join('|'), 'i');
+
+/** Substring scan for the leak vocabulary over EVERY shipped Atlas file — not just
+ *  etlm/. This runs at buildStart, so unlike the Python gate it always executes in
+ *  CI. Covers files the sync never produces (repo-authored data under src/data/atlas). */
+function scanBundleForLeaks(): string[] {
+  const hits: string[] = [];
+  const walkDir = (dir: string) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) { walkDir(full); continue; }
+      if (!/\.(json|md)$/.test(entry.name)) continue;
+      const text = fs.readFileSync(full, 'utf8');
+      for (const marker of MARKERS.leak_markers) {
+        const idx = text.indexOf(marker);
+        if (idx === -1) continue;
+        const snippet = text.slice(Math.max(0, idx - 30), idx + marker.length + 30).replace(/\n/g, ' ');
+        hits.push(`${path.relative(ATLAS_DIR, full)}: '${marker}' → …${snippet}…`);
+      }
+    }
+  };
+  walkDir(ATLAS_DIR);
+  return hits;
+}
 
 // --- inlined key-picking (mirror of presentationProfile.pickMetricKey) ---
 function weekOf(key: string): number {
@@ -92,6 +124,8 @@ export function atlasIntegrityGate(): Plugin {
         const { red, amber, leaks } = scanEtlm(f.replace('.json', ''), etlm);
         allRed.push(...red); allAmber.push(...amber); allLeaks.push(...leaks);
       }
+      // bundle-wide leak scan (all of src/data/atlas, shared vocabulary)
+      allLeaks.push(...scanBundleForLeaks());
       // AMBER backlog (informational — allowed to ship)
       if (allAmber.length) {
         console.log(`\n[atlas-integrity] ${allAmber.length} AMBER (sourced-unverified — ship-ok, value-pass backlog):`);

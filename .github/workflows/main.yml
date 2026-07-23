@@ -25,8 +25,17 @@ jobs:
           node-version: 20                                                                               
           cache: npm
                                                                                                          
-      - name: Install dependencies                        
-        run: npm ci                                                                                    
+      - name: Install dependencies
+        run: npm ci
+
+      # Gates, in order of cheapness. All three block the deploy on a non-zero exit.
+      # Added 2026-07-23: previously this job ran `npm run build` alone, so neither
+      # the type checker nor the Atlas leak gate ever ran on the deploy path.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Atlas leak gate (committed tree)
+        run: python3 scripts/sync-atlas-content.py --verify-only
 
       - name: Build
         run: npm run build

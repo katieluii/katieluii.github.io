@@ -1,0 +1,43 @@
+{
+  "_comment": [
+    "SINGLE SOURCE OF TRUTH for the leak/editorial vocabulary that must never reach the",
+    "shipped Atlas bundle. Read by BOTH gates so they cannot drift:",
+    "  - scripts/sync-atlas-content.py       leak_gate()      (substring match, .json/.md under src/data/atlas)",
+    "  - scripts/atlas-integrity-plugin.ts   atlasIntegrityGate()  (runs at buildStart, so it gates CI)",
+    "Adding a marker here tightens both gates at once. Verified 0 hits over the committed",
+    "tree on 2026-07-23; re-run `python3 scripts/sync-atlas-content.py --verify-only` after editing."
+  ],
+  "leak_markers": [
+    "UNVERIFIED",
+    "do not assert",
+    "do-not-assert",
+    "staleness-backup",
+    "HUMAN-APPROVED",
+    "HUMAN_REVIEW",
+    "AUTO_APPLY",
+    "analyst-knowledge",
+    "(verify)",
+    "verified by Katie",
+    "deferred to Katie",
+    "Katie ruling",
+    "Katie directive",
+    "Katie disposition",
+    "per S64",
+    "RATIFIED",
+    "NOTE-IT",
+    "Source data:",
+    "analyst review cycle"
+  ],
+  "editorial_patterns": [
+    "analyst-known",
+    "NEEDS PRIMARY VERIFICATION",
+    "pull suppl",
+    "finalize before shipping",
+    "review-cited",
+    "were pooled-label",
+    "digit-level unverified",
+    "TODO",
+    "FIXME",
+    "INTERNAL:"
+  ]
+}

@@ -61,7 +61,7 @@ export function ProjectTimeline({ groupedProjects }: ProjectTimelineProps) {
     <div className="relative">
       <div className="absolute left-[2.375rem] top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-800" />
 
-      {years.map((year, yearIndex) => {
+      {years.map((year) => {
         const projects = groupedProjects.get(year) || [];
         const isActive = activeYear === year;
         const isHovered = hoveredYear === year;
