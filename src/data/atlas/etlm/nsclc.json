@@ -1706,6 +1706,98 @@
         ]
       },
       "note": "Stored figures are pemetrexed MONOTHERAPY 2L non-squamous (JMEI; Hanna 2004). Pemetrexed's modern role is a chemo-backbone component; the pembrolizumab+pemetrexed+platinum TRIPLET (KEYNOTE-189) ORR 47.6% is a distinct regimen tracked in efficacy_benchmarks_by_line (1L_all_comers_chemo_IO_nonsquamous), not attributed to pemetrexed alone"
+    },
+    {
+      "drug_name": "zidesamtinib (NVL-520)",
+      "brand": "Jideytro",
+      "company": "GSK (acquired from Nuvalent, $10.6B deal closed 2026-06)",
+      "modality": "small molecule TKI",
+      "target": "ROS1 (3rd gen, CNS-penetrant, ROS1-selective)",
+      "indication_line": "Adult patients with locally advanced or metastatic ROS1-positive NSCLC who received a prior ROS1 kinase inhibitor (verbatim FDA label indication)",
+      "fda_approval_date": "2026-07-22",
+      "ema_approval_date": null,
+      "key_efficacy": {
+        "orr_pct": 44,
+        "orr_95ci": "34-53",
+        "n_efficacy_population": 117,
+        "dor_6mo_pct": 82,
+        "dor_12mo_pct": 69,
+        "cr_pct": 0.9,
+        "dor_range_months": "1.9 to 28.5+ (+ = ongoing response)",
+        "dor_method": "observed DOR rate (per FDA label Table 5 footnote a) \u2014 NOT a Kaplan-Meier landmark estimate",
+        "orr_by_prior_tki": {
+          "one_prior_ros1_tki": {
+            "n": 59,
+            "orr_pct": 49,
+            "orr_95ci": "36-63"
+          },
+          "two_or_more_prior_ros1_tki": {
+            "n": 58,
+            "orr_pct": 38,
+            "orr_95ci": "26-52"
+          }
+        },
+        "intracranial": {
+          "n_measurable_cns": 50,
+          "orr_pct": 48,
+          "orr_95ci": "34-63",
+          "cr_pct": 22
+        },
+        "ros1_resistance_mutation": {
+          "n": 42,
+          "responders": 21,
+          "orr_pct": 50
+        },
+        "g2032r_solvent_front": {
+          "n": 26,
+          "responders": 14,
+          "orr_pct": 54
+        }
+      },
+      "trial": "ARROS-1",
+      "nct": "NCT05118789",
+      "source": "GSK approval press release 2026-07-22 (primary): ARROS-1 TKI-pretreated cohort N=117, BICR ORR 44% (95% CI 34-53), DOR 82% at 6mo / 69% at 12mo. ESTIMAND: single-arm Phase 1/2, ROS1-TKI-PRETREATED cohort only (matches the approved label population) at the 100 mg QD RP2D; ~50% had >=2 prior ROS1 TKIs, 49% active CNS disease, 36% secondary ROS1 mutation. DOR is a Kaplan-Meier landmark rate among RESPONDERS (not the full cohort). NOT an all-comers NSCLC figure. The TKI-naive (1L) ARROS-1 cohort remains under separate regulatory review and is NOT included here",
+      "note": "CORRECTION applied by hr-resolver 2026-07-23: the feed/analyst carried n=177 for this ORR. The correct efficacy N is 117. n=177 is a trade-press (CancerNetwork) transcription of the enrolled NSCLC cohort misattributed to the pivotal figures; GSK's primary release states N=117, and Clopper-Pearson arithmetic is decisive - 44% at n=117 gives 95% CI 34.4-53.1 (= the reported 34-53), whereas n=177 would give 36.6-51.7. Also note an earlier 2025-06-24 Nuvalent data cut on the same n=117 cohort reported DOR among responders of 84%/78%/62% at >=6/12/18 months; the 82%/69% pair is the later approval-cut disclosure. Cross-cut DOR comparisons should not mix the two cuts. Comparator context: no prior anchored 2L+ ROS1-TKI-pretreated benchmark existed in this ETLM (repotrectinib/TRIDENT-1 2L not yet anchored). || LABEL-VERIFIED 2026-07-24 (hr-resolver re-sweep): the FDA-approved full Prescribing Information (Reference ID 5838843) is now retrievable and confirms every anchored figure verbatim in Table 5 \u2014 efficacy population N=117 ROS1-TKI-pretreated, confirmed ORR 44% (95% CI 34, 53), CR 0.9%, DOR >=6 months 82%, DOR >=12 months 69%, DOR range 1.9-28.5+ months. This CLOSES the n=117-vs-177 question against the regulator's own document. TWO CORRECTIONS to the prior pass: (1) DOR is an OBSERVED DOR rate (label Table 5 footnote a), NOT the Kaplan-Meier landmark estimate the earlier note asserted \u2014 the estimand wording is corrected here. (2) The 1-prior-TKI subgroup differs by data cut: the 2025-06-24 Nuvalent pivotal cut reported n=55, ORR 51% (37-65); the registrational label cut reports N=59, ORR 49% (95% CI 36, 63). The LABEL cut is anchored here; do not mix cuts",
+      "sources": [
+        {
+          "id": "gsk_jideytro_approval_20260722",
+          "type": "press_release_sponsor",
+          "label": "GSK: Jideytro (zidesamtinib) approved in the US for previously treated ROS1-positive NSCLC",
+          "url": "https://www.gsk.com/en-gb/media/press-releases/jideytro-zidesamtinib-approved-in-the-us-for-previously-treated-ros1-positive-non-small-cell-lung-cancer/",
+          "date": "2026-07-22",
+          "verified": true,
+          "quoted_metric": "TKI-pretreated efficacy population N=117; ORR 44% (95% CI 34-53); DOR 82% at 6 months, 69% at 12 months"
+        },
+        {
+          "id": "arros1_nct",
+          "type": "ctgov",
+          "label": "ARROS-1 - A Study of Zidesamtinib (NVL-520) in Patients With Advanced NSCLC and Other Solid Tumors Harboring ROS1 Rearrangement",
+          "url": "https://clinicaltrials.gov/study/NCT05118789",
+          "nct": "NCT05118789",
+          "verified": true,
+          "resolved_title": "A Study of Zidesamtinib (NVL-520) in Patients With Advanced NSCLC and Other Solid Tumors Harboring ROS1 Rearrangement (ARROS-1)",
+          "quoted_metric": "Phase 1/2, single-arm, lead sponsor Nuvalent Inc. (acquired by GSK 2026-06); intervention zidesamtinib (NVL-520)"
+        },
+        {
+          "id": "nuvalent_arros1_pivotal_20250624",
+          "type": "press_release_sponsor",
+          "label": "Nuvalent: positive pivotal ARROS-1 data, TKI-pretreated advanced ROS1+ NSCLC (2025-06-24 data cut)",
+          "url": "https://investors.nuvalent.com/2025-06-24-Nuvalent-Announces-Positive-Pivotal-Data-from-ARROS-1-Clinical-Trial-of-Zidesamtinib-for-TKI-Pre-treated-Patients-with-Advanced-ROS1-positive-NSCLC",
+          "date": "2025-06-24",
+          "verified": true,
+          "quoted_metric": "n=117 ROS1-TKI-pretreated (50% >=2 prior ROS1 TKIs); BICR ORR 44% (95% CI 34-53); DOR among responders >=6mo 84%, >=12mo 78%, >=18mo 62%; 1-prior-TKI subset n=55 ORR 51% (37-65); G2032R n=26 ORR 54%; intracranial ORR 48%"
+        },
+        {
+          "id": "fda_label_jideytro_20260722",
+          "type": "regulatory_label",
+          "label": "JIDEYTRO (zidesamtinib) tablets \u2014 FDA-approved full Prescribing Information (Reference ID 5838843)",
+          "url": "https://nuvalent.com/pdfs/jideytro-full-prescribing-information.pdf",
+          "date": "2026-07-22",
+          "verified": true,
+          "quoted_metric": "Section 14 Clinical Studies + Table 5: 'The efficacy population included 117 patients who received at least 1 prior ROS1 TKI'; Confirmed Response Rate 44% (34, 53); Complete Response 0.9%; Response Duration >=6 months 82%; Response Duration >=12 months 69%; DOR range 1.9, 28.5+. Indication: 'adult patients with locally advanced or metastatic ROS1-positive non-small cell lung cancer (NSCLC) who received a prior ROS1 kinase inhibitor.' Trial: ARROS-1 (NCT05118789)",
+          "host_caveat": "Sponsor-hosted mirror of the FDA-approved label. accessdata.fda.gov / Drugs@FDA had not yet indexed the approval at time of check (approval 2026-07-22, checked 2026-07-24), so this does not register as an fda.gov-hosted citation for the automated host-based confidence gate"
+        }
+      ]
     }
   ],
   "pipeline_assets": [

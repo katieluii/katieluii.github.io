@@ -3,28 +3,6 @@
 _A redacted, public-safe slice of the running ecosystem note. Internal flags and PM annotations have been stripped; only the most recent 2 cycle entries are shown._
 
 
-## 2026-07-24 (cycle115_mega — signal-gated, 8 indications ran {gastric, mm, obesity, gbm, hcc, hd, iim, mash} — an oncology/cardiometabolic/rare-CNS/rheum spread. New-this-cycle batch precisely: events 3808–3809 (2) + macro_signals 820–833 (14), continuing directly off cycle114's 3807/819 ceiling. Clinical layer is thin: event 3808 (FDA warning letters, 2 India-based API manufacturers) is a REJECT-no-nexus repeat of the same disposition pattern seen for HCC's Alembic letter in c114; event 3809 refines the standing retatrutide watch flag — Lilly's triple-G reports 22.6% w80 weight loss but "cardiovascular risk reduction endpoints showed less clarity than expected," the first direct signal against the CV-benefit-unproven flag raised in c114 (obesity's own review found this event non-additive against the ETLM, byte-identical delta feed to c114). gastric/mm/gbm/hcc/hd/iim/mash are all REJECT-only or 24h stale-floor refreshes; gastric's 5-cycle-open IBI343/G-HOPE-001 item is confirmed applied and dropped from carry-forward. Macro layer's real news is two storylines: (1) a 4-signal FDA peptide-compounding regulatory arc (820 BPC-157 adcomm recommendation, 822 panel narrowly backs 4 peptides "despite insufficient evidence," 826 peptides "favored topic" at the compounding adcomm, 831 the concrete outcome — 3 of 7 previously-restricted peptides restored to the 503A Bulk Drug Substances list) — a clear compounding-access-easing direction across a single adcomm week; (2) Scribe Therapeutics (Doudna-cofounded gene editor) prices a $128.7M IPO — first gene-editing IPO in 2+ years, PCSK9/Lp(a) cardiovascular targets (signal 832) — with signal 833 explicitly framing it as the opener for an expected H2-2026 biotech IPO run, a financing-climate signal distinct from the deal-volume-recovery thread tracked since c110. Remaining signals in the 820–833 batch (823, 825, 827–830) are same-week re-reports of already-logged items (Scancell reverse merger, J&J MM "89%" headline, Roche Vabysmo defense, BeOne reshoring, NIH AI initiative, Roche lupus TCE discontinuation) — not re-narrated. WS13 ecosystem_from_reviews.md unchanged since 2026-06-21 — nothing to fold. KB-scope caveat throughout: deltas only, anchor crowding/deal-count totals externally.)
-
-### Target/modality crowding
-
-- Near-null movement: only 1 new asset (ROS1, selective/next-gen) entered the KB in the trailing 7 days across all tracked indications. Not a crowding claim — reflects the current signal-gated indication mix, not industry activity.
-
-### Modality trajectory
-
-- **Triple agonist (GLP-1/GIP/glucagon, retatrutide)**: momentum tempered further — event 3809 is the first signal explicitly stating CV-outcome clarity fell short of expectations, sharpening (not yet resolving) the CV-benefit-unproven flag raised in c114. Weight-loss efficacy (22.6% w80) remains strong; cardiovascular-outcome data still the open question.
-- **Peptide therapeutics (compounded, 503A pathway)**: newly-flagged momentum on the regulatory-access side — a 4-signal FDA adcomm arc this week (820/822/826/831) culminates in 3 of 7 previously-restricted peptides being restored to the 503A Bulk Drug Substances list, easing compounding-pharmacy access. Distinct from branded/NDA-pathway peptide programs; watch for read-across to any tracked GLP-1-class or peptide-hormone asset with a compounded-analog exposure.
-- **Gene editing (platform financing)**: first fresh-capital signal in 2+ years — Scribe Therapeutics' $128.7M IPO (PCSK9/Lp(a) CV targets) breaks a multi-year IPO drought for the modality class.
-
-### Deal climate
-
-- IPO-market reopening is this week's headline deal-climate item: Scribe Therapeutics' $128.7M raise is framed by trade press (signal 833) as the opener for an expected H2-2026 biotech IPO run — a financing-climate signal layered on top of the deal-volume-recovery thread tracked since c110 (Endpoms's Q2 2026 dealmaking-recovery synthesis, signal 780). Watch whether subsequent IPO filings in H2-2026 bear this out.
-- No new named M&A/licensing transactions this cycle beyond same-week re-reports of already-logged deals (Scancell reverse merger, BeOne reshoring) — a quieter deal week than c114's reshoring cluster.
-
-### Conference observations
-
-- None active this cycle (0 new conference_meta signals in the 820–833 delta batch; 3 conference_meta signals present in the 120-signal rolling context bundle, unchanged from c114).
-
-
 ## 2026-07-24 (cycle116_mega — signal-gated, 8 indications ran {aml_mds, atopic_dermatitis, breast, crc, melanoma, ms, myasthenia_gravis, neuroendocrine_tumors} — an oncology/dermatology/neuro-autoimmune spread. New-this-cycle batch precisely: event 3810 (1) + macro_signal 834 (1), continuing directly off cycle115's 3809/833 ceiling — the lightest delta of the mega-cycle series to date. aml_mds/breast/crc/melanoma/ms/myasthenia_gravis/neuroendocrine_tumors are all fully null/stale-refresh cycles (0 genuinely new events each; every named asset already captured per asset_index) — 0 auto-apply, 0 human-review across all 7. The one substantive item is event 3810: Sanofi discontinues amlitelimab (anti-OX40L, Kymab-originated, Ph3 NCT06130566) in atopic dermatitis, "would not represent a meaningful improvement over existing treatments," after positioning it as a Dupixent successor — routed by the atopic_dermatitis analyst as a split patch (safe pipeline-status UPDATE + multi-section competitive-landscape recalibration). Macro_signal 834 is a same-week refinement of the already-logged Scribe Therapeutics IPO (upsized to $128.7M vs $96M goal, in vivo gene-editing lipid-lowering focus) — not new ground beyond signals 832/833. WS13 ecosystem_from_reviews.md unchanged since 2026-06-21 — nothing to fold. KB-scope caveat throughout: deltas only, anchor crowding/deal-count totals externally.)
 
 ### Target/modality crowding
@@ -39,6 +17,27 @@ _A redacted, public-safe slice of the running ecosystem note. Internal flags and
 ### Deal climate
 
 - Quiet cycle: no new named deal beyond the Scribe Therapeutics IPO refinement (signal 834, upsized $128.7M vs $96M goal) — same event already logged in cycle115, not a fresh transaction.
+
+### Conference observations
+
+- None active this cycle (0 conference_meta signals in the new-this-cycle delta).
+
+
+## 2026-07-24 (cycle117_mega — signal-gated, 8 indications ran {obesity, aav, alzheimers, atopic_dermatitis, mm, nsclc, alopecia_areata, als} — a cardiometabolic/rare-vasculitis/neuro-degen/derm-I&I/heme-onco/solid-onco spread. New-this-cycle batch precisely: events 3811–3813 (3) + macro_signals 835–841 (7), continuing directly off cycle116's 3810/834 ceiling. Clinical layer is thin but two items materially escalate standing threads: atopic_dermatitis's event 3811 and aav's event 3812; obesity/mm/nsclc/alopecia_areata/als are fully null/near-null stale-refresh cycles (0 genuinely new events each bar nsclc's 1 carry-forward repeat) — 0 auto-apply, 1 human-review (nsclc, zidesamtinib status carry-forward) across those 5. alzheimers' event 3813 (Biogen BIIB080 tau-ASO readout commentary) is headline-only/paywalled — too thin to extract beyond a watch note. WS13 ecosystem_from_reviews.md unchanged since 2026-06-21 — nothing to fold. KB-scope caveat throughout: deltas only, anchor crowding/deal-count totals externally.)
+
+### Target/modality crowding
+
+- **OX40/OX40L costimulatory axis (atopic dermatitis): escalates from target-class attrition to a possible convergent SAFETY signal.** Cycle116 logged rocatinlimab (Amgen/Kyowa Kirin, depleting anti-OX40, discontinued Mar-2026, Kaposi sarcoma) and amlitelimab (Sanofi, anti-OX40L, discontinued Jul-2026, framed as differentiation) as two independent Ph3 exits on one axis via two different failure modes. Event 3811 adds Sanofi's fuller rationale — "totality of efficacy AND safety evidence," "mixed Phase 3... results and reported Kaposi's sarcoma cases" — phrasing ambiguous as to whether KS cases were observed in amlitelimab's OWN trials, not just read across from rocatinlimab's. If confirmed, this reclassifies the axis from "1 safety exit + 1 differentiation exit" to "2 independent sponsors, 2 independent Ph3 programmes, same KS signal" — a materially stronger convergent target-class safety flag than simple crowding attrition. Per atopic_dermatitis analyst: routed pending primary-source confirmation (feed gives no sponsor-statement quote/NCT to pin attribution). Amlitelimab itself survives only in celiac disease (Ph2, readout end-2026). IMG-007 (Inmagene, non-depleting anti-OX40) remains the sole clinical-stage survivor on the whole axis.
+
+### Modality trajectory
+
+- **Post-approval regulatory durability (cross-TA)**: Tavneos/avacopan (AAV) — CHMP already reversed its EU authorization (Jun-2026); Amgen now proactively seeking an FDA adcomm to defend US approval. Read alongside CHMP's mixed EU rare-disease week (positive opinion for Minoryx's ALD asset, negative for Zevra's Meplyffa ~2 years post-US-approval, signal 841) — approval, once granted, is increasingly treated as a revisable/contestable state rather than terminal, on both sides of the Atlantic.
+- **Long-acting prevention (HIV PrEP)**: access-before-approval is hardening into a template, not a one-off — Merck's alimatravir voluntary licensing (signal 835) follows Gilead's lenacapavir playbook almost exactly (LMIC licensing ahead of regulatory submission). Watch whether this becomes standard practice across other long-acting-prevention modalities.
+- **GLP-1/incretin commercial rivalry**: escalates from marketing dispute to active litigation — Novo Nordisk is seeking a New Jersey federal injunction against Lilly's comparative-efficacy ad campaigns (Zepbound/Mounjaro vs Ozempic/Wegovy), per signals 836/839/840 — the first litigation-stage escalation tracked on this axis (prior cycles logged marketing/commentary only).
+
+### Deal climate
+
+- Three macro-level structural signals this week, none a single-asset deal: (1) US import tariffs announced on generic drugs entering the US — a supply-chain cost-pressure signal for genericized/off-patent classes; (2) Samsung Biologics pursuing a ~$1.8B acquisition, reported as the largest-ever M&A by a Korean biopharma — a scale-up signal for Asian CDMO/biologics consolidation; (3) a US biotech pursuing a Hong-Kong-first IPO — a second alternative-listing-venue data point (after Scribe Therapeutics' Nasdaq IPO, cycle115) that capital-constrained biotechs are testing non-US venues, this time HK rather than domestic.
 
 ### Conference observations
 
