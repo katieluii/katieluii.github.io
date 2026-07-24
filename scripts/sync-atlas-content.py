@@ -41,7 +41,13 @@ DATA = REPO / "src" / "data" / "atlas"
 # repo-owned .ts files (gating.ts, index.ts, soc/profiles.ts, …) plus memo/ and
 # analyst_read.json, none of which the sync produces. Replacing the directory
 # wholesale would delete them.
-SYNC_ARTIFACTS = ["etlm", "tpp", "theme", "ecosystem.md", "cross_link_map.json"]
+SYNC_ARTIFACTS = ["etlm", "tpp", "theme", "ecosystem.md", "cross_link_map.json", "_sync_provenance.json"]
+
+# D6 — which source ROOT (approved/ vs drafts/) each whitelisted code resolved from.
+# sync_etlms prefers approved/ over drafts/, so the first promotion of a code silently
+# switches its source of truth with no record. This file is that record; a switch that
+# is not acknowledged with --allow-source-move aborts the sync.
+SYNC_PROVENANCE = DATA / "_sync_provenance.json"
 
 _OUT_ROOT: Path = DATA
 STAGING = DATA.parent / ".atlas-staging"
@@ -298,6 +304,28 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
             "silently delete these reports from the live site."
         )
 
+    # D6 — record which source ROOT each code resolved from, and abort on a silent
+    # switch. sync_etlms prefers approved/ over drafts/, so promoting a draft into
+    # approved/ moves the source of truth with no diff. Compare against the committed
+    # baseline; a change must be acknowledged with --allow-source-move.
+    new_roots = {code: ("approved" if ETLM_APPROVED_SRC in src.parents else "drafts")
+                 for code, src in resolved}
+    prior = {}
+    if SYNC_PROVENANCE.exists():
+        try:
+            prior = json.loads(SYNC_PROVENANCE.read_text()).get("resolved_root", {})
+        except (json.JSONDecodeError, OSError):
+            prior = {}
+    moved = [(c, prior[c], new_roots[c]) for c in new_roots
+             if c in prior and prior[c] != new_roots[c]]
+    if moved and "--allow-source-move" not in sys.argv:
+        detail = "; ".join(f"{c}: {old} → {new}" for c, old, new in moved)
+        raise SyncAborted(
+            f"source root changed for {len(moved)} code(s): {detail} — the source of "
+            f"truth moved between drafts/ and approved/. Re-run with --allow-source-move "
+            f"to accept and record the new root(s)."
+        )
+
     written: list[str] = []
     for code, src in resolved:
         is_approved = ETLM_APPROVED_SRC in src.parents
@@ -338,6 +366,15 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
         written.append(code)
         tag = "approved" if is_approved else "draft"
         print(f"  ok etlm/{code}.json [{tag}] ({len(json.dumps(sanitised)):,} bytes)")
+
+    # D6 — write the resolved-root record into the staged set so it is promoted and
+    # committed alongside the bundle, becoming the next run's baseline.
+    (out() / "_sync_provenance.json").write_text(json.dumps({
+        "_doc": "D6: source ROOT each whitelisted ETLM resolved from (approved/ vs "
+                "drafts/). A change here means the source of truth moved; the sync "
+                "aborts on an unacknowledged move (re-run with --allow-source-move).",
+        "resolved_root": new_roots,
+    }, indent=2, sort_keys=True))
     return written
 
 

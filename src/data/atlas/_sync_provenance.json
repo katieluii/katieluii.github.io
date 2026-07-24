@@ -1,0 +1,10 @@
+{
+  "_doc": "D6: source ROOT each whitelisted ETLM resolved from (approved/ vs drafts/). A change here means the source of truth moved; the sync aborts on an unacknowledged move (re-run with --allow-source-move).",
+  "resolved_root": {
+    "crc": "drafts",
+    "mm": "drafts",
+    "nhl_dlbcl": "drafts",
+    "nsclc": "drafts",
+    "obesity": "drafts"
+  }
+}
