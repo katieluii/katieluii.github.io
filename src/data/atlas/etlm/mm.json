@@ -2615,7 +2615,8 @@
       "proteasome_inhibition_vs_targeted_degradation": "Conceptual framing (Nat Rev Cancer 2025, DOI 10.1038/s41568-025-00817-8): MM SOC PIs (bortezomib/carfilzomib/ixazomib) BLOCK the proteasome broadly (stabilising tumour-suppressors), whereas TPD (IMiDs/CELMoDs/PROTACs) REPROGRAMMES the UPS to selectively destroy oncoproteins. The review positions these as complementary \u2014 giving next-gen MGD + PI combinations a mechanistic rationale beyond empirical synergy. [framing only]",
       "cd38_rlt_cross_modality_readacross": "RLT modality umbrella review (NRDD, DOI 10.1038/d41573-025-00096-w, Fig 2b) shows clinical-stage radioligand-therapy activity at CD38 \u2014 the same validated MM target as daratumumab/isatuximab (antibody class) \u2014 i.e. cross-modality redeployment of a validated MM target into an RLT format. Asset-level details (sponsor, INN, NCT) NOT provided by the review; no asset added to pipeline_assets to avoid fabrication. [framing only]"
     },
-    "frontline_bispecific_wave_note": "Watch-flag: linvoseltamab (Lynozyfic, Regeneron) is an approved BCMA bispecific \u2014 FDA accelerated approval 2025-07-02 at >=4 prior lines (PI + IMiD + anti-CD38 mAb; NOT '3L+'), based on LINKER-MM1. Its frontline transplant-ELIGIBLE NDMM study NCT07428369 (Linvo-VR +/- ASCT vs DVRd) is WITHDRAWN on CT.gov (never recruited) \u2014 so this specific frontline-bispecific entrant has PULLED its trial. No benchmark write"
+    "frontline_bispecific_wave_note": "Watch-flag: linvoseltamab (Lynozyfic, Regeneron) is an approved BCMA bispecific \u2014 FDA accelerated approval 2025-07-02 at >=4 prior lines (PI + IMiD + anti-CD38 mAb; NOT '3L+'), based on LINKER-MM1. Its frontline transplant-ELIGIBLE NDMM study NCT07428369 (Linvo-VR +/- ASCT vs DVRd) is WITHDRAWN on CT.gov (never recruited) \u2014 so this specific frontline-bispecific entrant has PULLED its trial. No benchmark write",
+    "frontline_trispecific_wave_note": "Watch signal (hr-resolver 2026-07-23; zero-efficacy, context only -- no benchmark write). A frontline/earlier-line TRIspecific wave is emerging in MM: (1) ramantamig (BCMA x GPRC5D x CD3 trispecific) + daratumumab enters 1L NDMM non-transplant via TRIlogy-7 (NCT07665450, NOT_YET_RECRUITING, no efficacy yet) -- the first trispecific to target 1L NDMM; (2) IBI3003 (GPRC5D x BCMA x CD3 trispecific, Innovent) is now in Phase 3 RRMM. Two assets make this a class-wide trend rather than a single-asset outlier: a dual-antigen-escape trispecific could challenge the quadruplet-backbone (IMiD/PI/CD38) frontline narrative IF efficacy lands. Per standing policy this does NOT displace the quadruplet benchmark anchors (IMROZ Isa-VRd, CEPHEUS Dara-VRd ORR 91%, MAIA D-Rd 61.9mo) on zero-efficacy trial-starts -- reassess at first efficacy readout"
   },
   "recent_conference_readouts": [
     {
@@ -3234,6 +3235,18 @@
           "quoted_metric": "5-yr sustained MRD-negativity 59%; mPFS NR"
         }
       ]
+    },
+    {
+      "asset_name": "Iberdomide (maintenance)",
+      "sponsor": "University of Nebraska (investigator-initiated, academic)",
+      "program": "Single-agent iberdomide maintenance post-ASCT, NDMM",
+      "nct": "NCT05177536",
+      "phase": "Phase 2",
+      "enrollment": "n=38-40 (CT.gov actual 40)",
+      "reported_efficacy": "1-yr PFS 71%; MRD-negativity 85% at C12, 100% at C24 (as reported at conference)",
+      "reported_safety": "Grade 3/4 neutropenia 63% (as reported at conference)",
+      "caveat": "Academic investigator-initiated study, DISTINCT from the BMS EXCALIBER-RRMM/Maintenance Phase 3 iberdomide program. Efficacy/safety figures are single-source conference-reported and were NOT independently confirmed in registry results or a peer-reviewed publication as of 2026-07-21. Small-n maintenance signal; context only, not benchmark-displacing",
+      "source": "ClinicalTrials.gov NCT05177536 (trial identity); conference presentation"
     }
   ],
   "regulatory_landscape": {

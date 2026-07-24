@@ -1362,7 +1362,14 @@
       "primary_endpoint": "Percent Change from Baseline in Body Weight",
       "enrollment": 1946,
       "source": "ClinicalTrials.gov NCT:NCT05882045",
-      "drug_name": "retatrutide (LY3437943)"
+      "drug_name": "retatrutide (LY3437943)",
+      "key_efficacy_data": {
+        "tbwl_pct_w80_9mg": -21.6,
+        "tbwl_pct_w80_12mg": -22.6,
+        "note": "Sponsor topline 2026-07-23, week 80, severe obesity (BMI >=35) + established CVD. Runs below the general-obesity TRIUMPH-1 anchor (w80 -25.0%) as expected for a higher-comorbidity CVD population. Annotation only \u2014 single-source sponsor topline, no publication; does not displace or create an efficacy_benchmarks_* row",
+        "source": "Lilly press release 2026-07-23"
+      },
+      "readout_note": "Positive Phase 3 topline announced 2026-07-23; CT.gov status still ACTIVE_NOT_RECRUITING as of last update 2026-05-22"
     },
     {
       "asset_name": "survodutide (BI 456906)",
@@ -3569,6 +3576,48 @@
       "key_efficacy": "HARBOR-1 P3 topline (Kailera PR 2026-07-07, NOT yet published): mean weight loss up to 10.9% at W44 / 11.1% at W50 (efficacy estimand); 120mg 9.5% and 180mg 10.9% at W44 vs 2.5% placebo. NOTE: ~11% W50 TBWL is BELOW the config's competitive 1L-oral bar (w36 TBWL% >= -15%); trails injectable rivals",
       "caveat": "Efficacy is press-release topline only (high-materiality, no publication/registry results as of 2026-07-21). China-origin asset with unresolved ex-China commercial positioning -- staged for Katie's seed/await decision",
       "source": "ClinicalTrials.gov NCT06904105 & NCT07497880 (identity); Kailera IR / GlobeNewswire 2026-07-07 (efficacy topline)"
+    },
+    {
+      "asset_name": "retatrutide (LY3437943)",
+      "company": "Eli Lilly",
+      "modality": "GLP-1/GIP/glucagon triple agonist (peptide, weekly s.c.)",
+      "target": "GLP-1R + GIPR + GCGR",
+      "phase": "Phase 3",
+      "combination": null,
+      "indication_subtype": "obesity/overweight + type 2 diabetes",
+      "nct": "NCT05929079",
+      "trial_name": "TRIUMPH-2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "estimated_readout": null,
+      "primary_endpoint": "Percent Change From Baseline in Body Weight",
+      "enrollment": null,
+      "source": "ClinicalTrials.gov NCT:NCT05929079",
+      "drug_name": "retatrutide (LY3437943)",
+      "key_efficacy_data": {
+        "tbwl_pct_w80_4mg": -12.7,
+        "tbwl_pct_w80_9mg": -19.1,
+        "tbwl_pct_w80_12mg": -20.8,
+        "hba1c_reduction_pct_max": -1.6,
+        "note": "Sponsor topline 2026-07-23, week 80, obesity/overweight + T2D population. TBWL is expected to run below the general-obesity TRIUMPH-1 anchor (w80 -25.0% / w104 -30.3%) because T2D populations consistently lose less weight \u2014 NOT a class-efficacy downgrade. Annotation only: does not displace or create an efficacy_benchmarks_* row (single-source sponsor topline, no publication)",
+        "source": "Lilly press release 2026-07-23"
+      },
+      "sources": [
+        {
+          "id": "ctgov_triumph2",
+          "type": "ctgov",
+          "nct": "NCT05929079",
+          "url": "https://clinicaltrials.gov/study/NCT05929079",
+          "resolved_title": "A Study of Retatrutide (LY3437943) in Participants With Type 2 Diabetes Mellitus Who Have Obesity or Overweight",
+          "verified": true
+        },
+        {
+          "id": "lilly_pr_20260723",
+          "type": "press_release",
+          "label": "Lilly: retatrutide successful in two additional Phase 3 obesity trials (TRIUMPH-2, TRIUMPH-3), 2026-07-23",
+          "url": "https://www.prnewswire.com/news-releases/lillys-triple-agonist-retatrutide-successful-in-two-additional-phase-3-obesity-trials-delivering-significant-improvements-in-weight-and-a1c-302832674.html",
+          "verified": true
+        }
+      ]
     }
   ],
   "mechanism_landscape": [
@@ -4406,7 +4455,24 @@
         ]
       }
     },
-    "regulatory_pathway_risks": {},
+    "regulatory_pathway_risks": {
+      "retatrutide_bla_filing_q1_2027": {
+        "date": "2026-07-23",
+        "asset": "retatrutide (LY3437943)",
+        "company": "Eli Lilly",
+        "event": "Lilly states it plans to submit a Biologics License Application (BLA) for retatrutide to FDA in Q1 2027",
+        "basis": "TRIUMPH-1 (NCT05929066) + TRIUMPH-2 (NCT05929079) + TRIUMPH-3 (NCT05882045) all positive on Phase 3 primary endpoint",
+        "implication": "First concrete filing timeline for the lead triple-G. Q1 2027 BLA implies a plausible 2027 H2/2028 US approval, setting the clock the second-wave triple-Gs (e.g. UBT251, 2030 launch target) must measure against",
+        "confidence": "sponsor-stated timeline, not an FDA action \u2014 subject to slip",
+        "sources": [
+          {
+            "type": "press_release",
+            "url": "https://www.prnewswire.com/news-releases/lillys-triple-agonist-retatrutide-successful-in-two-additional-phase-3-obesity-trials-delivering-significant-improvements-in-weight-and-a1c-302832674.html",
+            "label": "Lilly press release 2026-07-23 (TRIUMPH-2/TRIUMPH-3 topline + BLA Q1 2027)"
+          }
+        ]
+      }
+    },
     "jurisdictional_considerations": {
       "colorado_drug_import_fda_approval_jun26": {
         "date": "2026-06-17",
