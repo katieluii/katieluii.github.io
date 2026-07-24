@@ -264,6 +264,7 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
 
     strip = set(cfg["etlm_strip_keys"])
     patterns = [re.compile(p) for p in cfg.get("etlm_strip_key_patterns", [])]
+    allowed_top = set(cfg.get("etlm_allowed_top_level_keys", []))
 
     # D3 — resolve EVERY whitelisted source before writing anything. Previously a
     # missing source printed to stderr, `continue`d, and the sync exited 0 — with
@@ -302,6 +303,23 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
         is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
         stripped = strip_keys(data, strip, patterns)
+
+        # D4 — strip_keys() is a DENYLIST: any top-level key that is neither stripped
+        # nor deliberately allowed survives untouched into the public bundle. Assert
+        # the surviving top-level keys are a subset of the sanctioned schema, so a new
+        # analyst-added key fails the sync (before promotion) instead of shipping with
+        # no reviewer. The remedy is a deliberate config edit either way.
+        if allowed_top:
+            unknown = sorted(set(stripped.keys()) - allowed_top)
+            if unknown:
+                raise SyncAborted(
+                    f"{code}.json carries top-level key(s) that are neither allowed nor "
+                    f"stripped: {', '.join(unknown)} — add each to "
+                    f"etlm_allowed_top_level_keys (ship it) or etlm_strip_keys (drop it) "
+                    f"in atlas-redaction-config.json. strip_keys is a denylist; an "
+                    f"unclassified key ships silently."
+                )
+
         sanitised = scrub_values(stripped)
 
         # D5 — the scrub must not silently mangle a value. Abort (before promotion)
