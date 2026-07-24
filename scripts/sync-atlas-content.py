@@ -213,6 +213,39 @@ def _scrub_str(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip().rstrip(" .;,—-").strip() or s.strip()
 
 
+# D5 — scrub-artifact detection. Removing an internal marker from the MIDDLE of a
+# value can leave malformed copy the leak gate cannot see: it strips the forbidden
+# token but a `(pending HUMAN_REVIEW)` becomes `(pending )`, still shippable and
+# still wrong. Two failure shapes, both fatal (fix at source, never auto-patch — a
+# cleaned `(pending)` would still reference a nonexistent entry):
+#   1. a non-empty value scrubbed down to empty   (e.g. "analyst-known" → "")
+#   2. a residual punctuation artifact             (empty/space-only parens or
+#      brackets, or a stray space before a closing bracket)
+# `space_before_close` subsumes the empty-paren/bracket cases and is the tightest
+# single signal; the others are kept explicit for message clarity. Verified 0 hits
+# over the current 5-ETLM bundle on 2026-07-23.
+_SCRUB_ARTIFACT = re.compile(r"\(\s*\)|\[\s*\]|\S\s+[)\]]")
+
+
+def find_scrub_issues(original: Any, scrubbed: Any, path: str = "") -> list[tuple[str, str, str]]:
+    """Parallel-walk the post-strip original and its scrubbed copy (identical shape —
+    scrub never changes keys or list length) and return (path, reason, sample) for
+    every value the scrub emptied or left malformed."""
+    issues: list[tuple[str, str, str]] = []
+    if isinstance(scrubbed, dict):
+        for k, v in scrubbed.items():
+            issues += find_scrub_issues(original[k], v, f"{path}.{k}")
+    elif isinstance(scrubbed, list):
+        for i, v in enumerate(scrubbed):
+            issues += find_scrub_issues(original[i], v, f"{path}[{i}]")
+    elif isinstance(scrubbed, str):
+        if original.strip() and not scrubbed.strip():
+            issues.append((path, "scrub emptied a non-empty value", original[:120]))
+        elif _SCRUB_ARTIFACT.search(scrubbed):
+            issues.append((path, "scrub left a punctuation artifact", scrubbed[:120]))
+    return issues
+
+
 def scrub_values(obj: Any) -> Any:
     if isinstance(obj, dict):
         return {k: scrub_values(v) for k, v in obj.items()}
@@ -268,7 +301,20 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
     for code, src in resolved:
         is_approved = ETLM_APPROVED_SRC in src.parents
         data = json.loads(src.read_text())
-        sanitised = scrub_values(strip_keys(data, strip, patterns))
+        stripped = strip_keys(data, strip, patterns)
+        sanitised = scrub_values(stripped)
+
+        # D5 — the scrub must not silently mangle a value. Abort (before promotion)
+        # naming the field so the analyst fixes it at source, rather than shipping
+        # "(pending )" or a blanked string that later contracts read as valid.
+        issues = find_scrub_issues(stripped, sanitised)
+        if issues:
+            lines = "\n".join(f"      {code}{p}: {why} → {sample!r}" for p, why, sample in issues[:20])
+            raise SyncAborted(
+                f"scrub produced {len(issues)} malformed value(s) in {code}.json — "
+                f"fix the source string(s), do not auto-patch:\n{lines}"
+            )
+
         dst = out_dir / f"{code}.json"
         dst.write_text(json.dumps(sanitised, indent=2))
         written.append(code)

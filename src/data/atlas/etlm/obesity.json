@@ -2754,7 +2754,7 @@
       "trial_name": "RENEW-ALC (Ph3, alcohol use disorder)",
       "status": "ACTIVE",
       "estimated_readout": null,
-      "primary_endpoint": "",
+      "primary_endpoint": null,
       "enrollment": null,
       "source": "WS13 review s41573-026-01427-1 (Petersen, NRDD 2026), p.11 Table 3 \u2014 NCT07219966",
       "sponsor_note": "First GLP-1/GIP dual to enter Ph3 in alcohol use disorder; extends GLP-1 indication-stacking into neuropsychiatric weight comorbidities. Cross-indication read-across asset. Verify NCT07219966",
