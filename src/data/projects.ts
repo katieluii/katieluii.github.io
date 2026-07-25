@@ -298,6 +298,22 @@ export const projects: Project[] = [
     links: { live: "/pharma-landscape" },
   },
   {
+    id: "post-earnings-analyst",
+    slug: "post-earnings-analyst",
+    title: "Post-Earnings Analyst — quarterly note drafting for biopharma",
+    themes: ["AI/ML & Automation", "Investing", "Biotech/Biopharma Strategy"],
+    status: "WIP",
+    order: 7,
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "Turns an earnings deck and call transcript into a structured quarterly note \u2014 franchise-level read, what changed against the prior quarter, and what to watch \u2014 with the valuation arithmetic handled by a separate deterministic engine rather than the language model.",
+    longDescription:
+      "A quarter of biopharma earnings arrives as a slide deck and an hour of call audio, and the work of reading it is mostly reconstruction: what moved, against what base, and whether guidance actually changed. This drafts the note. It ingests the deck and, where available, the transcript, extracts reported figures with the page they came from, decomposes performance by franchise, and drafts a note along a buy-side spine \u2014 management, strategy, commercial, pipeline, business development, then a decision layer. The valuation is deliberately not the model's job: figures come from a separate deterministic valuation engine and the language model only phrases them, so a number that the engine did not produce cannot appear in the note. Sourced facts stay visually distinct from interpretation, and a run that fails part-way can be re-rendered from its saved analysis without paying for the extraction again. Complements the cross-sectional Bellwether landscape: that one compares thirteen companies on one view, this one goes deep on a single name for a single quarter. Currently in development \u2014 the three-agent split and the calibration anchor are not finished, and it is not offered as a service yet. Directional and educational \u2014 not investment advice.",
+    tags: ["Python", "pdfplumber", "Claude tool_use", "python-docx", "Deterministic valuation engine", "Provenance-tagged output"],
+    links: {},
+  },
+  {
     id: "femme-pcos-care",
     slug: "femme-pcos-care",
     title: "Femme — passive PCOS care (eMed × OpenAI hackathon)",
