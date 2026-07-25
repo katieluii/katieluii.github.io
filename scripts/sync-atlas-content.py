@@ -107,6 +107,77 @@ LANDSCAPE_SRC = WS_ROOT / "ws12_news_signal" / "landscape"
 THEMES_SRC = LANDSCAPE_SRC / "themes"
 ECOSYSTEM_SRC = WS_ROOT / "ws12_news_signal" / "ecosystem_knowledge.md"
 
+# D7 — benchmark citation gate. The analyst repo owns the guard; this is a
+# CONSUMER of it, same as the leak gate is a consumer of atlas-leak-markers.json.
+CITATION_GUARD = WS_ROOT / "ws9-etlm" / "scripts" / "benchmark_citation_guard.py"
+
+
+def _load_citation_guard():
+    """Import the analyst repo's citation guard by path, or return None.
+
+    Returns None when the analyst repo is absent (CI) — the caller decides
+    whether that is fatal. Deliberately NOT a hard import: this script's
+    --verify-only mode runs in CI where WS_ROOT does not exist.
+    """
+    if not CITATION_GUARD.exists():
+        return None
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("benchmark_citation_guard", CITATION_GUARD)
+    if spec is None or spec.loader is None:
+        return None
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def citation_gate(resolved: list[tuple[str, Path]]) -> None:
+    """D7 — refuse to publish an ETLM whose benchmark citations do not resolve.
+
+    Runs BEFORE anything is written, over the EXACT file each whitelisted code
+    resolved to (approved/ or drafts/) — not over the drafts copy unconditionally,
+    which would gate a different file than the one being shipped once a code is
+    promoted into approved/.
+
+    Scope is the whitelist ONLY. Gating all 48 drafts would block every sync on
+    unpublished work and the gate would be bypassed within a week; a gate people
+    route around is worse than no gate. Unpublished drafts are the standalone
+    `benchmark_citation_guard.py` run's job.
+
+    BLOCK-severity findings only. WARNs (copy-paste smell, missing quoted_metric)
+    are surfaced but do not stop a sync — they need a source lookup to confirm,
+    which is citation-verifier's job, not a deterministic gate's.
+    """
+    guard = _load_citation_guard()
+    if guard is None:
+        raise SyncAborted(
+            f"benchmark citation guard not found at {CITATION_GUARD} — cannot verify "
+            "that published benchmark citations resolve. Publishing unverified efficacy "
+            "numbers is the defect this gate exists to prevent."
+        )
+
+    dirty: list[str] = []
+    total_warns = 0
+    for code, src in resolved:
+        r = guard.audit_path(src, code)
+        total_warns += r["warns"]
+        if r["blocks"]:
+            for f in r["findings"]:
+                if f["severity"] == "BLOCK":
+                    dirty.append(f"{code}: [{f['kind']}] {f['location']} — {f['detail']}")
+
+    if dirty:
+        raise SyncAborted(
+            f"{len(dirty)} unresolvable benchmark citation(s) in the whitelisted set:\n    "
+            + "\n    ".join(dirty[:20])
+            + (f"\n    … and {len(dirty) - 20} more" if len(dirty) > 20 else "")
+            + "\n  Route them: python3 "
+            + str(CITATION_GUARD.relative_to(Path.home()))
+            + " --route <code>"
+        )
+    print(f"  ✓ benchmark citations resolve for all {len(resolved)} whitelisted code(s)"
+          + (f" ({total_warns} non-blocking warning(s))" if total_warns else ""))
+
 
 def load_config() -> dict[str, Any]:
     return json.loads(CONFIG_PATH.read_text())
@@ -325,6 +396,9 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
             f"truth moved between drafts/ and approved/. Re-run with --allow-source-move "
             f"to accept and record the new root(s)."
         )
+
+    # D7 — gate benchmark citations on the resolved sources, before any write.
+    citation_gate(resolved)
 
     written: list[str] = []
     for code, src in resolved:
