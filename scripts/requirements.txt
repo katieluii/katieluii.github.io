@@ -2,4 +2,8 @@ requests
 pandas
 beautifulsoup4
 lxml
-
+# Used by the optional dated .xlsx export at the end of 2026-Stock_conc.py.
+# Was never declared here — the old workflow pip-installed it as a loose extra
+# step, so a plain `pip install -r scripts/requirements.txt` run crashed after
+# writing the JSON.
+openpyxl

@@ -19,3 +19,6 @@ __pycache__/
 # transactional sync staging dir (never committed)
 src/data/.atlas-staging/
 src/data/atlas/.*.bak-*
+
+# Dated .xlsx exports from scripts/2026-Stock_conc.py (local analysis artifact)
+*_stock_conc.xlsx

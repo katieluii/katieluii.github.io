@@ -1,0 +1,78 @@
+name: Refresh 13F data
+
+# Keeps public/data/stock_conc_latest.json on the latest quarterly 13F-HR
+# filings. The scraper resolves each fund's most recent filing itself, so this
+# job just needs to run often enough to notice when a new quarter lands.
+#
+# 13F-HR is due 45 days after quarter end (mid-Feb / mid-May / mid-Aug /
+# mid-Nov), and funds trickle in over the following weeks. Polling on weekdays
+# picks the new quarter up within a day of each fund filing; on every other day
+# the payload is byte-identical and the job stops before committing.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 6 * * 1-5"
+
+permissions:
+  contents: write
+
+# Never let two refreshes race each other onto main.
+concurrency:
+  group: refresh-13f
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Scrape latest 13F filings
+        run: python scripts/2026-Stock_conc.py
+
+      # Fail-closed. A throttled or partial SEC run can still produce valid
+      # JSON; committing it would overwrite the last good snapshot on the live
+      # site. A non-zero exit here stops the job before the commit, so the
+      # currently deployed data stays up.
+      - name: Validate payload
+        run: python scripts/validate_13f_json.py
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/stock_conc_latest.json
+          if git diff --cached --quiet; then
+            echo "No change in 13F data — nothing to deploy."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: refresh 13F data"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  # Deploy explicitly. The push above used GITHUB_TOKEN, which by design does
+  # not trigger `on: push`, so the site would otherwise never pick the new data
+  # up. Reuses the real deploy workflow so the typecheck and Atlas leak gate
+  # still guard this path.
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/main.yml

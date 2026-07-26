@@ -101,14 +101,24 @@ export function Sec13f() {
   const [searchTerm, setSearchTerm] = useState('');
   const [footnotesOpen, setFootnotesOpen] = useState(false);
 
+  const [refreshing, setRefreshing] = useState(false);
+  const [refreshNote, setRefreshNote] = useState<string | null>(null);
+
   useEffect(() => {
-    fetchData();
+    fetchData({ initial: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function fetchData() {
+  async function fetchData({ initial = false }: { initial?: boolean } = {}) {
     try {
-      setLoading(true);
+      // Only the first load blanks the page for a spinner. A refresh keeps the
+      // current table on screen and reports its outcome instead.
+      if (initial) {
+        setLoading(true);
+      } else {
+        setRefreshing(true);
+        setRefreshNote(null);
+      }
       setError(null);
 
       // Ensure we bypass any caching layer during iteration
@@ -119,13 +129,26 @@ export function Sec13f() {
         throw new Error(`Failed to fetch data (${response.status})`);
 
       const json = (await response.json()) as DataResponse;
+      const nextStamp = json.generated_at_utc || 'Unknown';
+
+      // Without this the button was indistinguishable from a dead one: it
+      // re-fetched the published dataset, which is usually unchanged, and said
+      // nothing either way.
+      if (!initial) {
+        setRefreshNote(
+          nextStamp !== lastUpdated
+            ? 'Updated — newer filings are in.'
+            : 'Already current. No fund has filed a newer 13F since this snapshot.'
+        );
+      }
 
       setData(Array.isArray(json.rows) ? json.rows : []);
-      setLastUpdated(json.generated_at_utc || 'Unknown');
+      setLastUpdated(nextStamp);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   }
 
@@ -218,11 +241,12 @@ export function Sec13f() {
             </div>
 
             <button
-              onClick={fetchData}
-              className="shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 dark:border-white/10 text-sm text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors"
-              title="Refresh data"
+              onClick={() => fetchData()}
+              disabled={refreshing || loading}
+              className="shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 dark:border-white/10 text-sm text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              title="Re-fetch the published dataset"
             >
-              Refresh
+              {refreshing ? 'Refreshing…' : 'Refresh'}
             </button>
           </div>
         </div>
@@ -353,6 +377,15 @@ export function Sec13f() {
               <span className="font-semibold text-slate-900 dark:text-zinc-100">
                 {lastUpdated}
               </span>
+              <span className="block mt-1 text-xs text-slate-500 dark:text-zinc-500">
+                Rebuilt automatically each weekday from SEC EDGAR — each fund
+                shows its most recent 13F-HR filing.
+              </span>
+              {refreshNote && (
+                <span className="block mt-1 text-xs font-medium text-slate-700 dark:text-zinc-300">
+                  {refreshNote}
+                </span>
+              )}
             </div>
 
             <div className="relative max-w-md">

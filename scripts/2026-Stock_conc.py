@@ -13,7 +13,7 @@ import re
 from typing import Optional, Tuple
 
 
-!pip install lxml
+# pip install lxml
 
 import json, math
 from datetime import datetime, timezone
@@ -581,8 +581,15 @@ results_df = results_df.reindex(columns=[c for c in preferred_cols if c in resul
 
 
 
-results_df.to_excel(filename, index=False)
-print(f"Saved to {filename}")
+# Local analysis convenience only — the site serves the JSON written above.
+# This runs AFTER the JSON, so an exception here used to discard an otherwise
+# good run: the refresh job would exit non-zero and the new data would never be
+# validated or deployed. Observed 2026-07-26 with openpyxl missing.
+try:
+    results_df.to_excel(filename, index=False)
+    print(f"Saved to {filename}")
+except Exception as exc:
+    print(f"Skipped .xlsx export ({type(exc).__name__}: {exc}) — JSON already written.")
 
 
 # import json
