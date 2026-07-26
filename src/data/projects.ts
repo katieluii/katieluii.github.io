@@ -70,7 +70,7 @@ export const projects: Project[] = [
     themes: ["Investing", "AI/ML & Automation"],
     status: "Live",
     yearStart: 2024,
-    yearEnd: 2024,
+    yearEnd: 2026,
     summary: "Interactive dashboard tracking institutional investor holdings from SEC 13F filings with quarter-over-quarter analysis.",
     longDescription: "Analysis of portfolio concentration metrics from SEC EDGAR 13F filings. Visualises fund holdings, concentration levels, and risk indicators across institutional investors. Features automated data pipeline with Python, quarterly updates via GitHub Actions, and an interactive web visualization.",
     tags: ["Python", "Pandas", "SEC EDGAR API", "ETL", "XML Parsing"],
