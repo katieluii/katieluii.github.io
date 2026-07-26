@@ -298,22 +298,6 @@ export const projects: Project[] = [
     links: { live: "/pharma-landscape" },
   },
   {
-    id: "post-earnings-analyst",
-    slug: "post-earnings-analyst",
-    title: "Post-Earnings Analyst — quarterly note drafting for biopharma",
-    themes: ["AI/ML & Automation", "Investing", "Biotech/Biopharma Strategy"],
-    status: "WIP",
-    order: 7,
-    yearStart: 2026,
-    yearEnd: 2026,
-    summary:
-      "Drafts a structured quarterly note from an earnings deck and call transcript \u2014 franchise-level read, what changed against the prior quarter, and what to watch \u2014 against a curated per-issuer context layer and a consistent house format.",
-    longDescription:
-      "A quarter of biopharma earnings arrives as a slide deck and an hour of call audio, and most of the work is reconstruction: what moved, against what base, and whether guidance actually changed. This drafts the note. It ingests the deck and, where available, the transcript, and writes to a buy-side spine \u2014 management, strategy, commercial, pipeline, business development, then a view. What it adds over a general-purpose summariser is the context layer: twelve curated large-cap issuer profiles carrying brand-level detail, loss-of-exclusivity timing and prior-quarter thesis, so the draft is written against a known baseline rather than from the deck alone. A run that fails part-way can be re-rendered from its saved analysis without paying for the extraction again. Complements the cross-sectional Bellwether landscape: that compares thirteen companies on one view, this goes deep on a single name for a single quarter. In development and not offered as a service \u2014 the three-agent split and the calibration anchor are unfinished, and figure-level source verification is being built rather than in place, so output requires review before use. Directional and educational \u2014 not investment advice.",
-    tags: ["Python", "pdfplumber", "Claude tool_use", "python-docx", "Curated issuer-profile layer", "Re-renderable runs"],
-    links: {},
-  },
-  {
     id: "femme-pcos-care",
     slug: "femme-pcos-care",
     title: "Femme — passive PCOS care (eMed × OpenAI hackathon)",
