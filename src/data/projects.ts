@@ -85,10 +85,10 @@ export const projects: Project[] = [
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
     status: "Live",
     yearStart: 2024,
-    yearEnd: 2025,
-    summary: "Phase-specific ML workflow predicting clinical trial time-to-completion as a proxy for recruitment rate; engineered operational + design features and benchmarked non-linear models.",
+    yearEnd: 2026,
+    summary: "Predicts clinical trial duration, split into recruiting time and follow-up, with calibrated intervals. Rebuilt from a v1 that scored worse than a median lookup table.",
     longDescription: "This project builds a phase-specific ML workflow to predict how long a clinical trial will take to reach primary completion, used as a practical proxy for recruitment rate. Using ClinicalTrials.gov data enriched with AACT, I engineered operational and design features (e.g, endpoints, arms, sites, region, therapeutic area) and benchmarked multiple non-linear models to support more scalable, data-driven feasibility estimates. Attached report has been redacted to prevent disclosure of proprietary information.",
-    tags: ["ML", "Python", "scikit-learn", "XGBoost", "LightGBM", "Optuna", "PostgreSQL"],
+    tags: ["ML", "Python", "LightGBM", "Quantile regression", "Conformal prediction", "FastAPI", "ClinicalTrials.gov", "AACT"],
     links: {
       live: "/trial-recruitment",
       pdf: "/pdfs/trial-ML-project.pdf"

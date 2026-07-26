@@ -4,6 +4,7 @@ import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { ProjectLead } from '../components/ProjectLead';
 import { TrialPredictor } from '../components/TrialPredictor';
+import { TrialPredictorVersions } from '../components/TrialPredictorVersions';
 
 export function TrialRecruitment() {
   const project = getProjectBySlug('trial-recruitment-prediction');
@@ -88,10 +89,14 @@ export function TrialRecruitment() {
             Interactive Demo
           </h2>
           <p className="text-sm text-slate-500 dark:text-zinc-500">
-            Select a trial phase and therapeutic area to get an ML-predicted duration with 80% prediction interval.
+            Select a trial phase and therapeutic area for a predicted duration, split into
+            recruiting time and follow-up, with a calibrated 80% interval.
           </p>
           <TrialPredictor />
         </div>
+
+        {/* Version history — what v2/v3 changed, and the archived v1 */}
+        <TrialPredictorVersions />
       </div>
     </ProjectPageLayout>
   );
