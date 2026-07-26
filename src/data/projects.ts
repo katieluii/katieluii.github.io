@@ -88,11 +88,49 @@ export const projects: Project[] = [
     yearEnd: 2026,
     summary: "Predicts clinical trial duration, split into recruiting time and follow-up, with calibrated intervals. Rebuilt from a v1 that scored worse than a median lookup table.",
     longDescription: "This project builds a phase-specific ML workflow to predict how long a clinical trial will take to reach primary completion, used as a practical proxy for recruitment rate. Using ClinicalTrials.gov data enriched with AACT, I engineered operational and design features (e.g, endpoints, arms, sites, region, therapeutic area) and benchmarked multiple non-linear models to support more scalable, data-driven feasibility estimates. Attached report has been redacted to prevent disclosure of proprietary information.",
-    tags: ["ML", "Python", "LightGBM", "Quantile regression", "Conformal prediction", "FastAPI", "ClinicalTrials.gov", "AACT"],
+    tags: ["ML", "Python", "LightGBM", "FastAPI", "ClinicalTrials.gov", "AACT"],
     links: {
       live: "/trial-recruitment",
       pdf: "/pdfs/trial-ML-project.pdf"
     }
+  },
+  {
+    id: "trial-recruitment-v1",
+    slug: "trial-recruitment-prediction-v1",
+    title: "ML-driven Trial Recruitment Prediction (v1)",
+    themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
+    status: "Archived",
+    hideFromTimeline: true,
+    yearStart: 2024,
+    yearEnd: 2025,
+    summary:
+      "Phase-specific ML workflow predicting clinical trial time-to-completion as a proxy for recruitment rate; engineered operational + design features and benchmarked non-linear models.",
+    longDescription:
+      "This project builds a phase-specific ML workflow to predict how long a clinical trial will take to reach primary completion, used as a practical proxy for recruitment rate. Using ClinicalTrials.gov data enriched with AACT, I engineered operational and design features (e.g, endpoints, arms, sites, region, therapeutic area) and benchmarked multiple non-linear models to support more scalable, data-driven feasibility estimates. Attached report has been redacted to prevent disclosure of proprietary information.",
+    tags: ["ML", "Python", "scikit-learn", "XGBoost", "LightGBM", "Optuna", "PostgreSQL"],
+    sections: [
+      {
+        title: "How it worked",
+        bullets: [
+          "One random forest per phase (P1 healthy-volunteer, P1 patient, P2, P3), trained on completed industry trials from ClinicalTrials.gov",
+          "Features covered trial design and scale: enrolment, sites, region, therapeutic area, masking, allocation, arms, endpoint counts",
+          "Scored on a single random 80/20 split, reporting RMSE",
+          "Uncertainty shown as an 80% band derived from that RMSE",
+        ],
+      },
+      {
+        title: "Why it was replaced",
+        bullets: [
+          "No baseline was ever recorded, so there was no way to tell whether the model beat a lookup table. It did not.",
+          "primary_completion_year was a feature, and it is the label's own endpoint",
+          "site_count counted countries in training but received real site counts at prediction time",
+          "Predictions clustered so tightly that 17 of 22 Phase 1 therapeutic areas returned the same 10.9 months",
+        ],
+      },
+    ],
+    links: {
+      pdf: "/pdfs/trial-ML-project.pdf",
+    },
   },
     {
     id: "news-digest-agents",
