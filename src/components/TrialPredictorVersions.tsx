@@ -11,15 +11,15 @@ import { Pill } from './Pill';
  * rendered in full behind a toggle, rather than summarised.
  */
 
-type Row = { label: string; v1: string; v2: string; v3: string };
+type Row = { label: string; v1: string; v2: string; v3: string; v31: string };
 
 const ROWS: Row[] = [
-  { label: 'Phase 2 — MAE (months)', v1: '8.30', v2: '7.16', v3: '7.01' },
-  { label: 'Phase 3 — MAE (months)', v1: '8.75', v2: '7.06', v3: '6.99' },
-  { label: 'Phase 2 — RMSE (days)', v1: '311', v2: '284', v3: '281' },
-  { label: 'Phase 3 — RMSE (days)', v1: '328', v2: '286', v3: '284' },
-  { label: 'Phase 2 — R²', v1: '0.193', v2: '0.330', v3: '0.343' },
-  { label: 'Phase 3 — R²', v1: '0.127', v2: '0.337', v3: '0.345' },
+  { label: 'Phase 2 — MAE (months)', v1: '8.30', v2: '7.16', v3: '7.01', v31: '7.02' },
+  { label: 'Phase 3 — MAE (months)', v1: '8.75', v2: '7.06', v3: '6.99', v31: '6.85' },
+  { label: 'Phase 2 — RMSE (days)', v1: '311', v2: '284', v3: '281', v31: '—' },
+  { label: 'Phase 3 — RMSE (days)', v1: '328', v2: '286', v3: '284', v31: '—' },
+  { label: 'Phase 2 — R²', v1: '0.193', v2: '0.330', v3: '0.343', v31: '0.341' },
+  { label: 'Phase 3 — R²', v1: '0.127', v2: '0.337', v3: '0.345', v31: '0.358' },
 ];
 
 function ArchivedTrialPredictorV1() {
@@ -123,40 +123,45 @@ export function TrialPredictorVersions() {
           simply looking up the median duration for that therapeutic area. It also
           carried a target leak, using the completion year of the very trial it was
           predicting. The figures below show the v1 approach with that leak removed,
-          which flatters it; as deployed it was far worse. v2 and v3 rebuilt it behind
-          a harness that scores every change before it ships.
+          which flatters it; as deployed it was far worse.
         </p>
 
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-slate-200 dark:border-zinc-700">
-                <th className="text-left py-2 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-left py-1.5 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
                   Measure
                 </th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
                   v1
                 </th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
                   v2
                 </th>
-                <th className="text-right py-2 pl-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
-                  v3 (live)
+                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                  v3
+                </th>
+                <th className="text-right py-1.5 pl-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide border-l border-slate-200 dark:border-zinc-700">
+                  v3.1 (live)
                 </th>
               </tr>
             </thead>
             <tbody>
               {ROWS.map(r => (
                 <tr key={r.label} className="border-b border-slate-100 dark:border-zinc-800">
-                  <td className="py-2 pr-4 text-slate-700 dark:text-zinc-300">{r.label}</td>
-                  <td className="py-2 px-3 text-right tabular-nums text-slate-400 dark:text-zinc-500">
+                  <td className="py-1.5 pr-4 text-slate-700 dark:text-zinc-300">{r.label}</td>
+                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-400 dark:text-zinc-500">
                     {r.v1}
                   </td>
-                  <td className="py-2 px-3 text-right tabular-nums text-slate-600 dark:text-zinc-400">
+                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-500 dark:text-zinc-500">
                     {r.v2}
                   </td>
-                  <td className="py-2 pl-3 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400">
+                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-600 dark:text-zinc-400">
                     {r.v3}
+                  </td>
+                  <td className="py-1.5 pl-3 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400 border-l border-slate-100 dark:border-zinc-800">
+                    {r.v31}
                   </td>
                 </tr>
               ))}
@@ -165,58 +170,21 @@ export function TrialPredictorVersions() {
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
           Temporal holdout: trained on trials starting before 2021, tested on those
-          starting after. All three columns are measured on the same test fold and the
-          same corpus, so they are directly comparable. For reference the
+          starting after. v1, v2 and v3 share one test fold and one corpus, so those
+          three columns are directly comparable. For reference the
           per-therapeutic-area median baseline scores R² 0.003 on Phase 2 and −0.086 on
-          Phase 3, which is roughly what predicting the average achieves. v2 replaced
-          the model and its interval; v3 split duration into recruiting time and
-          follow-up.
+          Phase 3, roughly what predicting the average achieves. v2 replaced the model
+          and its interval; v3 split duration into recruiting time and follow-up.
         </p>
-      </div>
-
-      <div className="space-y-3">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
-          v3.1 — the retrain
-        </h2>
-        <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          No architecture change. The API request was capped at 5,000 records, which
-          had been quietly discarding most of the corpus: 17,092 completed industry
-          Phase 3 trials exist and the model was training on 2,024. Lifting the cap
-          and running a hyperparameter search lifted R² by about 0.10 on both phases.
-        </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-slate-200 dark:border-zinc-700">
-                <th className="text-left py-2 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">Measure</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">before</th>
-                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">+ full data</th>
-                <th className="text-right py-2 pl-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">+ tuned</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Phase 2 R²', '0.236', '0.293', '0.341'],
-                ['Phase 3 R²', '0.258', '0.309', '0.358'],
-                ['Phase 2 error (MAE)', '7.54 mo', '7.25 mo', '7.02 mo'],
-                ['Phase 3 error (MAE)', '7.45 mo', '7.09 mo', '6.85 mo'],
-              ].map(([label, a, b, c]) => (
-                <tr key={label} className="border-b border-slate-100 dark:border-zinc-800">
-                  <td className="py-2 pr-4 text-slate-700 dark:text-zinc-300">{label}</td>
-                  <td className="py-2 px-3 text-right tabular-nums text-slate-400 dark:text-zinc-500">{a}</td>
-                  <td className="py-2 px-3 text-right tabular-nums text-slate-600 dark:text-zinc-400">{b}</td>
-                  <td className="py-2 pl-3 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400">{c}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
-          Measured on one fixed test fold, changing one thing at a time. That matters
-          here: expanding the corpus grew the training and test sets together, and on
-          its own easier test set the old model scored 0.369 against the new 0.336,
-          which reads as a regression and is not one. Training corpus after the fix:
-          8,751 Phase 1, 7,713 Phase 2, 6,905 Phase 3.
+          <strong className="text-slate-600 dark:text-zinc-400">v3.1 is the current
+          production model</strong>, and its column is separated because it was
+          re-measured on an expanded corpus and therefore a different test fold. It is
+          not cell-for-cell comparable to v3: 0.341 beside 0.343 is not a regression.
+          An API cap of 5,000 records meant the model had been training on 2,024 of
+          17,092 eligible Phase 3 trials; lifting that cap and tuning produced v3.1,
+          which on a like-for-like fold lifted R² by about 0.10. RMSE was not
+          re-measured for v3.1.
         </p>
       </div>
 
