@@ -107,24 +107,54 @@ export const projects: Project[] = [
       "Phase-specific ML workflow predicting clinical trial time-to-completion as a proxy for recruitment rate; engineered operational + design features and benchmarked non-linear models.",
     longDescription:
       "This project builds a phase-specific ML workflow to predict how long a clinical trial will take to reach primary completion, used as a practical proxy for recruitment rate. Using ClinicalTrials.gov data enriched with AACT, I engineered operational and design features (e.g, endpoints, arms, sites, region, therapeutic area) and benchmarked multiple non-linear models to support more scalable, data-driven feasibility estimates. Attached report has been redacted to prevent disclosure of proprietary information.",
-    tags: ["ML", "Python", "scikit-learn", "XGBoost", "LightGBM", "Optuna", "PostgreSQL"],
+    tags: ["ML", "Python", "scikit-learn", "XGBoost", "LightGBM", "Optuna", "PostgreSQL", "AACT"],
     sections: [
       {
-        title: "How it worked",
+        title: "Exploratory analysis",
         bullets: [
-          "One random forest per phase (P1 healthy-volunteer, P1 patient, P2, P3), trained on completed industry trials from ClinicalTrials.gov",
+          "Pulled completed interventional industry trials from ClinicalTrials.gov, enriched with the AACT relational mirror",
+          "Duration defined as start date to primary completion date, the closest public proxy for recruitment length",
+          "Profiled the target by therapeutic area, region and phase before modelling, which set the phase-specific structure",
+          "Oncology carried both the longest median and the widest spread at every phase, and rare disease sat close behind on a much thinner sample",
+        ],
+        images: [
+          {
+            src: "/images/trial-v1/duration-by-therapeutic-area-p3.png",
+            alt: "Box plot of Phase 3 trial duration to primary completion across therapeutic areas",
+            caption: "Phase 3 duration by therapeutic area — the spread that motivated per-phase models",
+          },
+          {
+            src: "/images/trial-v1/duration-by-region-p3.png",
+            alt: "Box plot of Phase 3 trial duration to primary completion across regions",
+            caption: "Phase 3 duration by region — wide overlap, which later proved to be trial-mix rather than geography",
+          },
+        ],
+      },
+      {
+        title: "Modelling",
+        bullets: [
+          "One model per phase: Phase 1 healthy-volunteer, Phase 1 patient, Phase 2, Phase 3",
           "Features covered trial design and scale: enrolment, sites, region, therapeutic area, masking, allocation, arms, endpoint counts",
-          "Scored on a single random 80/20 split, reporting RMSE",
-          "Uncertainty shown as an 80% band derived from that RMSE",
+          "Benchmarked decision tree, random forest, XGBoost and LightGBM regressors with Optuna for hyperparameter search",
+          "Random forest was selected and deployed behind a FastAPI service with a small web front end",
+          "Scored on a single random 80/20 split, reporting RMSE, with an 80% band derived from that RMSE",
+        ],
+        images: [
+          {
+            src: "/images/trial-v1/duration-by-therapeutic-area-p2.png",
+            alt: "Box plot of Phase 2 trial duration to primary completion across therapeutic areas",
+            caption: "The same view at Phase 2, showing why one model across all phases would not hold",
+          },
         ],
       },
       {
         title: "Why it was replaced",
         bullets: [
-          "No baseline was ever recorded, so there was no way to tell whether the model beat a lookup table. It did not.",
-          "primary_completion_year was a feature, and it is the label's own endpoint",
-          "site_count counted countries in training but received real site counts at prediction time",
+          "No baseline was ever recorded, so there was no way to tell whether the model beat a lookup table. Measured later on a temporal split, it did not: 2.9x worse than a per-therapeutic-area median on Phase 2 and Phase 3.",
+          "primary_completion_year was a feature, and it is the label's own endpoint. Removing that one column took Phase 2 error from 25.4 to 8.9 months.",
+          "site_count counted countries during training but received real site counts at prediction time, so the model was served far outside its trained range",
           "Predictions clustered so tightly that 17 of 22 Phase 1 therapeutic areas returned the same 10.9 months",
+          "The 80% band was pinned near six months for every input and contained 8% of actual durations on Phase 2",
         ],
       },
     ],

@@ -60,6 +60,21 @@ function ArchivedTrialPredictorV1() {
               ))}
             </ul>
           )}
+          {section.images?.map((img, imgIdx) => (
+            <div
+              key={imgIdx}
+              className="bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-lg p-4"
+            >
+              <a href={img.src} target="_blank" rel="noopener noreferrer" className="block">
+                <img src={img.src} alt={img.alt} className="w-full h-auto rounded" />
+              </a>
+              {img.caption && (
+                <p className="mt-2 text-xs text-slate-500 dark:text-zinc-400 text-center">
+                  {img.caption}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       ))}
 
