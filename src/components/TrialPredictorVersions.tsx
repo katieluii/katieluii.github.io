@@ -14,12 +14,12 @@ import { Pill } from './Pill';
 type Row = { label: string; v1: string; v2: string; v3: string };
 
 const ROWS: Row[] = [
-  { label: 'Phase 2 error (MAE)', v1: '25.4 mo', v2: '7.2 mo', v3: '7.1 mo' },
-  { label: 'Phase 3 error (MAE)', v1: '26.9 mo', v2: '7.3 mo', v3: '7.1 mo' },
-  { label: 'Skill vs median lookup, P2', v1: '−1.87', v2: '+0.21', v3: '+0.23' },
-  { label: 'Skill vs median lookup, P3', v1: '−1.72', v2: '+0.27', v3: '+0.31' },
-  { label: '80% interval coverage, P2', v1: '0.08', v2: '0.84', v3: '0.86' },
-  { label: '80% interval coverage, P3', v1: '0.08', v2: '0.82', v3: '0.84' },
+  { label: 'Phase 2 — MAE (months)', v1: '8.30', v2: '7.16', v3: '7.01' },
+  { label: 'Phase 3 — MAE (months)', v1: '8.75', v2: '7.06', v3: '6.99' },
+  { label: 'Phase 2 — RMSE (days)', v1: '311', v2: '284', v3: '281' },
+  { label: 'Phase 3 — RMSE (days)', v1: '328', v2: '286', v3: '284' },
+  { label: 'Phase 2 — R²', v1: '0.193', v2: '0.330', v3: '0.343' },
+  { label: 'Phase 3 — R²', v1: '0.127', v2: '0.337', v3: '0.345' },
 ];
 
 function ArchivedTrialPredictorV1() {
@@ -118,10 +118,13 @@ export function TrialPredictorVersions() {
           What changed
         </h2>
         <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          v1 shipped and looked plausible. Measured against a per-therapeutic-area
-          median it was 2.9× worse than that median. Nobody knew, because no baseline
-          had been recorded. v2 and v3 rebuilt it behind a harness that scores every
-          change before it ships.
+          v1 shipped and looked plausible. Nobody had recorded a baseline, so nobody
+          could tell it was losing to one: scored honestly, it was 2.9× worse than
+          simply looking up the median duration for that therapeutic area. It also
+          carried a target leak, using the completion year of the very trial it was
+          predicting. The figures below show the v1 approach with that leak removed,
+          which flatters it; as deployed it was far worse. v2 and v3 rebuilt it behind
+          a harness that scores every change before it ships.
         </p>
 
         <div className="overflow-x-auto">
@@ -162,11 +165,12 @@ export function TrialPredictorVersions() {
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
           Temporal holdout: trained on trials starting before 2021, tested on those
-          starting after. Skill is the share of the baseline's error removed, so a negative
-          number is worse than the lookup. v2 replaced the model and the interval; v3 split
-          duration into recruiting time and follow-up. On 2,039 real held-out trials the
-          rebuild cut mean error from 7.18 to 5.91 months. These three columns share
-          the original holdout; the v3.1 retrain below is measured separately.
+          starting after. All three columns are measured on the same test fold and the
+          same corpus, so they are directly comparable. For reference the
+          per-therapeutic-area median baseline scores R² 0.003 on Phase 2 and −0.086 on
+          Phase 3, which is roughly what predicting the average achieves. v2 replaced
+          the model and its interval; v3 split duration into recruiting time and
+          follow-up.
         </p>
       </div>
 
