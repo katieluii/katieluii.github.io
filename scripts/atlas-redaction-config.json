@@ -17,6 +17,7 @@
     "human_approved",
     "human_decision",
     "data_gaps",
+    "unsupported_claims",
     "schema_adaptation_note",
     "schema_note",
     "framing_note",
