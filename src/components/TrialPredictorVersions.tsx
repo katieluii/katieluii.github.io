@@ -165,7 +165,54 @@ export function TrialPredictorVersions() {
           starting after. Skill is the share of the baseline's error removed, so a negative
           number is worse than the lookup. v2 replaced the model and the interval; v3 split
           duration into recruiting time and follow-up. On 2,039 real held-out trials the
-          rebuild cut mean error from 7.18 to 5.91 months.
+          rebuild cut mean error from 7.18 to 5.91 months. These three columns share
+          the original holdout; the v3.1 retrain below is measured separately.
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
+          v3.1 — the retrain
+        </h2>
+        <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          No architecture change. The API request was capped at 5,000 records, which
+          had been quietly discarding most of the corpus: 17,092 completed industry
+          Phase 3 trials exist and the model was training on 2,024. Lifting the cap
+          and running a hyperparameter search lifted R² by about 0.10 on both phases.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-zinc-700">
+                <th className="text-left py-2 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">Measure</th>
+                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">before</th>
+                <th className="text-right py-2 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">+ full data</th>
+                <th className="text-right py-2 pl-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">+ tuned</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Phase 2 R²', '0.236', '0.293', '0.341'],
+                ['Phase 3 R²', '0.258', '0.309', '0.358'],
+                ['Phase 2 error (MAE)', '7.54 mo', '7.25 mo', '7.02 mo'],
+                ['Phase 3 error (MAE)', '7.45 mo', '7.09 mo', '6.85 mo'],
+              ].map(([label, a, b, c]) => (
+                <tr key={label} className="border-b border-slate-100 dark:border-zinc-800">
+                  <td className="py-2 pr-4 text-slate-700 dark:text-zinc-300">{label}</td>
+                  <td className="py-2 px-3 text-right tabular-nums text-slate-400 dark:text-zinc-500">{a}</td>
+                  <td className="py-2 px-3 text-right tabular-nums text-slate-600 dark:text-zinc-400">{b}</td>
+                  <td className="py-2 pl-3 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400">{c}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
+          Measured on one fixed test fold, changing one thing at a time. That matters
+          here: expanding the corpus grew the training and test sets together, and on
+          its own easier test set the old model scored 0.369 against the new 0.336,
+          which reads as a regression and is not one. Training corpus after the fix:
+          8,751 Phase 1, 7,713 Phase 2, 6,905 Phase 3.
         </p>
       </div>
 
