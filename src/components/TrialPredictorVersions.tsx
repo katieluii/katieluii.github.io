@@ -169,6 +169,51 @@ export function TrialPredictorVersions() {
         </p>
       </div>
 
+      <div className="space-y-3">
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
+          What this cannot tell you
+        </h2>
+        <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          The registry records when a trial started and when it hit its primary
+          endpoint. It records nothing about what happened in between. So the
+          recruitment rate here is not measured, it is reconstructed:
+        </p>
+        <div className="rounded-xl ring-1 ring-slate-200/80 dark:ring-white/10 bg-slate-50/60 dark:bg-zinc-800/40 p-4">
+          <code className="text-xs text-slate-700 dark:text-zinc-300 block leading-relaxed">
+            rate = enrolment ÷ (site count × recruiting months)
+            <br />
+            <span className="text-slate-400 dark:text-zinc-500">
+              where recruiting months = (completion − start) − estimated follow-up
+            </span>
+          </code>
+        </div>
+        <ul className="space-y-2 max-w-2xl">
+          {[
+            ['Every site is treated as open for the whole window.',
+             'Sites activate over months and the registry never says when, so a late-opening site counts the same as a day-one site.'],
+            ['Recruitment is treated as uniform.',
+             'Real accrual is S-shaped: slow start, ramp, long tail. The figure is an average across all of it.'],
+            ['Follow-up is estimated, not stated.',
+             'It is parsed from the primary endpoint time frame and imputed from the endpoint type for roughly half of trials.'],
+            ['It is a trial-wide average, not a site rate.',
+             'No individual site would recognise the number. Per-site enrolment is not published by ClinicalTrials.gov or AACT at all.'],
+          ].map(([h, b]) => (
+            <li key={h} className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+              <strong className="text-slate-900 dark:text-zinc-200">{h}</strong> {b}
+            </li>
+          ))}
+        </ul>
+        <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          The same gap caps accuracy. R² sits at 0.51 on Phase 1 and around 0.34 on
+          Phases 2 and 3, and lifting the training set fivefold plus a hyperparameter
+          search moved Phase 3 by about 0.02. What decides whether a trial runs late,
+          how many sites activate and when, which competing trials want the same
+          patients, amendments mid-flight, is absent from a registry record. Closing
+          that gap needs CRO or CTMS data, or a commercial source such as Citeline.
+          It is a data problem, not a modelling one.
+        </p>
+      </div>
+
       {/* Archived v1: full page behind the toggle, matching the n8n pattern */}
       {!showArchive ? (
         <button
