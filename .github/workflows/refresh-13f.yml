@@ -49,19 +49,22 @@ jobs:
       - name: Validate payload
         run: python scripts/validate_13f_json.py
 
-      - name: Commit if changed
+      # Compares `rows`, not the file. The payload's generated_at_utc moves on
+      # every run, so `git diff` is always dirty and a plain file check would
+      # commit and redeploy the whole site every weekday for no reason.
+      - name: Commit if the holdings actually changed
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/data/stock_conc_latest.json
-          if git diff --cached --quiet; then
-            echo "No change in 13F data — nothing to deploy."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
+          if python scripts/data_changed.py; then
+            git add public/data/stock_conc_latest.json
             git commit -m "chore: refresh 13F data"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            git checkout -- public/data/stock_conc_latest.json
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
   # Deploy explicitly. The push above used GITHUB_TOKEN, which by design does
