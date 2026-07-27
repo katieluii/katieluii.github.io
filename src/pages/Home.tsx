@@ -114,13 +114,17 @@ export function Home() {
           </h2>
           <div className="space-y-4 text-zinc-600 leading-relaxed dark:text-zinc-400">
             <p>
-              Experience in a medtech startup and biopharma consultancy,
-              translating complex science and data to insights and narratives.
-              Started in wet lab (Oxford/HK/London), and recently AI/ML trained.
-              Now at a SF-based Biopharma-AI startup.
+              <span className="font-medium text-zinc-900 dark:text-zinc-100">
+                Builder, translator, operator in biotech and AI
+              </span>{" "}
+              — experience in a medtech startup and biopharma consultancy,
+              translating complex science and data into actionable insights and
+              narratives. Started in wet labs with astrocytes and iPSCs
+              (Oxford/HK/London), now at biopharma-AI startups (SF/London).
             </p>
             <p>
-              I enjoy building AI and automation tools to scale analysis, productivity, and impact.
+              I enjoy building AI and automation tools/workflows to scale
+              analysis, productivity, and impact.
             </p>
           </div>
         </section>
