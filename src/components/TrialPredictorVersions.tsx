@@ -14,12 +14,18 @@ import { Pill } from './Pill';
 type Row = { label: string; v1: string; v2: string; v3: string; v31: string };
 
 const ROWS: Row[] = [
-  { label: 'Phase 2 — MAE (months)', v1: '8.30', v2: '7.16', v3: '7.01', v31: '7.02' },
-  { label: 'Phase 3 — MAE (months)', v1: '8.75', v2: '7.06', v3: '6.99', v31: '6.85' },
-  { label: 'Phase 2 — RMSE (days)', v1: '311', v2: '284', v3: '281', v31: '—' },
-  { label: 'Phase 3 — RMSE (days)', v1: '328', v2: '286', v3: '284', v31: '—' },
-  { label: 'Phase 2 — R²', v1: '0.193', v2: '0.330', v3: '0.343', v31: '0.341' },
-  { label: 'Phase 3 — R²', v1: '0.127', v2: '0.337', v3: '0.345', v31: '0.358' },
+  { label: 'Phase 1 HV — R²', v1: '0.420', v2: '0.371', v3: '0.368', v31: '0.370' },
+  { label: 'Phase 1 — R²', v1: '0.454', v2: '0.511', v3: '0.517', v31: '0.555' },
+  { label: 'Phase 2 — R²', v1: '0.193', v2: '0.330', v3: '0.343', v31: '0.345' },
+  { label: 'Phase 3 — R²', v1: '0.127', v2: '0.337', v3: '0.345', v31: '0.372' },
+  { label: 'Phase 1 HV — MAE (months)', v1: '2.87', v2: '2.66', v3: '2.64', v31: '2.67' },
+  { label: 'Phase 1 — MAE (months)', v1: '5.96', v2: '5.35', v3: '5.25', v31: '5.00' },
+  { label: 'Phase 2 — MAE (months)', v1: '8.30', v2: '7.16', v3: '7.01', v31: '6.95' },
+  { label: 'Phase 3 — MAE (months)', v1: '8.75', v2: '7.06', v3: '6.99', v31: '6.71' },
+  { label: 'Phase 1 HV — RMSE (days)', v1: '134', v2: '140', v3: '140', v31: '140' },
+  { label: 'Phase 1 — RMSE (days)', v1: '250', v2: '237', v3: '235', v31: '226' },
+  { label: 'Phase 2 — RMSE (days)', v1: '311', v2: '284', v3: '281', v31: '280' },
+  { label: 'Phase 3 — RMSE (days)', v1: '328', v2: '286', v3: '284', v31: '278' },
 ];
 
 function ArchivedTrialPredictorV1() {
@@ -127,22 +133,22 @@ export function TrialPredictorVersions() {
         </p>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
+          <table className="w-full text-sm border-collapse table-fixed">
             <thead>
               <tr className="border-b border-slate-200 dark:border-zinc-700">
-                <th className="text-left py-1.5 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-left py-1.5 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[40%]">
                   Measure
                 </th>
-                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[15%]">
                   v1
                 </th>
-                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[15%]">
                   v2
                 </th>
-                <th className="text-right py-1.5 px-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[15%]">
                   v3
                 </th>
-                <th className="text-right py-1.5 pl-3 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide border-l border-slate-200 dark:border-zinc-700">
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[15%] border-l border-slate-200 dark:border-zinc-700">
                   v3.1 (live)
                 </th>
               </tr>
@@ -151,16 +157,16 @@ export function TrialPredictorVersions() {
               {ROWS.map(r => (
                 <tr key={r.label} className="border-b border-slate-100 dark:border-zinc-800">
                   <td className="py-1.5 pr-4 text-slate-700 dark:text-zinc-300">{r.label}</td>
-                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-400 dark:text-zinc-500">
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-400 dark:text-zinc-500">
                     {r.v1}
                   </td>
-                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-500 dark:text-zinc-500">
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-500 dark:text-zinc-500">
                     {r.v2}
                   </td>
-                  <td className="py-1.5 px-3 text-right tabular-nums text-slate-600 dark:text-zinc-400">
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-600 dark:text-zinc-400">
                     {r.v3}
                   </td>
-                  <td className="py-1.5 pl-3 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400 border-l border-slate-100 dark:border-zinc-800">
+                  <td className="py-1.5 px-2 text-right tabular-nums font-semibold text-emerald-700 dark:text-emerald-400 border-l border-slate-100 dark:border-zinc-800">
                     {r.v31}
                   </td>
                 </tr>
@@ -170,21 +176,23 @@ export function TrialPredictorVersions() {
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
           Temporal holdout: trained on trials starting before 2021, tested on those
-          starting after. v1, v2 and v3 share one test fold and one corpus, so those
-          three columns are directly comparable. For reference the
+          starting after. All four columns share one test fold and one corpus, so they
+          are directly comparable. For reference the
           per-therapeutic-area median baseline scores R² 0.003 on Phase 2 and −0.086 on
           Phase 3, roughly what predicting the average achieves. v2 replaced the model
           and its interval; v3 split duration into recruiting time and follow-up.
         </p>
         <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
           <strong className="text-slate-600 dark:text-zinc-400">v3.1 is the current
-          production model</strong>, and its column is separated because it was
-          re-measured on an expanded corpus and therefore a different test fold. It is
-          not cell-for-cell comparable to v3: 0.341 beside 0.343 is not a regression.
-          An API cap of 5,000 records meant the model had been training on 2,024 of
-          17,092 eligible Phase 3 trials; lifting that cap and tuning produced v3.1,
-          which on a like-for-like fold lifted R² by about 0.10. RMSE was not
-          re-measured for v3.1.
+          production model.</strong> Three changes, no new architecture. An API cap of
+          5,000 records had the model training on 2,024 of 17,092 eligible Phase 3
+          trials; lifting it and tuning the hyperparameters lifted R² by about 0.10 on
+          a like-for-like fold. Then the point estimate moved from the median to the
+          mean: R² is minimised by the conditional mean, while a quantile head fits the
+          median, so the loss was pulling against the metric. Switching it gained a
+          further 0.038 on Phase 1 and 0.027 on Phase 3, and improved error on three of
+          four phases. The prediction interval still comes from the quantile heads, so
+          its calibration is unchanged.
         </p>
       </div>
 
