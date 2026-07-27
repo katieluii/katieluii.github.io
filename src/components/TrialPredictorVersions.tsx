@@ -121,7 +121,7 @@ export function TrialPredictorVersions() {
     <div className="space-y-8">
       <div className="space-y-3">
         <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
-          What changed
+          Improvements
         </h2>
         <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
           v1 shipped and looked plausible. Nobody had recorded a baseline, so nobody
@@ -198,7 +198,7 @@ export function TrialPredictorVersions() {
 
       <div className="space-y-3">
         <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
-          What this cannot tell you
+          Limitations
         </h2>
         <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
           The registry records when a trial started and when it hit its primary
