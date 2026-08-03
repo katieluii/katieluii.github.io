@@ -1,10 +1,10 @@
 {
-  "updated": "2026-07-27",
-  "intro": "Five themes moving drug development this week — a target class coming apart in atopic dermatitis, the incretin fight heading to court, and regulators, capital and access models all quietly rewriting their own rules. Refreshed every Monday.",
+  "updated": "2026-08-03",
+  "intro": "Five themes moving drug development this week — an atopic-dermatitis target class edging toward a shared safety verdict, the incretin fight now in front of a judge, and access, approvals and capital all quietly renegotiating where the rules sit. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "The OX40 axis in atopic dermatitis breaks — two Phase 3 exits in five months, and now a shared safety question",
-      "detail": "Amgen's rocatinlimab (depleting anti-OX40) went first in March on a Kaposi's sarcoma signal; Sanofi's amlitelimab (anti-OX40L) followed in July, framed as insufficient differentiation over Dupixent. Sanofi's fuller rationale — citing mixed Phase 3 results and reported Kaposi's sarcoma cases — now hints the KS signal may sit in amlitelimab's own trials rather than being read across, which would turn two unrelated failures into one convergent target-class safety flag. Inmagene's non-depleting IMG-007 is the last clinical-stage asset standing on the entire axis, and it still has to clear both bars that sank the leaders.",
+      "headline": "OX40 in atopic dermatitis hardens from two failures into one safety question",
+      "detail": "Two Phase 3-caliber programmes on the same costimulatory axis are gone in five months — Amgen's rocatinlimab (depleting anti-OX40) in March on a Kaposi's sarcoma signal, Sanofi's amlitelimab (anti-OX40L) in July on differentiation. Sanofi's fuller rationale now cites the \"totality of efficacy and safety evidence\" and reported Kaposi's sarcoma cases, with the phrasing ambiguous as to whether those cases sit in amlitelimab's own trials — which, if confirmed, would reframe the axis from two unrelated exits into one convergent target-class safety flag. Inmagene's non-depleting IMG-007 is the last clinical-stage asset standing, and its mechanism only answers the safety half of what sank the leaders.",
       "momentum": "Hot",
       "sources": [
         { "label": "Sanofi media room", "url": "https://www.sanofi.com/en/media-room" },
@@ -13,8 +13,8 @@
       ]
     },
     {
-      "headline": "The incretin marketing fight becomes a lawsuit — Novo moves to enjoin Lilly's comparison ads",
-      "detail": "Novo Nordisk is asking a New Jersey federal court to enjoin Lilly's comparative-efficacy advertising pitting Zepbound and Mounjaro against Ozempic and Wegovy — the first time the GLP-1 rivalry has escalated from press releases and marketing complaints to actual litigation. With the clinical race largely settled on both sides, the competition is migrating to the courtroom and the ad copy. Worth watching whether an injunction reshapes how incretin efficacy gets marketed.",
+      "headline": "The incretin rivalry escalates from ad copy to the courtroom",
+      "detail": "Novo Nordisk is seeking a New Jersey federal injunction against Lilly's comparative-efficacy campaigns pitting Zepbound and Mounjaro against Ozempic and Wegovy — the first time this fight has moved past press releases and marketing complaints into actual litigation. With the clinical race broadly settled on both sides, the contest is migrating to what the labels and the ads are allowed to say. The question worth watching is whether an injunction resets how incretin efficacy can be marketed at all.",
       "momentum": "Hot",
       "sources": [
         { "label": "Novo Nordisk news", "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html" },
@@ -23,8 +23,8 @@
       ]
     },
     {
-      "headline": "Approval stops being a finish line — Tavneos's EU reversal puts its US nod on defense",
-      "detail": "CHMP moved to revoke Tavneos (avacopan) in Europe in June, and Amgen is now proactively seeking an FDA advisory-committee hearing to defend the US approval before anyone asks. Read alongside CHMP's split rare-disease week — a positive opinion for Minoryx's ALD asset against a negative for Zevra's Meplyffa some two years after its US clearance — the pattern is hard to miss: a marketing authorization is increasingly a revisable state, on both sides of the Atlantic. Sponsors are starting to defend approvals they already hold.",
+      "headline": "Approval stops being terminal — Amgen defends Tavneos before it's asked",
+      "detail": "CHMP moved to revoke Tavneos (avacopan) in Europe in June, and Amgen is now proactively seeking an FDA advisory-committee hearing to defend the US approval ahead of any challenge. Set against CHMP's split rare-disease week — a positive opinion for Minoryx's ALD asset alongside a negative for Zevra's Meplyffa roughly two years after its US clearance — the pattern reads clearly on both sides of the Atlantic: a marketing authorization is increasingly a revisable state, not a finish line. Sponsors are starting to defend approvals they already hold.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "Amgen newsroom", "url": "https://www.amgen.com/newsroom" },
@@ -33,23 +33,23 @@
       ]
     },
     {
-      "headline": "Biotech financing goes venue-shopping — Hong Kong listings and Korean megadeals fill the gap",
-      "detail": "A US biotech is pursuing a Hong Kong-first IPO, a second alternative-venue data point after Scribe Therapeutics' upsized $128.7M Nasdaq debut, while Samsung Biologics pursues a roughly $1.8B acquisition billed as the largest-ever by a Korean biopharma. With fresh US import tariffs now landing on generics as well, the capital and supply-chain map is visibly tilting toward Asia. None of it is a single-asset thesis, but the direction of travel is clear.",
-      "momentum": "Watch",
-      "sources": [
-        { "label": "Samsung Biologics", "url": "https://www.samsungbiologics.com/en/" },
-        { "label": "Scribe Therapeutics", "url": "https://www.scribetx.com/" },
-        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
-      ]
-    },
-    {
-      "headline": "Access-before-approval hardens into a template — Merck licenses alimatravir for LMICs pre-filing",
-      "detail": "Merck has issued voluntary licenses for its long-acting PrEP candidate alimatravir to low- and middle-income-country manufacturers ahead of any regulatory submission, following Gilead's lenacapavir playbook almost step for step. Two sponsors running the same sequence starts to look less like goodwill and more like an emerging standard for long-acting prevention. The open question is whether it spreads beyond HIV to other long-acting modalities.",
+      "headline": "Access-before-approval hardens into a template — Merck runs Gilead's playbook",
+      "detail": "Merck has issued voluntary licenses for its long-acting PrEP candidate alimatravir to low- and middle-income-country manufacturers ahead of any regulatory submission, following Gilead's lenacapavir sequence almost step for step. Two sponsors running the same pre-filing playbook starts to look less like goodwill and more like an emerging standard for long-acting prevention. The open question is whether it travels beyond HIV to other long-acting modalities.",
       "momentum": "Watch",
       "sources": [
         { "label": "Merck news", "url": "https://www.merck.com/news/" },
         { "label": "Gilead news", "url": "https://www.gilead.com/news" },
         { "label": "alimatravir trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=alimatravir" }
+      ]
+    },
+    {
+      "headline": "Biotech capital goes venue-shopping — Hong Kong listings and a Korean megadeal tilt the map east",
+      "detail": "A US biotech is pursuing a Hong Kong-first IPO — a second alternative-venue data point after Scribe Therapeutics' upsized $128.7M Nasdaq debut — while Samsung Biologics moves on a roughly $1.8B acquisition billed as the largest ever by a Korean biopharma. With fresh US import tariffs now landing on generics too, the capital and supply-chain map is visibly leaning toward Asia. No single-asset thesis here, but the direction of travel is hard to miss.",
+      "momentum": "Watch",
+      "sources": [
+        { "label": "Samsung Biologics", "url": "https://www.samsungbiologics.com/en/" },
+        { "label": "Scribe Therapeutics", "url": "https://www.scribetx.com/" },
+        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
       ]
     }
   ]
