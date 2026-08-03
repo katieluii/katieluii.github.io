@@ -131,6 +131,72 @@ def _load_citation_guard():
     return mod
 
 
+CONTRADICTION_SWEEP = WS_ROOT / "ws9-etlm" / "scripts" / "sweep_value_contradictions.py"
+
+
+def _load_contradiction_sweep():
+    """Import the intra-row contradiction sweep by path, or return None."""
+    if not CONTRADICTION_SWEEP.exists():
+        return None
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("sweep_value_contradictions",
+                                                  CONTRADICTION_SWEEP)
+    if spec is None or spec.loader is None:
+        return None
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def contradiction_gate(resolved: list[tuple[str, Path]]) -> None:
+    """Refuse to publish an ETLM row whose own prose contradicts its structured value.
+
+    Sibling of citation_gate, and it exists because citation_gate cannot see this
+    class BY CONSTRUCTION. nsclc's `2L_post_platinum_docetaxel` had every citation
+    resolve — real PMID, real trial — while the row's label said "docetaxel arm
+    ORR 13%" and `best_orr_pct` said 9. The defect was in plain prose one field
+    away. urothelial's TROPHY-U-01 row was worse: ORR 41% and mPFS 5.3 are
+    Cohort 3 (SG + pembro, CPI-naive) presented as Cohort 1 monotherapy in a
+    post-CPI line, overstating ORR by 14 points with a valid PMID attached.
+
+    Same whitelist-only scope as citation_gate, for the same reason: a gate that
+    blocks every sync on unpublished work gets routed around within a week.
+
+    THREE verdicts. UNGATEABLE — the sweep examined no values at all — aborts
+    just like BLOCK, because a checker that looked at nothing must never be read
+    as a pass. The sweep reports its own coverage denominator on every run.
+    """
+    sweep = _load_contradiction_sweep()
+    if sweep is None:
+        raise SyncAborted(
+            f"intra-row contradiction sweep not found at {CONTRADICTION_SWEEP} — cannot "
+            "verify that published efficacy values agree with their own row text. "
+            "A resolvable citation does not make the number right."
+        )
+    rep = sweep.sweep_report([code for code, _ in resolved])
+    if rep["verdict"] == sweep.BLOCK:
+        lines = [f"{f['code']}: [{f['kind']}] {f['line']} — {f.get('detail', '')}"
+                 for f in rep["findings"]]
+        raise SyncAborted(
+            f"{len(lines)} intra-row value contradiction(s) in the whitelisted set:\n    "
+            + "\n    ".join(lines[:20])
+            + (f"\n    … and {len(lines) - 20} more" if len(lines) > 20 else "")
+            + "\n  The citation may resolve fine — the row disagrees with ITSELF. "
+              "Adjudicate against the source before publishing."
+        )
+    if rep["verdict"] == sweep.UNGATEABLE:
+        raise SyncAborted(
+            "intra-row contradiction sweep examined 0 numeric values across "
+            f"{len(resolved)} whitelisted code(s). That is not a pass — it means the "
+            "detector matched no known field name, so the check is not running. "
+            "Verify FIELDS still matches the drafts' schema."
+        )
+    print(f"  ✓ no intra-row value contradictions across {len(resolved)} whitelisted code(s) "
+          f"({rep['examined_values']} value(s) examined, {rep['unexamined_values']} stored "
+          "under unmapped field names)")
+
+
 def citation_gate(resolved: list[tuple[str, Path]]) -> None:
     """D7 — refuse to publish an ETLM whose benchmark citations do not resolve.
 
@@ -399,6 +465,11 @@ def sync_etlms(cfg: dict[str, Any]) -> list[str]:
 
     # D7 — gate benchmark citations on the resolved sources, before any write.
     citation_gate(resolved)
+    # Runs after citation_gate and gates a DIFFERENT class: citation_gate proves a
+    # source resolves, this proves the row's number agrees with the row's own text.
+    # A row can pass the first and fail the second — that is the nsclc docetaxel
+    # and urothelial TROPHY-U-01 defect, and neither was visible to a citation check.
+    contradiction_gate(resolved)
 
     written: list[str] = []
     for code, src in resolved:
