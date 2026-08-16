@@ -56,6 +56,8 @@
   /* Masthead */
   .mast{padding:24px 0 40px}
   .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:34px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
+  .topbar-l{display:flex;align-items:center;gap:18px}
+  .topbar .wordmark{font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--ink-strong);text-decoration:none}
   .topbar .back{font-size:14px;color:var(--ink-soft);text-decoration:none;font-weight:500}
   .topbar .back:hover{color:var(--ink-strong)}
   .theme-btn{font:inherit;font-size:12.5px;font-weight:500;color:var(--ink-soft);background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
@@ -288,12 +290,12 @@
 
   <header class="mast">
     <div class="topbar">
-      <a class="back" href="/pharma-landscape">← Bellwether</a>
+      <div class="topbar-l"><a class="wordmark" href="/">Katie Lui</a><a class="back" href="/pharma-landscape">← Bellwether</a></div>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to dark mode">Dark</button>
     </div>
     <p class="eyebrow" style="margin-bottom:10px"><span class="rail">B</span> Full landscape · <span id="mastCut"></span></p>
     <h1>Large-cap pharma <span class="hl">landscape</span></h1>
-    <p class="sub">Thirteen of the largest names, each classified by how it should be valued and read through the large-pharma LOE/earnings engine, then set on one comparative screen: latest reported quarter, valuation, patent-cliff exposure and pipeline crowding. <b>Click any company</b> for the full read.</p>
+    <p class="sub"><span id="nCos">Thirteen</span> of the largest names, each classified by how it should be valued and read through the large-pharma LOE/earnings engine, then set on one comparative screen: latest reported quarter, valuation, patent-cliff exposure and pipeline crowding. <b>Click any company</b> for the full read.</p>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -387,6 +389,7 @@
   <footer>
     <p id="footdate"></p>
     <p style="margin-top:8px">A rendered output of the two-engine equity-research agent, reviewed and promoted by a person each cut. Illustrative and directional — <b>not investment advice</b>. Not a research report: the author is not an authorised person and nothing here is a recommendation to buy, sell or hold any security. Stances and price targets are quoted third-party consensus at the data cut, not the author's numbers.</p>
+    <p style="margin-top:10px"><a href="/#suite" style="color:var(--ink-strong)">The suite</a> · <a href="/pharma-landscape" style="color:var(--ink-strong)">Bellwether overview</a> · <a href="mailto:katie@renascor.xyz" style="color:var(--ink-strong)">katie@renascor.xyz</a></p>
   </footer>
 
   <!-- company detail drawer -->
@@ -543,8 +546,10 @@ const peLo=Math.min(...peVals),peHi=Math.max(...peVals);
  [DATA_ASOF,"latest reported quarter"]].forEach(s=>{
   $("#stats").appendChild(el("div","stat",`<b>${s[0]}</b><span>${s[1]}</span>`));
 });
-$("#footdate").innerHTML=`Data reflects the <b>${DATA_ASOF}</b> reported quarter — the latest available across all 13. Page last reviewed ${REFRESHED}. Valuation multiples span different brokers, dates and currencies — read as directional, not precise comparables.`;
+const halfYear=D.filter(d=>/^H[12]/.test(d.q)).map(d=>d.name);
+$("#footdate").innerHTML=`Data reflects the <b>${DATA_ASOF}</b> reported quarter — the latest reported period for each of the ${D.length} names${halfYear.length?` (${halfYear.join(", ")} report${halfYear.length>1?"":"s"} half-yearly, so ${halfYear.length>1?"their":"its"} latest period is a half, not a quarter)`:""}. Page last reviewed ${REFRESHED}. Valuation multiples span different brokers, dates and currencies — read as directional, not precise comparables.`;
 $("#mastCut").textContent=`${DATA_ASOF} read · reviewed ${REFRESHED}`;
+$("#nCos").textContent=({13:"Thirteen",12:"Twelve",14:"Fourteen"})[D.length]||String(D.length);
 
 // actionable buy/sell signals
 const SIGNALS={

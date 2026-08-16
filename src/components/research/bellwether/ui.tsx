@@ -60,8 +60,6 @@ export const BASIS_SHORT: Record<GrowthBasis, string> = {
 };
 export const MULT_SHORT: Record<MultipleBasis, string> = {
   forward: 'fwd',
-  trailing: 'trailing',
-  NTM: 'NTM',
   estimated: 'est.',
 };
 

@@ -47,7 +47,7 @@ export function Signals() {
           </article>
         );
       })}
-      <p className="md:col-span-2 text-[12.5px] text-[var(--faint)]">
+      <p className="md:col-span-2 text-[12.5px] text-[var(--muted)]">
         The two extremes of the {DATA_ASOF} read, shown to illustrate what the score weighs: earnings momentum,
         valuation against growth, and the freshest dated catalyst. Illustrative and directional; not investment advice.
       </p>

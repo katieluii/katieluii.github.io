@@ -29,7 +29,7 @@ export function ThemeToggle() {
     <button
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      className="p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/10 transition-colors"
+      className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--ink-strong)] hover:bg-[var(--hover)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
     >
       {theme === 'light' ? (
         <Moon className="w-4 h-4" />

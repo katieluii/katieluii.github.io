@@ -165,9 +165,10 @@ export function Screener() {
         </table>
       </div>
       <p className="mt-2 text-[12px] leading-[1.5] text-[var(--faint)]">
-        Growth is the company's stated quarter figure; a tag marks a non-reported basis (cc = constant currency,
-        op = operational). P/E is forward where a clean figure exists; trailing, NTM and estimated multiples are
-        tagged and never ranked against forward ones. Open a ticker for its numbers, cliff bridge and dated developments.
+        Growth is the company's stated figure for its latest period; a tag marks a non-reported basis (cc = constant
+        currency, op = operational). P/E is forward where a clean figure exists; estimated multiples (trailing, NTM or
+        single-aggregator, hover the tag for which) are tagged est. and never ranked against forward ones. Open a
+        ticker for its numbers, cliff bridge and dated developments.
       </p>
     </div>
   );

@@ -29,6 +29,29 @@ const yScale = (g: number) => (H - B) - ((g - Y_MIN) / (Y_MAX - Y_MIN)) * (H - B
 const median = (xs: number[]) => { const s = [...xs].sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 const PEER_MEDIAN = median(COMPANIES.filter((c) => c.multipleBasis === 'forward').map((c) => c.pos.pe));
 
+/** greedy label placement: try a few offsets around the mark until the label box clears
+    every label already placed (labels are ~11px tall, ~7px per character wide) */
+function labelOffsets(): Map<string, { dx: number; dy: number }> {
+  const out = new Map<string, { dx: number; dy: number }>();
+  const placed: { x0: number; x1: number; y0: number; y1: number }[] = [];
+  const cands = [[0, -13], [0, 15], [22, -6], [-22, -6], [0, -26], [0, 27], [26, 8], [-26, 8]];
+  const rows = [...COMPANIES].sort((a, b) => a.pos.pe - b.pos.pe);
+  for (const c of rows) {
+    const cx = xScale(c.pos.pe), cy = yScale(c.pos.g);
+    const w = c.ticker.length * 7 + 4, h = 12;
+    let pick = cands[0];
+    for (const [dx, dy] of cands) {
+      const box = { x0: cx + dx - w / 2, x1: cx + dx + w / 2, y0: cy + dy - h, y1: cy + dy + 2 };
+      const clear = placed.every((p) => box.x1 < p.x0 || box.x0 > p.x1 || box.y1 < p.y0 || box.y0 > p.y1);
+      if (clear) { pick = [dx, dy]; break; }
+    }
+    placed.push({ x0: cx + pick[0] - w / 2, x1: cx + pick[0] + w / 2, y0: cy + pick[1] - h, y1: cy + pick[1] + 2 });
+    out.set(c.ticker, { dx: pick[0], dy: pick[1] });
+  }
+  return out;
+}
+const LABEL_AT = labelOffsets();
+
 function Positioning() {
   const [active, setActive] = useState<string | null>(null);
   const cur = COMPANIES.find((c) => c.ticker === active) ?? null;
@@ -53,18 +76,18 @@ function Positioning() {
           {xTicks.map((t) => (
             <g key={`x${t}`}>
               <line x1={xScale(t)} y1={H - B} x2={xScale(t)} y2={H - B + 4} stroke="var(--faint)" />
-              <text x={xScale(t)} y={H - B + 17} textAnchor="middle" fontSize={11} fill="var(--faint)" fontFamily="inherit">{t}×</text>
+              <text x={xScale(t)} y={H - B + 17} textAnchor="middle" fontSize={11} fill="var(--muted)" fontFamily="inherit">{t}×</text>
             </g>
           ))}
           {yTicks.map((t) => (
             <g key={`y${t}`}>
               <line x1={L - 4} y1={yScale(t)} x2={L} y2={yScale(t)} stroke="var(--faint)" />
-              <text x={L - 8} y={yScale(t) + 4} textAnchor="end" fontSize={11} fill="var(--faint)" fontFamily="inherit">{t}%</text>
+              <text x={L - 8} y={yScale(t) + 4} textAnchor="end" fontSize={11} fill="var(--muted)" fontFamily="inherit">{t}%</text>
               {t === 0 && <line x1={L} y1={yScale(0)} x2={W - R} y2={yScale(0)} stroke="var(--hair)" strokeDasharray="2 4" />}
             </g>
           ))}
           <text x={(L + W - R) / 2} y={H - 6} textAnchor="middle" fontSize={11.5} fill="var(--muted)" fontFamily="inherit">
-            P/E (dashed outline = trailing, NTM or estimated)
+            P/E (dashed outline = estimated, not a clean forward figure)
           </text>
           <text transform={`translate(14 ${(T + H - B) / 2}) rotate(-90)`} textAnchor="middle" fontSize={11.5} fill="var(--muted)" fontFamily="inherit">
             Revenue growth, stated basis
@@ -97,9 +120,11 @@ function Positioning() {
                   strokeWidth={est ? 1.75 : on ? 1.5 : 0}
                   strokeDasharray={est ? '3 2' : undefined}
                 />
-                <text x={cx} y={cy - 13} textAnchor="middle" fontSize={11} fontWeight={on ? 700 : 600} fill={on ? 'var(--accent)' : 'var(--ink-strong)'} fontFamily="inherit" letterSpacing="0.03em" style={{ pointerEvents: 'none' }}>
-                  {c.ticker}
-                </text>
+                {(() => { const o = LABEL_AT.get(c.ticker) ?? { dx: 0, dy: -13 }; return (
+                  <text x={cx + o.dx} y={cy + o.dy} textAnchor="middle" fontSize={11} fontWeight={on ? 700 : 600} fill={on ? 'var(--accent)' : 'var(--ink-strong)'} fontFamily="inherit" letterSpacing="0.03em" style={{ pointerEvents: 'none' }}>
+                    {c.ticker}
+                  </text>
+                ); })()}
               </g>
             );
           })}

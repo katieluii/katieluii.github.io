@@ -66,11 +66,16 @@ export function extract() {
     out[name] = vm.runInContext(`(${expr})`, ctx, { timeout: 1000 });
   }
   // sanity: the shape the page relies on
-  if (!Array.isArray(out.D) || out.D.length < 10) throw new Error('sync-bellwether: D is not the 13-company array');
+  if (!Array.isArray(out.D) || out.D.length !== 13) throw new Error(`sync-bellwether: D has ${out.D && out.D.length} companies, expected the fixed 13-name roster`);
   for (const c of out.D) {
-    for (const k of ['ticker', 'name', 'loeAsset', 'era', 'exp', 'q', 'qdate', 'rev', 'gr', 'thesis', 'bull', 'bear', 'dev', 'ph']) {
+    // every key the page reads (src/data/pharmaLandscape.ts) — a dropped key must fail HERE, not in the browser
+    for (const k of ['ticker', 'name', 'ccy', 'loeAsset', 'era', 'exp', 'q', 'qdate', 'rev', 'gr', 'fpe', 'ev', 'yld', 'stance', 'thesis', 'bull', 'bear', 'dev', 'ph']) {
       if (!(k in c)) throw new Error(`sync-bellwether: ${c.ticker || '?'} missing ${k}`);
     }
+    if (!(c.fpe === null || typeof c.fpe === 'number')) throw new Error(`sync-bellwether: ${c.ticker} fpe must be number|null`);
+    if (!Array.isArray(c.dev) || !Array.isArray(c.ph) || c.ph.length !== 5) throw new Error(`sync-bellwether: ${c.ticker} dev/ph shape`);
+    if (!['high', 'med', 'low'].includes(c.exp)) throw new Error(`sync-bellwether: ${c.ticker} exp "${c.exp}"`);
+    if (!(c.era in out.eras)) throw new Error(`sync-bellwether: ${c.ticker} era "${c.era}" not in eras`);
     if (!(c.ticker in out.POS)) throw new Error(`sync-bellwether: POS has no entry for ${c.ticker}`);
   }
   for (const t of out.convThemes) {

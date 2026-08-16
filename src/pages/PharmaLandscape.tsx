@@ -107,7 +107,7 @@ export function PharmaLandscape() {
               <ul className="mt-2 space-y-2 text-[14px] leading-[1.55] text-[var(--muted)]">
                 <li><span className="font-medium text-[var(--ink)]">Reported</span>: revenue, growth and dated developments come from each company's disclosures for the quarter shown, and are fact-checked before a cut is promoted.</li>
                 <li><span className="font-medium text-[var(--ink)]">Consensus</span>: stances and targets on the company cards are third-party sell-side consensus as compiled at the data cut, shown for context.</li>
-                <li><span className="font-medium text-[var(--ink)]">Estimated</span>: a multiple carrying an <em>est.</em>, <em>trailing</em> or <em>NTM</em> tag is not a clean forward figure and is never ranked against one.</li>
+                <li><span className="font-medium text-[var(--ink)]">Estimated</span>: a multiple tagged <em>est.</em> (trailing, NTM or single-aggregator) is not a clean forward figure and is never ranked against one.</li>
                 <li><span className="font-medium text-[var(--ink)]">Model</span>: theses, bull and bear cases and the two extremes are the system's read, phrased by a language model over the reported figures.</li>
               </ul>
             </div>
@@ -116,7 +116,7 @@ export function PharmaLandscape() {
               <ul className="mt-2 space-y-2 text-[14px] leading-[1.55] text-[var(--muted)]">
                 <li>Not a research report and not investment advice. Katie Lui is not an authorised person and this is not a recommendation to buy, sell or hold any security.</li>
                 <li>No fair value or price target is produced here. Where a target appears it is quoted consensus, not the author's number.</li>
-                <li>Not real-time. The data cut is stamped at the top of the page; a person reviews and promotes every refresh.</li>
+                <li>Not real-time. The data cut is stamped at the top of the page; a person reviews and promotes every refresh. Roche reports half-yearly, so its latest period is a half, not a quarter.</li>
               </ul>
             </div>
           </div>

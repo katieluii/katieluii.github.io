@@ -20,7 +20,9 @@ import raw from './bellwether.generated.json';
 export type Exposure = 'high' | 'med' | 'low';
 export type EraKey = 'now' | '2026-28' | '2029-31';
 export type GrowthBasis = 'reported' | 'constant currency' | 'underlying' | 'operational';
-export type MultipleBasis = 'forward' | 'trailing' | 'NTM' | 'estimated';
+/** forward = a clean forward figure the SOP did not flag; estimated = anything else (trailing, NTM,
+    single-aggregator) — the `est` flag the refresh maintains decides ranking, the `ev` string says why */
+export type MultipleBasis = 'forward' | 'estimated';
 
 export interface Company {
   ticker: string;
@@ -86,16 +88,12 @@ function growthBasisOf(gr: string): GrowthBasis {
   // only the headline figure's basis counts; a parenthetical states an ALTERNATIVE basis
   const s = gr.toLowerCase().replace(/\(.*\)/, '');
   if (/underlying/.test(s)) return 'underlying';
-  if (/\bcc\b|constant/.test(s)) return 'constant currency';
+  if (/\bcc\b|\bcer\b|constant/.test(s)) return 'constant currency';
   if (/\bop\b|operational/.test(s)) return 'operational';
   return 'reported';
 }
-function multipleBasisOf(fpe: number | null, ev: string, est?: boolean): MultipleBasis {
-  if (fpe != null && !est) return 'forward';
-  const s = ev.toLowerCase();
-  if (/ntm/.test(s)) return 'NTM';
-  if (/trailing/.test(s)) return 'trailing';
-  return 'estimated';
+function multipleBasisOf(fpe: number | null, est?: boolean): MultipleBasis {
+  return fpe != null && !est ? 'forward' : 'estimated';
 }
 
 type RawCompany = (typeof raw.companies)[number];
@@ -117,7 +115,7 @@ export const COMPANIES: Company[] = (raw.companies as RawCompany[]).map((c) => {
     gr: c.gr,
     growthBasis: growthBasisOf(c.gr),
     fpe: c.fpe as number | null,
-    multipleBasis: multipleBasisOf(c.fpe as number | null, c.ev, est),
+    multipleBasis: multipleBasisOf(c.fpe as number | null, est),
     ev: c.ev,
     yld: c.yld as string | null,
     stance: c.stance,
