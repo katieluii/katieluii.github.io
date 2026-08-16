@@ -491,4 +491,96 @@ export const PROFILE_OVERRIDES: Record<string, PresentationProfile> = {
       "RAS-WT / RAS-mut": "Anti-EGFR agents (cetuximab, panitumumab, and the EGFR half of the KRAS G12C and HER2 combinations) require RAS wild-type and are preferentially used in left-sided primaries; RAS-mut or right-sided disease routes to a bevacizumab-based backbone."
     }
   },
+  "urothelial": {
+    "schema_version": 1,
+    "curated_by_skill": true,
+    "curated_by": "etlm-curator 2026-08-15",
+    "cut_rationale": "Urothelial spans two diseases with different decision metrics: NMIBC is won on complete response and bladder preservation, advanced disease on ORR/PFS/OS. The table leads with line/setting so the reader sorts into the right disease first, then shows ORR against mPFS/mOS as the efficacy-versus-durability counterweight for advanced disease. NMIBC rows are tagged rather than given their own columns — CR resolves for only 2 of 23 assets, so a CR column would be emptier than the blanks it was meant to fill.",
+    "headline_table": {
+      "source": "approved_therapies",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "line",
+          "label": "Line / setting",
+          "from": "field",
+          "path": "indication_line"
+        },
+        {
+          "key": "orr",
+          "label": "ORR",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "orr",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "mpfs",
+          "label": "mPFS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "pfs",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "mos",
+          "label": "mOS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "_os",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "caveats": [
+      {
+        "match_field": "indication_line",
+        "match_regex": "NMIBC|non-muscle|carcinoma in situ|\\bCIS\\b",
+        "tag": "NMIBC — different endpoints",
+        "why": "Non-muscle-invasive disease is assessed on complete response rate and duration of response, with bladder preservation as the clinical goal. Blank ORR/mPFS/mOS on these rows is an endpoint mismatch, not missing data — those measures do not apply to a setting where the tumour is resected before treatment begins."
+      },
+      {
+        "match_field": "indication_line",
+        "match_regex": "withdrawn",
+        "tag": "approval withdrawn",
+        "why": "This approval has been withdrawn. The efficacy figures remain as a historical benchmark, but the asset is not an available treatment option and must not be read as a live comparator."
+      }
+    ],
+    "endpoint_glossary": {
+      "ORR": "Objective response rate — proportion of patients with a confirmed partial or complete response. The primary activity read-out in advanced disease.",
+      "mPFS": "Median progression-free survival, in months.",
+      "mOS": "Median overall survival, in months. The decision metric in advanced disease.",
+      "CR": "Complete response. The endpoint NMIBC is judged on, alongside duration of response and cystectomy avoidance. Shown per-row in the underlying data rather than as a table column: only 2 of 23 approved therapies carry a CR figure, so a column would render mostly empty."
+    }
+  },
 } as unknown as Record<string, PresentationProfile>;
