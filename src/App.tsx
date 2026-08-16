@@ -32,6 +32,7 @@
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
+import { Projects } from './pages/Projects';
 import { Sec13f } from './pages/Sec13f';
 import TrialRecruitment from './pages/TrialRecruitment';
 import ClinicalNewsMon from './pages/ClinicalNewsMon';
@@ -63,6 +64,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
 
         {/* WS15: Work with me — gated by WWM_LIVE (src/data/atlas/copy.ts). While false the
             routes render nothing and /work-with-me/* stays blank — expected, not a bug. */}

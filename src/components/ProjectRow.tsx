@@ -13,9 +13,11 @@ interface ProjectRowProps {
   themes: string[];
   isYearHighlighted?: boolean;
   onHover?: (isHovering: boolean) => void;
+  /** e.g. { letter: 'C', name: 'Crane' } — rendered as "Part of Crane" when the project is a suite constituent */
+  suite?: { letter: string; name: string };
 }
 
-export function ProjectRow({ title, description, status, href, tags, isYearHighlighted, onHover }: ProjectRowProps) {
+export function ProjectRow({ title, description, status, href, tags, isYearHighlighted, onHover, suite }: ProjectRowProps) {
   const navigate = useNavigate();
   const isExternal = /^https?:\/\//.test(href);
   const handleOpen = () => {
@@ -46,6 +48,15 @@ export function ProjectRow({ title, description, status, href, tags, isYearHighl
             <Pill variant={status === 'Live' ? 'status-live' : status === 'WIP' ? 'status-wip' : 'tech'}>
               {status}
             </Pill>
+            {suite && (
+              <span className="inline-flex items-baseline gap-1 text-[11px] text-zinc-500 dark:text-zinc-400">
+                <span className="text-zinc-400 dark:text-zinc-500">Part of</span>
+                <span className="font-semibold text-[var(--accent)]">
+                  {suite.letter}
+                </span>
+                <span className="font-medium text-zinc-700 dark:text-zinc-300">{suite.name}</span>
+              </span>
+            )}
           </div>
 
           <p className="text-sm text-zinc-600 leading-relaxed dark:text-zinc-400">

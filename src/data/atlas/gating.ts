@@ -32,7 +32,7 @@ const ENV_ENDPOINT = (import.meta.env as Record<string, string | undefined>)
 export const FORMSPREE_ENDPOINT = ENV_ENDPOINT || '';
 
 /** Fallback inbox when Formspree isn't configured. */
-export const ACCESS_CONTACT_EMAIL = 'katieluikakiu@gmail.com';
+export const ACCESS_CONTACT_EMAIL = 'katie@renascor.xyz';
 
 /** Indications whose real ETLM ships and gets a genuine free top slice.
  *  Must match `etlm_whitelist` in scripts/atlas-redaction-config.json. */

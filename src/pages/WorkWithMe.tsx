@@ -60,7 +60,7 @@ function Eyebrow({ children, color = ACCENT }: { children: React.ReactNode; colo
 function Cta({ block = false }: { block?: boolean }) {
   return (
     <a
-      href="mailto:katieluikakiu@gmail.com?subject=Working%20together"
+      href="mailto:katie@renascor.xyz?subject=Working%20together"
       className={`text-[14px] font-medium px-5 py-2.5 rounded-lg text-white transition-transform hover:-translate-y-0.5 ${block ? 'inline-block' : 'inline-block'}`}
       style={{ background: ACCENT }}
     >

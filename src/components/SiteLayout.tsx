@@ -36,8 +36,9 @@ export function SiteLayout() {
           </Link>
 
           <nav className="hidden sm:flex items-center gap-5">
-            <NavLink to="/#projects" label="Projects" />
-            <NavLink to="/#about" label="About" />
+            <NavLink to="/#suite" label="Suite" />
+            <NavLink to="/#work" label="Work with me" />
+            <NavLink to="/projects" label="All projects" />
             <NavLink to="/#interests" label="Interests" />
           </nav>
         </header>

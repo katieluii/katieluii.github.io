@@ -11,11 +11,10 @@ export function ThemeToggle() {
       setTheme(stored);
       document.documentElement.classList.toggle('dark', stored === 'dark');
     } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initialTheme = prefersDark ? 'dark' : 'light';
-      setTheme(initialTheme);
-      document.documentElement.classList.toggle('dark', prefersDark);
-      localStorage.setItem('theme', initialTheme);
+      // Light is the default: every product page is designed light-first. Dark is a
+      // deliberate toggle, remembered once chosen — not inherited from the OS.
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 

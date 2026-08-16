@@ -4,9 +4,11 @@ import { Project } from '../data/projects';
 
 interface ProjectTimelineProps {
   groupedProjects: Map<number, Project[]>;
+  /** project id → suite product it belongs to (rendered as a "Part of …" tag) */
+  suiteTags?: Map<string, { letter: string; name: string }>;
 }
 
-export function ProjectTimeline({ groupedProjects }: ProjectTimelineProps) {
+export function ProjectTimeline({ groupedProjects, suiteTags }: ProjectTimelineProps) {
   const [activeYear, setActiveYear] = useState<number | null>(null);
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -121,6 +123,7 @@ export function ProjectTimeline({ groupedProjects }: ProjectTimelineProps) {
                   yearEnd={project.yearEnd}
                   themes={project.themes}
                   isYearHighlighted={isHovered}
+                  suite={suiteTags?.get(project.id)}
                   onHover={(isHovering) => setHoveredProject(isHovering ? year : null)}
                 />
               ))}

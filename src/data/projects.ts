@@ -18,6 +18,8 @@ export interface Project {
   id: string;
   slug: string;
   title: string;
+  /** compact name for inline references (suite cards' "Made of" row); falls back to title */
+  shortTitle?: string;
   themes: ProjectTheme[];
   status: ProjectStatus;
   yearStart: number;
@@ -67,6 +69,7 @@ export const projects: Project[] = [
     id: "sec13f",
     slug: "sec-13f-tracker",
     title: "SEC 13F Fund Analysis",
+    shortTitle: "SEC 13F fund analysis",
     themes: ["Investing", "AI/ML & Automation"],
     status: "Live",
     yearStart: 2024,
@@ -227,6 +230,7 @@ export const projects: Project[] = [
     id: "biotech-fundraising",
     slug: "biotech-fundraising-tracker",
     title: "Biotech Fundraising Tracker",
+    shortTitle: "Fundraising tracker",
     themes: ["AI/ML & Automation", "Investing", "Biotech/Biopharma Strategy"],
     status: "Live",
     yearStart: 2025,
@@ -242,6 +246,7 @@ export const projects: Project[] = [
     id: "clinical-news-monitor",
     slug: "clinical-news-monitor",
     title: "Clinical Development Monitoring Agent",
+    shortTitle: "Clinical development monitor",
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
     status: "Live",
     order: 1,
@@ -256,6 +261,7 @@ export const projects: Project[] = [
     id: "investment-memo-agent",
     slug: "investment-memo-agent",
     title: "Multi-Agent Investment Memo Generation Tool",
+    shortTitle: "Investment memo agent",
     themes: ["AI/ML & Automation", "Investing", "Biotech/Biopharma Strategy"],
     status: "Live",
     order: 2,
@@ -270,6 +276,7 @@ export const projects: Project[] = [
     id: "obesity-stock-analysis",
     slug: "obesity-stock-analysis",
     title: "Obesity M&A and Competitive Landscape Tracker",
+    shortTitle: "Obesity M&A tracker",
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
     status: "Live",
     yearStart: 2025,
@@ -283,6 +290,7 @@ export const projects: Project[] = [
     id: "conference-catalyst-monitor",
     slug: "conference-catalyst-monitor",
     title: "Biotech Conference Catalyst Monitor",
+    shortTitle: "Conference catalyst monitor",
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
     status: "Live",
     order: 3,
@@ -324,6 +332,7 @@ export const projects: Project[] = [
     id: "ai-biopharma-feed",
     slug: "ai-biopharma-feed",
     title: "AI Deal Monitoring Agent",
+    shortTitle: "AI deal monitor",
     themes: ["AI/ML & Automation", "Investing"],
     status: "Live",
     yearStart: 2025,
@@ -336,16 +345,17 @@ export const projects: Project[] = [
   {
     id: "partner-prioritisation",
     slug: "partner-prioritisation",
-    title: "Conference Partner Prioritisation Engine",
+    title: "Edge — conference partner prioritisation",
+    shortTitle: "Partner shortlist portal",
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
-    status: "WIP",
+    status: "Live",
     order: 5,
     yearStart: 2026,
     yearEnd: 2026,
     summary:
-      "Tells a biotech or consultancy which companies to prioritise meeting at a partnering conference (BIO, JPM, BioEquity) — scoring every attending company against the client's own positioning, then drafting tailored outreach in a client portal.",
+      "Tells a biotech or consultancy which companies to prioritise meeting at a partnering conference (BIO, JPM, BioEquity): scores every attending company against your own angle, shows the reasoning per row, and drafts a first-pass note you edit before sending. Runs in the browser on the BIO 2026 exhibitor list.",
     longDescription:
-      "Partnering conferences put thousands of companies in one place, and the platform's own AI matchmaker is generic. This engine builds the prioritisation matrix from company profiles instead: it takes a client's positioning from the public domain (their website), pulls the conference's attending-company list, and scores each company against what the client is actually looking for. Scoring is two-tier and deterministic — hard MUST filters (partner type, therapeutic-area fit, deal type) gate the universe, then weighted PREFER rules (stage fit, strategic complementarity, BD appetite, financial capacity) produce a 0–100 fit score, so every rank comes with a readable rationale rather than a black-box number. The same engine reshapes itself per client: for a therapeutic-agnostic drug-development consultancy it drops the disease filters and rewards an early-clinical stage band instead. On a real run it pulled all 1,654 BIO 2026 exhibitors live, classified each from its public blurb, and surfaced ~90 priority early-clinical biotechs from the noise. The output is a client-facing portal: a priority-list tab, a live re-ranking control (edit your purpose or the levers and the list re-scores in-browser), and a card per company with the rank rationale plus an editable first-touch outreach draft to approve, edit and send.",
+      "Partnering conferences put thousands of companies in one place, and the platform's own AI matchmaker is generic. This engine builds the prioritisation matrix from company profiles instead: it takes a client's positioning from the public domain (their website), pulls the conference's attending-company list, and scores each company against what the client is actually looking for. Scoring is two-tier and deterministic — hard MUST filters (partner type, therapeutic-area fit, deal type) gate the universe, then weighted PREFER rules (stage fit, strategic complementarity, BD appetite, financial capacity) produce a 0–100 fit score, so every rank comes with a readable rationale rather than a black-box number. The same engine reshapes itself per client: for a therapeutic-agnostic drug-development consultancy it drops the disease filters and rewards an early-clinical stage band instead. On the public BIO 2026 exhibitor directory (1,654 companies, pulled 21 June 2026) it classified each company from its public blurb, left 744 with an empty blurb unclassified, and shortlisted 90 early-clinical biotechs for a sample consultancy angle. The output is a portal that runs entirely in the browser: a ranked shortlist with the fit shown by rule and a data-completeness count per row, live re-ranking as you edit your angle or the weights, a search over the whole universe that explains why a company is not listed, and a card per company with the reasoning plus an editable first-pass note in your own greeting and sign-off to approve, export or copy into your mail app. Nothing is sent by the tool.",
     tags: ["Python", "Prompt Engineering", "LLM Classification"],
     links: { live: "/partner-prioritisation" },
   },
@@ -354,12 +364,12 @@ export const projects: Project[] = [
     slug: "pharma-landscape",
     title: "Bellwether — AI-Native Pharma Equity Research",
     themes: ["Biotech/Biopharma Strategy", "Investing"],
-    status: "WIP",
+    status: "Live",
     order: 6,
     yearStart: 2026,
     yearEnd: 2026,
     summary:
-      "Bellwether is a research system that routes 13 large-cap pharma companies through the valuation model that fits each — earnings/LOE for the majors, asset-NPV for pipeline-led names — normalises the outputs, and surfaces re-rating gaps, patent-cliff exposure and pipeline crowding on one comparable view. Shown as a Q1 2026 reviewed sample run.",
+      "Bellwether is a research system that routes 13 large-cap pharma companies through the valuation model that fits each — earnings/LOE for the majors, asset-NPV for pipeline-led names — normalises the outputs, and surfaces re-rating gaps, patent-cliff exposure and pipeline crowding on one comparable view. Refreshed each quarter after results and reviewed before each cut ships.",
     longDescription:
       "Traditional equity research evaluates pharma companies one at a time, and a $200bn major can't be valued the way a clinical-stage biotech is. Bellwether makes them comparable: a deterministic classifier routes each name to the valuation model that fits it — a loss-of-exclusivity / earnings / comps engine for revenue-generating majors, an asset-NPV analysis for pre-commercial, pipeline-led names — then normalises the outputs into one decision view. Across the 13 largest names it pulls the latest reported quarter, decomposes each portfolio into an A–E franchise mix (core growth → mature/LOE-exposed → future pipeline), scores momentum, valuation and the freshest dated catalyst, and assembles a comparable landscape: who faces a patent cliff and when, the three modalities the field is crowding into (obesity/incretins, ADCs & radiopharmaceuticals, PD-1/VEGF bispecifics), and where valuation sits against momentum. Every claim carries a dated-source provenance tag, and sourced facts are kept distinct from model-generated conclusions. The case study foregrounds the outcome and one name traced end-to-end; the full landscape is a fixed, reviewed Q1 2026 sample run. Directional and educational — not investment advice.",
     tags: ["Python", "FastAPI", "LLM"],
@@ -379,6 +389,38 @@ export const projects: Project[] = [
       "A hackathon project at eMed × OpenAI, where I led the clinical and product side. PCOS affects 10–13% of women and up to 70% are never diagnosed (WHO, 2026). Of those who are, a third waited more than two years and nearly half saw three or more clinicians first (Teede/Dokras, JCEM 2017). The data that could catch it earlier already sits unused in cycle-tracking apps.\n\nFemme reads 120 days of passive wearable and cycle data, learns a woman's own baseline, and turns it into six plain-English signals. A rules engine, not the model, decides whether the pattern is worth a clinician's review. The model only writes the wording, and it can never diagnose, name a condition, or read hormones or mood from the data. Before diagnosis it drafts a consent-gated GP letter that leads with the differential. After diagnosis it keeps a light-touch symptom check-in going.\n\nMy part: the two-flow concept and clinical positioning, the safety guardrails that keep it wellness rather than a diagnostic, an adversarial design-review pass to harden it, an offline prototype of the flow, and the pitch. I have kept building on it since the hackathon, so the live demo here is further along than the version we presented. The newest piece is a voice agent that calls on a cycle-anchored cadence, around each expected period, so a woman can just say how she feels and whether her period came, instead of logging it by hand. That self-report is the layer wearables miss, and it rolls up into a clinician-ready summary.",
     tags: ["Digital health", "Clinical AI safety", "Wearable data"],
     links: { live: "https://femme-pcos-demo-production.up.railway.app" },
+  },
+  {
+    id: "grid",
+    slug: "grid",
+    title: "Grid — AI-native operating layer for VC funds",
+    themes: ["AI/ML & Automation", "Investing"],
+    status: "WIP",
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "Makes an early-stage fund AI-native by construction. Buy the surfaces (CRM, notetaker, chat model, dashboards); build the spine (schema, insert-only decision ledger, value-level provenance, a version-hashed rubric, an evaluation suite). Agents run on the fund's own pipeline stages and earn write access one tier at a time.",
+    longDescription:
+      "Grid is for funds investing at pre-seed to Series A, roughly 5–15 investments a year, with a CRM in place, no in-house engineering, and a partner who wants agents doing fund-ops work but will not let a model write to the record unsupervised. Venture builders and studios fit best: their founder-pipeline corpus is a data asset no vendor can sell them.\n\nThe method: every tool, dashboard and agent on the fund's list is scored on five axes (value, sustainability, engineering, data availability, cost to operate) with a reason per score, and the rank reproduces from the scores — nothing is built before it is ranked. The fund then owns a small spine that gets more valuable each time models improve, while CRM, notetaker and chat model stay rented. Each agent has a trigger, a stage, a human-in-the-loop mode, and a list of what it refuses to do; a seven-rung ladder from retrieval to unattended execution decides how far each is trusted, with preconditions in code rather than in the prompt.\n\nProof so far, anonymised: for a UK early-stage venture-building fund (Aug 2026), 13 components specified and ranked, 4 agents calling a real model live plus one interactive write-path demo, 197 assertions across three suites with 55 of 55 planted defects caught, about £0.14 per orchestrated run, and a password-gated dashboard deployed within four calendar days of the strategy baseline.",
+    tags: ["Multi-agent LLM", "Cloudflare Workers", "Evaluation harness"],
+    links: {},
+    sections: [
+      {
+        title: "Engagement shapes",
+        bullets: [
+          "Diagnostic (2 weeks) — inventory and score every tool, dashboard and agent on the fund's list; draw the buy/build boundary; return a ranked build plan that reproduces from its own scores.",
+          "Build (12 weeks) — stand up the spine and the first 3–4 components on the fund's real pipeline stages, behind a password, on synthetic data until classification and retention decisions exist; verification measured with planted defects.",
+          "Retained (~3 days/week) — phases in the fund's own order, typically fund ops → sourcing and diligence → venture building, with a named internal owner and a written path to run it without me.",
+        ],
+      },
+      {
+        title: "What Grid deliberately does not promise",
+        bullets: [
+          "Investment-outcome calibration in year one — a dozen investments resolving over 5–10 years cannot label a model.",
+          "Per-source yield — composition is countable; yield at 1–3 investments per source per year is noise.",
+        ],
+      },
+    ],
   },
 ];
 

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { atlasIntegrityGate } from './scripts/atlas-integrity-plugin';
+import { bellwetherSyncGate } from './scripts/bellwether-sync-plugin';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
@@ -18,7 +19,7 @@ const devPort = Number(process.env.PORT) || portFromPath;
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [react(), atlasIntegrityGate()],
+  plugins: [react(), atlasIntegrityGate(), bellwetherSyncGate()],
   server: { port: devPort },
   preview: { port: devPort },
   optimizeDeps: {

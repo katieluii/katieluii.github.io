@@ -305,7 +305,7 @@ export default function InvestmentMemo() {
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="mailto:katieluikakiu@gmail.com?subject=Investment%20memo%20agent%20—%20enquiry"
+              href="mailto:katie@renascor.xyz?subject=Investment%20memo%20agent%20—%20enquiry"
               className="text-[13px] text-zinc-700 dark:text-zinc-300 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-2 hover:decoration-zinc-700 dark:hover:decoration-zinc-300"
             >
               Get in touch →

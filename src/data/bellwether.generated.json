@@ -1,0 +1,759 @@
+{
+  "_generated": "by scripts/sync-bellwether-data.mjs from public/demos/pharma-landscape.html — do not edit",
+  "dataAsOf": "Q2 2026",
+  "reviewed": "Aug 2026",
+  "eras": {
+    "now": {
+      "yr": "2023–2025",
+      "cap": "Active erosion now"
+    },
+    "2026-28": {
+      "yr": "2026–2028",
+      "cap": "Cliff approaching"
+    },
+    "2029-31": {
+      "yr": "2029–2031+",
+      "cap": "Later this decade"
+    }
+  },
+  "companies": [
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 4,
+      "ph": [
+        4,
+        0,
+        3,
+        1,
+        0
+      ],
+      "loeAsset": "Tirzepatide (Mounjaro/Zepbound)",
+      "era": "2029-31",
+      "exp": "med",
+      "q": "Q2 2026",
+      "qdate": "5 Aug 2026",
+      "rev": "$23.0B",
+      "gr": "+48%",
+      "fpe": 34,
+      "ev": "fwd P/E ~33–35× · EV/EBITDA ~31×",
+      "yld": null,
+      "stance": "Consensus Buy (22/4/2); avg target ~$1,300",
+      "thesis": "GLP-1 dominance — now a three-leg franchise (Mounjaro/Zepbound, oral Foundayo, retatrutide) driving historic growth; the debate is diversification and US pricing before early-2030s cliffs.",
+      "bull": "Back-to-back guidance raises, Foundayo (orforglipron) already generating revenue and positive retatrutide Phase 3 readouts (TRIUMPH-2/-3, Jul 2026) extend the obesity runway well beyond the injectables.",
+      "bear": "Realized prices fell 13% in Q2 (MFN/TrumpRx + cash-pay cuts), and a ~34× forward multiple leaves little room for any volume or reimbursement disappointment.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $23.0B (+48%; volume +60%, price −13%); Mounjaro $9.9B (+91%), Zepbound $4.9B, Foundayo $98M in its first full quarter; FY26 guide raised to $85–87B rev, $35.50–36.50 EPS"
+        ],
+        [
+          "Jul 2026",
+          "Retatrutide Phase 3 TRIUMPH-2/-3 read out positively; BLA targeted Q1 2027"
+        ],
+        [
+          "Apr 2026",
+          "FDA approved oral orforglipron (Foundayo) — first oral GLP-1 with no food/water restriction"
+        ],
+        [
+          "Nov 2025",
+          "MFN / TrumpRx pricing deal — orforglipron pill to ~$346/mo"
+        ]
+      ]
+    },
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 1,
+      "nta": 10,
+      "ph": [
+        8,
+        0,
+        1,
+        1,
+        1
+      ],
+      "loeAsset": "Stelara (ustekinumab)",
+      "era": "now",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "15 Jul 2026",
+      "rev": "$25.3B",
+      "gr": "+6.6% (+5.6% op)",
+      "fpe": 22,
+      "ev": "fwd P/E ~22× (after a ~55% 1-yr rally)",
+      "yld": null,
+      "stance": "Buy-tilted (16 Buy / 6 Hold / 1 Sell); avg target ~$272",
+      "thesis": "Healthcare's only Pharma+MedTech giant proving it can 'grow through' the Stelara cliff — against a reopened talc overhang.",
+      "bull": "Innovative Medicine ex-Stelara is growing double digits (Tremfya +72%, Carvykti +48%, Caplyta +71%) and FY26 guidance was raised a second time — the first $100B revenue year is now guided.",
+      "bear": "Stelara is down 55% and largely absorbed, but at ~22× forward the good news looks priced in (avg target ~4% upside), and talc reverted to open-ended tort litigation — the new ~$5.5B settlement offer is unconfirmed.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $25.3B (+6.6%; Innovative Medicine +7.8%, MedTech +4.5%); Stelara $740M (−55%); FY26 sales guide raised to $100.8–101.4B, adj EPS $11.60–11.75"
+        ],
+        [
+          "Jul 2026",
+          "New ~$5.5B talc settlement proposal (~76k ovarian claims) after the Red River bankruptcy plan was dismissed (Mar 2025); ~69k MDL cases pending"
+        ],
+        [
+          "Jul 2026",
+          "CHMP positive opinion for icotrokinra (Icotyde, oral IL-23) in psoriasis — US approved Mar 2026"
+        ],
+        [
+          "Dec 2025",
+          "Record $1.5B Baltimore talc verdict; bankruptcy path dismissed"
+        ]
+      ]
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 1,
+      "nta": 5,
+      "ph": [
+        5,
+        0,
+        4,
+        3,
+        1
+      ],
+      "loeAsset": "Humira (adalimumab)",
+      "era": "now",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "31 Jul 2026",
+      "rev": "$17.0B",
+      "gr": "+10.2% (+9.5% op)",
+      "fpe": 18,
+      "ev": "fwd P/E ~18× (growth premium)",
+      "yld": "~3.0%",
+      "stance": "Consensus Buy; avg target ~$253–267",
+      "thesis": "The template for a successful cliff transition — Skyrizi+Rinvoq now more than offset Humira; the debate shifts to their own end-of-decade LOE.",
+      "bull": "Skyrizi ($5.5B, +24%) and Rinvoq ($2.5B, +24%) drive sector-leading double-digit growth with FY26 revenue guidance raised again; Apogee (long-acting IL-13) plus obesity/neuroscience optionality extend the runway past Humira.",
+      "bear": "The multiple has re-rated to ~18× — the valuation prices in sustained execution, tavapadon's FDA decision is still pending, and Apogee is EPS-dilutive near term.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Skyrizi $5.5B (+24%) + Rinvoq $2.5B (+24%) vs Humira $756M (−36%); FY26 rev guide raised to ~$67.6B, adj EPS $13.87–14.07 (Apogee dilution)"
+        ],
+        [
+          "Jun 2026",
+          "Agreed to acquire Apogee Therapeutics (~$10.9B; long-acting IL-13 zumilokibart) — close expected Q3 2026"
+        ],
+        [
+          "Aug 2026",
+          "Tavapadon (Parkinson's) NDA still under FDA review"
+        ],
+        [
+          "Mar 2026",
+          "Early obesity data for amylin ABBV-295 (~8–10% at 12–13 wks)"
+        ]
+      ]
+    },
+    {
+      "ticker": "NVS",
+      "name": "Novartis",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 8,
+      "ph": [
+        7,
+        0,
+        1,
+        1,
+        1
+      ],
+      "loeAsset": "Entresto (sacubitril/valsartan)",
+      "era": "now",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "21 Jul 2026",
+      "rev": "$14.4B",
+      "gr": "+3% (+1% cc)",
+      "fpe": 16,
+      "ev": "fwd P/E ~16× · ~3.1% yield",
+      "yld": null,
+      "stance": "Mixed (5 Buy / 5 Hold / 2 Sell); avg target ~$155",
+      "thesis": "Pure-play innovative medicines now in its Entresto-cliff trough year — can the growth cohort + Avidity re-accelerate once generics lap?",
+      "bull": "2026 is a guided trough — the priority growth brands (Kisqali +43%, Kesimpta +32%, Scemblix +89%, Pluvicto +43%, Leqvio +59%; +36% cc together) beat in Q2, and once Entresto laps, growth plus Avidity should re-accelerate, backed by the $10B buyback.",
+      "bear": "Entresto fell 51% cc and core operating income is still guided to decline; the pelacarsen Lp(a)HORIZON and remibrutinib MS readouts — the next binary catalysts — remain unread.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Sales $14.4B (+1% cc), core EPS $2.41 — beat on both; Entresto $1.18B (−51% cc); FY26 guidance reaffirmed (LSD sales growth, LSD core-op-income decline)"
+        ],
+        [
+          "H1 2026",
+          "$2.8B of buybacks (18.2M shares); Avidity ($12B) closed 27 Feb 2026"
+        ],
+        [
+          "Jul 2026",
+          "Health Canada approved Vanrafia (atrasentan) for IgAN; pelacarsen Lp(a)HORIZON outcomes still pending"
+        ]
+      ]
+    },
+    {
+      "ticker": "AZN",
+      "name": "AstraZeneca",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 5,
+      "ph": [
+        7,
+        0,
+        4,
+        2,
+        1
+      ],
+      "loeAsset": "Tagrisso + oncology cohort",
+      "era": "2026-28",
+      "exp": "med",
+      "q": "Q2 2026",
+      "qdate": "27 Jul 2026",
+      "rev": "$15.4B",
+      "gr": "+5% CER (H1 +9%, +6% CER)",
+      "fpe": 15,
+      "ev": "fwd P/E ~14–15×",
+      "yld": null,
+      "stance": "Buy/Strong Buy; avg target ~$214",
+      "thesis": "Diversified pharma toward an $80bn 2030 target on pipeline breadth — can depth offset oncology concentration and a US regulatory wobble?",
+      "bull": "Oncology (+18% H1; Enhertu +31%, Tagrisso +6%, Datroway ramping) and Rare Disease (+13%) are absorbing the Farxiga US LOE and China pricing, with core EPS +18% CER, baxdrostat approved (May 2026) and the $80B-by-2030 ambition reaffirmed.",
+      "bear": "Camizestrant's FDA decision remains extended with no new date after the 3–6 ODAC, CVRM fell on Farxiga LOE, and China revenue dropped 13% in Q2 on VBP/generic pressure.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $15.4B (+5% CER; H1 +6% CER); core EPS $2.63 (+18% CER) beat; Oncology H1 +15% CER, CVRM down on Farxiga LOE; FY26 guidance maintained"
+        ],
+        [
+          "May 2026",
+          "FDA approved baxdrostat (Baxfendy), first-in-class aldosterone synthase inhibitor for hypertension"
+        ],
+        [
+          "May 2026",
+          "FDA extended the camizestrant (SERENA-6) decision to review ctDNA data after the 3–6 ODAC vote — no new PDUFA; EU CHMP positive"
+        ],
+        [
+          "Apr 2026",
+          "Farxiga US composition patent expired — CVRM decline now realised; Datroway (TROP2 ADC) approved 1L TNBC (immunotherapy-ineligible subset)"
+        ]
+      ]
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 8,
+      "ph": [
+        6,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loeAsset": "Keytruda (pembrolizumab)",
+      "era": "2026-28",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "4 Aug 2026",
+      "rev": "$16.6B",
+      "gr": "+5% (+4% ex-FX)",
+      "fpe": 15.1,
+      "ev": "fwd P/E ~15× · ~2.7% yield",
+      "yld": "~2.7%",
+      "stance": "Consensus Buy; avg target ~$137",
+      "thesis": "The industry's largest cliff: Keytruda >50% of revenue, US LOE 2028 — can Qlex + 20+ drivers + M&A replace it in time?",
+      "bull": "~15× multiple, Keytruda still growing (+5%, with Qlex ~$463M ramping), Winrevair +75%, and Verona/Cidara/Terns plus the newly approved oral PCSK9 Lipfendra build a credible post-2028 bridge.",
+      "bear": "The 2028 Keytruda cliff (~half of revenue) remains the dominant risk; Gardasil is down 9% with China shipments still halted, and Keytruda growth has slowed to +5%.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $16.6B (+5%), beat; Keytruda $8.37B (+5%, Qlex ~$463M), Winrevair $588M (+75%); FY26 rev guide raised to $66.3–67.3B; EPS guide cut to $2.66–2.76 purely on the $2.43/sh Terns charge"
+        ],
+        [
+          "Jul 2026",
+          "FDA approved Lipfendra (enlicitide) — first once-daily oral PCSK9 inhibitor; to be offered via TrumpRx"
+        ],
+        [
+          "May 2026",
+          "Closed Terns Pharmaceuticals ($6.7B; TERN-701 oral CML); Cidara ($9.2B) closed Jan 2026, Verona Oct 2025"
+        ]
+      ]
+    },
+    {
+      "ticker": "PFE",
+      "name": "Pfizer",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 4,
+      "ph": [
+        7,
+        1,
+        3,
+        4,
+        1
+      ],
+      "loeAsset": "Ibrance + small-molecule portfolio",
+      "era": "2026-28",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "4 Aug 2026",
+      "rev": "$15.0B",
+      "gr": "+3% (+1% op; ex-COVID +5%)",
+      "fpe": 9.7,
+      "ev": "fwd P/E ~9.7× · ~6.4% yield",
+      "yld": "~6.4%",
+      "stance": "Buy/Hold split (10/16/2); target ~$28.6",
+      "thesis": "Post-COVID turnaround now betting on obesity (Metsera) and ADCs — can new platforms offset the 2026–30 cliff before COVID fades?",
+      "bull": "Ex-COVID revenue is growing +5% with launched/acquired products +18%, FY26 revenue guidance was raised, an extra $2.5B of cost cuts (total $9.7B through 2029) protects the dividend, and a ~9.7× P/E with a ~6% yield is deep value.",
+      "bear": "Sigvotatug vedotin missed OS in Phase 3 NSCLC (an impairment followed), Metsera obesity has produced no new pivotal data since May, and the 2028 US Eliquis cliff still looms.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $15.0B (+3%; +1% op) beat; adj EPS $0.77 vs $0.68; FY26 rev guide raised to $60.5–62.5B, EPS reaffirmed $2.80–3.00; extra $2.5B cost cuts (total $9.7B through 2029)"
+        ],
+        [
+          "Jun 2026",
+          "Sigvotatug vedotin (Seagen ADC) missed OS in Phase 3 SigVie-002 (2L NSCLC) → impairment"
+        ],
+        [
+          "May 2026",
+          "Eliquis EU exclusivity lapsed (as expected); US exclusivity holds to Apr 2028"
+        ],
+        [
+          "Nov 2025",
+          "Closed Metsera (up to ~$10B) — monthly injectable incretins; VESPER-3 Ph2b ~12% placebo-adj at 28 wks (Feb 2026)"
+        ]
+      ]
+    },
+    {
+      "ticker": "BMY",
+      "name": "Bristol-Myers Squibb",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 0,
+      "nta": 5,
+      "ph": [
+        8,
+        1,
+        0,
+        4,
+        1
+      ],
+      "loeAsset": "Eliquis · Opdivo (Revlimid done)",
+      "era": "2026-28",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "30 Jul 2026",
+      "rev": "$13.0B",
+      "gr": "+6% (+5% cc)",
+      "fpe": 9.9,
+      "ev": "fwd P/E ~9.9× · ~4.0% yield",
+      "yld": "~4.0%",
+      "stance": "Hold-leaning (10 Buy / 18 Hold / 1 Sell); target ~$63",
+      "thesis": "Sequential LOE of its biggest drivers — the Growth Portfolio now out-earns Legacy and a big Q2 beat-and-raise says the bridge is holding, for now.",
+      "bull": "Growth Portfolio $7.6B (+15%) plus Eliquis +21% drove a ~9% revenue beat and a ~$3B FY26 revenue guidance raise ($49–50B); at ~10× with a ~4% yield the market may be over-discounting the bridge.",
+      "bear": "The 2027–2029 Eliquis/Opdivo cliff still dwarfs the growth engine, and the next-leg catalysts slipped — Cobenfy ADEPT (Alzheimer's psychosis) readouts pushed to 2027 and LIBREXIA-ACS halted, with LIBREXIA-AF pushed out.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $13.0B (+6%) and non-GAAP EPS $2.04 well ahead of estimates; Growth Portfolio $7.56B (+15%) vs Legacy $5.42B (−4%); FY26 guide raised to ~$49–50B rev, $6.75–7.00 EPS"
+        ],
+        [
+          "Jul 2026",
+          "Cobenfy ADEPT (Alzheimer's psychosis) Phase 3 readouts delayed a second time — to 2027; Cobenfy ~$63M in Q2 (missed)"
+        ],
+        [
+          "2026",
+          "Milvexian: LIBREXIA-ACS halted for futility; LIBREXIA-STROKE topline still guided by year-end 2026, -AF pushed out"
+        ]
+      ]
+    },
+    {
+      "ticker": "RHHBY",
+      "name": "Roche",
+      "ccy": "CHF",
+      "dx": 1,
+      "devices": 0,
+      "nta": 6,
+      "ph": [
+        7,
+        0,
+        5,
+        2,
+        1
+      ],
+      "loeAsset": "Avastin / Herceptin / Rituxan",
+      "era": "now",
+      "exp": "high",
+      "q": "H1 2026",
+      "qdate": "23 Jul 2026",
+      "rev": "CHF 30.4B (group)",
+      "gr": "+6% cc (−2% reported; pharma +6% cc)",
+      "fpe": 18,
+      "ev": "fwd P/E ~18× (NTM, aggregator est.) · ADR target ~$60",
+      "yld": null,
+      "stance": "Buy-tilted (3 Buy / 5 Hold); ~9% implied upside",
+      "thesis": "The only integrated pharma+diagnostics player — and it has just assembled a credible top-3 obesity + MASH portfolio to bridge the cliff.",
+      "bull": "Petrelintide (10.7% at wk 42) and CT-388/enicepatide (18.3% placebo-adj at wk 48) both advanced to Phase 3, fenebrutinib posted three positive Phase 3 MS readouts, and giredestrant won FDA priority review in early breast cancer (PDUFA ~30 Nov 2026).",
+      "bear": "Reported sales fell 2% on CHF strength, first US Xolair biosimilars could launch in H2 2026 (a top-5 growth driver), and the persevERA 1L giredestrant miss keeps that franchise mixed.",
+      "dev": [
+        [
+          "H1 2026",
+          "Group CHF 30.4B (+6% cc, −2% reported); core EPS CHF 10.85 (+9% cc); FY26 guidance maintained; Xolair US +27% but US biosimilars flagged for H2 2026"
+        ],
+        [
+          "Jun 2026",
+          "ADA: petrelintide 10.7% weight loss at wk 42, CT-388 18.3% placebo-adj at wk 48 — both to Phase 3; FDA priority review for giredestrant in early BC (lidERA), PDUFA ~30 Nov 2026"
+        ],
+        [
+          "May 2026",
+          "PathAI acquisition ($750M + up to $300M) for digital pathology; 89bio (pegozafermin, MASH) closed Q4 2025"
+        ]
+      ]
+    },
+    {
+      "ticker": "NVO",
+      "name": "Novo Nordisk",
+      "ccy": "DKK",
+      "dx": 0,
+      "devices": 1,
+      "nta": 7,
+      "ph": [
+        3,
+        2,
+        6,
+        2,
+        1
+      ],
+      "loeAsset": "Semaglutide (patents into 2030s)",
+      "era": "2029-31",
+      "exp": "low",
+      "q": "Q2 2026",
+      "qdate": "4 Aug 2026",
+      "rev": "DKK 78.5B",
+      "gr": "+2% (+3% cc; +7% cc adjusted)",
+      "fpe": 13.5,
+      "ev": "fwd P/E ~13–14× (est., vs ~28× 3-yr avg)",
+      "yld": null,
+      "stance": "Mixed consensus (Hold-to-Buy); targets ~$47–58",
+      "thesis": "Dominant GLP-1 franchise on the defensive — CagriSema has now missed twice against tirzepatide, so the case rests on oral Wegovy share defence vs Lilly.",
+      "bull": "Oral Wegovy is a genuine hit (>5M US scripts, ~65% of new US GLP-1 starts), international obesity is growing +37%, and FY26 guidance was raised — on a de-rated ~13–14× multiple.",
+      "bear": "Guidance is still for shrinking adjusted sales (0% to −6% cc), US injectable Wegovy fell ~22%, and CagriSema's second head-to-head miss (REIMAGINE-4 HbA1c) prompted analysts to halve peak-sales forecasts.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Sales DKK 78.5B (+3% cc); adjusted operating profit DKK 33.4B beat; FY26 adjusted guide raised to 0% to −6% cc (from −4% to −12%); DKK 6.3B write-downs incl. monlunabant"
+        ],
+        [
+          "Jul–Aug 2026",
+          "REIMAGINE-4: CagriSema non-inferior to tirzepatide on weight but missed HbA1c non-inferiority in T2D — peak-sales forecasts cut sharply"
+        ],
+        [
+          "Jun–Jul 2026",
+          "Zenagamtide (amycretin) Ph2 T2D up to ~14.6% weight loss, Ph3 to start H2 2026; EMA approved oral Wegovy + 7.2 mg pen"
+        ],
+        [
+          "Feb 2026",
+          "CagriSema FAILED REDEFINE-4 head-to-head vs Zepbound (−20% vs −24%)"
+        ]
+      ]
+    },
+    {
+      "ticker": "BIIB",
+      "name": "Biogen",
+      "ccy": "USD",
+      "dx": 0,
+      "devices": 1,
+      "nta": 4,
+      "ph": [
+        3,
+        1,
+        2,
+        4,
+        0
+      ],
+      "loeAsset": "Tysabri · Tecfidera (biosimilar/generic)",
+      "era": "now",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "29 Jul 2026",
+      "rev": "$2.74B",
+      "gr": "+3% (+2% cc)",
+      "fpe": 15.7,
+      "ev": "fwd P/E ~15.7× (NTM)",
+      "yld": null,
+      "stance": "Buy (23 Buy / 12 Hold / 1 Sell); target ~$235",
+      "thesis": "Transformation is starting to show — the Growth Portfolio now out-earns MS and FY26 guidance flipped from decline to growth, with Apellis in and a deep Ph3 stack still to read.",
+      "bull": "Growth Portfolio $1.1B (+24%) passed the MS franchise for the first time, Apellis (SYFOVRE/EMPAVELI) is closed and contributing, Leqembi Iqlik SC initiation was approved (Jul 2026), and FY26 revenue guidance flipped from a mid-single-digit decline to a mid-single-digit increase.",
+      "bear": "MS is still down 13% (Tecfidera roughly halved), the stock has re-rated to ~16× on the guide flip, and the immunology pipeline (litifilimab Ph3 SLE in Q4 2026; felzartamab) has yet to deliver its first pivotal proof.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Rev $2.74B (+3%) beat; non-GAAP EPS $3.60; Growth Portfolio +24% now larger than MS (−13%); FY26 revenue guide flipped to mid-single-digit growth, non-GAAP EPS guide raised"
+        ],
+        [
+          "Jul 2026",
+          "FDA approved LEQEMBI IQLIK subcutaneous initiation dose — US launch late Aug 2026"
+        ],
+        [
+          "May 2026",
+          "Completed Apellis (~$5.3B cash + CVR) — adds SYFOVRE (geographic atrophy) + EMPAVELI (rare disease)"
+        ],
+        [
+          "Mar 2026",
+          "High-dose SPINRAZA FDA-approved — defends the SMA franchise"
+        ]
+      ]
+    },
+    {
+      "ticker": "SNY",
+      "name": "Sanofi",
+      "ccy": "EUR",
+      "dx": 0,
+      "devices": 0,
+      "nta": 6,
+      "ph": [
+        3,
+        0,
+        2,
+        0,
+        0
+      ],
+      "loeAsset": "Dupixent (2031)",
+      "era": "2029-31",
+      "exp": "high",
+      "q": "Q2 2026",
+      "qdate": "30 Jul 2026",
+      "rev": "€11.6B",
+      "gr": "+17.8% cc",
+      "fpe": 8.6,
+      "ev": "fwd P/E ~8.6× · EV/EBITDA ~8× · ~5.5% yield",
+      "yld": null,
+      "stance": "Buy/Outperform (~24 analysts); avg target ~€94 (Paris)",
+      "thesis": "Immunology-driven transformation on Dupixent — a record quarter and a raised guide, but a pipeline cull (amlitelimab dropped in AD) sharpens the 2031 diversification question.",
+      "bull": "Dupixent crossed €5B in a quarter (+38% cc) and the launch cohort grew +48%, driving business EPS +33% and a FY26 guide raise to ~10% cc growth — on the cheapest multiple of the 13 (~8.6×).",
+      "bear": "The post-Dupixent pipeline narrative weakened: amlitelimab will not be filed in atopic dermatitis and itepekimab and balinatunfib were dropped (€952M impairment), after riliprubart's CIDP study was halted in June; Dupixent's ~45% revenue share and 2031 cliff now carry more weight.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Sales €11.6B (+17.8% cc), business EPS €2.09 (+33% cc) beat; Dupixent €5.2B (+38% cc); launches €1.3B (+48%); FY26 sales guide raised to ~+10% cc"
+        ],
+        [
+          "Jul 2026",
+          "Amlitelimab will NOT be submitted in atopic dermatitis; itepekimab (COPD) and balinatunfib discontinued — ~€952M impairment; shares −6% on the print (riliprubart's CIDP study had already been halted, 10 Jun 2026)"
+        ],
+        [
+          "Apr 2026",
+          "EMA approved tolebrutinib (Cenrifki) for nrSPMS; US remains under a Dec 2025 CRL with no resubmission date"
+        ],
+        [
+          "2026",
+          "Blueprint + Dynavax acquisitions contributing to the launch cohort"
+        ]
+      ]
+    },
+    {
+      "ticker": "GSK",
+      "name": "GSK",
+      "ccy": "GBP",
+      "dx": 0,
+      "devices": 1,
+      "nta": 4,
+      "ph": [
+        5,
+        0,
+        1,
+        1,
+        1
+      ],
+      "loeAsset": "Upcoming key expiries (unspecified)",
+      "era": "2026-28",
+      "exp": "med",
+      "q": "Q2 2026",
+      "qdate": "28 Jul 2026",
+      "rev": "£8.4B",
+      "gr": "+5% (AER & CER)",
+      "fpe": 11.5,
+      "ev": "fwd P/E ~11.5× · ~3.4–4.5% yield",
+      "yld": null,
+      "stance": "Hold; UK target ~£20.5–21.5 (ADS ~$58)",
+      "thesis": "Post-Haleon focused biopharma under a new product-centric CEO; Specialty Medicines (+14%) is the growth engine, still on a deep peer discount.",
+      "bull": "Specialty Medicines +14% (Blenrep US ramping, depemokimab/Exdensur approved), a Q2 beat with guidance reaffirmed, and Miels' £1.9B cost-savings plan plus 20+ Phase 3 starts leave clear re-rating room from ~11.5×.",
+      "bear": "General Medicines −9%, a Hold consensus, and the loss of camlipixant (chronic cough) as a named 2026 catalyst keep it a show-me story.",
+      "dev": [
+        [
+          "Q2 2026",
+          "Sales £8.4B (+5%), core EPS +9% beat; Specialty £3.8B (+14%), Vaccines +8%, General Medicines −9%; FY26 guidance maintained (turnover +3–5%, core EPS +7–9%)"
+        ],
+        [
+          "Jul 2026",
+          "£1.9B annual cost-savings plan by 2029 unveiled; camlipixant discontinued in refractory chronic cough after mixed CALM-1/-2"
+        ],
+        [
+          "Dec 2025",
+          "Depemokimab (Exdensur) FDA-approved for severe asthma; Blenrep US launch ramping"
+        ],
+        [
+          "Jan 2026",
+          "Luke Miels became CEO (product-centric strategy, >£40B sales by 2031 target)"
+        ]
+      ]
+    }
+  ],
+  "pos": {
+    "LLY": {
+      "g": 48,
+      "pe": 34
+    },
+    "JNJ": {
+      "g": 6.6,
+      "pe": 22
+    },
+    "ABBV": {
+      "g": 10.2,
+      "pe": 18
+    },
+    "NVS": {
+      "g": 3,
+      "pe": 16
+    },
+    "AZN": {
+      "g": 5,
+      "pe": 15
+    },
+    "MRK": {
+      "g": 5,
+      "pe": 15.1
+    },
+    "PFE": {
+      "g": 3,
+      "pe": 9.7
+    },
+    "BMY": {
+      "g": 6,
+      "pe": 9.9
+    },
+    "RHHBY": {
+      "g": 6,
+      "pe": 18,
+      "est": 1
+    },
+    "NVO": {
+      "g": 3,
+      "pe": 13.5,
+      "est": 1
+    },
+    "BIIB": {
+      "g": 3,
+      "pe": 15.7
+    },
+    "SNY": {
+      "g": 17.8,
+      "pe": 8.6
+    },
+    "GSK": {
+      "g": 5,
+      "pe": 11.5
+    }
+  },
+  "signals": {
+    "buy": {
+      "tk": "SNY",
+      "name": "Sanofi",
+      "tag": "Strongest positive score",
+      "why": "The cheapest multiple of the 13 is attached to the fastest organic growth — and the guide just went up.",
+      "pts": [
+        "Q2 sales grew <b>+17.8% cc</b> with Dupixent past <b>€5B in a quarter (+38% cc)</b> and the launch cohort <b>+48%</b>; business EPS rose +33% cc and FY26 sales guidance was <b>raised to ~10% cc</b>.",
+        "At <b>~8.6× forward P/E</b> with a ~5.5% yield it sits deepest in the cheap-and-growing quadrant — no growth premium is being paid.",
+        "The Dupixent cliff is <b>2031</b>, i.e. distant. The watch item the score under-weights is July's pipeline cull (amlitelimab not filed in AD; itepekimab and balinatunfib dropped, weeks after riliprubart's CIDP halt), which raises the diversification stakes."
+      ],
+      "prov": "Q2 2026 results (30 Jul 2026) · FY26 guidance raise · forward P/E per stockanalysis.com / valueinvesting.io (Aug 2026)"
+    },
+    "sell": {
+      "tk": "NVO",
+      "name": "Novo Nordisk",
+      "tag": "Weakest score this quarter",
+      "why": "Guidance improved but is still for shrinking sales, and the next-gen asset missed again.",
+      "pts": [
+        "FY26 adjusted guidance was raised to <b>0% to −6% cc</b> — still the only negative guide among the 13; US injectable Wegovy fell <b>~22%</b> as the pill cannibalises and Lilly takes share.",
+        "<b>CagriSema missed HbA1c non-inferiority vs tirzepatide (REIMAGINE-4)</b> after failing REDEFINE-4 on weight (Feb 2026) — analysts have cut peak-sales forecasts sharply.",
+        "Oral Wegovy is a genuine hit (>5M US scripts) and the ~13–14× multiple is already de-rated — the score reflects momentum and competitive position, not a claim that the recovery cannot come."
+      ],
+      "prov": "Q2 2026 (4 Aug 2026) · REIMAGINE-4 readout (mid-2026) · REDEFINE-4 (Feb 2026) · Lilly Q2 2026 (5 Aug 2026)"
+    }
+  },
+  "convergence": [
+    {
+      "name": "Obesity & incretins",
+      "n": 6,
+      "tk": [
+        "LLY",
+        "NVO",
+        "RHHBY",
+        "PFE",
+        "AZN",
+        "ABBV"
+      ],
+      "desc": "Lilly extended its lead again — retatrutide's positive Phase 3 TRIUMPH readouts (Jul 2026) and a $98M first quarter for oral Foundayo — while Novo's oral Wegovy is a hit (>5M US scripts) but CagriSema missed vs tirzepatide a second time (REIMAGINE-4). Roche's CT-388/petrelintide moved to Phase 3; Pfizer's Metsera and AbbVie's amylin remain early."
+    },
+    {
+      "name": "ADCs & radiopharmaceuticals",
+      "n": 7,
+      "tk": [
+        "MRK",
+        "AZN",
+        "BMY",
+        "NVS",
+        "JNJ",
+        "PFE",
+        "GSK"
+      ],
+      "desc": "Targeted oncology payloads — Datroway (TROP2) is ramping ($55M in Q2), Enhertu +31%, radioligand Pluvicto +43% cc, GSK's Blenrep US launch ramping. Not all wins: Pfizer's Seagen-derived sigvotatug vedotin missed OS in Phase 3 NSCLC (Jun 2026), forcing an impairment."
+    },
+    {
+      "name": "PD-1/PD-L1 × VEGF bispecifics",
+      "n": 4,
+      "tk": [
+        "BMY",
+        "PFE",
+        "MRK",
+        "SNY"
+      ],
+      "desc": "The newest IO pile-on — capital keeps pouring in (Pfizer paid $1.25B for SSGJ-707; BMS's ~$11B BNT327 is now dose-set for pivotal ROSETTA LUNG-01), but the decisive Western Phase 3 overall-survival proof was still pending as of Aug 2026. The pile-on partly rests on faith."
+    },
+    {
+      "name": "Next-gen immunology (I&I)",
+      "n": 6,
+      "tk": [
+        "SNY",
+        "NVS",
+        "BIIB",
+        "MRK",
+        "LLY",
+        "ABBV"
+      ],
+      "desc": "Long-acting biologics, oral IL-17/IL-23, TL1A, BTK and in-vivo cell therapy across derm, IBD, lupus and kidney disease. The lane was shaken up in mid-2026: Sanofi will not file amlitelimab in atopic dermatitis, while AbbVie is paying ~$10.9B for Apogee's long-acting IL-13 and Biogen's litifilimab Ph3 SLE reads in Q4 2026."
+    },
+    {
+      "name": "Cardiovascular — Lp(a) / FXI / anti-inflammatory",
+      "n": 1,
+      "tk": [
+        "NVS"
+      ],
+      "desc": "Distinctly a Novartis lane — pelacarsen (Lp(a)), abelacimab (FXI), pacibekitug (IL-6) target residual CV risk; the pelacarsen Lp(a)HORIZON outcomes readout was still pending as of Aug 2026. Avidity ($12B) closed Feb 2026 to rebuild the pipeline."
+    }
+  ]
+}

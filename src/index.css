@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Home palette = Renascor's, applied to a light ground (bone). One ground, one metal:
+     deep green carries ink, headings and the button; brass is the only accent. Hue never
+     carries meaning alone (owner is red-green colour-blind): status reads by text + dot
+     shape, links by underline. Values from Renascor brand-guidelines.md, 2026-08-01. */
+  --bg: #F3EFE7;                          /* bone */
+  --surface: #FAF8F3;
+  --ink: #101512;                          /* Renascor --ink: text on bone */
+  --ink-strong: #042A1D;                   /* green-deep: headings, wordmark, button */
+  --muted: rgba(16, 21, 18, 0.64);
+  --faint: rgba(16, 21, 18, 0.42);
+  --hair: rgba(4, 42, 29, 0.16);
+  --hover: rgba(4, 42, 29, 0.05);
+  --accent: #8F7420;                       /* brass-soft: text-safe brass on bone (4.6:1) */
+  --accent-strong: #C9A227;                /* brass: dots, rail marks */
+  --btn-bg: #042A1D;
+  --btn-fg: #F3EFE7;
+}
+.dark {
+  --bg: #042A1D;                           /* green-deep ground */
+  --surface: #063D2B;
+  --ink: #F3EFE7;                          /* bone */
+  --ink-strong: #F3EFE7;
+  --muted: rgba(243, 239, 231, 0.66);
+  --faint: rgba(243, 239, 231, 0.42);
+  --hair: rgba(243, 239, 231, 0.14);
+  --hover: #0B5138;
+  --accent: #C9A227;
+  --accent-strong: #C9A227;
+  --btn-bg: #C9A227;
+  --btn-fg: #042A1D;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -46,6 +79,8 @@ html {
 .stagger.in-view > *:nth-child(4) { transition-delay: 0.36s; }
 .stagger.in-view > *:nth-child(5) { transition-delay: 0.48s; }
 .stagger.in-view > *:nth-child(6) { transition-delay: 0.6s; }
+.stagger.in-view > *:nth-child(7) { transition-delay: 0.72s; }
+.stagger.in-view > *:nth-child(8) { transition-delay: 0.84s; }
 
 /* hero motif wipe — the domain line-art "draws in" left-to-right on load */
 @keyframes motifWipe {
