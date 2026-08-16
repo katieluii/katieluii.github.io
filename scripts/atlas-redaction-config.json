@@ -4,7 +4,8 @@
     "obesity",
     "nhl_dlbcl",
     "mm",
-    "crc"
+    "crc",
+    "urothelial"
   ],
   "etlm_strip_keys": [
     "analyst_session_id",
@@ -37,7 +38,23 @@
     "section_status",
     "section_created",
     "session",
-    "china_origin_asset_policy"
+    "china_origin_asset_policy",
+    "katie_directives",
+    "do_not_use",
+    "unsupported_claim_removed",
+    "ratified_by_katie",
+    "katie_authored",
+    "added_cycle",
+    "updated_cycle",
+    "added_by",
+    "source_event_id",
+    "source_event_ids",
+    "source_events",
+    "source_signal_id",
+    "kb_event_id",
+    "kb_event_ids",
+    "macro_signal_id",
+    "macro_signal_ids"
   ],
   "etlm_strip_key_patterns": [
     "^_",
@@ -76,14 +93,250 @@
     "do not assert",
     "do-not-assert"
   ],
+  "_markdown_inline_replacements_doc": "INLINE scrub vocabulary for TPP/theme/ecosystem markdown — the counterpart to tpp_theme_strip_markers. A marker there DROPS THE WHOLE LINE, which is only ever right for a line that is pure internal provenance. These rules handle the other half: an internal token sitting INSIDE a line that must survive — an analytical bullet, a markdown table row, a citation footer holding dozens of PMIDs/NCTs/DOIs. Each rule is an ordered {why, pattern, replacement} regex substitution applied by _scrub_inline() in sync-atlas-content.py, AFTER the built-in provenance/id/workflow patterns. ORDER IS LOAD-BEARING: the end-anchored footer rules must consume their whole clause before the general id-reference rule can bite a piece out of it, and the article-carrying 'the WS12 KB' forms must run before the bare 'WS12 KB' form or the replacement doubles the article. Applies to markdown ONLY — the ETLM JSON path (scrub_values/_scrub_str) never reads this key, so a rule here cannot move a published JSON byte. Prefer a replacement that keeps the sentence's meaning over one that deletes the clause: these lines are the deliverable.",
+  "markdown_inline_replacements": [
+    {
+      "why": "TPP footer: the leading run of internal source-artifact names between '*Sources:' and the first real citation (obesity 1L: 'ETLM obesity.json; skill_context_obesity.json; ecosystem_knowledge.md; landscape/_macro.json.'). Anchored to the '*Sources: ' label so it can only ever eat a LEADING run; the public citations that follow are never reached.",
+      "pattern": "(?<=\\*Sources: )(?:(?:ETLM |from )?[\\w./-]+\\.(?:json|md|sqlite)(?:\\s*\\([^)]*\\))?[;.]\\s*)+",
+      "replacement": ""
+    },
+    {
+      "why": "TPP footer: the trailing internal event/signal roll-up at the very end of a '*Sources: …*' line (obesity 1L: 'WS12 events 13, 106, 252-253; macro signal_id 106.'). End-anchored so it cannot reach into the citation list.",
+      "pattern": "\\s*\\bWS\\d+ events?\\b[^*]*?\\.(?=\\*?\\s*$)",
+      "replacement": ""
+    },
+    {
+      "why": "TPP footer: a whole sentence whose content is 'X details from <internal artifact>' (obesity pediatric: 'SURMOUNT-ADOL and ACHIEVE-Adol NCT details from skill_context_obesity.json pipeline_assets (...).'). Only fires when an internal artifact follows 'from', so a sentence sourcing real literature is untouched.",
+      "pattern": "\\s*[A-Z][^.]*\\bfrom\\s+[\\w./-]+\\.(?:json|md|sqlite)[^.]*\\.",
+      "replacement": ""
+    },
+    {
+      "why": "TPP footer: a ';'-delimited internal landscape event/signal entry among real citations (obesity pediatric: '; WS12 landscape event_id 13 (Lilly PBM coverage)'). Consumes to the next ';' or '.' so its trailing gloss goes with it rather than dangling.",
+      "pattern": ";\\s*WS\\d+\\s+landscape\\s+(?:event_id|signal_id)s?\\b[^;.]*",
+      "replacement": ""
+    },
+    {
+      "why": "TPP footer: a ';'-delimited internal artifact entry among real citations (obesity pediatric: '; skill_context_obesity.json (generated 2026-06-05)', '; obesity_analyst_review_2026-06-05.json', '; macro.json signal_id 106 (Novo Nordisk Indiana facility failure)'). Requires a '.json'/'.md'/'.sqlite' filename, which no public citation carries.",
+      "pattern": ";\\s*(?:from\\s+)?[\\w./-]+\\.(?:json|md|sqlite)\\b[^;.]*",
+      "replacement": ""
+    },
+    {
+      "why": "Parenthetical whose whole content is an internal artifact: an internal filename, an analyst-review artifact, or an ETLM schema index. Covers '(urothelial.md; signal_id 82)', '(breast_analyst_review edit_index 0)', '(mm_analyst_review cycle 4)', '(pdac_analyst calibration_notes)', '(ETLM unmet_need[0])'. Must OPEN with the internal token, so '(TROPiCS-04 OS HR 1.06, urothelial.md)' is left to the narrower comma rule below rather than losing its efficacy figure.",
+      "pattern": "\\s*\\(\\s*(?:[\\w./-]+\\.(?:json|md|sqlite)|[a-z][\\w]*_analyst(?:_review)?\\b|ETLM\\s+[a-z_]+\\[\\d+\\])[^)]*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "Parenthetical containing an internal per-indication knowledge file, e.g. nsclc TPP's '(calibration prior per ws12-nsclc-knowledge.md 2026-06-05)' on a markdown TABLE ROW. Dropping the paren keeps the row's cell pipes intact.",
+      "pattern": "\\s*\\([^)]*\\bws\\d+-[\\w-]+\\.(?:json|md|sqlite)\\b[^)]*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "Parenthetical citing an internal analyst-review cycle, e.g. nsclc TPP's '(three-signal convergence documented in cycle4 analyst review Edit 0b)'. Distinct from the 'analyst review cycle' LINE-drop marker, which would delete this whole substantive caveat bullet.",
+      "pattern": "\\s*\\([^)]*\\bcycle\\s?\\d+ analyst review\\b[^)]*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "A signal_id/event_id reference appended to a parenthetical or clause that must survive — the built-in _IDPAREN_RE only fires when the paren OPENS with the id token. Covers '(ASCO 2026, KB event_id 7)', '(...OptumRx; event_id 13)', '(...June 2026, macro signal_id 106)', '(...June 2026, macro.json signal_id 106)', '(3x control; signal_id 79/111, Jun 4 2026)', '(...reports; event_ids 252/253, as of 2026-06)'. The trailing number run stops at the first non-numeric group, so a following clause keeps its comma. ORDERED BEFORE the ', <artifact>' rule: pediatric TPP's '(Indiana facility failure June 2026, macro.json signal_id 106)' has BOTH, and removing ', macro.json' first strips the comma this rule needs, stranding a bare 'signal_id 106' in public copy.",
+      "pattern": "[,;]\\s*(?:[A-Za-z][\\w./-]*\\s+){0,2}(?:signal_ids?|event_ids?|macro_signal_id)\\s*\\d+(?:\\s*[/,–—-]\\s*\\d+)*",
+      "replacement": ""
+    },
+    {
+      "why": "An internal filename appended to a paren that also carries real clinical data, e.g. adc theme's '(TROPiCS-04 OS HR 1.06, urothelial.md)'. Removes only the ', <artifact>' tail; the trial name and OS HR stay.",
+      "pattern": ",\\s*[\\w./-]+\\.(?:json|md|sqlite)\\b(?=[^()]*\\))",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R1) — a parenthetical whose ENTIRE content is an internal DB row id: '(event 202)', '(events 175/176)', '(macro signal 69)', '(KB event 1110)', '(signals 322/323/325)', '(events 261-282)'. VALUE SCRUB, not a line drop: these sit inside analytical bullets carrying real efficacy, trial names and deal values, so the line must survive. The bare 'signal 1748' form is NOT reachable by the built-in _IDPAREN_RE (which requires the paren to OPEN with a 'signal_id'-style token) nor by the ', signal_id N' rule above (which requires the '_id' suffix). Requiring the paren to hold NOTHING BUT the id run is what makes it safe — a paren with real data in it is left to R2/R3. Measured: 167 lines changed across the 2,025-line reachable ecosystem body corpus, 0 new scrub artifacts, 0 %/NCT/PMID lost.",
+      "pattern": "\\s*\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R2) — an internal DB row id APPENDED after a separator inside a parenthetical that also carries real content: '(40% ORR DeLLphi-301, events 289/290)' -> '(40% ORR DeLLphi-301)', '(up to $792M/drug biobucks; signal 288/291)' -> '(up to $792M/drug biobucks)', '(Jun 15, signal 257)' -> '(Jun 15)', '(cliff driver: signals 11/87/131/152)' -> '(cliff driver)'. Removes only the id tail, exactly like the ', <artifact>' rule above; the ORR, the biobucks figure and the date all stay. Measured: 42 lines changed, 0 new scrub artifacts.",
+      "pattern": "[,;:]\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*(?=[^()]*\\))",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R3) — an internal DB row id OPENING a parenthetical whose remainder is reader-facing: '(event 287, 2026-06-11)' -> '(2026-06-11)', '(event 202; breast handoff)' -> '(breast handoff)', '(signal 165, preclinical)' -> '(preclinical)'. Dropping the whole paren here would take the readout date or the development-stage qualifier with it, which is why R1 is restricted to parens holding nothing else. Requires a ',', ';' or ':' after the id run so the surviving paren is still well formed. Measured: 54 lines changed, 0 new scrub artifacts.",
+      "pattern": "\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
+      "replacement": "("
+    },
+    {
+      "why": "ECOSYSTEM BODY (R5) — a parenthetical whose ENTIRE content is an internal cycle-number reference: '(cycle170)', '(logged cycle170)', '(delta from cycle18)', '(since cycle123)'. The cycle number is the source pipeline's run counter, meaningless outside it; the surrounding sentence is the deliverable. Same containment rule as R1 — the paren must hold nothing but the reference. Measured: 22 lines changed, 0 new scrub artifacts. NOTE the deliberately ABSENT sibling: a rule for a cycle ref appended mid-paren ('(cycle13 \"May $4.4B day\", cycle12 \"seven multibillion-dollar deals\")') was measured and REJECTED — it left the two quoted phrases jammed together with no separator, the '(pending )' failure shape. That form is left to the ecosystem residue gate, which aborts rather than mangling it.",
+      "pattern": "\\s*\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R7) — an internal cycle reference OPENING a parenthetical whose remainder is reader-facing, e.g. '(cycle37 deltas — KB scope)'. Mirrors R3. Requires a ',', ';' or ':' after the reference so the surviving paren stays well formed. Measured: 4 lines changed, 0 new scrub artifacts.",
+      "pattern": "\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
+      "replacement": "("
+    },
+    {
+      "why": "The internal macro-signal file named mid-clause in nsclc TPP's '(Zynlonta signal, macro _macro.json ADC safety theme)'. Strips only the filename so the reader keeps '(Zynlonta signal, ADC safety theme)'.",
+      "pattern": "\\bmacro\\s+_macro\\.json\\s*",
+      "replacement": ""
+    },
+    {
+      "why": "Internal scheduling-context reference in nsclc TPP's '(post-ASCO buzz window closes ~Jun 12, 2026 per calendar_context)'. The date is reader-facing; the internal context object is not.",
+      "pattern": "\\s+per\\s+calendar_context\\b",
+      "replacement": ""
+    },
+    {
+      "why": "'the WS12 breast KB' / 'the WS12 MM KB' -> 'the breast knowledge base'. Article-carrying + qualified form; MUST precede the unqualified rules.",
+      "pattern": "\\b([Tt]he|[Aa]n?) WS\\d+ ([A-Za-z][A-Za-z/]*) KB\\b",
+      "replacement": "\\1 \\2 knowledge base"
+    },
+    {
+      "why": "'the WS12 KB' -> 'the knowledge base' (adc theme lines 9, 123, 125, 166).",
+      "pattern": "\\b([Tt]he|[Aa]n?) WS\\d+ KB\\b",
+      "replacement": "\\1 knowledge base"
+    },
+    {
+      "why": "'in WS12 breast KB' with no article -> 'in the breast knowledge base' (adc theme lines 77, 96).",
+      "pattern": "\\bWS\\d+ ([A-Za-z][A-Za-z/]*) KB\\b",
+      "replacement": "the \\1 knowledge base"
+    },
+    {
+      "why": "'in WS12 KB' with no article -> 'in the knowledge base' (adc theme lines 33, 57, 85, 86). Supplies the article the source omitted so the heading and table cell still read as English.",
+      "pattern": "\\bWS\\d+ KB\\b",
+      "replacement": "the knowledge base"
+    },
+    {
+      "why": "'WS12-tracked indications' -> 'tracked indications' (adc theme H3 headings, lines 52 and 67). The qualifier is kept; only the system name goes.",
+      "pattern": "\\bWS\\d+[- ]tracked\\b",
+      "replacement": "tracked"
+    },
+    {
+      "why": "'not a WS12 primary indication' -> 'not a primary tracked indication' (adc theme line 44, inside a markdown TABLE ROW). Deleting the clause would strip the cell's only qualifier; the row's pipes are untouched.",
+      "pattern": "\\bWS\\d+ primary indication\\b",
+      "replacement": "primary tracked indication"
+    },
+    {
+      "why": "'WS12 TPPs' / 'WS9 ETLMs' / 'WS12 DB' -> 'TPPs' / 'ETLMs' / 'DB' in section headings and prose that must survive (adc theme line 212).",
+      "pattern": "\\bWS\\d+ (ETLMs?|TPPs?|DBs?)\\b",
+      "replacement": "\\1"
+    },
+    {
+      "why": "A workstream number used as the citing subject of a real reference: obesity 1L TPP's 'WS13 (Drucker, NRDD 2025) elevates lean-mass preservation...'. Unwraps the existing citation rather than inventing a substitute source, giving 'Drucker, NRDD 2025 elevates ...'.",
+      "pattern": "\\bWS\\d+ \\(([A-Z][^)]*(?:19|20)\\d{2})\\)",
+      "replacement": "\\1"
+    },
+    {
+      "why": "Backstop: any remaining uppercase workstream number in a surviving line. Runs LAST so every rule above gets its reader-facing rewrite first; this only catches a form no rule anticipated, where dropping the token is safer than shipping the internal system name.",
+      "pattern": "\\bWS\\d+\\b\\s*",
+      "replacement": ""
+    },
+    {
+      "why": "adc theme byline: '**Analyst:** ws12-deep-thematic-synth | **Cycle:** 4 | **Scope:** ...'. The Analyst and Cycle segments are internal; **Scope:** lists the indications covered and is reader-useful, so this cannot be a line-drop. Strips the prefix up to and including the Cycle separator, leaving the line starting at **Scope:**.",
+      "pattern": "^\\*\\*Analyst:\\*\\*[^|]*\\|\\s*\\*\\*Cycle:\\*\\*\\s*\\d+\\s*\\|\\s*",
+      "replacement": ""
+    },
+    {
+      "why": "adc theme prose: 'no new cycle 4 clinical data' — the internal cycle number adds nothing; the sentence's point is that EV-302 remains the class floor.",
+      "pattern": "\\bno new cycle\\s?\\d+ clinical data\\b",
+      "replacement": "no new clinical data"
+    },
+    {
+      "why": "adc theme prose: 'Confirmed in ovarian analyst cycle 4' — names an internal review cycle. The confirmation itself is the clinical content and is kept.",
+      "pattern": "\\bConfirmed in (\\w+) analyst cycle\\s?\\d+\\b",
+      "replacement": "Confirmed in the \\1 analysis"
+    },
+    {
+      "why": "kras theme: '(from catalyst DB)' names the internal trial database on a line whose real content is two NCTs. Parenthetical only.",
+      "pattern": "\\s*\\(from [Cc]atalyst DB\\)",
+      "replacement": ""
+    },
+    {
+      "why": "kras theme: 'session_type = unknown (data pending conference assignment)' exposes an internal DB column name to say the session is unassigned. Reworded, meaning kept.",
+      "pattern": "session_type = unknown \\(data pending conference assignment\\)",
+      "replacement": "conference session not yet assigned"
+    },
+    {
+      "why": "kras theme: 'NCT05198934 in catalyst DB (Phase 3, CRC)' and a table row 'confirmed in catalyst DB as Phase 3 PDAC'. Drops the DB reference, keeps the NCT, the phase and the table delimiters.",
+      "pattern": "\\s+in [Cc]atalyst DB\\b",
+      "replacement": ""
+    },
+    {
+      "why": "kras theme heading: '## Appendix: Catalyst DB Asset Inventory (KRAS / RAS Theme)'. The inventory table beneath it is genuinely useful — 10 trials with real NCTs — so the section stays; only the internal database name leaves the heading.",
+      "pattern": "^## Appendix: [Cc]atalyst DB Asset Inventory",
+      "replacement": "## Appendix: Asset Inventory"
+    },
+    {
+      "why": "adc theme: '(NHL analyst D-NHL-001 auto-apply URGENT)' — an internal analyst decision id plus a pipeline workflow state. The whole parenthetical is internal; the sentence (Zynlonta removed from the 3L+ DLBCL landscape) stands without it. Also the laundering path: _scrub_inline rewrites AUTO_APPLY to lowercase before leak_gate greps for the uppercase form, so the gate can never catch this.",
+      "pattern": "\\s*\\((?:[A-Z]+ analyst )?D-[A-Z]+-\\d+ (?:auto-apply|human review)[^)]*\\)",
+      "replacement": ""
+    },
+    {
+      "why": "adc theme: 'would require immediate human review chain across ...' / 'trigger immediate human review chain for ...'. 'human review chain' is internal queue vocabulary; the clinical point is that the finding forces reassessment.",
+      "pattern": "\\bimmediate human review chain\\b",
+      "replacement": "immediate reassessment"
+    },
+    {
+      "why": "adc theme: 'KB quality gap (all 9 PDAC events blank)' — 'KB' is the internal knowledge base. Reworded to describe the gap in reader terms.",
+      "pattern": "\\bKB quality gap\\b",
+      "replacement": "Evidence coverage gap"
+    },
+    {
+      "why": "Remaining bare uppercase 'KB' as internal shorthand ('across the KB', 'logged in this KB', 'in the obesity KB'). Case-sensitive on the uppercase form so a lowercase 'kb' (kilobase, a real genomics unit) is never touched.",
+      "pattern": "\\bKB\\b",
+      "replacement": "landscape"
+    },
+    {
+      "why": "ecosystem: 'No active conference_meta signal ...' exposes an internal signal-type identifier. Hyphenated to plain English; the statement is unchanged.",
+      "pattern": "\\bconference_meta\\b",
+      "replacement": "conference-metadata"
+    },
+    {
+      "why": "kras theme: '**Conference catalyst (DB confirmed):**' — a second phrasing of the internal database reference that the 'catalyst DB' rule does not match. The NCT on the same line is the actual evidence.",
+      "pattern": "\\s*\\(DB confirmed\\)",
+      "replacement": ""
+    },
+    {
+      "why": "adc theme: 'confirmatory trial risk flagged by NHL analyst (D-NHL-002)' — internal attribution plus an analyst decision id. The RISK is the clinical content and stays; who logged it and under which decision id is internal.",
+      "pattern": "\\s*by [A-Z/]+ analyst \\(D-[A-Z]+-\\d+\\)",
+      "replacement": ""
+    },
+    {
+      "why": "adc theme: 'NHL analyst decision D-NHL-001 URGENT: withdrawal imminent.' — the judgement (withdrawal imminent) is real analysis and must survive; the decision id and the internal URGENT queue priority must not.",
+      "pattern": "[A-Z/]+ analyst decision D-[A-Z]+-\\d+ URGENT: ",
+      "replacement": "Assessment: "
+    },
+    {
+      "why": "adc theme: 'this converts to auto-apply for 1L HER2+ benchmark' — 'auto-apply' is a pipeline state describing how the knowledge base would ingest the result. Reworded to what it means for a reader.",
+      "pattern": "\\bconverts to auto-apply\\b",
+      "replacement": "converts to an automatic update"
+    },
+    {
+      "why": "adc theme: a bare trailing '(D-NHL-002)' analyst decision id appended to a clinical statement ('inherits indirect platform scrutiny (D-NHL-002)'). The earlier rules match the id only when it follows 'by <X> analyst' or precedes a workflow state; this is the same id standing alone as a parenthetical citation of an internal decision.",
+      "pattern": "\\s*\\(D-[A-Z]+-\\d+\\)",
+      "replacement": ""
+    }
+  ],
+  "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
   "tpp_theme_strip_markers": [
     "INTERNAL:",
     "Katie note:",
     "PM note:",
     "Katie editorial",
     "Source data:",
-    "analyst review cycle"
+    "analyst review cycle",
+    "**Source ETLMs:**",
+    "^**Author:**",
+    "Not for distribution",
+    "Human approval pending",
+    "Human review pending",
+    "**DB observation:**",
+    "*Audit flag:"
   ],
+  "_tpp_theme_strip_sections_doc": "SECTION-DROP for TPP/theme markdown, keyed by source filename. Some internal provenance is a whole H2 SECTION, not a line: dropping the heading alone orphans its bullets under the previous section, and the bullets have no safe individual marker (adc_class_state's 'Sources Cited' nests nine '  - <Indication>: <etlm_key>, ...' lines). Each listed heading is matched EXACTLY against the whole stripped line — never as a substring — and the drop runs from that heading to the line before the next H1/H2 sibling (or EOF), so the section's trailing '---' separator goes with it and the surviving separator count stays correct. Keyed per FILE because exact-match alone is not enough for a generic heading: a global '## Sources Cited' entry would silently delete a FUTURE file's legitimate public citation list. New whitelisted files already require a config edit (tpp_whitelist / theme_whitelist), so per-file keying adds no maintenance the whitelists do not already impose — but it does mean a new file's internal sections must be reviewed and listed here, or they ship.",
+  "tpp_theme_strip_sections": {
+    "adc_class_state_2026-06-05.md": [
+      "## How This Theme Informs WS9 ETLMs",
+      "## Sources Cited"
+    ],
+    "glp1_class_competitive_supply_2026-06-05.md": [
+      "## 10. Cross-Reference Links (WS9 ETLM)"
+    ]
+  },
   "tpp_whitelist": [
     "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05.md",
     "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05.md",
