@@ -3,7 +3,7 @@
   "indication_code": "crc",
   "icd10": "C18-C20",
   "nci_thesaurus_id": "C2955",
-  "last_updated": "2026-06-13",
+  "last_updated": "2026-07-26",
   "epidemiology": {
     "global_incidence_annual": 1900000,
     "us_incidence_annual": 152810,
@@ -926,7 +926,8 @@
           "label": "PMC full text of Cancer Discov 2024 registrational analysis (PMC11152245)",
           "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11152245/"
         }
-      ]
+      ],
+      "confirmatory_status": "KRYSTAL-10 confirmatory Ph3 (2L KRAS G12C mCRC, ESMO GI 2026 LBA1) MISSED both dual primary endpoints (PFS and OS); ORR 47% vs 16% chemo but not survival-superior (chemo control over-performed). The 2024-06-21 accelerated approval is at risk of withdrawal as of 2026-07. Annotation only - no benchmark displacement, no forced DISCONTINUED; no formal BMS/FDA withdrawal announced yet"
     },
     {
       "drug_name": "fruquintinib",
@@ -1733,10 +1734,9 @@
       "estimated_readout": null,
       "primary_endpoint": "ORR by BICR",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT07525206 (WS12 KB event 692); trial_start only \u2014 no efficacy readout yet",
+      "source": "ClinicalTrials.gov NCT07525206; trial_start only \u2014 no efficacy readout yet",
       "comparator": "bevacizumab + trifluridine/tipiracil (TAS-102)",
       "biomarker_population": "c-Met expression (IHC) selector",
-      "updated_cycle": "cycle34_mega 2026-06-15",
       "notes": "AbbVie c-Met ADC now in pivotal P3; first c-Met-targeted ADC in CRC to reach P3. IBI343 CLDN18.2 deal ($1.2B Innovent/Takeda) sets GI ADC valuation precedent. No efficacy readout yet"
     },
     {
@@ -1746,20 +1746,18 @@
       "modality": "monoclonal antibody",
       "phase": "Phase 2",
       "indication_setting": "Advanced CRC (MSS and IO-eligible subsets)",
-      "trial": "NCT not confirmed from KB; P2 (RECRUITING)",
+      "trial": "NCT not confirmed; P2 (RECRUITING)",
       "primary_endpoint": "ORR",
       "arms": "denikitug monotherapy OR + nivolumab OR + chemotherapy",
       "status": "RECRUITING",
       "notes": "Broad exploratory strategy across IO-eligible and IO-refractory CRC. Anti-TIGIT class in CRC has no precedent; this is an exploratory P2",
-      "added_cycle": "cycle34_mega 2026-06-15",
       "nct": "NCT07527858",
       "trial_start_date": "2026-05-19",
       "trial_status": "RECRUITING",
       "trial_description": "Denikitug alone or with nivolumab or with chemotherapy in advanced CRC; ORR primary",
       "combination_arms": "Denikitug alone; denikitug + nivolumab; denikitug + chemotherapy",
       "target_population": "Advanced CRC (MSS expected dominant)",
-      "trial_start": "2026-05-19",
-      "updated_cycle": "cycle67_mega 2026-06-26"
+      "trial_start": "2026-05-19"
     },
     {
       "asset_name": "CBI-1214",
@@ -1771,15 +1769,13 @@
       "primary_endpoint": "Safety/tolerability at escalating doses",
       "status": "RECRUITING",
       "strategic_note": "First T cell engager to specifically target MSS/MSI-L CRC (IO-refractory majority ~85% of mCRC); addresses the highest-unmet-need segment per config. Antigen specificity not yet public",
-      "added_cycle": "cycle34_mega 2026-06-15",
       "nct": "NCT07321106",
       "trial_start_date": "2026-01-15",
       "trial_status": "RECRUITING",
       "trial_description": "CBI-1214 T-cell engager in advanced/metastatic MSS/MSI-L CRC; safety and tolerability primary",
       "target_population": "Advanced or metastatic MSS/MSI-L colorectal cancer",
       "modality_note": "T-cell engager (bispecific); MSS CRC \u2014 checkpoint-cold setting",
-      "trial_start": "2026-01-15",
-      "updated_cycle": "cycle67_mega 2026-06-26"
+      "trial_start": "2026-01-15"
     },
     {
       "asset_name": "EB-DUO-CAR-NK-CEA/GCC",
@@ -1793,13 +1789,11 @@
       "biomarker_population": "CEA and GCC co-expression selection",
       "notes": "First dual-target CAR-NK in CRC; CEA/GCC co-selection strategy. China-origin sponsor (Beijing Biotech). DUPLICATE/SIBLING REGISTRATION confirmed (citation-verifier 2026-06-26): NCT07589517 (primary, recorded) and NCT07462650 are the same asset+design \u2014 do not seed a second row",
       "geo_origin_risk": "China-origin sponsor; monitor US development pathway if US sites added",
-      "added_cycle": "cycle34_mega 2026-06-15",
       "nct": "NCT07589517",
       "trial_start_date": "2026-02-02",
       "trial_status": "RECRUITING",
       "trial_description": "Dual-targeting CAR-NK cells (CEA/GCC) in biomarker-selected advanced CRC; DLTs primary",
-      "secondary_nct": "NCT07462650 (sibling/parallel registration of NCT07589517; same sponsor Beijing Biotech, same EB-DUO-CAR-NK-CEA/GCC asset, same Shenzhen site/PI \u2014 NCT07462650 Mar-2026 / NCT07589517 May-2026 amended protocol). Tracked as ONE program, not two",
-      "updated_cycle": "cycle67_mega 2026-06-26 (hr-resolver duplicate-registration merge \u2014 carry-forward, citation-verified)"
+      "secondary_nct": "NCT07462650 (sibling/parallel registration of NCT07589517; same sponsor Beijing Biotech, same EB-DUO-CAR-NK-CEA/GCC asset, same Shenzhen site/PI \u2014 NCT07462650 Mar-2026 / NCT07589517 May-2026 amended protocol). Tracked as ONE program, not two"
     },
     {
       "asset_name": "JSKN003",
@@ -1813,8 +1807,7 @@
       "status": "NOT_YET_RECRUITING",
       "biomarker_population": "HER2 overexpression (IHC/ISH); ~3-5% of mCRC",
       "notes": "China-origin P3 HER2 ADC competing in the HER2+ refractory CRC space where tucatinib+trastuzumab (MOUNTAINEER 38% ORR) and T-DXd (DESTINY-CRC02 45% ORR IHC3+) are established. MOUNTAINEER ORR 38% is the config calibration bar for HER2+ CRC",
-      "geo_origin_risk": "China-origin sponsor (Shanghai JMT-Bio); monitor WuXi 1260H macro signal_id 183/181 if US sites added",
-      "added_cycle": "cycle34_mega 2026-06-15"
+      "geo_origin_risk": "China-origin sponsor (Shanghai JMT-Bio); monitor WuXi 1260H if US sites added"
     },
     {
       "asset_name": "Pelareorep + FOLFIRI + bevacizumab",
@@ -1827,7 +1820,6 @@
       "status": "RECRUITING",
       "biomarker_population": "RAS-mutated MSS mCRC",
       "notes": "Oncolytic virus combination targeting IO-resistant MSS majority (~85% of mCRC). 2L post-FOLFOX. RAS mutation and MSS status clearly stated",
-      "added_cycle": "cycle34_mega 2026-06-15",
       "nct": "NCT07446322",
       "trial_start_date": "2026-04-30",
       "trial_status": "RECRUITING",
@@ -1843,7 +1835,6 @@
       "primary_endpoint": "DLTs",
       "status": "NOT_YET_RECRUITING",
       "notes": "Novel liver-met targeted combination. Ivonescimab (AK112) is Akeso's PD-1/VEGF bispecific. Liver met immunosuppressive microenvironment recognized as distinct resistance mechanism in mCRC",
-      "added_cycle": "cycle34_mega 2026-06-15",
       "nct": "NCT07357220",
       "trial_start_date": "2026-03-02",
       "trial_status": "NOT_YET_RECRUITING",
@@ -1858,8 +1849,7 @@
       "indication_setting": "Advanced malignancies including CRC",
       "primary_endpoint": "Safety/tolerability",
       "status": "NOT_YET_RECRUITING",
-      "notes": "First-in-human study. Novel mechanism; no target/class disclosed at time of KB entry. Low-materiality pipeline watch",
-      "added_cycle": "cycle34_mega 2026-06-15"
+      "notes": "First-in-human study. Novel mechanism; no target/class disclosed at time of entry. Low-materiality pipeline watch"
     },
     {
       "asset_name": "Enlituo (EGFR antibody)",
@@ -1879,14 +1869,12 @@
         "exposure": "COINS Act / BIOSECURE legislative risk",
         "as_of": "2026-06-17"
       },
-      "added_cycle": "cycle42",
-      "notes": "trial_start only \u2014 no efficacy readout yet. First P3 direct head-to-head EGFR antibody vs cetuximab in 1L RAS/BRAF WT MSS mCRC. China-origin sponsor (Taizhou Mabtech). Added via apply-manager Framing-A (resolver-recommended)",
+      "notes": "trial_start only \u2014 no efficacy readout yet. First P3 direct head-to-head EGFR antibody vs cetuximab in 1L RAS/BRAF WT MSS mCRC. China-origin sponsor (Taizhou Mabtech)",
       "source": "ClinicalTrials.gov NCT07595276",
       "trial_design": "Phase 3 vs Erbitux (cetuximab) + FOLFOX",
       "biomarker": "RAS/BRAF wild-type MSS CRC",
       "line": "1L",
-      "trial_start": "2026-06-01",
-      "updated_cycle": "cycle67_mega 2026-06-26"
+      "trial_start": "2026-06-01"
     },
     {
       "asset_name": "PF-08634404",
@@ -1904,7 +1892,7 @@
       "notes": "Mechanism undisclosed; Pfizer moved directly to P3 \u2014 high internal confidence signal. Combination-with-chemo design suggests chemosensitization or immune modulation target in CRC TME",
       "sources": [
         {
-          "label": "WS12 KB event 714 \u2014 PF-08634404 P3 Symbiotic-GI-03 trial start (Dec 2025)",
+          "label": "PF-08634404 P3 Symbiotic-GI-03 trial start (Dec 2025)",
           "url": "https://clinicaltrials.gov/search?query=Symbiotic-GI-03",
           "type": "ctgov",
           "date": "2025-12-11",
@@ -1928,7 +1916,7 @@
       "notes": "PD-1+VEGF bispecific directly challenges bevacizumab+FOLFOX as 1L mCRC standard of care. If positive, would establish IO-VEGF bispecific efficacy in MSS mCRC (where IO monotherapy fails) and validate bispecific-over-combination design in CRC",
       "sources": [
         {
-          "label": "WS12 KB event 704 \u2014 Ivonescimab + FOLFOX P3 in mCRC trial start (Nov 2025)",
+          "label": "Ivonescimab + FOLFOX P3 in mCRC trial start (Nov 2025)",
           "url": "https://clinicaltrials.gov/search?query=ivonescimab+colorectal",
           "type": "ctgov",
           "date": "2025-11-18",
@@ -1952,7 +1940,7 @@
       "notes": "Tests VEGFR-specific antibody (suvemcitug) as substitute for bevacizumab in TAS-102 backbone (vs SUNLIGHT bev+TAS-102 mOS 10.8 mo bar). China-origin sponsor; regulatory context tracked in regulatory_landscape carry-forward item",
       "sources": [
         {
-          "label": "WS12 KB event 685 \u2014 Suvemcitug + FTD/TPI P3 in refractory mCRC trial start (Nov 2025)",
+          "label": "Suvemcitug + FTD/TPI P3 in refractory mCRC trial start (Nov 2025)",
           "url": "https://clinicaltrials.gov/search?query=suvemcitug+colorectal",
           "type": "ctgov",
           "date": "2025-11-12",
@@ -1997,11 +1985,11 @@
       "nct": "NCT05480306",
       "trial_name": "DeFianCe",
       "status": "COMPLETED",
-      "estimated_readout": "2025-10",
+      "estimated_readout": "2025-10 (ESMO final Part B); peer-reviewed publication 2026-08",
       "primary_endpoint": "Progression-free survival / objective response rate",
-      "enrollment": null,
-      "source": "ClinicalTrials.gov NCT05480306; Leap Therapeutics ESMO 2025 final DeFianCe Part B data (PR 2025-10) \u2014 2L MSS CRC ORR 35% vs 23% control, statistically significant PFS benefit in DKK1-high / anti-VEGF-naive / liver-met subgroups. Fresh fetch via WS18 pipeline-reconcile 2026-06-20",
-      "sponsor_note": "Novel anti-DKK1 (Wnt-pathway) mechanism in MSS CRC \u2014 first positive randomised MSS-CRC signal for DKK1 blockade. CAUTION: Leap Therapeutics wound down the DeFianCe trial and is exploring strategic alternatives (financial constraints); asset seeking partner/continuation as of 2026-06. Positive Ph2 readout is the contribution; commercial path uncertain"
+      "enrollment": 188,
+      "source": "ClinicalTrials.gov NCT05480306 \u2014 re-verified via CT.gov API 2026-08-12: PHASE2, overallStatus COMPLETED, actual enrollment 188, actual completion 2025-07-10, lead sponsor Leap Therapeutics, Inc. Primary publication: Clinical Cancer Research, 2026-08-12, \u201cSirexatamab in Combination with Bevacizumab and Chemotherapy as Second-Line Therapy for Advanced Colorectal Adenocarcinoma: the Phase II DeFianCe Trial\u201d, DOI 10.1158/1078-0432.CCR-26-1456 (DOI resolves to the matching AACR article). ESMO 2025 LBA34 (Ann Oncol) carried the final Part B presentation. Supersedes the prior 2026-06-20 note",
+      "sponsor_note": "Novel anti-DKK1 (Wnt-pathway) mechanism in MSS CRC \u2014 first positive randomised MSS-CRC signal for DKK1 blockade. PEER-REVIEWED (Clin Cancer Res 2026-08-12, DOI 10.1158/1078-0432.CCR-26-1456): benefit rises with baseline plasma DKK1. Median-split DKK1-high mPFS 9.0 vs 7.1 mo (HR 0.61), mOS not reached vs 14.4 mo (HR 0.42); upper-quartile DKK1-high mPFS 9.4 vs 5.9 mo (HR 0.46), mOS not reached vs 9.5 mo (HR 0.17), ORR 44.0% vs 15.8% (p=0.0149); ITT mPFS 9.2 vs 8.3 mo (HR 0.84), OS not reached in both arms (HR 0.83), ORR 35.1% vs 26.6%. CAVEAT \u2014 annotation only, NOT a benchmark: every DKK1-high figure is a biomarker-defined subgroup of a 188-pt randomised Phase 2 (upper quartile n\u224825 vs 19), OS is immature (not reached in the experimental arm of every cut), the ITT primary comparison was not significant, and the subgroup ORR/OS have been restated across data cuts (an earlier 2025 Part B cut reported DKK1-high ORR 48.0% vs 15.8% investigator-assessed and an OS HR of 0.09). REGULATORY: FDA Fast Track granted May 2026 for sirexatamab + fluoropyrimidine/oxaliplatin- or irinotecan-based chemotherapy + bevacizumab in DKK1-high mCRC after one prior systemic therapy. CORPORATE: Leap wound down DeFianCe and explored strategic alternatives (financial constraints) and is now the biotechnology subsidiary of Cypherpunk Technologies Inc. (Nasdaq: CYPH), which reports pursuing financing/partnership; no funded registrational Phase 3 in DKK1-high 2L mCRC has been initiated. Positive biomarker-defined Ph2 readout is the contribution; commercial path remains uncertain"
     },
     {
       "asset_name": "tovecimig (CTX-009) \u2014 DLL4\u00d7VEGF-A bispecific",
@@ -2017,7 +2005,7 @@
       "estimated_readout": "2026-02",
       "primary_endpoint": "Objective response rate",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT05513742 (COMPANION-003); Compass Therapeutics corporate updates 2025; COMPANION-003 mCRC monotherapy Ph2 data presented ASCO GI 2026 (JCO 2026 44(2_suppl):125). Planned DLL4-positive 2L mCRC + chemo biomarker Ph2 (mid-2025 init). Fresh fetch via WS18 pipeline-reconcile 2026-06-20",
+      "source": "ClinicalTrials.gov NCT05513742 (COMPANION-003); Compass Therapeutics corporate updates 2025; COMPANION-003 mCRC monotherapy Ph2 data presented ASCO GI 2026 (JCO 2026 44(2_suppl):125). Planned DLL4-positive 2L mCRC + chemo biomarker Ph2 (mid-2025 init)",
       "sponsor_note": "DLL4\u00d7VEGF-A dual angiogenic blockade is a mechanism class absent from the crc ETLM; biomarker-driven (DLL4+) strategy. Lead indication is biliary tract (COMPANION-002 positive); CRC is a secondary indication for the same asset"
     },
     {
@@ -2034,7 +2022,7 @@
       "estimated_readout": null,
       "primary_endpoint": "Disease-free survival",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT04486378 (BNT122-01); BioNTech/Genentech adjuvant CRC programme; ESMO 2024 biomarker-cohort immunogenicity data (Ann Oncol 2024, abstr 29P) \u2014 poly-epitopic neoantigen-specific T-cell responses in all treated patients. Fresh fetch via WS18 pipeline-reconcile 2026-06-20",
+      "source": "ClinicalTrials.gov NCT04486378 (BNT122-01); BioNTech/Genentech adjuvant CRC programme; ESMO 2024 biomarker-cohort immunogenicity data (Ann Oncol 2024, abstr 29P) \u2014 poly-epitopic neoantigen-specific T-cell responses in all treated patients",
       "sponsor_note": "Individualized mRNA neoantigen vaccine (iNeST) absent from the crc ETLM; ctDNA-guided adjuvant minimal-residual-disease strategy \u2014 a distinct setting (adjuvant MRD) versus the metastatic-dominant ETLM pipeline. Cross-roster: same platform/asset also in pdac ETLM (pancreatic adjuvant)"
     },
     {
@@ -2051,7 +2039,7 @@
       "estimated_readout": "2025-10",
       "primary_endpoint": "Objective response rate / safety",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT04041310 (Nous-209 MSI basket); Nouscom ESMO 2025 Ph2 readout (Ann Oncol 2025, abstr 802P) \u2014 MSI-H mCRC refractory to anti-PD-1: ORR 15%, DCR 70%, mPFS 6.4 mo. Nature Medicine 2026 Lynch-interception publication. Fresh fetch via WS18 pipeline-reconcile 2026-06-20",
+      "source": "ClinicalTrials.gov NCT04041310 (Nous-209 MSI basket); Nouscom ESMO 2025 Ph2 readout (Ann Oncol 2025, abstr 802P) \u2014 MSI-H mCRC refractory to anti-PD-1: ORR 15%, DCR 70%, mPFS 6.4 mo. Nature Medicine 2026 Lynch-interception publication",
       "sponsor_note": "Off-the-shelf shared-frameshift-neoantigen vaccine; addresses the anti-PD-1-refractory MSI-H/dMMR mCRC gap (re-sensitising the ~30% primary-IO-resistant MSI-H subset) \u2014 a setting flagged in the crc ETLM key_resistance_mechanism for MSI-H. NCT04041310 is the MSI-tumour basket; dedicated mCRC+pembro cohort NCT to verify"
     },
     {
@@ -2068,7 +2056,7 @@
       "estimated_readout": "2024-09",
       "primary_endpoint": "Objective response rate",
       "enrollment": null,
-      "source": "ClinicalTrials.gov NCT04907539; Redx Pharma ESMO GI 2024 Ph2 data (Ann Oncol 2024, abstr 37P) \u2014 genetically-selected MSS mCRC, zamaporvint + nivolumab DCR 57% / ~30% PR; trial completed Mar 2025. Fresh fetch via WS18 pipeline-reconcile 2026-06-20",
+      "source": "ClinicalTrials.gov NCT04907539; Redx Pharma ESMO GI 2024 Ph2 data (Ann Oncol 2024, abstr 37P) \u2014 genetically-selected MSS mCRC, zamaporvint + nivolumab DCR 57% / ~30% PR; trial completed Mar 2025",
       "sponsor_note": "PORCN/Wnt-ligand inhibition in genetically selected (RNF43/RSPO-aberrant) MSS mCRC \u2014 a biomarker-defined niche and a Wnt-pathway mechanism absent from the crc ETLM. CAUTION: Redx is seeking a development/commercial partner as of 2026; program continuity depends on partnering"
     },
     {
@@ -2125,7 +2113,7 @@
       "trial_name": "EMB-01 + chemo, unresectable/metastatic CRC (P1)",
       "status": "NOT_YET_RECRUITING",
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 apply-manager 2026-06-23, no-efficacy Framing-A add; identity verified DISTINCT). INN bafisontamab; EGFR\u00d7cMet tetravalent bispecific. Single asset \u2014 the two KB EMB-01 CRC events are distinct trials of one molecule (combo NCT07649655 + P2 mono NCT07314294); do not create duplicate rows",
+      "note": "trial_start only \u2014 no efficacy readout yet; asset identity verified as distinct. INN bafisontamab; EGFR\u00d7cMet tetravalent bispecific. Single asset \u2014 the two registered CRC studies (combination NCT07649655; Phase 2 monotherapy NCT07314294) are distinct trials of one molecule, not two separate assets",
       "source": "ClinicalTrials.gov NCT07649655 / NCT07314294; PubMed 41385387 (EMB-01 EGFR\u00d7cMet bispecific)",
       "geo_origin_risk": {
         "origin": "China",
@@ -2145,13 +2133,12 @@
       "trial_name": "HDM2017 + fruquintinib, metastatic CRC (Ph Ib/II)",
       "status": "NOT_YET_RECRUITING",
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 apply-manager 2026-06-23 cycle59, no-efficacy Framing-A add; identity verified DISTINCT). CDH17-targeting ADC \u2014 mechanism grounded via AACR 2025 Abstract 317 + Huadong NMPA/FDA IND disclosures (resolver could not source the target; verifier did). 'HDM' is Huadong's internal code prefix, NOT an HDM2/MDM2 reference. A second study NCT07274085 (solid-tumor monotherapy) is the same asset \u2014 do not create a duplicate row",
+      "note": "trial_start only \u2014 no efficacy readout yet; asset identity verified as distinct. CDH17-targeting ADC \u2014 mechanism grounded via AACR 2025 Abstract 317 + Huadong NMPA/FDA IND disclosures. 'HDM' is Huadong's internal code prefix, NOT an HDM2/MDM2 reference. NCT07274085 (solid-tumor monotherapy) is a second study of the same asset, not a separate asset",
       "geo_origin_risk": {
         "origin": "China",
         "exposure": "COINS Act / BIOSECURE legislative risk",
         "as_of": "2026-06-23"
       },
-      "added_cycle": "cycle59",
       "source": "ClinicalTrials.gov NCT07621159 (CRC); NCT07274085 (solid-tumor mono); AACR 2025 Abstract 317"
     },
     {
@@ -2166,13 +2153,12 @@
       "trial_name": "TQB2930 + oxaliplatin/capecitabine \u00b1 bevacizumab, advanced CRC (Ph1/2)",
       "status": "NOT_YET_RECRUITING",
       "key_efficacy": null,
-      "note": "trial_start only \u2014 no efficacy readout yet (WS12 apply-manager 2026-06-23 cycle59, no-efficacy Framing-A add; identity verified DISTINCT). CRC trial NCT not confirmed \u2014 nct left null; do NOT bind breast/basket NCT05380882. DISTINCT from zanidatamab (also HER2 biparatopic, Jazz/Zymeworks): different molecule + sponsor. The ~48% ORR is heavily-pretreated HER2+ BREAST data \u2014 not CRC; no CRC efficacy at trial start. Analyst's prior VEGFR2/PD-L1 guess was wrong (verifier-corrected)",
+      "note": "trial_start only \u2014 no efficacy readout yet; asset identity verified as distinct. No CRC-specific trial registration confirmed \u2014 the NCT field is intentionally null, and NCT05380882 is a breast/basket study that must not be attributed to this CRC row. DISTINCT from zanidatamab (also HER2 biparatopic, Jazz/Zymeworks): different molecule + sponsor. The ~48% ORR is heavily-pretreated HER2+ BREAST data \u2014 not CRC; no CRC efficacy at trial start. Target confirmed as HER2 (ECD2 + ECD4); an earlier VEGFR2/PD-L1 attribution was incorrect and has been corrected",
       "geo_origin_risk": {
         "origin": "China",
         "exposure": "COINS Act / BIOSECURE legislative risk",
         "as_of": "2026-06-23"
       },
-      "added_cycle": "cycle59",
       "source": "ClinicalTrials.gov NCT05380882 (advanced-cancers basket / breast \u2014 identity reference only); ASCO 2024 JCO.2024.42.16_suppl.1026 (TQB2930 Ph1b breast, HER2 biparatopic)"
     },
     {
@@ -2209,8 +2195,7 @@
       "nct": "NCT07545122",
       "primary_endpoint": "Safety/tolerability",
       "status": "NOT_YET_RECRUITING",
-      "notes": "Nectin-4 bispecific; CRC is one of three primary indication cohorts. Nectin-4 expressed in ~60% of CRC tumors. First Nectin-4 bispecific antibody in CRC pipeline",
-      "added_cycle": "cycle49_mega 2026-06-25"
+      "notes": "Nectin-4 bispecific; CRC is one of three primary indication cohorts. Nectin-4 expressed in ~60% of CRC tumors. First Nectin-4 bispecific antibody in CRC pipeline"
     },
     {
       "asset_name": "AMT-676",
@@ -2222,8 +2207,7 @@
       "nct": "NCT07474727",
       "primary_endpoint": "Not specified (multi-arm exploratory P2)",
       "status": "NOT_YET_RECRUITING",
-      "notes": "7-arm Phase 2 combination basket in advanced CRC. Mechanism undisclosed. Biomarker selection and combination partners not stated in KB entry at time of addition. Watch for trial design disclosure",
-      "added_cycle": "cycle49_mega 2026-06-25"
+      "notes": "7-arm Phase 2 combination basket in advanced CRC. Mechanism undisclosed. Biomarker selection and combination partners not stated at time of addition. Watch for trial design disclosure"
     },
     {
       "asset_name": "XP-102 + trametinib",
@@ -2236,8 +2220,7 @@
       "primary_endpoint": "Safety/tolerability; RP2D",
       "status": "NOT_YET_RECRUITING",
       "biomarker_population": "BRAF V600 mutation (any allele; V600E expected predominant in CRC)",
-      "notes": "Novel BRAF inhibitor + trametinib combination in BRAF V600 solid tumors. CRC BRAF V600E ~8-10% of mCRC. Positioned in BEACON-era BRAF inhibitor class; encorafenib+cetuximab (BEACON bar: mOS ~9.3mo) is the established benchmark. Mechanism differentiation vs encorafenib TBD",
-      "added_cycle": "cycle49_mega 2026-06-25"
+      "notes": "Novel BRAF inhibitor + trametinib combination in BRAF V600 solid tumors. CRC BRAF V600E ~8-10% of mCRC. Positioned in BEACON-era BRAF inhibitor class; encorafenib+cetuximab (BEACON bar: mOS ~9.3mo) is the established benchmark. Mechanism differentiation vs encorafenib TBD"
     },
     {
       "asset_name": "TQB2102",
@@ -2247,14 +2230,13 @@
       "phase": "Phase 3",
       "indication_setting": "HER2 IHC3+ advanced CRC, post-oxaliplatin/irinotecan/5-FU refractory",
       "nct": "NCT07483684",
-      "primary_endpoint": "Not specified in KB entry",
+      "primary_endpoint": "Not specified",
       "comparator": "Physician choice",
       "status": "NOT_YET_RECRUITING",
       "biomarker_population": "HER2 IHC3+ mCRC (~2-3% prevalence)",
       "calibration_anchor": "MOUNTAINEER ORR 38% (tucatinib+trastuzumab) is the config HER2+ CRC bar",
       "geo_origin_risk": "China-origin sponsor (CTTQ); monitor US development pathway if US sites added",
-      "notes": "China-origin P3 HER2-targeting ADC in refractory CRC. Competes in HER2 IHC3+ space with T-DXd (DESTINY-CRC02) and tucatinib+trastuzumab (MOUNTAINEER). Biomarker restriction (IHC3+ only) is more stringent than MOUNTAINEER (IHC2+/3+) \u2014 potential for higher ORR in enriched population but narrower eligible population",
-      "added_cycle": "cycle49_mega 2026-06-25"
+      "notes": "China-origin P3 HER2-targeting ADC in refractory CRC. Competes in HER2 IHC3+ space with T-DXd (DESTINY-CRC02) and tucatinib+trastuzumab (MOUNTAINEER). Biomarker restriction (IHC3+ only) is more stringent than MOUNTAINEER (IHC2+/3+) \u2014 potential for higher ORR in enriched population but narrower eligible population"
     },
     {
       "asset_name": "TQB2922",
@@ -2269,8 +2251,7 @@
       "status": "RECRUITING",
       "biomarker_population": "RAS/BRAF Wild-type advanced CRC",
       "geo_origin_risk": "China-origin sponsor (CTTQ); monitor US development pathway if US sites added",
-      "notes": "CTTQ novel agent combined with TAS-102 backbone in RAS/BRAF WT refractory CRC. Mechanism of TQB2922 undisclosed; CTTQ portfolio context suggests possible HER2-related modality (distinguish from TQB2930 HER2 biparatopic in ETLM). Biomarker: RAS/BRAF WT selection explicitly stated",
-      "added_cycle": "cycle49_mega 2026-06-25"
+      "notes": "CTTQ novel agent combined with TAS-102 backbone in RAS/BRAF WT refractory CRC. Mechanism of TQB2922 undisclosed; CTTQ portfolio context suggests possible HER2-related modality (distinguish from TQB2930 HER2 biparatopic in ETLM). Biomarker: RAS/BRAF WT selection explicitly stated"
     },
     {
       "asset_name": "RC148",
@@ -2287,8 +2268,7 @@
       "biomarker_population": "All-comers per registration (tumor tissue collected for biomarker testing; no biomarker gating stated)",
       "geo_origin_risk": "China-origin sponsor (RemeGen); ex-China rights licensed to AbbVie (Jan 2026). Monitor US development pathway",
       "notes": "PD-1/VEGF bispecific (RemeGen platform; AACR 2024 Abstract 2734) \u2014 same emerging class as ivonescimab/BNT327. NOT a HER2 ADC. AbbVie ~$5.6B exclusive license Jan 12 2026. 1L mCRC + CAPOX backbone",
-      "source": "ClinicalTrials.gov NCT07462143; AACR 2024 Abstract 2734; AbbVie/RemeGen license PR 2026-01-12",
-      "added_cycle": "cycle49_mega 2026-06-25 (hr-resolver confirmed)"
+      "source": "ClinicalTrials.gov NCT07462143; AACR 2024 Abstract 2734; AbbVie/RemeGen license PR 2026-01-12"
     },
     {
       "asset_name": "DSP107",
@@ -2304,8 +2284,7 @@
       "primary_endpoint": "Per registration (efficacy/safety)",
       "biomarker_population": "MSS / pMMR CRC (explicitly microsatellite-stable per registry)",
       "notes": "First-in-class CD47x4-1BB bifunctional fusion (SIRP\u03b1-4-1BBL): blocks CD47 'don't-eat-me' + conditional 4-1BB costimulation only on CD47 binding (ASH 2020; PMID 35287686; ESMO 2024 51P MSS-CRC dose-expansion). Joins the MSS IO-refractory cluster (botensilimab/balstilimab, pelareorep). Fruquintinib as active comparator anchors the 3L+ refractory line",
-      "source": "ClinicalTrials.gov NCT07235293; PMID 35287686; ESMO 2024 Abstract 51P",
-      "added_cycle": "cycle49_mega 2026-06-25 (hr-resolver confirmed)"
+      "source": "ClinicalTrials.gov NCT07235293; PMID 35287686; ESMO 2024 Abstract 51P"
     },
     {
       "asset_name": "QL1706 (iparomlimab/tuvonralimab)",
@@ -2322,8 +2301,7 @@
       "biomarker_population": "All-comers per registration (tumor tissue collected for biomarker testing; no MSI/CPS gating stated)",
       "geo_origin_risk": "China-origin sponsor (Qilu); monitor US development pathway if US sites added",
       "notes": "QL1706 = iparomlimab/tuvonralimab, a fixed-ratio PD-1/CTLA-4 bifunctional antibody (Qilu MabPair; first such product, NMPA NDA accepted Aug 2023). Large 1L all-comers PD-1/CTLA-4 + chemo+bev trial \u2014 DESIGN WATCH: all-comers IO in 1L mCRC is unusual given prior all-comers IO failures in MSS CRC; CTLA-4 co-blockade is the differentiation hypothesis. No biomarker stratification stated",
-      "source": "ClinicalTrials.gov NCT07025239; Journal of Hematology & Oncology (QL1706 Ph1); Qilu NMPA NDA Aug 2023",
-      "added_cycle": "cycle49_mega 2026-06-25 (hr-resolver confirmed)"
+      "source": "ClinicalTrials.gov NCT07025239; Journal of Hematology & Oncology (QL1706 Ph1); Qilu NMPA NDA Aug 2023"
     },
     {
       "asset_name": "BNT314 (+ BNT327)",
@@ -2339,8 +2317,7 @@
       "primary_endpoint": "Per registration (safety/efficacy)",
       "biomarker_population": "Non-MSI-H / pMMR (MSS) mCRC per registry",
       "notes": "BNT327 = BioNTech PD-L1/VEGF-A bispecific (in-licensed from Biotheus) \u2014 same PD-(L)1/VEGF class as ivonescimab and RemeGen RC148; VEGF co-targeting is the hypothesis to overcome MSS IO-resistance. High-credibility sponsor. Probes the MSS IO-resistance frontier directly",
-      "source": "ClinicalTrials.gov NCT07079631",
-      "added_cycle": "cycle49_mega 2026-06-25 (hr-resolver confirmed)"
+      "source": "ClinicalTrials.gov NCT07079631"
     },
     {
       "asset_name": "WEF-001",
@@ -2356,8 +2333,7 @@
       "primary_endpoint": "Safety, tolerability, PK; preliminary efficacy",
       "biomarker_population": "Any KRAS-mutant (G12C/G12D/G12V/other NOT differentiated) \u2014 pan-KRAS-mutant by design",
       "notes": "WEF-001 is NOT an allele-specific KRAS inhibitor: it is an MMAE-payload albumin conjugate exploiting KRAS-mutant-driven enhanced pinocytosis for tumor-selective uptake (Synapse/ApexOnco). Multi-tumor FIH (PDAC, CRC, NSCLC, ovarian, cholangio, urothelial); CRC is one cohort. Allele-agnostic \u2014 KRAS-allele HR trigger resolved (no allele to disambiguate)",
-      "source": "ClinicalTrials.gov NCT07148128; Synapse/PatSnap WEF-001 drug profile",
-      "added_cycle": "cycle49_mega 2026-06-25 (hr-resolver confirmed)"
+      "source": "ClinicalTrials.gov NCT07148128; Synapse/PatSnap WEF-001 drug profile"
     },
     {
       "asset_name": "CEA-PRIT 2.0 (SPLIT Abs)",
@@ -2372,7 +2348,6 @@
       "primary_endpoint": "Part 1: Serum concentration of SPLIT Abs",
       "trial_start_date": "2026-06-16",
       "evidence_status": "no new efficacy yet",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07416552",
@@ -2397,7 +2372,6 @@
       "primary_endpoint": "Overall Survival",
       "trial_start_date": "2026-05-06",
       "evidence_status": "no new efficacy yet",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07549412",
@@ -2421,7 +2395,6 @@
       "primary_endpoint": "Incidence of DLT",
       "trial_start_date": "2026-06-30",
       "evidence_status": "no new efficacy yet",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07656038",
@@ -2445,7 +2418,6 @@
       "trial_start_date": "2026-07-01",
       "evidence_status": "no new efficacy yet",
       "modality_note": "pan-tumor basket; CRC is one of several GRPR+ tumor types",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07661641",
@@ -2470,7 +2442,6 @@
       "primary_endpoint": "Objective Response (confirmed CR/PR) per RECIST v1.1",
       "trial_start_date": "2025-12-31",
       "evidence_status": "no new efficacy yet",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07221357",
@@ -2496,7 +2467,6 @@
       "trial_start_date": "2026-01-20",
       "evidence_status": "no new efficacy yet",
       "modality_note": "WRN synthetic-lethality is MSI-H-selective; CRC is a major MSI-H tumor type",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07262619",
@@ -2520,7 +2490,6 @@
       "primary_endpoint": "Progression-free survival vs ablation alone",
       "trial_start_date": "2026-05",
       "evidence_status": "no new efficacy yet",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07321847",
@@ -2545,7 +2514,6 @@
       "trial_start_date": "2026-05-01",
       "evidence_status": "no new efficacy yet",
       "modality_note": "pan-tumor Ph1; CRC one of several types",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07566897",
@@ -2569,7 +2537,6 @@
       "primary_endpoint": "Confirmed ORR by BICR per RECIST v1.1 (2L cohort)",
       "evidence_status": "no new efficacy yet",
       "sponsor_note": "geo_origin_risk: US-origin (Verastem developer/sponsor on this NCT). Molecule originator alias GFH375 (GenFleet Therapeutics, China) \u2014 Verastem-licensed; SAME asset, do not duplicate",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07659795",
@@ -2593,7 +2560,6 @@
       "primary_endpoint": "Incidence/severity of AEs/SAEs and DLTs",
       "evidence_status": "no new efficacy yet",
       "sponsor_note": "geo_origin_risk: China-origin (Leadingtac / Shaoxing, Zhejiang). World-first oral KRAS G12D degrader to clear FDA IND (Apr 2026)",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07624214",
@@ -2618,7 +2584,6 @@
       "evidence_status": "no new efficacy yet",
       "modality_note": "pan-tumor FIH basket; CRC is one of several enrolled types \u2014 thin CRC-specific relevance (no dedicated CRC cohort)",
       "sponsor_note": "geo_origin_risk: China-origin (Innovent / Hangzhou). DuetTx dual-payload ADC platform",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07589205",
@@ -2646,7 +2611,6 @@
       "evidence_status": "no new efficacy yet",
       "asset_note": "Already-captured asset (asset_index: cadonilimab / AK104). This is a setting-expansion lifecycle row (neoadjuvant/adjuvant resectable), not a new molecule",
       "sponsor_note": "geo_origin_risk: China-origin (Akeso)",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07412613",
@@ -2670,7 +2634,6 @@
       "primary_endpoint": "Safety and tolerability",
       "evidence_status": "no new efficacy yet",
       "sponsor_note": "geo_origin_risk: China-origin (SmartNuclide; collaborator Tianjin Medical University Cancer Institute)",
-      "added_cycle": "cycle69_mega",
       "sources": [
         {
           "label": "ClinicalTrials.gov NCT07590856",
@@ -2696,8 +2659,7 @@
       "enrollment": 99,
       "source": "ClinicalTrials.gov NCT07391566 (org study ID LY01024/CT-CHN-102; Ph1b dose-escalation + Ph2 vs FOLFIRI+bev; Beijing Cancer Hospital; citation-verifier VERIFIED 2026-06-28)",
       "geo_origin_risk": "China-origin sponsor (Luye Pharma Group); identity CONFIRMED (asset-identity-verifier; alias LY01024, DISTINCT from Luye's published KRAS G12D inhibitor LPM5140276 -- do not merge). Monitor US development pathway",
-      "notes": "Exact RAS allele / molecular target UNDISCLOSED in CT.gov / Luye materials / Synapse / literature as of 2026-06-28 (re-checked this cycle). Broad RAS-mutant eligibility more consistent with a pathway/pan-RAS-class agent than single-allele selectivity, but unconfirmed -- no false-precision allele label. Registry internal inconsistency: design module shows NON_RANDOMIZED while brief summary describes Ph2 as 'randomized, controlled'",
-      "added_cycle": "cycle73_mega 2026-06-28 (hr-resolver)"
+      "notes": "Exact RAS allele / molecular target UNDISCLOSED in CT.gov / Luye materials / Synapse / literature as of 2026-06-28 (re-checked this cycle). Broad RAS-mutant eligibility more consistent with a pathway/pan-RAS-class agent than single-allele selectivity, but unconfirmed -- no false-precision allele label. Registry internal inconsistency: design module shows NON_RANDOMIZED while brief summary describes Ph2 as 'randomized, controlled'"
     },
     {
       "asset_name": "SHR-A1811 (trastuzumab rezetecan)",
@@ -2736,7 +2698,6 @@
       "estimated_readout": null,
       "primary_endpoint": "Progression-free survival (PFS) per RECIST v1.1",
       "evidence_status": "no efficacy data yet \u2014 Phase 3 registrational trial registration only (trial start 2026-03-05; org study ID INCA033890-303)",
-      "added_cycle": "cycle103",
       "notes": "Config-priority 1L MSS (checkpoint-cold) differentiation frontier. Originator: Merus Biclonics platform (Incyte\u2013Merus collaboration). Aliases: INCA033890 (same asset; CT.gov uses both spellings). Do NOT conflate with Incyte KRAS-G12D INCB161734 (separate molecule). Asset identity CONFIRMED DISTINCT + PD-1\u00d7TGF\u03b2R2 mechanism verified (asset-identity-verifier 2026-07-18); NCT VERIFIED all-attributes (citation-verifier 2026-07-18)",
       "source": "ClinicalTrials.gov NCT07284849"
     },
@@ -2781,7 +2742,7 @@
       "primary_endpoint": "PFS and ORR (dual primary) per RECIST v1.1 by BICR",
       "evidence_status": "no efficacy data yet \u2014 registration/design only",
       "geo_origin_risk": null,
-      "caveat": "Registration trial only. No efficacy, safety, or comparative conclusions beyond study design. Katie-approved no-efficacy pipeline add 2026-07-19",
+      "caveat": "Registration trial only. No efficacy, safety, or comparative conclusions beyond study design",
       "sources": [
         {
           "label": "NCT07702032 (petosemtamab vs cetuximab+chemo, 1L left-sided mCRC)",
@@ -2789,6 +2750,145 @@
           "type": "ctgov",
           "date": "2026-07",
           "quoted_metric": "Phase 3, NOT_YET_RECRUITING; primary endpoint PFS per RECIST v1.1 by BICR; RAS/BRAF wild-type, unresectable/metastatic, left-sided CRC"
+        }
+      ]
+    },
+    {
+      "asset_name": "IBI363",
+      "company": "Innovent Biologics (Suzhou) Co. Ltd",
+      "modality": "PD-1/IL-2alpha-bias bispecific antibody fusion protein",
+      "target": "PD-1 x IL-2 (IL-2alpha-bias)",
+      "combination": "IBI363 + bevacizumab vs investigator's choice (fruquintinib, trifluridine/tipiracil, or regorafenib)",
+      "phase": "Phase 3",
+      "indication_subtype": "2L+ pMMR/MSS metastatic colorectal cancer (MSI-H/dMMR excluded; prior anti-PD-(L)1/PD-L2 therapy excluded; ECOG 0-1; no active CNS mets)",
+      "nct": "NCT07722494",
+      "trial_name": "IBI363D301 -- IBI363 Combined With Bevacizumab for Advanced Colorectal Cancer",
+      "status": "not yet recruiting; estimated start 2026-07-20",
+      "estimated_readout": null,
+      "primary_endpoint": "Overall survival (randomization to death from any cause)",
+      "enrollment": 550,
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-07-26"
+      },
+      "note": "China-origin PD-1/IL-2alpha-bias bispecific expanding from melanoma/NSCLC/breast/SCLC/ovarian into CRC; first CRC pivotal trial for this asset. Biomarker population (pMMR/MSS, 2L+) confirmed via direct ClinicalTrials.gov API lookup on NCT07722494 since the feed summary did not state biomarker status (config indication_specific_hr_trigger on unstated biomarker subgroup resolved by this verification, not left ambiguous). Sponsor/company/asset identity cross-validated against melanoma/NSCLC/breast/SCLC/ovarian ETLMs, all of which already carry IBI363/Innovent Biologics with the same mechanism and geo_origin_risk -- no name-collision, NCT-clash, or sponsor-mismatch trigger present, so asset-identity-verifier delegation was not required (inline resolution per the cost-guard)",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07722494 (IBI363D301)",
+          "url": "https://clinicaltrials.gov/study/NCT07722494",
+          "type": "ctgov",
+          "date": "2026-07-26",
+          "quoted_metric": "Phase 3, N~550, primary endpoint OS; population pMMR/MSS 2L+ mCRC; arms IBI363+bevacizumab vs investigator's choice (fruquintinib/TAS-102/regorafenib)"
+        }
+      ]
+    },
+    {
+      "asset_name": "botensilimab + balstilimab (ROBBIN neoadjuvant colon cancer)",
+      "company": "Agenus",
+      "modality": "Fc-enhanced anti-CTLA-4 + anti-PD-1 mAbs",
+      "target": "CTLA-4 (Fc-enhanced) + PD-1",
+      "phase": "Phase 3",
+      "combination": "botensilimab + balstilimab (neoadjuvant, 6-8wk) vs immediate surgery",
+      "indication_subtype": "High-risk Stage II/III MSS (microsatellite-stable) colon cancer, neoadjuvant setting",
+      "nct": null,
+      "trial_name": "ROBBIN",
+      "status": "ANNOUNCED_NOT_REGISTERED \u2014 PLANNED (first patient enrolment targeted Q1 2027)",
+      "estimated_readout": null,
+      "primary_endpoint": null,
+      "enrollment": null,
+      "asset_status": "investigational in neoadjuvant Stage II/III MSS colon cancer (new setting); the same combo's refractory metastatic MSS mCRC program (BATTMAN) was discontinued 2026-07",
+      "pipeline_rationale": "Label-expanding new line/setting for the BOT+BAL combo - shifts from late-line metastatic refractory disease to earlier-line localized/neoadjuvant colon cancer following BATTMAN's discontinuation",
+      "lifecycle_stage": "new_line_setting",
+      "evidence_status": "no efficacy data yet - trial not yet enrolling",
+      "source": "Agenus IR 2026-07-13 (up to $340M private placement); FierceBiotech 2026-07-13; FDA aligned on population/arms/primary endpoint per company statement",
+      "registration_state_note": "No NCT registered as of 2026-08-05. Admitted under the standing editorial policy that a pipeline row may precede indication-specific registration on credible public sponsor commitment (Agenus announced the BATTMAN discontinuation and the ROBBIN pivot 2026-07-13), provided it carries ANNOUNCED_NOT_REGISTERED and no registration-dependent claims"
+    },
+    {
+      "asset_name": "BL-M07D1",
+      "company": "Sichuan Baili Pharmaceutical Co., Ltd. (collaborator: Baili-Bio (Chengdu) Pharmaceutical Co., Ltd.)",
+      "modality": "HER2-targeted antibody-drug conjugate (ADC)",
+      "target": "HER2",
+      "combination": null,
+      "phase": "Phase 3",
+      "indication_subtype": "HER2 IHC3+ advanced/metastatic colorectal cancer; 3L+ after prior treatment failure with oxaliplatin, fluorouracil and irinotecan",
+      "nct": "NCT07730489",
+      "trial_name": "BL-M07D1 vs Physician's Choice Therapy in HER2 IHC3+ Advanced Colorectal Cancer",
+      "status": "not yet recruiting; estimated start August 2026",
+      "estimated_readout": null,
+      "primary_endpoint": "BICR-assessed Progression-Free Survival (PFS)",
+      "comparator": "Investigator's choice: regorafenib, fruquintinib, or TAS-102",
+      "enrollment": 130,
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-08-09"
+      },
+      "note": "China-origin HER2 ADC entering Phase 3 in HER2 IHC3+ mCRC (config tracked_target_class HER2; current bar is tucatinib+trastuzumab 38% ORR (MOUNTAINEER) but this trial reports PFS, not ORR, and carries no data yet, so no calibration-bar comparison applies this cycle). Biomarker (HER2 IHC3+) and eligibility (prior oxaliplatin/fluorouracil/irinotecan failure) confirmed via direct ClinicalTrials.gov API lookup since the feed summary understated eligibility detail. Asset identity resolved inline: clean asset_index MISS, no name collision/NCT clash/sponsor mismatch -- net-new asset, verifier delegation not required",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07730489",
+          "url": "https://clinicaltrials.gov/study/NCT07730489",
+          "type": "ctgov",
+          "date": "2026-08-09",
+          "quoted_metric": "Phase 3, N=130, primary endpoint BICR-PFS; HER2 IHC3+ mCRC after oxaliplatin/fluorouracil/irinotecan failure; BL-M07D1 vs regorafenib/fruquintinib/TAS-102"
+        }
+      ]
+    },
+    {
+      "asset_name": "zanzalintinib (XL092) +/- MK-3475A (pembrolizumab + berahyaluronidase alfa SC)",
+      "company": "Exelixis (collaborator: Merck Sharp & Dohme LLC)",
+      "modality": "oral multi-targeted TKI (VEGFR2/MET/AXL/MER/TYRO3) +/- subcutaneous PD-1 inhibitor co-formulation",
+      "target": "VEGFR2/MET/AXL/MER/TYRO3 (TAM family) +/- PD-1",
+      "combination": "Zanzalintinib monotherapy, or zanzalintinib + MK-3475A (pembrolizumab + berahyaluronidase alfa SC), vs placebo",
+      "phase": "Phase 3",
+      "trial_name": "STELLAR-316",
+      "indication_subtype": "Adjuvant, resected Stage II/III colorectal adenocarcinoma, ctDNA-positive molecular residual disease (MRD) by Natera Signatera tissue-informed assay; pMMR/MSS or MSI-low documented; no radiographic disease at baseline",
+      "nct": "NCT07750158",
+      "status": "not yet recruiting; estimated start August 2026",
+      "estimated_readout": null,
+      "primary_endpoint": "Disease-Free Survival (DFS), each active arm vs placebo, assessed up to 24 months",
+      "secondary_endpoints": "ctDNA clearance rate, Overall Survival, treatment-emergent adverse events, inter-arm DFS comparisons",
+      "enrollment": 600,
+      "geo_origin_risk": null,
+      "note": "New adjuvant/ctDNA-MRD-positive setting for zanzalintinib -- distinct trial/line/data-cut from the already-captured STELLAR-303 entry (NCT05425940, 2L+ metastatic MSS mCRC, zanzalintinib+atezolizumab vs regorafenib). This is treatment-ESCALATION guided by ctDNA-MRD-positivity, not the DYNAMIC-paradigm de-escalation the config's ctDNA HR trigger targets -- that trigger does not fire since no efficacy/de-escalation claim is made, only a trial-start addition. Biomarker definition (Natera Signatera ctDNA-MRD assay, resected Stage II/III, pMMR/MSS/MSI-low) confirmed via direct ClinicalTrials.gov API lookup since the feed summary did not state the assay or disease stage. Identity resolved inline: same molecule/sponsor as the captured STELLAR-303 entry, no NCT clash or sponsor mismatch -- a new, distinct trial/setting, so this is an additive array_append (new pipeline row), not an update to the STELLAR-303 entry",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07750158 (STELLAR-316)",
+          "url": "https://clinicaltrials.gov/study/NCT07750158",
+          "type": "ctgov",
+          "date": "2026-08-09",
+          "quoted_metric": "Phase 3, N=600, primary endpoint DFS; ctDNA-positive (Natera Signatera) resected Stage II/III CRC, pMMR/MSS/MSI-low; zanzalintinib +/- pembrolizumab/berahyaluronidase alfa vs placebo"
+        }
+      ]
+    },
+    {
+      "asset_name": "SYS6090",
+      "company": "CSPC Megalith Biopharmaceutical Co., Ltd",
+      "modality": "undisclosed mechanism (CT.gov registration does not state target/MOA)",
+      "target": "undisclosed",
+      "combination": "SYS6090 + bevacizumab; SYS6090 + bevacizumab + mFOLFOX6; SYS6090 + bevacizumab + FOLFOXIRI; comparators = regorafenib or FOLFOXIRI + bevacizumab",
+      "phase": "Phase Ib/II",
+      "indication_subtype": "Unresectable advanced/metastatic CRC, pMMR (IHC) or MSS (NGS/PCR) -- checkpoint-cold population; Cohort 1 = 2L/3L (<=2 prior systemic therapies), Cohort 2 = 1L treatment-naive",
+      "nct": "NCT07750041",
+      "trial_name": "A Phase Ib/II Study of SYS6090 Combination Therapy in Advanced Colorectal Cancer",
+      "status": "not yet recruiting; estimated start August 2026",
+      "estimated_readout": null,
+      "primary_endpoint": "Phase Ib: Recommended Phase 2 Dose (RP2D), safety/tolerability; Phase II: Objective Response Rate (ORR) and Progression-Free Survival (PFS)",
+      "enrollment": 260,
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-08-09"
+      },
+      "note": "China-origin asset entering a substantial multi-cohort (1L + 2L/3L, N=260) program in the pMMR/MSS checkpoint-cold population -- the config's tpp_priority_segment_hint names MSS as an active differentiation frontier. Target/mechanism undisclosed in the CT.gov registration -- flagged as a data gap rather than guessed. No efficacy data yet (dosing not started), so no calibration bar comparison applies this cycle. Biomarker definition (pMMR by IHC or MSS by NGS/PCR) confirmed via direct ClinicalTrials.gov API lookup since the feed summary did not state it",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07750041",
+          "url": "https://clinicaltrials.gov/study/NCT07750041",
+          "type": "ctgov",
+          "date": "2026-08-09",
+          "quoted_metric": "Phase Ib/II, N=260; SYS6090 + bevacizumab +/- mFOLFOX6/FOLFOXIRI vs regorafenib/FOLFOXIRI+bevacizumab; pMMR/MSS 1L and 2L/3L cohorts"
         }
       ]
     }
@@ -3004,7 +3104,7 @@
   ],
   "efficacy_benchmarks_by_line": {
     "1L_MSS_RAS-WT_left-sided": "panitumumab + mFOLFOX6 mOS 37.9 mo (PARADIGM PMID 37071094); cetuximab+FOLFIRI mOS 28.7 mo (FIRE-3, PMID 25088940); CRYSTAL cetuximab+FOLFIRI mOS 23.5 vs 20.0 mo KRAS-WT (PMID 21502544)",
-    "1L_MSS_RAS-mut_or_right-sided": "bevacizumab + FOLFOX/FOLFIRI mOS ~25 mo (modern series); FOLFOXIRI+bev mOS 27.4 mo (TRIBE PMID 26338525)",
+    "1L_MSS_RAS-mut_or_right-sided": "bevacizumab + FOLFOX/FOLFIRI mOS ~25 mo (modern series); FOLFOXIRI+bev mOS 29.8 mo (TRIBE PMID 26338525)",
     "1L_MSI-H_dMMR": "nivolumab+ipilimumab CheckMate 8HW: 24-mo PFS 72% (HR 0.21 vs chemo) (PMID 39602630); pembrolizumab KEYNOTE-177 mOS 77.5 mo (5-yr follow-up, PMID 39631622; registrational PMID 33264544)",
     "1L_BRAF_V600E": "encorafenib + cetuximab + mFOLFOX6 (BREAKWATER): mOS 30.3 vs 15.1 mo, ORR 60.9% (PMID 40444708)",
     "2L_MSS_post-FOLFOX_bev": "FOLFIRI+ramucirumab mOS 13.3 mo (RAISE PMID 25877855) [SOC anchor, 2015]; FOLFIRI+ziv-aflibercept mOS 13.5 mo (VELOUR PMID 22949147) [SOC anchor, 2012]; FOLFIRI+bev continuation mOS 11.2 mo (ML18147)",
@@ -3013,9 +3113,9 @@
     "2L_HER2+_RAS-WT": "tucatinib+trastuzumab ORR 38%, mPFS 8.2 mo, mOS 24.1 mo (MOUNTAINEER PMID 37142372); T-DXd ORR 37.8% (5.4 mg/kg) / 27.5% (6.4 mg/kg), mPFS 5.8 / 5.5 mo (DESTINY-CRC02 PMID 39116902); DESTINY-CRC01 cohort A ORR 45.3%, mPFS 6.9 mo (PMID 33961795)",
     "3L+_refractory": "TAS-102+bev mOS 10.8 mo (SUNLIGHT PMID 37133585); fruquintinib mOS 7.4 mo (FRESCO-2 PMID 37331369); regorafenib mOS 6.4 mo (CORRECT PMID 23177514)",
     "neoadjuvant_rectal_TNT": "PRODIGE-23 FOLFIRINOX\u2192chemoRT DFS HR 0.69 (PMID 33862000); RAPIDO short-course RT\u2192CAPOX; PROSPECT FOLFOX-only non-inferior for select pT3 (PMID 37272534)",
-    "neoadjuvant_dMMR_colon": "NICHE-2 nivolumab+ipilimumab pCR 67%, MPR 95% (PMID 38838311)",
-    "neoadjuvant_dMMR_rectal": "Cercek dostarlimab 14/14 (100%) clinical complete response sustained 6+ months (PMID 35660797)",
-    "adjuvant_Stage_III": "FOLFOX \u00d7 6 mo standard (MOSAIC PMID 15175436); CAPOX 3 mo non-inferior in low-risk (IDEA); atezolizumab+FOLFOX in dMMR pending (ATOMIC NCT02912559)"
+    "neoadjuvant_dMMR_colon": "NICHE-2 nivolumab+ipilimumab pCR 68%, MPR 95% (PMID 38838311)",
+    "neoadjuvant_dMMR_rectal": "Cercek dostarlimab 12/12 (100%) clinical complete response sustained 6+ months (PMID 35660797)",
+    "adjuvant_Stage_III": "FOLFOX \u00d7 6 mo standard (MOSAIC PMID 15175436); CAPOX 3 mo non-inferior in low-risk (IDEA); atezolizumab+FOLFOX in dMMR read out positive DFS at ASCO 2025 (NEJM PMID 41880612) (ATOMIC NCT02912559)"
   },
   "competitive_dynamics": {
     "dominant_companies": [
@@ -3172,11 +3272,12 @@
       "nct": "NCT04744831",
       "sources": [
         {
-          "label": "NCT04744831",
-          "url": "https://clinicaltrials.gov/study/NCT04744831",
+          "label": "PMID 33961795",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33961795/",
           "type": "ctgov",
           "date": "2024",
-          "quoted_metric": "ORR 45%; mPFS 6.9 mo"
+          "quoted_metric": "ORR 45%; mPFS 6.9 mo",
+          "superseded_label": "NCT04744831"
         },
         {
           "label": "ASCO GI 2024 / Lancet Oncol",
@@ -3275,11 +3376,12 @@
       "nct": "NCT05608044",
       "sources": [
         {
-          "label": "NCT05608044",
-          "url": "https://clinicaltrials.gov/study/NCT05608044",
+          "label": "PMID 38871975",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38871975/",
           "type": "ctgov",
           "date": "2024",
-          "quoted_metric": "ORR 17%; mOS 20.9 mo"
+          "quoted_metric": "ORR 17%; mOS 20.9 mo",
+          "superseded_label": "NCT05608044"
         },
         {
           "label": "ASCO 2024 / Nat Med 2024",
@@ -3354,14 +3456,15 @@
       "trial": "CodeBreaK 301 \u2014 ctDNA VAF clearance biomarker analysis",
       "conference": "ASCO 2026",
       "finding": "n=142 evaluable; \u226580% VAF clearance: 77.3% (soto 960mg) vs 15% (IC) | Complete VAF clearance: 45.5% (960mg) vs 5.0% (IC) | mPFS with \u226580% clearance: 5.8 mo (960mg) vs 2.0 mo (IC); clears config bar \u22655.6mo",
-      "source": "ASCO 2026 Annual Meeting oral abstract (event_id 2061, 2026-06-02)",
+      "source": "ASCO 2026 Annual Meeting oral abstract (2026-06-02)",
       "sources": [
         {
-          "label": "ASCO 2026 \u2014 Sotorasib CodeBreaK 301 ctDNA analysis",
-          "url": "https://clinicaltrials.gov/study/NCT04938167",
+          "label": "NCT05198934",
+          "url": "https://clinicaltrials.gov/study/NCT05198934",
           "type": "conference_abstract",
           "date": "2026-06-02",
-          "quoted_metric": "mPFS 5.8 mo (960mg, \u226580% VAF clearance) vs 2.0 mo IC; VAF clearance \u226580%: 77.3% vs 15%"
+          "quoted_metric": "mPFS 5.8 mo (960mg, \u226580% VAF clearance) vs 2.0 mo IC; VAF clearance \u226580%: 77.3% vs 15%",
+          "superseded_label": "ASCO 2026 \u2014 Sotorasib CodeBreaK 301 ctDNA analysis"
         }
       ]
     }
@@ -3372,13 +3475,8 @@
       "assessment_2026_06": "US legislative exposure for CRC (assessment 2026-06): (1) IRA Medicare drug-price negotiation \u2014 ENACTED; CRC-class agents face negotiation eligibility on standard small-molecule (~9y) / biologic (~13y) post-approval timelines. (2) CMS proposed a permanent IRA negotiation framework (PROPOSED, pre-finalization 2026). (3) Colorado state drug-import plan \u2014 ENACTED. (4) COINS Act / BIOSECURE-family bills + IV-to-SC Medicare reimbursement rule \u2014 PROPOSED/pre-finalization (Category-3 watch, not yet actionable). Enacted items encoded; proposed items flagged"
     },
     "regulatory_pathway_risks": {},
-    "jurisdictional_considerations": {},
-    "katie_directives": {
-      "china_origin_asset_policy_S64": "Keep China-origin assets in pipeline_assets despite COINS Act risk. Log regulatory risk as annotation on the asset, not as basis for exclusion. Class trends + cross-asset patterns go to ecosystem_knowledge.md, not here",
-      "fda_approval_scope_S64": "FDA approvals are line/setting/tumor-type specific. When proposing pipeline_assets -> approved_therapies moves, specify the exact approval scope and keep the asset in pipeline_assets for any other setting/line/tumor where development continues"
-    },
-    "ratified_by_katie": {
-      "date": "2026-06-08"
-    }
-  }
+    "jurisdictional_considerations": {}
+  },
+  "preclinical_watchlist": [],
+  "novel_targets": []
 }

@@ -3,7 +3,7 @@
   "indication_code": "mm",
   "icd10": "C90.0",
   "nci_thesaurus_id": "C3242",
-  "last_updated": "2026-06-13",
+  "last_updated": "2026-07-27",
   "epidemiology": {
     "global_incidence_annual": 190000,
     "us_incidence_annual": 36110,
@@ -892,6 +892,47 @@
           "pmid": "23025991"
         }
       ]
+    },
+    {
+      "drug_name": "iberdomide",
+      "brand": "Zenbexus",
+      "company": "Bristol Myers Squibb",
+      "modality": "small molecule CELMoD (cereblon E3 ligase modulator / molecular-glue degrader)",
+      "target": "Cereblon E3 ligase modulator (Ikaros/Aiolos degradation)",
+      "indication_line": "RRMM, >=1 prior line including a proteasome inhibitor and an immunomodulatory agent; ONLY in combination with daratumumab and hyaluronidase-fihj + dexamethasone (ZDd/IberDd). FDA ACCELERATED APPROVAL - continued approval contingent on confirmatory PFS (dual primary, immature)",
+      "fda_approval_date": "2026-08-13",
+      "ema_approval_date": null,
+      "key_efficacy": {
+        "orr_pct": null,
+        "median_pfs_mo": null,
+        "median_os_mo": null,
+        "mrd_negative_cr_pct": 41
+      },
+      "trial": "EXCALIBER-RRMM - Phase 3, two-stage, randomized, multicenter, open-label; total N=939 randomized. Primary efficacy population = first 420 randomized to iberdomide 1 mg + Dd (n=207) vs DVd (n=213) across stages 1-2. Excluded anti-CD38-refractory and bortezomib-refractory patients",
+      "nct": "NCT04975997",
+      "source": "FDA accelerated approval notification 2026-08-13 (Zenbexus/iberdomide + daratumumab and hyaluronidase-fihj + dexamethasone); ClinicalTrials.gov NCT04975997. Reviewed under Project Orbis with Swissmedic; priority review; breakthrough therapy and orphan drug designations",
+      "sources": [
+        {
+          "id": "fda_aa_iberdomide_20260813",
+          "type": "fda_approval_notification",
+          "label": "FDA grants accelerated approval to iberdomide with daratumumab and hyaluronidase-fihj and dexamethasone for multiple myeloma (2026-08-13)",
+          "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-iberdomide-daratumumab-and-hyaluronidase-fihj-and-dexamethasone"
+        },
+        {
+          "id": "ctgov_nct04975997",
+          "type": "clinicaltrials_gov",
+          "label": "EXCALIBER-RRMM: Phase 3 iberdomide + daratumumab + dexamethasone (IberDd) vs daratumumab + bortezomib + dexamethasone (DVd) in RRMM",
+          "url": "https://clinicaltrials.gov/study/NCT04975997",
+          "nct": "NCT04975997"
+        },
+        {
+          "id": "bms_pr_zenbexus_20260813",
+          "type": "press_release",
+          "label": "BMS: U.S. FDA grants accelerated approval to ZENBEXUS (iberdomide) in combination with daratumumab and hyaluronidase-fihj and dexamethasone (ZDd)",
+          "url": "https://news.bms.com/news/corporate-financial/2026/U-S--FDA-Grants-Accelerated-Approval-to-Bristol-Myers-Squibbs-First-CELMoD-Therapy-ZENBEXUS-in-Combination-with-Daratumumab-and-Hyaluronidase-fihj-and-Dexamethasone-ZDd-for-Patients-with-Multiple-Myeloma-as-Early-as-First-Relapse/default.aspx"
+        }
+      ],
+      "note": "FIRST FDA-APPROVED CELMoD (cereblon E3 ligase modulator) in multiple myeloma, and the first RRMM approval based on MRD-negative CR as the registrational endpoint. NO monotherapy indication was approved - the label is combination-only. ORR / mPFS / mOS are NOT publicly disclosed as of 2026-08-14 (ORR is a secondary endpoint; PFS is the co-dual primary and remains immature - CT.gov primary completion 2027-11-16), so those fields are left null rather than imputed. Boxed warning: embryo-fetal toxicity and serious venous and arterial thromboembolism; warnings for neutropenia, infections, second primary malignancies. Restricted distribution via ZENBEXUS REMS"
     }
   ],
   "pipeline_assets": [
@@ -1812,7 +1853,7 @@
       "estimated_readout": null,
       "primary_endpoint": "efficacy vs teclistamab",
       "enrollment": null,
-      "source": "WS12 cycle50; CT.gov NCT07518186 verified 2026-06-22; INN ramantamig"
+      "source": "CT.gov NCT07518186 verified 2026-06-22; INN ramantamig"
     },
     {
       "asset_name": "linvoseltamab (NDMM, transplant-ineligible)",
@@ -1828,7 +1869,7 @@
       "estimated_readout": null,
       "primary_endpoint": "PFS (frontline)",
       "enrollment": null,
-      "source": "WS12 cycle50; CT.gov NCT06932562 verified 2026-06-22 (EMN-sponsored, Regeneron design)"
+      "source": "CT.gov NCT06932562 verified 2026-06-22 (EMN-sponsored, Regeneron design)"
     },
     {
       "asset_name": "TQB2934",
@@ -1878,7 +1919,7 @@
       "estimated_readout": null,
       "primary_endpoint": "safety/tolerability/PK (Ph1 dose-finding)",
       "enrollment": null,
-      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the KB's speculative 'BCMA ADC' framing is unsupported by any primary source; do not carry it forward",
+      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the knowledge base's speculative 'BCMA ADC' framing is unsupported by any primary source; do not carry it forward",
       "geo_origin_risk": "China \u2014 Hengrui/Suncadia (Suzhou). Per-asset geo flag (Framing A, 2026-06-18)",
       "sponsor_note": "China-origin; sponsor/origin verified, mechanism undisclosed",
       "source": [
@@ -1905,7 +1946,7 @@
       "estimated_readout": null,
       "primary_endpoint": "safety/tolerability/PK (Ph1 dose-escalation + expansion)",
       "enrollment": "~99",
-      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the KB 'bispecific' framing is",
+      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the knowledge base 'bispecific' framing is",
       "geo_origin_risk": "China \u2014 Jiangsu Hengrui (Lianyungang). Per-asset geo flag (Framing A, 2026-06-18)",
       "sponsor_note": "China-origin; sponsor/origin verified, mechanism undisclosed",
       "source": [
@@ -1990,7 +2031,7 @@
       "nct": "NCT07679919",
       "trial_name": "Allogeneic (gamma/delta) BAFF CAR-T (LMY-922), refractory heme malignancies",
       "status": "NOT_YET_RECRUITING - FIH trial-start, no efficacy yet",
-      "sponsor_note": "DISTINCT from the KB-only autologous 'BAFF-ligand CAR-T' entry (= LMY-920). LMY-922 = allogeneic gamma/delta platform, verified MM cohort. Do NOT merge onto the autologous entry",
+      "sponsor_note": "DISTINCT from the knowledge-base-only autologous 'BAFF-ligand CAR-T' entry (= LMY-920). LMY-922 = allogeneic gamma/delta platform, verified MM cohort. Do NOT merge onto the autologous entry",
       "sources": [
         {
           "label": "CT.gov NCT07679919",
@@ -2052,7 +2093,7 @@
           "quoted_metric": "First patient dosed in Phase 3 trial of IBI3003 (GPRC5D/BCMA/CD3 trispecific antibody) for RRMM"
         }
       ],
-      "source": "WS12 cycle21_mega; CT.gov NCT07623798 (trial_start event, sponsor stated directly in source -- not inferred from name prefix). Mechanism (GPRC5D x BCMA x CD3 trispecific, Sanbody platform) confirmed via Innovent press materials, WebSearch 2026-07-21"
+      "source": "CT.gov NCT07623798 (trial_start event, sponsor stated directly in source -- not inferred from name prefix). Mechanism (GPRC5D x BCMA x CD3 trispecific, Sanbody platform) confirmed via Innovent press materials, WebSearch 2026-07-21"
     }
   ],
   "mechanism_landscape": [
@@ -2506,7 +2547,7 @@
       ]
     },
     "RRMM_t1114_targeted": {
-      "best_orr_pct": 80,
+      "best_orr_pct": 62,
       "best_pfs_mo": 9.9,
       "best_os_mo": null,
       "agent": "venetoclax + Vd vs Vd in t(11;14) (CANOVA)",
@@ -2517,9 +2558,12 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/41370738/",
           "type": "pubmed",
           "date": "2024",
-          "quoted_metric": "ORR 80%, mPFS 9.9mo"
+          "quoted_metric": "ORR 62% (venetoclax-dex) vs 35% (pomalidomide-dex); mPFS 9.9mo; PFS HR 0.823 (95% CI 0.596-1.136), P=.24 - primary endpoint NOT met"
         }
-      ]
+      ],
+      "orr_pct": 62,
+      "comparator_orr_pct": 35,
+      "primary_endpoint_met": false
     },
     "1L_relapse_RRMM_talquetamab-dara_MonumenTAL-3": {
       "regimen": "talquetamab + daratumumab \u00b1 pomalidomide (Tal-D / Tal-DP) vs DPd; RRMM after \u22651 prior line",
@@ -2548,7 +2592,7 @@
       "pfs_18mo_pct": "69.8% (teclistamab) vs 26.9% (PVd/Kd)",
       "trial": "MajesTEC-9",
       "nct": "NCT05572515",
-      "disambiguation_note": "HR 0.29 belongs to MajesTEC-9 (teclistamab MONOtherapy, earlier-line RRMM) \u2014 NOT MajesTEC-7 (NCT05552222, frontline transplant-ineligible NDMM combo Tec-DR/Tal-DR vs DRd; distinct trial, no mature PFS/HR publicly disclosed). 'best-in-class BCMA' framing dropped per Katie correction 2026-07-19",
+      "disambiguation_note": "HR 0.29 belongs to MajesTEC-9 (teclistamab MONOtherapy, earlier-line RRMM) \u2014 NOT MajesTEC-7 (NCT05552222, frontline transplant-ineligible NDMM combo Tec-DR/Tal-DR vs DRd; distinct trial, no mature PFS/HR publicly disclosed). These data are not presented as a 'best-in-class' claim among BCMA-targeted agents",
       "sources": [
         {
           "label": "J&J press release 2026-05-29 (TECVAYLI monotherapy superior PFS/OS)",
@@ -2604,11 +2648,10 @@
       "Carfilzomib (Kyprolis) \u2014 US patents extend to ~2027; biosimilars expected late 2020s",
       "Pomalidomide (Pomalyst) \u2014 US patents extend to ~2027-2028"
     ],
-    "belantamab_schedule_optimisation_note": "Belantamab mafodotin Part 2 dosing schedule (ASCO 2026 NDMM combination cohort, NCT04091126) eliminates Grade \u22653 keratopathy (0% Part 2 vs 0.6% Part 1) and reduces Grade \u22652 keratopathy to 6.7-10.6% of assessments. Combined with the DREAMM-7 and DREAMM-8 commercial relistings (2025) and the DREAMM-10 NDMM combination programme, the keratopathy overhang that drove the 2022 US withdrawal is now substantially mitigated for combination regimens. Strategic implication: belantamab is no longer toxicity-disadvantaged vs BCMA bispecifics in the combination setting; competition shifts to durability, sequencing, and commercial terms. [Katie 2026-06-11: option (b) \u2014 narrative note, no generational_framing schema mutation]",
+    "belantamab_schedule_optimisation_note": "Belantamab mafodotin Part 2 dosing schedule (ASCO 2026 NDMM combination cohort, NCT04091126) eliminates Grade \u22653 keratopathy (0% Part 2 vs 0.6% Part 1) and reduces Grade \u22652 keratopathy to 6.7-10.6% of assessments. Combined with the DREAMM-7 and DREAMM-8 commercial relistings (2025) and the DREAMM-10 NDMM combination programme, the keratopathy overhang that drove the 2022 US withdrawal is now substantially mitigated for combination regimens. Strategic implication: belantamab is no longer toxicity-disadvantaged vs BCMA bispecifics in the combination setting; competition shifts to durability, sequencing, and commercial terms",
     "access_economics_axis": {
       "summary": "Cost-effectiveness / access is now a distinct competitive lever in BCMA bispecific-vs-CAR-T positioning (alongside efficacy, safety, sequencing). ASCO 2026 teclistamab + daratumumab cost-effectiveness analysis: ICER $82,074/QALY vs $150,000/QALY WTP threshold; 88.9% of PSA simulations favour tec+dara at the $150K threshold; total lifetime cost $445K (tec+dara) vs $350K (DPd/DVd). Framed against the 'CAR-T premium' (apheresis bottleneck, manufacturing cost, bridging therapy), bispecifics carry an access-economics advantage in the broader-uptake setting",
-      "watch": "Single datapoint \u2014 promote to a fuller axis if ESMO/EHA add comparable BCMA CAR-T cost-effectiveness data",
-      "katie_authored": "2026-06-11: option (b) \u2014 sub-section under competitive_dynamics, not a top-level section (per S77 house rules: single ICER datapoint insufficient for top-level mutation)"
+      "watch": "Single datapoint \u2014 promote to a fuller axis if ESMO/EHA add comparable BCMA CAR-T cost-effectiveness data"
     },
     "review_framing_notes": {
       "mrna_cart_third_bcma_class": "Per NRDD 2026 (Chien et al., DOI 10.1038/s41573-026-01459-7) the BCMA-CAR-T competitive map in MM now spans three classes: (1) lentiviral autologous CAR-T (ide-cel, cilta-cel) \u2014 durable but requires lymphodepletion + ICU-adjacent monitoring; (2) BCMA bispecifics (teclistamab, elranatamab) \u2014 off-the-shelf; (3) mRNA-encoded CAR-T (Cartesian's Descartes-15) \u2014 transient, no-preconditioning, outpatient-friendly, repeat-dose feasible. The bet is that transient-but-repeatable yields a different risk/benefit profile that could shift earlier-line use. Cross-platform readacross: Descartes-08 reportedly showed ~83% month-12 response in gMG (Ph2b) despite transient CAR expression",
@@ -2616,7 +2659,7 @@
       "cd38_rlt_cross_modality_readacross": "RLT modality umbrella review (NRDD, DOI 10.1038/d41573-025-00096-w, Fig 2b) shows clinical-stage radioligand-therapy activity at CD38 \u2014 the same validated MM target as daratumumab/isatuximab (antibody class) \u2014 i.e. cross-modality redeployment of a validated MM target into an RLT format. Asset-level details (sponsor, INN, NCT) NOT provided by the review; no asset added to pipeline_assets to avoid fabrication. [framing only]"
     },
     "frontline_bispecific_wave_note": "Watch-flag: linvoseltamab (Lynozyfic, Regeneron) is an approved BCMA bispecific \u2014 FDA accelerated approval 2025-07-02 at >=4 prior lines (PI + IMiD + anti-CD38 mAb; NOT '3L+'), based on LINKER-MM1. Its frontline transplant-ELIGIBLE NDMM study NCT07428369 (Linvo-VR +/- ASCT vs DVRd) is WITHDRAWN on CT.gov (never recruited) \u2014 so this specific frontline-bispecific entrant has PULLED its trial. No benchmark write",
-    "frontline_trispecific_wave_note": "Watch signal (hr-resolver 2026-07-23; zero-efficacy, context only -- no benchmark write). A frontline/earlier-line TRIspecific wave is emerging in MM: (1) ramantamig (BCMA x GPRC5D x CD3 trispecific) + daratumumab enters 1L NDMM non-transplant via TRIlogy-7 (NCT07665450, NOT_YET_RECRUITING, no efficacy yet) -- the first trispecific to target 1L NDMM; (2) IBI3003 (GPRC5D x BCMA x CD3 trispecific, Innovent) is now in Phase 3 RRMM. Two assets make this a class-wide trend rather than a single-asset outlier: a dual-antigen-escape trispecific could challenge the quadruplet-backbone (IMiD/PI/CD38) frontline narrative IF efficacy lands. Per standing policy this does NOT displace the quadruplet benchmark anchors (IMROZ Isa-VRd, CEPHEUS Dara-VRd ORR 91%, MAIA D-Rd 61.9mo) on zero-efficacy trial-starts -- reassess at first efficacy readout"
+    "frontline_trispecific_wave_note": "Watch signal (2026-07-23; zero-efficacy, context only -- no benchmark write). A frontline/earlier-line TRIspecific wave is emerging in MM: (1) ramantamig (BCMA x GPRC5D x CD3 trispecific) + daratumumab enters 1L NDMM non-transplant via TRIlogy-7 (NCT07665450, NOT_YET_RECRUITING, no efficacy yet) -- the first trispecific to target 1L NDMM; (2) IBI3003 (GPRC5D x BCMA x CD3 trispecific, Innovent) is now in Phase 3 RRMM. Two assets make this a class-wide trend rather than a single-asset outlier: a dual-antigen-escape trispecific could challenge the quadruplet-backbone (IMiD/PI/CD38) frontline narrative IF efficacy lands. Per standing policy this does NOT displace the quadruplet benchmark anchors (IMROZ Isa-VRd, CEPHEUS Dara-VRd ORR 91%, MAIA D-Rd 61.9mo) on zero-efficacy trial-starts -- reassess at first efficacy readout"
   },
   "recent_conference_readouts": [
     {
@@ -2636,11 +2679,12 @@
           "quoted_metric": "OS HR 0.55; mPFS not reached"
         },
         {
-          "label": "PMID 37272512",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/37272512/",
+          "label": "PMID 41519141",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41519141/",
           "type": "pubmed",
           "date": "2025-12",
-          "quoted_metric": "OS HR 0.55; mPFS not reached"
+          "quoted_metric": "OS HR 0.55; mPFS not reached",
+          "superseded_label": "PMID 37272512"
         },
         {
           "label": "ASH 2025 oral session",
@@ -2700,11 +2744,12 @@
           "quoted_metric": "mPFS 36.6 vs 13.4 mo; OS HR 0.58"
         },
         {
-          "label": "PMID 38828933",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/38828933/",
+          "label": "PMID 40680754",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40680754/",
           "type": "pubmed",
           "date": "2025-12",
-          "quoted_metric": "mPFS 36.6 vs 13.4 mo; OS HR 0.58"
+          "quoted_metric": "mPFS 36.6 vs 13.4 mo; OS HR 0.58",
+          "superseded_label": "PMID 38828933"
         },
         {
           "label": "ASH 2025",
@@ -2878,11 +2923,12 @@
           "quoted_metric": "ORR 74%; ORR 64%"
         },
         {
-          "label": "PMID 36507686",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/36507686/",
+          "label": "PMID 40090350",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40090350/",
           "type": "pubmed",
           "date": "2024-12",
-          "quoted_metric": "ORR 74%; ORR 64%"
+          "quoted_metric": "ORR 74%; ORR 64%",
+          "superseded_label": "PMID 36507686"
         },
         {
           "label": "ASH 2024 / Nat Med 2025",
@@ -2951,7 +2997,7 @@
       "pmid": null,
       "nct": "NCT04181827",
       "date": "2026-06",
-      "source": "ASCO 2026 Annual Meeting, event_id 233",
+      "source": "ASCO 2026 Annual Meeting",
       "sources": [
         {
           "label": "NCT04181827",
@@ -2977,14 +3023,15 @@
       "pmid": null,
       "nct": "NCT04091126",
       "date": "2026-06",
-      "source": "ASCO 2026 Annual Meeting, event_id 241",
+      "source": "ASCO 2026 Annual Meeting",
       "sources": [
         {
-          "label": "NCT04091126",
-          "url": "https://clinicaltrials.gov/study/NCT04091126",
-          "type": "ctgov",
+          "label": "PMID 41346230",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41346230/",
+          "type": "pubmed",
           "date": "2026-06",
-          "quoted_metric": "ORR 91.7%; MRD negativity 81.3%"
+          "quoted_metric": "ORR 97.6% (RP2D); MRD negativity 50.0% (33/66)",
+          "superseded_label": "NCT04091126"
         },
         {
           "label": "ASCO 2026",
@@ -3003,7 +3050,7 @@
       "pmid": null,
       "nct": null,
       "date": "2026-06",
-      "source": "ASCO 2026 Annual Meeting, event_id 231",
+      "source": "ASCO 2026 Annual Meeting",
       "sources": [
         {
           "label": "ASCO 2026",
@@ -3022,7 +3069,7 @@
       "pmid": "33980831",
       "nct": "NCT02514668",
       "date": "2026-06",
-      "source": "ASCO 2026 Annual Meeting, event_id 219",
+      "source": "ASCO 2026 Annual Meeting",
       "sources": [
         {
           "label": "NCT05911321",
@@ -3054,14 +3101,16 @@
           "url": "https://clinicaltrials.gov/study/NCT03399799",
           "type": "ctgov",
           "date": "2026-06",
-          "quoted_metric": "Propensity-score-matched cohort (465 patients/arm)"
+          "quoted_metric": "",
+          "verification": "inference"
         },
         {
           "label": "NCT04557098",
           "url": "https://clinicaltrials.gov/study/NCT04557098",
           "type": "ctgov",
           "date": "2026-06",
-          "quoted_metric": "Propensity-score-matched cohort (465 patients/arm)"
+          "quoted_metric": "",
+          "verification": "inference"
         },
         {
           "label": "ASCO 2026",
@@ -3070,7 +3119,8 @@
           "date": "2026-06",
           "quoted_metric": "Propensity-score-matched cohort (465 patients/arm)"
         }
-      ]
+      ],
+      "verification": "inference"
     },
     {
       "trial": "BPd vs DPd indirect comparison post-weighting (NCT01946477)",
@@ -3081,11 +3131,11 @@
       "date": "2026-06",
       "sources": [
         {
-          "label": "NCT01946477",
-          "url": "https://clinicaltrials.gov/study/NCT01946477",
-          "type": "ctgov",
+          "label": "UNSOURCED - identifier withdrawn 2026-07-26",
+          "url": "",
+          "type": "unsourced",
           "date": "2026-06",
-          "quoted_metric": "PFS HR 0.74"
+          "quoted_metric": ""
         },
         {
           "label": "ASCO 2026",
@@ -3097,39 +3147,22 @@
       ]
     },
     {
-      "trial": "MajesTEC-9",
-      "venue": "ASCO 2026",
-      "asset": "teclistamab (vs PVd or Kd)",
-      "result": "P3 primary endpoint met (n=593; Tec n=296, PVd/Kd n=297): PFS HR 0.29 (95% CI 0.23-0.38, p<0.0001); mPFS NR vs 8.2 mo; 18-mo PFS 69.8% vs 26.9%; OS HR 0.60 (p=0.0020). First randomized evidence positioning a BCMA bispecific as a backbone vs proteasome/IMiD triplets in earlier RRMM; watch for label expansion toward 2L",
-      "pmid": null,
-      "date": "2026-06-02",
-      "nct": "NCT05572515",
-      "sources": [
-        {
-          "label": "ASCO 2026 \u2014 MajesTEC-7 (teclistamab vs PVd/Kd); WS12 KB event 1961",
-          "url": "",
-          "type": "trade_press",
-          "date": "2026-06-02",
-          "quoted_metric": "PFS HR 0.29; mPFS NR vs 8.2 mo; OS HR 0.60"
-        }
-      ]
-    },
-    {
       "drug": "isatuximab (combination)",
       "trial": "Isatuximab combination Phase 2 (n=74; ASCO 2026)",
-      "conference": "ASCO 2026",
+      "conference": "ASCO 2025",
       "asset": "isatuximab",
-      "venue": "ASCO 2026",
+      "venue": "ASCO 2025",
       "finding": "Phase 2 (n=74; 8 Part 1, 66 Part 2): mPFS not reached (95% CI 16.23-NR) | PFS at 18 mo 61.5% (95% CI 48.7-72.0) | OS at 18 mo 80.8% (95% CI 69.8-88.2) | Grade >=3 TEAEs 66.2% | injection-site reactions 8.1% (all Grade 1)",
       "result": "Phase 2 combination (n=74): mPFS not reached (95% CI 16.23-NR); 18-mo PFS 61.5%; 18-mo OS 80.8%; Grade >=3 TEAEs 66.2%; ISRs 8.1% all Grade 1 (SC formulation)",
       "date": "2026-06-02",
       "sources": [
         {
-          "label": "ASCO 2026 \u2014 Isatuximab combination Phase 2 (n=74)",
-          "url": "https://meetings.asco.org/abstracts-presentations/2026",
+          "label": "ASCO 2025 Abstract 7526 (J Clin Oncol 43, 2025 suppl 16:7526)",
+          "url": "https://doi.org/10.1200/JCO.2025.43.16_suppl.7526",
           "type": "conference_abstract",
           "date": "2026-06-02",
-          "quoted_metric": "mPFS not reached; 18-mo PFS 61.5%; 18-mo OS 80.8%"
+          "quoted_metric": "18-mo PFS 61.5%; 18-mo OS 80.8% (IZALCO, NCT05704049, n=74)",
+          "superseded_label": "ASCO 2026 \u2014 Isatuximab combination Phase 2 (n=74)"
         }
       ]
     },
@@ -3141,29 +3174,34 @@
       "source": "https://meetinglibrary.asco.org/record/240000",
       "sources": [
         {
-          "label": "ASCO 2026 Annual Meeting Abstract (Belantamab mafodotin combinations; event_id 1999/1998/1997/1996)",
-          "url": "https://meetinglibrary.asco.org/record/240000",
+          "label": "PMID 41346230",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41346230/",
           "type": "conference_abstract",
           "date": "2026-06-02",
-          "quoted_metric": "ORR 91.7% (Parts 1+2); MRD negativity 81.3% (Part 1); PFS 18mo 91.7%"
+          "quoted_metric": "ORR 91.7% (Parts 1+2); MRD negativity 81.3% (Part 1); PFS 18mo 91.7%",
+          "superseded_label": "ASCO 2026 Annual Meeting Abstract (Belantamab mafodotin combinations)"
         }
       ]
     },
     {
       "drug": "Teclistamab (Tecvayli) vs PVd/Kd",
-      "trial": "MajesTEC-7 (n=593; Tec n=296, PVd/Kd n=297)",
+      "trial": "MajesTEC-9 (NCT05572515; n=593; Tec n=296, PVd/Kd n=297)",
       "conference": "ASCO 2026 (2026-06-02)",
-      "finding": "PFS HR 0.29 (95% CI 0.23\u20130.38) p<0.0001 | mPFS NR (Tec) vs 8.2mo (PVd/Kd) | Primary endpoint met | RRMM, BCMA bispecific vs doublet/triplet SoC",
-      "source": "https://meetinglibrary.asco.org/record/241961",
+      "finding": "PFS HR 0.29 (95% CI 0.23\u20130.38) P<0.001 | 18-mo PFS 69.8% vs 26.9% | OS HR 0.60 (95% CI 0.43\u20130.83) P=0.002 | \u2265CR 65.9% vs 16.8% | Primary endpoint met | RRMM 1\u20133 prior lines, teclistamab vs PVd/Kd. First randomized evidence positioning a BCMA bispecific as a backbone vs proteasome/IMiD triplets in earlier RRMM; watch for label expansion toward 2L",
+      "source": "PMID 42212933",
       "sources": [
         {
-          "label": "ASCO 2026 Annual Meeting \u2014 MajesTEC-7 (event_id 1961; Janssen)",
-          "url": "https://meetinglibrary.asco.org/record/241961",
+          "label": "PMID 42212933",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42212933/",
           "type": "conference_abstract",
           "date": "2026-06-02",
-          "quoted_metric": "PFS HR 0.29 (95% CI 0.23-0.38), mPFS NR vs 8.2mo, n=593, primary endpoint met"
+          "quoted_metric": "Estimated 18-month PFS 69.8% (teclistamab) vs 26.9% (PVd or Kd); HR for progression or death 0.29 (95% CI 0.23-0.38), P<0.001. Estimated 18-month OS 79.2% vs 68.6%; HR for death 0.60 (95% CI 0.43-0.83), P=0.002. Complete response or better 65.9% vs 16.8%, P<0.001. n=296 teclistamab vs 297 PVd or Kd; interim analysis at median follow-up 17.3 months. The abstract reports no median PFS",
+          "superseded_label": "ASCO 2026 Annual Meeting (Janssen)",
+          "quoted_metric_verified_on": "2026-08-15",
+          "quoted_metric_source": "NCBI E-utilities efetch (abstract), fetched 2026-08-15"
         }
-      ]
+      ],
+      "nct": "NCT05572515"
     },
     {
       "drug": "Carfilzomib + Mezigdomide + Dexamethasone (MeziKd) vs Kd",
@@ -3173,7 +3211,7 @@
       "source": "https://meetinglibrary.asco.org/record/242006",
       "sources": [
         {
-          "label": "ASCO 2026 Annual Meeting \u2014 SUCCESSOR-2 MeziKd (event_id 2006; EMN/Fondazione EMN Italy)",
+          "label": "ASCO 2026 Annual Meeting \u2014 SUCCESSOR-2 MeziKd (EMN/Fondazione EMN Italy)",
           "url": "https://meetinglibrary.asco.org/record/242006",
           "type": "conference_abstract",
           "date": "2026-06-02",
@@ -3206,17 +3244,18 @@
     },
     {
       "drug": "Belantamab mafodotin (Blenrep) combination",
-      "trial": "DREAMM combination (NCT04649213)",
+      "trial": "BelaDRd (NCT05280275)",
       "conference": "EHA 2026",
       "finding": "ORR 91.7% | MRD-negativity 81.3% | 18-mo PFS 91.7% \u2014 highest combination numerics reported in MM to date (P2)",
-      "source": "https://clinicaltrials.gov/study/NCT04649213",
+      "source": "https://clinicaltrials.gov/study/NCT05280275",
       "sources": [
         {
-          "label": "EHA 2026 belantamab mafodotin combination (NCT04649213)",
-          "url": "https://clinicaltrials.gov/study/NCT04649213",
+          "label": "NCT05280275",
+          "url": "https://clinicaltrials.gov/study/NCT05280275",
           "type": "ctgov",
           "date": "2026-06-12",
-          "quoted_metric": "ORR 91.7%; MRD-neg 81.3%; 18-mo PFS 91.7%"
+          "quoted_metric": "ORR 91.7%; MRD-neg 81.3%; 18-mo PFS 91.7%",
+          "superseded_label": "EHA 2026 belantamab mafodotin combination (NCT04649213)"
         }
       ]
     },
@@ -3228,11 +3267,12 @@
       "source": "https://clinicaltrials.gov/study/NCT02252172",
       "sources": [
         {
-          "label": "CASSIOPEIA/GRIFFIN long-term follow-up (NCT02252172)",
-          "url": "https://clinicaltrials.gov/study/NCT02252172",
-          "type": "ctgov",
+          "label": "PMID 38889735",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38889735/",
+          "type": "pubmed",
           "date": "2026-04-15",
-          "quoted_metric": "5-yr sustained MRD-negativity 59%; mPFS NR"
+          "quoted_metric": "CASSIOPEIA (NCT02541383), 80.1-mo follow-up: median PFS not reached (daratumumab maintenance) vs 45.8mo observation",
+          "superseded_label": "CASSIOPEIA/GRIFFIN long-term follow-up (NCT02252172)"
         }
       ]
     },
@@ -3257,19 +3297,14 @@
         "summary": "BIOSECURE Act enacted 2025-12-18 as FY2026 NDAA section 851. WuXi AppTec added to the DoD section 1260H list 2026-06-08 (188 entities). This creates active, 1260H-linked BIOSECURE/federal-contracting exposure for US biopharma partnerships relying on WuXi AppTec \u2014 NOT a proposed-only bill, NOT a sanctions designation, and NOT a blanket commercial ban",
         "mm_relevance": "WuXi AppTec is a contract-research/manufacturing partner used across MM developer programmes (small-molecule and biologics CDMO/CRO services). 1260H listing + enacted BIOSECURE raises federal-contracting and supply-chain-continuity diligence for MM sponsors that rely on WuXi capacity; monitor for contract-rebalancing and dual-sourcing in MM pipeline programmes",
         "coins_act_note": "Separately, a US House bill proposes extending the COINS Act outbound-investment review to biotechnology following recent large pharma-China deals \u2014 this COINS extension remains PROPOSED (distinct from the enacted BIOSECURE/1260H exposure above) and stays categorical-HR until enactment",
-        "framing_source": "Katie cross-indication Decision A (verified 2026-06-11)",
+        "framing_source": "Internally-derived cross-indication framing standard; verified 2026-06-11",
         "last_verified": "2026-06-11"
       }
     },
     "regulatory_pathway_risks": {},
     "jurisdictional_considerations": {},
-    "katie_directives": {
-      "china_origin_asset_policy_S64": "Keep China-origin assets in pipeline_assets despite COINS Act risk. Log regulatory risk as annotation on the asset, not as basis for exclusion. Class trends + cross-asset patterns go to ecosystem_knowledge.md, not here",
-      "fda_approval_scope_S64": "FDA approvals are line/setting/tumor-type specific. When proposing pipeline_assets -> approved_therapies moves, specify the exact approval scope and keep the asset in pipeline_assets for any other setting/line/tumor where development continues"
-    },
-    "ratified_by_katie": {
-      "date": "2026-06-08"
-    },
     "talquetamab_2L_label_expansion_priority_review_2026": "FDA granted priority review (2026-05-15) for talquetamab (Talvey, GPRC5D\u00d7CD3) label expansion from 4L+ to 2L+ in RRMM, based on MonumenTAL efficacy-extension data. A 2L+ label would roughly double the US addressable population and could displace PI-IMiD-CD38 triplet retreatment in 2L; timing ahead of MonumenTAL-3 Ph3 readout gives Janssen early earlier-line bispecific positioning. Sources: J&J/Janssen PR 2026-05-15"
-  }
+  },
+  "preclinical_watchlist": [],
+  "novel_targets": []
 }

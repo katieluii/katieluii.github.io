@@ -1,10 +1,125 @@
 {
-  "_doc": "D6: source ROOT each whitelisted ETLM resolved from (approved/ vs drafts/). A change here means the source of truth moved; the sync aborts on an unacknowledged move (re-run with --allow-source-move).",
-  "resolved_root": {
-    "crc": "drafts",
-    "mm": "drafts",
-    "nhl_dlbcl": "drafts",
-    "nsclc": "drafts",
-    "obesity": "drafts"
+  "_doc": [
+    "Publish record + content-regression baseline for the Atlas bundle.",
+    "Written by the content sync; do not hand-edit.",
+    "'codes': per published indication, the source root it came from, the",
+    "  source sha256 and modification time, the byte size shipped, and the",
+    "  length of every top-level list shipped.",
+    "'content_regression_gate': the run that produced this record. The next run",
+    "  refuses to ship any top-level list SHORTER than the counts above unless",
+    "  it carries --allow-content-shrink, which is recorded in",
+    "  shrink_acknowledged. verdict RAN_CLEAN = ran and found nothing;",
+    "  BOOTSTRAP = first baseline, nothing was compared; a run that could not",
+    "  compare aborts and never writes this file."
+  ],
+  "codes": {
+    "crc": {
+      "shipped_bytes": 173343,
+      "source_mtime": "2026-08-15T08:38:08Z",
+      "source_root": "drafts",
+      "source_sha256": "2919d55f2d6ce3ea3662513b4c49cc6dd0b1c0728e4889c0009ddda33144e77e",
+      "top_level_list_counts": {
+        "approved_therapies": 26,
+        "mechanism_landscape": 12,
+        "novel_targets": 0,
+        "pipeline_assets": 89,
+        "preclinical_watchlist": 0,
+        "recent_conference_readouts": 14,
+        "unmet_needs": 10
+      }
+    },
+    "mm": {
+      "shipped_bytes": 158399,
+      "source_mtime": "2026-08-16T01:23:08Z",
+      "source_root": "drafts",
+      "source_sha256": "5bffdc1fc077c65f7a5fc9e701cbdec5602417a2c722e86f05a44cb074b1b0ac",
+      "top_level_list_counts": {
+        "approved_therapies": 20,
+        "mechanism_landscape": 12,
+        "novel_targets": 0,
+        "pipeline_assets": 65,
+        "preclinical_watchlist": 0,
+        "recent_conference_readouts": 25,
+        "unmet_needs": 11
+      }
+    },
+    "nhl_dlbcl": {
+      "shipped_bytes": 152422,
+      "source_mtime": "2026-08-15T08:46:57Z",
+      "source_root": "drafts",
+      "source_sha256": "5b57a4cd7fdeb6a96e6eeb56ff8e50128569a530b57fe58a369e9980f967f337",
+      "top_level_list_counts": {
+        "approved_therapies": 32,
+        "emerging_signals": 2,
+        "mechanism_landscape": 12,
+        "novel_targets": 0,
+        "pipeline_assets": 62,
+        "preclinical_watchlist": 0,
+        "recent_conference_readouts": 20,
+        "unmet_needs": 12
+      }
+    },
+    "nsclc": {
+      "shipped_bytes": 231878,
+      "source_mtime": "2026-08-16T18:33:38Z",
+      "source_root": "drafts",
+      "source_sha256": "f7d8e815d8eb73f8687817b90f6052a8c5c3c17776f9533032950f434ad5d1ae",
+      "top_level_list_counts": {
+        "approved_therapies": 26,
+        "mechanism_landscape": 20,
+        "novel_targets": 0,
+        "pipeline_assets": 67,
+        "preclinical_watchlist": 3,
+        "recent_conference_readouts": 19,
+        "unmet_needs": 12
+      }
+    },
+    "obesity": {
+      "shipped_bytes": 269775,
+      "source_mtime": "2026-08-15T08:37:27Z",
+      "source_root": "drafts",
+      "source_sha256": "044c1416c44de06ba15c81898fd70a9b839e4355827d672db062e0c07377f5f7",
+      "top_level_list_counts": {
+        "approved_therapies": 0,
+        "approved_therapies_legacy": 9,
+        "approved_therapies_novel": 5,
+        "mechanism_landscape": 17,
+        "novel_targets": 3,
+        "pipeline_assets": 107,
+        "preclinical_watchlist": 4,
+        "recent_conference_readouts": 2,
+        "unmet_needs": 11
+      }
+    },
+    "urothelial": {
+      "shipped_bytes": 120687,
+      "source_mtime": "2026-08-15T01:09:23Z",
+      "source_root": "drafts",
+      "source_sha256": "211727b3b2cc926316d06a52bbbcf38ae1d3de329ca195ac8b3c200720ed54b6",
+      "top_level_list_counts": {
+        "approved_therapies": 23,
+        "mechanism_landscape": 12,
+        "novel_targets": 0,
+        "pipeline_assets": 44,
+        "preclinical_watchlist": 0,
+        "recent_conference_readouts": 16,
+        "unmet_needs": 12
+      }
+    }
+  },
+  "content_regression_gate": {
+    "codes_examined": 6,
+    "lists_compared": 0,
+    "new_codes": [
+      "crc",
+      "mm",
+      "nhl_dlbcl",
+      "nsclc",
+      "obesity",
+      "urothelial"
+    ],
+    "ran_at": "2026-08-16T21:49:02Z",
+    "shrink_acknowledged": [],
+    "verdict": "BOOTSTRAP"
   }
 }

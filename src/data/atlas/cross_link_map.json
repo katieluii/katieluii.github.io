@@ -10,7 +10,8 @@
     ],
     "nhl_dlbcl": [],
     "mm": [],
-    "crc": []
+    "crc": [],
+    "urothelial": []
   },
   "etlm_to_themes": {
     "nsclc": [
@@ -28,6 +29,9 @@
     "crc": [
       "adc_class_state_2026-06-05",
       "kras_class_trajectory_2026-06-05"
+    ],
+    "urothelial": [
+      "adc_class_state_2026-06-05"
     ]
   },
   "tpp_to_etlm": {
@@ -41,7 +45,8 @@
       "crc",
       "mm",
       "nsclc",
-      "obesity"
+      "obesity",
+      "urothelial"
     ],
     "glp1_class_competitive_supply_2026-06-05": [
       "obesity"

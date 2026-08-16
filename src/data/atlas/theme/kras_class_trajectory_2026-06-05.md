@@ -23,7 +23,7 @@ KRAS inhibition has moved from proof-of-concept (sotorasib, NSCLC, 2021) to a mu
 | Resistance mechanism | ON-target (Y96D, R68S, H95D) and OFF-target (MET amp, EGFR bypass, EMT) |
 | Active programme | CodeBreaK 101 basket (NCT03600883) — combos including sotorasib + panitumumab, + AMG-193 (MTAP), + MEK inhibitor |
 
-**Conference catalyst status (from catalyst DB):** NCT04933695 (Phase 2, NSCLC) and NCT03600883 (Phase 1, KRAS G12C solid tumours) both tracked; session_type = unknown (data pending conference assignment).
+**Conference catalyst status:** NCT04933695 (Phase 2, NSCLC) and NCT03600883 (Phase 1, KRAS G12C solid tumours) both tracked; conference session not yet assigned.
 
 **Investment angle:** Sotorasib's NSCLC franchise is defence-mode — protecting market share against adagrasib, justifying combinations to raise the bar. The 240 mg dose in combos (CodeBreaK 101) was driven by tolerability; this creates a differentiation risk if competitors show cleaner combo tolerability at full dose.
 
@@ -62,7 +62,7 @@ KRAS inhibition has moved from proof-of-concept (sotorasib, NSCLC, 2021) to a mu
 | Regulatory | Breakthrough therapy designation; BLA under review; full FDA decision expected 2026 |
 | Rationale for combo | KRAS G12C → inactive GDP-bound state → EGFR upstream feedback loop → panitumumab (anti-EGFR) blocks re-activation loop |
 
-**Conference catalyst:** NCT05198934 in catalyst DB (Phase 3, CRC). OS maturation and potential FDA approval label expansion are the monitored catalysts.
+**Conference catalyst:** NCT05198934 (Phase 3, CRC). OS maturation and potential FDA approval label expansion are the monitored catalysts.
 
 **Competitive context:** Adagrasib + cetuximab (KRYSTAL-10, Phase 3) is the direct competitor — same KRAS-EGFR co-blockade rationale, anti-EGFR agent swap (pani vs cetuximab). KRYSTAL-10 also reading out 2025-2026.
 
@@ -98,12 +98,12 @@ PDAC KRAS G12C is a narrow slice. The real PDAC opportunity is G12D (38% of PDAC
 | Lead indication | PDAC — ~90% KRAS-driven; G12D + G12V dominant alleles |
 | Key trial | RMC-6236-001 (Phase 1/2, NCT06625320 — Phase 3 in DB as of 2026); PDAC expansion cohort |
 | Phase 1 PDAC signal (ASCO 2024) | ORR 23% in PDAC (heavily pre-treated, including G12D); mPFS ~5.7 mo — superior to any prior single agent in 2L+ PDAC |
-| Phase 3 initiation | NCT06625320 confirmed in catalyst DB as Phase 3 PDAC (Revolution Medicines) |
+| Phase 3 initiation | NCT06625320 confirmed as Phase 3 PDAC (Revolution Medicines) |
 | Combo strategy | RMC-6236 + gemcitabine/nab-paclitaxel (1L PDAC); also RMC-6236 + RMC-4630 (SHP2 inhibitor) for resistance prevention |
 | Safety signal | Dose-limiting toxicities include hyperglycaemia (RAS/MAPK biology in islet cells), rash, GI — manageable to date |
 | Differentiation vs G12C-selective | Addresses G12D (inaccessible to sotorasib/adagrasib); broader allele coverage; potential pan-tumour label |
 
-**Conference catalyst (DB confirmed):** NCT06625320 Phase 3 PDAC tracked. Phase 3 design and interim OS endpoints are the watched catalyst for 2026-2027.
+**Conference catalyst:** NCT06625320 Phase 3 PDAC tracked. Phase 3 design and interim OS endpoints are the watched catalyst for 2026-2027.
 
 **Companion programme:** RMC-6291 (G12C-selective RAS(ON) inhibitor) is being developed alongside RMC-6236 as the cGVHD/NSCLC G12C asset — distinguishing the pan-RAS from the G12C-precise strategy within RevMed's portfolio.
 
@@ -141,7 +141,6 @@ Key implication: combination strategies (KRAS-i + SHP2-i, KRAS-i + EGFR-i, KRAS-
 | Avutometinib + adagrasib | Verastem | RAF/MEK (VS-6766) + KRAS | Phase 1 NSCLC (NCT05375994, 2 entries in DB) | Vertical co-inhibition |
 | Avutometinib + sotorasib | Verastem | Same + G12C | Phase 1 NSCLC (NCT05074810, in DB) | Agnostic combo partner |
 
-**DB observation:** Verastem appears twice in DB with overlapping NCT05375994 — audit flag for deduplication in next DB refresh.
 
 ---
 
@@ -179,10 +178,10 @@ Key implication: combination strategies (KRAS-i + SHP2-i, KRAS-i + EGFR-i, KRAS-
 
 ```
 G12C (covalent) ──────────── Combination era ──────→ Resistance biology defines winners
- (EGFR-i, ICI, SHP2-i)
+                             (EGFR-i, ICI, SHP2-i)
 
-G12D / pan-RAS ──────────── De novo access to ──────→ Therapeutic window + PDAC OS
-(non-covalent RAS-ON) 90% KRAS PDAC = registration readout 2027-28
+G12D / pan-RAS ──────────── De novo access to      ──────→ Therapeutic window + PDAC OS
+(non-covalent RAS-ON)        90% KRAS PDAC                   = registration readout 2027-28
 ```
 
 The class is not converging — it is diverging. G12C agents fight a differentiated combination battle in NSCLC and an approval-timing battle in CRC. Pan-RAS / G12D agents are writing a new chapter in PDAC where no prior drug class has meaningfully worked. The risk profiles are different: G12C risks are clinical (resistance, combo tolerability); pan-RAS risks are biological (therapeutic window vs WT RAS).
@@ -191,7 +190,7 @@ The most underappreciated dynamic: **allele switching** as a resistance mechanis
 
 ---
 
-## Appendix: Catalyst DB Asset Inventory (KRAS / RAS Theme)
+## Appendix: Asset Inventory (KRAS / RAS Theme)
 
 | Company | Asset | Indication | Phase | NCT | Session Type |
 |---|---|---|---|---|---|
@@ -208,7 +207,6 @@ The most underappreciated dynamic: **allele switching** as a resistance mechanis
 | Verastem | avutometinib + adagrasib + gemcitabine/nab-P | KRAS mutant | Phase 1 | NCT05669482 | unknown |
 | David Gerber/UTSW | TVB-2640 | KRAS mutation | Phase 2 | NCT03808558 | unknown |
 
-*Audit flag: NCT05375994 (avutometinib + adagrasib) appears twice in DB — deduplication recommended.*
 
 ---
 

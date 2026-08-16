@@ -2,8 +2,6 @@
 **Theme ID:** `glp1_class_competitive_supply`
 **Date:** 2026-06-05
 **Scope:** Obesity primary (semaglutide, tirzepatide, retatrutide, orforglipron) + Parkinson's investigator-trial cross-link (GLP-1R agonists in neurodegeneration) + Novo Nordisk Indiana manufacturing supply risk + Eli Lilly PBM/coverage dynamics + EU pricing reform signal
-**Source ETLMs:** `drafts/obesity.md` (S54, 2026-06-04) · `drafts/parkinsons.md` (S51, 2026-06-04)
-**Author:** WS9 thematic analyst · Human approval pending
 
 ---
 
@@ -157,8 +155,8 @@ Novo announced multi-billion-dollar capital investment programs:
 The US obesity drug market features a structural paradox: drugs with the strongest clinical evidence in the history of weight management face the most restrictive payer coverage of any modern drug class. The core barriers:
 
 1. **Medicare statutory exclusion (SSA 1965):** The Social Security Act explicitly prohibits Medicare Part D from covering "drugs for anorexia, weight loss, or weight gain." This exclusion predates modern GLP-1 drugs by decades and was written for amphetamine-era appetite suppressants. It creates a ceiling on Medicare market access even as ~60% of US adults with obesity are ≥65.
- - MEPA (Treat and Reduce Obesity Act / Medicare Drug Coverage Parity Act): proposed legislation to lift the exclusion has been introduced in multiple Congressional sessions; as of 2025, not passed. Budget-scoring challenges (~$25-40B over 10 years per CBO estimates) have prevented passage.
- - Partial carve-out: Medicare can cover Wegovy for the SELECT CV-risk-reduction indication (MACE reduction), as this is a cardiovascular indication, not a "weight loss drug" per the statutory language — this represents Novo's clever regulatory workaround, though prescribers and CMS are still navigating implementation.
+   - MEPA (Treat and Reduce Obesity Act / Medicare Drug Coverage Parity Act): proposed legislation to lift the exclusion has been introduced in multiple Congressional sessions; as of 2025, not passed. Budget-scoring challenges (~$25-40B over 10 years per CBO estimates) have prevented passage.
+   - Partial carve-out: Medicare can cover Wegovy for the SELECT CV-risk-reduction indication (MACE reduction), as this is a cardiovascular indication, not a "weight loss drug" per the statutory language — this represents Novo's clever regulatory workaround, though prescribers and CMS are still navigating implementation.
 
 2. **Medicaid:** ~50% of states cover GLP-1 obesity drugs; wide variation. Several large Medicaid programs (including California, Ohio) imposed prior-auth restrictions or deleted obesity drugs from formulary citing budget pressure (2024-2025).
 
@@ -326,7 +324,7 @@ Three scenarios for the GLP-1R-PD cross-indication thesis:
 
 | Scenario | Probability (qualitative) | Trigger | Strategic consequence |
 |---|---|---|---|
-| **Oslo semaglutide positive; liraglutide Cedars-Sinai positive → Ph3 IND filed** | ~25% | Both trials positive; clear class effect | Novo/Lilly each pursue PD Ph3; Novo has the compound and manufacturing; Lilly has retatrutide GLP-1R component; 5-7yr path to DMT label; CNS-specialised formulation needed |
+| **Oslo semaglutide positive; liraglutide Cedars-Sinai positive → Ph3 IND filed** | ~25% | Both trials positive; clear class effect | Novo/Lilly each pursue PD Ph3; Novo has the compound and manufacturing; Lilly has retatrutide GLP-1R component; 5-7yr path to DMT label; CNS-specialised formulation needed | 
 | **Mixed (one positive, one negative) → hypothesis weakened; larger investigator trial needed** | ~45% | One positive, one negative | PD continues as investigator-led science; no commercial sponsor files IND; BIIB/Roche/AbbVie (incumbent PD players) not disrupted; GLP-1R PD remains academic curiosity for 3-5 yr |
 | **Both negative → GLP-1R PD hypothesis largely closed** | ~30% | Both trials negative or negative/inconclusive | Attention returns to LRRK2, α-syn, GBA1 pathways as the only viable DMT routes; exenatide-PD3 precedent confirmed as representative |
 
@@ -361,15 +359,3 @@ Three scenarios for the GLP-1R-PD cross-indication thesis:
 8. **EU Pharmaceutical Legislation final text** — expected 2026; final exclusivity / pricing provisions affect pipeline investment decisions for all GLP-1 entrants post-retatrutide
 9. **Orforglipron ACHIEVE-1 (T2D) full publication + NDA filing** — validates oral SM-GLP-1 efficacy and triggers PBM formulary decisions for the oral tier
 10. **Amgen MariTide MARITIME-1/2 interim analysis** — monthly-dosing convenience data; if TBWL competitive with tirzepatide, Amgen establishes a genuine third franchise
-
----
-
-## 10. Cross-Reference Links (WS9 ETLM)
-
-- Obesity ETLM: `/ws9-etlm/drafts/obesity.md` (S54, 2026-06-04) — 50 Phase 2+ pipeline assets; approved therapy table; efficacy benchmarks; unmet needs
-- Parkinson's ETLM: `/ws9-etlm/drafts/parkinsons.md` (S51, 2026-06-04) — GLP-1R section in Section 4 (mechanism landscape); LixiPark/Exenatide-PD3/NLY01 in pipeline table; Oslo semaglutide caveat in data gaps
-- WS8 conference monitoring: `conference-catalyst-monitor` (Railway deployed) — currently covers ASCO/ESMO/ASH/AACR; ADA/Obesity Week/EASD/AAN expansion needed to auto-populate `recent_conference_readouts` for this thematic
-
----
-
-*Deep thematic synthesis authored by WS9 thematic analyst layer. Built from obesity ETLM (S54) + parkinsons ETLM (S51) + analyst knowledge base. Human review pending. Not for distribution without Katie Lui sign-off.*
