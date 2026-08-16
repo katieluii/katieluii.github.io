@@ -22,3 +22,6 @@ src/data/atlas/.*.bak-*
 
 # Dated .xlsx exports from scripts/2026-Stock_conc.py (local analysis artifact)
 *_stock_conc.xlsx
+
+# advisory-lock sidecars from atomic writers — never content
+*.json.lock
