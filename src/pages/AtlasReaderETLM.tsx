@@ -24,6 +24,7 @@ import {
   listItemText,
   type PresentationProfile,
 } from '../data/atlas/presentationProfile';
+import { labelText } from '../data/atlas/labelText';
 
 function isObj(v: unknown): v is Record<string, unknown> {
   return Boolean(v) && typeof v === 'object' && !Array.isArray(v);
@@ -352,19 +353,31 @@ function isRareGeneticObesity(indicationLine: string): boolean {
 
 function buildKeyFacts(etlm: Record<string, unknown>): KeyFact[] {
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
+  // A summary-only indication ships section_counts INSTEAD of the rows, so read the
+  // count from there. Without this the strip renders "Approved therapies 0" and
+  // "Tracked segments 0" on a landscape that has 23 and 12 of them — the counts are
+  // the whole point of a summary view, and a zero reads as an empty corpus rather
+  // than a withheld one.
+  const counts = isObj(etlm.section_counts) ? (etlm.section_counts as Record<string, number>) : null;
+  const summaryOnly = etlm.detail_available === false;
   // Prefer the novel/legacy split when present (the flat `approved_therapies`
   // array is a stale subset on indications that have split their approved set).
-  const approved = Array.isArray(etlm.approved_therapies_novel)
+  const approved = counts
+    ? (counts.approved_therapies_novel ?? 0) + (counts.approved_therapies_legacy ?? 0) ||
+      counts.approved_therapies || 0
+    : Array.isArray(etlm.approved_therapies_novel)
     ? (etlm.approved_therapies_novel as unknown[]).length +
       (Array.isArray(etlm.approved_therapies_legacy) ? (etlm.approved_therapies_legacy as unknown[]).length : 0)
     : Array.isArray(etlm.approved_therapies)
       ? etlm.approved_therapies.length
       : 0;
-  const segments = Array.isArray((epi as any).key_genomic_segments)
-    ? (epi as any).key_genomic_segments.length
-    : Array.isArray(etlm.mechanism_landscape)
-      ? etlm.mechanism_landscape.length
-      : 0;
+  const segments = counts
+    ? counts.mechanism_landscape ?? 0
+    : Array.isArray((epi as any).key_genomic_segments)
+      ? (epi as any).key_genomic_segments.length
+      : Array.isArray(etlm.mechanism_landscape)
+        ? etlm.mechanism_landscape.length
+        : 0;
   const facts: (KeyFact | null)[] = [
     epi.us_incidence_annual != null
       ? { label: 'US incidence / yr', value: Number(epi.us_incidence_annual).toLocaleString() }
@@ -377,6 +390,9 @@ function buildKeyFacts(etlm: Record<string, unknown>): KeyFact[] {
       : null,
     approved ? { label: 'Approved therapies', value: String(approved) } : null,
     segments ? { label: 'Tracked segments', value: String(segments) } : null,
+    summaryOnly && counts?.pipeline_assets
+      ? { label: 'Pipeline assets', value: String(counts.pipeline_assets) }
+      : null,
   ];
   return facts.filter((f): f is KeyFact => Boolean(f));
 }
@@ -538,7 +554,7 @@ function buildTherapiesTable(
                   .filter(([, v]) => v != null)
                   .map(([k, v]) => (
                     <span key={k}>
-                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-500">{labelText(k)}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
                       {endpointChips(e, k)}
                     </span>
@@ -556,7 +572,7 @@ function buildTherapiesTable(
                   .filter(([, v]) => v != null)
                   .map(([k, v]) => (
                     <span key={k}>
-                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-500">{labelText(k)}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
                       {endpointChips(e, k)}
                     </span>
@@ -678,7 +694,7 @@ function buildTherapiesTableFromProfile(
                   .filter(([, v]) => v != null)
                   .map(([k, v]) => (
                     <span key={k}>
-                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-500">{labelText(k)}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
                       {endpointChips(e, k)}
                     </span>
@@ -696,7 +712,7 @@ function buildTherapiesTableFromProfile(
                   .filter(([, v]) => v != null)
                   .map(([k, v]) => (
                     <span key={k}>
-                      <span className="text-zinc-500">{k.replace(/_/g, ' ')}: </span>
+                      <span className="text-zinc-500">{labelText(k)}: </span>
                       <span className="text-zinc-800 dark:text-zinc-200">{String(v)}</span>
                       {endpointChips(e, k)}
                     </span>
@@ -730,7 +746,14 @@ type UnmetNeedCard = { need: string; severity?: Severity; note?: string };
  *  needs carry no clinical severity, so we render no severity tag rather than
  *  inventing one, and keep their authored (priority) order. */
 function topUnmetNeeds(etlm: Record<string, unknown>): UnmetNeedCard[] {
-  const needs = Array.isArray(etlm.unmet_needs) ? etlm.unmet_needs : [];
+  // A summary-only payload ships unmet_needs_preview (a short slice) instead of
+  // the full unmet_needs array, so accept either. This is the one section a
+  // summary keeps content for, and reading only the full name left it empty.
+  const needs = Array.isArray(etlm.unmet_needs)
+    ? etlm.unmet_needs
+    : Array.isArray(etlm.unmet_needs_preview)
+      ? etlm.unmet_needs_preview
+      : [];
   const cards: UnmetNeedCard[] = needs
     .map((u): UnmetNeedCard | null => {
       if (isObj(u)) {
@@ -1020,6 +1043,29 @@ export function AtlasReaderETLM() {
                 )}
               </div>
             ))}
+          </div>
+        </section>
+      )}
+
+      {etlm.detail_available === false && (
+        <section className="mb-10">
+          <div className="rounded-xl border border-amber-300/70 bg-amber-50/60 p-5 dark:border-amber-500/30 dark:bg-amber-500/5">
+            <div className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              Summary view
+            </div>
+            <p className="mb-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              {String(etlm.detail_note ?? 'The full landscape map is available on request.')}
+            </p>
+            {isObj(etlm.section_counts) && (
+              <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+                {Object.entries(etlm.section_counts as Record<string, number>).map(([k, v]) => (
+                  <span key={k}>
+                    <span className="font-semibold text-zinc-800 dark:text-zinc-200">{v}</span>{' '}
+                    {labelText(k).toLowerCase()}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

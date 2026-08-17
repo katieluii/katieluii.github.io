@@ -1,3 +1,4 @@
+import { labelText } from './labelText';
 // Therapeutic-area → indication taxonomy for the Atlas Reader information
 // hierarchy. The synced ETLM JSON carries `therapeutic_area` only sometimes and
 // inconsistently, so this map is the source of truth for grouping.
@@ -77,15 +78,9 @@ export function taForTheme(slug: string, indicationsTouched?: string[]): Therape
 
 /** Clean short label for a theme from its slug (strips trailing date). */
 export function themeShortLabel(slug: string): string {
-  const base = slug.replace(/_\d{4}-\d{2}-\d{2}$/, '');
-  return base
-    .split('_')
-    .map((w) => {
-      const u = w.toLowerCase();
-      if (u === 'adc') return 'ADC';
-      if (u === 'kras') return 'KRAS';
-      if (u === 'glp1') return 'GLP-1';
-      return w.charAt(0).toUpperCase() + w.slice(1);
-    })
-    .join(' ');
+  // Routed through the shared labelText() rather than keeping a private 3-entry
+  // acronym map and naive title case. It rendered "Adc Class State" in TITLE case
+  // beside labelText's sentence case on the same page, and its map knew only
+  // adc/kras/glp1 — labelText's is derived from the corpus and has 112 entries.
+  return labelText(slug.replace(/_\d{4}-\d{2}-\d{2}$/, ''));
 }

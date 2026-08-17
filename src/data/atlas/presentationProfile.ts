@@ -217,22 +217,62 @@ export function getProfile(etlm: Record<string, unknown>): PresentationProfile |
  * key renders without a code change. First scalar is the label; the rest follow,
  * separated by · . A *_pct key gets its unit back, since "75" alone is not a
  * prevalence.
+ *
+ * Field NAMES are deliberately not emitted. This is the formatter for a BULLET
+ * IN A LIST OF PEER ITEMS, where every bullet repeats the same keys, so the keys
+ * are schema plumbing and only the values are content. It is NOT the formatter
+ * for a labelled key→value readout, where the key is the reader's only handle on
+ * which fact they are looking at — see humanizeValue() in ETLMSections.tsx, which
+ * owns that role and keeps its labels.
+ *
+ * Nested containers RECURSE rather than being dropped. The earlier version
+ * skipped any object/array value, which was safe while it only ever saw flat
+ * two- and three-key objects, but it silently deletes analyst text the moment a
+ * list element gains a nested key — so it recurses to a bounded depth instead.
+ * Nested levels omit the em-dash label break (there is only one label, at the
+ * top). Provenance/bookkeeping keys (`*_source`, `source`, `sources`, `*_id`,
+ * `id`, `ids`) stay excluded at every level: a bare URL run-in is not readable
+ * prose, and `sources` arrays have their own renderer (SourceLinks).
+ *
+ * `depth` is intentionally NOT part of the exported signature — `arr.map(listItemText)`
+ * would otherwise feed the array index in as the depth and format element 0
+ * differently from element 5.
  */
-export function listItemText(v: unknown): string {
+const LIST_ITEM_SKIP_KEY = /_source$|^sources?$|_id$|^id$|^ids$/i;
+const LIST_ITEM_MAX_DEPTH = 3;
+
+function listItemWalk(v: unknown, depth: number): string {
   if (v === null || v === undefined) return '';
   if (typeof v === 'string') return v;
   if (typeof v === 'number' || typeof v === 'boolean') return String(v);
+  if (Array.isArray(v)) {
+    return v.map((x) => listItemWalk(x, depth + 1)).filter(Boolean).join(' · ');
+  }
   if (!isObj(v)) return String(v);
 
   const parts: string[] = [];
   for (const [k, raw] of Object.entries(v)) {
     if (raw === null || raw === undefined || raw === '') continue;
-    if (typeof raw === 'object') continue;          // nested — not a one-liner
-    if (/_source$|_id$|^id$/i.test(k)) continue;    // provenance/bookkeeping
+    if (LIST_ITEM_SKIP_KEY.test(k)) continue;       // provenance/bookkeeping
+    if (typeof raw === 'object') {                  // nested — flatten, don't drop
+      if (depth >= LIST_ITEM_MAX_DEPTH) continue;
+      const nested = listItemWalk(raw, depth + 1);
+      if (nested) parts.push(nested);
+      continue;
+    }
     const val = /_pct$/i.test(k) ? `${raw}%` : String(raw);
     parts.push(val);
   }
   if (parts.length === 0) return '';
-  const [label, ...rest] = parts;
-  return rest.length > 0 ? `${label} — ${rest.join(' · ')}` : label;
+  // One separator throughout, and it is NOT an em-dash. The first version used
+  // ' — ' between the label and the rest, which collided with the analysts' own
+  // em-dashes: 5 values already contain one, so 8 bullets ended up with two or
+  // more and the field boundary became indistinguishable from punctuation
+  // ("AstraZeneca — Durvalumab perioperative MIBC (NIAGARA …) — now CO-LEADER …").
+  // ' · ' collides with nothing in the corpus.
+  return parts.join(' · ');
+}
+
+export function listItemText(v: unknown): string {
+  return listItemWalk(v, 0);
 }

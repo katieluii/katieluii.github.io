@@ -15,6 +15,7 @@ import {
 import { crossLinks, etlmIndex, tppIndex } from '../../data/atlas/index';
 import { themeShortLabel } from '../../data/atlas/taxonomy';
 import { listItemText } from '../../data/atlas/presentationProfile';
+import { labelText } from '../../data/atlas/labelText';
 
 const tppLabel = (slug: string) =>
   tppIndex.find((t) => t.slug === slug)?.segment ??
@@ -135,16 +136,32 @@ function humanizeEnum(s: unknown): string {
   return lower.charAt(0).toUpperCase() + lower.slice(1);
 }
 
-/** Render ANY value as skimmable text — never raw JSON. A public landscape map
- *  must never dump `{...}`, so objects become "key value · key value" and arrays
- *  join their humanized items. Bounded depth so a deep object can't explode. */
+/** Render a LABELLED key→value readout as skimmable text — never raw JSON. A
+ *  public landscape map must never dump `{...}`, so objects become
+ *  "key: value · key: value" and arrays join their humanized items. Bounded depth
+ *  so a deep object can't explode.
+ *
+ *  The labels are load-bearing HERE and only here: this renders a keyed detail
+ *  panel where each key names a distinct fact that its value does not restate.
+ *  Strip them and obesity's `generational_framing` turns two labelled drug lists
+ *  (`frontrunner_injectables` / `frontrunner_orals`) into one undifferentiated
+ *  run of names, and `basis_by_parameter`'s per-axis assessments (efficacy /
+ *  safety_tolerability / convenience_route) lose the axis they assess.
+ *
+ *  DO NOT use this for an element of a bulleted list. There every bullet repeats
+ *  the same keys, so the keys are schema plumbing and rendering them is the
+ *  defect ("company: Pfizer-Astellas · franchise: …" on the live urothelial
+ *  page). listItemText() owns that role. */
 function humanizeValue(v: unknown, depth = 0): string {
   if (v === null || v === undefined) return '—';
   if (Array.isArray(v)) return v.map((x) => humanizeValue(x, depth + 1)).filter(Boolean).join(', ');
   if (isObj(v)) {
     if (depth >= 2) return Object.values(v).map((x) => humanizeValue(x, depth + 1)).filter(Boolean).join(', ');
     return Object.entries(v)
-      .map(([k, val]) => `${humanizeEnum(k)}: ${humanizeValue(val, depth + 1)}`)
+      // labelText, not humanizeEnum: this is the last place a KEY became a
+      // user-visible label through a different formatter, so a detail readout
+      // rendered its keys in a different case from every heading on the page.
+      .map(([k, val]) => `${labelText(k)}: ${humanizeValue(val, depth + 1)}`)
       .join(' · ');
   }
   return String(v);
@@ -244,7 +261,7 @@ function Epidemiology({ data }: { data: Record<string, unknown> }) {
             {stats.map(([k, v]) => (
               <KV
                 key={k}
-                label={k.replace(/_/g, ' ')}
+                label={labelText(k)}
                 value={typeof v === 'number' ? v.toLocaleString() : String(v)}
               />
             ))}
@@ -256,7 +273,7 @@ function Epidemiology({ data }: { data: Record<string, unknown> }) {
             className="mt-5 pt-4 border-t border-zinc-200 dark:border-white/10 first:mt-0 first:border-0 first:pt-0"
           >
             <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
-              {k.replace(/_/g, ' ')}
+              {labelText(k)}
             </div>
             <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4">
               {arr.map((s, i) => (
@@ -408,7 +425,7 @@ function ApprovedTherapies({
                       .filter(([, v]) => v != null)
                       .map(([k, v]) => (
                         <span key={k}>
-                          <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                          <span className="text-zinc-500 dark:text-zinc-400">{labelText(k)}:</span>{' '}
                           <span className="font-medium">{String(v)}</span>
                         </span>
                       ))}
@@ -426,7 +443,7 @@ function ApprovedTherapies({
                         .filter(([, v]) => v != null)
                         .map(([k, v]) => (
                           <span key={k}>
-                            <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                            <span className="text-zinc-500 dark:text-zinc-400">{labelText(k)}:</span>{' '}
                             <span className="font-medium">{String(v)}</span>
                           </span>
                         ))}
@@ -444,7 +461,7 @@ function ApprovedTherapies({
                         .filter(([, v]) => v != null)
                         .map(([k, v]) => (
                           <span key={k}>
-                            <span className="text-zinc-500 dark:text-zinc-400">{k.replace(/_/g, ' ')}:</span>{' '}
+                            <span className="text-zinc-500 dark:text-zinc-400">{labelText(k)}:</span>{' '}
                             <span className="font-medium">{String(v)}</span>
                           </span>
                         ))}
@@ -641,9 +658,9 @@ function EfficacyBenchmarks({
   data: Record<string, unknown>;
   schemaKey: string;
 }) {
-  const schemaLabel = schemaKey
-    .replace(/^efficacy_benchmarks_/, '')
-    .replace(/_/g, ' ');
+  // Reads inside a sentence ("Organised by line"), so the leading connective
+  // must stay lowercase — labelText's STOPWORDS guard handles that.
+  const schemaLabel = labelText(schemaKey.replace(/^efficacy_benchmarks_/, ''));
 
   return (
     <section className="mb-10">
@@ -658,13 +675,13 @@ function EfficacyBenchmarks({
           return (
             <Card key={line}>
               <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
-                {line.replace(/_/g, ' ')}
+                {labelText(line)}
               </div>
               <div className="space-y-1.5">
                 {benchmarkEntries(val).map(([k, v]) => (
                   <div key={k} className="flex justify-between text-xs gap-3">
                     <span className="text-zinc-500 dark:text-zinc-400">
-                      {k.replace(/_/g, ' ')}
+                      {labelText(k)}
                     </span>
                     <span className="text-zinc-800 dark:text-zinc-200 font-medium text-right">
                       {String(v)}
@@ -773,7 +790,7 @@ function MechanismLandscape({
                         {benchPairs.map(([k, v]) => (
                           <span key={k} className="text-zinc-700 dark:text-zinc-300">
                             <span className="text-zinc-500 dark:text-zinc-400">
-                              {k.replace(/_/g, ' ')}:
+                              {labelText(k)}:
                             </span>{' '}
                             <span className="font-medium text-zinc-800 dark:text-zinc-200">
                               {String(v)}
@@ -925,20 +942,35 @@ function CompetitiveDynamics({ data }: { data: Record<string, unknown> }) {
         {Object.entries(data).map(([key, val]) => (
           <Card key={key}>
             <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
-              {key.replace(/_/g, ' ')}
+              {labelText(key)}
             </div>
             {Array.isArray(val) ? (
+              // Bullets of PEER items: listItemText, not humanizeValue. Analysts
+              // write these lists as prose strings in most ETLMs and as structured
+              // objects in others (urothelial dominant_companies = {company,
+              // franchise}, notable_patent_expiries = {drug, expiry}; obesity
+              // supply_and_manufacturing = {event, date, detail,
+              // competitive_implication}) — both shapes are correct analyst output.
+              // humanizeValue prefixed every field name onto every bullet, so the
+              // live page read "company: Pfizer-Astellas · franchise: …". Same keys
+              // on every bullet = plumbing; only the values are content.
+              // Format before the cap so an unrenderable element can't spend one
+              // of the 8 visible slots on an empty bullet.
               <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4">
-                {val.slice(0, 8).map((v, i) => (
-                  <li key={i}>{humanizeValue(v)}</li>
-                ))}
+                {val
+                  .map((v) => listItemText(v))
+                  .filter(Boolean)
+                  .slice(0, 8)
+                  .map((text, i) => (
+                    <li key={i}>{text}</li>
+                  ))}
               </ul>
             ) : isObj(val) ? (
               <div className="space-y-1.5">
                 {Object.entries(val).map(([k, v]) => (
                   <div key={k} className="text-xs">
                     <span className="text-zinc-500 dark:text-zinc-400">
-                      {k.replace(/_/g, ' ')}:
+                      {labelText(k)}:
                     </span>{' '}
                     <span className="text-zinc-800 dark:text-zinc-200">
                       {humanizeValue(v)}
@@ -974,6 +1006,19 @@ function UnmetNeeds({ data }: { data: unknown[] }) {
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {data.map((entry, i) => {
+          // A string-shaped need is valid analyst output and must render. This
+          // early-returned null, so obesity's 11 needs, nhl_dlbcl's 12 and crc's
+          // 10 — 33 in all — displayed nothing while the header above still
+          // printed "Unmet needs · 11". An empty grid under a non-zero count is
+          // worse than no section: it reads as a broken page, not a sparse one.
+          // nsclc/mm/urothelial write dicts, which is why it went unseen.
+          if (typeof entry === 'string' && entry.trim()) {
+            return (
+              <Card key={i} accent={severityColor.moderate}>
+                <div className="text-sm text-zinc-800 dark:text-zinc-200">{entry}</div>
+              </Card>
+            );
+          }
           if (!isObj(entry)) return null;
           const sev = String(entry.severity ?? '').toLowerCase();
           const accent = severityColor[sev] ?? severityColor.moderate;
@@ -1042,7 +1087,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
             return (
               <Card key={categoryKey}>
                 <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
-                  {categoryKey.replace(/_/g, ' ')}
+                  {labelText(categoryKey)}
                 </div>
                 <div className="space-y-2">
                   {(categoryVal as unknown[]).map((item, i) => {
@@ -1071,7 +1116,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
             return (
               <Card key={categoryKey}>
                 <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
-                  {categoryKey.replace(/_/g, ' ')}
+                  {labelText(categoryKey)}
                 </div>
                 <div className="text-xs text-zinc-700 dark:text-zinc-300">{String(categoryVal)}</div>
               </Card>
@@ -1084,7 +1129,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
           return (
             <Card key={categoryKey}>
               <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-3">
-                {categoryKey.replace(/_/g, ' ')}
+                {labelText(categoryKey)}
               </div>
               {hasNestedObjects ? (
                 // Nested signal objects (e.g. safety_class_signals > neuropsychiatric > {signal, status, as_of})
@@ -1095,7 +1140,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
                       className="rounded-lg ring-1 ring-zinc-200/60 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-3"
                     >
                       <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-1.5">
-                        {subKey.replace(/_/g, ' ')}
+                        {labelText(subKey)}
                       </div>
                       {isObj(subVal) ? (
                         <div className="space-y-1.5">
@@ -1139,7 +1184,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
                       ) : (
                         <div key={k}>
                           <div className="text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-0.5">
-                            {k.replace(/_/g, ' ')}
+                            {labelText(k)}
                           </div>
                           <div className="text-zinc-700 dark:text-zinc-300">{String(v)}</div>
                         </div>
@@ -1350,7 +1395,7 @@ const sectionId = (key: string) => `sec-${key.replace(/_/g, '-')}`;
 
 function navLabel(key: string): string {
   if (key.startsWith('efficacy_benchmarks_')) return 'Benchmarks';
-  return SECTION_LABEL[key] ?? key.replace(/_/g, ' ');
+  return SECTION_LABEL[key] ?? labelText(key);
 }
 
 type NavItem = { id: string; label: string; count?: number };
@@ -1482,7 +1527,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
         if ((typeof v === 'string' || typeof v === 'number') && /\d/.test(String(v))) {
           let t = String(v).replace(/\s+/g, ' ').trim();
           if (t.length > 44) t = `${t.slice(0, 44).replace(/\s+\S*$/, '')}…`;
-          push(`${humanizeEnum(k)}: ${t}`);
+          push(`${labelText(k)}: ${t}`);
         }
       }
     }
