@@ -22,13 +22,9 @@ export function ProjectPageLayout({
   showFooter = true,
 }: Props) {
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0b0f14]">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(120,119,198,0.05),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(120,119,198,0.03),transparent_50%)]"
-      />
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
 
-      <header className="border-b border-zinc-200/80 bg-white/40 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+      <header className="border-b border-[var(--hair)] bg-[var(--surface)]/60 backdrop-blur-sm">
         <div className={`${containerClassName} py-8`}>
           <Link
             to={backTo}
@@ -47,7 +43,7 @@ export function ProjectPageLayout({
       <main className={`${containerClassName} py-10`}>{children}</main>
 
       {showFooter && (
-        <footer className="border-t border-zinc-200/80 bg-white/40 backdrop-blur-sm dark:border-white/10 dark:bg-white/5 mt-16">
+        <footer className="border-t border-[var(--hair)] bg-[var(--surface)]/60 backdrop-blur-sm mt-16">
           <div className={`${containerClassName} py-8 text-center`}>
             <p className="text-xs text-zinc-400 dark:text-zinc-500">
               © 2026 Katie Lui. All rights reserved.

@@ -19,12 +19,7 @@ function NavLink({ to, label }: { to: string; label: string }) {
 
 export function SiteLayout() {
   return (
-    <div className="min-h-screen bg-[#fafafa] text-zinc-900">
-      {/* subtle background glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_85%_10%,rgba(120,119,198,0.16),transparent_55%),radial-gradient(circle_at_10%_80%,rgba(255,182,193,0.14),transparent_55%)]"
-      />
+    <div className="min-h-screen bg-[var(--bg)] text-zinc-900">
 
       <div className="mx-auto w-full max-w-6xl px-6 py-14">
         <header className="flex items-start justify-between gap-6">

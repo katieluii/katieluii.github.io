@@ -1,7 +1,7 @@
 import { projects, type Project } from './projects';
 
 /* ── The product suite shown on the home page ──────────────────────────────────
-   Seven products, lettered A→G (the names are alphabetical — the letter is the
+   Five products, lettered A→E (the names are alphabetical — the letter is the
    index, not decoration). Each product fronts one landing page and is "made of"
    existing tools that stay listed on /projects. Constituent tools are referenced
    by projects.ts `id` so titles and hrefs can't drift from the archive view.
@@ -25,11 +25,6 @@ export interface SuiteProduct {
   madeOf: string[];
 }
 
-export const STATUS_HELP: Record<SuiteStatus, string> = {
-  Live: 'running, with real output on its page',
-  Preview: 'a reviewed sample or working prototype you can open',
-  'In build': 'specified and under construction',
-};
 
 export const suite: SuiteProduct[] = [
   {
@@ -55,9 +50,9 @@ export const suite: SuiteProduct[] = [
   {
     letter: 'C',
     name: 'Crane',
-    role: 'Buy-side investing',
-    audience: 'biotech investors',
-    job: 'Diligence and deal-flow tooling: a structured investment memo, fund-holdings and financing trackers, and deal monitoring.',
+    role: 'Buy-side investing and fund operations',
+    audience: 'biotech investors, early-stage VC funds and venture builders',
+    job: 'Diligence and deal-flow tooling: a structured investment memo, fund-holdings and financing trackers, and deal monitoring. Also the home of the AI-native VC offering: a machine-legible operating record and agents on the fund\u2019s own pipeline stages, each earning write access one tier at a time.',
     status: 'Live',
     href: '/projects?suite=C',
     madeOf: ['investment-memo-agent', 'sec13f', 'biotech-fundraising', 'ai-biopharma-feed', 'obesity-stock-analysis'],
@@ -81,26 +76,6 @@ export const suite: SuiteProduct[] = [
     status: 'Live',
     href: '/partner-prioritisation',
     madeOf: ['partner-prioritisation'],
-  },
-  {
-    letter: 'F',
-    name: 'Femme',
-    role: 'Passive PCOS care',
-    audience: 'women’s health; built at the eMed × OpenAI hackathon',
-    job: 'Reads the wearable and cycle data a woman already owns and, when a pattern earns a clinician’s look, drafts the GP letter. Prototype.',
-    status: 'Preview',
-    href: 'https://femme-pcos-demo-production.up.railway.app',
-    madeOf: ['femme-pcos-care'],
-  },
-  {
-    letter: 'G',
-    name: 'Grid',
-    role: 'AI-native fund operations',
-    audience: 'early-stage VC funds and venture builders',
-    job: 'Will give a fund a machine-legible operating record and agents on its own pipeline stages, each earning write access one tier at a time. Specified; first build under way.',
-    status: 'In build',
-    href: '/projects/grid',
-    madeOf: ['grid'],
   },
 ];
 

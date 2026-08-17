@@ -2,14 +2,13 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowDown, Mail } from 'lucide-react';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { SuiteLedger, StatusPill } from '../components/SuiteLedger';
+import { SuiteLedger } from '../components/SuiteLedger';
 import { useReveal } from '../hooks/useReveal';
 import { projects } from '../data/projects';
-import { suite, STATUS_HELP } from '../data/suite';
 
 /* ── Home ─────────────────────────────────────────────────────────────────────
    Journey: (1) who she is, in her own words, and a way to get in touch →
-   (2) the suite, A→G, one pass → (3) how an engagement runs → (4) interests.
+   (2) the suite, A→E, one pass → (3) how an engagement runs → (4) interests.
    One measure (max-w-3xl) top to bottom. One family (Hanken Grotesk); hierarchy
    comes from size and weight. Colours are tokens from src/index.css (Renascor
    palette on a bone ground; the dark toggle is the green/bone/brass version). */
@@ -34,14 +33,6 @@ export function Home() {
 
   // computed, never typed: the archive count must match what's behind the link
   const projectCount = useMemo(() => projects.filter((p) => !p.hideFromTimeline).length, []);
-  const counts = useMemo(
-    () => ({
-      live: suite.filter((p) => p.status === 'Live').length,
-      preview: suite.filter((p) => p.status === 'Preview').length,
-      build: suite.filter((p) => p.status === 'In build').length,
-    }),
-    [],
-  );
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
@@ -83,7 +74,7 @@ export function Home() {
           <div className="rise mt-8 flex flex-wrap items-center gap-x-5 gap-y-3" style={{ animationDelay: '280ms' }}>
             <a href={MAILTO} className={btn}>
               <Mail className="h-4 w-4" aria-hidden />
-              {EMAIL}
+              Start a conversation
             </a>
             <a href="#suite" className="inline-flex items-center gap-1.5 text-[14px] text-[var(--ink)] hover:text-[var(--ink-strong)]">
               See the suite
@@ -107,22 +98,11 @@ export function Home() {
           <span id="projects" aria-hidden className="block" />
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
             <SectionTitle>The suite</SectionTitle>
-            <span className="text-[13px] text-[var(--muted)]">
-              {suite.length} products · {counts.live} live · {counts.preview} preview · {counts.build} in build
-            </span>
           </div>
           <p className="mt-3 max-w-2xl text-[15px] leading-[1.6] text-[var(--muted)]">
-            One decision per product: landscape, valuation, diligence, enrolment, partnering, fund
-            operations. Open a row for the tool and its output.
+            One decision per product: landscape, valuation, diligence and fund operations, enrolment,
+            partnering. Open a row for the tool and its output.
           </p>
-          <dl className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px] text-[var(--muted)]">
-            {(['Live', 'Preview', 'In build'] as const).map((s) => (
-              <div key={s} className="flex items-center gap-2">
-                <dt><StatusPill status={s} /></dt>
-                <dd>{STATUS_HELP[s]}</dd>
-              </div>
-            ))}
-          </dl>
 
           <div className="mt-8">
             <SuiteLedger />
@@ -141,23 +121,23 @@ export function Home() {
         <section ref={workRef} id="work" className="reveal scroll-mt-16 border-t border-[var(--hair)] py-12">
           <SectionTitle>Work with me</SectionTitle>
           <p className="mt-3 max-w-2xl text-[15px] leading-[1.6] text-[var(--muted)]">
-            Directly or through Renascor. Three shapes: a two-week diagnostic that ranks what is worth
-            building; a fixed build that ships the first components on your stack; a retained cadence
-            that keeps building in your order.
+            I work directly with teams as an independent contractor, or take on defined projects from
+            scoping through to delivery. Engagements can be short and focused, or continue as
+            priorities evolve.
           </p>
           <ul className="mt-7 grid gap-6 sm:grid-cols-3">
             {[
               {
-                t: 'Rules decide, models write',
-                d: 'Registries, rules engines and scoring make the call. A language model writes the words, and its output is gated.',
+                t: 'Join your team',
+                d: 'Bring me in as an individual contractor to work alongside your existing team — building, shipping and solving problems on your stack.',
               },
               {
-                t: 'Figures carry their source',
-                d: 'Numbers arrive with the citation attached. On Atlas an unverified figure fails the build, so it cannot reach the page.',
+                t: 'Build a project',
+                d: 'Give me a defined problem or outcome and I can scope and deliver the project end-to-end, with a clear handover at the end.',
               },
               {
-                t: 'You keep the repo',
-                d: 'Built in a repository you own, on your stack, with tests and a handover you can run without me.',
+                t: 'Start with a diagnostic',
+                d: 'Not sure what is worth building? I can spend two weeks mapping the workflows, data and opportunities, then recommend what to prioritise.',
               },
             ].map((x) => (
               <li key={x.t}>
@@ -166,12 +146,6 @@ export function Home() {
               </li>
             ))}
           </ul>
-          <div className="mt-8">
-            <a href={MAILTO} className={btn}>
-              <Mail className="h-4 w-4" aria-hidden />
-              Start a conversation
-            </a>
-          </div>
         </section>
 
         {/* 4 · interests */}

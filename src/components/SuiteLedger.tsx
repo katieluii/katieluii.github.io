@@ -1,6 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import { suite, STATUS_HELP, type SuiteProduct, type SuiteStatus } from '../data/suite';
+import { suite, type SuiteProduct, type SuiteStatus } from '../data/suite';
 import { useReveal } from '../hooks/useReveal';
 
 /* ── Home: the suite as a ledger ────────────────────────────────────────────────
@@ -25,7 +25,6 @@ export function StatusPill({ status }: { status: SuiteStatus }) {
         : 'border-[1.5px] border-dashed border-[var(--accent)]';
   return (
     <span
-      title={STATUS_HELP[status]}
       className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-[var(--hair)] px-2 py-[3px] text-[11.5px] font-medium text-[var(--ink)]"
     >
       <span aria-hidden className={`inline-block h-2 w-2 rounded-full ${dot}`} />
