@@ -1,10 +1,10 @@
 {
-  "updated": "2026-08-10",
-  "intro": "Five themes moving drug development this week — an OX40 axis where two failures may be converging on one safety signal, the incretin fight now in a courtroom, and approvals, access and capital all quietly renegotiating their own rules. Refreshed every Monday.",
+  "updated": "2026-08-17",
+  "intro": "Five themes moving drug development this week — an OX40 axis where a differentiation story is quietly turning into a safety one, incretin marketing now argued before a judge, and approvals, access and capital each renegotiating the rules they run on. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "OX40 in atopic dermatitis: two exits may be collapsing into one Kaposi's sarcoma signal",
-      "detail": "Amgen's rocatinlimab (depleting anti-OX40) left in March on a Kaposi's sarcoma flag and Sanofi's amlitelimab (anti-OX40L) in July on differentiation — read as two failure modes on one axis until Sanofi's fuller rationale cited the \"totality of efficacy and safety evidence\" and \"reported Kaposi's sarcoma cases.\" The wording is ambiguous as to whether those cases sit in amlitelimab's own trials; if they do, this stops being crowding attrition and becomes two independent sponsors hitting the same safety wall. Inmagene's non-depleting IMG-007 is the last clinical-stage asset on the axis, built to clear the safety half of the problem but not yet the differentiation half that sank amlitelimab.",
+      "headline": "OX40 in atopic dermatitis: the 'differentiation' exit is starting to look like a second safety exit",
+      "detail": "Two Phase 3-caliber programmes on one costimulatory axis are gone in five months — Amgen's rocatinlimab (depleting anti-OX40) in March on Kaposi's sarcoma, Sanofi's amlitelimab (anti-OX40L) in July on differentiation. But Sanofi's fuller rationale cites the \"totality of efficacy and safety evidence\" and \"reported Kaposi's sarcoma cases,\" and the wording leaves it unclear whether those cases are amlitelimab's own; if they are, this stops being crowding attrition and becomes two sponsors hitting the same wall. Inmagene's non-depleting IMG-007 is the last clinical-stage asset standing — engineered around the safety liability that took rocatinlimab, but still facing the differentiation bar that took amlitelimab.",
       "momentum": "Hot",
       "sources": [
         { "label": "Sanofi media room", "url": "https://www.sanofi.com/en/media-room" },
@@ -13,8 +13,8 @@
       ]
     },
     {
-      "headline": "The incretin rivalry moves from ad copy to a federal courtroom",
-      "detail": "Novo Nordisk is seeking a New Jersey federal injunction against Lilly's comparative-efficacy campaigns setting Zepbound and Mounjaro against Ozempic and Wegovy — the first time this contest has escalated past marketing complaints into actual litigation. With the clinical race broadly settled on both sides, the fight is migrating to what the labels and the ads are permitted to claim. Worth watching whether an injunction resets how incretin efficacy can be marketed at all.",
+      "headline": "The incretin fight leaves the ad agency for a New Jersey courtroom",
+      "detail": "Novo Nordisk is seeking a federal injunction against Lilly's comparative-efficacy campaigns pitting Zepbound and Mounjaro against Ozempic and Wegovy — the first time this rivalry has escalated past marketing complaints into live litigation. With the clinical contest broadly settled on both sides, the contested ground is now what the labels and the ads are allowed to claim. The question worth holding is whether an injunction resets how incretin efficacy can be marketed at all.",
       "momentum": "Hot",
       "sources": [
         { "label": "Novo Nordisk news", "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html" },
@@ -23,8 +23,8 @@
       ]
     },
     {
-      "headline": "A marketing authorization is now a revisable state, not a finish line",
-      "detail": "CHMP moved to revoke Tavneos (avacopan) in Europe in June, and Amgen is pre-emptively seeking an FDA advisory-committee hearing to defend the US approval before it is challenged. Set against CHMP's split rare-disease week — a positive opinion for Minoryx's ALD candidate alongside a negative for Zevra's Meplyffa roughly two years after its US clearance — the read is consistent on both sides of the Atlantic. Sponsors are starting to defend approvals they already hold.",
+      "headline": "Approval is now a state you defend, not a line you cross",
+      "detail": "CHMP moved to revoke Tavneos (avacopan) in Europe in June, and Amgen is now pre-emptively seeking an FDA advisory-committee hearing to defend the US approval before anyone contests it. Read alongside CHMP's split rare-disease week — a positive opinion for Minoryx's ALD candidate against a negative for Zevra's Meplyffa some two years after its US clearance — the pattern holds on both sides of the Atlantic. Sponsors are increasingly defending approvals they already hold.",
       "momentum": "Confirmed",
       "sources": [
         { "label": "Amgen newsroom", "url": "https://www.amgen.com/newsroom" },
@@ -33,8 +33,8 @@
       ]
     },
     {
-      "headline": "Access-before-approval hardens into a template as Merck runs Gilead's playbook",
-      "detail": "Merck has issued voluntary licenses for its long-acting PrEP candidate alimatravir to low- and middle-income-country manufacturers ahead of any regulatory submission, tracking Gilead's lenacapavir sequence almost step for step. Two sponsors running the same pre-filing move starts to read less like goodwill and more like an emerging standard for long-acting prevention. The open question is whether it travels beyond HIV.",
+      "headline": "Access-before-approval hardens into a template as Merck reruns Gilead's playbook",
+      "detail": "Merck has issued voluntary licenses for its long-acting PrEP candidate alimatravir to low- and middle-income-country manufacturers ahead of any regulatory submission — tracking Gilead's lenacapavir sequence almost step for step. Two sponsors running the same pre-filing move looks less like one-off goodwill and more like an emerging standard for long-acting prevention. The open question is whether it travels beyond HIV.",
       "momentum": "Watch",
       "sources": [
         { "label": "Merck news", "url": "https://www.merck.com/news/" },
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "headline": "Biotech capital keeps venue-shopping east — a Hong Kong listing and a Korean megadeal",
+      "headline": "Biotech capital keeps testing venues east — a Hong Kong listing and a Korean megadeal",
       "detail": "A US biotech is pursuing a Hong Kong-first IPO — a second alternative-venue data point after Scribe Therapeutics' $128.7M Nasdaq debut — while Samsung Biologics moves on a roughly $1.8B acquisition billed as the largest ever by a Korean biopharma. With fresh US import tariffs now reaching generics, the capital and supply-chain map is visibly leaning toward Asia. No single-asset thesis here, but the direction of travel is hard to miss.",
       "momentum": "Watch",
       "sources": [
