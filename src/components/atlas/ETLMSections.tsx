@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { crossLinks, etlmIndex, tppIndex } from '../../data/atlas/index';
 import { themeShortLabel } from '../../data/atlas/taxonomy';
+import { listItemText } from '../../data/atlas/presentationProfile';
 
 const tppLabel = (slug: string) =>
   tppIndex.find((t) => t.slug === slug)?.segment ??
@@ -259,7 +260,7 @@ function Epidemiology({ data }: { data: Record<string, unknown> }) {
             </div>
             <ul className="text-xs text-zinc-700 dark:text-zinc-300 space-y-1 list-disc pl-4">
               {arr.map((s, i) => (
-                <li key={i}>{String(s)}</li>
+                <li key={i}>{listItemText(s)}</li>
               ))}
             </ul>
           </div>
@@ -1117,7 +1118,7 @@ function RegulatoryLandscape({ data }: { data: Record<string, unknown> }) {
                           ) : null}
                           {Array.isArray(subVal.signals) && subVal.signals.length > 0 && (
                             <ul className="text-xs text-zinc-700 dark:text-zinc-300 list-disc pl-4 space-y-0.5">
-                              {subVal.signals.map((s, i) => <li key={i}>{String(s)}</li>)}
+                              {subVal.signals.map((s, i) => <li key={i}>{listItemText(s)}</li>)}
                             </ul>
                           )}
                         </div>

@@ -199,3 +199,40 @@ export function getProfile(etlm: Record<string, unknown>): PresentationProfile |
   const p = etlm.presentation_profile;
   return isObj(p) && typeof p.schema_version === 'number' ? (p as PresentationProfile) : null;
 }
+
+/**
+ * Render one element of an ETLM list field as a single readable line.
+ *
+ * Analysts write these lists in two shapes and BOTH are correct. Most ETLMs use
+ * prose strings ("High-risk cytogenetics single hit: ~25-30% (del17p, …)");
+ * urothelial uses structured objects that carry the same facts in named fields
+ * ({segment, prevalence_pct, notes}). The renderers used to call String() on the
+ * element, which turned every object into "[object Object]" — the exact failure
+ * the presentation_profile layer exists to prevent: a hard-coded React assumption
+ * silently destroying correctly-keyed analyst data.
+ *
+ * Structured is the better shape, so this formats it rather than asking the
+ * analyst to flatten back to prose. Shape-agnostic by design: it walks the
+ * object's own key order instead of naming fields, so a list that gains a new
+ * key renders without a code change. First scalar is the label; the rest follow,
+ * separated by · . A *_pct key gets its unit back, since "75" alone is not a
+ * prevalence.
+ */
+export function listItemText(v: unknown): string {
+  if (v === null || v === undefined) return '';
+  if (typeof v === 'string') return v;
+  if (typeof v === 'number' || typeof v === 'boolean') return String(v);
+  if (!isObj(v)) return String(v);
+
+  const parts: string[] = [];
+  for (const [k, raw] of Object.entries(v)) {
+    if (raw === null || raw === undefined || raw === '') continue;
+    if (typeof raw === 'object') continue;          // nested — not a one-liner
+    if (/_source$|_id$|^id$/i.test(k)) continue;    // provenance/bookkeeping
+    const val = /_pct$/i.test(k) ? `${raw}%` : String(raw);
+    parts.push(val);
+  }
+  if (parts.length === 0) return '';
+  const [label, ...rest] = parts;
+  return rest.length > 0 ? `${label} — ${rest.join(' · ')}` : label;
+}

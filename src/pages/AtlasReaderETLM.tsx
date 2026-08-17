@@ -21,6 +21,7 @@ import {
   resolveEntry,
   entryCaveat,
   pickMetricKey,
+  listItemText,
   type PresentationProfile,
 } from '../data/atlas/presentationProfile';
 
@@ -838,8 +839,11 @@ export function AtlasReaderETLM() {
   const nonComparableTable = nonComparableTherapies.length ? buildTable(nonComparableTherapies) : null;
   const needs = topUnmetNeeds(etlm);
   const epi = isObj(etlm.epidemiology) ? etlm.epidemiology : {};
+  // listItemText, not String(): urothelial writes these as {segment,
+  // prevalence_pct, notes} objects rather than prose, and String() rendered
+  // every one of them as "[object Object]" on the live page.
   const segments = Array.isArray((epi as any).key_genomic_segments)
-    ? ((epi as any).key_genomic_segments as unknown[]).map(String)
+    ? ((epi as any).key_genomic_segments as unknown[]).map(listItemText).filter(Boolean)
     : [];
   const pipelineCount = Array.isArray(etlm.pipeline_assets) ? etlm.pipeline_assets.length : 0;
   const reportBase = `/atlas-reader/etlm/${indication}/report`;
