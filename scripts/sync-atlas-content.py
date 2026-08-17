@@ -1099,6 +1099,139 @@ def internal_token_gate(examined: int, findings: list[tuple[str, str]], codes: i
           f"({len(_ETLM_INLINE_RULES)} rules active)")
 
 
+# ---------------------------------------------------------------------------
+# D9 — summary-only publication.
+#
+# Three of the six published indications ship as a SUMMARY: enough to show the
+# landscape exists and how big it is, with none of the per-row analysis. The
+# reduction is done here rather than in the reader because a UI mask leaves the
+# rows in the JSON, and a reader who opens devtools has the whole map. If the
+# detail is meant to be private, it must not be in the bundle.
+#
+# What survives is deliberately the SHAPE of the work, not its content: the
+# indication's identity, its epidemiology scalars, how many rows each section
+# holds, and a short slice of unmet needs so the page has something to say.
+# ---------------------------------------------------------------------------
+
+SUMMARY_KEEP_SCALARS = (
+    "indication", "indication_code", "icd10", "nci_thesaurus_id", "last_updated",
+    "therapeutic_area",
+)
+
+def summarise_etlm(obj: dict, cfg: dict) -> dict:
+    """Reduce a sanitised ETLM to its summary form. Allowlist, never a denylist:
+    a section added to the schema later is absent from the summary by default
+    rather than silently shipping."""
+    keep_needs = int(cfg.get("etlm_summary_unmet_needs", 3))
+    out: dict = {}
+    for k in SUMMARY_KEEP_SCALARS:
+        if isinstance(obj.get(k), (str, int, float)):
+            out[k] = obj[k]
+
+    epi = obj.get("epidemiology")
+    if isinstance(epi, dict):
+        # Scalars only. key_genomic_segments is per-segment analysis and is detail.
+        out["epidemiology"] = {
+            k: v for k, v in epi.items()
+            if isinstance(v, (str, int, float)) and not k.endswith("_source")
+        }
+
+    # Counts, not rows. This is what lets the page say "107 pipeline assets tracked"
+    # without shipping one of them.
+    counts = {k: len(v) for k, v in obj.items() if isinstance(v, list) and v}
+    counts.update({k: len(v) for k, v in obj.items()
+                   if k.startswith("efficacy_benchmarks") and isinstance(v, dict) and v})
+    if counts:
+        out["section_counts"] = dict(sorted(counts.items()))
+
+    needs = obj.get("unmet_needs")
+    if isinstance(needs, list) and needs:
+        out["unmet_needs_preview"] = needs[:keep_needs]
+        out["unmet_needs_total"] = len(needs)
+
+    out["detail_available"] = False
+    out["detail_note"] = cfg.get(
+        "etlm_summary_note",
+        "Summary view. The full landscape map — approved therapies, pipeline assets, "
+        "efficacy benchmarks by line, competitive dynamics and conference readouts — "
+        "is available on request.",
+    )
+    return out
+
+
+# Sections whose presence in a summary-only payload is a redaction FAILURE. Checked
+# by name against what actually shipped, so a rename in the reducer cannot quietly
+# turn the gate off.
+SUMMARY_FORBIDDEN = (
+    "approved_therapies", "approved_therapies_novel", "approved_therapies_legacy",
+    "pipeline_assets", "preclinical_watchlist", "novel_targets",
+    "mechanism_landscape", "competitive_dynamics", "regulatory_landscape",
+    "recent_conference_readouts", "emerging_signals", "unmet_needs",
+    "first_to_market_races", "allogeneic_cell_therapy_pipeline",
+    "presentation_profile",
+)
+
+
+def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict) -> None:
+    """D9 — prove the reduction happened, on the files as written.
+
+    Three states, never two: a run that reduced nothing when it was asked to
+    reduce something must not exit like a run that reduced everything.
+    """
+    asked = [c for c in summary_only]
+    if not asked:
+        print("  – summary-only gate: nothing configured (all codes ship full detail)")
+        return
+
+    missing_files, leaked, not_reduced = [], [], []
+    for code in asked:
+        f = out_dir / f"{code}.json"
+        if not f.exists():
+            missing_files.append(code)
+            continue
+        shipped = json.loads(f.read_text())
+        for key in SUMMARY_FORBIDDEN:
+            if key in shipped:
+                leaked.append(f"{code}.{key}")
+        if shipped.get("detail_available") is not False:
+            not_reduced.append(f"{code}: detail_available is not False")
+        # A benchmarks SECTION must not survive. Match on the top-level key, not on the
+        # substring anywhere in the JSON: section_counts legitimately carries
+        # "efficacy_benchmarks_by_line" as a COUNT KEY, and a whole-document substring
+        # test flagged all three correctly-reduced files on the first run.
+        for key in shipped:
+            if key.startswith("efficacy_benchmarks"):
+                leaked.append(f"{code}.{key} — a benchmarks section survived the reduction")
+        # section_counts must be counts. If a value is not an int, a section has been
+        # smuggled in under the counts map.
+        sc = shipped.get("section_counts")
+        if isinstance(sc, dict):
+            for k, v in sc.items():
+                if not isinstance(v, int) or isinstance(v, bool):
+                    leaked.append(f"{code}.section_counts.{k} is {type(v).__name__}, not a count")
+
+    if missing_files:
+        raise SyncAborted(
+            "summary-only gate DID NOT RUN (UNGATEABLE): configured for "
+            f"{', '.join(missing_files)} but no shipped file was produced for them. "
+            "A code named in etlm_summary_only that is not in etlm_whitelist is a "
+            "configuration error, not a no-op."
+        )
+    if leaked or not_reduced:
+        detail = "\n    ".join(leaked + not_reduced)
+        raise SyncAborted(
+            f"summary-only reduction FAILED for {len(leaked) + len(not_reduced)} item(s) — "
+            f"detail that must not ship is present in the bundle:\n    {detail}\n"
+            "  These indications are published as summaries deliberately. Shipping the "
+            "rows and masking them in the UI is not redaction: the JSON is public."
+        )
+
+    shrink = ", ".join(
+        f"{c} ({sum(reduced_from.get(c, {}).values())} rows withheld)" for c in asked
+    )
+    print(f"  ✓ summary-only gate: {len(asked)} code(s) reduced and verified — {shrink}")
+
+
 def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
     out_dir = out() / "etlm"
     if out_dir.exists():
@@ -1159,6 +1292,8 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
     # the verdict can report a whole-bundle denominator. Aborting after the loop is still
     # fail-closed: every write above went into STAGING, which is never promoted on a raise.
     token_examined = 0
+    summary_only = list(cfg.get("etlm_summary_only", []))
+    reduced_from: dict = {}
     token_findings: list[tuple[str, str]] = []
     for code, src in resolved:
         raw = src.read_bytes()
@@ -1196,7 +1331,23 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
                 f"fix the source string(s), do not auto-patch:\n{lines}"
             )
 
+        # D9 — SUMMARY-ONLY reduction. For a code listed in etlm_summary_only, the
+        # per-row detail is REMOVED FROM THE BUNDLE rather than hidden in the UI.
+        #
+        # Why not the UI gate: gating.ts's FULL_DETAIL_ETLM only draws a blur mask.
+        # The rows still ship, so anyone can read the whole landscape out of the
+        # network tab — that is a cosmetic wall, not redaction. Katie's ask was that
+        # "people can't press expand all to see the details", which only holds if the
+        # details are not there. So the reduction happens here, at the publish
+        # boundary, and is asserted below.
+        if code in summary_only:
+            full_counts = _top_level_list_counts(sanitised)
+            sanitised = summarise_etlm(sanitised, cfg)
+            reduced_from[code] = full_counts
+
         # D8 — collect the internal-system-token residue for THIS code's shipped values.
+        # Runs AFTER the reduction so it measures what actually ships, not what would
+        # have shipped: a token living only in a removed row is not a leak.
         n_examined, n_found = internal_token_residue(sanitised, code)
         token_examined += n_examined
         token_findings += n_found
@@ -1228,6 +1379,10 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
 
     # D8 — one verdict over the whole candidate bundle, with its own denominator.
     internal_token_gate(token_examined, token_findings, len(resolved))
+
+    # D9 — prove the summary-only reduction happened, reading the files as written
+    # rather than trusting the in-memory objects the loop just built.
+    summary_only_gate(out_dir, summary_only, reduced_from)
 
     # D6R — compare against the committed baseline BEFORE the bundle can be promoted.
     # Raises SyncAborted on a shrink or an ungateable run, so the live tree is untouched.

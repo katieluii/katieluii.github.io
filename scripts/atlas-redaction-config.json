@@ -367,5 +367,12 @@
     "aml_mds": "aml_mds",
     "aml": "aml_mds",
     "mds": "aml_mds"
-  }
+  },
+  "_etlm_summary_only_doc": "D9 — indications published as a SUMMARY rather than a full landscape map. Their per-row detail is REMOVED FROM THE BUNDLE, not masked in the UI: gating.ts's FULL_DETAIL_ETLM only draws a blur, so the rows would still be readable from the network tab. Featured (full detail) = the codes in etlm_whitelist that are NOT listed here. Katie's picks 2026-08-17: obesity, mm, nsclc featured. summary_only_gate() asserts the reduction on the written files and fails closed.",
+  "etlm_summary_only": [
+    "nhl_dlbcl",
+    "crc",
+    "urothelial"
+  ],
+  "etlm_summary_unmet_needs": 3
 }
