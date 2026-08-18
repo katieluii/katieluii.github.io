@@ -868,11 +868,25 @@ export function AtlasReaderETLM() {
   const segments = Array.isArray((epi as any).key_genomic_segments)
     ? ((epi as any).key_genomic_segments as unknown[]).map(listItemText).filter(Boolean)
     : [];
-  const pipelineCount = Array.isArray(etlm.pipeline_assets) ? etlm.pipeline_assets.length : 0;
+  // section_counts carries the TRUE totals; the shipped arrays are capped at 3 on a
+  // preview. Counting the arrays made the page's opening sentence say "3 approved
+  // therapies and 3 pipeline assets tracked across this landscape" for an indication
+  // with 23 and 44 — the first thing a reader sees, and a screenshot of it is a false
+  // claim about the size of the corpus.
+  const trueCounts = isObj(etlm.section_counts) ? (etlm.section_counts as Record<string, number>) : null;
+  const pipelineCount = trueCounts?.pipeline_assets
+    ?? (Array.isArray(etlm.pipeline_assets) ? etlm.pipeline_assets.length : 0);
   const reportBase = `/atlas-reader/etlm/${indication}/report`;
   const verdict =
     summary?.verdict ??
-    `${meta.indication}: ${(novelList ? novelList.length + legacyList.length : headlineTherapies.length)} approved therapies and ${pipelineCount} pipeline assets tracked across this landscape.`;
+    `${meta.indication}: ${
+      trueCounts
+        ? (trueCounts.approved_therapies_novel ?? 0) + (trueCounts.approved_therapies_legacy ?? 0) ||
+          trueCounts.approved_therapies || 0
+        : novelList
+          ? novelList.length + legacyList.length
+          : headlineTherapies.length
+    } approved therapies and ${pipelineCount} pipeline assets tracked across this landscape.`;
 
   return (
     <ProjectPageLayout
@@ -895,7 +909,9 @@ export function AtlasReaderETLM() {
       >
         <span className="flex items-center gap-2.5 text-sm font-medium">
           <Layers className="w-4 h-4" />
-          Open the full landscape map — full pipeline read, mechanisms, competitive positioning & regulatory
+          {etlm.detail_available === false
+            ? 'Open the preview — top approved therapies and pipeline assets; the rest withheld'
+            : 'Open the full landscape map — full pipeline read, mechanisms, competitive positioning & regulatory'}
         </span>
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </Link>
@@ -1070,7 +1086,11 @@ export function AtlasReaderETLM() {
         </section>
       )}
 
-      <DetailHook context={`${meta.indication} landscape map`} reportHref={reportBase} />
+      <DetailHook
+        context={`${meta.indication} landscape map`}
+        reportHref={reportBase}
+        preview={etlm.detail_available === false}
+      />
     </ProjectPageLayout>
   );
 }

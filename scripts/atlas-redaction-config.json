@@ -309,6 +309,66 @@
       "why": "adc theme: a bare trailing '(D-NHL-002)' analyst decision id appended to a clinical statement ('inherits indirect platform scrutiny (D-NHL-002)'). The earlier rules match the id only when it follows 'by <X> analyst' or precedes a workflow state; this is the same id standing alone as a parenthetical citation of an internal decision.",
       "pattern": "\\s*\\(D-[A-Z]+-\\d+\\)",
       "replacement": ""
+    },
+    {
+      "why": "ecosystem: ', flagged cycle177)' and similar — an internal pipeline cycle id appended to a real clinical signal (volrustomig, PD-1xCTLA-4 class-negative). The signal and its molecule stay; only the cycle id goes. Consumed with its leading separator so the parenthesis keeps its punctuation.",
+      "pattern": ",?\\s*flagged cycle\\s?\\d+",
+      "replacement": ""
+    },
+    {
+      "why": "ecosystem: 'Highest-volume deal/market cycle since cycle176:' — a comparison against an internal cycle number. The claim (this was the highest-volume deal cycle) is real market commentary and the deal list that follows carries names and values; only the internal reference point is reworded.",
+      "pattern": "\\bsince cycle\\s?\\d+\\b",
+      "replacement": "since the previous cycle"
+    },
+    {
+      "why": "ecosystem: 'flagged pre-decision by the obesity analyst' / 'flagged by the ccrcc analyst' — internal attribution of who raised an item and where it sits in the review queue. The flag itself is the reader-relevant part; who logged it is not.",
+      "pattern": "\\s*(?:flagged\\s+)?(?:pre-decision\\s+)?by the \\w+ analyst\\b",
+      "replacement": ""
+    },
+    {
+      "why": "ecosystem: '(hr-resolver applied)' closing a sentence that states a signal is now live in an ETLM. The resolver name is internal; that the signal landed is not.",
+      "pattern": "\\s*\\(hr-resolver applied\\)",
+      "replacement": ""
+    },
+    {
+      "why": "ecosystem: '(NCT07700979, logged cycle105)' — the NCT is the real reference and stays; the internal cycle in which it was logged does not. Consumed with its separator so the parenthesis keeps its punctuation.",
+      "pattern": ",?\\s*logged cycle\\s?\\d+",
+      "replacement": ""
+    },
+    {
+      "why": "ecosystem: trailing internal provenance sentences — 'Anchor: asthma cycle105 HR.', 'Anchor: nsclc cycle105 carry-forward.', 'Anchor: events 4386/4390/4394.' These are pointers back into the pipeline's own record, not statements about the science. Anchored on the Anchor: opener and consumed to the end of the sentence.",
+      "pattern": "\\s*\\bAnchors?:\\s*[^.]*?(?:cycle\\s?\\d+|events?\\s+[\\d/]+)[^.]*\\.",
+      "replacement": ""
+    },
+    {
+      "why": "ecosystem: 'human review' as a queue state in prose. The reader-relevant fact is that an item needs review, not which queue it sits in. Also closes the laundering path noted by the gate: _scrub_inline lowercases HUMAN_REVIEW, and leak_gate only greps the uppercase form, so the lowercase spelling would otherwise pass every check.",
+      "pattern": "\\bhuman[ _]review\\b",
+      "replacement": "manual review"
+    },
+    {
+      "why": "ecosystem: 'routed manual review for Katie's ETLM-placement call' — an internal routing note naming the reviewer and the queue. The reader-relevant fact is that the asset is awaiting a placement decision and is therefore not yet in any count; who makes that call is not. Surfaced only after the human-review rewrite landed, which is why it was not caught in the same pass.",
+      "pattern": "routed (?:manual|human) review for \\w+'s ([\\w-]+) call",
+      "replacement": "awaiting a \\1 decision"
+    },
+    {
+      "why": "ecosystem: 'auto-apply patch attached this cycle to close the gap'. _WORKFLOW_RE lowercases AUTO_APPLY to auto-apply before the markdown rules run, and leak_gate only greps the uppercase form — so without this the token launders straight through every check. Specific shape first so the generic rule below never sees it.",
+      "pattern": "\\bauto-apply patch\\b",
+      "replacement": "corrective patch"
+    },
+    {
+      "why": "Generic fallback for a bare auto-apply left anywhere in prose. 'automatic update' says the same thing to a reader without naming the pipeline state.",
+      "pattern": "\\bauto[- ]apply\\b",
+      "replacement": "automatic update"
+    },
+    {
+      "why": "ecosystem: 'extends the rare-dermatology-licensing pattern opened cycle180)'. Fourth verb form of the same construction after flagged/logged/since — enumerating verbs was always going to lose this race, so the backstop below follows.",
+      "pattern": "\\bopened cycle\\s?\\d+\\b",
+      "replacement": "opened in an earlier cycle"
+    },
+    {
+      "why": "Backstop for any remaining bare cycle reference. Deliberately last so the phrased rules above win first. Safe against the pipeline's own run ids: \\b requires a non-word character after the digits, so cycle177_mega does not match (the underscore is a word character), and the entry headings are date-only anyway.",
+      "pattern": "\\bcycle\\s?\\d+\\b",
+      "replacement": "an earlier cycle"
     }
   ],
   "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
@@ -368,11 +428,13 @@
     "aml": "aml_mds",
     "mds": "aml_mds"
   },
-  "_etlm_summary_only_doc": "D9 — indications published as a SUMMARY rather than a full landscape map. Their per-row detail is REMOVED FROM THE BUNDLE, not masked in the UI: gating.ts's FULL_DETAIL_ETLM only draws a blur, so the rows would still be readable from the network tab. Featured (full detail) = the codes in etlm_whitelist that are NOT listed here. Katie's picks 2026-08-17: obesity, mm, nsclc featured. summary_only_gate() asserts the reduction on the written files and fails closed.",
+  "_etlm_summary_only_doc": "D9 — indications published as a capped TEASER rather than a full landscape map. etlm_summary_rows rows of each sampled section ship; the rest are REMOVED FROM THE BUNDLE, not masked in the UI. The reader-side blur fades the teaser out and the lock card states the true count from section_counts. Featured (full detail) = the codes in etlm_whitelist NOT listed here. Katie's picks: obesity, mm, nsclc featured. summary_only_gate() asserts the cap on the written files and fails closed.",
   "etlm_summary_only": [
     "nhl_dlbcl",
     "crc",
     "urothelial"
   ],
-  "etlm_summary_unmet_needs": 3
+  "etlm_summary_unmet_needs": 3,
+  "etlm_inline_replacements_note": "see _ETLM_INLINE_RULE_SPECS in sync-atlas-content.py",
+  "etlm_summary_rows": 3
 }

@@ -687,6 +687,38 @@ _ETLM_INLINE_RULE_SPECS: list[tuple[str, str, str]] = [
      "the shipped TPP/theme markdown already uses for this system.",
      r"^WS\d+ KB cycle[\w+ ]*?(?:,\s*[\w./-]+\.(?:json|md|sqlite))?$", "Knowledge base"),
 
+    # ---- bare KB in an ETLM value ------------------------------------------
+    ("'Corrects a KB gap: the trial that reported ...' — bare uppercase KB as internal "
+     "shorthand for the knowledge base, in a note whose substance (a first Phase 3 "
+     "efficacy win, and which trial it corrects) is entirely reader-facing. The "
+     "markdown lane has had a \\bKB\\b rule since the theme files; the ETLM lane did "
+     "not, and today's cycle wrote the first instance. Case-sensitive on the uppercase "
+     "form so a lowercase 'kb' (kilobase, a real genomics unit) is never touched.",
+     r"\bKB\b", "coverage"),
+
+    # ---- internal adjudication trailing a real clinical note ----------------
+    ("obesity preclinical_watchlist[].combination_context ends with the record of an "
+     "internal board decision: 'Whether/how to capture the FDC itself went to the "
+     "ws12-board in cycle152 and returned a SPLIT (framings B vs C, GPT seat failed); "
+     "that remains Katie's open call and is NOT decided here.' Everything before it — "
+     "the FDC composition, the two NCTs, the press-release-only disclosure, the absent "
+     "IND — is exactly the kind of caveat a reader needs. Anchored on the board marker "
+     "and consumed to the end of the value, so the sentence it lives in goes whole "
+     "rather than leaving 'Whether/how to capture the FDC itself went to the .'",
+     r"\s*[A-Z][^.]*?\bws\d+-board\b.*$", ""),
+
+    # ---- upstream KB bookkeeping in a public field -------------------------
+    ("obesity pipeline_assets[].identity_note carries a WS12 ingestion post-mortem: "
+     "'KB DEFECT CORRECTED: KB asset_id 6396 carried canonical_name ... an ingestion "
+     "artifact of the synthesiser reading interventions[].name as the asset name ... "
+     "The defective name was NOT propagated into this ETLM row.' Every clause is about "
+     "the upstream pipeline, not the drug, and it names an internal asset_id. The one "
+     "reader-relevant fact is which asset this row is. Rewritten rather than deleted "
+     "because D5 fails a value scrubbed to empty, and an empty identity_note is worse "
+     "than a short true one. The durable fix belongs upstream in the synthesiser.",
+     r"^KB DEFECT CORRECTED:.*?The real asset is ([A-Za-z0-9-]+)\..*$",
+     r"Asset identity confirmed as \1."),
+
     # ---- superseded_label: internal ids inside a citation --------------------
     ("`superseded_label` records the label a source previously carried. It was briefly added "
      "to etlm_strip_keys to kill two internal event_id fragments — which destroyed content: "
@@ -993,7 +1025,14 @@ def find_scrub_issues(original: Any, scrubbed: Any, path: str = "") -> list[tupl
     elif isinstance(scrubbed, str):
         if original.strip() and not scrubbed.strip():
             issues.append((path, "scrub emptied a non-empty value", original[:120]))
-        elif _SCRUB_ARTIFACT.search(scrubbed):
+        # The artifact check applies ONLY to a value the scrub actually changed.
+        # An untouched string cannot contain an artifact the scrub introduced, and
+        # checking it anyway turns authored punctuation into a false abort: obesity
+        # writes "the synthesiser reading interventions[].name as the asset name",
+        # whose literal "[]" tripped the empty-bracket pattern and blocked a publish
+        # over prose nothing had modified. Same "tidy only what you damaged" rule the
+        # markdown scrub already follows.
+        elif scrubbed != original and _SCRUB_ARTIFACT.search(scrubbed):
             issues.append((path, "scrub left a punctuation artifact", scrubbed[:120]))
     return issues
 
@@ -1119,10 +1158,20 @@ SUMMARY_KEEP_SCALARS = (
 )
 
 def summarise_etlm(obj: dict, cfg: dict) -> dict:
-    """Reduce a sanitised ETLM to its summary form. Allowlist, never a denylist:
-    a section added to the schema later is absent from the summary by default
-    rather than silently shipping."""
-    keep_needs = int(cfg.get("etlm_summary_unmet_needs", 3))
+    """Reduce a sanitised ETLM to a TEASER: identity, epidemiology scalars, true
+    per-section counts, and the first N rows of each section.
+
+    N rows rather than none (Katie, 2026-08-18) so the reader-side blur has real
+    content to fade out, and so the deep-report route is not a dead end — it
+    rendered epidemiology alone when the sections were removed outright, while the
+    page still offered "read the full report" in four places.
+
+    Still an ALLOWLIST: a section added to the schema later is absent by default
+    rather than silently shipping. section_counts always carries the TRUE total, so
+    the lock card can say "44 tracked · 3 shown" without the other 41 existing in
+    the bundle."""
+    n = int(cfg.get("etlm_summary_rows", 3))
+    keep_needs = int(cfg.get("etlm_summary_unmet_needs", n))
     out: dict = {}
     for k in SUMMARY_KEEP_SCALARS:
         if isinstance(obj.get(k), (str, int, float)):
@@ -1130,59 +1179,90 @@ def summarise_etlm(obj: dict, cfg: dict) -> dict:
 
     epi = obj.get("epidemiology")
     if isinstance(epi, dict):
-        # Scalars only. key_genomic_segments is per-segment analysis and is detail.
         out["epidemiology"] = {
             k: v for k, v in epi.items()
             if isinstance(v, (str, int, float)) and not k.endswith("_source")
         }
 
-    # Counts, not rows. This is what lets the page say "107 pipeline assets tracked"
-    # without shipping one of them.
-    counts = {k: len(v) for k, v in obj.items() if isinstance(v, list) and v}
-    counts.update({k: len(v) for k, v in obj.items()
-                   if k.startswith("efficacy_benchmarks") and isinstance(v, dict) and v})
+    # TRUE counts, computed before any slicing. Lists AND dict-shaped sections:
+    # competitive_dynamics and regulatory_landscape are plain dicts of named entries,
+    # so an isinstance(v, list) filter skipped them, they got no section_counts entry,
+    # and the reader's WithheldSection never fired for them — the report went 3 -> 7
+    # sections instead of 9. That is the original silent-drop bug one level down: a
+    # section nobody counted is a section nobody can mark as withheld.
+    SKIP = {"epidemiology", "section_counts"}
+    counts = {k: len(v) for k, v in obj.items()
+              if k not in SKIP and isinstance(v, (list, dict)) and v}
     if counts:
         out["section_counts"] = dict(sorted(counts.items()))
 
-    needs = obj.get("unmet_needs")
-    if isinstance(needs, list) and needs:
-        out["unmet_needs_preview"] = needs[:keep_needs]
-        out["unmet_needs_total"] = len(needs)
+    # The teaser itself — first n of every list section in SUMMARY_TEASER_SECTIONS.
+    for k in SUMMARY_TEASER_SECTIONS:
+        v = obj.get(k)
+        if isinstance(v, list) and v:
+            out[k] = v[:n]
+
+    # Benchmarks are withheld entirely — they are the analytical core, and a
+    # 3-row sample of a benchmark table invites exactly the cross-trial comparison
+    # the full table exists to caveat.
+
+    # unmet_needs is withheld with the rest. It was previewed while the teaser
+    # sampled every section; now that only approved therapies and pipeline assets
+    # carry rows, previewing it would be the one inconsistent exception.
 
     out["detail_available"] = False
+    out["detail_rows_shown"] = n
     out["detail_note"] = cfg.get(
         "etlm_summary_note",
-        "Summary view. The full landscape map — approved therapies, pipeline assets, "
-        "efficacy benchmarks by line, competitive dynamics and conference readouts — "
-        "is available on request.",
+        "Preview. A sample of each section is shown; the full landscape map — every "
+        "approved therapy, pipeline asset, efficacy benchmark and conference readout "
+        "— is available on request.",
     )
     return out
+
+
+# Sections the teaser samples (Katie, 2026-08-18). Narrowed from five to two:
+# epidemiology ships in full as scalars, approved therapies and pipeline assets get
+# the first N rows, and EVERYTHING ELSE is withheld entirely and rendered as a
+# blurred, explicitly-redacted block. Showing a sample of every section made the
+# whole page feel half-published; showing two real sections and marking the rest as
+# withheld reads as a deliberate preview.
+SUMMARY_TEASER_SECTIONS = (
+    "approved_therapies", "approved_therapies_novel", "pipeline_assets",
+)
 
 
 # Sections whose presence in a summary-only payload is a redaction FAILURE. Checked
 # by name against what actually shipped, so a rename in the reducer cannot quietly
 # turn the gate off.
+# Sections that must never appear in a summary payload at ALL — the competitive and
+# regulatory analysis, which is the interpretive layer rather than a row listing.
 SUMMARY_FORBIDDEN = (
-    "approved_therapies", "approved_therapies_novel", "approved_therapies_legacy",
-    "pipeline_assets", "preclinical_watchlist", "novel_targets",
-    "mechanism_landscape", "competitive_dynamics", "regulatory_landscape",
-    "recent_conference_readouts", "emerging_signals", "unmet_needs",
+    "approved_therapies_legacy", "preclinical_watchlist", "novel_targets",
+    "competitive_dynamics", "regulatory_landscape", "emerging_signals",
     "first_to_market_races", "allogeneic_cell_therapy_pipeline",
     "presentation_profile",
 )
 
 
-def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict) -> None:
+def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict, cfg: dict) -> None:
     """D9 — prove the reduction happened, on the files as written.
 
-    Three states, never two: a run that reduced nothing when it was asked to
-    reduce something must not exit like a run that reduced everything.
+    The assertion is now CAPPED, not ABSENT: a teaser ships the first N rows of each
+    sampled section, so "the section is missing" is no longer the test. Each sampled
+    section must be <= N rows AND strictly shorter than its true count wherever that
+    count exceeds N. That is a stronger check than absence — it catches a reducer that
+    silently stopped slicing, which an absence test would have read as "nothing to do".
+
+    Three states, never two: a run configured to reduce that reduced nothing must not
+    exit like a run that reduced everything.
     """
-    asked = [c for c in summary_only]
+    asked = list(summary_only)
     if not asked:
         print("  – summary-only gate: nothing configured (all codes ship full detail)")
         return
 
+    n = int(cfg.get("etlm_summary_rows", 3))
     missing_files, leaked, not_reduced = [], [], []
     for code in asked:
         f = out_dir / f"{code}.json"
@@ -1190,25 +1270,29 @@ def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict) -> 
             missing_files.append(code)
             continue
         shipped = json.loads(f.read_text())
+        counts = shipped.get("section_counts") or {}
+
         for key in SUMMARY_FORBIDDEN:
             if key in shipped:
-                leaked.append(f"{code}.{key}")
+                leaked.append(f"{code}.{key} — interpretive section must not ship at all")
         if shipped.get("detail_available") is not False:
             not_reduced.append(f"{code}: detail_available is not False")
-        # A benchmarks SECTION must not survive. Match on the top-level key, not on the
-        # substring anywhere in the JSON: section_counts legitimately carries
-        # "efficacy_benchmarks_by_line" as a COUNT KEY, and a whole-document substring
-        # test flagged all three correctly-reduced files on the first run.
-        for key in shipped:
-            if key.startswith("efficacy_benchmarks"):
-                leaked.append(f"{code}.{key} — a benchmarks section survived the reduction")
-        # section_counts must be counts. If a value is not an int, a section has been
-        # smuggled in under the counts map.
-        sc = shipped.get("section_counts")
-        if isinstance(sc, dict):
-            for k, v in sc.items():
-                if not isinstance(v, int) or isinstance(v, bool):
-                    leaked.append(f"{code}.section_counts.{k} is {type(v).__name__}, not a count")
+        if not counts:
+            not_reduced.append(f"{code}: no section_counts — the lock card cannot state what is withheld")
+
+        # Every list that shipped must be capped, and must be a genuine reduction.
+        for key, val in shipped.items():
+            if not isinstance(val, list) or key == "unmet_needs_total":
+                continue
+            if len(val) > n:
+                leaked.append(f"{code}.{key} shipped {len(val)} rows, cap is {n}")
+            true_n = counts.get(key)
+            if isinstance(true_n, int) and true_n > n and len(val) >= true_n:
+                leaked.append(f"{code}.{key} shipped all {len(val)} of {true_n} rows — not reduced")
+        # Benchmarks are dicts of named rows; same cap.
+        for key, val in shipped.items():
+            if key.startswith("efficacy_benchmarks") and isinstance(val, dict) and len(val) > n:
+                leaked.append(f"{code}.{key} shipped {len(val)} benchmark rows, cap is {n}")
 
     if missing_files:
         raise SyncAborted(
@@ -1220,16 +1304,17 @@ def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict) -> 
     if leaked or not_reduced:
         detail = "\n    ".join(leaked + not_reduced)
         raise SyncAborted(
-            f"summary-only reduction FAILED for {len(leaked) + len(not_reduced)} item(s) — "
-            f"detail that must not ship is present in the bundle:\n    {detail}\n"
-            "  These indications are published as summaries deliberately. Shipping the "
-            "rows and masking them in the UI is not redaction: the JSON is public."
+            f"summary-only reduction FAILED for {len(leaked) + len(not_reduced)} item(s):\n"
+            f"    {detail}\n"
+            "  These indications ship a capped teaser deliberately. Shipping the rows and "
+            "masking them in the UI is not redaction: the JSON is public."
         )
 
-    shrink = ", ".join(
+    shown = ", ".join(
         f"{c} ({sum(reduced_from.get(c, {}).values())} rows withheld)" for c in asked
     )
-    print(f"  ✓ summary-only gate: {len(asked)} code(s) reduced and verified — {shrink}")
+    print(f"  ✓ summary-only gate: {len(asked)} code(s) capped at {n} row(s)/section — {shown}")
+
 
 
 def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
@@ -1382,7 +1467,7 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
 
     # D9 — prove the summary-only reduction happened, reading the files as written
     # rather than trusting the in-memory objects the loop just built.
-    summary_only_gate(out_dir, summary_only, reduced_from)
+    summary_only_gate(out_dir, summary_only, reduced_from, cfg)
 
     # D6R — compare against the committed baseline BEFORE the bundle can be promoted.
     # Raises SyncAborted on a shrink or an ungateable run, so the live tree is untouched.

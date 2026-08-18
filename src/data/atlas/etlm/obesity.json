@@ -3150,7 +3150,7 @@
       "note": "Phase 3 dose-optimisation: two CagriSema doses vs one semaglutide-alone dose; explicitly FIXED-RATIO COMBINATION (not monotherapy). Addresses REDEFINE-1 -22.7% w68 (below config \u2265-24% step-change bar). Distinct from REIMAGINE 2 (NCT06065540). Trial-start only \u2014 no efficacy readout yet",
       "source": "ClinicalTrials.gov NCT07564414 (2026-06)",
       "drug_name": "CagriSema (cagrilintide + semaglutide) \u2014 dose-optimisation",
-      "dose_intensity_and_disclosure_note": "REDEFINE-1 dose-intensity + disclosure-litigation caveat [2026-08-12, Category-1 verified against the primary publication]. DOSE INTENSITY (primary source: Garvey WT et al., 'Coadministered Cagrilintide and Semaglutide in Adults with Overweight or Obesity', N Engl J Med 2025, DOI 10.1056/NEJMoa2502081 / PMID 40544433; REDEFINE-1 = NCT05567796): at week 68, 57.4% of CagriSema participants were RECEIVING the maximum dose (semaglutide 70.9%, cagrilintide 82.5%, placebo 70.6%); 74.7% received the maximum dose at some point after randomisation (86.1% / 95.4% / 91.6% respectively). Read the -22.7% w68 amylin_combo benchmark (that figure is the TRIAL-PRODUCT estimand; the treatment-policy/ITT estimand is -20.4%) against that dose intensity. DOSING FLEXIBILITY: NEJM describes protocol-SPECIFIED dose-adjustment flexibility rules exercised on the study-site investigators' clinical judgement, and lists the flexible dosing regimen among the trial's STRENGTHS; Novo Nordisk's 2024-12-20 company announcement instead describes 'a flexible protocol, allowing patients to modify their dosing'. The two primary sources differ on WHO adjusted the dose (investigators vs patients) \u2014 both are recorded here deliberately. LITIGATION \u2014 PROCEDURAL POSTURE ONLY, NOT A FINDING OF FRAUD: in Moon v. Novo Nordisk A/S et al., No. 3:25-cv-00713 (D.N.J., Judge Robert Kirsch, opinion 2026-07-28), the court DENIED dismissal of one claim: that Martin Holst Lange (then EVP Development) misled investors about CagriSema tolerability by implying REDEFINE-1's dosing protocol was unchanged from prior trials. The court DISMISSED the claims over 'fixed dose' references and the 'unsurpassed >=25%' weight-loss projection, holding the latter aspirational. Class period 2022-11-02 to 2024-12-19. Answer due 2026-08-25; as of 2026-08-12 there is no settlement, no reconsideration, no appeal and no class-certification motion. TWO CORRECTIONS to the claim as it circulated in trade coverage AND in this knowledge base's own carried review item for ~20 cycles: (1) 'fewer than 60% COMPLETED ESCALATION to the top dose' overstates the finding by ~17 points \u2014 57.4% were ON the maximum dose at w68 while 74.7% ever reached it; (2) the 'protocol was AMENDED mid-trial' characterisation is a PLAINTIFF ALLEGATION, not a documented clinical fact \u2014 the word 'amend' appears nowhere in the NEJM paper, which frames the flexibility as protocol-specified by design, and ClinicalTrials.gov posts no protocol or SAP document for NCT05567796 against which an amendment could be checked. NO EFFICACY BENCHMARK CHANGE: the disclosed REDEFINE-1 figures are unaffected. Do not conflate with the SEPARATE D.N.J. securities action (class period 2024-11-06 to 2025-07-28; different defendants, different facts)"
+      "dose_intensity_and_disclosure_note": "REDEFINE-1 dose-intensity + disclosure-litigation caveat [2026-08-12, Category-1 verified against the primary publication]. DOSE INTENSITY (primary source: Garvey WT et al., 'Coadministered Cagrilintide and Semaglutide in Adults with Overweight or Obesity', N Engl J Med 2025, DOI 10.1056/NEJMoa2502081 / PMID 40544433; REDEFINE-1 = NCT05567796): at week 68, 57.4% of CagriSema participants were RECEIVING the maximum dose (semaglutide 70.9%, cagrilintide 82.5%, placebo 70.6%); 74.7% received the maximum dose at some point after randomisation (86.1% / 95.4% / 91.6% respectively). Read the -22.7% w68 amylin_combo benchmark (that figure is the TRIAL-PRODUCT estimand; the treatment-policy/ITT estimand is -20.4%) against that dose intensity. DOSING FLEXIBILITY: NEJM describes protocol-SPECIFIED dose-adjustment flexibility rules exercised on the study-site investigators' clinical judgement, and lists the flexible dosing regimen among the trial's STRENGTHS; Novo Nordisk's 2024-12-20 company announcement instead describes 'a flexible protocol, allowing patients to modify their dosing'. The two primary sources differ on WHO adjusted the dose (investigators vs patients) \u2014 both are recorded here deliberately. LITIGATION \u2014 PROCEDURAL POSTURE ONLY, NOT A FINDING OF FRAUD: in Moon v. Novo Nordisk A/S et al., No. 3:25-cv-00713 (D.N.J., Judge Robert Kirsch, opinion 2026-07-28), the court DENIED dismissal of one claim: that Martin Holst Lange (then EVP Development) misled investors about CagriSema tolerability by implying REDEFINE-1's dosing protocol was unchanged from prior trials. The court DISMISSED the claims over 'fixed dose' references and the 'unsurpassed >=25%' weight-loss projection, holding the latter aspirational. Class period 2022-11-02 to 2024-12-19. Answer due 2026-08-25; as of 2026-08-12 there is no settlement, no reconsideration, no appeal and no class-certification motion. TWO CORRECTIONS to the claim as it circulated in trade coverage AND in this coverage's own carried review item for ~20 cycles: (1) 'fewer than 60% COMPLETED ESCALATION to the top dose' overstates the finding by ~17 points \u2014 57.4% were ON the maximum dose at w68 while 74.7% ever reached it; (2) the 'protocol was AMENDED mid-trial' characterisation is a PLAINTIFF ALLEGATION, not a documented clinical fact \u2014 the word 'amend' appears nowhere in the NEJM paper, which frames the flexibility as protocol-specified by design, and ClinicalTrials.gov posts no protocol or SAP document for NCT05567796 against which an amendment could be checked. NO EFFICACY BENCHMARK CHANGE: the disclosed REDEFINE-1 figures are unaffected. Do not conflate with the SEPARATE D.N.J. securities action (class period 2024-11-06 to 2025-07-28; different defendants, different facts)"
     },
     {
       "asset_name": "eloralintide (LY3841136) \u2014 OSA",
@@ -3718,7 +3718,7 @@
       "source": "ClinicalTrials.gov NCT:NCT07724431",
       "no_efficacy_benchmark": true,
       "geo_origin_risk": "China-origin. Lead sponsor is a Hong Kong entity (HongKong Curegene Innovation Co., Limited); the CT.gov record's organization field is Shanghai CureGene Pharmaceutical Co., Ltd., and the CG- study-code series matches Shanghai CureGene's asset codes. The legal parent/subsidiary chain is NOT confirmed from a corporate registry filing - record the HK sponsor as stated, do not collapse it to the Shanghai parent. Single-site Australian Phase 1, isFdaRegulatedDrug=false (an ex-China data-package pattern). No ex-China licensee or Western partner identified as of 2026-07-26 (absence of evidence, not confirmed unpartnered)",
-      "sponsor_note": "First THR-beta (non-incretin) asset in the obesity knowledge base - resmetirom mechanistic class; the company positions it explicitly as a non-GLP-1 option for patients with obesity/metabolic syndrome and for GLP-1-intolerant patients. INDICATION DISCREPANCY worth watching: CT.gov registers conditions=['Overweight and Obesity'] with keywords ['weight loss','Obesity','MASH'], while Curegene's own pipeline page still lists CG-0416 as MASLD/MASH Phase I only. Captured here on the registry's obesity framing as a MASH-to-obesity expansion signal, not a feed error",
+      "sponsor_note": "First THR-beta (non-incretin) asset in the obesity coverage - resmetirom mechanistic class; the company positions it explicitly as a non-GLP-1 option for patients with obesity/metabolic syndrome and for GLP-1-intolerant patients. INDICATION DISCREPANCY worth watching: CT.gov registers conditions=['Overweight and Obesity'] with keywords ['weight loss','Obesity','MASH'], while Curegene's own pipeline page still lists CG-0416 as MASLD/MASH Phase I only. Captured here on the registry's obesity framing as a MASH-to-obesity expansion signal, not a feed error",
       "caveat": "NO efficacy data of any kind. Every efficacy figure in circulation for CG-0416 (hepatic lipid reduction, weight-loss improvement, muscle:fat ratio, semaglutide-combination claims) is PRECLINICAL MOUSE data from company PR. Must NOT enter efficacy_benchmarks_by_class_and_indication. Registry-confirmed at apply time: NCT07724431 has hasResults=false, NO resultsSection, and NO body-weight/weight-loss endpoint of any kind - secondaries are PK (CG-0416 + metabolite CG-0400) and lipid/insulin/SHBG PD only. Nothing in the registry could source a weight-loss figure"
     },
     {
@@ -3770,6 +3770,28 @@
         }
       ],
       "drug_name": "Cagrilintide (monotherapy)"
+    },
+    {
+      "asset_name": "IBI3040",
+      "drug_name": "IBI3040",
+      "company": "Innovent Biologics (Suzhou) Co. Ltd",
+      "modality": "amylin analog (peptide, subcutaneous) \u2014 mechanism per Innovent ADA 2026 presentation (company source, not peer-reviewed)",
+      "target": "amylin / calcitonin receptor family (AMY receptors) \u2014 to confirm against a primary publication",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "healthy participants (SAD) + overweight/obese participants (MAD)",
+      "nct": "NCT07765160",
+      "trial_name": "A Phase I Clinical Trial Evaluating the Safety, Tolerability, Pharmacokinetic and Pharmacodynamic Characteristics of a Single Subcutaneous Administration of IBI3040 in Healthy Participants and Multiple Subcutaneous Administrations in Overweight or Obese Participants",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start 2026-08-30)",
+      "estimated_readout": null,
+      "primary_endpoint": "Safety/tolerability \u2014 incidence of AEs and SAEs, physical examination and vital-sign changes (SAD and MAD); no efficacy endpoint",
+      "enrollment": 96,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin: sponsor Innovent Biologics (Suzhou) Co. Ltd., all registered trial sites in China. Per standing policy (Framing A, board-ratified 2026-06-18) captured as a per-asset geo tag, not a separate section. Sponsor and country confirmed directly from the ClinicalTrials.gov record (stated in the registry, NOT inferred from the 'IBI' code prefix)",
+      "sponsor_note": "Innovent Biologics \u2014 same sponsor as mazdutide (IBI362); IBI3040 is a distinct next-generation amylin program presented at ADA 2026 alongside comparisons to cagrilintide and eloralintide",
+      "identity_note": "coverage DEFECT CORRECTED: coverage asset_id 6396 carried canonical_name 'SAD: subcutaneous injection in the abdomen'. That string is verbatim the ClinicalTrials.gov INTERVENTION NAME field for NCT07765160 (arm label), not a drug name \u2014 an ingestion artifact of the synthesiser reading interventions.name as the asset name. The real asset is IBI3040. The defective name was NOT propagated into this ETLM row",
+      "source": "ClinicalTrials.gov NCT:NCT07765160 (verified 2026-08-17)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07765160"
     }
   ],
   "mechanism_landscape": [
@@ -4472,7 +4494,7 @@
       "event": "Oral Wegovy (semaglutide 25mg oral) reaches 3 million US prescriptions (June 2026)",
       "timing": "Ahead of analyst tracking timelines",
       "significance": "Validates consumer demand for oral GLP-1 obesity treatment at scale; accelerates oral format competition against Lilly orforglipron (Foundayo); reshapes the oral vs injectable delivery format battle",
-      "competitive_implication": "Novo's oral Wegovy brand recognition and familiarity advantage over Lilly's Foundayo (orforglipron); oral GLP-1 adoption curve suggests injectable-to-oral shift accelerating",
+      "competitive_implication": "Novo's oral Wegovy brand recognition and familiarity advantage over Lilly's Foundayo (orforglipron) noted in coverage event 2094; oral GLP-1 adoption curve suggests injectable-to-oral shift accelerating",
       "sources": [
         {
           "label": "Oral Wegovy 3M Rx milestone (market tracking, June 2026)",
@@ -4504,12 +4526,12 @@
         "Petrelintide (Zealand/Roche) tolerability deep-dive \u2014 amylin mechanism GI burden advantage vs GLP-1 class established as Phase 2-level clinical narrative",
         "Roche announces Phase 2 start: petrelintide + enicepatide combo (amylin+GLP-1/GIP dual) \u2014 most novel combo strategy in obesity pipeline as of Jun 2026",
         "Berobenatide (PF-08653944, Pfizer/Metsera) Phase 2 data in obesity+T2D \u2014 monthly GLP-1R agonist; Pfizer formal entry into scaled commercial GLP-1 fight",
-        "Eli Lilly triple-G (GLP-1/GIP/GCG) Phase 2 efficacy data presented \u2014 advantages vs existing therapies claimed; TBWL effect size not captured in the knowledge base"
+        "Eli Lilly triple-G (GLP-1/GIP/GCG) Phase 2 efficacy data presented \u2014 advantages vs existing therapies claimed; TBWL effect size not captured in coverage"
       ],
       "conference_verdict": "ADA26 confirms combo strategies and tolerability differentiation as the two structural forces shaping the next phase of obesity drug competition. Single-mechanism GLP-1 SOC status (semaglutide, tirzepatide) remains intact but next-generation competitive pressure is now clinical-stage (not preclinical). No frontrunner displacement events \u2014 no TBWL or MACE data from ADA26 exceeds current benchmarks at confirmed evidence level",
       "data_still_missing": [
         "Berobenatide TBWL effect size, responder rates, safety profile (ADA26 summary only)",
-        "Lilly triple-G TBWL effect size (ADA26 presentation not detailed in the knowledge base)",
+        "Lilly triple-G TBWL effect size (ADA26 presentation not detailed in coverage)",
         "Petrelintide monotherapy TBWL (ZUPREME-1 COMPLETED but not yet published)",
         "Cross-asset Phase 3 AE-driven discontinuation comparators (ADDENDUM): survodutide SYNCHRONIZE-1 19% per article 170 (headline-only; full data pending)"
       ],
@@ -4595,6 +4617,37 @@
         "basis": "Identity-first gate satisfied before tagging (asset-identity-verifier, verdict DISTINCT, confidence high). R&D and in-house discovery in Hangzhou/Zhejiang PRC (AISBDD/ULAP/POTENT platforms; no in-licence, no external originator); manufacturing in Shaoxing, Zhejiang. Parent is Cayman-incorporated and HKEX-listed, which does NOT confer non-China origin under look-through control/operations framing. Recent disclosures and poster affiliations use the Hong Kong entity 'Ascletis Pharma (China) Co., Limited' \u2014 a presentation-layer entity, not an R&D relocation. No current US subsidiary in disclosures (the historical 'Ascletis, Inc.' of Research Triangle Park, NC predates this pipeline; 'Ascletis BioScience Co., Ltd.', defendant in Viking Therapeutics v. Ascletis Bioscience, S.D. Cal. 3:22-cv-02062, is a CHINA subsidiary \u2014 do not read the US federal docket as US domicile). US Phase 1 execution and FDA-facing INDs are US execution, not US origin"
       },
       "excluded_claim": "DELIBERATELY NOT CAPTURED AS EVIDENCE: Ascletis's 2026-07-27 press release claiming '88% greater relative body weight reduction vs tirzepatide' and 'up to 41.5% weight loss' in a diet-induced-obese MOUSE model. Sponsor press release only \u2014 it has never appeared in any peer-reviewed, preprint or indexed source (PubMed 'ASC37' = 0 records; Europe PMC preprint search = 0; Crossref returns exactly one ASC37 record, abstract 1673-P, which contains the NHP oral-bioavailability data and NOT the 88% figure). The figure is a relative-of-a-relative with no disclosed tirzepatide comparator dose (11-day dosing at 1 nmol/kg), and tirzepatide is routinely under-dosed relative to its efficacy plateau in DIO-mouse work, so the headline can be produced by comparator-dose choice alone. NEVER use as an efficacy benchmark or in any cross-trial comparison"
+    },
+    {
+      "asset_name": "ASC39",
+      "company": "Ascletis Pharma Inc. (HKEX: 1672) \u2014 China-origin",
+      "modality": "oral small-molecule amylin receptor agonist (once-daily tablet)",
+      "target": "AMY1R (amylin 1 receptor) \u2014 selective over the calcitonin receptor (hCTR)",
+      "stage": "preclinical (in vitro cAMP + DIO rat). No ClinicalTrials.gov registration \u2014 live ClinicalTrials.gov v2 API sweep 2026-08-18 (query.spons=Ascletis, fully paginated, 48 studies): ASC39/ASC35/ASC36 = 0 occurrences, while the SAME sweep returns 6 ASC30 studies (NCT06680440/NCT06679959/NCT07002905/NCT07321678/NCT07743450/NCT07743463) plus 18 other ASC codes -- probe ARMED, so this is ran-and-found-nothing, not did-not-run. Scope caveat: CT.gov only; it does not exclude a China CDE/NMPA filing. The ADA abstract states only that the profile 'supports its advancement into human clinical trials'; it does NOT claim an IND or a filed trial",
+      "positioning": "Oral small-molecule answer to the injectable amylin-analog class \u2014 benchmarked by the sponsor head-to-head against Lilly's eloralintide. The differentiating claim is ROUTE (oral small molecule vs once-weekly SC peptide) at matched receptor potency, not demonstrated human efficacy. Read-across to eloralintide, petrelintide and cagrilintide on mechanism",
+      "evidence_summary": "ADA 2026 abstract 3067-LB (Diabetes vol 75, Supplement_1, published 2026-06-05, DOI 10.2337/db26-3067-lb). Head-to-head cAMP activation: hAMY1R EC50 21.4 pM (ASC39) vs 21.2 pM (eloralintide); hCTR EC50 846.1 pM vs 1350.8 pM \u2014 i.e. 40-fold (ASC39) vs 64-fold (eloralintide) selectivity for hAMY1R over hCTR. Head-to-head DIO rat study: oral ASC39 5 mg/kg once daily produced weight loss the abstract describes as 'as good as' subcutaneous eloralintide 3 nmol/kg Q3D. PRECLINICAL ONLY \u2014 no human data of any kind, and no weight-loss percentage is disclosed, so this row carries no efficacy benchmark and must never be scored against the config's TBWL/MACE calibration priors",
+      "no_efficacy_benchmark": true,
+      "combination_context": "ASC39 is the AMYLIN component of the ASC30_39 FDC \u2014 a fixed-dose combination with ASC30, Ascletis's oral small-molecule GLP-1R agonist already carried in pipeline_assets at Phase 3 (NCT07743463 / NCT07743450). The FDC ITSELF is deliberately NOT added by this row: its only disclosure is a company press release (2026-04-07 \u2014 dog oral PK, half-life up to ~12 h, ASC30/ASC39 compatibility, room-temperature stability, small pill size) with no indexed abstract, no CT.gov registration and, as of 2026-08-18, no confirmed IND (the sponsor guided only to a Q3 2026 US IND SUBMISSION for the FDC)",
+      "source": "ADA 2026 abstract 3067-LB \u2014 Diabetes 75, Supplement_1, DOI 10.2337/db26-3067-lb",
+      "sources": [
+        {
+          "label": "ADA 2026 abstract 3067-LB (Diabetes 75, Supplement_1)",
+          "url": "https://doi.org/10.2337/db26-3067-lb",
+          "type": "conference_abstract_indexed",
+          "date": "2026-06-05",
+          "quoted_metric": "hAMY1R EC50 21.4 pM (ASC39) vs 21.2 pM (eloralintide); 40-fold vs 64-fold hAMY1R/hCTR selectivity",
+          "verification": "citation-verifier 2026-08-18: VERIFIED, all sub-claims text-matched against the Crossref REST record (api.crossref.org/works/10.2337/db26-3067-lb, HTTP 200, full JATS abstract returned). Not a status-code pass",
+          "sponsor_attribution_caveat": "Crossref affiliation is LOCATION-ONLY ('Causeway Bay, Hong Kong, Hangzhou, China') and never names Ascletis \u2014 the SAME pattern already documented on the ASC37 row. Sponsor identity closes via the AUTHORS: first author JINZI J. WU is Ascletis's Founder/Chairman/CEO; second author CHENGFEI WU shares the affiliation string. Phrase any citation that way, and do not cite OpenAlex for ADA records with this location-only affiliation pattern (it mis-resolves them to a Chinese academic group)",
+          "abstract_typo_note": "The abstract renders the calcitonin receptor as 'hCRT' in its concluding sentence; it is defined as 'human calcitonin receptor (hCTR)' earlier in the same abstract. 846.1/21.4 = 39.5x, arithmetically consistent with the stated 40-fold"
+        }
+      ],
+      "source_year": 2026,
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-08-18",
+        "basis": "Same sponsor entity as the already-tagged ASC30 and ASC37 rows \u2014 Ascletis Pharma Inc. (HKEX: 1672). R&D and in-house discovery in Hangzhou/Zhejiang PRC; manufacturing in Shaoxing, Zhejiang. Cayman incorporation + HKEX listing do NOT confer non-China origin under look-through control/operations framing. Identity-first gate satisfied by reuse: the asset\u2194sponsor mapping closes through the ADA abstract's author (Jinzi J. Wu, Ascletis Founder/Chairman/CEO), not through an inferred code prefix"
+      }
     }
   ],
   "regulatory_landscape": {

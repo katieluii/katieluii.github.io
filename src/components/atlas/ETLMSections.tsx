@@ -10,6 +10,7 @@ import {
   AlertTriangle,
   Shield,
   Users,
+  EyeOff,
   ExternalLink,
 } from 'lucide-react';
 import { crossLinks, etlmIndex, tppIndex } from '../../data/atlas/index';
@@ -230,6 +231,45 @@ function benchmarkNotes(obj: unknown): string[] {
     .map(([, v]) => String(v));
 }
 
+/** TRUE row count for a section on a capped PREVIEW payload; null when this
+ *  payload is not a preview, or when the section has no recorded total.
+ *
+ *  A preview ships only the first `detail_rows_shown` rows of the sections it
+ *  keeps, so `etlm[key].length` is the CAP — 3 for every section — and a footer
+ *  built from it would read "3 of 3" and hide the single fact it exists to
+ *  state. `section_counts` carries the real totals (urothelial: 23 approved
+ *  therapies, 44 pipeline assets) and is the only correct source here.
+ *
+ *  Returns null unless `detail_available === false`. That is what keeps the
+ *  featured indications (obesity / mm / nsclc — no such key) byte-identical:
+ *  every caller falls back to the array length it already used. */
+function previewSectionTotal(etlm: Record<string, unknown>, key: string): number | null {
+  if (etlm.detail_available !== false) return null;
+  const counts = etlm.section_counts;
+  if (!isObj(counts)) return null;
+  const n = counts[key];
+  return typeof n === 'number' && Number.isFinite(n) ? n : null;
+}
+
+/** Footer under the last visible row of a section that DID ship rows on a
+ *  preview. Deliberately not a Card and not a table row — a dashed hairline
+ *  rule plus small muted text, so it reads as a note ABOUT the list rather than
+ *  the last item IN it.
+ *
+ *  The numbers are the true totals from section_counts and are stated plainly:
+ *  nothing here is withheld, so nothing here is blurred. Renders nothing when
+ *  there is no preview total (featured pages) or when the section shipped
+ *  whole. */
+function PreviewRowsFooter({ shown, total }: { shown: number; total: number | null }) {
+  if (total === null || !(total > shown)) return null;
+  return (
+    <p className="mt-3 border-t border-dashed border-zinc-300 pt-2 text-[11px] leading-relaxed text-zinc-500 dark:border-white/15 dark:text-zinc-400">
+      Showing the top {shown} of {total} entries — the remaining {total - shown} are withheld from
+      this preview.
+    </p>
+  );
+}
+
 function Epidemiology({ data }: { data: Record<string, unknown> }) {
   // Scalar stats: numbers/strings that aren't provenance (*_source) keys.
   const stats = Object.entries(data).filter(
@@ -313,11 +353,17 @@ function ApprovedTherapies({
   data,
   sectionLabel,
   condensed,
+  totalRows,
 }: {
   data: unknown[];
   sectionLabel?: string;
   condensed?: boolean;
+  /** True section total on a capped preview (from section_counts). null /
+   *  undefined on a full-detail payload, where the shipped array IS the whole
+   *  section and the header count stays exactly what it was. */
+  totalRows?: number | null;
 }) {
+  const headerCount = totalRows ?? data.length;
   const title = sectionLabel ?? 'Approved therapies';
   const subtitle = sectionLabel === 'Legacy Approved Therapies'
     ? 'Pre-incretin era; largely displaced — class-level summary only'
@@ -333,7 +379,7 @@ function ApprovedTherapies({
   if (condensed) {
     return (
       <section className="mb-10">
-        <SectionHeader icon={Shield} title={title} subtitle={subtitle} count={data.length} />
+        <SectionHeader icon={Shield} title={title} subtitle={subtitle} count={headerCount} />
         <Card>
           <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 max-w-[72ch] leading-relaxed">
             Pre-incretin oral agents. Efficacy ceiling ~3–8% total body-weight loss versus 15–23%
@@ -365,6 +411,7 @@ function ApprovedTherapies({
               );
             })}
           </ul>
+          <PreviewRowsFooter shown={data.filter(isObj).length} total={totalRows ?? null} />
         </Card>
       </section>
     );
@@ -376,7 +423,7 @@ function ApprovedTherapies({
         icon={Shield}
         title={title}
         subtitle={subtitle}
-        count={data.length}
+        count={headerCount}
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {shown.map((entry, i) => {
@@ -474,6 +521,7 @@ function ApprovedTherapies({
         })}
       </div>
       <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
+      <PreviewRowsFooter shown={shown.length} total={totalRows ?? null} />
     </section>
   );
 }
@@ -499,9 +547,13 @@ function phasePill(phase: string) {
 function PipelineAssets({
   data,
   indicationCode,
+  totalRows,
 }: {
   data: unknown[];
   indicationCode: string;
+  /** True section total on a capped preview (from section_counts). null /
+   *  undefined on a full-detail payload — header count is then unchanged. */
+  totalRows?: number | null;
 }) {
   const linkedTpps = crossLinks.etlm_to_tpps?.[indicationCode] ?? [];
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
@@ -560,7 +612,7 @@ function PipelineAssets({
         icon={TestTube}
         title="Pipeline assets"
         subtitle="Phase 2/3 programs and key catalysts"
-        count={rows.length}
+        count={totalRows ?? rows.length}
       />
       <div className="overflow-x-auto rounded-xl ring-1 ring-zinc-200 dark:ring-white/10">
         <table className="w-full text-xs border-collapse">
@@ -631,6 +683,7 @@ function PipelineAssets({
         </table>
       </div>
       <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
+      <PreviewRowsFooter shown={shown.length} total={totalRows ?? null} />
       {linkedTpps.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
           Related TPPs in this preview:{' '}
@@ -1353,6 +1406,15 @@ const SKIP_KEYS = new Set([
   // into `pipeline_assets`, so it needs no standalone section. (`emerging_signals`
   // IS shown — it has a dedicated renderer below.)
   'allogeneic_cell_therapy_pipeline',
+  // Preview-bundle envelope, not sections. `section_counts` drives the WITHHELD
+  // blocks below and the `detail_*` trio drives the redaction copy; none of them
+  // is a section, so none reaches the section list (and none trips the DEV
+  // "no renderer" warning). All four are absent from the featured ETLMs
+  // (obesity / mm / nsclc), so skipping them cannot move a featured page.
+  'section_counts',
+  'detail_available',
+  'detail_rows_shown',
+  'detail_note',
 ]);
 
 const SECTION_ORDER = [
@@ -1486,6 +1548,224 @@ const SECTION_ICON: Record<string, React.ComponentType<{ className?: string }>> 
 function iconFor(key: string): React.ComponentType<{ className?: string }> {
   if (key.startsWith('efficacy_benchmarks_')) return Gauge;
   return SECTION_ICON[key] ?? PillIcon;
+}
+
+// --- Withheld sections (capped PREVIEW bundles only) -------------------------
+//
+// A preview ETLM (`detail_available === false`) ships the rows of two or three
+// sections and `section_counts` for ALL of them. Every renderer above keys off
+// the presence of its source array, so the sections whose rows were withheld
+// used to render nothing at all: urothelial's report silently collapsed from
+// nine sections to three and read as a broken page rather than a deliberate
+// preview. The block below gives those sections a body — heading, blurred
+// synthetic skeleton, and the true count in plain words.
+
+/** Full section headings, mirroring what each renderer above prints. A withheld
+ *  section has no renderer to ask, so it reads them from here and keeps the
+ *  page's rhythm: same icon, same heading, same subtitle, only the rows gone.
+ *  labelText() is the fallback for an unmapped key. */
+const SECTION_TITLE: Record<string, string> = {
+  epidemiology: 'Epidemiology',
+  approved_therapies: 'Approved therapies',
+  approved_therapies_novel: 'Novel Approved Therapies',
+  approved_therapies_legacy: 'Legacy Approved Therapies',
+  pipeline_assets: 'Pipeline assets',
+  recent_conference_readouts: 'Recent conference readouts',
+  mechanism_landscape: 'Mechanism landscape',
+  competitive_dynamics: 'Competitive dynamics',
+  emerging_signals: 'Emerging signals',
+  unmet_needs: 'Unmet needs',
+  regulatory_landscape: 'Regulatory landscape',
+  preclinical_watchlist: 'Preclinical watchlist',
+  novel_targets: 'Novel targets',
+};
+
+/** Subtitles, copied from the renderers above for the same reason. */
+const SECTION_SUBTITLE: Record<string, string> = {
+  approved_therapies: 'The standard-of-care anchor',
+  approved_therapies_novel: 'Current standard-of-care and active agents',
+  approved_therapies_legacy: 'Pre-incretin era; largely displaced — class-level summary only',
+  pipeline_assets: 'Phase 2/3 programs and key catalysts',
+  recent_conference_readouts: 'Recent data presented at major congresses',
+  mechanism_landscape: 'Targets and drug classes mapped to assets',
+  competitive_dynamics: 'Crowded targets, white space, patent expiries',
+  emerging_signals:
+    'On the watchlist — annotation only; not yet a placed benchmark or pipeline asset',
+  unmet_needs: "Where the bar still isn't being cleared",
+  regulatory_landscape: 'Pathway risks, legislative signals, label scope',
+  preclinical_watchlist: 'Programs to watch ahead of clinical entry',
+  novel_targets: 'Emerging biology and design principles from recent literature',
+};
+
+function sectionTitle(key: string): string {
+  if (key.startsWith('efficacy_benchmarks_')) return 'Efficacy benchmarks';
+  return SECTION_TITLE[key] ?? labelText(key);
+}
+
+function sectionSubtitle(key: string): string | undefined {
+  // Same construction EfficacyBenchmarks uses, so the two read identically.
+  if (key.startsWith('efficacy_benchmarks_'))
+    return `Organised ${labelText(key.replace(/^efficacy_benchmarks_/, ''))}`;
+  return SECTION_SUBTITLE[key];
+}
+
+/** What a withheld section's rows ARE, so a bare total reads as
+ *  "12 targets / drug classes" rather than "12 rows". [singular, plural]. */
+const WITHHELD_UNIT: Record<string, [string, string]> = {
+  epidemiology: ['epidemiology field', 'epidemiology fields'],
+  approved_therapies: ['approved therapy', 'approved therapies'],
+  approved_therapies_novel: ['approved therapy', 'approved therapies'],
+  approved_therapies_legacy: ['legacy agent', 'legacy agents'],
+  pipeline_assets: ['pipeline asset', 'pipeline assets'],
+  recent_conference_readouts: ['conference readout', 'conference readouts'],
+  mechanism_landscape: ['target / drug class', 'targets / drug classes'],
+  competitive_dynamics: ['competitive dimension', 'competitive dimensions'],
+  emerging_signals: ['emerging signal', 'emerging signals'],
+  unmet_needs: ['unmet need', 'unmet needs'],
+  regulatory_landscape: ['regulatory entry', 'regulatory entries'],
+  preclinical_watchlist: ['preclinical asset', 'preclinical assets'],
+  novel_targets: ['novel target', 'novel targets'],
+};
+
+function withheldUnit(key: string, n: number): string {
+  // The benchmark schema key names the axis its groups sit on.
+  if (key.startsWith('efficacy_benchmarks_')) {
+    if (/_by_line$/.test(key)) return n === 1 ? 'line of therapy' : 'lines of therapy';
+    if (/_by_stage$/.test(key)) return n === 1 ? 'stage' : 'stages';
+    return n === 1 ? 'benchmark group' : 'benchmark groups';
+  }
+  const pair: [string, string] = WITHHELD_UNIT[key] ?? ['row', 'rows'];
+  return n === 1 ? pair[0] : pair[1];
+}
+
+/** Sections whose real renderer is a TABLE — their skeleton mimics a table so the
+ *  withheld block still reads like the section it stands in for. */
+const SKELETON_TABLE = new Set(['pipeline_assets', 'mechanism_landscape']);
+
+/** A purely decorative redaction skeleton: grey bars, nothing else.
+ *
+ *  There is nothing here to leak — the withheld rows are not in the bundle at all
+ *  — and nothing here may be MISTAKEN for clinical data either, so it is
+ *  deliberately shape-only: no drug names, no numbers, no NCT-shaped strings, no
+ *  text of any kind. Widths are inline styles, not Tailwind classes, so the
+ *  shapes never depend on what the class scanner happened to emit.
+ *
+ *  aria-hidden: the blur is a visual effect and carries no meaning. Everything it
+ *  stands for is stated as real text in the paragraph beneath it.
+ *
+ *  Deliberately NOT animated. A pulse/shimmer reads as "loading", and this
+ *  content is not arriving. */
+function RedactedSkeleton({ variant }: { variant: 'table' | 'cards' }) {
+  const bar = 'rounded-full bg-zinc-400/45 dark:bg-zinc-400/25';
+  // Fixed shapes: the skeleton must not encode the row count. The count is stated
+  // in words below, where a screen reader and a colour-blind reader both get it.
+  if (variant === 'table') {
+    const head = ['22%', '14%', '18%', '12%', '10%'];
+    const rows = [
+      ['30%', '16%', '20%', '10%', '12%'],
+      ['24%', '20%', '14%', '14%', '9%'],
+      ['34%', '12%', '22%', '11%', '13%'],
+      ['20%', '18%', '17%', '13%', '8%'],
+    ];
+    return (
+      <div aria-hidden className="pointer-events-none select-none opacity-70 blur-[3px]">
+        <div className="flex gap-3 border-b border-zinc-300/70 pb-2 dark:border-white/10">
+          {head.map((w, i) => (
+            <div key={i} className={`h-1.5 ${bar}`} style={{ width: w }} />
+          ))}
+        </div>
+        <div className="space-y-3 pt-3">
+          {rows.map((row, r) => (
+            <div key={r} className="flex gap-3">
+              {row.map((w, i) => (
+                <div key={i} className={`h-2.5 ${bar}`} style={{ width: w }} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  const cards = [
+    ['48%', '96%', '72%'],
+    ['38%', '88%', '64%'],
+    ['54%', '92%', '78%'],
+    ['42%', '84%', '58%'],
+  ];
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none grid select-none grid-cols-1 gap-3 opacity-70 blur-[3px] md:grid-cols-2"
+    >
+      {cards.map((card, i) => (
+        <div key={i} className="rounded-lg bg-zinc-200/50 p-3 dark:bg-white/[0.04]">
+          <div className={`mb-2.5 h-2.5 ${bar}`} style={{ width: card[0] }} />
+          <div className={`mb-1.5 h-2 ${bar}`} style={{ width: card[1] }} />
+          <div className={`h-2 ${bar}`} style={{ width: card[2] }} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** A section the preview bundle carries a COUNT for but no rows.
+ *
+ *  Three parts, in order: the real SectionHeader (same icon / heading / subtitle
+ *  as the shipped version, and the TRUE total on the right), the blurred
+ *  synthetic skeleton, then a plain-text statement of what is withheld and how
+ *  much. Reading order matters — the reader meets the section, sees it is
+ *  redacted, then learns the size of what is missing.
+ *
+ *  Status is carried by a dashed border AND the words "Withheld from this
+ *  preview", never by hue alone. That also keeps it distinct from a section that
+ *  is merely EMPTY (a plain solid-ringed Card with an italic note, as
+ *  RecentConferenceReadouts renders at length 0) and from a loading state (no
+ *  animation) and from an error (no alert styling, no red).
+ *
+ *  Every fact is in the text; the blur decorates. */
+function WithheldSection({ sectionKey, count }: { sectionKey: string; count: number }) {
+  const Icon = iconFor(sectionKey);
+  return (
+    <section className="mb-10">
+      <SectionHeader
+        icon={Icon}
+        title={sectionTitle(sectionKey)}
+        subtitle={sectionSubtitle(sectionKey)}
+        count={count}
+      />
+      <div className="rounded-xl border border-dashed border-zinc-400/80 bg-zinc-50/70 p-4 dark:border-white/25 dark:bg-white/[0.02]">
+        <div className="mb-3 flex items-center gap-1.5">
+          <EyeOff className="h-3 w-3 text-zinc-500 dark:text-zinc-400" aria-hidden="true" />
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+            Withheld from this preview
+          </span>
+        </div>
+        <RedactedSkeleton variant={SKELETON_TABLE.has(sectionKey) ? 'table' : 'cards'} />
+        <p className="mt-4 max-w-[72ch] border-t border-dashed border-zinc-300 pt-3 text-xs leading-relaxed text-zinc-600 dark:border-white/15 dark:text-zinc-300">
+          This section holds{' '}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+            {count} {withheldUnit(sectionKey, count)}
+          </span>{' '}
+          in the full landscape map. None of them are in this preview — the shapes
+          above are a blurred placeholder, not data. Available on request.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/** `section_counts` from a preview bundle, narrowed to finite numbers.
+ *  Number.isFinite rather than truthiness, so a genuine 0 survives the filter
+ *  (and is then excluded on its own merits, below) and a NaN cannot pass as a
+ *  count. */
+function previewSectionCounts(etlm: Record<string, unknown>): Record<string, number> {
+  const raw = etlm.section_counts;
+  if (!isObj(raw)) return {};
+  const out: Record<string, number> = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (typeof v === 'number' && Number.isFinite(v)) out[k] = v;
+  }
+  return out;
 }
 
 function asList(v: unknown): Record<string, unknown>[] {
@@ -1625,6 +1905,68 @@ type SummaryRow = {
   headline: string;
 };
 
+/** Blur every numeric token in a string, for a redacted (summary-only) report.
+ *
+ *  On a capped page the derived headlines count the rows that SHIPPED, not the rows
+ *  that exist — so every section announced "3": "3 approved agents", "3 pipeline
+ *  assets · 3 in Phase 3", "benchmarks across 3 lines of therapy". For an indication
+ *  with 23 approved agents and 44 pipeline assets that is not merely repetitive, it
+ *  is wrong, and it advertises the cap in the clumsiest possible way.
+ *
+ *  Blurring the digits keeps the sentence shape ("N approved agents · SOC anchor: X")
+ *  and the genuinely informative half — the SOC anchor, the latest readout, the
+ *  leading unmet need — while the quantity reads as deliberately withheld. Nothing
+ *  secret is hidden here: the shipped number IS the cap, and the true totals travel
+ *  openly in section_counts. This is about not stating a misleading figure.
+ */
+function blurNumbers(text: string, redact: boolean): React.ReactNode {
+  if (!redact) return text;
+  const parts = text.split(/(\d[\d,.]*\s*%?)/g);
+  return parts.map((part, i) =>
+    /^\d/.test(part) ? (
+      // The blur is decorative and must not be the only signal: a screen reader was
+      // being handed the capped figure as plain text and announcing "3 approved
+      // agents" as fact. The digits are now aria-hidden and an sr-only phrase carries
+      // the truth instead. `title` was doing this job and cannot — it is not reliably
+      // announced on a bare span, and find-in-page still matched the hidden number.
+      <span key={i}>
+        <span aria-hidden="true" className="select-none blur-[4px] opacity-70">
+          {part}
+        </span>
+        <span className="sr-only">a withheld number of</span>
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  );
+}
+
+/** Page-level preview notice. Sits directly above "At a glance", so the reader
+ *  meets the cap before the first section rather than inferring it from three
+ *  short lists; each shipped section then restates it with its own true total in
+ *  PreviewRowsFooter.
+ *
+ *  It deliberately does NOT reprint `detail_note` — the summary page's "Summary
+ *  view" box already carries that sentence, and a reader arriving from it would
+ *  otherwise read the same words twice. This says the one thing that box does
+ *  not: how many rows of each shipped section are actually on this page. */
+function PreviewCapNotice({ rowsShown }: { rowsShown: number | null }) {
+  return (
+    <section className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/60 p-4 dark:border-amber-500/30 dark:bg-amber-500/5">
+      <div className="mb-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        {rowsShown === null ? 'Preview — top rows only' : `Preview — top ${rowsShown} rows per section`}
+      </div>
+      <p className="max-w-[72ch] text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+        {rowsShown === null
+          ? 'Only the first few entries of each section are included here.'
+          : `Only the first ${rowsShown} entries of each section are included here.`}{' '}
+        Where a section names a total, that total is the full landscape map's count, not the number
+        of rows on this page.
+      </p>
+    </section>
+  );
+}
+
 /** "At a glance" — the report's landing view. One row per section (heading +
  *  count + derived headline); a click expands that section and scrolls to it,
  *  or collapses it if already open. Expand/Collapse-all toggle the whole map.
@@ -1635,12 +1977,14 @@ function ExecSummary({
   onRow,
   onExpandAll,
   onCollapseAll,
+  redact = false,
 }: {
   rows: SummaryRow[];
   open: Record<string, boolean>;
   onRow: (key: string) => void;
   onExpandAll: () => void;
   onCollapseAll: () => void;
+  redact?: boolean;
 }) {
   if (rows.length === 0) return null;
   return (
@@ -1679,11 +2023,13 @@ function ExecSummary({
                 <span className="w-32 shrink-0 text-xs font-semibold text-zinc-900 dark:text-zinc-100 sm:w-44">
                   {title}
                   {typeof count === 'number' ? (
-                    <span className="ml-1 font-normal text-zinc-400 dark:text-zinc-500">{count}</span>
+                    <span className="ml-1 font-normal text-zinc-400 dark:text-zinc-500">
+                      {blurNumbers(String(count), redact)}
+                    </span>
                   ) : null}
                 </span>
                 <span className="flex-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
-                  {headline}
+                  {blurNumbers(String(headline ?? ''), redact)}
                 </span>
                 <span className="shrink-0 text-xs text-zinc-400 transition-colors group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300">
                   {on ? '▾' : '▸'}
@@ -1705,20 +2051,42 @@ function renderSection(
 ): React.ReactNode {
   const val = etlm[key];
   if (key === 'epidemiology' && isObj(val)) return <Epidemiology data={val} />;
+  // `totalRows` is null on every full-detail payload (previewSectionTotal short-
+  // circuits on `detail_available !== false`), so the featured indications render
+  // exactly as before; only a capped preview gets a real total.
   if (key === 'approved_therapies_novel' && Array.isArray(val))
-    return <ApprovedTherapies data={val} sectionLabel="Novel Approved Therapies" />;
+    return (
+      <ApprovedTherapies
+        data={val}
+        sectionLabel="Novel Approved Therapies"
+        totalRows={previewSectionTotal(etlm, key)}
+      />
+    );
   if (key === 'approved_therapies_legacy' && Array.isArray(val))
-    return <ApprovedTherapies data={val} sectionLabel="Legacy Approved Therapies" condensed />;
+    return (
+      <ApprovedTherapies
+        data={val}
+        sectionLabel="Legacy Approved Therapies"
+        condensed
+        totalRows={previewSectionTotal(etlm, key)}
+      />
+    );
   if (key === 'approved_therapies' && Array.isArray(val)) {
     // Flat array is a subset once an indication splits novel/legacy — suppress it.
     const hasSplit =
       Array.isArray(etlm.approved_therapies_novel) ||
       Array.isArray(etlm.approved_therapies_legacy);
     if (hasSplit) return null;
-    return <ApprovedTherapies data={val} />;
+    return <ApprovedTherapies data={val} totalRows={previewSectionTotal(etlm, key)} />;
   }
   if (key === 'pipeline_assets' && Array.isArray(val))
-    return <PipelineAssets data={val} indicationCode={indicationCode} />;
+    return (
+      <PipelineAssets
+        data={val}
+        indicationCode={indicationCode}
+        totalRows={previewSectionTotal(etlm, key)}
+      />
+    );
   if (key === 'recent_conference_readouts' && Array.isArray(val))
     return <RecentConferenceReadouts data={val} />;
   if (key.startsWith('efficacy_benchmarks_') && isObj(val))
@@ -1746,16 +2114,49 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
   const linkedTpps = crossLinks.etlm_to_tpps?.[indicationCode] ?? [];
   const linkedThemes = crossLinks.etlm_to_themes?.[indicationCode] ?? [];
 
+  // A PREVIEW bundle (detail_available === false) ships the rows of only a couple
+  // of sections but `section_counts` for every section, withheld ones included.
+  // So the section list is driven by section_counts AS WELL AS by the present
+  // arrays: a section with a count but no rows still appears, in its normal
+  // SECTION_ORDER position with its normal heading and icon, as an explicitly
+  // redacted block rather than vanishing.
+  //
+  // Featured ETLMs (obesity / mm / nsclc) carry no `detail_available` key, so
+  // `withheldCounts` is {} for them and every line below reduces to exactly the
+  // expression it replaced.
+  const withheldCounts = etlm.detail_available === false ? previewSectionCounts(etlm) : {};
+
+  const sectionKeys = [
+    ...Object.keys(etlm),
+    ...Object.keys(withheldCounts).filter((k) => !(k in etlm)),
+  ];
+
   const orderedKeys = [
-    ...SECTION_ORDER.filter((k) => k in etlm),
-    ...Object.keys(etlm).filter(
+    ...SECTION_ORDER.filter((k) => sectionKeys.includes(k)),
+    ...sectionKeys.filter(
       (k) => !SKIP_KEYS.has(k) && !SECTION_ORDER.includes(k),
     ),
   ];
 
   const rendered = orderedKeys
     .filter((k) => !SKIP_KEYS.has(k))
-    .map((key) => ({ key, node: renderSection(key, etlm, indicationCode) }))
+    .map((key) => {
+      const withheldCount = withheldCounts[key];
+      // Resolve a withheld key BEFORE renderSection: the key is absent from
+      // `etlm`, so renderSection would return null and log a DEV "no renderer"
+      // warning that is wrong here — there IS a renderer, there is no data.
+      // `> 0` is an explicit comparison, not truthiness: a section whose true
+      // count is 0 has nothing to withhold and stays absent, exactly as on a
+      // featured page.
+      if (!(key in etlm) && typeof withheldCount === 'number' && withheldCount > 0) {
+        return {
+          key,
+          node: <WithheldSection sectionKey={key} count={withheldCount} />,
+          withheld: true,
+        };
+      }
+      return { key, node: renderSection(key, etlm, indicationCode), withheld: false };
+    })
     .filter((r) => r.node !== null);
 
   // Parent owns collapse state so the exec summary and the nav rail can drive it.
@@ -1796,12 +2197,17 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
     count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
   }));
 
-  const summaryRows: SummaryRow[] = rendered.map(({ key }) => ({
+  const summaryRows: SummaryRow[] = rendered.map(({ key, withheld }) => ({
     key,
     icon: iconFor(key),
     title: navLabel(key),
     count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
-    headline: sectionHeadline(key, etlm),
+    // A withheld section has no rows for sectionHeadline() to describe, and its
+    // TRUE count must not travel through this row: ExecSummary blurs every digit
+    // when redact is on, and the true total is the one quantity a preview states
+    // openly. Keep the row digit-free and let the section itself print the
+    // number, unblurred.
+    headline: withheld ? 'Withheld from this preview' : sectionHeadline(key, etlm),
   }));
 
   return (
@@ -1841,12 +2247,23 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
         </section>
       )}
 
+      {etlm.detail_available === false && (
+        <PreviewCapNotice
+          rowsShown={
+            typeof etlm.detail_rows_shown === 'number' && Number.isFinite(etlm.detail_rows_shown)
+              ? etlm.detail_rows_shown
+              : null
+          }
+        />
+      )}
+
       <ExecSummary
         rows={summaryRows}
         open={open}
         onRow={onRow}
         onExpandAll={() => setAll(true)}
         onCollapseAll={() => setAll(false)}
+        redact={etlm.detail_available === false}
       />
 
       {rendered.map(({ key, node }) => (

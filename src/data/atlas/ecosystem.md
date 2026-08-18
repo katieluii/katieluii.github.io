@@ -5,42 +5,34 @@ _A public-safe slice of a running internal note, rebuilt by the Atlas sync._
 _Published: the 2 most recent dated entries that carry at least one of the sections below, each reduced to its date, and within each entry only the subsections whose heading matches “target/modality”, “modality trajectory”, “deal climate”, “conference observations”. Not published: the pipeline run-log that heads every entry in the source note, every other subsection, and every earlier entry. Internal record identifiers and workflow labels are removed from the text that is kept._
 
 
-## 2026-08-16 (entry 1 of 2)
+## 2026-08-18 (entry 1 of 2)
 
 ### Target/modality crowding
 
-- No confirmed new target-class entrant. Two candidate class-extension flags, both pre-data: **DXC006** (Hangzhou DAC Biotechnology, anti-CD56 ADC + toripalimab/platinum, sclc, NCT07559929) is a net-new China-origin SCLC asset introducing CD56 as a target not currently in the sclc config's tracked_target_classes — flagged by the analyst as a possible config addition, not made. **TollB-001** (Toll Biotech, Beijing, TLR8 antagonist, ssc, NCT07745725) is a net-new asset aimed directly at the still-unbeaten dcSSc mRSS skin-fibrosis bar — first TLR8-class entrant logged for ssc.
-- mm's IBI3003 (Innovent, GPRC5D x BCMA x CD3 trispecific) opened a safety-run-in + two NDMM frontline cohorts — deepens the standing "frontline trispecific wave" trend (first logged 2026-07-23), still zero data.
+- No confirmed new target-class entrant in the tracked seed this cycle. **Avexitide (Amylyx, GLP-1 receptor ANTAGONIST)** is a novel mechanism direction worth flagging against the GLP-1 crowding conversation: the landscape's tracked GLP-1 assets (obesity ETLM) are overwhelmingly receptor AGONISTS; avexitide works in the opposite direction (blocking GLP-1 signalling) to treat post-bariatric hypoglycemia, a GLP-1-adjacent but mechanistically distinct indication. obesity's analyst explicitly scoped it OUT of the obesity ETLM this cycle (opposite mechanism, different disease). landscape-scope caveat: this is one bankruptcy-sourced asset, not evidence of a broader antagonist trend industrywide.
 
 ### Modality trajectory
 
-- No modality-efficacy or safety movement this cycle. All 40 net-new events are early-phase trial-start registrations with zero disclosed data.
+- No modality-level momentum or cooling signal new this cycle beyond the avexitide GLP-1-antagonist note above (crowding section). Standing watches (PD-1xCTLA-4 class-negative volrustomig, FcRn/efgartigimod myositis subgroup-miss) unchanged — see watch flags.
 
 ### Deal climate
 
-- No deal-themed macro signal this cycle (ceiling unchanged at 1752).
+- Two deal/licensing signals this cycle, neither touching a tracked clinical asset: Leo Pharma/Tanabe's up-to-$435M dersimelagon rare-dermatology licensing deal and Fractal Analytics' $17M+ multi-year enterprise-AI agreement with an unnamed Fortune 500 US healthcare organization (vendor/infrastructure not drug licensing). Light cycle by deal count; the $435M dersimelagon figure is the notable data point for rare-disease deal sizing.
 
 ### Conference observations
 
-- No active conference-metadata signal touches a tracked indication this cycle.
+- BIO-Europe 2026 (Cologne, November) is expanding from three to seven partnering tracks specifically to reach the full biotech/pharma C-suite rather than just BD staff — a deal-sourcing-venue growth signal, no asset/sponsor attached.
 
 
-## 2026-08-16 (entry 2 of 2)
+## 2026-08-18 (entry 2 of 2)
 
 ### Target/modality crowding
 
-- **SYS6090** (CSPC Megalith, China-origin): new PD-1 x IL-15 fusion-protein bispecific entering HCC (+bevacizumab, P1-2 safety-only). First PD-1xIL-15 fusion construct logged for hcc.
-- **ARR-002** (ArriVent BioPharma): new MUC16/NaPi2b dual-target tetravalent ADC entering ovarian P1 — first non-FRα ADC class logged against the mirvetuximab soravtansine benchmark.
-- **BreakVax** (BreakBio Corp): new per-patient-designed/manufactured personalized immunotherapy (+chemo+anti-PD-1) entering GBM P1-2 — first personalized-manufacture modality logged for gbm.
-- **GFH375/VS-7375** (Genfleet, China-origin): line-of-therapy maturation, not a new class — already-tracked 2L+ NSCLC asset opens a new 1L trial (NCT07554859).
-
-### Modality trajectory
-
-- No efficacy/safety movement this cycle — all 9 net-new events are pre-data trial-start registrations. Notable pre-data class entrants only: PD-1xIL-15 fusion (hcc), dual-target ADC beyond FRα (ovarian), per-patient personalized immunotherapy (gbm) — see crowding section above.
+- **Biokin/BMS iza-bren** (BL-B01D1, EGFRxHER3 bispecific ADC, China-origin/BMS-partnered, already tracked in nsclc's config class) reported a positive Phase 3 primary-endpoint readout — first efficacy win beyond trial-starts for this asset; source does not disclose which of its 4 active Ph3 trials (NCT06838273, IZABRIGHT-Lung02 NCT07680790, PANKU-Lung09 NCT07642024, PANKU-Lung06 NCT07739186) read out or any numbers.
 
 ### Deal climate
 
-- No deal-themed macro signal this cycle (ceiling unchanged at 1752).
+- Four deals landed in a single day (2026-08-18), skewed to rare disease and biosimilars rather than large oncology M&A: **BioMarin/Alesta** ~$275M (rare bone disorder; 3 separate wire pickups), **LEO Pharma/Tanabe dersimelagon** up to $435M (rare skin, EPP/XLP, late-stage, NDA already submitted — LEO's 3rd recent dermatology deal, extends the rare-dermatology-licensing pattern opened in an earlier cycle), **Sandoz/Henlius** $322M for rights to up to 10 biosimilars (extends the China-biosimilar-platform-monetises-via-Western-partner pattern tracked since the previous cycle), **Craif** $33M Series D (urine-based cancer diagnostics). None of the four touches a tracked landscape clinical asset.
 
 ### Conference observations
 

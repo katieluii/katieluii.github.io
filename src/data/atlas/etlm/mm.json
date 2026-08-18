@@ -1919,7 +1919,7 @@
       "estimated_readout": null,
       "primary_endpoint": "safety/tolerability/PK (Ph1 dose-finding)",
       "enrollment": null,
-      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the knowledge base's speculative 'BCMA ADC' framing is unsupported by any primary source; do not carry it forward",
+      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the coverage's speculative 'BCMA ADC' framing is unsupported by any primary source; do not carry it forward",
       "geo_origin_risk": "China \u2014 Hengrui/Suncadia (Suzhou). Per-asset geo flag (Framing A, 2026-06-18)",
       "sponsor_note": "China-origin; sponsor/origin verified, mechanism undisclosed",
       "source": [
@@ -1946,7 +1946,7 @@
       "estimated_readout": null,
       "primary_endpoint": "safety/tolerability/PK (Ph1 dose-escalation + expansion)",
       "enrollment": "~99",
-      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the knowledge base 'bispecific' framing is",
+      "key_efficacy_note": "No efficacy. Mechanism UNDISCLOSED per asset-identity-verifier 2026-06-25 \u2014 the coverage 'bispecific' framing is",
       "geo_origin_risk": "China \u2014 Jiangsu Hengrui (Lianyungang). Per-asset geo flag (Framing A, 2026-06-18)",
       "sponsor_note": "China-origin; sponsor/origin verified, mechanism undisclosed",
       "source": [
@@ -2031,7 +2031,7 @@
       "nct": "NCT07679919",
       "trial_name": "Allogeneic (gamma/delta) BAFF CAR-T (LMY-922), refractory heme malignancies",
       "status": "NOT_YET_RECRUITING - FIH trial-start, no efficacy yet",
-      "sponsor_note": "DISTINCT from the knowledge-base-only autologous 'BAFF-ligand CAR-T' entry (= LMY-920). LMY-922 = allogeneic gamma/delta platform, verified MM cohort. Do NOT merge onto the autologous entry",
+      "sponsor_note": "DISTINCT from the coverage-only autologous 'BAFF-ligand CAR-T' entry (= LMY-920). LMY-922 = allogeneic gamma/delta platform, verified MM cohort. Do NOT merge onto the autologous entry",
       "sources": [
         {
           "label": "CT.gov NCT07679919",

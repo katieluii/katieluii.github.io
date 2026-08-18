@@ -168,7 +168,7 @@ export function GateCard({ context }: { context: string }) {
 /** Sits at the foot of a redacted ETLM summary. Names what the open view shows
  *  vs. what the paid full map adds, then captures a lead. Unlike RedactionGate
  *  this never blurs or blocks — the summary above stays fully readable. */
-export function DetailHook({ context, reportHref }: { context: string; reportHref?: string }) {
+export function DetailHook({ context, reportHref, preview = false }: { context: string; reportHref?: string; preview?: boolean }) {
   // Wall off (2026-07-19): the full report is openly viewable, so the
   // "withheld / paid layer" tease no longer applies. Render an open closing CTA
   // into the full report (keeps the summary from ending on a bare grid) instead
@@ -183,7 +183,9 @@ export function DetailHook({ context, reportHref }: { context: string; reportHre
               Read the full {context}
             </h3>
             <p className="mt-1 text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-              Full pipeline read, head-to-head benchmarks, mechanisms, competitive positioning &amp; regulatory — openly available.
+              {preview
+                ? 'This preview carries the top rows of approved therapies and pipeline assets. Benchmarks, mechanisms, competitive positioning and regulatory are withheld — available on request.'
+                : 'Full pipeline read, head-to-head benchmarks, mechanisms, competitive positioning \u0026 regulatory — openly available.'}
             </p>
           </div>
           <Link
