@@ -1,56 +1,74 @@
 {
-  "updated": "2026-08-17",
-  "intro": "Five themes moving drug development this week — an OX40 axis where a differentiation story is quietly turning into a safety one, incretin marketing now argued before a judge, and approvals, access and capital each renegotiating the rules they run on. Refreshed every Monday.",
+  "updated": "2026-08-19",
+  "intro": "This week's five themes: a genuine SCLC signal buried inside a mis-tagged bispecific-ADC readout, a new PRMT5/KRAS G12D combination lane in pancreatic cancer, the first Phase 3 win for personalized mRNA cancer vaccines, AI platforms entering life-sciences drug design, and a quiet dealmaking cycle anchored by Amgen's TScan exit.",
   "narratives": [
     {
-      "headline": "OX40 in atopic dermatitis: the 'differentiation' exit is starting to look like a second safety exit",
-      "detail": "Two Phase 3-caliber programmes on one costimulatory axis are gone in five months — Amgen's rocatinlimab (depleting anti-OX40) in March on Kaposi's sarcoma, Sanofi's amlitelimab (anti-OX40L) in July on differentiation. But Sanofi's fuller rationale cites the \"totality of efficacy and safety evidence\" and \"reported Kaposi's sarcoma cases,\" and the wording leaves it unclear whether those cases are amlitelimab's own; if they are, this stops being crowding attrition and becomes two sponsors hitting the same wall. Inmagene's non-depleting IMG-007 is the last clinical-stage asset standing — engineered around the safety liability that took rocatinlimab, but still facing the differentiation bar that took amlitelimab.",
+      "headline": "iza-bren's SCLC dose-expansion data separates from its NSCLC tagging noise as a real 2L signal",
+      "detail": "BL-B01D1 (iza-bren), the Biokin/BMS EGFRxHER3 bispecific ADC, generated six indication tags this cycle from one lung-cancer press item, but its small-cell lung cancer occurrence checks out as a separate, real signal. A Phase Ib ES-SCLC dose-expansion readout (NCT05194982) reported 2L-subgroup ORR of 72.7%, mPFS 6.2 months, and mOS 15.0 months. If those numbers hold under primary-source verification, they would beat the 2L+ bar set by both lurbinectedin (ORR 35%) and tarlatamab (ORR 40%). The asset genuinely runs separate NSCLC, breast, and SCLC trials — a case where multi-indication development is real rather than a triage mis-tag.",
       "momentum": "Hot",
       "sources": [
-        { "label": "Sanofi media room", "url": "https://www.sanofi.com/en/media-room" },
-        { "label": "amlitelimab trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=amlitelimab" },
-        { "label": "Endpoints News", "url": "https://endpts.com/" }
+        {
+          "label": "iza-bren trials (ClinicalTrials.gov)",
+          "url": "https://clinicaltrials.gov/search?term=iza-bren"
+        },
+        {
+          "label": "Bristol Myers Squibb news",
+          "url": "https://news.bms.com/"
+        }
       ]
     },
     {
-      "headline": "The incretin fight leaves the ad agency for a New Jersey courtroom",
-      "detail": "Novo Nordisk is seeking a federal injunction against Lilly's comparative-efficacy campaigns pitting Zepbound and Mounjaro against Ozempic and Wegovy — the first time this rivalry has escalated past marketing complaints into live litigation. With the clinical contest broadly settled on both sides, the contested ground is now what the labels and the ads are allowed to claim. The question worth holding is whether an injunction resets how incretin efficacy can be marketed at all.",
-      "momentum": "Hot",
+      "headline": "IDEAYA and Genentech pair a PRMT5 inhibitor with a KRAS G12D inhibitor in MTAP-deleted pancreatic cancer",
+      "detail": "IDEAYA's IDE892 (PRMT5 inhibitor) and Genentech's RG6620 (KRAS G12D inhibitor) entered a clinical collaboration targeting MTAP-deleted, KRAS G12D-mutant PDAC. It's a sibling combination lane to the already-reported vopimetostat plus daraxonrasib readout in PDAC, which posted a 92% ORR, reinforcing MTAP-deletion synthetic lethality as a target multiple sponsors are converging on. No NCT number, phase, or efficacy data has been disclosed for the new combination itself.",
+      "momentum": "Watch",
       "sources": [
-        { "label": "Novo Nordisk news", "url": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html" },
-        { "label": "Eli Lilly newsroom", "url": "https://www.lilly.com/news" },
-        { "label": "Reuters — Healthcare & Pharma", "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/" }
+        {
+          "label": "Genentech media",
+          "url": "https://www.gene.com/media"
+        },
+        {
+          "label": "RG6620 trials (ClinicalTrials.gov)",
+          "url": "https://clinicaltrials.gov/search?term=RG6620"
+        }
       ]
     },
     {
-      "headline": "Approval is now a state you defend, not a line you cross",
-      "detail": "CHMP moved to revoke Tavneos (avacopan) in Europe in June, and Amgen is now pre-emptively seeking an FDA advisory-committee hearing to defend the US approval before anyone contests it. Read alongside CHMP's split rare-disease week — a positive opinion for Minoryx's ALD candidate against a negative for Zevra's Meplyffa some two years after its US clearance — the pattern holds on both sides of the Atlantic. Sponsors are increasingly defending approvals they already hold.",
+      "headline": "Merck and Moderna's personalized neoantigen mRNA cancer vaccine posts its first Phase 3 win",
+      "detail": "Intismeran autogene, Merck and Moderna's individualized neoantigen mRNA vaccine, delivered the class's first confirmatory Phase 3 result — new momentum for the modality broadly. The result resurfaced later in the tracking window only as a duplicate wire pickup, with no additional data attached beyond the original readout.",
       "momentum": "Confirmed",
       "sources": [
-        { "label": "Amgen newsroom", "url": "https://www.amgen.com/newsroom" },
-        { "label": "EMA — Medicines", "url": "https://www.ema.europa.eu/en/medicines" },
-        { "label": "FiercePharma", "url": "https://www.fiercepharma.com/" }
+        {
+          "label": "Merck news",
+          "url": "https://www.merck.com/news/"
+        },
+        {
+          "label": "intismeran autogene trials (ClinicalTrials.gov)"
+        }
       ]
     },
     {
-      "headline": "Access-before-approval hardens into a template as Merck reruns Gilead's playbook",
-      "detail": "Merck has issued voluntary licenses for its long-acting PrEP candidate alimatravir to low- and middle-income-country manufacturers ahead of any regulatory submission — tracking Gilead's lenacapavir sequence almost step for step. Two sponsors running the same pre-filing move looks less like one-off goodwill and more like an emerging standard for long-acting prevention. The open question is whether it travels beyond HIV.",
+      "headline": "Anthropic's Claude and SandboxAQ's AQPotency both landed as AI-platform entrants in life sciences this week",
+      "detail": "Two independent signals arrived in one cycle: a Claude-overseen research campaign designed miniproteins from scratch, and SandboxAQ launched AQPotency, a structure-free drug-potency prediction model, with Claude/MCP availability built in. Both name Anthropic infrastructure directly, arriving alongside the FDA's ongoing generative-AI-device discussion paper as backdrop. No clinical or regulatory outcome is attached to either yet.",
       "momentum": "Watch",
       "sources": [
-        { "label": "Merck news", "url": "https://www.merck.com/news/" },
-        { "label": "Gilead news", "url": "https://www.gilead.com/news" },
-        { "label": "alimatravir trials (ClinicalTrials.gov)", "url": "https://clinicaltrials.gov/search?term=alimatravir" }
+        {
+          "label": "FDA — News & Events",
+          "url": "https://www.fda.gov/news-events"
+        }
       ]
     },
     {
-      "headline": "Biotech capital keeps testing venues east — a Hong Kong listing and a Korean megadeal",
-      "detail": "A US biotech is pursuing a Hong Kong-first IPO — a second alternative-venue data point after Scribe Therapeutics' $128.7M Nasdaq debut — while Samsung Biologics moves on a roughly $1.8B acquisition billed as the largest ever by a Korean biopharma. With fresh US import tariffs now reaching generics, the capital and supply-chain map is visibly leaning toward Asia. No single-asset thesis here, but the direction of travel is hard to miss.",
-      "momentum": "Watch",
+      "headline": "A quiet week for new pharma dealmaking, with Amgen's TScan exit the standout move",
+      "detail": "Amgen exited its T-cell-therapy partnership with TScan Therapeutics, part of a broader biotech-dealmaking roundup that also touched BioArctic, Enveda, Georgiamune, Kynexis, Tolerance Bio, and Network Bio. Separately, Tolerance Bio and NeoImmuneTech signed a deal worth up to $260M for a thymus-targeting fusion protein entering Phase 2, and Piramal Pharma acquired a majority stake in Yapan Bio, a Phase I/II CDMO for vaccines and biologics. None of the disclosed deals touch a clinical asset in the tracked landscape.",
+      "momentum": "Confirmed",
       "sources": [
-        { "label": "Samsung Biologics", "url": "https://www.samsungbiologics.com/en/" },
-        { "label": "Scribe Therapeutics", "url": "https://www.scribetx.com/" },
-        { "label": "BioPharma Dive", "url": "https://www.biopharmadive.com/" }
+        {
+          "label": "Amgen newsroom",
+          "url": "https://www.amgen.com/newsroom"
+        }
       ]
     }
-  ]
+  ],
+  "source_fingerprint": "f41f575f4f6bd0fc",
+  "generated_at": "2026-08-19T22:49:54+00:00"
 }
