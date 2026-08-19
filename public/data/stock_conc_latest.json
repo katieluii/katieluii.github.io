@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-18T07:07:38.398920Z",
+  "generated_at_utc": "2026-08-19T07:08:31.497648Z",
   "rows": [
     {
       "cik": "1364742",
@@ -1802,14 +1802,14 @@
     {
       "cik": "1306923",
       "fund_name": "Palo Alto Investors LP",
-      "filing_date": "2026-08-17",
+      "filing_date": "2026-08-18",
       "period_of_report": "06-30-2026",
       "as_of_quarter": "2026Q2",
-      "form": "13F-HR",
-      "accession": "0002073679-26-000096",
-      "index_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000096/0002073679-26-000096-index.htm",
-      "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000096/primary_doc.xml",
-      "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000096/xml.xml",
+      "form": "13F-HR/A",
+      "accession": "0002073679-26-000101",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000101/0002073679-26-000101-index.htm",
+      "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000101/primary_doc.xml",
+      "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000101/xmlxml.xml",
       "n_stocks": 52,
       "total_value": 723718198.0,
       "top1_share": 0.1035627793,
