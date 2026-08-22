@@ -1,0 +1,34 @@
+{
+  "_doc": "Controlled source registry for analyst_read.json. The refresh model may emit source LABELS ONLY — URLs are resolved from this file, never authored by the model (memory: feedback_llm_must_not_emit_citations). An unmapped label ships with no URL rather than a guessed one. Add entries by hand as needed.",
+  "sources": {
+    "Amgen newsroom": "https://www.amgen.com/newsroom",
+    "AstraZeneca media": "https://www.astrazeneca.com/media-centre.html",
+    "BioPharma Dive": "https://www.biopharmadive.com/",
+    "Bristol Myers Squibb news": "https://news.bms.com/",
+    "EMA — Medicines": "https://www.ema.europa.eu/en/medicines",
+    "Eli Lilly newsroom": "https://www.lilly.com/news",
+    "Endpoints News": "https://endpts.com/",
+    "FDA — News & Events": "https://www.fda.gov/news-events",
+    "FiercePharma": "https://www.fiercepharma.com/",
+    "Genentech media": "https://www.gene.com/media",
+    "Gilead news": "https://www.gilead.com/news",
+    "GSK media": "https://www.gsk.com/en-gb/media/",
+    "J&J newsroom": "https://www.jnj.com/media-center",
+    "Merck news": "https://www.merck.com/news/",
+    "Novartis news": "https://www.novartis.com/news",
+    "Novo Nordisk news": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html",
+    "Pfizer newsroom": "https://www.pfizer.com/news",
+    "Reuters — Healthcare & Pharma": "https://www.reuters.com/business/healthcare-pharmaceuticals/",
+    "Roche media": "https://www.roche.com/media",
+    "Samsung Biologics": "https://www.samsungbiologics.com/en/",
+    "Sanofi media room": "https://www.sanofi.com/en/media-room",
+    "Scribe Therapeutics": "https://www.scribetx.com/",
+    "STAT News": "https://www.statnews.com/",
+    "Takeda newsroom": "https://www.takeda.com/newsroom/",
+    "Vertex news": "https://news.vrtx.com/"
+  },
+  "patterns": {
+    "_doc": "Label templates the model MAY use; {drug} is substituted verbatim into the URL.",
+    "{drug} trials (ClinicalTrials.gov)": "https://clinicaltrials.gov/search?term={drug}"
+  }
+}

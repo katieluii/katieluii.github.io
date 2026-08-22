@@ -25,3 +25,7 @@ src/data/atlas/.*.bak-*
 
 # advisory-lock sidecars from atomic writers — never content
 *.json.lock
+
+# Wrapper logs capture the sync abort banner, which QUOTES the internal
+# lines the leak gate rejected. This repo is public — never commit them.
+logs/

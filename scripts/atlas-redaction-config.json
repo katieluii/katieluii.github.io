@@ -369,6 +369,31 @@
       "why": "Backstop for any remaining bare cycle reference. Deliberately last so the phrased rules above win first. Safe against the pipeline's own run ids: \\b requires a non-word character after the digits, so cycle177_mega does not match (the underscore is a word character), and the entry headings are date-only anyway.",
       "pattern": "\\bcycle\\s?\\d+\\b",
       "replacement": "an earlier cycle"
+    },
+    {
+      "why": "ECOSYSTEM BODY (R8a) — the 'events <id>[/<id>]' token itself, wherever it sits. R1 needs the whole parenthetical to be ids and R2/R3 need them at one end, so an id list interleaved with indication names slips all three — the form that aborted the 2026-08-19 sync. Removes ONLY the token. Two earlier drafts were rejected in testing: one stripped bare 3-4 digit runs and ate the YEAR from 'JCO 2026/PMID …'; the other dropped the whole parenthetical and destroyed NCTs, ORR 58.0% and $600M/$1.5B/$2.6B deal values on 9 other lines. Never drop the container to remove a token.",
+      "pattern": ",?\\s*\\bevents?\\s+\\d{3,4}(?:/\\d{3,4})*",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R8b) — an '<indication> <row id>' pair inside a comma-separated list, e.g. ', breast 4414, prostate 4416, sclc 4417'. Keeps the indication name (reader-facing: which tumour types the asset spans) and drops only its internal id. Guarded against years (19xx/20xx), against currency ($…) and against a following unit (%, mo, mg), so it cannot touch a deal value, a readout or a dose.",
+      "pattern": "(?<=,)(\\s+[a-z][a-z_\\-]{2,})\\s+(?!19\\d{2}|20\\d{2})\\d{3,4}(?=\\s*[,)])",
+      "replacement": "\\1"
+    },
+    {
+      "why": "ECOSYSTEM BODY (R9) — the pipeline's own run ids, 'cycle155_mega' / 'cycle163_mega'. The existing bare-cycle backstop deliberately excludes these (its \\b cannot end on an underscore), so a run id in prose survives every rule and trips the leak gate. Consumes the 'since ' lead-in and its trailing comma-clause so the sentence keeps its punctuation.",
+      "pattern": "\\s*\\((?:since\\s+)?cycle\\d+_\\w+(?:,\\s*[^)]*)?\\)",
+      "replacement": ""
+    },
+    {
+      "why": "ECOSYSTEM BODY (R10) — internal triage status vocabulary in prose: 'and REJECTed', 'confirmed pure mis-tags'. _WORKFLOW_RE lowercases some status tokens before the markdown rules run, so the leak gate's uppercase grep never sees them — the same laundering the auto-apply rule was added for. Reworded, not dropped: the sentence carries the SCLC readout.",
+      "pattern": "\\band REJECTed\\b",
+      "replacement": "and set aside"
+    },
+    {
+      "why": "ECOSYSTEM BODY (R11) — \"sclc's config 2L+ bars\": 'config' names the pipeline's own per-indication configuration file. The comparison itself (against lurbinectedin and tarlatamab ORRs) is real competitive content and stays.",
+      "pattern": "\\b(\\w+)'s config (\\d[LP]\\+?) bars\\b",
+      "replacement": "the \\2 bar in \\1"
     }
   ],
   "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
@@ -419,7 +444,8 @@
     "INTERNAL:",
     "Katie note:",
     "PM note:",
-    "Katie editorial"
+    "Katie editorial",
+    "triage-fanout"
   ],
   "indication_aliases": {
     "nhl_dlbcl": "nhl_dlbcl",
