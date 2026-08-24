@@ -5,43 +5,45 @@ _A public-safe slice of a running internal note, rebuilt by the Atlas sync._
 _Published: the 2 most recent dated entries that carry at least one of the sections below, each reduced to its date, and within each entry only the subsections whose heading matches “target/modality”, “modality trajectory”, “deal climate”, “conference observations”. Not published: the pipeline run-log that heads every entry in the source note, every other subsection, and every earlier entry. Internal record identifiers and workflow labels are removed from the text that is kept._
 
 
-## 2026-08-19 (entry 1 of 2)
+## 2026-08-24 (entry 1 of 2)
 
 ### Target/modality crowding
 
-- **Biokin/BMS iza-bren (BL-B01D1, EGFRxHER3 bispecific ADC)** produced the widest single-asset fanout observed to date — one underlying NSCLC PANKU-Lung01 press item was triage-tagged onto 6 indications this cycle (nsclc x2, breast, prostate, sclc, urothelial). Five of the six were confirmed pure mis-tags (zero indication-specific content) and set aside, but sclc's occurrence is analyst-verified as a genuinely SEPARATE and material signal: a published Phase Ib ES-SCLC dose-expansion readout (NCT05194982, JCO 2026/PMID 42497381) reporting 2L-subgroup ORR 72.7%/mPFS 6.2mo/mOS 15.0mo — potentially beating both the 2L+ bar in sclc (lurbinectedin ORR 35%, tarlatamab ORR 40%) if the numbers hold under primary-source verification. A useful case study distinguishing genuine multi-indication asset development (iza-bren really does have separate NSCLC/breast/SCLC trials) from triage mistagging (this specific article was lung-only). landscape-scope caveat: this reflects the tracked seed's own fanout defect, not industry-wide bispecific-ADC crowding.
-- No new industry target-class entrant confirmed; **HVEM (TNFRSF14)** surfaced as a novel checkpoint-adjacent target in a BioArctic/Mesenkia GBM research collaboration (see modality trajectory) — pre-candidate stage, flagged as a watch item, not yet in any config's tracked_target_classes.
+- **IL-36R's psoriasis pipeline slot fills for the first time.** Vanda's imsidolimab (anti-IL-36R mAb, ANB019) got EC orphan designation for generalized pustular psoriasis (GPP) — AUTO_APPLIED as psoriasis's first IL-36R pipeline_assets row, populating a previously null `leading_pipeline_asset`/zero `pipeline_count_ph3` mechanism_landscape slot alongside the approved spesolimab/Spevigo comparator.
+- **(a) Incretin-dominance test: continues, not broken.** HM17321 (UCN2) was already logged as the landscape's 2nd non-incretin obesity mechanism at an earlier cycle (line ~6798); this cycle's is a duplicate 2nd-outlet report of that same deal, not a new asset or a 3rd mechanism. The landscape's obesity target-class narrative remains overwhelmingly incretin-led (GLP-1R/GIPR/GCGR, plus the amylin-adjunct AZD6234/CagriSema/petrelintide thread at line 6760, plus the 20+-cycle-spanning GLP-1/incretin counterfeit-supply thread) — UCN2 stays a 2-datapoint diversification thread running alongside incretin dominance, not displacing it. An earlier cycle's watch flag ("does a 2nd non-incretin obesity mechanism follow UCN2 into a big-pharma deal") is unmet this cycle.
 
 ### Modality trajectory
 
-- **Personalized neoantigen mRNA cancer vaccine** — new momentum: first Phase 3 confirmatory win (Merck/Moderna intismeran autogene, see sponsor activity).
-- **PRMT5 (MTA-cooperative)/KRAS G12D mechanism convergence** — IDEAYA + Genentech entered a clinical collaboration combining IDE892 (PRMT5 inhibitor) with RG6620 (KRAS G12D inhibitor) in MTAP-deleted, KRAS G12D-mutant PDAC — a sibling lane to PDAC's already-captured vopimetostat+daraxonrasib 92%-ORR readout, reinforcing MTAP-deletion synthetic lethality as an active multi-sponsor convergence point in PDAC. No NCT/phase/efficacy data yet for the combination itself.
-- Standing watches unchanged: PD-1xCTLA-4 class-negative volrustomig, FcRn/efgartigimod myositis subgroup-miss — no new data this cycle.
+- **AD blood-based biomarker diagnostics — 3 same-day wires, but 1 underlying clearance.** Roche's Elecsys pTau217 FDA clearance plus Labcorp (1949) and Quest (1947) both announcing they'll distribute that same test are 1 regulatory action amplified by 2 downstream commercial-partner pickups, not 3 independent clearances. Held NOTED_ONLY — no ETLM section fits a diagnostic/biomarker-access fact (not pipeline_assets/approved_therapies/unmet_needs/data_gaps), consistent with the standing C2N PrecivityAD2 NOTED_ONLY precedent since the previous cycle. See regulatory climate for the trend read.
+- **Boehringer Ingelheim suspends BI 3031185** (undisclosed early-stage small molecule, ≥2 completed Ph1 studies) after a safety event — reported once with the asset code and once without any asset/target/indication disclosed. No tracked indication or asset identity established; a general safety-climate data point, not entered against any ETLM.
 
 ### Deal climate
 
-- Quiet cycle for genuinely new deal signal (most of the 24h window's deal-themed rows were already logged in an earlier cycle's 1825-1837 batch). One net-new deal signal: Jocasta Neuroscience expanded its UCSF license for alpha-klotho (cognitive impairment/neurodegeneration) — no tracked landscape clinical asset touched.
+- Zero new priced deals this cycle. The only deal-adjacent item is, obesity's FierceBiotech pickup of an earlier cycle's already-captured Genentech/Roche-Hanmi HM17321 deal — the analyst recorded the outlet figure discrepancy ($2.3B PR Newswire vs $2.5B FierceBiotech total deal value; $190M upfront consistent across both) as a `deal_note`/sources UPDATE on the existing row rather than creating a duplicate or silently picking one figure. Quietest deal week of the recent run, continuing an earlier cycle's own "quiet deal week" read.
 
 ### Conference observations
 
-- No active conference-metadata signal touches a tracked indication this cycle.
+- None active in today's signal batch.
 
 
-## 2026-08-19 (entry 2 of 2)
+## 2026-08-24 (entry 2 of 2)
 
 ### Target/modality crowding
 
-- No new target-class entrant confirmed in the tracked seed this cycle. landscape-scope caveat: all counts below are -seed-specific, not industry-comprehensive.
+- No new target-class entrant at the indication layer this cycle (0 automatic update; both new events touching a tracked ETLM — gbm's TME Pharma partnering update and obesity's HM17321 2nd-outlet pickup — were REJECTed as non-clinical or already-captured). The material movement this cycle sits at the macro/class layer (AAV gene therapy, AD blood-based diagnostics — see modality trajectory).
+- **Muscle-preservation/sarcopenia-mitigation is a real, distinct obesity differentiation axis in the landscape — but NOT substantiated for the HM17321 deal specifically.** This cycle's dispatch context framed Genentech/Roche-Hanmi's HM17321 (UCN2 analog) as "explicitly positioned on lean-mass preservation." Checked directly: obesity's own analyst this cycle ran `/usr/bin/grep -i 'lean.mass|lean mass'` across today's landscape/obesity.json + _macro.json and got ZERO hits, and no such framing appears in the deal_note captured since the previous cycle/196 (positioning there is "non-incretin mechanism"/UCN2, not muscle-sparing). What IS substantiated in the landscape is a separate thread: Lumos Pharma's LUM-201 (oral GHSR agonist) + oral semaglutide, Phase 2 NCT07754045 (carry-forward), explicitly framed by the analyst as sitting "alongside the bimagrumab and apitegromab-style approaches" — competing on preserved lean mass/physical function (SPPB endpoint), NOT TBWL%. That is the genuine muscle-preservation-adjunct axis to watch; do not attach the "lean-mass" framing to HM17321 without a primary-sourced quote.
 
 ### Modality trajectory
 
-- No new momentum/cooling signal this cycle across any of the 8 dispatched indications beyond already- facts (Merck/Moderna melanoma mRNA vaccine Phase 3 win re-surfaced only as a duplicate wire pickup, already applied).
-- **Anthropic/Claude** — new platform_tech entrant into the life-sciences-AI thread: Claude oversaw a research campaign designing miniproteins from scratch, and SandboxAQ's AQPotency (structure-free drug-potency prediction "Large Quantitative Model") launched with Claude/MCP availability — two independent life-sciences AI-platform signals in one cycle, both naming Anthropic/Claude infrastructure directly relevant to 's own AI-driven scouting/triage layer (per the precedent already re: the FDA's generative-AI-device discussion paper).
+- **AAV gene therapy — a class-level regulatory-tightening data point.** Regenxbio's RGX-121 second clinical hold is triggered by IMAGING-ONLY findings (asymptomatic spine MRI abnormality) with no reported clinical correlate — a stricter FDA posture on subclinical neuro-imaging signals that, per the signal's own framing, "reads across the AAV gene-therapy class." No tracked AAV asset is directly implicated; watch whether a next AAV-class asset in a tracked indication draws a similar imaging-driven hold.
+- **AD blood-based biomarker diagnostics — a 4th wire on the SAME underlying clearance, not a new one.** A tracked event (Roche/Eli Lilly-branded pickup) is a DB "event" for the same FDA action already logged as a tracked signal in an earlier cycle (Roche Elecsys pTau217), now also naming Eli Lilly. Extends an earlier cycle's "3 wires, 1 clearance" read to 4 (Roche's own signal, Labcorp, Quest, this Eli Lilly co-branded event) — still 1 underlying FDA action. An earlier cycle's watch flag (a 3rd INDEPENDENT manufacturer clearance, following C2N and Roche) remains unmet.
+- **Cell therapy manufacturing — a cooling demand-side signal.** Cellares' ~100-staff cut after losing a large customer is the first capacity-side (vs. clinical/regulatory) cooling signal logged for autologous cell therapy in this file's recent run.
 
 ### Deal climate
 
-- Three deal-themed signals this cycle, none touching a tracked landscape clinical asset: **Tolerance Bio/NeoImmuneTech** up to $260M for a thymus-targeting fusion protein entering Phase 2; **Amgen exits its TScan Therapeutics T-cell-therapy partnership** as part of a broader biotech-dealmaking roundup also touching BioArctic/Enveda/Georgiamune/Kynexis/Tolerance Bio/Network Bio; **Piramal Pharma acquires majority stake in Yapan Bio**, a Phase I/II CDMO for vaccines/biologics. Separately, **Amylyx disclosed a $350M stock offering** (market theme) — notable given avexitide/LUCIDITY's recurring cross-indication feed presence this cycle.
+- Zero new priced deals this cycle (no deal-theme macro_signal among 1955-1963) — a 3rd consecutive quiet-deal cycle (an earlier cycle "quietest deal week", an earlier cycle "continuing an earlier cycle's own quiet deal week read"). The only obesity/HM17321 activity this cycle is a REJECTed secondary-source re-report (trade press, no primary data), not a new transaction.
 
 ### Conference observations
 
-- No active conference-metadata signal touches a tracked indication this cycle.
+- **ESC 2026 (this week)** — preview signal only (1962), 5 sponsors named (AstraZeneca, Ionis, Cytokinetics, Novartis, CRISPR Therapeutics) for cardiometabolic readouts; no readout data in the landscape yet.
+- **ERS 2026 (Amsterdam, Sep 19-23)** — not yet occurred; copd's standing BOREAS/NOTUS 2-yr durability manual review carry-forward remains gated on this window (13th consecutive quiet cycle for copd, no new content this cycle).

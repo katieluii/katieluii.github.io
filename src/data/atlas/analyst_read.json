@@ -1,89 +1,75 @@
 {
-  "updated": "2026-08-24",
-  "intro": "This week's five hottest themes, ranked: a real SCLC signal rescued from a mis-tagged bispecific-ADC fanout, MTAP-deletion synthetic lethality drawing a second sponsor pair, the first Phase 3 win for personalized mRNA cancer vaccines, AI platforms edging into drug design, and a deliberately quiet dealmaking cycle. Refreshed every Monday.",
+  "updated": "2026-08-25",
+  "intro": "This week's five themes: IL-36R fills its first psoriasis pipeline slot, one Alzheimer's blood-test clearance ripples across four commercial wires, AAV gene therapy draws stricter FDA scrutiny over imaging findings, obesity differentiation shifts toward lean-mass preservation, and cell therapy manufacturing shows its first demand-side cooling signal.",
   "narratives": [
     {
-      "headline": "iza-bren's small-cell readout holds up as a real signal — separate from the six-indication tagging noise around it",
-      "detail": "Biokin/BMS's BL-B01D1 (iza-bren), an EGFRxHER3 bispecific ADC, threw off six indication tags this cycle from a single NSCLC press item; five checked out as pure mis-tags, but the small-cell occurrence is a genuinely separate signal. A published Phase Ib ES-SCLC dose-expansion readout (NCT05194982) reports a 2L-subgroup ORR of 72.7%, mPFS of 6.2 months, and mOS of 15.0 months — numbers that, if they survive primary-source verification, clear the 2L+ bar set by lurbinectedin (ORR 35%) and tarlatamab (ORR 40%). It is a tidy reminder that genuine multi-indication development and triage over-tagging can look identical until you read the trial.",
+      "headline": "Vanda's imsidolimab gets EU orphan status, opening psoriasis's first IL-36R pipeline slot",
+      "detail": "Imsidolimab (ANB019), Vanda's anti-IL-36R monoclonal antibody, received EU orphan designation for generalized pustular psoriasis (GPP). It becomes the first IL-36R-class pipeline asset tracked for psoriasis, alongside the already-approved spesolimab (Spevigo), also an anti-IL-36R agent. The designation fills a previously empty mechanism slot in the psoriasis landscape rather than displacing an incumbent.",
+      "momentum": "Confirmed",
+      "sources": [
+        {
+          "label": "EMA — Medicines",
+          "url": "https://www.ema.europa.eu/en/medicines"
+        }
+      ]
+    },
+    {
+      "headline": "One Roche Elecsys pTau217 FDA clearance for Alzheimer's spawns four separate commercial-partner wires",
+      "detail": "Roche's Elecsys pTau217 blood test received FDA clearance for Alzheimer's disease, and that single regulatory action has now generated four separate commercial wires: Labcorp and Quest each announced they'll distribute the test, and a fourth event names Eli Lilly in a co-branded pickup. It is one underlying clearance amplified by downstream partners, not four independent approvals. A third independent manufacturer clearance, beyond Roche and C2N, has not yet followed.",
       "momentum": "Hot",
       "sources": [
         {
-          "label": "iza-bren trials (ClinicalTrials.gov)",
-          "url": "https://clinicaltrials.gov/search?term=iza-bren"
+          "label": "Roche media",
+          "url": "https://www.roche.com/media"
         },
         {
-          "label": "Bristol Myers Squibb news",
-          "url": "https://news.bms.com/"
+          "label": "Eli Lilly newsroom",
+          "url": "https://www.lilly.com/news"
+        },
+        {
+          "label": "FDA — News & Events",
+          "url": "https://www.fda.gov/news-events"
         }
       ]
     },
     {
-      "headline": "A second sponsor pair converges on MTAP-deletion synthetic lethality in pancreatic cancer",
-      "detail": "IDEAYA and Genentech opened a clinical collaboration pairing IDE892 (PRMT5 inhibitor) with RG6620 (KRAS G12D inhibitor) in MTAP-deleted, KRAS G12D-mutant PDAC. It sits directly alongside the already-captured vopimetostat-plus-daraxonrasib PDAC readout (92% ORR), which makes MTAP-deletion synthetic lethality a target more than one sponsor is now betting on rather than a single-program idea. No NCT number, phase, or efficacy data has been disclosed for the new combination yet, so the conviction here is about the crowding, not the data.",
+      "headline": "Regenxbio's RGX-121 draws a second clinical hold over imaging-only findings, reading across AAV gene therapy",
+      "detail": "Regenxbio's RGX-121 gene therapy was placed on a second clinical hold, triggered by an asymptomatic spine MRI abnormality with no reported clinical correlate — an imaging-only finding, not a symptomatic adverse event. The signal frames this as a stricter FDA posture on subclinical neuro-imaging findings that reads across the AAV gene-therapy class, not just this one asset. No other tracked AAV program is directly implicated yet. Watch whether a next AAV-class asset in a tracked indication draws a similar imaging-driven hold.",
       "momentum": "Watch",
       "sources": [
         {
-          "label": "IDEAYA Biosciences news",
-          "url": "https://ir.ideayabio.com/news-releases"
+          "label": "FDA — News & Events",
+          "url": "https://www.fda.gov/news-events"
         },
         {
-          "label": "Genentech media",
-          "url": "https://www.gene.com/media"
-        },
-        {
-          "label": "RG6620 trials (ClinicalTrials.gov)",
-          "url": "https://clinicaltrials.gov/search?term=RG6620"
+          "label": "RGX-121 trials (ClinicalTrials.gov)",
+          "url": "https://clinicaltrials.gov/search?term=RGX-121"
         }
       ]
     },
     {
-      "headline": "Personalized neoantigen mRNA vaccines log their first confirmatory Phase 3 win",
-      "detail": "Merck and Moderna's intismeran autogene, an individualized neoantigen mRNA vaccine, delivered the class's first confirmatory Phase 3 result — the modality's most durable signal to date. It resurfaced later in the window only as a duplicate wire pickup, with no new data attached, so this is momentum already banked rather than a fresh readout.",
-      "momentum": "Confirmed",
-      "sources": [
-        {
-          "label": "Merck news",
-          "url": "https://www.merck.com/news/"
-        },
-        {
-          "label": "Moderna news",
-          "url": "https://news.modernatx.com/"
-        }
-      ]
-    },
-    {
-      "headline": "AI platforms keep arriving at the edge of drug design — two entrants in one cycle",
-      "detail": "Two independent signals landed together: a Claude-overseen campaign that designed miniproteins from scratch, and SandboxAQ's AQPotency, a structure-free drug-potency prediction model, launched with Claude/MCP availability built in. Both name the underlying AI infrastructure directly and arrive against the backdrop of the FDA's generative-AI-device discussion paper. Neither carries a clinical or regulatory outcome yet, which is exactly why this stays a watch rather than a result.",
+      "headline": "Lumos Pharma's LUM-201 plus oral semaglutide enters Phase 2, competing on lean-mass preservation, not just weight loss",
+      "detail": "Lumos Pharma's LUM-201, an oral GHSR agonist, is being combined with oral semaglutide in a Phase 2 trial (NCT07754045) explicitly positioned alongside bimagrumab- and apitegromab-style approaches — competing on preserved lean mass and physical function, measured via the SPPB endpoint, rather than total body weight loss percentage. This is a genuine, distinct differentiation axis in obesity, separate from the incretin-dominant mechanism landscape (GLP-1R/GIPR/GCGR). This lean-mass framing applies specifically to the LUM-201 program, not to other obesity deals reported this week.",
       "momentum": "Watch",
       "sources": [
         {
-          "label": "SandboxAQ",
-          "url": "https://www.sandboxaq.com/"
-        },
-        {
-          "label": "Anthropic news",
-          "url": "https://www.anthropic.com/news"
+          "label": "LUM-201 trials (ClinicalTrials.gov)",
+          "url": "https://clinicaltrials.gov/search?term=LUM-201"
         }
       ]
     },
     {
-      "headline": "A quiet dealmaking cycle, with Amgen's TScan exit the cleanest move to read",
-      "detail": "Amgen exited its T-cell-therapy partnership with TScan Therapeutics, the standout in an otherwise thin roundup that also brushed BioArctic, Enveda, Georgiamune, Kynexis, Tolerance Bio, and Network Bio. Elsewhere, Tolerance Bio and NeoImmuneTech signed a deal worth up to $260M for a thymus-targeting fusion protein entering Phase 2, and Piramal Pharma took a majority stake in Yapan Bio, a Phase I/II vaccines-and-biologics CDMO. None of it touches a clinical asset in the tracked landscape — a quiet week is still worth naming as quiet.",
-      "momentum": "Confirmed",
+      "headline": "Cellares cuts ~100 staff after losing a major customer — first capacity-side cooling sign in cell therapy manufacturing",
+      "detail": "Cellares cut roughly 100 staff after losing a large customer, marking the first capacity-side, as opposed to clinical or regulatory, cooling signal logged for autologous cell therapy manufacturing in the recent tracking period. It signals a shift from clinical and regulatory setbacks toward demand-side stress in cell therapy infrastructure. No specific indication or therapeutic asset is implicated; this is a manufacturing-capacity signal, not a trial result.",
+      "momentum": "Watch",
       "sources": [
         {
-          "label": "Amgen newsroom",
-          "url": "https://www.amgen.com/newsroom"
-        },
-        {
-          "label": "NeoImmuneTech",
-          "url": "https://neoimmunetech.com/"
-        },
-        {
-          "label": "Piramal Pharma",
-          "url": "https://www.piramalpharma.com/"
+          "label": "Endpoints News",
+          "url": "https://endpts.com/"
         }
       ]
     }
-  ]
+  ],
+  "source_fingerprint": "daf316c439b07715",
+  "generated_at": "2026-08-24T23:40:25+00:00"
 }
