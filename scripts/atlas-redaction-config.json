@@ -394,6 +394,31 @@
       "why": "ECOSYSTEM BODY (R11) — \"sclc's config 2L+ bars\": 'config' names the pipeline's own per-indication configuration file. The comparison itself (against lurbinectedin and tarlatamab ORRs) is real competitive content and stays.",
       "pattern": "\\b(\\w+)'s config (\\d[LP]\\+?) bars\\b",
       "replacement": "the \\2 bar in \\1"
+    },
+    {
+      "why": "Possessive cycle stamp opening a sentence: \"Cycle195's watch flag (...) is unmet\". Rule 54 maps the lowercase form but is compiled without re.I while the residue gate's detector uses re.I, so the capitalised form scrubbed clean and still tripped the gate. Scoped to the possessive so it cannot touch the 'Cycle N added X assets' narrative forms or any hyphenated cycle RANGE, both of which rule 54 already handles correctly.",
+      "pattern": "(?i)\\bcycle\\s?\\d+(?=')",
+      "replacement": "an earlier cycle"
+    },
+    {
+      "why": "Sentence case repair for the rule above — the substitution is lowercase because the possessive is usually mid-sentence; this lifts it where it opens one. The vs./cf. guards keep it off an abbreviation, which is not a sentence end — without them '$211M vs. an earlier cycle's figure' capitalised mid-sentence.",
+      "pattern": "(?<=\\. )(?<!vs\\. )(?<!cf\\. )an earlier cycle(?=')",
+      "replacement": "An earlier cycle"
+    },
+    {
+      "why": "Capitalised bare 'Event 4541' as the grammatical subject after a bold run-in. Rule 55 deletes the lowercase form; the capital escaped for the same missing-re.I reason. Replaced rather than deleted (deleting strands the verb), and the negative lookahead excludes a hyphenated RANGE so 'event_id 112-119' is never rewritten to a dangling 'a tracked event-119'.",
+      "pattern": "(?<=\\*\\* )Event\\s+\\d{3,4}\\b(?![-–—\\d])",
+      "replacement": "A tracked event"
+    },
+    {
+      "why": "Bare 'macro_signal 1952' mid-sentence with no punctuation or paren for rules 8/10/11/12 to anchor on ('already logged as macro_signal 1952 in cycle196'). SINGULAR only, and the same range lookahead — the plural 'macro signals 197-204' is a real span a reader can count and must survive intact.",
+      "pattern": "(?i)\\b(?:macro[_ ])signal\\s+\\d{3,4}\\b(?![-–—\\d])",
+      "replacement": "a tracked signal"
+    },
+    {
+      "why": "'13th consecutive staleness-floor cycle for copd' — the count and the quiet state are reader-facing; only the feed's internal name for that state is internal. Scoped to the ordinal idiom so the bare token elsewhere is left for review rather than silently reworded.",
+      "pattern": "(?i)\\b(\\d+(?:st|nd|rd|th) consecutive )staleness[- ]floor\\b",
+      "replacement": "\\1quiet"
     }
   ],
   "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",

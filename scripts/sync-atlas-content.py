@@ -622,7 +622,13 @@ _INTERNAL_PHRASES = [
     re.compile(r"\s*[;,—-]?\s*(?:per\s+)?Katie (?:ruling|directive|disposition|NOTE-IT)\b.*$", re.I),
     re.compile(r"\s*[;,]?\s*verified by Katie\b[^.\"]*", re.I),
     re.compile(r"\s*[;,]?\s*(?:Schema decision\s+)?deferred to Katie\b[^.\"]*", re.I),
-    re.compile(r"\s*[;,]?\s*per S\d+\b[^.\"]*?\brule\b", re.I),
+    # Greedy [^."]* (not lazy) so the clause is consumed through its LAST
+    # qualifying noun: "per S64 asset disposition rule" must not strip to
+    # "... disposition" and leave a dangling " rule". Still bounded by the
+    # sentence end and the quote, so it cannot run past one value.
+    re.compile(r"\s*[;,]?\s*per S\d+\b[^.\"]*\b"
+               r"(?:rules?|precedents?|conventions?|decisions?|policy|policies"
+               r"|dispositions?)\b", re.I),
     re.compile(r"\s*\(?\bNOTE-IT\b\)?", re.I),
     re.compile(r"\bHUMAN_REVIEW\b|\bAUTO_APPLY\b", re.I),
 ]

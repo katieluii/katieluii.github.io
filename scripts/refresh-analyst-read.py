@@ -49,10 +49,13 @@ ECOSYSTEM = DATA / "ecosystem.md"
 TARGET = DATA / "analyst_read.json"
 REGISTRY = DATA / "source_registry.json"
 ARCHIVE = DATA / "_analyst_read_history"
+RAW_DUMP = REPO / "logs" / "analyst-refresh.last-bad-reply.txt"
 
 N_NARRATIVES = 5
 MOMENTA = {"Hot", "Confirmed", "Watch"}
 MAX_HEADLINE = 120
+MAX_ATTEMPTS = 3   # 1 initial + 2 repairs; each is a separate claude -p call
+REFUSED_PREFIX = "refresh: REFUSED, model output failed validation:"
 MIN_DETAIL = 120
 CLAUDE_BIN = os.environ.get("CLAUDE_CLI_BIN", "claude")
 MODEL = os.environ.get("ANALYST_READ_MODEL", "claude-sonnet-5")
@@ -79,6 +82,14 @@ def resolve_source(label: str, sources: dict, patterns: dict) -> dict:
     return {"label": label}
 
 
+class ModelOutputError(Exception):
+    """A fault in what the model RETURNED — malformed JSON, prose instead of an object.
+
+    Retryable, and deliberately distinct from the SystemExits around it: a missing CLI
+    binary or a usage wall is not fixed by asking the model again.
+    """
+
+
 # ---------------------------------------------------------------- the model call
 
 PROMPT = """You are distilling an internal biotech ecosystem note into the "analyst's read" \
@@ -97,6 +108,8 @@ Name companies and molecules where the note does.",
 
 RULES
 - EXACTLY {n} narratives. Not four, not six.
+- headline: HARD LIMIT {max_headline} characters INCLUDING spaces. Count them before
+  answering. An over-length headline is rejected outright and the whole run fails.
 - momentum: "Hot" = moving now, "Confirmed" = established this week, "Watch" = early.
 - source_labels MUST come from this list, verbatim:
 {labels}
@@ -110,11 +123,18 @@ THE NOTE:
 """
 
 
-def call_model(note: str, labels: list[str]) -> dict:
+def call_model(note: str, labels: list[str], feedback: list[str] | None = None) -> dict:
     prompt = PROMPT.format(
         n=N_NARRATIVES, max_headline=MAX_HEADLINE,
         labels="\n".join(f"  - {l}" for l in labels), note=note,
     )
+    if feedback:
+        # Name the exact violations. A bare "try again" reproduces the same output.
+        prompt += (
+            "\n\nYOUR PREVIOUS ANSWER WAS REJECTED by a deterministic validator:\n"
+            + "\n".join(f"  - {e}" for e in feedback)
+            + "\nFix ONLY these faults. Keep every other narrative's substance identical."
+        )
     try:
         proc = subprocess.run(
             [CLAUDE_BIN, "-p", prompt, "--model", MODEL],
@@ -131,22 +151,52 @@ def call_model(note: str, labels: list[str]) -> dict:
             f"refresh: claude CLI failed (rc={proc.returncode}). "
             f"stdout[:300]={out[:300]!r} stderr[:200]={(proc.stderr or '')[:200]!r}"
         )
-    m = re.search(r"\{.*\}", out, re.S)
-    if not m:
-        raise SystemExit(f"refresh: model returned no JSON object. stdout[:300]={out[:300]!r}")
+    # Strip a code fence if the model wrapped the object despite being told not to.
+    fenced = re.match(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", out, re.S)
+    if fenced:
+        out = fenced.group(1).strip()
+    start = out.find("{")
+    if start < 0:
+        _dump_raw(out)
+        raise ModelOutputError(
+            "your reply contained no JSON object — return ONLY the object, no prose"
+        )
     try:
-        return json.loads(m.group(0))
+        # raw_decode stops at the end of the first complete object, so trailing
+        # commentary cannot break the parse the way a greedy {.*} match did.
+        return json.JSONDecoder().raw_decode(out[start:])[0]
     except json.JSONDecodeError as e:
-        raise SystemExit(f"refresh: model JSON did not parse ({e}). Nothing written.")
+        _dump_raw(out)
+        # Show the model the neighbourhood of its own syntax error.
+        bad = out[start:]
+        lo, hi = max(0, e.pos - 90), min(len(bad), e.pos + 90)
+        raise ModelOutputError(
+            f"your JSON did not parse: {e.msg} at character {e.pos}. "
+            f"The text around the fault was: ...{bad[lo:hi]!r}... "
+            "Return ONE valid JSON object. Escape every double quote inside a string "
+            "value as \\\", and never use a raw newline inside a string."
+        )
+
+
+def _dump_raw(out: str) -> None:
+    """Persist the unusable reply — otherwise a parse fault is undiagnosable after the run."""
+    try:
+        RAW_DUMP.parent.mkdir(parents=True, exist_ok=True)
+        RAW_DUMP.write_text(out, encoding="utf-8")
+        print(f"refresh: raw model reply saved to {RAW_DUMP}")
+    except OSError:
+        pass
 
 
 # ---------------------------------------------------------------- validation
 
-def validate(raw: dict, sources: dict, patterns: dict) -> dict:
+def validate(raw: dict, sources: dict, patterns: dict, collect: bool = False):
     """Deterministic gate. The model cannot write this file; only a passing object can."""
     errs: list[str] = []
     narratives = raw.get("narratives")
     if not isinstance(narratives, list):
+        if collect:
+            return None, ["model output has no `narratives` list"]
         raise SystemExit("refresh: model output has no `narratives` list.")
     if len(narratives) != N_NARRATIVES:
         errs.append(f"expected exactly {N_NARRATIVES} narratives, got {len(narratives)}")
@@ -181,13 +231,16 @@ def validate(raw: dict, sources: dict, patterns: dict) -> dict:
     if len(set(heads)) != len(heads):
         errs.append("duplicate headlines")
 
-    if errs:
-        raise SystemExit("refresh: REFUSED, model output failed validation:\n  - " + "\n  - ".join(errs))
-
     intro = (raw.get("intro") or "").strip()
     if not intro:
-        raise SystemExit("refresh: no intro produced.")
-    return {"updated": date.today().isoformat(), "intro": intro, "narratives": out}
+        errs.append("no intro produced")
+
+    if errs:
+        if collect:
+            return None, errs
+        raise SystemExit(REFUSED_PREFIX + "\n  - " + "\n  - ".join(errs))
+    payload = {"updated": date.today().isoformat(), "intro": intro, "narratives": out}
+    return (payload, []) if collect else payload
 
 
 # ---------------------------------------------------------------- write
@@ -230,7 +283,34 @@ def main() -> int:
     note = ECOSYSTEM.read_text(errors="ignore")
     print(f"refresh: distilling {len(note)} chars of ecosystem.md (fp {fp}) via {MODEL}…")
 
-    payload = validate(call_model(note, sorted(sources)), sources, patterns)
+    # The model soft-fails the headline cap on long notes (3/5 over on 2026-08-25,
+    # when the note grew 5,026 -> 7,224 chars). The gate is right to reject, so it is
+    # left exactly as it was; what was missing is a repair attempt. Each retry names
+    # the specific violations. On exhaustion this still fails loudly and writes nothing.
+    payload, feedback = None, None
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        if attempt > 1:
+            print(f"refresh: attempt {attempt}/{MAX_ATTEMPTS}, repairing "
+                  f"{len(feedback)} validation fault(s)…")
+        try:
+            raw = call_model(note, sorted(sources), feedback)
+        except ModelOutputError as e:
+            # Malformed/unparseable replies are as retryable as a failed field check;
+            # before, they bypassed the loop and killed the run on the first stumble.
+            feedback = [str(e)]
+            print(f"refresh: model output fault — {str(e)[:160]}")
+            payload = None
+            continue
+        payload, feedback = validate(raw, sources, patterns, collect=True)
+        if payload:
+            if attempt > 1:
+                print(f"refresh: validation passed on attempt {attempt}.")
+            break
+    if not payload:
+        raise SystemExit(
+            f"{REFUSED_PREFIX} (after {MAX_ATTEMPTS} attempts)\n  - "
+            + "\n  - ".join(feedback)
+        )
     payload["source_fingerprint"] = fp
     payload["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
