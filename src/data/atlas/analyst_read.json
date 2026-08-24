@@ -1,10 +1,10 @@
 {
-  "updated": "2026-08-19",
-  "intro": "This week's five themes: a genuine SCLC signal buried inside a mis-tagged bispecific-ADC readout, a new PRMT5/KRAS G12D combination lane in pancreatic cancer, the first Phase 3 win for personalized mRNA cancer vaccines, AI platforms entering life-sciences drug design, and a quiet dealmaking cycle anchored by Amgen's TScan exit.",
+  "updated": "2026-08-24",
+  "intro": "This week's five hottest themes, ranked: a real SCLC signal rescued from a mis-tagged bispecific-ADC fanout, MTAP-deletion synthetic lethality drawing a second sponsor pair, the first Phase 3 win for personalized mRNA cancer vaccines, AI platforms edging into drug design, and a deliberately quiet dealmaking cycle. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "iza-bren's SCLC dose-expansion data separates from its NSCLC tagging noise as a real 2L signal",
-      "detail": "BL-B01D1 (iza-bren), the Biokin/BMS EGFRxHER3 bispecific ADC, generated six indication tags this cycle from one lung-cancer press item, but its small-cell lung cancer occurrence checks out as a separate, real signal. A Phase Ib ES-SCLC dose-expansion readout (NCT05194982) reported 2L-subgroup ORR of 72.7%, mPFS 6.2 months, and mOS 15.0 months. If those numbers hold under primary-source verification, they would beat the 2L+ bar set by both lurbinectedin (ORR 35%) and tarlatamab (ORR 40%). The asset genuinely runs separate NSCLC, breast, and SCLC trials — a case where multi-indication development is real rather than a triage mis-tag.",
+      "headline": "iza-bren's small-cell readout holds up as a real signal — separate from the six-indication tagging noise around it",
+      "detail": "Biokin/BMS's BL-B01D1 (iza-bren), an EGFRxHER3 bispecific ADC, threw off six indication tags this cycle from a single NSCLC press item; five checked out as pure mis-tags, but the small-cell occurrence is a genuinely separate signal. A published Phase Ib ES-SCLC dose-expansion readout (NCT05194982) reports a 2L-subgroup ORR of 72.7%, mPFS of 6.2 months, and mOS of 15.0 months — numbers that, if they survive primary-source verification, clear the 2L+ bar set by lurbinectedin (ORR 35%) and tarlatamab (ORR 40%). It is a tidy reminder that genuine multi-indication development and triage over-tagging can look identical until you read the trial.",
       "momentum": "Hot",
       "sources": [
         {
@@ -18,10 +18,14 @@
       ]
     },
     {
-      "headline": "IDEAYA and Genentech pair a PRMT5 inhibitor with a KRAS G12D inhibitor in MTAP-deleted pancreatic cancer",
-      "detail": "IDEAYA's IDE892 (PRMT5 inhibitor) and Genentech's RG6620 (KRAS G12D inhibitor) entered a clinical collaboration targeting MTAP-deleted, KRAS G12D-mutant PDAC. It's a sibling combination lane to the already-reported vopimetostat plus daraxonrasib readout in PDAC, which posted a 92% ORR, reinforcing MTAP-deletion synthetic lethality as a target multiple sponsors are converging on. No NCT number, phase, or efficacy data has been disclosed for the new combination itself.",
+      "headline": "A second sponsor pair converges on MTAP-deletion synthetic lethality in pancreatic cancer",
+      "detail": "IDEAYA and Genentech opened a clinical collaboration pairing IDE892 (PRMT5 inhibitor) with RG6620 (KRAS G12D inhibitor) in MTAP-deleted, KRAS G12D-mutant PDAC. It sits directly alongside the already-captured vopimetostat-plus-daraxonrasib PDAC readout (92% ORR), which makes MTAP-deletion synthetic lethality a target more than one sponsor is now betting on rather than a single-program idea. No NCT number, phase, or efficacy data has been disclosed for the new combination yet, so the conviction here is about the crowding, not the data.",
       "momentum": "Watch",
       "sources": [
+        {
+          "label": "IDEAYA Biosciences news",
+          "url": "https://ir.ideayabio.com/news-releases"
+        },
         {
           "label": "Genentech media",
           "url": "https://www.gene.com/media"
@@ -33,8 +37,8 @@
       ]
     },
     {
-      "headline": "Merck and Moderna's personalized neoantigen mRNA cancer vaccine posts its first Phase 3 win",
-      "detail": "Intismeran autogene, Merck and Moderna's individualized neoantigen mRNA vaccine, delivered the class's first confirmatory Phase 3 result — new momentum for the modality broadly. The result resurfaced later in the tracking window only as a duplicate wire pickup, with no additional data attached beyond the original readout.",
+      "headline": "Personalized neoantigen mRNA vaccines log their first confirmatory Phase 3 win",
+      "detail": "Merck and Moderna's intismeran autogene, an individualized neoantigen mRNA vaccine, delivered the class's first confirmatory Phase 3 result — the modality's most durable signal to date. It resurfaced later in the window only as a duplicate wire pickup, with no new data attached, so this is momentum already banked rather than a fresh readout.",
       "momentum": "Confirmed",
       "sources": [
         {
@@ -42,33 +46,44 @@
           "url": "https://www.merck.com/news/"
         },
         {
-          "label": "intismeran autogene trials (ClinicalTrials.gov)"
+          "label": "Moderna news",
+          "url": "https://news.modernatx.com/"
         }
       ]
     },
     {
-      "headline": "Anthropic's Claude and SandboxAQ's AQPotency both landed as AI-platform entrants in life sciences this week",
-      "detail": "Two independent signals arrived in one cycle: a Claude-overseen research campaign designed miniproteins from scratch, and SandboxAQ launched AQPotency, a structure-free drug-potency prediction model, with Claude/MCP availability built in. Both name Anthropic infrastructure directly, arriving alongside the FDA's ongoing generative-AI-device discussion paper as backdrop. No clinical or regulatory outcome is attached to either yet.",
+      "headline": "AI platforms keep arriving at the edge of drug design — two entrants in one cycle",
+      "detail": "Two independent signals landed together: a Claude-overseen campaign that designed miniproteins from scratch, and SandboxAQ's AQPotency, a structure-free drug-potency prediction model, launched with Claude/MCP availability built in. Both name the underlying AI infrastructure directly and arrive against the backdrop of the FDA's generative-AI-device discussion paper. Neither carries a clinical or regulatory outcome yet, which is exactly why this stays a watch rather than a result.",
       "momentum": "Watch",
       "sources": [
         {
-          "label": "FDA — News & Events",
-          "url": "https://www.fda.gov/news-events"
+          "label": "SandboxAQ",
+          "url": "https://www.sandboxaq.com/"
+        },
+        {
+          "label": "Anthropic news",
+          "url": "https://www.anthropic.com/news"
         }
       ]
     },
     {
-      "headline": "A quiet week for new pharma dealmaking, with Amgen's TScan exit the standout move",
-      "detail": "Amgen exited its T-cell-therapy partnership with TScan Therapeutics, part of a broader biotech-dealmaking roundup that also touched BioArctic, Enveda, Georgiamune, Kynexis, Tolerance Bio, and Network Bio. Separately, Tolerance Bio and NeoImmuneTech signed a deal worth up to $260M for a thymus-targeting fusion protein entering Phase 2, and Piramal Pharma acquired a majority stake in Yapan Bio, a Phase I/II CDMO for vaccines and biologics. None of the disclosed deals touch a clinical asset in the tracked landscape.",
+      "headline": "A quiet dealmaking cycle, with Amgen's TScan exit the cleanest move to read",
+      "detail": "Amgen exited its T-cell-therapy partnership with TScan Therapeutics, the standout in an otherwise thin roundup that also brushed BioArctic, Enveda, Georgiamune, Kynexis, Tolerance Bio, and Network Bio. Elsewhere, Tolerance Bio and NeoImmuneTech signed a deal worth up to $260M for a thymus-targeting fusion protein entering Phase 2, and Piramal Pharma took a majority stake in Yapan Bio, a Phase I/II vaccines-and-biologics CDMO. None of it touches a clinical asset in the tracked landscape — a quiet week is still worth naming as quiet.",
       "momentum": "Confirmed",
       "sources": [
         {
           "label": "Amgen newsroom",
           "url": "https://www.amgen.com/newsroom"
+        },
+        {
+          "label": "NeoImmuneTech",
+          "url": "https://neoimmunetech.com/"
+        },
+        {
+          "label": "Piramal Pharma",
+          "url": "https://www.piramalpharma.com/"
         }
       ]
     }
-  ],
-  "source_fingerprint": "f41f575f4f6bd0fc",
-  "generated_at": "2026-08-19T22:49:54+00:00"
+  ]
 }
