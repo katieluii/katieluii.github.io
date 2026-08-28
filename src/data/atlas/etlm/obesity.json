@@ -3792,6 +3792,292 @@
       "identity_note": "coverage DEFECT CORRECTED: coverage asset_id 6396 carried canonical_name 'SAD: subcutaneous injection in the abdomen'. That string is verbatim the ClinicalTrials.gov INTERVENTION NAME field for NCT07765160 (arm label), not a drug name \u2014 an ingestion artifact of the synthesiser reading interventions.name as the asset name. The real asset is IBI3040. The defective name was NOT propagated into this ETLM row",
       "source": "ClinicalTrials.gov NCT:NCT07765160 (verified 2026-08-17)",
       "source_url": "https://clinicaltrials.gov/study/NCT07765160"
+    },
+    {
+      "asset_name": "Oral semaglutide (lower-dose formulation, OASIS 5)",
+      "drug_name": "Semaglutide",
+      "company": "Novo Nordisk A/S",
+      "modality": "oral small-molecule GLP-1 receptor agonist, once-daily tablet -- dose-finding study of LOWER doses vs the already-approved oral Wegovy 50 mg",
+      "target": "GLP-1R",
+      "phase": "Phase 3",
+      "combination": null,
+      "indication_subtype": "overweight (BMI>=27 + >=1 weight-related comorbidity) or obesity (BMI>=30) -- dose-optimization, not a new population",
+      "nct": "NCT07770841",
+      "trial_name": "OASIS 5 -- Efficacy and Safety of Once Daily Oral Semaglutide in Adults With Overweight or Obesity",
+      "status": "RECRUITING (CT.gov, study start 2026-08-12 actual; primary completion est. 2028-02-22)",
+      "estimated_readout": "2028-02 (primary completion, estimated)",
+      "primary_endpoint": "Relative change in body weight from baseline to week 60",
+      "enrollment": 450,
+      "no_efficacy_benchmark": true,
+      "asset_status": "approved (oral Wegovy 50 mg, adult obesity/overweight) in this exact indication; investigational (lower-dose formulation) in the same indication",
+      "pipeline_rationale": "CT.gov brief summary states the study will help 'select the most optimal lower dose of oral semaglutide' -- a dose-optimization study of an already-approved drug, materially new vs the locked 50 mg label dose (S64 new_route_formulation criterion). Two lower doses tested vs placebo; excludes patients on prior GLP-1/GIP/amylin therapy",
+      "lifecycle_stage": "new_route_formulation",
+      "evidence_status": "no new efficacy yet -- trial just started recruiting (posted 2026-08-18), primary completion not until 2028",
+      "positioning_note": "If a lower dose approaches the 50 mg label's efficacy with better tolerability, this could reshape oral Wegovy's dosing/access strategy -- but this is the trial's hypothesis, not a result. Do not score against config calibration_priors until a readout exists",
+      "source": "ClinicalTrials.gov NCT07770841 (registry API v2, verified 2026-08-20)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07770841",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07770841 (OASIS 5)",
+          "url": "https://clinicaltrials.gov/study/NCT07770841",
+          "type": "ctgov",
+          "date": "2026-08-18",
+          "quoted_metric": "Phase 3, RECRUITING; two lower oral-semaglutide doses vs placebo; primary endpoint relative change in body weight at week 60; enrollment 450 (estimated)"
+        }
+      ]
+    },
+    {
+      "asset_name": "NNC0721-8060",
+      "drug_name": "NNC0721-8060",
+      "company": "Novo Nordisk A/S",
+      "modality": "undisclosed novel subcutaneous injectable (Novo Nordisk early-pipeline code; mechanism not stated in registry; active-comparator design vs semaglutide suggests an incretin-pathway candidate)",
+      "target": "undisclosed (FIH; registry does not state receptor target)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "general overweight/obesity",
+      "nct": "NCT07767175",
+      "trial_name": "A First-in-human Research Study on How NNC0721-8060 Works in People Living With Overweight or Obesity",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-08-12; primary completion est. 2027-09-23)",
+      "estimated_readout": "2027-09 (primary completion, estimated)",
+      "primary_endpoint": "Part A: number of treatment-emergent adverse events (TEAE)",
+      "enrollment": 142,
+      "trial_design_note": "Randomized, double-blind, parallel-group: NNC0721-8060 (experimental) vs semaglutide (active comparator) vs placebo -- monotherapy design, no combination ambiguity",
+      "no_efficacy_benchmark": true,
+      "positioning_note": "Novo benchmarking a new undisclosed molecule directly against its own semaglutide franchise from Phase 1 -- consistent with Novo's pattern of internally competing next-gen candidates (cf. amycretin, NNC0519-0130) rather than relying solely on cagrilintide/CagriSema",
+      "source": "ClinicalTrials.gov NCT07767175 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07767175",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07767175",
+          "url": "https://clinicaltrials.gov/study/NCT07767175",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 1, NOT_YET_RECRUITING; NNC0721-8060 vs semaglutide (active comparator) vs placebo; primary endpoint TEAE count; enrollment 142 (estimated)"
+        }
+      ]
+    },
+    {
+      "asset_name": "AZD6234 (adjunct-to-incretin Phase 3 programme)",
+      "drug_name": "AZD6234",
+      "company": "AstraZeneca",
+      "modality": "amylin receptor (AMY-R) agonist analog, dosed as an ADJUNCT to an incretin-based backbone therapy (not restricted to the existing AZD9550 combination)",
+      "target": "AMY-R",
+      "phase": "Phase 3",
+      "combination": "adjunct to incretin-based therapies (backbone not restricted to AZD9550 in this protocol)",
+      "indication_subtype": "obesity or overweight with weight-related comorbidity, with or without T2DM",
+      "nct": "NCT07776509",
+      "trial_name": "A Study to Evaluate Effect of AZD6234 as an Adjunct to Incretin-based Therapies in Adult Participants With Obesity or Overweight With Weight-related Comorbidity With or Without Type 2 Diabetes Mellitus",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-08-21; primary completion est. 2028-08-09)",
+      "estimated_readout": "2028-08 (primary completion, estimated)",
+      "primary_endpoint": "Percent change in body weight from baseline at 68 weeks of treatment",
+      "enrollment": 500,
+      "no_efficacy_benchmark": true,
+      "identity_note": "DISTINCT from the existing 'AZD9550 + AZD6234' pipeline_assets row (Phase 1/2, NCT06151964) -- that row is a fixed AZD9550-specific combination; this is a broader, later-phase (Phase 3) programme testing AZD6234 as an adjunct to incretin therapy generally. Same molecule, materially new trial/positioning -- kept as a separate row, consistent with the multi-row-per-asset pattern already used for survodutide (3 rows), UBT251 (2 rows) and elecoglipron (2 rows) in this ETLM",
+      "positioning_note": "Amylin-adjunct-to-incretin is an emerging competitive lane (Novo CagriSema, Zealand petrelintide). AZ generalizing AZD6234 beyond its own AZD9550 backbone signals an intent to position it as a class-agnostic add-on, not a fixed-dose-combination-only asset",
+      "source": "ClinicalTrials.gov NCT07776509 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07776509",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07776509",
+          "url": "https://clinicaltrials.gov/study/NCT07776509",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 3, NOT_YET_RECRUITING; AZD6234 vs placebo, international multi-centre; primary endpoint % body weight change at week 68; enrollment 500 (estimated)"
+        }
+      ]
+    },
+    {
+      "asset_name": "MWN110",
+      "drug_name": "MWN110 Injection",
+      "company": "Shanghai Minwei Biotechnology Co., Ltd",
+      "modality": "undisclosed novel injectable peptide; once-weekly or once-every-4-weeks MAD dosing suggests a long-acting incretin-class candidate; mechanism not disclosed in registry",
+      "target": "undisclosed (FIH; registry does not state receptor target)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "general overweight/obesity",
+      "nct": "NCT07779980",
+      "trial_name": "Phase 1 Clinical Study of MWN110 Injection in Healthy Participants and Overweight or Obese Participants",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-08-26; primary completion est. 2027-08)",
+      "estimated_readout": "2027-08 (primary completion, estimated)",
+      "primary_endpoint": "Safety, tolerability, PK, PD and immunogenicity (SAD/MAD design)",
+      "enrollment": 103,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin FIH asset; commercial read is currently China-domestic only -- pipeline-relevant but does not clear a Western regulatory bar on its own until an ex-China programme or partnership emerges",
+      "note": "Earliest-stage of the three new Shanghai Minwei assets in this cycle (see also MWN109 Phase 3). No mechanism disclosed at this stage",
+      "source": "ClinicalTrials.gov NCT07779980 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07779980",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07779980",
+          "url": "https://clinicaltrials.gov/study/NCT07779980",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 1 SAD/MAD, NOT_YET_RECRUITING; enrollment 103 (estimated); dosing once-weekly or once-every-4-weeks in MAD cohort"
+        }
+      ]
+    },
+    {
+      "asset_name": "elecoglipron (ECC5004/AZD5004) \u2014 Phase 3, Asian population",
+      "drug_name": "Elecoglipron",
+      "company": "AstraZeneca (in-licensed from Eccogene)",
+      "modality": "oral once-daily small-molecule GLP-1 receptor agonist (cAMP-biased signalling; no beta-arrestin-2 recruitment)",
+      "target": "GLP-1R",
+      "phase": "Phase 3",
+      "combination": false,
+      "indication_subtype": "obesity or overweight, with or without T2DM \u2014 Asian-population registration trial",
+      "nct": "NCT07775404",
+      "trial_name": "A Study to Investigate the Efficacy and Safety of Elecoglipron in Asian Participants With Obesity or Overweight With or Without Type 2 Diabetes Mellitus",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-08-28; primary completion est. 2028-04-20)",
+      "estimated_readout": "2028-04 (primary completion, estimated)",
+      "primary_endpoint": "Percent change from baseline to Week 52 in body weight",
+      "enrollment": 351,
+      "no_efficacy_benchmark": true,
+      "note": "Runs alongside the existing global Phase 3 master protocol (NCT07667803, already in pipeline_assets) -- an Asian-specific registration arm of AZ's pivotal oral-GLP-1 programme, analogous in structure to how survodutide carries a separate Japan-population Phase 3 row (SYNCHRONY-Japan, NCT06176365) alongside its global and T2D rows. Trial-start only, no efficacy readout yet",
+      "source": "ClinicalTrials.gov NCT07775404 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07775404",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07775404",
+          "url": "https://clinicaltrials.gov/study/NCT07775404",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 3, NOT_YET_RECRUITING; elecoglipron vs placebo; primary endpoint % body weight change at week 52; enrollment 351 (estimated)"
+        }
+      ]
+    },
+    {
+      "asset_name": "MWN109",
+      "drug_name": "MWN109 Injection",
+      "company": "Shanghai Minwei Biotechnology Co., Ltd",
+      "modality": "undisclosed novel injectable peptide; once-weekly dose-titration design across 52 weeks is typical of an incretin-class agent; mechanism not disclosed in registry",
+      "target": "undisclosed (registry does not state receptor target)",
+      "phase": "Phase 3",
+      "combination": null,
+      "indication_subtype": "non-diabetic overweight/obesity",
+      "nct": "NCT07778693",
+      "trial_name": "Phase 3 Study of MWN109 Injection in Participants With Overweight or Obesity",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-09-01; primary completion est. 2027-09)",
+      "estimated_readout": "2027-09 (primary completion, estimated)",
+      "primary_endpoint": "Percentage change from baseline in body weight at Week 52",
+      "enrollment": 760,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin pivotal Phase 3; commercial read is currently China-domestic -- pipeline-relevant but does not clear a Western regulatory bar on its own until an ex-China programme or partnership emerges",
+      "note": "1:1:1:1 randomization across 4 groups (190 pts/group) with dose titration to target dose; 52-week treatment + 4-week follow-up. Largest new China-origin obesity Phase 3 this cycle",
+      "source": "ClinicalTrials.gov NCT07778693 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07778693",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07778693",
+          "url": "https://clinicaltrials.gov/study/NCT07778693",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 3, NOT_YET_RECRUITING; enrollment 760 (estimated); primary endpoint % body weight change at week 52"
+        }
+      ]
+    },
+    {
+      "asset_name": "UBT251 \u2014 Phase 3 (moderate-to-severe OSA with obesity)",
+      "drug_name": "UBT251",
+      "company": "The United Bio-Technology (Hengqin) Co., Ltd",
+      "modality": "GLP-1/GIP/glucagon triple receptor agonist (peptide, once-weekly s.c.)",
+      "target": "GLP-1R + GIPR + GCGR",
+      "phase": "Phase 3",
+      "combination": false,
+      "indication_subtype": "moderate-to-severe obstructive sleep apnea (OSA) with obesity \u2014 comorbidity-label expansion, NOT general obesity",
+      "lifecycle_stage": "new_indication",
+      "nct": "NCT07767942",
+      "trial_name": "Phase III Trial of UBT251 in Moderate-to-Severe OSA With Obesity: A Randomized, Double-Blind, Placebo-Controlled, Multicenter Study",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-09-18; primary completion est. 2028-09)",
+      "estimated_readout": "2028-09 (primary completion, estimated)",
+      "primary_endpoint": "Change from baseline in the Apnea-Hypopnea Index (AHI)",
+      "enrollment": 150,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin sponsor (The United Bio-Technology); commercial read is currently China-domestic for this OSA indication -- pipeline-relevant but does not clear a Western regulatory bar on its own. UBT251's separate general-obesity Phase 3 (NCT07648225, already in pipeline_assets) and its Novo Nordisk-licensed global obesity/T2D programme are the assets' primary ex-China commercial routes",
+      "note": "52-week weekly s.c. dosing vs placebo, key question 'does UBT251 reduce AHI'. New comorbidity indication for the asset, distinct from its existing general-obesity (NCT07648225) and Novo-licensed global (NCT07134335) rows -- kept as a separate row",
+      "source": "ClinicalTrials.gov NCT07767942 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07767942",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07767942",
+          "url": "https://clinicaltrials.gov/study/NCT07767942",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 3, NOT_YET_RECRUITING; enrollment 150 (estimated); primary endpoint change in AHI"
+        }
+      ]
+    },
+    {
+      "asset_name": "SYH2092",
+      "drug_name": "SYH2092 Injection",
+      "company": "CSPC Megalith Biopharmaceutical Co.,Ltd",
+      "modality": "undisclosed novel injectable candidate; FIH safety study only, mechanism not disclosed in registry",
+      "target": "undisclosed (FIH; registry does not state receptor target)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "overweight/obesity (development intent per CT.gov condition tag; this specific trial dosed in HEALTHY volunteers only, n=46)",
+      "nct": "NCT07776041",
+      "trial_name": "A Study of SYH2092 Injection in Healthy Participants",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start est. 2026-09-30; primary completion est. 2027-02-09)",
+      "estimated_readout": "2027-02 (primary completion, estimated)",
+      "primary_endpoint": "Number of participants with treatment-related adverse events (CTCAE v6.0)",
+      "enrollment": 46,
+      "no_efficacy_benchmark": true,
+      "geo_origin_risk": "China-origin FIH asset; commercial read is currently China-domestic only -- pipeline-relevant but does not clear a Western regulatory bar on its own until an ex-China programme or partnership emerges, and this specific study does not yet dose any patient with obesity",
+      "note": "Earliest-possible development stage of all 8 new events this cycle -- safety-only, healthy volunteers, n=46. Included for pipeline-tracking completeness given CSPC Megalith's stated obesity development intent, not for any near-term competitive signal",
+      "source": "ClinicalTrials.gov NCT07776041 (registry API v2, verified 2026-08-23)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07776041",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07776041",
+          "url": "https://clinicaltrials.gov/study/NCT07776041",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 1, NOT_YET_RECRUITING; healthy volunteers only, n=46; primary endpoint treatment-related AEs (CTCAE v6.0)"
+        }
+      ]
+    },
+    {
+      "asset_name": "HM17321",
+      "drug_name": "HM17321",
+      "company": "Genentech (in-licensed from Hanmi Pharmaceutical, exclusive global license announced 2026-08-24)",
+      "modality": "urocortin-2 (UCN2) analog -- non-incretin mechanism (CRF2-receptor agonism), peptide",
+      "target": "UCN2 / CRF2 receptor pathway -- distinct from the GLP-1/GIP/amylin/glucagon incretin axis carried elsewhere in this ETLM",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "chronic weight management / general obesity -- no efficacy data yet",
+      "nct": "NCT07219589",
+      "trial_name": "A Single and Multiple Ascending Dose Study of HM17321 in Healthy and Obese Participants",
+      "status": "RECRUITING (CT.gov API v2, checked 2026-08-24; lead sponsor of record still listed as Hanmi Pharmaceutical -- registry has not yet been updated to reflect the Genentech license)",
+      "estimated_readout": "2027-03 (primary completion, estimated)",
+      "primary_endpoint": "Safety, tolerability, PK, PD (Phase 1 SAD/MAD design) -- no efficacy endpoint disclosed",
+      "enrollment": 90,
+      "no_efficacy_benchmark": true,
+      "originator": "Hanmi Pharmaceutical Company Limited",
+      "deal_note": "Genentech (Roche) in-licensed HM17321 from Hanmi 2026-08-24 -- exclusive global license. Deal value is reported inconsistently across outlets: Hanmi/Genentech's own PR Newswire release states a total of up to $2.3B (upfront + milestones + tiered royalties on net sales); a second, independent outlet (FierceBiotech, covering the deal as done by parent company Roche) states a total of up to $2.5B, with $190M upfront. The $190M upfront figure is the most reliable single number since it is consistent across both accounts; the $2.3B-vs-$2.5B total-value gap most likely reflects how each outlet counted or rounded milestone tranches, not two different deals or a restated deal -- treat as ONE transaction, not two. This is a DEAL/pipeline-entry event, not a clinical readout: no efficacy data is attached. Positions a non-incretin (UCN2) mechanism alongside Genentech/Roche's existing incretin-led obesity assets (CT-388/enicepatide, CT-996) as a diversification play -- competitive-set entry worth tracking, not yet a benchmark-relevant candidate",
+      "source": "ClinicalTrials.gov NCT:NCT07219589 (registry API v2, verified 2026-08-24); PR Newswire deal announcement 2026-08-24",
+      "sources": [
+        {
+          "label": "Hanmi Pharm / Genentech exclusive licensing announcement",
+          "url": "https://www.prnewswire.com/news-releases/hanmi-pharm-signs-exclusive-licensing-deal-with-genentech-for-novel-obesity-therapy-302858059.html",
+          "type": "press_release",
+          "date": "2026-08-24",
+          "quoted_metric": "Total deal value of up to $2.3 billion, including upfront, milestone payments and tiered royalties based on net sales"
+        },
+        {
+          "label": "ClinicalTrials.gov NCT07219589",
+          "url": "https://clinicaltrials.gov/study/NCT07219589",
+          "type": "ctgov",
+          "date": "2026-08-24",
+          "quoted_metric": "Phase 1 SAD/MAD, RECRUITING, enrollment 90 (estimated), primary completion 2027-03 (estimated), conditions: Obesity/Obese, interventions: HM17321 / Placebo of HM17321"
+        },
+        {
+          "label": "FierceBiotech -- Roche pens $2.5B pact for Hanmi's clinical-stage obesity drug targeting less-explored mechanism",
+          "url": "https://www.fiercebiotech.com/biotech/roche-pens-25b-pact-hanmis-clinical-stage-obesity-drug-targeting-less-used-mechanism",
+          "type": "trade_press",
+          "date": "2026-08-24",
+          "quoted_metric": "Roche paid $190M upfront to license a clinical-stage urocortin-2 analog obesity drug from South Korea's Hanmi Pharm, in a deal worth up to $2.5B total"
+        }
+      ]
     }
   ],
   "mechanism_landscape": [
@@ -4410,6 +4696,21 @@
         "date": "2026-06-03",
         "detail": "All major US pharmacy benefit managers now covering Eli Lilly GLP-1 products including Zepbound for obesity. Structural reduction in US access barrier for tirzepatide. Millions of additional Americans now eligible for coverage-based prescriptions",
         "competitive_implication": "Tirzepatide de facto US SoC from both efficacy (-20.9% TBWL w72, SURMOUNT-1) and access dimensions. Pipeline entrants must demonstrate differentiation vs universally-covered tirzepatide. Dual headwind for Novo Nordisk: Wegovy access competition + simultaneous manufacturing supply risk"
+      },
+      {
+        "event": "Eli Lilly launches Foundayo (oral orforglipron) in the UK -- first ex-US commercial market for an oral GLP-1 pill",
+        "date": "2026-08-25",
+        "detail": "Lilly commercially launched Foundayo (oral orforglipron) in the UK, extending the oral-GLP-1 franchise beyond the US market where it was FDA-approved 2026-04-01 (NDA 220934, see approved_therapies_novel). Truist analyst Srikripa Devarakonda framed the UK as the more winnable arena vs Novo Nordisk because a small molecule's high margins let Lilly compete on price in the cost-sensitive, single-payer NHS market -- a dynamic an injectable peptide can't match",
+        "competitive_implication": "Geography/commercial-availability fact, not an efficacy readout -- moves orforglipron from US-only to marketed in >=1 major ex-US market and raises the access bar other oral-GLP-1 entrants will need to clear ex-US, not just domestically",
+        "sources": [
+          {
+            "label": "BioSpace -- Lilly takes oral obesity race abroad with UK launch of Foundayo",
+            "url": "https://www.biospace.com/business/lilly-takes-oral-obesity-race-abroad-with-uk-launch-of-foundayo",
+            "type": "trade_press",
+            "date": "2026-08-25",
+            "quoted_metric": "UK commercial launch of Foundayo (orforglipron); no efficacy data reported"
+          }
+        ]
       }
     ],
     "generational_framing": {

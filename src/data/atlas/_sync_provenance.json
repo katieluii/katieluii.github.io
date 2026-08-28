@@ -15,24 +15,24 @@
   "codes": {
     "crc": {
       "shipped_bytes": 7519,
-      "source_mtime": "2026-08-15T08:38:08Z",
+      "source_mtime": "2026-08-27T08:07:40Z",
       "source_root": "drafts",
-      "source_sha256": "2919d55f2d6ce3ea3662513b4c49cc6dd0b1c0728e4889c0009ddda33144e77e",
+      "source_sha256": "de811d56432a0788711e7fc6831622327bf1e0bbd2e7da70c646dd91dcee0245",
       "top_level_list_counts": {
         "approved_therapies": 3,
         "pipeline_assets": 3
       }
     },
     "mm": {
-      "shipped_bytes": 158381,
-      "source_mtime": "2026-08-16T01:23:08Z",
+      "shipped_bytes": 164298,
+      "source_mtime": "2026-08-26T13:17:16Z",
       "source_root": "drafts",
-      "source_sha256": "5bffdc1fc077c65f7a5fc9e701cbdec5602417a2c722e86f05a44cb074b1b0ac",
+      "source_sha256": "0771737d1bf85a6dc586e80beab6e2cd1598c8e45107047e03cd6d8ee56f9cc0",
       "top_level_list_counts": {
         "approved_therapies": 20,
         "mechanism_landscape": 12,
         "novel_targets": 0,
-        "pipeline_assets": 65,
+        "pipeline_assets": 68,
         "preclinical_watchlist": 0,
         "recent_conference_readouts": 25,
         "unmet_needs": 11
@@ -49,32 +49,32 @@
       }
     },
     "nsclc": {
-      "shipped_bytes": 238490,
-      "source_mtime": "2026-08-18T18:21:21Z",
+      "shipped_bytes": 253535,
+      "source_mtime": "2026-08-27T08:53:37Z",
       "source_root": "drafts",
-      "source_sha256": "31b425873fb3d1e19fa8536726e16cbc7e2b934f7188ede04c1ea5de3e4d2cc0",
+      "source_sha256": "b67cb462a1e1294e1e885ebf64867b60ccaa7f4734456a192555b844a6930223",
       "top_level_list_counts": {
         "approved_therapies": 26,
         "mechanism_landscape": 20,
         "novel_targets": 0,
-        "pipeline_assets": 67,
+        "pipeline_assets": 69,
         "preclinical_watchlist": 3,
         "recent_conference_readouts": 19,
         "unmet_needs": 12
       }
     },
     "obesity": {
-      "shipped_bytes": 277110,
-      "source_mtime": "2026-08-18T13:18:46Z",
+      "shipped_bytes": 299722,
+      "source_mtime": "2026-08-25T13:06:05Z",
       "source_root": "drafts",
-      "source_sha256": "6d1cf6e8aa71e039e31511f2a6749faf62538c064c53be06803637fb5b279ff4",
+      "source_sha256": "04458a1c1b5c644a2bb3f79b8b835d21b186d470bf33dc0d0ebdd34c393e614a",
       "top_level_list_counts": {
         "approved_therapies": 0,
         "approved_therapies_legacy": 9,
         "approved_therapies_novel": 5,
         "mechanism_landscape": 17,
         "novel_targets": 3,
-        "pipeline_assets": 108,
+        "pipeline_assets": 117,
         "preclinical_watchlist": 5,
         "recent_conference_readouts": 2,
         "unmet_needs": 11
@@ -95,7 +95,7 @@
     "codes_examined": 6,
     "lists_compared": 29,
     "new_codes": [],
-    "ran_at": "2026-08-19T22:48:58Z",
+    "ran_at": "2026-08-28T00:19:19Z",
     "shrink_acknowledged": [],
     "verdict": "RAN_CLEAN"
   }

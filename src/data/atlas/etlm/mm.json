@@ -2094,6 +2094,82 @@
         }
       ],
       "source": "CT.gov NCT07623798 (trial_start event, sponsor stated directly in source -- not inferred from name prefix). Mechanism (GPRC5D x BCMA x CD3 trispecific, Sanbody platform) confirmed via Innovent press materials, WebSearch 2026-07-21"
+    },
+    {
+      "asset_name": "inobrodib (CCS1477)",
+      "company": "CellCentric Ltd",
+      "modality": "oral p300/CBP bromodomain inhibitor",
+      "target": "p300/CBP transcriptional coactivator bromodomain",
+      "phase": "Phase 3",
+      "combination": "InoPd -- inobrodib + pomalidomide + dexamethasone vs investigator's choice of Standard Available Therapy (elotuzumab+Pd, daratumumab+Pd, or carfilzomib+dex)",
+      "indication_subtype": "RRMM, 1-4 prior lines including both an anti-CD38 antibody and lenalidomide; pomalidomide-non-refractory",
+      "nct": "NCT07772024",
+      "trial_name": "Inobrodib, Pomalidomide and Dexamethasone Versus Standard Available Therapy in Relapsed or Refractory Multiple Myeloma",
+      "status": "RECRUITING -- Phase 3 registrational trial-start, no efficacy data yet. First p300/CBP bromodomain inhibitor to reach Phase 3 in myeloma; a genuinely new mechanism class for the ETLM",
+      "estimated_readout": null,
+      "primary_endpoint": "Progression-free Survival (PFS, BICR, IMWG criteria) and Objective Response Rate (ORR, BICR)",
+      "enrollment": 450,
+      "sources": [
+        {
+          "label": "CT.gov NCT07772024 -- Inobrodib, Pomalidomide and Dexamethasone vs Standard Available Therapy in RRMM (P3, RECRUITING)",
+          "url": "https://clinicaltrials.gov/study/NCT07772024",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 3 trial start; no efficacy data; enrollment 450 (estimated)"
+        }
+      ],
+      "source": "CT.gov API v2 NCT07772024 (trial_start event, sponsor CellCentric Ltd. stated directly in the registry record, not inferred from name/prefix)"
+    },
+    {
+      "asset_name": "LMY-920 (autologous BAFF-ligand CAR-T)",
+      "company": "Luminary Therapeutics",
+      "modality": "autologous BAFF-ligand-expressing CAR-T (single infusion, 4x10^6 cells/kg)",
+      "target": "BAFF axis (BAFF-R / BCMA / TACI)",
+      "phase": "Phase 2",
+      "combination": null,
+      "indication_subtype": "RRMM, >=3 prior lines including an immunomodulatory agent, a proteasome inhibitor, and an anti-CD38 antibody (triple-class-refractory); basket trial shared with relapsed/refractory B-cell NHL (separate eligibility arm, separate endpoint analysis)",
+      "nct": "NCT07771361",
+      "trial_name": "BAFF CAR-T Cells (LMY-920) for Treatment of Relapsed or Refractory Non-Hodgkin Lymphoma and Multiple Myeloma",
+      "status": "NOT_YET_RECRUITING -- Phase 2 trial-start, no efficacy data yet",
+      "estimated_readout": null,
+      "primary_endpoint": "ORR (IMWG uniform response criteria for the MM arm; Lugano criteria for the NHL arm) and safety (CTCAE v6.0 treatment-related AEs)",
+      "enrollment": 90,
+      "sponsor_note": "DISTINCT from the already-captured allogeneic 'LMY-922 (allogeneic gamma/delta BAFF CAR-T)' entry (pipeline_assets[62], NCT07679919) -- confirmed via CT.gov API v2: LMY-920 is autologous (org study ID LMY-920-004, single EXPERIMENTAL arm, 'autologous CAR-T cell therapy expressing the BAFF-ligand'), LMY-922 is allogeneic gamma/delta. The ETLM's own LMY-922 row already carries a sponsor_note flagging this same distinction from the other direction ('DISTINCT from the coverage-only autologous BAFF-ligand CAR-T entry (= LMY-920). Do NOT merge onto the autologous entry.') -- both directions now cross-reference. Do NOT merge",
+      "sources": [
+        {
+          "label": "CT.gov NCT07771361 -- BAFF CAR-T Cells (LMY-920), Phase 2, NOT_YET_RECRUITING",
+          "url": "https://clinicaltrials.gov/study/NCT07771361",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "Phase 2 trial start; no efficacy data; enrollment 90 (estimated, NHL+MM basket)"
+        }
+      ],
+      "source": "CT.gov API v2 NCT07771361 (trial_start event, sponsor Luminary Therapeutics stated directly in the registry record, not inferred)"
+    },
+    {
+      "asset_name": "KMCAR (PMCC-COE-KMA) -- Kappa Myeloma Antigen (KMA)-targeted CAR-T",
+      "company": "Peter MacCallum Cancer Centre, Australia (academic sponsor; collaborator: HaemaLogiX Ltd, asset originator)",
+      "modality": "autologous CAR-T targeting Kappa Myeloma Antigen (KMA), lentiviral-transduced, single infusion after lymphodepleting conditioning",
+      "target": "Kappa Myeloma Antigen (KMA)",
+      "phase": "Phase 1",
+      "combination": null,
+      "indication_subtype": "kappa-restricted RRMM, >=2 prior lines including a proteasome inhibitor and an IMiD, KMA+ on bone marrow plasma cells by flow cytometry; lambda-restricted MM explicitly excluded by trial design",
+      "nct": "NCT07541391",
+      "trial_name": "A Phase I Study of Autologous Chimeric Antigen Receptor (CAR) T-cells Targeting the Kappa Myeloma Antigen (KMA) in Kappa Restricted Multiple Myeloma Patients With Relapsed/Refractory Disease (KOALA)",
+      "status": "RECRUITING -- Phase 1 first-in-human dose-escalation trial; first patient dosed and well tolerated per initial post-dose monitoring (HaemaLogiX press release, 2026-08-26). No efficacy data yet",
+      "estimated_readout": null,
+      "primary_endpoint": "Safety/MTD (incidence of dose-limiting toxicities and moderate-toxicity events) and manufacturing feasibility",
+      "enrollment": 12,
+      "sources": [
+        {
+          "label": "CT.gov NCT07541391 -- KOALA (PMCC-COE-KMA / KMCAR), Phase 1, RECRUITING",
+          "url": "https://clinicaltrials.gov/study/NCT07541391",
+          "type": "ctgov",
+          "date": "2026-08-26",
+          "quoted_metric": "Phase 1 first-in-human trial; first patient dosed, well tolerated; no efficacy data yet; enrollment 12 (estimated)"
+        }
+      ],
+      "source": "CT.gov API v2 NCT07541391 (trial_start event; lead sponsor Peter MacCallum Cancer Centre, Australia and collaborator HaemaLogiX Ltd both stated directly in the registry record, not inferred from name/prefix)"
     }
   ],
   "mechanism_landscape": [

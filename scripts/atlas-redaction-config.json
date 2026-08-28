@@ -424,6 +424,31 @@
       "why": "Standalone 'Event <id>.' as its own sentence fragment — a bare internal citation appended after a fully-sourced claim ('...ACTIVE_NOT_RECRUITING]. Event 4572. GB-0895 is also...'). Unlike the bold-run-in form, this one is not the subject of a sentence, so it is DELETED rather than reworded — nothing reader-facing is lost, the NCT and all trial data sit in the surrounding text. Anchored on a preceding sentence end and a following space so it cannot bite a mid-sentence 'Event 4541 (...) is a...' clause, which the earlier rule rewords instead.",
       "pattern": "(?<=\\.)\\s+Event\\s+\\d{3,4}\\.(?=\\s)",
       "replacement": ""
+    },
+    {
+      "why": "'no deal-theme macro_signal among 1955-1963' — internal table name plus an internal id RANGE. The residue detector needs signal+whitespace+digits, so 'among' between them hides it: the gate passes and the token ships. The reader-facing claim (no deal signal in the cycle's batch) survives; only the table name and the ids go.",
+      "pattern": "(?i)\\bmacro[_ ]signals?\\s+among\\s+\\d{3,4}\\s*[-–—]\\s*\\d{3,4}\\b",
+      "replacement": "tracked signal in this cycle's feed"
+    },
+    {
+      "why": "A parenthetical consisting ONLY of quoted prior-cycle characterisations — '(an earlier cycle \"quietest deal week\", an earlier cycle \"continuing ...\")'. Rule 54 maps each stamp correctly in isolation; three in one aside reads as broken prose. Dropped whole: it is an internal audit trail and the claim it annotates ('a 3rd consecutive quiet-deal cycle') sits in the main clause. DELIBERATELY NARROW — the close paren must follow the final quote immediately, so an aside carrying substance after the quote, like '(... \"seven multibillion-dollar deals\" anchor)', is left intact. A broader shape was measured first and destroyed $-denominated facts in 100 lines.",
+      "pattern": "\\s*\\(an earlier cycle \\\"[^\\\"]*\\\"(?:,\\s*an earlier cycle \\\"[^\\\"]*\\\")+\\)",
+      "replacement": ""
+    },
+    {
+      "why": "'were REJECTed as non-clinical', 'is a REJECTed secondary-source re-report' — the SHOUTING-CAPS enum is the internal tell; the word is ordinary English and is its sentence's verb. Lowercased, never deleted. Runs after the existing 'and REJECTed' rule.",
+      "pattern": "\\bREJECTed\\b",
+      "replacement": "rejected"
+    },
+    {
+      "why": "'Held NOTED_ONLY — no ETLM section fits' — verb-object position needs a phrase, not a compound adjective. Must precede the general rule below.",
+      "pattern": "\\bHeld NOTED_ONLY\\b",
+      "replacement": "Held for noting only"
+    },
+    {
+      "why": "'the standing C2N PrecivityAD2 NOTED_ONLY precedent' — attributive position, so the hyphenated adjective fits. Backstop for the enum anywhere else.",
+      "pattern": "\\bNOTED_ONLY\\b",
+      "replacement": "noted-only"
     }
   ],
   "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",

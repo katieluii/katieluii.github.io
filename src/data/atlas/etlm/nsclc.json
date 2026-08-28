@@ -2307,7 +2307,51 @@
       "regulatory_risk_annotation": "COINS Act / BIOSECURE applies \u2014 Dizal is Shanghai-based; no Western pharma partnership disclosed. US commercial pathway requires Western partnership or manufacturing restructuring if COINS Act passes. See regulatory_landscape.us_legislative_risks.coins_act_biosecure_convergence",
       "source": "exon20ins theme",
       "last_updated": "2026-06-08",
-      "drug_name": "sunvozertinib (DZD9008)"
+      "drug_name": "sunvozertinib (DZD9008)",
+      "wclc2026_program_expansion": {
+        "note": "Two new sunvozertinib NSCLC trials disclosed as WCLC 2026 posters (previewed 2026-08-21; presentations at the Sept 2026 congress). NO EFFICACY NUMBERS in either poster preview -- 'promising efficacy results' / 'robust anti-tumor activity' claimed only. Distinct from the already-captured metastatic 1L exon20ins Ph3 (WU-KONG28, NCT05668988) and its readout",
+        "adjuvant_exon20ins_pacc_ph3": {
+          "nct": "NCT07182682",
+          "trial_name": "Sunvozertinib vs placebo, adjuvant therapy, EGFR exon20ins or PACC-mutant NSCLC after radical surgery",
+          "poster": "WCLC 2026 P1.159",
+          "phase": "Phase 3",
+          "sponsor": "Dizal (Jiangsu) Pharmaceutical Co., Ltd",
+          "setting": "Adjuvant; resected stage IB-IIIB EGFR exon20ins/PACC-mutant NSCLC after radical surgery",
+          "status": "RECRUITING",
+          "enrollment_estimated": 360,
+          "primary_endpoint": "Disease-free survival (DFS) by investigator assessment",
+          "ctgov_verified": "2026-08-21 via CT.gov v2 API"
+        },
+        "combo_anlotinib_1l_comutation_ph2": {
+          "nct": "NCT06348927",
+          "trial_name": "Sunvozertinib + anlotinib as 1L treatment in EGFR-sensitizing mutations combined with co-mutations, advanced NSCLC",
+          "poster": "WCLC 2026 P3.207",
+          "phase": "Phase 2",
+          "sponsor": "Hunan Province Tumor Hospital (investigator-initiated)",
+          "setting": "1L advanced NSCLC, EGFR-sensitizing mutation with co-mutations",
+          "status": "RECRUITING",
+          "enrollment_estimated": 52,
+          "primary_endpoint": "Progression-free survival (PFS), investigator-assessed",
+          "ctgov_verified": "2026-08-21 via CT.gov v2 API"
+        },
+        "geo_origin": "China-origin (Dizal, Shanghai/Jiangsu; investigator-initiated combo trial at a China academic centre) -- consistent with the geo_origin_risk / regulatory_risk_annotation already carried on this pipeline row (COINS Act / BIOSECURE); no new flag needed",
+        "sources": [
+          {
+            "label": "CT.gov NCT07182682",
+            "url": "https://clinicaltrials.gov/study/NCT07182682",
+            "type": "ctgov",
+            "date": "2026-08",
+            "quoted_metric": "Ph3 adjuvant sunvozertinib vs placebo, resected EGFR exon20ins/PACC NSCLC; DFS primary; RECRUITING, est. N=360"
+          },
+          {
+            "label": "CT.gov NCT06348927",
+            "url": "https://clinicaltrials.gov/study/NCT06348927",
+            "type": "ctgov",
+            "date": "2026-08",
+            "quoted_metric": "Ph2 sunvozertinib+anlotinib 1L EGFR-sensitizing + co-mutation NSCLC; PFS primary; RECRUITING, est. N=52"
+          }
+        ]
+      }
     },
     {
       "asset_name": "glecirasib + sitneprotafib",
@@ -3167,7 +3211,35 @@
           "quoted_metric": "RC148, a PD-1/VEGF-targeted bispecific antibody"
         }
       ],
-      "drug_name": "RC148"
+      "drug_name": "RC148",
+      "abbv1480_global_ph3_2026_08": {
+        "note": "First GLOBAL registrational Phase 3 trial registered for this asset (2026-08), distinct from the existing China-focused row (NCT07416474, RC148+carbo/pac vs tislelizumab+carbo/pac). Comparator here is pembrolizumab + chemotherapy (Western SoC), directly addressing this row's own prior gap re: a Western-comparator trial. Trial-start only -- NOT_YET_RECRUITING, no efficacy data",
+        "nct": "NCT07756645",
+        "trial_name": "ABBV-1480 + chemotherapy vs pembrolizumab + chemotherapy, 1L NSCLC (global)",
+        "sponsor": "AbbVie",
+        "design": "ABBV-1480 (IV) + carboplatin + paclitaxel/nab-paclitaxel vs pembrolizumab + same chemo backbone",
+        "setting": "1L locally advanced/metastatic NSCLC (global; asset originated at RemeGen, China -- consistent with the geo_origin_risk already carried on this pipeline row, no new flag needed since AbbVie is sponsor of record)",
+        "primary_endpoint": "PFS by BICR (RECIST v1.1); OS co-primary",
+        "status": "NOT_YET_RECRUITING",
+        "enrollment_estimated": 940,
+        "estimated_start_date": "2026-09-22 (estimated)",
+        "ctgov_verified": "2026-08-21 via CT.gov v2 API -- brief title, lead sponsor (AbbVie), phase, condition, interventions (ABBV-1480, pembrolizumab, carboplatin, paclitaxel, nab-paclitaxel) and both primary outcomes (PFS by BICR, OS) match this entry field-for-field",
+        "sources": [
+          {
+            "label": "CT.gov NCT07756645",
+            "url": "https://clinicaltrials.gov/study/NCT07756645",
+            "type": "ctgov",
+            "date": "2026-08",
+            "quoted_metric": "Ph3 ABBV-1480+chemo vs pembrolizumab+chemo, 1L NSCLC (global); PFS by BICR + OS co-primary; NOT_YET_RECRUITING, est. N=940"
+          }
+        ]
+      },
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "COINS Act / BIOSECURE legislative risk",
+        "as_of": "2026-08-27",
+        "note": "Asset originated at RemeGen Co., Ltd. (Yantai, China) and is still developed by RemeGen; AbbVie holds exclusive rights to develop, manufacture and commercialise it OUTSIDE the Greater China territory under the 2026-01-12 licensing agreement. ClinicalTrials.gov lists RemeGen Co., Ltd. as both organization and leadSponsor of this row's Phase 3 (NCT07416474), with all 78 trial sites in China. Also carried as ABBV-1480 (AbbVie WCLC 2026 release)"
+      }
     },
     {
       "asset_name": "sacituzumab tirumotecan (SKB264/MK-2870) + pembrolizumab (OptiTROP-Lung05)",
@@ -3240,6 +3312,104 @@
           "type": "ctgov",
           "date": "2026-08",
           "quoted_metric": "P2, DLT primary; ABSK043+osimertinib, EGFR/PD-L1+ NSCLC"
+        }
+      ]
+    },
+    {
+      "asset_name": "ALK201 (FGFR2b-targeting ADC)",
+      "drug_name": "ALK201",
+      "company": "Shanghai Allink Biotherapeutics Co., Ltd",
+      "modality": "antibody-drug conjugate (ADC)",
+      "target": "FGFR2b",
+      "phase": "Phase 2",
+      "combination": "ivonescimab (PD-1/VEGF bispecific, 20 mg/kg)",
+      "indication_subtype": "locally advanced or metastatic squamous NSCLC (sqNSCLC)",
+      "nct": "NCT07742956",
+      "trial_name": "Phase 2 ALK201 + ivonescimab, sqNSCLC",
+      "status": "Phase 2, NOT_YET_RECRUITING (estimated start 2026-08-20) \u2014 dose-selection Part A then 1:1 randomised Part B; no efficacy yet",
+      "enrollment": 156,
+      "estimated_readout": "2027-12-31 (primary completion, estimated)",
+      "primary_endpoint": "TEAEs (safety/tolerability); PK and antitumour activity secondary",
+      "key_efficacy": null,
+      "evidence_status": "no efficacy yet \u2014 trial-start only",
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "BIOSECURE / COINS Act legislative risk",
+        "as_of": "2026-08-23"
+      },
+      "sponsor_note": "China-origin sponsor (Shanghai Allink Biotherapeutics Co., Ltd., Shanghai) \u2014 sponsor taken from the CT.gov lead-sponsor field and corroborated by the company's own site, not inferred from the asset code",
+      "identity_note": "IDENTITY CORRECTION \u2014 'ALK201' does NOT denote an ALK-kinase-directed agent; 'ALK' is the sponsor's own prefix (ALLink). ALK201 is a first-in-class FGFR2b-targeting ADC (AACR 2025 Abstract LB227, Cancer Research): binds human FGFR2b specifically, blocks FGF7/10\u2013FGFR2b ligand interaction and downstream phospho-ERK, and delivers a cytotoxic payload with bystander killing plus ADCC. The analyst correctly declined to infer mechanism from the name prefix and left target/modality undisclosed; sourced it rather than guessing",
+      "source": "ClinicalTrials.gov NCT07742956 (verified 2026-08-23 via API v2)",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT07742956",
+          "url": "https://clinicaltrials.gov/study/NCT07742956",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "P2 NOT_YET_RECRUITING, n=156 est., ALK201 + ivonescimab, sqNSCLC, TEAEs primary"
+        },
+        {
+          "label": "AACR 2025 Abstract LB227 \u2014 ALK201, a first-in-class FGFR2b-targeting ADC (Cancer Research)",
+          "url": "https://aacrjournals.org/cancerres/article/85/8_Supplement_2/LB227/761829/Abstract-LB227-ALK201-a-first-in-class-FGFR2b",
+          "type": "conference_abstract",
+          "date": "2025",
+          "quoted_metric": "FGFR2b-specific binding; blocks FGF7/10-FGFR2b and phospho-ERK; bystander killing + ADCC"
+        },
+        {
+          "label": "Shanghai Allink Biotherapeutics \u2014 ALK201 (FGFR2b-targeting ADC) programme page",
+          "url": "http://en.allinkbio.com/html/66.html",
+          "type": "sponsor_site",
+          "date": "2026",
+          "quoted_metric": "ALK201 described by the sponsor as an FGFR2b-targeting ADC in Phase 1/solid tumours"
+        }
+      ]
+    },
+    {
+      "asset_name": "JSKN016 (TROP2\u00d7HER3 bispecific ADC)",
+      "drug_name": "JSKN016",
+      "company": "Jiangsu Alphamab Biopharmaceuticals Co., Ltd (Alphamab Oncology)",
+      "modality": "bispecific antibody-drug conjugate (homogeneous DAR4, glycan-specific conjugation; topoisomerase-I inhibitor payload)",
+      "target": "TROP2 \u00d7 HER3",
+      "phase": "Phase 1b",
+      "combination": "multi-arm basket: carboplatin, furmonertinib, ivonescimab, docetaxel, tislelizumab, pembrolizumab",
+      "indication_subtype": "advanced/metastatic NSCLC not amenable to radical therapy (any small-cell component explicitly excluded)",
+      "nct": "NCT06868732",
+      "trial_name": "Phase Ib JSKN016 combination therapy, advanced NSCLC",
+      "status": "Phase 1b, RECRUITING (actual start 2025-04-02) \u2014 dose/combination exploration; no efficacy disclosed in this event",
+      "enrollment": 288,
+      "estimated_readout": "2028-06-30 (primary completion, estimated)",
+      "primary_endpoint": "ORR (investigator-assessed, RECIST v1.1); safety reflected by AE",
+      "key_efficacy": null,
+      "evidence_status": "no efficacy yet in NSCLC \u2014 trial-start only",
+      "geo_origin_risk": {
+        "origin": "China",
+        "exposure": "BIOSECURE / COINS Act legislative risk",
+        "as_of": "2026-08-23"
+      },
+      "sponsor_note": "China-origin sponsor (Jiangsu Alphamab Biopharmaceuticals Co., Ltd / Alphamab Oncology, Suzhou) \u2014 sponsor from the CT.gov lead-sponsor field; all listed trial sites are in China",
+      "identity_note": "Mechanism sourced, not inferred: JSKN016 is Alphamab Oncology's TROP2/HER3 bispecific ADC built on its single-domain/bispecific platform, homogeneous DAR4 via glycan-specific conjugation, releasing a topoisomerase-I inhibitor after target-mediated endocytosis with a bystander effect. Lead indication is HER2-negative/triple-negative breast cancer (Phase 3 ongoing); this NSCLC study is a separate Phase 1b combination programme",
+      "source": "ClinicalTrials.gov NCT06868732 (verified 2026-08-23 via API v2)",
+      "sources": [
+        {
+          "label": "ClinicalTrials.gov NCT06868732",
+          "url": "https://clinicaltrials.gov/study/NCT06868732",
+          "type": "ctgov",
+          "date": "2026-08-23",
+          "quoted_metric": "P1b RECRUITING, actual start 2025-04-02, n=288 est., JSKN016 multi-arm combination, advanced NSCLC (small-cell component excluded), ORR primary"
+        },
+        {
+          "label": "Alphamab Oncology \u2014 JSKN016 pipeline page",
+          "url": "https://www.alphamabonc.com/en/pipeline/jskn016.html",
+          "type": "sponsor_site",
+          "date": "2026",
+          "quoted_metric": "TROP2/HER3 bispecific ADC; DAR4 glycan-specific conjugation; topoisomerase-I inhibitor payload; bystander effect"
+        },
+        {
+          "label": "BioPharm International \u2014 Alphamab TROP2/HER3 bispecific ADC JSKN016",
+          "url": "https://www.biopharminternational.com/view/alphamab-oncology-to-present-phase-1-data-on-bispecific-adc-jskn016-in-her2-negative-breast-cancer",
+          "type": "trade_press",
+          "date": "2026",
+          "quoted_metric": "independent confirmation of the TROP2/HER3 bispecific ADC designation"
         }
       ]
     }
@@ -4044,7 +4214,60 @@
       "key_result": "OS HR ~0.66 (34% reduction in death risk); primary OS endpoint met at ASCO 2026. Clinically meaningful by <0.70 step-change threshold",
       "calibration_vs_benchmark": "Beats 1L bispecific OS HR bar of <0.75; meets <0.70 clinically meaningful threshold. China-enrolled population; comparator was PD-1 inhibitor monotherapy (not PD-1+chemo \u2014 Western FDA standard). Full peer-reviewed publication pending confirmation",
       "source": "ASCO 2026 (May 31, 2026); coverage event IDs 7, 8",
-      "last_updated": "2026-06-05"
+      "last_updated": "2026-06-05",
+      "peer_reviewed_record_2026_08_25": {
+        "status": "HARMONi-6 is now peer-reviewed in The Lancet \u2014 the object's older 'full peer-reviewed publication pending confirmation' caveat is superseded by this block",
+        "interim_os_analysis": {
+          "citation": "Lu S et al. Lancet 2026 Jun 27;407(10548):2620-2629",
+          "pmid": "42218899",
+          "doi": "10.1016/S0140-6736(26)00966-9",
+          "os_ivonescimab_mo": 27.9,
+          "os_comparator_mo": 23.7,
+          "os_hr": 0.66,
+          "os_hr_ci95": "0.50-0.87",
+          "p_one_sided": 0.0017,
+          "n_randomised": 532,
+          "per_group": 266,
+          "median_follow_up_mo": 21.4,
+          "data_cutoff": "2026-02-27",
+          "deaths": 204,
+          "subgroups": "benefit consistent across key subgroups",
+          "grade3plus_trae": "69% (184/266) vs 59% (156/265); grade >=3 haemorrhage 3% vs 1%"
+        },
+        "primary_pfs_analysis": {
+          "citation": "HARMONi-6 primary PFS analysis. Lancet 2025 Nov 1",
+          "pmid": "41125109",
+          "doi": "10.1016/S0140-6736(25)01848-3"
+        },
+        "CORRECTION_comparator": "The sibling 'analyst_note' and 'setting' fields state the comparator was PD-1 inhibitor MONOTHERAPY and build a Western-registration objection on that. This is INCORRECT. Per the Lancet publication, patients were randomised 1:1 to ivonescimab OR tislelizumab, EACH combined with paclitaxel and carboplatin for four cycles, followed by maintenance monotherapy. The comparator arm was a PD-1 inhibitor PLUS chemotherapy. The error appears to conflate HARMONi-6 with HARMONi-2 (ivonescimab mono vs pembrolizumab mono). The real Western-registration question is the tislelizumab-vs-pembrolizumab PD-1 backbone and the China-only population, not the absence of chemotherapy in the comparator",
+        "endpoints_durability_claim": "The single-source Endpoints News report of a softening PFS benefit (~40% -> ~28% risk reduction) is NOT carried into the ETLM. It is not corroborated by either Lancet publication, and the OS anchor (HR 0.66) is confirmed rather than contradicted",
+        "sources": [
+          {
+            "label": "Lu S et al. Ivonescimab plus chemotherapy versus tislelizumab plus chemotherapy in advanced squamous NSCLC (HARMONi-6): interim overall survival analysis. Lancet 2026;407(10548):2620-2629",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42218899/",
+            "type": "journal",
+            "pmid": "42218899",
+            "doi": "10.1016/S0140-6736(26)00966-9",
+            "date": "2026-06-27",
+            "quoted_metric": "median overall survival was 27.9 months (95% CI 27.89-NE) with ivonescimab versus 23.7 months (20.11-NE) with tislelizumab (hazard ratio for death 0.66 [95% CI 0.50-0.87]; p one-sided=0.0017)"
+          },
+          {
+            "label": "HARMONi-6 primary PFS analysis. Lancet 2025 Nov 1",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41125109/",
+            "type": "journal",
+            "pmid": "41125109",
+            "doi": "10.1016/S0140-6736(25)01848-3",
+            "date": "2025-11-01"
+          },
+          {
+            "label": "ClinicalTrials.gov NCT05840016 (HARMONi-6)",
+            "url": "https://clinicaltrials.gov/study/NCT05840016",
+            "type": "ctgov",
+            "nct": "NCT05840016"
+          }
+        ],
+        "verified": "2026-08-25 via NCBI eutils (inline)"
+      }
     },
     "post_osimertinib_2L": {
       "setting": "2L+ EGFR-mutant NSCLC post-osimertinib (1L 3rd-gen EGFR TKI failure)",
