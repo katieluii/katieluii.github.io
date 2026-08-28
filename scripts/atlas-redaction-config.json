@@ -419,6 +419,11 @@
       "why": "'13th consecutive staleness-floor cycle for copd' — the count and the quiet state are reader-facing; only the feed's internal name for that state is internal. Scoped to the ordinal idiom so the bare token elsewhere is left for review rather than silently reworded.",
       "pattern": "(?i)\\b(\\d+(?:st|nd|rd|th) consecutive )staleness[- ]floor\\b",
       "replacement": "\\1quiet"
+    },
+    {
+      "why": "Standalone 'Event <id>.' as its own sentence fragment — a bare internal citation appended after a fully-sourced claim ('...ACTIVE_NOT_RECRUITING]. Event 4572. GB-0895 is also...'). Unlike the bold-run-in form, this one is not the subject of a sentence, so it is DELETED rather than reworded — nothing reader-facing is lost, the NCT and all trial data sit in the surrounding text. Anchored on a preceding sentence end and a following space so it cannot bite a mid-sentence 'Event 4541 (...) is a...' clause, which the earlier rule rewords instead.",
+      "pattern": "(?<=\\.)\\s+Event\\s+\\d{3,4}\\.(?=\\s)",
+      "replacement": ""
     }
   ],
   "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
