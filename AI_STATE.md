@@ -1,58 +1,46 @@
 # Project Memory State
 
 ## Current Context
-The public site `katieluii.github.io` (repo is PUBLIC, `has_pages=true`), served from `main` in
-THIS checkout. `~/Projects/kl-portfolio-suite` is a second working copy of the same repo on
-branch `claude/suite-cards` — an in-progress frontend refactor Katie will rebase onto main
-herself. **Never read atlas data from the suite copy**; it lags. See memory node
-`project_kl_portfolio_two_checkouts`.
+`kl-portfolio` is the working copy of `katieluii.github.io` (public site; `main.yml` deploys to
+GitHub Pages on every push to `main`). The weekly Atlas analyst-read job
+(`com.katielui.analyst-refresh`, Mondays 07:00) chains `scripts/sync-atlas-content.py`
+(WS12/WS9 sources -> redacted `src/data/atlas/`) into `scripts/refresh-analyst-read.py`
+(a headless `claude -p` distil into `analyst_read.json`).
 
-`src/data/atlas/analyst_read.json` powers the `/#/ecosystem` page (note: hash route — the bare
-`/ecosystem` path 404s) and is also the source WP9 drafts its daily tweet from.
+Branch `main`, clean and pushed as of 2026-08-29. `ANALYST_REFRESH_PUSH=false` still stands:
+the job commits locally and stops. Publishing remains a human step.
 
 ## Completed
-- 2026-08-19/22, commit `e1705a8` (pushed) — the weekly Monday refresh of `analyst_read.json`
-  is now a job. It was a hand-made commit before.
-  - `bin/run-analyst-refresh.sh` — launchd wrapper, `com.katielui.analyst-refresh`, Mondays
-    07:00 (ahead of WP9's 08:30 so the week's first tweet uses fresh themes). Exports `$USER`
-    for the claude keychain. Refuses to run on any branch but `main`.
-  - `scripts/refresh-analyst-read.py` — distils via `claude -p`, validates deterministically,
-    writes atomically, archives the prior file to `src/data/atlas/_analyst_read_history/`.
-  - `src/data/atlas/source_registry.json` — controlled label→URL map. The model emits LABELS
-    only; an unmapped label ships with no URL rather than a guessed one.
-  - Distils from `src/data/atlas/ecosystem.md`, NOT the raw WS12 note: ecosystem.md has already
-    passed the redaction whitelist and leak gate. Since WP9 turns this into a tweet, distilling
-    the raw note would route internal tokens to a public page and then to X.
-  - Validation refuses: not-exactly-5 narratives, unknown momentum, a model-authored URL, an
-    unmapped source, thin detail, duplicate headlines. 9/9 proven both directions.
-- Redaction rules extended (+1 paragraph marker `triage-fanout`, +4 inline) to close the
-  leak-gate abort of 2026-08-19: an interleaved DB row-id list and the pipeline's own
-  `cycleNNN_mega` run ids, neither reachable by existing R1–R7. Tested over all 6,477 lines of
-  the source note: 476 lines touched, **0 losing an NCT/PMID/ORR/deal token**. Two earlier
-  drafts were rejected in testing — one ate the year out of a citation, the other destroyed
-  NCTs and `$600M`/`$1.5B`/`$2.6B` by dropping whole parentheticals.
-- `logs/` gitignored: the repo is public and the sync's abort banner quotes the internal lines
-  it rejected.
-- Full chain verified under a simulated launchd env: sync clean → 5 narratives → receipt 5/5 →
-  `output_assert` PASS → local commit.
+- Weekly job unblocked end-to-end; last run `done rc=0 assert=0 push=false`, `output_assert PASS`.
+- `scripts/sync-atlas-content.py:625` — internal-phrase scrubber widened to sibling nouns
+  (precedent/convention/policy/disposition) and made greedy, so a clause is consumed through its
+  LAST qualifying noun rather than stranding a dangling " rule".
+- `scripts/atlas-redaction-config.json` — 10 narrow rules added across two passes. Config patterns
+  compile with NO flags while the residue detector uses `re.I`; capitalised forms therefore scrubbed
+  clean and still tripped the gate.
+- `scripts/refresh-analyst-read.py` — bounded 3-attempt repair loop; retryable `ModelOutputError`
+  so a malformed reply no longer bypasses it; `raw_decode` extraction tolerant of code fences and
+  trailing prose; bad replies dumped to `logs/analyst-refresh.last-bad-reply.txt` (gitignored).
+  The validation gate itself is UNCHANGED and still fails closed on exhaustion.
+- Published: `432d25b..15e6517`, Pages deploy succeeded in 49s. Live bundle scanned after deploy —
+  14 internal-token classes, all zero.
 
 ## Known Issues
-- **Push is OFF by default** (`ANALYST_REFRESH_PUSH=false` in the plist). The job commits
-  locally and Telegrams the headlines; publishing to the public site stays a human step. Until
-  someone pushes, the live page shows the prior week.
-- The upstream WS12 → `ecosystem.md` sync can abort on internal residue it has no rule for
-  (it did on 2026-08-19). When it does, the refresh correctly refuses to distil stale content
-  and the week gets no update — a loud failure, but a failure.
-- `scripts/atlas-redaction-config.json` quotes internal token examples in its `why` fields and
-  is public. Pre-existing convention (8 such examples before this session added 4), noted rather
-  than changed.
-- The two checkouts remain diverged by design.
+- Headlines land at 118-119 chars against a 120 cap. The repair loop is UNIT-tested only; the live
+  run passed on the model's first attempt, so it has never fired in production.
+- `WS13` and `Katie` appear in the deployed JS bundle from `src/data/atlas/*.ts` comments and a label
+  map. Pre-existing and unchanged by this work (`git diff` confirms), but still shipping.
+- `src/data/atlas/_analyst_read_history/analyst_read_2026-08-19.json` is untracked by design.
+- An ecosystem line reads "this cycle's is a duplicate ..." — pre-existing rule 55 deletes the
+  sentence's subject. Cosmetic, not a gate failure.
+- Each WS12 cycle can introduce a NEW internal-token shape the residue gate cannot see. Three
+  separate rounds of this occurred in one session; assume it recurs.
 
 ## Exact Next Steps
-1. Watch the first unattended Monday run (07:00) and confirm the Telegram digest arrives with
-   five headlines.
-2. Decide whether to set `ANALYST_REFRESH_PUSH=true` for full autonomy, or keep publishing
-   manual.
-3. If the sync aborts again on new internal residue, the pattern to follow is in
-   `~/Projects/meta_pm/reports/PROPOSED-redaction-rules-2026-08-19.md`: test any candidate rule
-   across the whole source note and assert zero clinical/deal tokens lost before applying.
+1. Decide whether `ANALYST_REFRESH_PUSH` should flip to `true` in
+   `~/Library/LaunchAgents/com.katielui.analyst-refresh.plist`. Evidence against: this session found
+   four token classes that every CI gate passed; an auto-publish would have shipped them.
+2. Before any future publish, run the three CI gates locally plus an independent token scan over
+   `src/data/atlas/` — the gates alone are not sufficient:
+   `npm run typecheck` ; `python3 scripts/sync-atlas-content.py --verify-only` ; `npm run build`.
+3. Optional: strip `WS13` / `Katie` from the shipped bundle (source is `src/data/atlas/*.ts`).
