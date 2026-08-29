@@ -24,8 +24,8 @@ text is "Email" in `Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); the 
 /projects (`projects.ts`: `status: "Archived"`, `hideFromTimeline: true`; page and data kept, /projects shows 14).
 Every push this evening was verified against the live bundle (JS/CSS hash = local build).
 
-**Bellwether (contributor session, 2026-08-29 S311):** branch `claude/bellwether-followups` (based on a14acea, pushed, unmerged;
-code at 29842d2). The consensus `stance` on the 13 records now carries `stanceSrc`/`stanceDate` and each name
+**Bellwether (contributor session, 2026-08-29 S311):** branch `claude/bellwether-followups` MERGED to main on the owner's call (ff, `cb82816`,
+Pages deploy verified: live bundle byte-identical to the local build; branch left in place). The consensus `stance` on the 13 records now carries `stanceSrc`/`stanceDate` and each name
 `mcap`/`mcapDate` (strings or null), defined in the WS6 SOP, shown by the WS6 diff gate, required by
 `scripts/sync-bellwether-data.mjs`, typed in `src/data/pharmaLandscape.ts`, rendered under each thesis
 (`Views.tsx`: "as of D · via SRC · market cap M", or "source not recorded at this cut"), a Market-cap screener
@@ -121,5 +121,5 @@ Recorded on behalf of the session that could not write this file: **a14acea** �
    dark on a direct load, then branch → merge → push.
 6. Optional: restyle `/work-with-me` (WS15,
    own Fraunces identity) onto the Renascor tokens.
-- (Bellwether) Katie merges `claude/bellwether-followups`; after the WS6 1 Sep sweep is promoted, run
+- (Bellwether) after the WS6 1 Sep sweep is promoted, run
   `npm run sync:bellwether` on a fresh `claude/` branch so the Market-cap column and sources go live.
