@@ -166,7 +166,7 @@ export function Home() {
         <div className="mx-auto flex max-w-3xl flex-col gap-3 px-6 py-8 text-[12.5px] text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Katie Lui. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <a href={MAILTO} className={textLink}>{EMAIL}</a>
+            <a href={MAILTO} className={textLink}>Email</a>
             <a href="https://www.linkedin.com/in/katieluikakiu" target="_blank" rel="noreferrer" className={textLink}>LinkedIn</a>
             <a href="https://github.com/katieluii" target="_blank" rel="noreferrer" className={textLink}>GitHub</a>
             <a href="https://renascor.xyz" target="_blank" rel="noreferrer" className={textLink}>Renascor</a>

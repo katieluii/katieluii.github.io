@@ -97,7 +97,7 @@ export function SuitePageLayout({ letter, tagline, stamps, children, measure = '
           <p>© 2026 Katie Lui. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Link to="/#suite" className="underline decoration-[var(--hair)] underline-offset-[3px] hover:text-[var(--ink-strong)] hover:decoration-[var(--accent)]">The suite</Link>
-            <a href="mailto:katie@renascor.xyz" className="underline decoration-[var(--hair)] underline-offset-[3px] hover:text-[var(--ink-strong)] hover:decoration-[var(--accent)]">katie@renascor.xyz</a>
+            <a href="mailto:katie@renascor.xyz" className="underline decoration-[var(--hair)] underline-offset-[3px] hover:text-[var(--ink-strong)] hover:decoration-[var(--accent)]">Email</a>
           </div>
         </div>
       </footer>

@@ -395,7 +395,8 @@ export const projects: Project[] = [
     slug: "grid",
     title: "Grid — AI-native operating layer for VC funds",
     themes: ["AI/ML & Automation", "Investing"],
-    status: "WIP",
+    status: "Archived",
+    hideFromTimeline: true, // archived from the index 2026-08-29 (Katie); page + data kept
     yearStart: 2026,
     yearEnd: 2026,
     summary:
