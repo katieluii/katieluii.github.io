@@ -19,15 +19,17 @@ type Row = { label: string; v1: string; v2: string; v3: string; v31: string };
  * is completed trials only — so every number there is flattered. These come from the
  * horizon fold (train <2018, test 2018–2020) and are regenerated from
  * recruitment_rate_app/experiments/published_metrics.json; the ledger row is the source.
- * Published 2026-08-29 after the circular-validation audit.
+ * Published 2026-08-29 after the circular-validation audit; re-published 2026-08-30 from
+ * rows that measure the SHIPPED configuration — the eval configs had passed no censoring
+ * frame, so the earlier rows scored an unweighted model that was not the one serving.
  */
 type HonestRow = { phase: string; mae: string; r2: string; coverage: string; gate: string; row: number };
 
 const HONEST_ROWS: HonestRow[] = [
-  { phase: 'Phase 1 HV', mae: '3.27', r2: '0.324', coverage: '0.80', gate: 'pass (band widened to an 0.85 target after 0.73 at 0.80)', row: 333 },
-  { phase: 'Phase 1', mae: '7.78', r2: '0.629', coverage: '0.78', gate: 'pass', row: 327 },
-  { phase: 'Phase 2', mae: '9.46', r2: '0.403', coverage: '0.80', gate: 'pass', row: 329 },
-  { phase: 'Phase 3', mae: '10.22', r2: '0.363', coverage: '0.77', gate: 'pass', row: 330 },
+  { phase: 'Phase 1 HV', mae: '3.26', r2: '0.333', coverage: '0.79 (0.85)', gate: 'pass (band widened to an 0.85 target after 0.73 at 0.80)', row: 350 },
+  { phase: 'Phase 1', mae: '7.71', r2: '0.645', coverage: '0.78 (0.80)', gate: 'pass', row: 336 },
+  { phase: 'Phase 2', mae: '9.52', r2: '0.423', coverage: '0.79 (0.80)', gate: 'pass', row: 339 },
+  { phase: 'Phase 3', mae: '10.09', r2: '0.392', coverage: '0.77 (0.80)', gate: 'pass', row: 340 },
 ];
 
 const ROWS: Row[] = [
@@ -222,7 +224,9 @@ export function TrialPredictorVersions() {
           short. Scored instead on trials starting 2018–2020, which have had five to eight
           years to finish, the shipped model looks like this. These are the numbers that
           stand. Phase 1 HV initially covered 0.73 at a 0.80 target and failed its gate; its band
-          now aims at 0.85 and lands 0.80, at a cost of 1.6 months of width.
+          now aims at 0.85 and lands 0.79, at a cost of 1.6 months of width. Every row is scored
+          with the censoring weights the served model trains with — the first publication had
+          measured an unweighted model, which understated R² by 0.01–0.03.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse table-fixed">
@@ -231,7 +235,7 @@ export function TrialPredictorVersions() {
                 <th className="text-left py-1.5 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[22%]">Phase</th>
                 <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[16%]">MAE (months)</th>
                 <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[12%]">R²</th>
-                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[16%]">Coverage (0.80 nominal)</th>
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[16%]">Coverage (nominal)</th>
                 <th className="text-left py-1.5 pl-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">Gate</th>
               </tr>
             </thead>
