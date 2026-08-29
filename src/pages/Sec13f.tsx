@@ -220,8 +220,8 @@ export function Sec13f() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0b0f14]">
-      <header className="bg-white dark:bg-[#0b0f14] border-b border-slate-200 dark:border-white/10">
+    <div className="min-h-screen bg-[var(--bg)]">
+      <header className="bg-[var(--bg)] border-b border-slate-200 dark:border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <button
             onClick={() => navigate('/')}
@@ -421,7 +421,7 @@ export function Sec13f() {
         )}
       </main>
 
-      <footer className="border-t border-slate-200 dark:border-white/10 bg-white dark:bg-[#0b0f14] mt-16">
+      <footer className="border-t border-slate-200 dark:border-white/10 bg-[var(--bg)] mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
           <p className="text-sm text-slate-500 dark:text-zinc-400">
             © 2026 Katie Lui. All rights reserved.
