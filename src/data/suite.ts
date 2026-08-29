@@ -35,7 +35,7 @@ export const suite: SuiteProduct[] = [
     job: 'Tracks every indication in your scope, from registries and readouts to regulatory moves, and keeps a living landscape map per indication.',
     status: 'Live',
     href: '/atlas-drug-dev-analyst',
-    madeOf: ['clinical-news-monitor', 'conference-catalyst-monitor'],
+    madeOf: ['atlas-drug-dev-analyst', 'clinical-news-monitor', 'conference-catalyst-monitor'],
   },
   {
     letter: 'B',

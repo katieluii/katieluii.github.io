@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProjectPageLayout from '../components/ProjectPageLayout';
-import { FilterChips } from '../components/FilterChips';
+import { ChevronDown } from 'lucide-react';
 import { ProjectTimeline } from '../components/ProjectTimeline';
 import {
   projects,
@@ -21,6 +21,40 @@ import { suite, suiteMembership } from '../data/suite';
 
 const NOT_IN_SUITE = 'Not in the suite';
 const STATUSES: ProjectStatus[] = ['Live', 'WIP', 'Archived'];
+
+/* One labelled dropdown per filter axis. "All" is the empty value; the axis label
+   is the accessible name, so the select reads "Suite, All" not just "All". */
+interface FilterSelectProps {
+  label: string;
+  options: string[];
+  selected: string | null;
+  onSelect: (value: string | null) => void;
+}
+
+function FilterSelect({ label, options, selected, onSelect }: FilterSelectProps) {
+  const id = `filter-${label.toLowerCase()}`;
+  return (
+    <div className="space-y-1.5">
+      <label htmlFor={id} className="block text-xs font-medium uppercase tracking-wide text-[var(--muted)]">
+        {label}
+      </label>
+      <div className="relative">
+        <select
+          id={id}
+          value={selected ?? ''}
+          onChange={(e) => onSelect(e.target.value === '' ? null : e.target.value)}
+          className="w-full appearance-none rounded-lg border border-[var(--hair)] bg-[var(--surface)] pl-3 pr-9 py-2 text-sm text-[var(--ink)] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+        >
+          <option value="">All</option>
+          {options.map((o) => (
+            <option key={o} value={o}>{o}</option>
+          ))}
+        </select>
+        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--muted)]" aria-hidden="true" />
+      </div>
+    </div>
+  );
+}
 
 export function Projects() {
   const [params, setParams] = useSearchParams();
@@ -69,32 +103,28 @@ export function Projects() {
       subtitle={`The complete record — ${visibleCount} projects since ${yearMin}, including the research years before the suite.`}
       containerClassName="max-w-3xl mx-auto px-6"
     >
-      <div className="space-y-6 mb-10">
-        <div className="space-y-2">
-          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">Suite</span>
-          <FilterChips
+      <div className="mb-10 space-y-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <FilterSelect
+            label="Suite"
             options={[...suite.map((s) => s.name), NOT_IN_SUITE]}
             selected={selectedSuite}
             onSelect={setSuite}
           />
-        </div>
-        <div className="space-y-2">
-          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">Theme</span>
-          <FilterChips
+          <FilterSelect
+            label="Theme"
             options={themes}
             selected={selectedTheme}
             onSelect={(v) => setSelectedTheme(v as ProjectTheme | null)}
           />
-        </div>
-        <div className="space-y-2">
-          <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">Status</span>
-          <FilterChips
+          <FilterSelect
+            label="Status"
             options={STATUSES}
             selected={selectedStatus}
             onSelect={(v) => setSelectedStatus(v as ProjectStatus | null)}
           />
         </div>
-        <p className="text-xs text-zinc-500 dark:text-zinc-400" aria-live="polite">
+        <p className="text-xs text-[var(--muted)]" aria-live="polite">
           Showing {shown} of {visibleCount}
         </p>
       </div>
