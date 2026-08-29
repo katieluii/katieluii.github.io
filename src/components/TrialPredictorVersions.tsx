@@ -13,6 +13,23 @@ import { Pill } from './Pill';
 
 type Row = { label: string; v1: string; v2: string; v3: string; v31: string };
 
+/**
+ * Honest-fold figures for the shipped model (v3.1, two_stage_l2). The history table
+ * above it uses the 2021+ temporal fold, which cannot contain a long trial — the corpus
+ * is completed trials only — so every number there is flattered. These come from the
+ * horizon fold (train <2018, test 2018–2020) and are regenerated from
+ * recruitment_rate_app/experiments/published_metrics.json; the ledger row is the source.
+ * Published 2026-08-29 after the circular-validation audit.
+ */
+type HonestRow = { phase: string; mae: string; r2: string; coverage: string; gate: string; row: number };
+
+const HONEST_ROWS: HonestRow[] = [
+  { phase: 'Phase 1 HV', mae: '3.27', r2: '0.324', coverage: '0.80', gate: 'pass (band widened to an 0.85 target after 0.73 at 0.80)', row: 333 },
+  { phase: 'Phase 1', mae: '7.78', r2: '0.629', coverage: '0.78', gate: 'pass', row: 327 },
+  { phase: 'Phase 2', mae: '9.46', r2: '0.403', coverage: '0.80', gate: 'pass', row: 329 },
+  { phase: 'Phase 3', mae: '10.22', r2: '0.363', coverage: '0.77', gate: 'pass', row: 330 },
+];
+
 const ROWS: Row[] = [
   { label: 'Phase 1 HV — R²', v1: '0.420', v2: '0.371', v3: '0.368', v31: '0.370' },
   { label: 'Phase 1 — R²', v1: '0.454', v2: '0.511', v3: '0.517', v31: '0.555' },
@@ -193,6 +210,48 @@ export function TrialPredictorVersions() {
           further 0.038 on Phase 1 and 0.027 on Phase 3, and improved error on three of
           four phases. The prediction interval still comes from the quantile heads, so
           its calibration is unchanged.
+        </p>
+
+        <h3 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide pt-2">
+          The honest fold — what to quote
+        </h3>
+        <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          The table above compares versions on a fold that flatters all of them. The corpus
+          holds completed trials only, so a test window of trials starting after 2021 cannot
+          contain a trial that ran six years — and the model was rewarded for predicting
+          short. Scored instead on trials starting 2018–2020, which have had five to eight
+          years to finish, the shipped model looks like this. These are the numbers that
+          stand. Phase 1 HV initially covered 0.73 at a 0.80 target and failed its gate; its band
+          now aims at 0.85 and lands 0.80, at a cost of 1.6 months of width.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse table-fixed">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-zinc-700">
+                <th className="text-left py-1.5 pr-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[22%]">Phase</th>
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[16%]">MAE (months)</th>
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[12%]">R²</th>
+                <th className="text-right py-1.5 px-2 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide w-[16%]">Coverage (0.80 nominal)</th>
+                <th className="text-left py-1.5 pl-4 font-medium text-slate-500 dark:text-zinc-500 text-xs uppercase tracking-wide">Gate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {HONEST_ROWS.map(r => (
+                <tr key={r.phase} className="border-b border-slate-100 dark:border-zinc-800">
+                  <td className="py-1.5 pr-4 text-slate-700 dark:text-zinc-300">{r.phase}</td>
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.mae}</td>
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.r2}</td>
+                  <td className="py-1.5 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.coverage}</td>
+                  <td className="py-1.5 pl-4 text-slate-600 dark:text-zinc-400 text-xs">{r.gate} · ledger row {r.row}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-slate-500 dark:text-zinc-500 max-w-2xl">
+          Horizon fold: trained on trials starting before 2018, tested on 2018–2020 starts.
+          Gates: beats the per-therapeutic-area median lookup, and interval coverage within
+          0.75–0.90. Every figure traces to a row of the experiment ledger.
         </p>
       </div>
 

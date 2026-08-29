@@ -83,8 +83,10 @@ git add src/data/atlas/analyst_read.json src/data/atlas/ecosystem.md >> "$LOG" 2
 if git diff --cached --quiet; then
     echo "[$TS] nothing staged — content identical." >> "$LOG"; exit 0
 fi
-GIT_AUTHOR_NAME="dev" GIT_AUTHOR_EMAIL="dev@localhost" \
-GIT_COMMITTER_NAME="dev" GIT_COMMITTER_EMAIL="dev@localhost" \
+# Commit as Katie's GitHub noreply identity so the weekly refresh is credited on her graph
+# (rule of 2026-08-26: never `dev <dev@localhost>` — it matches no GitHub account).
+GIT_AUTHOR_NAME="Katie Lui" GIT_AUTHOR_EMAIL="64932844+katieluii@users.noreply.github.com" \
+GIT_COMMITTER_NAME="Katie Lui" GIT_COMMITTER_EMAIL="64932844+katieluii@users.noreply.github.com" \
     git commit -q -m "Atlas analyst read: weekly refresh of 5 hottest themes" >> "$LOG" 2>&1
 
 HEADLINES="$(/usr/bin/python3 -c "
