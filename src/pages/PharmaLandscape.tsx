@@ -6,10 +6,7 @@ import { Screener } from '../components/research/bellwether/Screener';
 import { Views } from '../components/research/bellwether/Views';
 import { Routing } from '../components/research/bellwether/Routing';
 import { SectionTitle, btnPrimary, btnQuiet } from '../components/research/bellwether/ui';
-import {
-  DATA_ASOF, LAST_REVIEWED, UNIVERSE, highExposureCount, DOMINANT, ladderLo, ladderHi, onLadder,
-  FULL_LANDSCAPE_ROUTE, latestQuarterLabel,
-} from '../data/pharmaLandscape';
+import { DATA_ASOF, LAST_REVIEWED, UNIVERSE, highExposureCount, DOMINANT, ladderLo, ladderHi, onLadder, FULL_LANDSCAPE_ROUTE, latestQuarterLabel, CONSENSUS_PROVENANCE_NOTE } from '../data/pharmaLandscape';
 
 /* ── Bellwether ───────────────────────────────────────────────────────────────
    Product B. Journey: masthead with the tear-sheet stamps (data cut, reviewed,
@@ -106,7 +103,7 @@ export function PharmaLandscape() {
               <h3 className="text-[15px] font-semibold text-[var(--ink-strong)]">What is on this page</h3>
               <ul className="mt-2 space-y-2 text-[14px] leading-[1.55] text-[var(--muted)]">
                 <li><span className="font-medium text-[var(--ink)]">Reported</span>: revenue, growth and dated developments come from each company's disclosures for the quarter shown, and are fact-checked before a cut is promoted.</li>
-                <li><span className="font-medium text-[var(--ink)]">Consensus</span>: stances and targets on the company cards are third-party sell-side consensus as compiled at the data cut, shown for context.</li>
+                <li><span className="font-medium text-[var(--ink)]">Consensus</span>: the stance and target under each thesis are third-party sell-side consensus as observed at the data cut, shown for context — {CONSENSUS_PROVENANCE_NOTE}.</li>
                 <li><span className="font-medium text-[var(--ink)]">Estimated</span>: a multiple tagged <em>est.</em> (trailing, NTM or single-aggregator) is not a clean forward figure and is never ranked against one.</li>
                 <li><span className="font-medium text-[var(--ink)]">Model</span>: theses, bull and bear cases and the two extremes are the system's read, phrased by a language model over the reported figures.</li>
               </ul>

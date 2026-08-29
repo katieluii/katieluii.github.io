@@ -11,7 +11,8 @@
 // Provenance vocabulary the page uses (rendered in "What is on this page"; per-figure tags
 // exist for the multiple basis and the growth basis, not yet for every field):
 //   reported   — a company disclosure / filing for the quarter shown (rev, gr, dev)
-//   consensus  — third-party sell-side consensus at the data cut (stance, targets)
+//   consensus  — third-party sell-side consensus at the data cut (stance, targets); each stance
+//                carries who compiled it (stanceSrc) and when (stanceDate) where the cut recorded them
 //   estimated  — a modelled multiple where no clean forward figure exists (pos.est)
 //   model      — a conclusion the system generated (thesis / bull / bear / signal)
 
@@ -44,6 +45,14 @@ export interface Company {
   ev: string;
   yld: string | null;
   stance: string;
+  /** who compiled the consensus stance; null = the cut did not record it (rendered as such, never guessed) */
+  stanceSrc: string | null;
+  /** as-of date of that consensus figure: the source's stated date, else the date it was observed.
+      The 16 Aug 2026 cut observed all 13 that day but logged no source — date without source is that legacy state */
+  stanceDate: string | null;
+  /** market capitalisation with currency, at the close in `mcapDate`; null until a sweep records it */
+  mcap: string | null;
+  mcapDate: string | null;
   thesis: string;
   bull: string;
   bear: string;
@@ -119,6 +128,10 @@ export const COMPANIES: Company[] = (raw.companies as RawCompany[]).map((c) => {
     ev: c.ev,
     yld: c.yld as string | null,
     stance: c.stance,
+    stanceSrc: (c.stanceSrc as string | null) ?? null,
+    stanceDate: (c.stanceDate as string | null) ?? null,
+    mcap: (c.mcap as string | null) ?? null,
+    mcapDate: (c.mcapDate as string | null) ?? null,
     thesis: c.thesis,
     bull: c.bull,
     bear: c.bear,
@@ -132,6 +145,21 @@ export const CONVERGENCE: ConvergenceTheme[] = raw.convergence as ConvergenceThe
 
 // ── derived facts the page states (each computed, so it cannot go stale) ─────
 export const UNIVERSE = COMPANIES.length; // 13
+/** how many stances carry a recorded source — drives the consensus disclosure wording */
+export const STANCES_SOURCED = COMPANIES.filter((c) => c.stanceSrc !== null).length;
+/** how many stances carry an as-of date */
+export const STANCES_DATED = COMPANIES.filter((c) => c.stanceDate !== null).length;
+/** the consensus disclosure's provenance clause — derived, so it cannot describe a state the data is not in */
+export const CONSENSUS_PROVENANCE_NOTE: string =
+  STANCES_SOURCED === UNIVERSE && STANCES_DATED === UNIVERSE
+    ? 'each with its as-of date and who compiled it'
+    : STANCES_SOURCED === 0 && STANCES_DATED === UNIVERSE
+      ? 'this cut records the as-of date of every stance but not who compiled it, and each line says so'
+      : STANCES_SOURCED === 0 && STANCES_DATED === 0
+        ? 'this cut recorded neither an as-of date nor a compiler for its stances, and each line says so'
+        : `${STANCES_DATED} of ${UNIVERSE} carry an as-of date and ${STANCES_SOURCED} a recorded compiler; the rest say so`;
+/** how many names carry a dated market cap — the screener shows the column only when > 0 */
+export const MCAP_RECORDED = COMPANIES.filter((c) => c.mcap !== null).length;
 export const highExposureCount = COMPANIES.filter((c) => c.exp === 'high').length;
 export const onLadder = COMPANIES.filter((c) => c.fpe !== null && !c.pos.est);
 export const offLadder = COMPANIES.filter((c) => !(c.fpe !== null && !c.pos.est)).map((c) => c.ticker);

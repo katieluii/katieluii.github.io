@@ -239,6 +239,17 @@ function Theses() {
           <div className="mt-3 grid gap-3 pl-[4.25rem] text-[13px] leading-[1.5] sm:grid-cols-2">
             <p><span className="font-semibold text-[var(--ink-strong)]">Bull</span> <span className="text-[var(--muted)]">{c.bull}</span></p>
             <p><span className="font-semibold text-[var(--ink-strong)]">Bear</span> <span className="text-[var(--muted)]">{c.bear}</span></p>
+            <p className="sm:col-span-2">
+              <span className="font-semibold text-[var(--ink-strong)]">Consensus</span>{' '}
+              <span className="text-[var(--muted)]">{c.stance}</span>
+              <span className="ml-1.5 text-[12px] text-[var(--faint)]">
+                {[
+                  c.stanceDate ? `as of ${c.stanceDate}` : '',
+                  c.stanceSrc ? `via ${c.stanceSrc}` : 'source not recorded at this cut',
+                  c.mcap ? `market cap ${c.mcap}${c.mcapDate ? ` (${c.mcapDate})` : ''}` : '',
+                ].filter(Boolean).join(' · ')}
+              </span>
+            </p>
           </div>
           {c.dev.length > 0 && (
             <ul className="mt-3 space-y-1 pl-[4.25rem] text-[12.5px] leading-[1.5] text-[var(--muted)]">

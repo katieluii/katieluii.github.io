@@ -69,10 +69,17 @@ export function extract() {
   if (!Array.isArray(out.D) || out.D.length !== 13) throw new Error(`sync-bellwether: D has ${out.D && out.D.length} companies, expected the fixed 13-name roster`);
   for (const c of out.D) {
     // every key the page reads (src/data/pharmaLandscape.ts) — a dropped key must fail HERE, not in the browser
-    for (const k of ['ticker', 'name', 'ccy', 'loeAsset', 'era', 'exp', 'q', 'qdate', 'rev', 'gr', 'fpe', 'ev', 'yld', 'stance', 'thesis', 'bull', 'bear', 'dev', 'ph']) {
+    for (const k of ['ticker', 'name', 'ccy', 'loeAsset', 'era', 'exp', 'q', 'qdate', 'rev', 'gr', 'fpe', 'ev', 'yld', 'stance', 'stanceSrc', 'stanceDate', 'mcap', 'mcapDate', 'thesis', 'bull', 'bear', 'dev', 'ph']) {
       if (!(k in c)) throw new Error(`sync-bellwether: ${c.ticker || '?'} missing ${k}`);
     }
     if (!(c.fpe === null || typeof c.fpe === 'number')) throw new Error(`sync-bellwether: ${c.ticker} fpe must be number|null`);
+    for (const k of ['stanceSrc', 'stanceDate', 'mcap', 'mcapDate']) {
+      if (!(c[k] === null || (typeof c[k] === 'string' && c[k].length > 0))) throw new Error(`sync-bellwether: ${c.ticker} ${k} must be a non-empty string or null`);
+    }
+    // a source must carry its as-of date; a date WITHOUT a source is the legal legacy state of the 16 Aug 2026 cut
+    // (observed that day, source not logged) — see the SOP. Never the other way round.
+    if (c.stanceSrc && !c.stanceDate) throw new Error(`sync-bellwether: ${c.ticker} stanceSrc without stanceDate`);
+    if (c.mcap && !c.mcapDate) throw new Error(`sync-bellwether: ${c.ticker} mcap without mcapDate`);
     if (!Array.isArray(c.dev) || !Array.isArray(c.ph) || c.ph.length !== 5) throw new Error(`sync-bellwether: ${c.ticker} dev/ph shape`);
     if (!['high', 'med', 'low'].includes(c.exp)) throw new Error(`sync-bellwether: ${c.ticker} exp "${c.exp}"`);
     if (!(c.era in out.eras)) throw new Error(`sync-bellwether: ${c.ticker} era "${c.era}" not in eras`);

@@ -1,6 +1,6 @@
 import { useMemo, useState, type KeyboardEvent } from 'react';
 import { ArrowDown, ArrowUp } from 'lucide-react';
-import { COMPANIES, DOMINANT, ERAS, crowdCount, landscapeHref, type Company } from '../../../data/pharmaLandscape';
+import { COMPANIES, DOMINANT, ERAS, crowdCount, landscapeHref, type Company, MCAP_RECORDED } from '../../../data/pharmaLandscape';
 import { BASIS_SHORT, BasisTag, ExposureMark, MULT_SHORT } from './ui';
 
 /* ── Screen the field ─────────────────────────────────────────────────────────
@@ -89,6 +89,15 @@ export function Screener() {
         ~{c.pos.pe}×
         {c.multipleBasis !== 'forward' && <BasisTag title={c.ev}>{MULT_SHORT[c.multipleBasis]}</BasisTag>}
       </td>
+      {MCAP_RECORDED > 0 && (
+        <td className="whitespace-nowrap px-3 py-2.5 tabular-nums text-[var(--ink)]" title={c.mcapDate ? `at ${c.mcapDate} close` : undefined}>
+          {c.mcap ? (
+            <>{c.mcap}{c.mcapDate && <span className="sr-only"> at {c.mcapDate} close</span>}</>
+          ) : (
+            <span className="text-[var(--faint)]" aria-label="not recorded">—</span>
+          )}
+        </td>
+      )}
       <td className="whitespace-nowrap px-3 py-2.5 text-[13px]">
         <span className="inline-flex items-center gap-2">
           <ExposureMark exp={c.exp} />
@@ -141,6 +150,7 @@ export function Screener() {
                   P/E <SortIcon k="pe" />
                 </button>
               </th>
+              {MCAP_RECORDED > 0 && <th scope="col" className={th}>Market cap</th>}
               <th scope="col" className={th}>Cliff exposure · key expiry</th>
             </tr>
           </thead>
@@ -148,7 +158,7 @@ export function Screener() {
             {rows.ranked.map((c) => <Row key={c.ticker} c={c} />)}
             {rows.unranked.length > 0 && (
               <tr className="border-t border-[var(--hair)] bg-[var(--hover)]">
-                <td colSpan={4} className="px-3 py-1.5 text-[11.5px] uppercase tracking-[0.06em] text-[var(--muted)]">
+                <td colSpan={MCAP_RECORDED > 0 ? 5 : 4} className="px-3 py-1.5 text-[11.5px] uppercase tracking-[0.06em] text-[var(--muted)]">
                   Not ranked on P/E: no clean forward figure
                 </td>
               </tr>
@@ -156,7 +166,7 @@ export function Screener() {
             {rows.unranked.map((c) => <Row key={c.ticker} c={c} dim />)}
             {rows.ranked.length + rows.unranked.length === 0 && (
               <tr className="border-t border-[var(--hair)]">
-                <td colSpan={4} className="px-3 py-6 text-center text-[13.5px] text-[var(--muted)]">
+                <td colSpan={MCAP_RECORDED > 0 ? 5 : 4} className="px-3 py-6 text-center text-[13.5px] text-[var(--muted)]">
                   No company matches this screen in the current cut. Try a broader thesis.
                 </td>
               </tr>
