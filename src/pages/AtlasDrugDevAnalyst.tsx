@@ -305,7 +305,7 @@ function IndicationBubbles() {
             <button
               key={ind.code}
               onClick={() => handleClick(ind.code)}
-              className={`atlas-bubble ${isPopping ? 'popping' : ''} rounded-full ring-1 ${ta.bubble} px-4 py-2 text-[13px] font-semibold shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--bg)]`}
+              className={`atlas-bubble ${isPopping ? 'popping' : ''} rounded-full ring-1 ${ta.bubble} px-4 py-2 text-[13px] font-semibold shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#fafafa] dark:focus:ring-offset-[#0b0f14]`}
               style={{ animationDelay: bubbleDelay(i) }}
               aria-label={`Open ${ind.code} top assets`}
             >

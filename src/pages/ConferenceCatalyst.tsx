@@ -184,7 +184,7 @@ export default function ConferenceCatalyst() {
                 <div key={step.label} className="flex gap-3">
                   {/* Left track: dot + connecting line */}
                   <div className="flex flex-col items-center flex-shrink-0 pt-1">
-                    <div className={`w-3 h-3 rounded-full flex-shrink-0 ring-2 ring-offset-2 ring-offset-[var(--bg)] ${
+                    <div className={`w-3 h-3 rounded-full flex-shrink-0 ring-2 ring-offset-2 ring-offset-[#fafafa] dark:ring-offset-[#0b0f14] ${
                       isAgentic
                         ? 'bg-indigo-500 ring-indigo-200 dark:ring-indigo-800'
                         : 'bg-blue-400 ring-blue-200 dark:ring-blue-800'
