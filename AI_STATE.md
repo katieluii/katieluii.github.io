@@ -52,13 +52,10 @@ they must rebase on main before merging.
   theme only reaches those pages via client-side navigation. Fix = one inline `<script>` in `index.html`
   head (`if(localStorage.theme==='dark')document.documentElement.classList.add('dark')`) — also removes
   the flash. Not yet applied.
-- Edge shows **Live** while WS19's own QC gates A/B/C are still open (ws19 `QC_LOG.md`).
-- Edge scores only the embedded BIO 2026 list (pulled 2026-06-21); JPM/BioEquity need delegate exports.
+- Edge (E): WS19 QC **gate C (portal UX) signed by Katie 2026-08-29** (ws19 `QC_LOG.md` `66fc495`) — the public **Live** label now matches the ledger. Gates A (ranking) and B (outreach tone) still ⬜; Phase 2 locked until both ✅. Edge scores only the embedded BIO 2026 list (pulled 2026-06-21); JPM/BioEquity need delegate exports. [Edge session]
 - `SiteLayout.tsx` is unused legacy with a wrong name inside; candidate for deletion.
 - The `zinc`/`slate` remap changes any FUTURE use of those classes too (intended).
 - Conference Catalyst sits under Atlas, not Edge; A/D/E suite copy still awaits the owner's own edits.
-- Edge (E) shows **Live** while WS19 QC gates A/B/C stay ⬜ (ws19 `QC_LOG.md` line 50 records the label running
-  ahead; Katie's S293 call). Edge scores only the embedded BIO 2026 list.
 - `src/components/SiteLayout.tsx` is unused legacy (tree-shaken — its wrong name is not in the bundle); delete
   candidate. `/work-with-me` WS15 hub keeps its own visual identity by decision, not omission.
 - `largecap_kb` (a WS6 folder name) ships in a `classifyReason` string — pre-existing, cosmetic.
