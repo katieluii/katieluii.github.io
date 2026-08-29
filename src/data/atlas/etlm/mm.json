@@ -1597,20 +1597,22 @@
       "source": "ClinicalTrials.gov NCT04960579"
     },
     {
-      "asset_name": "GC012F (FasTCAR BCMA \u00d7 CD19)",
-      "company": "Gracell Biotechnologies / AstraZeneca",
+      "asset_name": "AZD0120 / GC012F (FasTCAR BCMA \u00d7 CD19)",
+      "company": "AstraZeneca (acquired Gracell Biotechnologies 2024-02)",
       "modality": "autologous dual BCMA \u00d7 CD19 CAR-T (FasTCAR next-day manufacturing)",
       "target": "BCMA \u00d7 CD19",
-      "phase": "Phase 2",
+      "phase": "Phase 3 (3 registrational trials open) \u2014 legacy Ph1/2 investigator trials ongoing",
       "combination": null,
-      "indication_subtype": "NDMM high-risk; RRMM",
-      "nct": "NCT04935580",
-      "trial_name": null,
-      "status": "RECRUITING",
-      "estimated_readout": "2026-12",
-      "primary_endpoint": "MRD negativity (1L high-risk MM)",
-      "enrollment": null,
-      "source": "ClinicalTrials.gov NCT04935580; Du J et al. JCO 2023 \u2014 100% MRD-negative in 1L high-risk NDMM"
+      "indication_subtype": "RRMM (DURGA-1/3/4); NDMM transplant-eligible (DURGA-6); NDMM transplant-ineligible (DURGA-5)",
+      "nct": "NCT07391657 (DURGA-4, Ph3 RRMM); NCT07764978 (DURGA-5, Ph3 NDMM ASCT-ineligible); NCT07735637 (DURGA-6, Ph3 NDMM transplant-eligible vs ASCT); NCT05850234 (DURGA-1, Ph1/2 RRMM); NCT06235229 (DURGA-3, Ph1/2 RRMM); NCT07073547 (Ph1 MM); NCT04935580 (legacy investigator Ph1/2, high-risk NDMM \u2014 CT.gov status UNKNOWN)",
+      "trial_name": "DURGA program",
+      "status": "RECRUITING (DURGA-4, DURGA-5, DURGA-1, DURGA-3, NCT07073547); NOT_YET_RECRUITING (DURGA-6). Legacy NCT04935580 CT.gov status is UNKNOWN \u2014 do NOT report it as recruiting",
+      "estimated_readout": "2028-06-14 (DURGA-4 primary completion, earliest registrational); 2028-10-11 (DURGA-6); 2029-01-11 (DURGA-5)",
+      "primary_endpoint": "All three Ph3s: PFS + MRD-negative CR rate at 9 months (co-primary)",
+      "enrollment": "2,008 planned across the three Phase 3s (DURGA-4 n=508; DURGA-5 n=750; DURGA-6 n=750)",
+      "source": "ClinicalTrials.gov NCT07391657 / NCT07764978 / NCT07735637 / NCT05850234 / NCT06235229 / NCT07073547 / NCT04935580 (all fetched via CT.gov API v2, 2026-08-18)",
+      "competitive_note": "DURGA-6 randomises AZD0120 consolidation HEAD-TO-HEAD against autologous stem cell transplant in transplant-eligible NDMM \u2014 a direct standard-of-care displacement attempt, not a line extension. DURGA-5 tests CAR-T consolidation vs continuous DRd/IsaRd maintenance in the ASCT-ineligible setting. Comparator bars differ by trial: RRMM DKd/DPd/PVd/Kd; NDMM-TE ASCT; NDMM-TIE continuous DRd/IsaRd \u2014 grade any future readout against the trial-specific bar, not a single row-level benchmark",
+      "cross_indication_note": "Same molecule runs ~15 further non-MM trials (refractory SLE, MS, AL amyloidosis, IIM/SSc, RA, gMG, highly-sensitised kidney transplant) under both names. Route any AZD0120- or GC012F-named event to this row before creating a new asset anywhere in the coverage"
     },
     {
       "asset_name": "Descartes-15 \u2014 mRNA-encoded autologous BCMA CAR-T (no preconditioning)",

@@ -60,7 +60,7 @@
       "trial": "STEP 1 (pivotal weight management); SELECT (CV outcomes); STEP TEENS (adolescents)",
       "nct": "NCT03548935",
       "source": "openFDA Drugs@FDA NDA215256 + ClinicalTrials.gov NCT03574597 (SELECT) + NCT03548935 (STEP 1)",
-      "high_dose_update_ws13_S94": {
+      "high_dose_update_2026_06": {
         "dose": "semaglutide 7.2 mg s.c",
         "regulatory_status": "regulatory approval for weight loss in 2026",
         "tbwl_pct_w72": -18.3,
@@ -2770,7 +2770,8 @@
       "enrollment": null,
       "source": "Review s41573-026-01427-1 (Petersen, NRDD 2026), p.9 Table 2 \u2014 NCT06717425",
       "sponsor_note": "First oral small-molecule GIPR antagonist in clinic; modality parallel to MariTide antibody GIPR-antagonism approach. Re-establishes Pfizer presence in GIPR-antagonism space after danuglipron discontinuation. Verify NCT06717425",
-      "drug_name": "PF-07976016"
+      "drug_name": "PF-07976016",
+      "discontinuation_identity_2026_08_29": "Katie 2026-08-29 (supersedes the staged note titled 'asset identity still unresolved' \u2014 identity IS resolved): Pfizer's Aug 4 2026 pipeline update names both discontinued obesity programmes \u2014 MET-224o (PF-08656796), the ex-Metsera Phase 1 oral GLP-1 receptor agonist, and PF-07976016, this Phase 2 GIPR antagonist \u2014 as discontinued from chronic weight-management development; FierceBiotech independently reports the same two cuts. NCT06717425 (Pfizer-sponsored Ph2a obesity study, n=263, completed 2026-01-12) belongs to PF-07976016, NOT MET-224o. Pfizer's pipeline document is the primary evidence for MET-224o's discontinuation and its Pfizer identifier; MET-224o has no row of its own in this ETLM"
     },
     {
       "asset_name": "monlunabant (INV-202)",
@@ -4078,6 +4079,28 @@
           "quoted_metric": "Roche paid $190M upfront to license a clinical-stage urocortin-2 analog obesity drug from South Korea's Hanmi Pharm, in a deal worth up to $2.5B total"
         }
       ]
+    },
+    {
+      "asset_name": "LUM-201 (oral) + oral semaglutide",
+      "drug_name": "LUM-201",
+      "company": "Lumos Pharma",
+      "modality": "oral small-molecule growth-hormone secretagogue (GH secretagogue receptor agonist), 25 mg daily, as an ADJUNCT to oral semaglutide",
+      "target": "GHSR (ghrelin/GH secretagogue receptor) -- endogenous GH pulse amplification",
+      "phase": "Phase 2",
+      "combination": "oral semaglutide (combination arm) vs oral semaglutide + placebo",
+      "indication_subtype": "older adults with obesity -- physical function / muscle preservation adjunct, NOT a weight-loss agent",
+      "nct": "NCT07754045",
+      "trial_name": "Phase 2 Randomized, Double-Blind, Placebo-Controlled, Multi-Center Study Evaluating the Efficacy and Safety of Oral LUM-201 as an Adjunct to Oral Semaglutide for Improving Physical Function in Older Adults With Obesity",
+      "status": "NOT_YET_RECRUITING (CT.gov, study start 2027-02-15)",
+      "estimated_readout": null,
+      "primary_endpoint": "Proportion of participants with Short Physical Performance Battery (SPPB) score <=7 at Week 26 -- a frailty/physical-function endpoint, NOT a body-weight endpoint",
+      "enrollment": 202,
+      "no_efficacy_benchmark": true,
+      "positioning_note": "MUSCLE-PRESERVATION / SARCOPENIA-MITIGATION ADJUNCT class, alongside the bimagrumab and apitegromab-style approaches -- competes on preserved lean mass and physical function, NOT on TBWL%. Explicitly EXCLUDED from TBWL benchmark comparisons: the trial reports no weight-loss primary endpoint, so it must never be scored against the config's TBWL/MACE calibration priors",
+      "identity_note": "LUM-201 was originally developed by Lumos Pharma for pediatric growth hormone deficiency; this trial is a repositioning into the obesity adjunct setting. Same molecule, new clinical use",
+      "source": "ClinicalTrials.gov NCT:NCT07754045 (verified 2026-08-17)",
+      "source_url": "https://clinicaltrials.gov/study/NCT07754045",
+      "population_and_status_note": "Registered/planned Phase 2 (first posted 2026-08-10, NOT_YET_RECRUITING, estimated start 2027-02-15) \u2014 not initiated. Population: older adults (60-84) with obesity (BMI >=30) and MILD FUNCTIONAL IMPAIRMENT; LUM-201 + oral semaglutide vs semaglutide + placebo, n=202. A quality-of-weight-loss / lean-mass-preservation strategy (SPPB physical function at Week 26 primary; lean mass, fat-free mass, weight, 6MWT, grip, knee extension secondary), not a general obesity combination programme. (Katie 2026-08-29)"
     }
   ],
   "mechanism_landscape": [
@@ -4352,7 +4375,7 @@
       "waist_circ_delta_cm": -13.5,
       "mean_tbwl_pct_w72_sema_7_2mg": -18.3,
       "mean_tbwl_pct_w28_met097i": -14.1,
-      "ws13_ceiling_note": "Review (Petersen, NRDD 2026, p.4): semaglutide 7.2 mg delivered -18.7% total (-14.8% placebo-adjusted; STEP UP, PMID 40961952) TBWL at w72, lifting the GLP-1 mono ceiling from ~15% (2.4 mg) to ~18%, narrowing the gap to dual-incretin tirzepatide (~21% w72). MET-097i biased GLP-1R mono reached 14.1% PSWL at w28 with once-monthly dosing \u2014 biased mono can approach dual-incretin efficacy on shorter timelines",
+      "ceiling_note": "Review (Petersen, NRDD 2026, p.4): semaglutide 7.2 mg delivered -18.7% total (-14.8% placebo-adjusted; STEP UP, PMID 40961952) TBWL at w72, lifting the GLP-1 mono ceiling from ~15% (2.4 mg) to ~18%, narrowing the gap to dual-incretin tirzepatide (~21% w72). MET-097i biased GLP-1R mono reached 14.1% PSWL at w28 with once-monthly dosing \u2014 biased mono can approach dual-incretin efficacy on shorter timelines",
       "representative_trial": "STEP 1 (anchor); high-dose: STEP UP / semaglutide 7.2 mg w72; MET-097i Ph2 w28",
       "nct": "NCT03548935",
       "source": "Wegovy USPI + Wilding 2021 NEJM (PMID 33567185); high-dose + biased-mono additions from review s41573-026-01427-1 (Petersen, NRDD 2026)",
@@ -4756,7 +4779,7 @@
       "summary": "Three-way oral GLP-1 competition confirmed. Novo oral Wegovy (semaglutide pill) at 3M prescriptions; Lilly Foundayo (orforglipron) ADA26 data tops oral semaglutide on key endpoint; AZ elecoglipron Phase 2 -10.5% TBWL at 6 months \u2014 Phase 3 pivotal programme initiating. Race-to-third oral obesity pill now AZ vs Roche enicepatide (oral form TBD) vs Pfizer berobenatide (monthly s.c.). Oral format differentiation becoming primary commercial battleground post-2026",
       "ada26_competitive_narrative": "Lilly positioned as ADA26 'clear winner' (RBC); orforglipron first oral GLP-1 to beat oral semaglutide head-to-head on key endpoint (specific TBWL pending peer review); CagriSema-vs-retatrutide H2H still pending. Hedged: directional momentum, jury still out (Novo CSO) \u2014 not yet quantitatively benchmarked"
     },
-    "ws13_review_framing_S94": {
+    "review_framing_2026_06": {
       "date": "2026-06-13",
       "source": "Reviews s41573-025-01183-8 (Drucker, NRDD 2025) + s41573-026-01427-1 (Petersen, NRDD 2026)",
       "sponsor_landscape_shift": "Duopoly (Novo + Lilly) intact but the chasing field has materially restructured: Pfizer re-enters credibly via Metsera acquisition (MET-097i monthly biased GLP-1R) after danuglipron/lotiglipron exit; Hengrui (China) emerges as a fourth credible global sponsor via dual ex-China licensing \u2014 Kailera (HRS-7535 oral SM Ph3 NCT06904105; HRS9531 dual) and Regeneron (olatorepatide GLP-1/GCGR Ph3 in China); MindRank surfaces as first AI-discovery-led Ph3 oral GLP-1 sponsor (MDR-001). Amgen, BI/Zealand, Innovent, Roche, AZ, Altimmune, Structure Tx, Viking remain second-tier",
@@ -5086,11 +5109,11 @@
         ]
       }
     ],
-    "glp1_indication_expansion_ws13_S94": {
+    "glp1_indication_expansion_2026_06": {
       "date": "2026-06-13",
       "summary": "2024-2025 saw a structural expansion of GLP-1 labels beyond glycemia/weight: tirzepatide first approval for OSA in obese adults (FDA 2024; SURMOUNT-OSA basis); semaglutide approved for CV risk reduction in obesity-without-diabetes (SELECT); semaglutide for CKD in T2D (FLOW, stopped early for benefit); tirzepatide and semaglutide HFpEF data (STEP-HFpEF, SUMMIT). Establishes precedent that GLP-1 outcomes trials can carry sequential indication labels off a single asset",
       "source": "Review s41573-025-01183-8 (Drucker, NRDD 2025), p.643-645",
-      "cross_reference": "competitive_dynamics.ws13_review_framing_S94.indication_stacking_precedent"
+      "cross_reference": "competitive_dynamics.review_framing_2026_06.indication_stacking_precedent"
     },
     "glp1_telehealth_compounding_warning_2026": {
       "event": "FDA warning letters to GLP-1 weight-loss telehealth prescribers (June 18, 2026)",

@@ -2254,7 +2254,30 @@
       "significance": "First KRAS G12D-selective agent with FDA BTD in NSCLC. G12D is the dominant KRAS allele in PDAC (~45%) and also present in ~4% NSCLC. Revolution Medicines' companion asset daraxonrasib (RMC-6236, pan-RAS) won RASolute 302 Phase 3 in PDAC at ASCO 2026 \u2014 validates the RAS(ON) TriComplex platform at the highest regulatory evidence standard. Zoldonrasib is the NSCLC-specific G12D asset on a clinically validated platform",
       "source": "AACR 2026 (updated Phase 1, Dec 2025 cutoff); BTD press release January 2026",
       "last_updated": "2026-06-05",
-      "drug_name": "zoldonrasib (RMC-9805)"
+      "drug_name": "zoldonrasib (RMC-9805)",
+      "phase3_1L_combo_rasolve308_2026_08": {
+        "note": "Second, higher-phase registrational trial for this asset: Phase 3 RASolve 308 (NCT07777822), RECRUITING, actual start 2026-08-14. Distinct from the existing Phase 1 registrational programme (2L+ G12D monotherapy) \u2014 this is a 1L COMBINATION study, not a replacement. Trial-start only, no efficacy data",
+        "nct": "NCT07777822",
+        "trial_name": "RASolve 308",
+        "sponsor": "Revolution Medicines, Inc",
+        "design": "Randomized, double-blind: pembrolizumab + pemetrexed + cisplatin/carboplatin with or without zoldonrasib (oral tablets) vs placebo",
+        "setting": "1L metastatic non-squamous RAS G12D-mutated NSCLC (previously untreated)",
+        "primary_endpoint": "Progression free survival (PFS)",
+        "enrollment": 430,
+        "estimated_readout": "2029-10 (primary completion, estimated); 2031-02 (study completion, estimated)",
+        "status": "RECRUITING (actual start 2026-08-14)",
+        "evidence_status": "no efficacy yet \u2014 trial-start only",
+        "ctgov_verified": "2026-08-23 re-verified independently via CT.gov API v2: official title, acronym RASolve 308, lead sponsor Revolution Medicines Inc., PHASE3, RECRUITING, actual start 2026-08-14, n=430 estimated, PFS primary, inclusion 'Documented RAS G12D mutation status', US sites only",
+        "sources": [
+          {
+            "label": "ClinicalTrials.gov NCT07777822 (RASolve 308)",
+            "url": "https://clinicaltrials.gov/study/NCT07777822",
+            "type": "ctgov",
+            "date": "2026-08-23",
+            "quoted_metric": "Ph3 RECRUITING, actual start 2026-08-14, n=430 est., pembrolizumab+pemetrexed+platinum +/- zoldonrasib, 1L non-squamous RAS G12D-mutated NSCLC, PFS primary"
+          }
+        ]
+      }
     },
     {
       "asset_name": "datopotamab deruxtecan + pembrolizumab (TROPION-Lung08)",
@@ -3412,6 +3435,40 @@
           "quoted_metric": "independent confirmation of the TROP2/HER3 bispecific ADC designation"
         }
       ]
+    },
+    {
+      "asset_name": "trastuzumab deruxtecan (Enhertu) \u2014 1L HER2-mutant NSCLC (DESTINY-Lung04)",
+      "company": "AstraZeneca / Daiichi Sankyo",
+      "modality": "HER2-directed antibody-drug conjugate (deruxtecan topoisomerase-I payload)",
+      "target": "HER2 (ERBB2), activating mutations",
+      "phase": "Phase 3 (topline positive, 2026-08-17)",
+      "combination": null,
+      "indication_subtype": "1L unresectable, locally advanced or metastatic HER2-mutant non-squamous NSCLC",
+      "nct": "NCT05048797",
+      "trial_name": "DESTINY-Lung04 (NCT05048797)",
+      "status": "ACTIVE_NOT_RECRUITING per CT.gov (primary completion 2026-06-09, actual). AZ announced 2026-08-17 that the trial met its primary endpoint, showing a statistically significant and clinically meaningful PFS improvement vs pembrolizumab + platinum chemotherapy \u2014 described as the first HER2-directed medicine to beat the global standard of care on PFS in this setting. NO EFFICACY NUMBERS DISCLOSED in the topline",
+      "estimated_readout": "Topline reported 2026-08-17; full data at a future congress",
+      "primary_endpoint": "Progression-free survival by blinded independent central review (BICR)",
+      "enrollment": 454,
+      "source": "ClinicalTrials.gov NCT05048797 (verified 2026-08-17 via API); AstraZeneca announcement 2026-08-17 (reported by Fierce Pharma and Endpoints News). Topline press-release tier \u2014 no numbers, no publication",
+      "drug_name": "trastuzumab deruxtecan"
+    },
+    {
+      "asset_name": "savolitinib (Orpathys) + osimertinib (Tagrisso) \u2014 SAFFRON",
+      "company": "AstraZeneca (savolitinib orig. Hutchmed)",
+      "modality": "selective MET-TKI + 3rd-generation EGFR-TKI combination",
+      "target": "MET (overexpression/amplification) + EGFR",
+      "phase": "Phase 3 (topline positive, 2026-08-17)",
+      "combination": "savolitinib + osimertinib",
+      "indication_subtype": "EGFR-mutated, MET-overexpressed and/or MET-amplified locally advanced or metastatic NSCLC that progressed on osimertinib",
+      "nct": "NCT05261399",
+      "trial_name": "SAFFRON (NCT05261399)",
+      "status": "ACTIVE_NOT_RECRUITING per CT.gov (primary completion 2026-07-06, actual). AZ announced 2026-08-17 that the combination met its primary endpoint with statistically significant and clinically meaningful improvements in BOTH progression-free survival AND overall survival vs platinum-based doublet chemotherapy. Safety consistent with each agent's known profile. NO EFFICACY NUMBERS DISCLOSED in the topline",
+      "estimated_readout": "Topline reported 2026-08-17; full data at a future congress",
+      "primary_endpoint": "Progression-free survival vs platinum doublet chemotherapy",
+      "enrollment": 341,
+      "source": "ClinicalTrials.gov NCT05261399 (verified 2026-08-17 via API); AstraZeneca press release 2026-08-17 'Tagrisso plus Orpathys improved PFS and OS in EGFRm lung'. Topline press-release tier \u2014 no numbers, no publication",
+      "drug_name": "savolitinib + osimertinib"
     }
   ],
   "preclinical_watchlist": [

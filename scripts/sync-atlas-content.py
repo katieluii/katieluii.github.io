@@ -1078,7 +1078,8 @@ def scrub_values(obj: Any) -> Any:
 # block the sync — that is the intended review point, and the remedy is a new rule in
 # _ETLM_INLINE_RULE_SPECS or a documented allowance here, not a softened gate.
 _INTERNAL_TOKEN_RE = re.compile(
-    r"\bWS\d+[a-z]?\b"                     # workstream system name
+    r"\bWS\d+[a-z]?(?![A-Za-z0-9])"          # workstream system name — NOT \b: an underscore is a
+                                           # word character, so `\b` never matched `ws13_…` (2026-08-30)
     r"|hr-resolver|pipeline-reconcile"     # internal agent / pipeline names
     r"|\bcycle\s?\d+\w*"                   # cycle stamps, incl. cycle49_mega
     r"|\bkb_[a-z_]+"                       # kb_event_id-style internal field refs
@@ -1089,16 +1090,35 @@ _INTERNAL_TOKEN_RE = re.compile(
 )
 
 
+# Keys are shipped strings too. Four obesity keys (`high_dose_update_ws13_S94`,
+# `ws13_ceiling_note`, `ws13_review_framing_S94`, `glp1_indication_expansion_ws13_S94`)
+# shipped to the live site with every VALUE clean, because this walk tested values only
+# and the strip pattern (`^ws13_review_update`) was anchored to one earlier key. Found by
+# the 2026-08-29 red team. A key token is internal when it is a whole underscore-delimited
+# segment — `ws13`, `S94`, `cycle64`, `katie` — so `phase3_ws` or `s_1` cannot trip it.
+# A hit ABORTS and is fixed by RENAMING at source; it is never auto-stripped: those four
+# keys carried the semaglutide 7.2 mg STEP UP data (a strip would have deleted it — the
+# S296 `superseded_label` lesson).
+_INTERNAL_KEY_RE = re.compile(
+    r"(?:^|_)(?:ws\d+|s\d{2,3}|cycle\d+|katie)(?:_|$)", re.IGNORECASE
+)
+
+
 def internal_token_residue(obj: Any, path: str = "") -> tuple[int, list[tuple[str, str]]]:
     """Walk a scrubbed ETLM and return (strings_examined, [(path, sample), …]).
 
-    The examined count is the gate's denominator: it is reported on every run so a
-    sweep that looked at nothing is visible as such rather than as a clean pass.
+    Examines every shipped string: leaf VALUES against _INTERNAL_TOKEN_RE and dict KEYS
+    against _INTERNAL_KEY_RE. The examined count is the gate's denominator: it is
+    reported on every run so a sweep that looked at nothing is visible as such rather
+    than as a clean pass.
     """
     examined = 0
     found: list[tuple[str, str]] = []
     if isinstance(obj, dict):
         for k, v in obj.items():
+            examined += 1
+            if isinstance(k, str) and _INTERNAL_KEY_RE.search(k):
+                found.append(("{}.{}".format(path, k), "KEY {!r}".format(k)))
             n, f = internal_token_residue(v, "{}.{}".format(path, k))
             examined += n
             found += f
@@ -1132,14 +1152,15 @@ def internal_token_gate(examined: int, findings: list[tuple[str, str]], codes: i
     if findings:
         lines = "\n".join("      {}: {}".format(p, s) for p, s in findings[:20])
         raise SyncAborted(
-            f"internal-token gate RAN_AND_FOUND: {len(findings)} shipped value(s) still "
-            f"carry an internal system token after the scrub (of {examined} examined "
-            f"across {codes} code(s)):\n{lines}"
+            f"internal-token gate RAN_AND_FOUND: {len(findings)} shipped string(s) still "
+            f"carry an internal system token after the scrub (of {examined} values+keys "
+            f"examined across {codes} code(s)):\n{lines}"
             + (f"\n      … and {len(findings) - 20} more" if len(findings) > 20 else "")
-            + "\n  Add or correct a rule in _ETLM_INLINE_RULE_SPECS — do not relax this "
-              "gate, and do not empty the value: D5 fails a value scrubbed to empty."
+            + "\n  Values: add or correct a rule in _ETLM_INLINE_RULE_SPECS. KEYs: RENAME the "
+              "key in the analyst draft (never strip — it may carry clinical content). Do not "
+              "relax this gate, and do not empty the value: D5 fails a value scrubbed to empty."
         )
-    print(f"  ✓ internal-token gate RAN_CLEAN — {examined:,} value(s) examined across "
+    print(f"  ✓ internal-token gate RAN_CLEAN — {examined:,} string(s) (values + keys) examined across "
           f"{codes} whitelisted code(s), 0 internal system tokens surviving "
           f"({len(_ETLM_INLINE_RULES)} rules active)")
 
