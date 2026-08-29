@@ -10,15 +10,14 @@ GitHub Pages on every push to `main`). The weekly Atlas analyst-read job
 Branch `main`, clean and pushed as of 2026-08-29 (S311). `ANALYST_REFRESH_PUSH=false` still stands:
 the job commits locally and stops. Publishing remains a human step.
 
-**Suite redesign (2026-08-29): merged + live, then the estate-wide restyle REVERTED the same evening
-(Katie's call: "style only").** `claude/suite-cards` went live at 20:56 (`c247a64..7aa1bf1`, pushed by the
+**Suite redesign (2026-08-29): merged + live, the estate-wide restyle was reverted (`7264293`) and then RE-APPLIED the same evening — Katie
+committed to the redesign; the house palette is estate-wide again.** `claude/suite-cards` went live at 20:56 (`c247a64..7aa1bf1`, pushed by the
 Bellwether S295 session). Branch `claude/projects-filters` then (1) turned the /projects Suite/Theme/Status
 chip rows into three labelled dropdowns (`FilterSelect` in `Projects.tsx`; `FilterChips.tsx` now unused),
-(2) added `atlas-drug-dev-analyst` to Atlas's `madeOf` so the Atlas page tags as suite A, and (3) restored
-the six style files of `7aa1bf1` to their pre-restyle state — `tailwind.config.js` (zinc/slate/white remap
-gone), `ProjectPageLayout.tsx`, `SiteLayout.tsx`, `AtlasDrugDevAnalyst.tsx`, `ConferenceCatalyst.tsx`,
-`Sec13f.tsx`. Net: product/archive pages are back on zinc; Home, Bellwether (`c247a64` tokens in
-`index.css`) and the A–E suite structure stay. Edge and Bellwether are being edited in OTHER sessions —
+(2) added `atlas-drug-dev-analyst` to Atlas's `madeOf` so the Atlas page tags as suite A, and (3) briefly reverted the six
+style files of `7aa1bf1` (`7264293`), reversed by the next commit. Net: everything from `7aa1bf1` is live —
+the `zinc`/`slate`/`white` remap in `tailwind.config.js`, `var(--bg)` grounds in the layouts, Home,
+Bellwether and the A–E suite. Edge and Bellwether are being edited in OTHER sessions —
 they must rebase on main before merging.
 
 ## Completed
@@ -40,7 +39,7 @@ they must rebase on main before merging.
 - Published: `432d25b..15e6517`, Pages deploy succeeded in 49s. Live bundle scanned after deploy —
   14 internal-token classes, all zero.
 
-- Suite A→E + Crane fold + Femme archive + Home copy/buttons — live. Estate-wide retheme reverted (style only).
+- Suite A→E + Crane fold + Femme archive + Home copy/buttons — live. Estate-wide retheme live (reverted then re-applied 2026-08-29).
 - /projects filters as dropdowns; Atlas analyst page in suite A (claude/projects-filters).
 - Dark-mode audit 2026-08-29 (headless Chrome, 15 routes light+dark, `.dark` forced): home, /projects and
   all 11 product pages render clean on the green-deep ground; only deliberate bone panels remain (Edge's
@@ -56,6 +55,7 @@ they must rebase on main before merging.
 - Edge shows **Live** while WS19's own QC gates A/B/C are still open (ws19 `QC_LOG.md`).
 - Edge scores only the embedded BIO 2026 list (pulled 2026-06-21); JPM/BioEquity need delegate exports.
 - `SiteLayout.tsx` is unused legacy with a wrong name inside; candidate for deletion.
+- The `zinc`/`slate` remap changes any FUTURE use of those classes too (intended).
 - Conference Catalyst sits under Atlas, not Edge; A/D/E suite copy still awaits the owner's own edits.
 - Edge (E) shows **Live** while WS19 QC gates A/B/C stay ⬜ (ws19 `QC_LOG.md` line 50 records the label running
   ahead; Katie's S293 call). Edge scores only the embedded BIO 2026 list.
@@ -98,8 +98,7 @@ they must rebase on main before merging.
 4. Optional (deferred from S295): other product pages onto `SuitePageLayout`; delete `SiteLayout.tsx`; move
    Conference Catalyst under Edge if ruled; WS6 side wants `stanceSrc`/`stanceDate` + `marketCap` in the
    refresh SOP / D-shape before the next quarterly cut.
-4. Decide the house palette for product/archive pages (the remap is one commit to re-apply: revert the
-   revert). Then apply the 3-line dark-theme bootstrap in `index.html` (see Known Issues), rebuild, re-shoot /projects
+4. Apply the 3-line dark-theme bootstrap in `index.html` (see Known Issues), rebuild, re-shoot /projects
    dark on a direct load, then branch → merge → push.
 5. Optional: delete `SiteLayout.tsx`; move Conference Catalyst under Edge; restyle `/work-with-me` (WS15,
    own Fraunces identity) onto the Renascor tokens.
