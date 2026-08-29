@@ -19,6 +19,10 @@ style files of `7aa1bf1` (`7264293`), reversed by the next commit. Net: everythi
 the `zinc`/`slate`/`white` remap in `tailwind.config.js`, `var(--bg)` grounds in the layouts, Home,
 Bellwether and the A–E suite. Edge and Bellwether are being edited in OTHER sessions —
 they must rebase on main before merging.
+`a14acea` (S315, from a throwaway worktree because the shared copy was on the Bellwether branch): footer link
+text is "Email" in `Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); the Grid card is archived off
+/projects (`projects.ts`: `status: "Archived"`, `hideFromTimeline: true`; page and data kept, /projects shows 14).
+Every push this evening was verified against the live bundle (JS/CSS hash = local build).
 
 ## Completed
 - S311: pre-publish gates run on the rebased tree — `npm run typecheck` 0, `sync-atlas-content.py --verify-only`
@@ -40,7 +44,7 @@ they must rebase on main before merging.
   14 internal-token classes, all zero.
 
 - Suite A→E + Crane fold + Femme archive + Home copy/buttons — live. Estate-wide retheme live (reverted then re-applied 2026-08-29).
-- /projects filters as dropdowns; Atlas analyst page in suite A (claude/projects-filters).
+- /projects filters as dropdowns; Atlas analyst page in suite A (`51c5ddc`); footer "Email" label + Grid archived (`a14acea`).
 - Dark-mode audit 2026-08-29 (headless Chrome, 15 routes light+dark, `.dark` forced): home, /projects and
   all 11 product pages render clean on the green-deep ground; only deliberate bone panels remain (Edge's
   embedded portal, the IC-memo card). `/work-with-me` blank is BY DESIGN (`WWM_LIVE=false`).
@@ -53,7 +57,6 @@ they must rebase on main before merging.
   head (`if(localStorage.theme==='dark')document.documentElement.classList.add('dark')`) — also removes
   the flash. Not yet applied.
 - Edge (E): WS19 QC **gate C (portal UX) signed by Katie 2026-08-29** (ws19 `QC_LOG.md` `66fc495`) — the public **Live** label now matches the ledger. Gates A (ranking) and B (outreach tone) still ⬜; Phase 2 locked until both ✅. Edge scores only the embedded BIO 2026 list (pulled 2026-06-21); JPM/BioEquity need delegate exports. [Edge session]
-- `SiteLayout.tsx` is unused legacy with a wrong name inside; candidate for deletion.
 - The `zinc`/`slate` remap changes any FUTURE use of those classes too (intended).
 - Conference Catalyst sits under Atlas, not Edge; A/D/E suite copy still awaits the owner's own edits.
 - `src/components/SiteLayout.tsx` is unused legacy (tree-shaken — its wrong name is not in the bundle); delete
@@ -95,7 +98,7 @@ they must rebase on main before merging.
 4. Optional (deferred from S295): other product pages onto `SuitePageLayout`; delete `SiteLayout.tsx`; move
    Conference Catalyst under Edge if ruled; WS6 side wants `stanceSrc`/`stanceDate` + `marketCap` in the
    refresh SOP / D-shape before the next quarterly cut.
-4. Apply the 3-line dark-theme bootstrap in `index.html` (see Known Issues), rebuild, re-shoot /projects
+5. Apply the 3-line dark-theme bootstrap in `index.html` (see Known Issues), rebuild, re-shoot /projects
    dark on a direct load, then branch → merge → push.
-5. Optional: delete `SiteLayout.tsx`; move Conference Catalyst under Edge; restyle `/work-with-me` (WS15,
+6. Optional: restyle `/work-with-me` (WS15,
    own Fraunces identity) onto the Renascor tokens.
