@@ -24,6 +24,21 @@ text is "Email" in `Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); the 
 /projects (`projects.ts`: `status: "Archived"`, `hideFromTimeline: true`; page and data kept, /projects shows 14).
 Every push this evening was verified against the live bundle (JS/CSS hash = local build).
 
+**Bellwether (contributor session, 2026-08-29 S311):** branch `claude/bellwether-followups` (based on a14acea, pushed, unmerged;
+code at 29842d2). The consensus `stance` on the 13 records now carries `stanceSrc`/`stanceDate` and each name
+`mcap`/`mcapDate` (strings or null), defined in the WS6 SOP, shown by the WS6 diff gate, required by
+`scripts/sync-bellwether-data.mjs`, typed in `src/data/pharmaLandscape.ts`, rendered under each thesis
+(`Views.tsx`: "as of D · via SRC · market cap M", or "source not recorded at this cut"), a Market-cap screener
+column that appears only when data exists, and a consensus disclosure whose provenance clause is DERIVED
+(`CONSENSUS_PROVENANCE_NOTE`). Data today: `stanceDate` = 16 Aug 2026 on all 13 (genuine observation date — every
+stance string changed in that cut), `stanceSrc`/`mcap` null on all 13 by design; the WS6 1 Sep monthly sweep is
+the first run that can fill them. Demo HTML byte-identical to `largecap_kb/landscape.html` (WS6 branch
+`claude/ws6-defect1-source-gate` @ d1492da). Gates: typecheck 0, eslint 0, build ✓, sync in-sync, token scan only
+pre-existing hits. Fresh-eyes review: 8 findings, all applied.
+Recorded on behalf of the session that could not write this file: **a14acea** — footer link text is "Email" in
+`Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); Grid archived off the `/projects` index (status Archived +
+`hideFromTimeline`; page and data kept).
+
 ## Completed
 - S311: pre-publish gates run on the rebased tree — `npm run typecheck` 0, `sync-atlas-content.py --verify-only`
   clean (20 files), `npm run build` ✓ with `bellwether.generated.json` reproduced unchanged, `/usr/bin/grep` token
@@ -82,6 +97,10 @@ Every push this evening was verified against the live bundle (JS/CSS hash = loca
   DB row id and would abort the sync. Latent (no shipped line has hit it yet). One-line fix
   `\d+\b(?!\s*%)` plus a regression test with that exact sentence; measure with WS12's
   `python3 -m scouts.ecosystem_residue --measure` before and after.
+- (Bellwether, proposal only — outside the Bellwether file set) `WS9` ships in the bundle from `src/App.tsx` and
+  `src/data/atlas/soc/*.ts` comments/labels, alongside the known `WS13`; strip at source if wanted.
+- (Bellwether) the demo drawer still injects the pre-existing `stance`/`ev`/`thesis` strings unescaped; only the
+  four new fields go through `esc()`. Extending it is a WS6 `landscape.html` change.
 
 ## Exact Next Steps
 1. Decide whether `ANALYST_REFRESH_PUSH` should flip to `true` in
@@ -102,3 +121,5 @@ Every push this evening was verified against the live bundle (JS/CSS hash = loca
    dark on a direct load, then branch → merge → push.
 6. Optional: restyle `/work-with-me` (WS15,
    own Fraunces identity) onto the Renascor tokens.
+- (Bellwether) Katie merges `claude/bellwether-followups`; after the WS6 1 Sep sweep is promoted, run
+  `npm run sync:bellwether` on a fresh `claude/` branch so the Market-cap column and sources go live.
