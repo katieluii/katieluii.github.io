@@ -5,6 +5,9 @@
     "'codes': per published indication, the source root it came from, the",
     "  source sha256 and modification time, the byte size shipped, and the",
     "  length of every top-level list shipped.",
+    "'publish_gates': attestation that the full gate chain ran before this record",
+    "  was written; --verify-only re-hashes the committed files against",
+    "  codes[*].shipped_sha256 and refuses on any mismatch.",
     "'content_regression_gate': the run that produced this record. The next run",
     "  refuses to ship any top-level list SHORTER than the counts above unless",
     "  it carries --allow-content-shrink, which is recorded in",
@@ -15,9 +18,10 @@
   "codes": {
     "crc": {
       "shipped_bytes": 7519,
-      "source_mtime": "2026-08-29T20:52:27Z",
+      "shipped_sha256": "24eb9111fb96e69ab571fed41313cd898a3550e4e3025949d885bb48e3489860",
+      "source_mtime": "2026-08-30T13:55:14Z",
       "source_root": "drafts",
-      "source_sha256": "2d999d52d6ae4ace812ec988a848d1a7451824d1e7bb29f9fac39f8950284fbf",
+      "source_sha256": "ded88ae6fd598a359e4defc90ed6378034f1c325e64ee3d98146a3bd2828652c",
       "top_level_list_counts": {
         "approved_therapies": 3,
         "pipeline_assets": 3
@@ -25,6 +29,7 @@
     },
     "mm": {
       "shipped_bytes": 166057,
+      "shipped_sha256": "f6f5e1971967f92ba7a451bd0cfc1577cb3e3603cdbd4b8b8c43bff6d8126e0a",
       "source_mtime": "2026-08-29T20:58:20Z",
       "source_root": "drafts",
       "source_sha256": "da171f7b21b27a7c7f6474515f4d4ce406d380ddd21c09648625fc593f99ac61",
@@ -40,6 +45,7 @@
     },
     "nhl_dlbcl": {
       "shipped_bytes": 7895,
+      "shipped_sha256": "2a0653cff27cf39933a7e457f1dd0b328f2547c7890c00550a81133aa5c6df06",
       "source_mtime": "2026-08-17T08:29:38Z",
       "source_root": "drafts",
       "source_sha256": "db3cc66f1dc4d6399c4e66e279b84cf2b8f2cc565dc14b09e33dde65d3a7bed8",
@@ -50,6 +56,7 @@
     },
     "nsclc": {
       "shipped_bytes": 258397,
+      "shipped_sha256": "1c43634625148cee643f3a1a65eab73bff3d398f025b82fa4b61d23b8f67ca83",
       "source_mtime": "2026-08-29T20:52:27Z",
       "source_root": "drafts",
       "source_sha256": "ddec430a27af76143d50603afa2b0305c9a72a5e98b427503371a33404748101",
@@ -65,6 +72,7 @@
     },
     "obesity": {
       "shipped_bytes": 303039,
+      "shipped_sha256": "a9daca721fb4b9a35ce230c238e3f9b6239d61f25b5f6ab5382be0dcd7df6e44",
       "source_mtime": "2026-08-29T23:34:58Z",
       "source_root": "drafts",
       "source_sha256": "671bf54336e81abbe29610fed8be829112148efecd3b1932ba190db79e53bf9e",
@@ -82,6 +90,7 @@
     },
     "urothelial": {
       "shipped_bytes": 8428,
+      "shipped_sha256": "447f947edea5cacb06edefc3ec1ffaf54ecbb6c74e51e7ee6025983dfb44df95",
       "source_mtime": "2026-08-15T01:09:23Z",
       "source_root": "drafts",
       "source_sha256": "211727b3b2cc926316d06a52bbbcf38ae1d3de329ca195ac8b3c200720ed54b6",
@@ -95,8 +104,22 @@
     "codes_examined": 6,
     "lists_compared": 29,
     "new_codes": [],
-    "ran_at": "2026-08-29T23:36:27Z",
+    "ran_at": "2026-08-30T22:55:57Z",
     "shrink_acknowledged": [],
     "verdict": "RAN_CLEAN"
+  },
+  "publish_gates": {
+    "gates_run": [
+      "D3-resolve-sources",
+      "D7-citation",
+      "contradiction",
+      "D4-top-level-keyset",
+      "D5-scrub-artifact",
+      "D9-summary-only",
+      "D8-internal-token",
+      "D6R-content-regression"
+    ],
+    "note": "written only after every gate above passed against the exact bytes in codes[*].shipped_sha256; --verify-only recomputes those hashes",
+    "ran_at": "2026-08-30T22:55:57Z"
   }
 }

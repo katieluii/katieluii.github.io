@@ -43,6 +43,12 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      # Mutation tests for the publish gates THEMSELVES (Move 2, red-team 2026-08-29).
+      # Stdlib unittest, no pip install. They pin the historical bypasses: the ws13
+      # key leak, a blanked D6R baseline, a bundle edited after gating.
+      - name: Atlas gate unit tests
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+
       - name: Atlas leak gate (committed tree)
         run: python3 scripts/sync-atlas-content.py --verify-only
 

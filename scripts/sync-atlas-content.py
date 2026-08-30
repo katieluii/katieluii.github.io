@@ -290,6 +290,16 @@ def citation_gate(resolved: list[tuple[str, Path]]) -> None:
 # --- D6R — content-regression gate --------------------------------------------
 BASELINE_KEY = "codes"
 GATE_STANZA_KEY = "content_regression_gate"
+# Move 2 (red-team 2026-08-29 A3): the attestation stanza. CI cannot re-run the gates
+# that read the analyst repo (citation, contradiction, D5 scrub), so the record instead
+# proves they ran: this stanza + codes[*].shipped_sha256 are written ONLY after every
+# gate passed, in the same promotion, and --verify-only refuses a bundle whose bytes
+# do not match. Renaming or dropping the stanza reads as DID-NOT-RUN, never as a pass.
+PUBLISH_GATES_KEY = "publish_gates"
+PUBLISH_GATES_RUN = [
+    "D3-resolve-sources", "D7-citation", "contradiction", "D4-top-level-keyset",
+    "D5-scrub-artifact", "D9-summary-only", "D8-internal-token", "D6R-content-regression",
+]
 
 
 def _utc_iso(ts: Optional[float] = None) -> str:
@@ -1481,6 +1491,10 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
             "source_sha256": src_sha,
             "source_mtime": src_mtime,
             "shipped_bytes": shipped_bytes,
+            # The attestation anchor: sha256 of the EXACT bytes written for this code.
+            # --verify-only recomputes it from the committed file, proving the committed
+            # bundle is byte-identical to what the fully-gated sync produced (Move 2).
+            "shipped_sha256": hashlib.sha256(payload.encode("utf-8")).hexdigest(),
             "top_level_list_counts": _top_level_list_counts(sanitised),
         }
         # There is only one source root now, so the old [approved]/[draft] tag would
@@ -1514,6 +1528,9 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
             "'codes': per published indication, the source root it came from, the",
             "  source sha256 and modification time, the byte size shipped, and the",
             "  length of every top-level list shipped.",
+            "'publish_gates': attestation that the full gate chain ran before this record",
+            "  was written; --verify-only re-hashes the committed files against",
+            "  codes[*].shipped_sha256 and refuses on any mismatch.",
             "'content_regression_gate': the run that produced this record. The next run",
             "  refuses to ship any top-level list SHORTER than the counts above unless",
             "  it carries --allow-content-shrink, which is recorded in",
@@ -1523,6 +1540,12 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
         ],
         BASELINE_KEY: records,
         GATE_STANZA_KEY: stanza,
+        PUBLISH_GATES_KEY: {
+            "ran_at": _utc_iso(),
+            "gates_run": PUBLISH_GATES_RUN,
+            "note": "written only after every gate above passed against the exact bytes "
+                    "in codes[*].shipped_sha256; --verify-only recomputes those hashes",
+        },
     }, indent=2, sort_keys=True))
     return written
 
@@ -2264,6 +2287,10 @@ def build_cross_links(
 # build-time TS gate (atlas-integrity-plugin.ts) share ONE list and cannot drift.
 MARKERS_PATH = HERE / "atlas-leak-markers.json"
 _LEAK_MARKERS: list[str] = json.loads(MARKERS_PATH.read_text())["leak_markers"]
+# Move 2 (red-team B4): editorial_patterns claimed to be "read by both gates" but the
+# Python side never loaded it, and the TS gate applies it to etlm/*.json values only —
+# never the tpp/theme/ecosystem markdown. Loaded here and scanned by editorial_residue().
+_EDITORIAL_MARKERS: list[str] = json.loads(MARKERS_PATH.read_text())["editorial_patterns"]
 
 
 def leak_gate(root: Path | None = None) -> list[str]:
@@ -2283,6 +2310,27 @@ def leak_gate(root: Path | None = None) -> list[str]:
                 snippet = text[max(0, idx - 30) : idx + len(marker) + 30].replace("\n", " ")
                 hits.append(f"{path.relative_to(REPO)}: '{marker}' → …{snippet}…")
     return hits
+
+
+def editorial_residue(root: Path | None = None) -> tuple[int, list[str]]:
+    """Scan every shipped Atlas file for the editorial vocabulary. Returns
+    (files_examined, hits). CASE-SENSITIVE substring by design: the list is written in
+    canonical case, and a case-insensitive "TODO" would fire inside ordinary words.
+    The TS plugin keeps its own case-insensitive value-scan over etlm/ — this covers
+    the markdown surfaces it never sees."""
+    hits: list[str] = []
+    examined = 0
+    for path in sorted((root or DATA).rglob("*")):
+        if not path.is_file() or path.suffix not in (".json", ".md"):
+            continue
+        examined += 1
+        text = path.read_text()
+        for marker in _EDITORIAL_MARKERS:
+            idx = text.find(marker)
+            if idx != -1:
+                snippet = text[max(0, idx - 30): idx + len(marker) + 30].replace("\n", " ")
+                hits.append(f"{path.relative_to(REPO)}: editorial {marker!r} → …{snippet}…")
+    return examined, hits
 
 
 def verify_provenance() -> list[str]:
@@ -2364,6 +2412,33 @@ def verify_provenance() -> list[str]:
         elif root != "drafts":
             fails.append(f"{rel}: {code} was published from a NON-DRAFTS root: {root!r}. "
                          "drafts/ is the sole publish root")
+
+    # Move 2 — the attestation. The gates that read the analyst repo cannot re-run in
+    # CI, so the committed bundle must be byte-identical to what the fully-gated sync
+    # wrote. A record without the stanza or the hashes is DID-NOT-RUN, not a pass.
+    attest = doc.get(PUBLISH_GATES_KEY)
+    if not isinstance(attest, dict) or not isinstance(attest.get("ran_at"), str):
+        fails.append(f"{rel} has no '{PUBLISH_GATES_KEY}' attestation — nothing proves the "
+                     "full gate chain (citation, contradiction, D5/D8/D9) ran over this "
+                     "bundle; re-run the full sync locally and commit its record")
+    for code in sorted(set(codes) & whitelist):
+        rec = codes[code]
+        if not isinstance(rec, dict):
+            continue
+        want = rec.get("shipped_sha256")
+        shipped = DATA / "etlm" / f"{code}.json"
+        if not isinstance(want, str):
+            fails.append(f"{rel}: {code} has no shipped_sha256 — the record predates the "
+                         "publish-gates attestation; re-run the full sync and commit")
+            continue
+        if not shipped.exists():
+            fails.append(f"etlm/{code}.json is recorded but not committed")
+            continue
+        got = hashlib.sha256(shipped.read_bytes()).hexdigest()
+        if got != want:
+            fails.append(f"etlm/{code}.json is NOT the bytes the gated sync wrote "
+                         f"(sha {got[:12]}… vs recorded {want[:12]}…) — the committed file "
+                         "was edited after gating, or the record is stale; re-run the full sync")
     return fails
 
 
@@ -2403,7 +2478,65 @@ def verify_only() -> int:
             print(f"    - {f}", file=sys.stderr)
     else:
         print("  ✓ content-regression record present, matches etlm_whitelist, "
-              "all sources under drafts/")
+              "all sources under drafts/, committed bytes match the gated hashes")
+
+    # Move 2 (red-team A3): D8, D9 and the editorial scan previously ran ONLY on a
+    # manual local sync — CI certified a bundle those gates never saw (that is how four
+    # ws13_* keys shipped while --verify-only said clean). They need no analyst repo,
+    # so they re-run here against the committed files — i.e. what actually deploys.
+    try:
+        cfg = load_config()
+    except (json.JSONDecodeError, OSError, KeyError) as e:
+        print(f"  ✗ cannot load {CONFIG_PATH.relative_to(REPO)}: {e}", file=sys.stderr)
+        return 1
+    configure_scrub(cfg.get("etlm_value_scrub_extra_tokens", []))
+    etlm_dir = DATA / "etlm"
+
+    token_examined, token_findings, codes_seen = 0, [], 0
+    for code in sorted(cfg.get("etlm_whitelist", [])):
+        f = etlm_dir / f"{code}.json"
+        if not f.exists():
+            continue  # verify_provenance already failed the absence above
+        try:
+            obj = json.loads(f.read_text())
+        except (json.JSONDecodeError, OSError) as e:
+            failed = True
+            print(f"  ✗ etlm/{code}.json unreadable: {e}", file=sys.stderr)
+            continue
+        n, fnd = internal_token_residue(obj, code)
+        token_examined += n
+        token_findings += fnd
+        codes_seen += 1
+    try:
+        internal_token_gate(token_examined, token_findings, codes_seen)
+    except SyncAborted as e:
+        failed = True
+        print(f"  ✗ {e}", file=sys.stderr)
+
+    summary_only = list(cfg.get("etlm_summary_only", []))
+    reduced_from: dict = {}
+    for code in summary_only:
+        f = etlm_dir / f"{code}.json"
+        if f.exists():
+            try:
+                reduced_from[code] = json.loads(f.read_text()).get("section_counts") or {}
+            except (json.JSONDecodeError, OSError):
+                reduced_from[code] = {}
+    try:
+        summary_only_gate(etlm_dir, summary_only, reduced_from, cfg)
+    except SyncAborted as e:
+        failed = True
+        print(f"  ✗ {e}", file=sys.stderr)
+
+    ed_examined, ed_hits = editorial_residue()
+    if ed_hits:
+        failed = True
+        print(f"  ✗ {len(ed_hits)} editorial marker(s) in the committed bundle:", file=sys.stderr)
+        for h in ed_hits[:40]:
+            print(f"    - {h}", file=sys.stderr)
+    else:
+        print(f"  ✓ editorial scan RAN_CLEAN — {ed_examined} file(s), "
+              f"{len(_EDITORIAL_MARKERS)} pattern(s), 0 hits")
 
     return 1 if failed else 0
 
