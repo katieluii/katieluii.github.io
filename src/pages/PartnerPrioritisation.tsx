@@ -100,12 +100,12 @@ export function PartnerPrioritisation() {
           </div>
         )}
 
-        <ProjectLead headline="1,654 exhibitors. Type who you want to meet; get a ranked shortlist with the reasoning on every row.">
-          Partnering conferences put thousands of companies under one roof, and the platform matchmakers work from
-          the fields everyone fills in the same way. Edge works from your positioning instead: it scores every
-          attending company against what you are actually looking for, shows the score by rule, and drafts a first
-          note you edit before it goes anywhere. Below is the real BIO 2026 exhibitor list with a sample angle already
-          set. Replace the angle with your own company and offer; the ranking and drafts update as you type.
+        <ProjectLead headline="1,654 exhibitors. Tell Edge who you want to meet; get a ranked shortlist with the reason for every match.">
+          Conference matchmakers rely on standard profile fields. Edge ranks companies against your actual positioning,
+          scores each match by rule, and drafts a first note for you to edit.
+
+          Below is the real BIO 2026 exhibitor list with a sample angle. Replace it with your company and offer; the
+          rankings and drafts update as you type.
         </ProjectLead>
 
         {/* Try it */}
