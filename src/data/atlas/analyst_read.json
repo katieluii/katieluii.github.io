@@ -1,15 +1,19 @@
 {
   "updated": "2026-08-31",
-  "intro": "This week's five themes: Alzheimer's pipeline crowding, atopic dermatitis's first dual-mechanism bispecific, a colorectal-cancer vaccine safety halt alongside new China-origin entrants, combination logic and live bacterial therapeutics spreading into new indications, and an RNAi-vs-antisense safety comparison in cardiology.",
+  "intro": "This week amyloid crowding hits a yearly high, multi-mechanism combination logic keeps leaking out of oncology, China-origin assets pile into already-crowded indications, a personalized cancer vaccine stumbles in the adjuvant setting, and RNAi lands a tolerability point on antisense. Refreshed every Monday.",
   "narratives": [
     {
-      "headline": "Alzheimer's pipeline crowding: three new pre-efficacy entrants this week, including a head-to-head amyloid trial",
-      "detail": "Three new pre-efficacy Alzheimer's programs entered the tracked universe this week: a fourth compound in one major sponsor's own anti-amyloid franchise, tested head-to-head against its other amyloid mechanisms under a single master trial design; a second-generation antibody-like compound from a second sponsor moving into an early symptomatic population; and a first oral small-molecule modulator of amyloid oligomers from a smaller specialist sponsor. It's the largest one-day jump in early-stage amyloid programs logged this year within the tracked set, though an external registry pull across all amyloid-directed mechanisms would be needed to call the space more or less crowded industry-wide.",
+      "headline": "Alzheimer's logs its biggest one-day jump in early-stage amyloid programs this year",
+      "detail": "Three pre-efficacy amyloid entrants landed at once this week: a fourth compound folded into one major sponsor's own master trial against its other amyloid mechanisms, a second sponsor's next-generation antibody-like molecule in early symptomatic disease, and a first oral small-molecule modulator of amyloid oligomers from a specialist. Within the tracked universe it is the largest one-day jump in early-stage amyloid programs logged this year. Whether the field is genuinely more crowded industry-wide still needs a fresh cross-mechanism registry pull to anchor.",
       "momentum": "Hot",
       "sources": [
         {
           "label": "Endpoints News",
           "url": "https://endpts.com/"
+        },
+        {
+          "label": "BioPharma Dive",
+          "url": "https://www.biopharmadive.com/"
         },
         {
           "label": "STAT News",
@@ -18,9 +22,9 @@
       ]
     },
     {
-      "headline": "Atopic dermatitis gets a skin-barrier/IL-13 bispecific and a kinase inhibitor moving over from rheumatoid arthritis",
-      "detail": "Atopic dermatitis added a first-in-class bispecific this week pairing a skin-barrier-repair mechanism with an interleukin-13-blocking mechanism, the first such combination logged in this indication, alongside a second, mechanistically undisclosed China-origin entrant. A third addition extends a class this note has tracked broadening across skin and joint disease for over a year: an oral inhibitor of two intracellular signalling kinases, previously tracked here only in rheumatoid arthritis, is now being tested in atopic dermatitis for the first time. Together they mark dermatology's entry into dual-mechanism combination logic already established in oncology.",
-      "momentum": "Watch",
+      "headline": "Multi-mechanism combination logic keeps leaking out of oncology",
+      "detail": "A first-in-class bispecific pairing a skin-barrier-repair mechanism with IL-13 blockade entered atopic dermatitis this week, while a checkpoint-by-costimulatory bispecific already nearing a first approval in a rare cancer stepped into a large, common solid tumor. Both are validated combination logic being read across into bigger populations and non-oncology settings, not genuinely new mechanisms. It is a broadening this file has tracked across skin and joint disease for over a year.",
+      "momentum": "Confirmed",
       "sources": [
         {
           "label": "Endpoints News",
@@ -33,51 +37,55 @@
       ]
     },
     {
-      "headline": "Personalized colorectal-cancer vaccine program halted after more deaths on treatment than control in adjuvant use",
-      "detail": "A major sponsor's individualized cancer-vaccine program in colorectal cancer was discontinued this week after an independent safety monitoring board flagged more deaths in the treatment arm than the control arm during adjuvant, disease-free use, a signal specific to that minimal-residual-disease setting rather than a verdict on personalized cancer vaccines generally. Separately, colorectal cancer added two China-origin combination entrants: an oral compound engineered to work around a resistance mechanism common to an older targeted-therapy class paired with an existing antibody backbone, and a bispecific already on a priority regulatory track elsewhere for a rare neuroendocrine cancer, now tested in colorectal cancer for the first time. Both layer onto a landscape already crowded with targeted-combination and antibody-drug-conjugate approaches.",
+      "headline": "China-origin assets keep layering into already-crowded indications",
+      "detail": "Colorectal cancer picked up two China-origin combination entrants this week — an oral agent engineered around a common targeted-therapy resistance mechanism paired with an antibody backbone, and a bispecific already on a priority regulatory track abroad for a rare neuroendocrine cancer — alongside a mechanistically undisclosed China-origin entrant in atopic dermatitis. All layer onto landscapes already thick with targeted combinations and antibody-drug conjugates. The pattern is additive pressure on crowded fields rather than any new mechanism.",
       "momentum": "Confirmed",
       "sources": [
         {
-          "label": "Reuters — Healthcare & Pharma",
-          "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/"
-        },
-        {
           "label": "Endpoints News",
           "url": "https://endpts.com/"
+        },
+        {
+          "label": "Reuters — Healthcare & Pharma",
+          "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/"
         }
       ]
     },
     {
-      "headline": "Combination-drug logic keeps spreading beyond oncology as Crohn's logs its first oral live bacterial therapeutic",
-      "detail": "Dual/multi-mechanism combination logic kept spreading beyond oncology this week: a bispecific pairing a skin-barrier-repair mechanism with a cytokine-blocking mechanism entered dermatology for the first time, and a checkpoint-times-costimulatory bispecific already progressing toward a first approval in a rare cancer moved into a much larger, common solid tumor for the first time. Separately, Crohn's disease logged its first oral live bacterial therapeutic in the tracked universe: an engineered probiotic-style strain designed to express a therapeutic surface protein, now entering early safety testing. Both read as read-across of already-validated logic into new settings rather than a new mechanism class, and the live-bacterial data point is too thin (small, safety-only trial) to call a modality trend yet.",
+      "headline": "A personalized cancer vaccine stumbles in the adjuvant, minimal-residual-disease setting",
+      "detail": "A major sponsor discontinued its individualized cancer-vaccine program in colorectal cancer after an independent safety monitoring board flagged more deaths in the treatment arm than in control during adjuvant, disease-free use. The signal reads as a caution specific to the adjuvant, minimal-residual-disease setting rather than a verdict on personalized cancer vaccines broadly. Watch whether it cools appetite for the modality in other disease-free, adjuvant contexts.",
       "momentum": "Watch",
       "sources": [
         {
+          "label": "STAT News",
+          "url": "https://www.statnews.com/"
+        },
+        {
           "label": "Endpoints News",
           "url": "https://endpts.com/"
         },
         {
-          "label": "BioPharma Dive",
-          "url": "https://www.biopharmadive.com/"
+          "label": "FiercePharma",
+          "url": "https://www.fiercepharma.com/"
         }
       ]
     },
     {
-      "headline": "RNAi lipid-lowering candidate posts a stronger safety read than its antisense rival at a major cardiology congress",
-      "detail": "A lipid-lowering RNAi asset extended its standing comparative thread against the leading antisense competitor in the same target class: at a major cardiology congress, the RNAi candidate reported a stronger safety and tolerability read than the antisense drug across two late-stage severe-hypertriglyceridemia trials, with comparable efficacy. This is the first time the comparison has surfaced specifically on safety and tolerability rather than efficacy alone, building on an earlier positive late-stage readout from the same sponsor pair already framed as a head-to-head story. The indication sits outside this note's core tracked set, so it's logged as ecosystem-only platform color rather than a clinical-layer update.",
-      "momentum": "Confirmed",
+      "headline": "RNAi lands a tolerability point on antisense in the same lipid-lowering target class",
+      "detail": "At a major European cardiology congress this week, a lipid-lowering RNAi candidate reported a stronger safety and tolerability read than the leading antisense drug in the same target class across two late-stage severe-hypertriglyceridemia trials, with comparable efficacy. It is the first time the standing head-to-head has surfaced on the safety-and-tolerability axis rather than efficacy alone. The indication sits outside the tracked set, so this is platform color rather than a clinical-layer update — but a clean differentiator worth watching.",
+      "momentum": "Hot",
       "sources": [
+        {
+          "label": "BioPharma Dive",
+          "url": "https://www.biopharmadive.com/"
+        },
         {
           "label": "Reuters — Healthcare & Pharma",
           "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/"
-        },
-        {
-          "label": "STAT News",
-          "url": "https://www.statnews.com/"
         }
       ]
     }
   ],
   "source_fingerprint": "5e19393d73a41258",
-  "generated_at": "2026-08-31T06:01:41+00:00"
+  "generated_at": "2026-08-31T07:04:06+00:00"
 }
