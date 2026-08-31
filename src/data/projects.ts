@@ -310,7 +310,7 @@ export const projects: Project[] = [
     order: 4,
     yearStart: 2026,
     yearEnd: 2026,
-    summary: "Atlas builds, tracks, and maintains a live Emerging Therapeutic Landscape Map for each indication in scope, using primary sources from trial activity and readouts through to regulatory moves, with analyst review.",
+    summary: "Atlas builds an indication-based Emerging Therapeutic Landscape Map from primary sources and analyst review. The deliverable gives your team a clear view of the field, with the evidence organised behind it.",
     longDescription: "Atlas produces an Emerging Therapeutic Landscape Map (ETLM) for a defined indication. It brings together clinical registries, regulatory records, conference readouts, company disclosures, and selected literature, then organises the evidence into a deliverable that an analyst reviews before it is shared.",
     tags: ["Python", "Multi-agent LLM", "Pipeline Automation"],
     links: { live: "/atlas-drug-dev-analyst" },
