@@ -19,7 +19,7 @@ import { suite, suiteMembership } from '../data/suite';
    home page is the curated cut; this is the complete record, filterable by the
    product a tool belongs to (?suite=<letter>), by theme, and by status. */
 
-const NOT_IN_SUITE = 'Not in the suite';
+const NOT_IN_SUITE = 'Others';
 const STATUSES: ProjectStatus[] = ['Live', 'WIP', 'Archived'];
 
 /* One labelled dropdown per filter axis. "All" is the empty value; the axis label
