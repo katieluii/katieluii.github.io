@@ -1,125 +1,13 @@
 # Project Memory State
 
 ## Current Context
-`kl-portfolio` is the working copy of `katieluii.github.io` (public site; `main.yml` deploys to
-GitHub Pages on every push to `main`). The weekly Atlas analyst-read job
-(`com.katielui.analyst-refresh`, Mondays 07:00) chains `scripts/sync-atlas-content.py`
-(WS12/WS9 sources -> redacted `src/data/atlas/`) into `scripts/refresh-analyst-read.py`
-(a headless `claude -p` distil into `analyst_read.json`).
-
-Branch `main`, clean and pushed as of 2026-08-29 (S311). `ANALYST_REFRESH_PUSH=false` still stands:
-the job commits locally and stops. Publishing remains a human step.
-
-**Suite redesign (2026-08-29): merged + live, the estate-wide restyle was reverted (`7264293`) and then RE-APPLIED the same evening — Katie
-committed to the redesign; the house palette is estate-wide again.** `claude/suite-cards` went live at 20:56 (`c247a64..7aa1bf1`, pushed by the
-Bellwether S295 session). Branch `claude/projects-filters` then (1) turned the /projects Suite/Theme/Status
-chip rows into three labelled dropdowns (`FilterSelect` in `Projects.tsx`; `FilterChips.tsx` now unused),
-(2) added `atlas-drug-dev-analyst` to Atlas's `madeOf` so the Atlas page tags as suite A, and (3) briefly reverted the six
-style files of `7aa1bf1` (`7264293`), reversed by the next commit. Net: everything from `7aa1bf1` is live —
-the `zinc`/`slate`/`white` remap in `tailwind.config.js`, `var(--bg)` grounds in the layouts, Home,
-Bellwether and the A–E suite. Edge and Bellwether are being edited in OTHER sessions —
-they must rebase on main before merging.
-`a14acea` (S315, from a throwaway worktree because the shared copy was on the Bellwether branch): footer link
-text is "Email" in `Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); the Grid card is archived off
-/projects (`projects.ts`: `status: "Archived"`, `hideFromTimeline: true`; page and data kept, /projects shows 14).
-Every push this evening was verified against the live bundle (JS/CSS hash = local build).
-
-**Bellwether (contributor session, 2026-08-29 S311):** branch `claude/bellwether-followups` MERGED to main on the owner's call (ff, `cb82816`,
-Pages deploy verified: live bundle byte-identical to the local build; branch left in place). The consensus `stance` on the 13 records now carries `stanceSrc`/`stanceDate` and each name
-`mcap`/`mcapDate` (strings or null), defined in the WS6 SOP, shown by the WS6 diff gate, required by
-`scripts/sync-bellwether-data.mjs`, typed in `src/data/pharmaLandscape.ts`, rendered under each thesis
-(`Views.tsx`: "as of D · via SRC · market cap M", or "source not recorded at this cut"), a Market-cap screener
-column that appears only when data exists, and a consensus disclosure whose provenance clause is DERIVED
-(`CONSENSUS_PROVENANCE_NOTE`). Data today: `stanceDate` = 16 Aug 2026 on all 13 (genuine observation date — every
-stance string changed in that cut), `stanceSrc`/`mcap` null on all 13 by design; the WS6 1 Sep monthly sweep is
-the first run that can fill them. Demo HTML byte-identical to `largecap_kb/landscape.html` (WS6 branch
-`claude/ws6-defect1-source-gate` @ d1492da). Gates: typecheck 0, eslint 0, build ✓, sync in-sync, token scan only
-pre-existing hits. Fresh-eyes review: 8 findings, all applied.
-Recorded on behalf of the session that could not write this file: **a14acea** — footer link text is "Email" in
-`Home.tsx` and `SuitePageLayout.tsx` (mailto unchanged); Grid archived off the `/projects` index (status Archived +
-`hideFromTimeline`; page and data kept).
+`kl-portfolio` is the public portfolio site. Atlas and Edge updates are deployed through `origin/main` at `1cebe2f`; local `main` also contains unrelated unpushed commit `aa02daf`.
 
 ## Completed
-- S311: pre-publish gates run on the rebased tree — `npm run typecheck` 0, `sync-atlas-content.py --verify-only`
-  clean (20 files), `npm run build` ✓ with `bellwether.generated.json` reproduced unchanged, `/usr/bin/grep` token
-  scan over `dist/` (13 classes): only pre-existing hits (`WS13` ×1, `largecap_kb` ×1 in
-  `src/data/pharmaLandscape.ts:190`, `renascor.xyz` = the contact email).
-- Weekly job unblocked end-to-end; last run `done rc=0 assert=0 push=false`, `output_assert PASS`.
-- `scripts/sync-atlas-content.py:625` — internal-phrase scrubber widened to sibling nouns
-  (precedent/convention/policy/disposition) and made greedy, so a clause is consumed through its
-  LAST qualifying noun rather than stranding a dangling " rule".
-- `scripts/atlas-redaction-config.json` — 10 narrow rules added across two passes. Config patterns
-  compile with NO flags while the residue detector uses `re.I`; capitalised forms therefore scrubbed
-  clean and still tripped the gate.
-- `scripts/refresh-analyst-read.py` — bounded 3-attempt repair loop; retryable `ModelOutputError`
-  so a malformed reply no longer bypasses it; `raw_decode` extraction tolerant of code fences and
-  trailing prose; bad replies dumped to `logs/analyst-refresh.last-bad-reply.txt` (gitignored).
-  The validation gate itself is UNCHANGED and still fails closed on exhaustion.
-- Published: `432d25b..15e6517`, Pages deploy succeeded in 49s. Live bundle scanned after deploy —
-  14 internal-token classes, all zero.
-
-- Suite A→E + Crane fold + Femme archive + Home copy/buttons — live. Estate-wide retheme live (reverted then re-applied 2026-08-29).
-- /projects filters as dropdowns; Atlas analyst page in suite A (`51c5ddc`); footer "Email" label + Grid archived (`a14acea`).
-- Dark-mode audit 2026-08-29 (headless Chrome, 15 routes light+dark, `.dark` forced): home, /projects and
-  all 11 product pages render clean on the green-deep ground; only deliberate bone panels remain (Edge's
-  embedded portal, the IC-memo card). `/work-with-me` blank is BY DESIGN (`WWM_LIVE=false`).
+Atlas positioning and Reader copy were tightened around indication-based emerging therapeutic landscape maps. Edge copy, embedded preview, CTA structure, and project-page technology sections were refined across the portfolio. Builds, typechecks, and the GitHub Pages deployment passed.
 
 ## Known Issues
-- **Dark theme is not applied on direct loads of /projects or the 19 `ProjectPageLayout` pages.** The
-  only thing that adds `.dark` to `<html>` is `ThemeToggle`'s effect, and it mounts only in `Home` and
-  `SuitePageLayout`. Refreshing a product page with `localStorage.theme=dark` renders light; the stored
-  theme only reaches those pages via client-side navigation. Fix = one inline `<script>` in `index.html`
-  head (`if(localStorage.theme==='dark')document.documentElement.classList.add('dark')`) — also removes
-  the flash. Not yet applied.
-- Edge (E): WS19 QC **gate C (portal UX) signed by Katie 2026-08-29** (ws19 `QC_LOG.md` `66fc495`) — the public **Live** label now matches the ledger. Gates A (ranking) and B (outreach tone) still ⬜; Phase 2 locked until both ✅. Edge scores only the embedded BIO 2026 list (pulled 2026-06-21); JPM/BioEquity need delegate exports. [Edge session]
-- The `zinc`/`slate` remap changes any FUTURE use of those classes too (intended).
-- Conference Catalyst sits under Atlas, not Edge; A/D/E suite copy still awaits the owner's own edits.
-- `src/components/SiteLayout.tsx` is unused legacy (tree-shaken — its wrong name is not in the bundle); delete
-  candidate. `/work-with-me` WS15 hub keeps its own visual identity by decision, not omission.
-- `largecap_kb` (a WS6 folder name) ships in a `classifyReason` string — pre-existing, cosmetic.
-- Headlines land at 118-119 chars against a 120 cap. The repair loop is UNIT-tested only; the live
-  run passed on the model's first attempt, so it has never fired in production.
-- `WS13` and `Katie` appear in the deployed JS bundle from `src/data/atlas/*.ts` comments and a label
-  map. Pre-existing and unchanged by this work (`git diff` confirms), but still shipping.
-- `src/data/atlas/_analyst_read_history/analyst_read_2026-08-19.json` is untracked by design.
-- An ecosystem line reads "this cycle's is a duplicate ..." — pre-existing rule 55 deletes the
-  sentence's subject. Cosmetic, not a gate failure.
-- ~~Each WS12 cycle can introduce a NEW internal-token shape the residue gate cannot see.~~
-  **Upstream gate now exists (WS12 `d2991e28`, 2026-08-29):** `scouts/ecosystem_residue.py` imports
-  THIS script by path (`load_config`, `configure_*`, `_parse_h2_entries`, `_parse_h3_subsections`,
-  `_scrub_inline`, `_heading_residue`, `_body_residue`, `_entry_date_label`, `_INTERNAL_TOKEN_RE`,
-  `ECOSYSTEM_SRC`) and refuses to run if any is missing — renaming one of those breaks the WS12
-  mega-cycle stage loudly (exit 2), by design. It adds an identifier-shape novelty net and found 5
-  leaks on 12 shipping lines that this gate reported CLEAN. The Monday sync is no longer the first
-  detector; it remains the last.
-- `_BODY_RESIDUE` row-id pattern (`sync-atlas-content.py:1884`): the `(?!\s*%)` lookahead is
-  defeated by `\d+` backtracking to a shorter match, so "serious adverse events 12%" is read as a
-  DB row id and would abort the sync. Latent (no shipped line has hit it yet). One-line fix
-  `\d+\b(?!\s*%)` plus a regression test with that exact sentence; measure with WS12's
-  `python3 -m scouts.ecosystem_residue --measure` before and after.
-- (Bellwether, proposal only — outside the Bellwether file set) `WS9` ships in the bundle from `src/App.tsx` and
-  `src/data/atlas/soc/*.ts` comments/labels, alongside the known `WS13`; strip at source if wanted.
-- (Bellwether) the demo drawer still injects the pre-existing `stance`/`ev`/`thesis` strings unescaped; only the
-  four new fields go through `esc()`. Extending it is a WS6 `landscape.html` change.
+The Slack wrap-up summary was blocked by the approval gate. The working tree contains unrelated ClinicalNews changes and generated Atlas files; do not stage or push them. Existing Atlas warning output remains documented in project memory.
 
 ## Exact Next Steps
-1. Decide whether `ANALYST_REFRESH_PUSH` should flip to `true` in
-   `~/Library/LaunchAgents/com.katielui.analyst-refresh.plist`. Evidence against: S310 found
-   four token classes that every CI gate passed; an auto-publish would have shipped them.
-   **S311 recommendation (2026-08-29): keep false until (a) the independent token scan is a scripted
-   fail-closed stage inside the job and (b) the WS12 emit gate has run 3 consecutive weekly cycles
-   with the manual scan finding nothing the job didn't. Middle path: push to a `claude/analyst-refresh`
-   branch so CI runs without deploying** — wrapper branch-target support unverified.
-2. Before any future publish, run the three CI gates locally plus an independent token scan over
-   `src/data/atlas/` — the gates alone are not sufficient:
-   `npm run typecheck` ; `python3 scripts/sync-atlas-content.py --verify-only` ; `npm run build`.
-3. Optional: strip `WS13` / `Katie` from the shipped bundle (source is `src/data/atlas/*.ts`).
-4. Optional (deferred from S295): other product pages onto `SuitePageLayout`; delete `SiteLayout.tsx`; move
-   Conference Catalyst under Edge if ruled; WS6 side wants `stanceSrc`/`stanceDate` + `marketCap` in the
-   refresh SOP / D-shape before the next quarterly cut.
-5. Apply the 3-line dark-theme bootstrap in `index.html` (see Known Issues), rebuild, re-shoot /projects
-   dark on a direct load, then branch → merge → push.
-6. Optional: restyle `/work-with-me` (WS15,
-   own Fraunces identity) onto the Renascor tokens.
-- (Bellwether) after the WS6 1 Sep sweep is promoted, run
-  `npm run sync:bellwether` on a fresh `claude/` branch so the Market-cap column and sources go live.
+Continue the broader stylistic pass on the other project pages. Review separately whether local `aa02daf` should be pushed.
