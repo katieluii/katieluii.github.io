@@ -1117,7 +1117,17 @@ export default function ClinicalNewsMon() {
           <EmptyState
             icon={<FlaskConical className="h-5 w-5" />}
             title="No articles found"
-            hint="Try a different category, sponsor, area, or indication filter."
+            hint={
+              <>
+                {weekTab === 'this' && articles.length === 0 && new Date().getDay() === 1 && (
+                  <>
+                    Monday&apos;s feed may be empty until the daily refresh runs.
+                    <br />
+                  </>
+                )}
+                Try a different category, sponsor, area, or indication filter.
+              </>
+            }
           />
         ) : (
           <div className="space-y-3">
