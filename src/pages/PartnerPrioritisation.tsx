@@ -100,7 +100,7 @@ export function PartnerPrioritisation() {
           </div>
         )}
 
-        <ProjectLead headline="Edge is your company's BD conference outreach manager. Decide who to prioritise, which partnership angle to lead with, and what materials to prepare before your main healthcare conferences.">
+        <ProjectLead headline="Your company's BD conference outreach manager. Prioritise the right companies and the right partnership angle.">
           Conference matchmakers rely on standard profile fields. Edge ranks companies against your actual positioning,
           scores each match by rule, and drafts a first note for you to edit.
 
