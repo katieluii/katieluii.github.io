@@ -201,7 +201,6 @@
     <span class="who" id="who"></span>
     <div class="top-r">
       <span id="pulled" class="num"></span>
-      <a id="fullscreen" href="#" target="_blank" rel="noopener" style="display:none">Open full-screen ↗</a>
     </div>
   </div>
 </header>
@@ -621,9 +620,7 @@ function csv(){const esc=v=>{v=(v==null?"":String(v));if(/^\s*[=+\-@\t\r]/.test(
   $("voice").placeholder=C.voice_ph||"Paste one of your own emails.";
   $("signoff").value=C.signoff||"Kind regards,\n[Name]\n[Title]";
   const restored=restore();sel.value=CONF;confNote();
-  if(EMBEDDED){const n=$("notice");n.classList.add("on");clear($("notice-txt")).appendChild(h("span",{},[
-    "You are looking at Edge inside the portfolio page. Your edits are not kept here. ",h("a",{href:location.href,target:"_blank",rel:"noopener",text:"Open Edge full-screen"})," to keep your work between visits."]));
-    const fs=$("fullscreen");fs.href=location.href;fs.style.display="";}
+  if(EMBEDDED){const n=$("notice");n.classList.add("on");$("notice-txt").textContent="You are looking at Edge inside the portfolio page. Your edits are not kept here.";}
   else if(!PERSIST){const n=$("notice");n.classList.add("on");$("notice-txt").textContent="This browser is blocking local storage, so your edits will not survive a reload.";}
   else if(C.banner){const n=$("notice");n.classList.add("on");$("notice-txt").textContent=C.banner;}
   $("angle-btn").addEventListener("click",()=>{const f=$("form"),open=!f.classList.contains("open");f.classList.toggle("open",open);
