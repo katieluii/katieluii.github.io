@@ -48,9 +48,14 @@ export function TrialRecruitment() {
         </div>
 
         {/* Description */}
-        <ProjectLead headline="Predict trial enrolment timelines before the first site opens.">
+        <ProjectLead headline="Phase-specific trial duration prediction from ClinicalTrials.gov data.">
           {project.longDescription || project.summary}
         </ProjectLead>
+        <p className="text-sm text-slate-500 dark:text-zinc-500 leading-6">
+          <strong className="font-medium text-slate-600 dark:text-zinc-400">Limitation:</strong>{' '}
+          Richer CRO/CTMS or commercial operational data would improve model performance beyond
+          what registry data alone can support.
+        </p>
 
         {/* Action buttons */}
         <div className="flex flex-wrap gap-3">
@@ -67,7 +72,7 @@ export function TrialRecruitment() {
           )}
         </div>
 
-        {/* Native predictor — no iframe, calls Railway API directly */}
+        {/* Native predictor: no iframe, calls Railway API directly */}
         <div className="space-y-3">
           <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
             Interactive Demo
@@ -79,7 +84,7 @@ export function TrialRecruitment() {
           <TrialPredictor />
         </div>
 
-        {/* Version history — what v2/v3 changed, and the archived v1 */}
+        {/* Results and rate estimate, plus the archived v1 */}
         <TrialPredictorVersions />
       </div>
     </ProjectPageLayout>
