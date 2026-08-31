@@ -103,21 +103,6 @@ function ArchivedTrialPredictorV1() {
         </div>
       ))}
 
-      {p.tags.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">
-            Technologies
-          </h3>
-          <div className="flex flex-wrap gap-1.5">
-            {p.tags.map(tag => (
-              <Pill key={tag} variant="tech">
-                {tag}
-              </Pill>
-            ))}
-          </div>
-        </div>
-      )}
-
       {p.links.pdf && (
         <a
           href={p.links.pdf}

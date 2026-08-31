@@ -67,22 +67,6 @@ export function TrialRecruitment() {
           )}
         </div>
 
-        {/* Technology tags */}
-        {project.tags.length > 0 && (
-          <div className="space-y-3">
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">
-              Technologies
-            </h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map(tag => (
-                <Pill key={tag} variant="tech">
-                  {tag}
-                </Pill>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Native predictor — no iframe, calls Railway API directly */}
         <div className="space-y-3">
           <h2 className="text-sm font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-wide">

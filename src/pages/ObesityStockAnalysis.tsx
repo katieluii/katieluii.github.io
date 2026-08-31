@@ -125,15 +125,6 @@ export default function ObesityStockAnalysis() {
           </>
         )}
 
-        {/* technologies */}
-        {project.tags.length > 0 && (
-          <div className="space-y-3">
-            <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
-            </div>
-          </div>
-        )}
       </div>
     </ProjectPageLayout>
   );

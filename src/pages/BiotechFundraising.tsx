@@ -435,12 +435,6 @@ function ArchivedV1() {
           The first version was an n8n workflow ingesting FierceBiotech, Labiotech, and Endpoints News RSS feeds daily, applying a GPT-4o-mini classifier to keep only private therapeutic-asset-centric financings, and shipping a weekly CSV to Google Sheets via Gmail.
         </p>
       </div>
-      <div className="space-y-2">
-        <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Technologies (v1)</h3>
-        <div className="flex flex-wrap gap-1.5">
-          {['n8n', 'RSS', 'GPT-4o-mini', 'Prompt Engineering', 'Google Sheets'].map(t => <Pill key={t} variant="tech">{t}</Pill>)}
-        </div>
-      </div>
     </div>
   );
 }
@@ -687,16 +681,6 @@ export default function BiotechFundraising() {
                 ))}
               </div>
             )}
-          </div>
-        )}
-
-        {/* Technologies */}
-        {project && project.tags.length > 0 && (
-          <div className="space-y-3">
-            <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
-            </div>
           </div>
         )}
 

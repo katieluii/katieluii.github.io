@@ -277,18 +277,6 @@ export default function InvestmentMemo() {
           </div>
         </Reveal>
 
-        {/* Technologies */}
-        {project.tags.length > 0 && (
-          <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-3">
-            <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
-              Built with
-            </h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => <Pill key={tag} variant="tech">{tag}</Pill>)}
-            </div>
-          </Reveal>
-        )}
-
         {/* Close */}
         <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-4">
           <p className="text-[15px] sm:text-[16px] text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-2xl">

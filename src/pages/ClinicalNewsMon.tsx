@@ -790,14 +790,6 @@ function ArchivedDigestAgents() {
         </div>
       ))}
 
-      {archiveProject.tags.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h3>
-          <div className="flex flex-wrap gap-1.5">
-            {archiveProject.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -1135,16 +1127,6 @@ export default function ClinicalNewsMon() {
                 ? <Reveal key={item.map(a => a.id).join('-')}><GroupedArticleCard articles={item} /></Reveal>
                 : <Reveal key={item.id}><ArticleCard article={item} /></Reveal>
             )}
-          </div>
-        )}
-
-        {/* Technologies */}
-        {project && project.tags.length > 0 && (
-          <div className="space-y-3">
-            <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
-            </div>
           </div>
         )}
 

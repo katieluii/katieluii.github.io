@@ -252,16 +252,6 @@ export default function ConferenceCatalyst() {
           </div>
         </Reveal>
 
-        {/* Technologies */}
-        {project.tags.length > 0 && (
-          <Reveal className="space-y-3">
-            <h2 className="text-xs font-semibold text-slate-900 dark:text-zinc-100 uppercase tracking-widest">Technologies</h2>
-            <div className="flex flex-wrap gap-1.5">
-              {project.tags.map(tag => <Pill key={tag} variant="tech">{tag}</Pill>)}
-            </div>
-          </Reveal>
-        )}
-
       </div>
     </ProjectPageLayout>
   );
