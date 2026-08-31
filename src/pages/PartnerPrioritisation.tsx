@@ -22,18 +22,18 @@ const SANDBOX = 'allow-scripts allow-popups allow-popups-to-escape-sandbox allow
 const STEPS = [
   {
     icon: <Building2 className="w-4 h-4" />,
-    title: 'Read the room from public data',
-    body: 'The conference exhibitor list is pulled and each company is classified from its own public blurb: partner type, stage, focus. Companies with an empty blurb stay unclassified and say so.',
+    title: 'Read public data',
+    body: 'Classify each exhibitor by partner type, stage, and focus. Empty blurbs stay unclassified.',
   },
   {
     icon: <SlidersHorizontal className="w-4 h-4" />,
-    title: 'Score against your angle, in the open',
-    body: 'Hard filters (partner type, area, geography) decide who is in scope. Weighted rules (stage band, recent signals, funding, and more) give a 0 to 100 fit. Every row shows its bar by rule and how much public data it rests on.',
+    title: 'Score your angle',
+    body: 'Hard filters set scope. Weighted rules score fit from 0 to 100, with the breakdown and data coverage on every row.',
   },
   {
     icon: <Send className="w-4 h-4" />,
-    title: 'Shortlist, then draft the first touch',
-    body: 'Rank, open a company for the reasoning, and edit a first-pass note in your own greeting and sign-off. Approve it, export the list, or copy it into your mail app. Edge never sends anything.',
+    title: 'Shortlist and draft',
+    body: 'Review the rationale, edit a first-pass note, then approve, export, or copy it. Edge never sends.',
   },
 ];
 
@@ -144,14 +144,13 @@ export function PartnerPrioritisation() {
 
         {/* The numbers, honestly */}
         <StatGrid cols={3}>
-          <StatCard label="BIO 2026 exhibitors in the universe (public directory, pulled 21 Jun 2026)" value="1,654" />
-          <StatCard label="Pass the sample angle (biotech, preclinical to Phase 2)" value="90" />
-          <StatCard label="Unclassifiable from an empty public blurb; shown as such, never ranked" value="744" accent />
+          <StatCard label="BIO 2026 exhibitors" value="1,654" />
+          <StatCard label="Match the sample angle" value="90" />
+          <StatCard label="Unclassified" value="744" accent />
         </StatGrid>
         <p className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed -mt-4">
-          Public exhibitor data is thin: most companies list no funding stage and many list no therapeutic area, so
-          fit scores cluster and ties are broken by how much public data a company has, then by name. Each row shows
-          its data count out of five, and drafts on thin signal are flagged before you send them.
+          Public exhibitor data is sparse, so some scores cluster. Each row shows data coverage, and low-signal drafts
+          are flagged.
         </p>
 
         {/* Get it for your conference */}
