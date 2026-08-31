@@ -100,7 +100,7 @@ export function PartnerPrioritisation() {
           </div>
         )}
 
-        <ProjectLead headline="1,654 exhibitors. Tell Edge who you want to meet; get a ranked shortlist with the reason for every match.">
+        <ProjectLead headline="Edge is your company's BD conference outreach manager. Decide who to prioritise, which partnership angle to lead with, and what materials to prepare before each conference.">
           Conference matchmakers rely on standard profile fields. Edge ranks companies against your actual positioning,
           scores each match by rule, and drafts a first note for you to edit.
 
