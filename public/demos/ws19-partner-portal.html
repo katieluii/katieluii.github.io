@@ -472,7 +472,7 @@ function renderList(){const L=clear($("ledger")),M=clear($("more")),q=norm($("q"
     if(hits.length>60)M.appendChild(h("span",{text:hits.length-60+" more matches. Narrow the search."}));return;}
   if(!RANKED.length){L.appendChild(h("li",{class:"empty"},[h("b",{text:"No company passes these filters. "}),"Widen the target stage or partner type under Set your angle."]));return;}
   RANKED.slice(0,SHOW).forEach(c=>L.appendChild(rowFor(c,false)));
-  if(RANKED.length>SHOW)M.appendChild(h("button",{type:"button",text:"Show all "+RANKED.length,onclick:()=>{SHOW=RANKED.length;renderList();}}));}
+  if(RANKED.length>SHOW&&!EMBEDDED)M.appendChild(h("button",{type:"button",text:"Show all "+RANKED.length,onclick:()=>{SHOW=RANKED.length;renderList();}}));}
 function renderQueue(){const Q=clear($("queue"));const items=RANKED.filter(c=>STATUS[c.name]||OVERRIDE[c.name]!=null);
   const a=RANKED.filter(c=>STATUS[c.name]==="approved").length,s=RANKED.filter(c=>STATUS[c.name]==="sent").length;
   $("n-queue").textContent=" "+(a+s);
@@ -620,7 +620,7 @@ function csv(){const esc=v=>{v=(v==null?"":String(v));if(/^\s*[=+\-@\t\r]/.test(
   $("voice").placeholder=C.voice_ph||"Paste one of your own emails.";
   $("signoff").value=C.signoff||"Kind regards,\n[Name]\n[Title]";
   const restored=restore();sel.value=CONF;confNote();
-  if(EMBEDDED){const n=$("notice");n.classList.add("on");$("notice-txt").textContent="You are looking at Edge inside the portfolio page. Your edits are not kept here.";}
+  if(EMBEDDED){SHOW=10;const n=$("notice");n.classList.add("on");$("notice-txt").textContent="Showing the top 10 matches. The full shortlist is available in Edge.";}
   else if(!PERSIST){const n=$("notice");n.classList.add("on");$("notice-txt").textContent="This browser is blocking local storage, so your edits will not survive a reload.";}
   else if(C.banner){const n=$("notice");n.classList.add("on");$("notice-txt").textContent=C.banner;}
   $("angle-btn").addEventListener("click",()=>{const f=$("form"),open=!f.classList.contains("open");f.classList.toggle("open",open);
