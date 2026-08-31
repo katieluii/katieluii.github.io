@@ -1,75 +1,83 @@
 {
-  "updated": "2026-08-25",
-  "intro": "This week's five themes: IL-36R fills its first psoriasis pipeline slot, one Alzheimer's blood-test clearance ripples across four commercial wires, AAV gene therapy draws stricter FDA scrutiny over imaging findings, obesity differentiation shifts toward lean-mass preservation, and cell therapy manufacturing shows its first demand-side cooling signal.",
+  "updated": "2026-08-31",
+  "intro": "This week's five themes: Alzheimer's pipeline crowding, atopic dermatitis's first dual-mechanism bispecific, a colorectal-cancer vaccine safety halt alongside new China-origin entrants, combination logic and live bacterial therapeutics spreading into new indications, and an RNAi-vs-antisense safety comparison in cardiology.",
   "narratives": [
     {
-      "headline": "Vanda's imsidolimab gets EU orphan status, opening psoriasis's first IL-36R pipeline slot",
-      "detail": "Imsidolimab (ANB019), Vanda's anti-IL-36R monoclonal antibody, received EU orphan designation for generalized pustular psoriasis (GPP). It becomes the first IL-36R-class pipeline asset tracked for psoriasis, alongside the already-approved spesolimab (Spevigo), also an anti-IL-36R agent. The designation fills a previously empty mechanism slot in the psoriasis landscape rather than displacing an incumbent.",
-      "momentum": "Confirmed",
-      "sources": [
-        {
-          "label": "EMA — Medicines",
-          "url": "https://www.ema.europa.eu/en/medicines"
-        }
-      ]
-    },
-    {
-      "headline": "One Roche Elecsys pTau217 FDA clearance for Alzheimer's spawns four separate commercial-partner wires",
-      "detail": "Roche's Elecsys pTau217 blood test received FDA clearance for Alzheimer's disease, and that single regulatory action has now generated four separate commercial wires: Labcorp and Quest each announced they'll distribute the test, and a fourth event names Eli Lilly in a co-branded pickup. It is one underlying clearance amplified by downstream partners, not four independent approvals. A third independent manufacturer clearance, beyond Roche and C2N, has not yet followed.",
+      "headline": "Alzheimer's pipeline crowding: three new pre-efficacy entrants this week, including a head-to-head amyloid trial",
+      "detail": "Three new pre-efficacy Alzheimer's programs entered the tracked universe this week: a fourth compound in one major sponsor's own anti-amyloid franchise, tested head-to-head against its other amyloid mechanisms under a single master trial design; a second-generation antibody-like compound from a second sponsor moving into an early symptomatic population; and a first oral small-molecule modulator of amyloid oligomers from a smaller specialist sponsor. It's the largest one-day jump in early-stage amyloid programs logged this year within the tracked set, though an external registry pull across all amyloid-directed mechanisms would be needed to call the space more or less crowded industry-wide.",
       "momentum": "Hot",
       "sources": [
         {
-          "label": "Roche media",
-          "url": "https://www.roche.com/media"
+          "label": "Endpoints News",
+          "url": "https://endpts.com/"
         },
         {
-          "label": "Eli Lilly newsroom",
-          "url": "https://www.lilly.com/news"
-        },
-        {
-          "label": "FDA — News & Events",
-          "url": "https://www.fda.gov/news-events"
+          "label": "STAT News",
+          "url": "https://www.statnews.com/"
         }
       ]
     },
     {
-      "headline": "Regenxbio's RGX-121 draws a second clinical hold over imaging-only findings, reading across AAV gene therapy",
-      "detail": "Regenxbio's RGX-121 gene therapy was placed on a second clinical hold, triggered by an asymptomatic spine MRI abnormality with no reported clinical correlate — an imaging-only finding, not a symptomatic adverse event. The signal frames this as a stricter FDA posture on subclinical neuro-imaging findings that reads across the AAV gene-therapy class, not just this one asset. No other tracked AAV program is directly implicated yet. Watch whether a next AAV-class asset in a tracked indication draws a similar imaging-driven hold.",
-      "momentum": "Watch",
-      "sources": [
-        {
-          "label": "FDA — News & Events",
-          "url": "https://www.fda.gov/news-events"
-        },
-        {
-          "label": "RGX-121 trials (ClinicalTrials.gov)",
-          "url": "https://clinicaltrials.gov/search?term=RGX-121"
-        }
-      ]
-    },
-    {
-      "headline": "Lumos Pharma's LUM-201 plus oral semaglutide enters Phase 2, competing on lean-mass preservation, not just weight loss",
-      "detail": "Lumos Pharma's LUM-201, an oral GHSR agonist, is being combined with oral semaglutide in a Phase 2 trial (NCT07754045) explicitly positioned alongside bimagrumab- and apitegromab-style approaches — competing on preserved lean mass and physical function, measured via the SPPB endpoint, rather than total body weight loss percentage. This is a genuine, distinct differentiation axis in obesity, separate from the incretin-dominant mechanism landscape (GLP-1R/GIPR/GCGR). This lean-mass framing applies specifically to the LUM-201 program, not to other obesity deals reported this week.",
-      "momentum": "Watch",
-      "sources": [
-        {
-          "label": "LUM-201 trials (ClinicalTrials.gov)",
-          "url": "https://clinicaltrials.gov/search?term=LUM-201"
-        }
-      ]
-    },
-    {
-      "headline": "Cellares cuts ~100 staff after losing a major customer — first capacity-side cooling sign in cell therapy manufacturing",
-      "detail": "Cellares cut roughly 100 staff after losing a large customer, marking the first capacity-side, as opposed to clinical or regulatory, cooling signal logged for autologous cell therapy manufacturing in the recent tracking period. It signals a shift from clinical and regulatory setbacks toward demand-side stress in cell therapy infrastructure. No specific indication or therapeutic asset is implicated; this is a manufacturing-capacity signal, not a trial result.",
+      "headline": "Atopic dermatitis gets a skin-barrier/IL-13 bispecific and a kinase inhibitor moving over from rheumatoid arthritis",
+      "detail": "Atopic dermatitis added a first-in-class bispecific this week pairing a skin-barrier-repair mechanism with an interleukin-13-blocking mechanism, the first such combination logged in this indication, alongside a second, mechanistically undisclosed China-origin entrant. A third addition extends a class this note has tracked broadening across skin and joint disease for over a year: an oral inhibitor of two intracellular signalling kinases, previously tracked here only in rheumatoid arthritis, is now being tested in atopic dermatitis for the first time. Together they mark dermatology's entry into dual-mechanism combination logic already established in oncology.",
       "momentum": "Watch",
       "sources": [
         {
           "label": "Endpoints News",
           "url": "https://endpts.com/"
+        },
+        {
+          "label": "FiercePharma",
+          "url": "https://www.fiercepharma.com/"
+        }
+      ]
+    },
+    {
+      "headline": "Personalized colorectal-cancer vaccine program halted after more deaths on treatment than control in adjuvant use",
+      "detail": "A major sponsor's individualized cancer-vaccine program in colorectal cancer was discontinued this week after an independent safety monitoring board flagged more deaths in the treatment arm than the control arm during adjuvant, disease-free use, a signal specific to that minimal-residual-disease setting rather than a verdict on personalized cancer vaccines generally. Separately, colorectal cancer added two China-origin combination entrants: an oral compound engineered to work around a resistance mechanism common to an older targeted-therapy class paired with an existing antibody backbone, and a bispecific already on a priority regulatory track elsewhere for a rare neuroendocrine cancer, now tested in colorectal cancer for the first time. Both layer onto a landscape already crowded with targeted-combination and antibody-drug-conjugate approaches.",
+      "momentum": "Confirmed",
+      "sources": [
+        {
+          "label": "Reuters — Healthcare & Pharma",
+          "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/"
+        },
+        {
+          "label": "Endpoints News",
+          "url": "https://endpts.com/"
+        }
+      ]
+    },
+    {
+      "headline": "Combination-drug logic keeps spreading beyond oncology as Crohn's logs its first oral live bacterial therapeutic",
+      "detail": "Dual/multi-mechanism combination logic kept spreading beyond oncology this week: a bispecific pairing a skin-barrier-repair mechanism with a cytokine-blocking mechanism entered dermatology for the first time, and a checkpoint-times-costimulatory bispecific already progressing toward a first approval in a rare cancer moved into a much larger, common solid tumor for the first time. Separately, Crohn's disease logged its first oral live bacterial therapeutic in the tracked universe: an engineered probiotic-style strain designed to express a therapeutic surface protein, now entering early safety testing. Both read as read-across of already-validated logic into new settings rather than a new mechanism class, and the live-bacterial data point is too thin (small, safety-only trial) to call a modality trend yet.",
+      "momentum": "Watch",
+      "sources": [
+        {
+          "label": "Endpoints News",
+          "url": "https://endpts.com/"
+        },
+        {
+          "label": "BioPharma Dive",
+          "url": "https://www.biopharmadive.com/"
+        }
+      ]
+    },
+    {
+      "headline": "RNAi lipid-lowering candidate posts a stronger safety read than its antisense rival at a major cardiology congress",
+      "detail": "A lipid-lowering RNAi asset extended its standing comparative thread against the leading antisense competitor in the same target class: at a major cardiology congress, the RNAi candidate reported a stronger safety and tolerability read than the antisense drug across two late-stage severe-hypertriglyceridemia trials, with comparable efficacy. This is the first time the comparison has surfaced specifically on safety and tolerability rather than efficacy alone, building on an earlier positive late-stage readout from the same sponsor pair already framed as a head-to-head story. The indication sits outside this note's core tracked set, so it's logged as ecosystem-only platform color rather than a clinical-layer update.",
+      "momentum": "Confirmed",
+      "sources": [
+        {
+          "label": "Reuters — Healthcare & Pharma",
+          "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/"
+        },
+        {
+          "label": "STAT News",
+          "url": "https://www.statnews.com/"
         }
       ]
     }
   ],
-  "source_fingerprint": "daf316c439b07715",
-  "generated_at": "2026-08-24T23:40:25+00:00"
+  "source_fingerprint": "5e19393d73a41258",
+  "generated_at": "2026-08-31T06:01:41+00:00"
 }
