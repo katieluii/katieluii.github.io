@@ -32,7 +32,7 @@ export const suite: SuiteProduct[] = [
     name: 'Atlas',
     role: 'Indication landscape maps',
     audience: 'drug development and strategy teams',
-    job: 'Builds an emerging therapeutic landscape map for each indication in scope, using primary sources and analyst review.',
+    job: 'Builds, tracks, and maintains a live Emerging Therapeutic Landscape Map for each indication in scope, using primary sources from trial activity and readouts through to regulatory moves, with analyst review.',
     status: 'Live',
     href: '/atlas-drug-dev-analyst',
     madeOf: ['atlas-drug-dev-analyst', 'clinical-news-monitor', 'conference-catalyst-monitor'],
