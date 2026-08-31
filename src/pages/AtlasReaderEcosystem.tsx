@@ -26,7 +26,7 @@ export function AtlasReaderEcosystem() {
     >
       <div className="flex flex-wrap items-center gap-2 mb-6">
         <Pill variant="tech">Analyst's read</Pill>
-        <Pill variant="tech">Refreshed weekly · Mondays</Pill>
+        <Pill variant="tech">Refreshed weekly , Mondays</Pill>
         <span className="text-xs text-zinc-400 dark:text-zinc-500">
           Updated {ecosystemUpdated}
         </span>

@@ -20,7 +20,7 @@ interface FlowStep {
 const FLOW: FlowStep[] = [
   {
     label: 'Indications in scope',
-    detail: 'You define the coverage list — the indications you actually follow. The monitor mirrors that roster (here, the indications our drug-development analysts cover) and tracks nothing outside it. Focused by design, not a catch-all of every abstract at the meeting.',
+    detail: 'You define the coverage list — the indications you actually follow. The monitor mirrors that roster (here, the indications our drug development analysts cover) and tracks nothing outside it. Focused by design, not a catch-all of every abstract at the meeting.',
     type: 'auto',
     tags: [{ label: 'Your indication list', color: 'purple' }],
   },
@@ -51,7 +51,7 @@ const TAG_STYLES: Record<DataTag['color'], string> = {
   green:  'bg-green-50 text-green-700 dark:bg-green-950/40 dark:text-green-300',
 };
 
-// The onc/heme indications currently in scope — mirrors the drug-development
+// The onc/heme indications currently in scope — mirrors the drug development
 // analyst roster that feeds the watchlist (see the monitor's indications.py).
 const INDICATIONS = [
   'NSCLC', 'SCLC', 'Breast', 'CRC', 'PDAC', 'HCC', 'Prostate', 'Ovarian',
@@ -133,7 +133,7 @@ export default function ConferenceCatalyst() {
             </span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-zinc-500 leading-relaxed">
-            The watchlist mirrors the indications our drug-development analysts cover, so every tracked readout maps to a downstream consumer. Swap in a different coverage list and the scope follows.
+            The watchlist mirrors the indications our drug development analysts cover, so every tracked readout maps to a downstream consumer. Swap in a different coverage list and the scope follows.
           </p>
           <div className="flex flex-wrap gap-1.5">
             {INDICATIONS.map(ind => (

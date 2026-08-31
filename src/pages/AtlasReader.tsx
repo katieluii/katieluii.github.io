@@ -90,14 +90,14 @@ export function AtlasReader() {
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="A catalog of the drug-development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Every published deliverable opens in full; a few indications are still in draft and marked as such."
+      subtitle="A catalog of the drug development analyst's deliverables — landscape maps, target product profiles, and class-level theses, organised by therapeutic area. Every published deliverable opens in full; a few indications are still in draft and marked as such."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
       <div className="flex flex-wrap items-center gap-2 mb-10">
         <Pill variant="tech">Open access</Pill>
         <Pill variant="tech">
-          {totalIndications} indications · {etlmIndex.length} landscape maps · {tppIndex.length} TPPs ·{' '}
+          {totalIndications} indications , {etlmIndex.length} landscape maps , {tppIndex.length} TPPs ,{' '}
           {themeIndex.length} themes
         </Pill>
       </div>

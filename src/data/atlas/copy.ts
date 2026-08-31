@@ -25,10 +25,10 @@ export interface AtlasDataflowModel {
 // contextual (ETLM in the architecture view, ATLAS in the sales/brand view).
 export const ATLAS_DATAFLOW: AtlasDataflowModel = {
   inputs: [
-    { name: 'Published literature', detail: 'PubMed · bioRxiv · medRxiv' },
-    { name: 'Clinical-trial registries', detail: 'ClinicalTrials.gov · EU CTR · FDA · EMA' },
-    { name: 'Congress readouts', detail: 'ASCO · ESMO · AACR · ASH' },
-    { name: 'Trade & deal-flow press', detail: 'Fierce · Endpoints · BioPharma Dive' },
+    { name: 'Published literature', detail: 'PubMed , bioRxiv , medRxiv' },
+    { name: 'Clinical-trial registries', detail: 'ClinicalTrials.gov , EU CTR , FDA , EMA' },
+    { name: 'Congress readouts', detail: 'ASCO , ESMO , AACR , ASH' },
+    { name: 'Trade & deal-flow press', detail: 'Fierce , Endpoints , BioPharma Dive' },
   ],
   hub: {
     name: 'ETLM',
@@ -38,11 +38,11 @@ export const ATLAS_DATAFLOW: AtlasDataflowModel = {
   outputs: [
     {
       name: 'Competitive landscape',
-      detail: 'Approved + pipeline · unmet need · efficacy & safety benchmarks',
+      detail: 'Approved + pipeline , unmet need , efficacy & safety benchmarks',
     },
     {
       name: 'Target Product Profile',
-      detail: 'Efficacy bar vs named comparators · differentiation axes that move the answer',
+      detail: 'Efficacy bar vs named comparators , differentiation axes that move the answer',
     },
     {
       name: 'Deep thematic synthesis',

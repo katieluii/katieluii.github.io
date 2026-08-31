@@ -985,7 +985,7 @@ export function AtlasReaderETLM() {
                     <span className="text-zinc-700 dark:text-zinc-300">
                       {String(a.brand ?? a.drug_name ?? '—')}
                       {modShort ? (
-                        <span className="text-zinc-400 dark:text-zinc-500"> · {modShort}</span>
+                        <span className="text-zinc-400 dark:text-zinc-500"> , {modShort}</span>
                       ) : null}
                     </span>
                     <span className="tabular-nums text-zinc-500 dark:text-zinc-400 whitespace-nowrap">

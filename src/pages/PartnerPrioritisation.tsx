@@ -123,7 +123,7 @@ export function PartnerPrioritisation() {
             </a>
           </div>
           <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-            The sample angle is a fictional drug-development consultancy. Set your own under{' '}
+            The sample angle is a fictional drug development consultancy. Set your own under{' '}
             <span className="font-medium text-slate-800 dark:text-zinc-200">Set your angle</span>. Full-screen keeps
             your edits between visits; inside this page they last for the session only. Nothing you type leaves your
             browser.

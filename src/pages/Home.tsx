@@ -68,7 +68,7 @@ export function Home() {
             </p>
             <p>
               I build AI and automation tools/workflows to scale analysis, productivity, and impact: for
-              drug-development and strategy teams, biotech investors, and early-stage funds.
+              drug development and strategy teams, biotech investors, and early-stage funds.
             </p>
           </div>
           <div className="rise mt-8 flex flex-wrap items-center gap-x-5 gap-y-3" style={{ animationDelay: '280ms' }}>

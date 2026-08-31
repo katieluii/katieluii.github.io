@@ -215,7 +215,7 @@ export function getProfile(etlm: Record<string, unknown>): PresentationProfile |
  * analyst to flatten back to prose. Shape-agnostic by design: it walks the
  * object's own key order instead of naming fields, so a list that gains a new
  * key renders without a code change. First scalar is the label; the rest follow,
- * separated by · . A *_pct key gets its unit back, since "75" alone is not a
+ * separated by , . A *_pct key gets its unit back, since "75" alone is not a
  * prevalence.
  *
  * Field NAMES are deliberately not emitted. This is the formatter for a BULLET
@@ -246,7 +246,7 @@ function listItemWalk(v: unknown, depth: number): string {
   if (typeof v === 'string') return v;
   if (typeof v === 'number' || typeof v === 'boolean') return String(v);
   if (Array.isArray(v)) {
-    return v.map((x) => listItemWalk(x, depth + 1)).filter(Boolean).join(' · ');
+    return v.map((x) => listItemWalk(x, depth + 1)).filter(Boolean).join(' , ');
   }
   if (!isObj(v)) return String(v);
 
@@ -269,8 +269,8 @@ function listItemWalk(v: unknown, depth: number): string {
   // em-dashes: 5 values already contain one, so 8 bullets ended up with two or
   // more and the field boundary became indistinguishable from punctuation
   // ("AstraZeneca — Durvalumab perioperative MIBC (NIAGARA …) — now CO-LEADER …").
-  // ' · ' collides with nothing in the corpus.
-  return parts.join(' · ');
+  // ' , ' collides with nothing in the corpus.
+  return parts.join(' , ');
 }
 
 export function listItemText(v: unknown): string {

@@ -30,9 +30,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Non-small cell lung cancer',
     ta: 'oncology',
     assets: [
-      { name: 'Tagrisso (osimertinib)', meta: 'EGFR TKI · 1L / adjuvant standard' },
-      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 · 1L mono + combo' },
-      { name: 'Rybrevant (amivantamab)', meta: 'EGFR × MET bispecific · 1L EGFR+' },
+      { name: 'Tagrisso (osimertinib)', meta: 'EGFR TKI , 1L / adjuvant standard' },
+      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 , 1L mono + combo' },
+      { name: 'Rybrevant (amivantamab)', meta: 'EGFR × MET bispecific , 1L EGFR+' },
     ],
   },
   {
@@ -40,9 +40,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Breast cancer',
     ta: 'oncology',
     assets: [
-      { name: 'Enhertu (T-DXd)', meta: 'HER2 ADC · HER2+ / HER2-low' },
-      { name: 'Verzenio (abemaciclib)', meta: 'CDK4/6i · HR+ adjuvant + 1L mBC' },
-      { name: 'Dato-DXd (datopotamab)', meta: 'TROP2 ADC · post-CDK4/6 HR+' },
+      { name: 'Enhertu (T-DXd)', meta: 'HER2 ADC , HER2+ / HER2-low' },
+      { name: 'Verzenio (abemaciclib)', meta: 'CDK4/6i , HR+ adjuvant + 1L mBC' },
+      { name: 'Dato-DXd (datopotamab)', meta: 'TROP2 ADC , post-CDK4/6 HR+' },
     ],
   },
   {
@@ -50,9 +50,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Colorectal cancer',
     ta: 'oncology',
     assets: [
-      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 · MSI-H 1L mCRC' },
-      { name: 'Avastin (bevacizumab) + chemo', meta: 'VEGF combo · 1L mCRC standard' },
-      { name: 'Braftovi + Erbitux', meta: 'BRAF + EGFR · BRAF V600E mCRC' },
+      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 , MSI-H 1L mCRC' },
+      { name: 'Avastin (bevacizumab) + chemo', meta: 'VEGF combo , 1L mCRC standard' },
+      { name: 'Braftovi + Erbitux', meta: 'BRAF + EGFR , BRAF V600E mCRC' },
     ],
   },
   {
@@ -60,18 +60,18 @@ export const INDICATIONS: Indication[] = [
     full: 'Prostate cancer (mCRPC / mHSPC)',
     ta: 'oncology',
     assets: [
-      { name: 'Pluvicto', meta: 'Lu-177-PSMA · post-ARSI mCRPC' },
-      { name: 'Xtandi (enzalutamide)', meta: 'AR inhibitor · mHSPC + mCRPC' },
-      { name: 'Zytiga (abiraterone)', meta: 'CYP17 + AR · mHSPC + mCRPC' },
+      { name: 'Pluvicto', meta: 'Lu-177-PSMA , post-ARSI mCRPC' },
+      { name: 'Xtandi (enzalutamide)', meta: 'AR inhibitor , mHSPC + mCRPC' },
+      { name: 'Zytiga (abiraterone)', meta: 'CYP17 + AR , mHSPC + mCRPC' },
     ],
   },
   {
     code: 'Melanoma',
     ta: 'oncology',
     assets: [
-      { name: 'Opdualag (nivo + rela)', meta: 'PD-1 + LAG-3 · 1L unresectable' },
-      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 · 1L + adjuvant' },
-      { name: 'Tafinlar + Mekinist', meta: 'BRAF + MEK · BRAF V600 mut' },
+      { name: 'Opdualag (nivo + rela)', meta: 'PD-1 + LAG-3 , 1L unresectable' },
+      { name: 'Keytruda (pembrolizumab)', meta: 'PD-1 , 1L + adjuvant' },
+      { name: 'Tafinlar + Mekinist', meta: 'BRAF + MEK , BRAF V600 mut' },
     ],
   },
   {
@@ -79,9 +79,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Small cell lung cancer',
     ta: 'oncology',
     assets: [
-      { name: 'Imdelltra (tarlatamab)', meta: 'DLL3 BiTE · 2L+ ES-SCLC' },
-      { name: 'Tecentriq + chemo', meta: 'PD-L1 + EP · 1L ES-SCLC' },
-      { name: 'Zepzelca (lurbinectedin)', meta: 'RNA-Pol II inhibitor · 2L' },
+      { name: 'Imdelltra (tarlatamab)', meta: 'DLL3 BiTE , 2L+ ES-SCLC' },
+      { name: 'Tecentriq + chemo', meta: 'PD-L1 + EP , 1L ES-SCLC' },
+      { name: 'Zepzelca (lurbinectedin)', meta: 'RNA-Pol II inhibitor , 2L' },
     ],
   },
   {
@@ -89,19 +89,19 @@ export const INDICATIONS: Indication[] = [
     full: 'Multiple myeloma',
     ta: 'oncology',
     assets: [
-      { name: 'Carvykti (cilta-cel)', meta: 'BCMA CAR-T · 2L+ moving to 1L' },
-      { name: 'Tecvayli (teclistamab)', meta: 'BCMA bispecific · RRMM' },
-      { name: 'Talvey (talquetamab)', meta: 'GPRC5D bispecific · RRMM' },
+      { name: 'Carvykti (cilta-cel)', meta: 'BCMA CAR-T , 2L+ moving to 1L' },
+      { name: 'Tecvayli (teclistamab)', meta: 'BCMA bispecific , RRMM' },
+      { name: 'Talvey (talquetamab)', meta: 'GPRC5D bispecific , RRMM' },
     ],
   },
   {
     code: 'NHL / DLBCL',
-    full: 'Non-Hodgkin lymphoma · DLBCL focus',
+    full: 'Non-Hodgkin lymphoma , DLBCL focus',
     ta: 'oncology',
     assets: [
-      { name: 'Polivy (pola-R-CHP)', meta: 'CD79b ADC · 1L DLBCL' },
-      { name: 'Yescarta (axi-cel)', meta: 'CD19 CAR-T · 2L+ rrLBCL' },
-      { name: 'Epkinly (epcoritamab)', meta: 'CD20 × CD3 bispecific · 3L+' },
+      { name: 'Polivy (pola-R-CHP)', meta: 'CD79b ADC , 1L DLBCL' },
+      { name: 'Yescarta (axi-cel)', meta: 'CD19 CAR-T , 2L+ rrLBCL' },
+      { name: 'Epkinly (epcoritamab)', meta: 'CD20 × CD3 bispecific , 3L+' },
     ],
   },
   // ── Neurology ──
@@ -110,9 +110,9 @@ export const INDICATIONS: Indication[] = [
     full: "Parkinson's disease",
     ta: 'neuro',
     assets: [
-      { name: 'Levodopa + carbidopa', meta: 'Dopaminergic SoC · 60-year anchor' },
-      { name: 'Tavapadon', meta: 'D1/D5 partial agonist · TEMPO Ph3' },
-      { name: 'Bemdaneprocel', meta: 'iPSC-derived dopaminergic cell therapy · Ph2' },
+      { name: 'Levodopa + carbidopa', meta: 'Dopaminergic SoC , 60-year anchor' },
+      { name: 'Tavapadon', meta: 'D1/D5 partial agonist , TEMPO Ph3' },
+      { name: 'Bemdaneprocel', meta: 'iPSC-derived dopaminergic cell therapy , Ph2' },
     ],
   },
   {
@@ -120,9 +120,9 @@ export const INDICATIONS: Indication[] = [
     full: "Alzheimer's disease",
     ta: 'neuro',
     assets: [
-      { name: 'Leqembi (lecanemab)', meta: 'Anti-amyloid mAb · early AD, first to slow decline' },
-      { name: 'Kisunla (donanemab)', meta: 'Anti-amyloid mAb · early symptomatic AD' },
-      { name: 'Aricept (donepezil)', meta: 'Cholinesterase inhibitor · symptomatic anchor' },
+      { name: 'Leqembi (lecanemab)', meta: 'Anti-amyloid mAb , early AD, first to slow decline' },
+      { name: 'Kisunla (donanemab)', meta: 'Anti-amyloid mAb , early symptomatic AD' },
+      { name: 'Aricept (donepezil)', meta: 'Cholinesterase inhibitor , symptomatic anchor' },
     ],
   },
   {
@@ -130,9 +130,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Multiple sclerosis',
     ta: 'neuro',
     assets: [
-      { name: 'Ocrevus (ocrelizumab)', meta: 'Anti-CD20 · RMS + PPMS standard' },
-      { name: 'Kesimpta (ofatumumab)', meta: 'Anti-CD20 SC · relapsing MS' },
-      { name: 'Tysabri (natalizumab)', meta: 'α4-integrin · highly active RMS' },
+      { name: 'Ocrevus (ocrelizumab)', meta: 'Anti-CD20 , RMS + PPMS standard' },
+      { name: 'Kesimpta (ofatumumab)', meta: 'Anti-CD20 SC , relapsing MS' },
+      { name: 'Tysabri (natalizumab)', meta: 'α4-integrin , highly active RMS' },
     ],
   },
   {
@@ -140,9 +140,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Amyotrophic lateral sclerosis',
     ta: 'neuro',
     assets: [
-      { name: 'Riluzole', meta: 'Glutamate modulator · 1995 survival anchor' },
-      { name: 'Radicava (edaravone)', meta: 'Free-radical scavenger · functional decline' },
-      { name: 'Qalsody (tofersen)', meta: 'SOD1 antisense · SOD1-ALS' },
+      { name: 'Riluzole', meta: 'Glutamate modulator , 1995 survival anchor' },
+      { name: 'Radicava (edaravone)', meta: 'Free-radical scavenger , functional decline' },
+      { name: 'Qalsody (tofersen)', meta: 'SOD1 antisense , SOD1-ALS' },
     ],
   },
   // ── Immunology ──
@@ -151,18 +151,18 @@ export const INDICATIONS: Indication[] = [
     full: 'Rheumatoid arthritis',
     ta: 'immunology',
     assets: [
-      { name: 'Humira (adalimumab)', meta: 'TNF inhibitor · biologic anchor' },
-      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 inhibitor · oral advanced' },
-      { name: 'Actemra (tocilizumab)', meta: 'IL-6R · post-TNF / combo' },
+      { name: 'Humira (adalimumab)', meta: 'TNF inhibitor , biologic anchor' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 inhibitor , oral advanced' },
+      { name: 'Actemra (tocilizumab)', meta: 'IL-6R , post-TNF / combo' },
     ],
   },
   {
     code: 'Psoriasis',
     ta: 'immunology',
     assets: [
-      { name: 'Skyrizi (risankizumab)', meta: 'IL-23 · highest PASI bar' },
-      { name: 'Bimzelx (bimekizumab)', meta: 'IL-17A/F · PASI 100 leader' },
-      { name: 'Sotyktu (deucravacitinib)', meta: 'TYK2 · oral moderate-severe' },
+      { name: 'Skyrizi (risankizumab)', meta: 'IL-23 , highest PASI bar' },
+      { name: 'Bimzelx (bimekizumab)', meta: 'IL-17A/F , PASI 100 leader' },
+      { name: 'Sotyktu (deucravacitinib)', meta: 'TYK2 , oral moderate-severe' },
     ],
   },
   {
@@ -170,9 +170,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Ulcerative colitis',
     ta: 'immunology',
     assets: [
-      { name: 'Entyvio (vedolizumab)', meta: 'α4β7 gut-selective · 1L biologic' },
-      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 · oral advanced' },
-      { name: 'Stelara (ustekinumab)', meta: 'IL-12/23 · moderate-severe' },
+      { name: 'Entyvio (vedolizumab)', meta: 'α4β7 gut-selective , 1L biologic' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 , oral advanced' },
+      { name: 'Stelara (ustekinumab)', meta: 'IL-12/23 , moderate-severe' },
     ],
   },
   {
@@ -180,9 +180,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Systemic lupus erythematosus',
     ta: 'immunology',
     assets: [
-      { name: 'Benlysta (belimumab)', meta: 'BLyS inhibitor · SLE + lupus nephritis' },
-      { name: 'Saphnelo (anifrolumab)', meta: 'Type-I IFNAR · moderate-severe SLE' },
-      { name: 'MMF + corticosteroids', meta: 'Immunosuppression · anchor of care' },
+      { name: 'Benlysta (belimumab)', meta: 'BLyS inhibitor , SLE + lupus nephritis' },
+      { name: 'Saphnelo (anifrolumab)', meta: 'Type-I IFNAR , moderate-severe SLE' },
+      { name: 'MMF + corticosteroids', meta: 'Immunosuppression , anchor of care' },
     ],
   },
   {
@@ -190,9 +190,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Atopic dermatitis',
     ta: 'immunology',
     assets: [
-      { name: 'Dupixent (dupilumab)', meta: 'IL-4Rα · biologic anchor' },
-      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 · oral moderate-severe' },
-      { name: 'Adbry (tralokinumab)', meta: 'IL-13 · biologic alternative' },
+      { name: 'Dupixent (dupilumab)', meta: 'IL-4Rα , biologic anchor' },
+      { name: 'Rinvoq (upadacitinib)', meta: 'JAK1 , oral moderate-severe' },
+      { name: 'Adbry (tralokinumab)', meta: 'IL-13 , biologic alternative' },
     ],
   },
   // ── Cardiometabolic ──
@@ -200,9 +200,9 @@ export const INDICATIONS: Indication[] = [
     code: 'Obesity',
     ta: 'cardiometabolic',
     assets: [
-      { name: 'Zepbound (tirzepatide)', meta: 'GLP-1 + GIP · TBWL -22.5% bar' },
-      { name: 'Wegovy (semaglutide)', meta: 'GLP-1 · SELECT MACE benefit' },
-      { name: 'Retatrutide', meta: 'GLP-1 + GIP + glucagon triple · TBWL ~24% pending' },
+      { name: 'Zepbound (tirzepatide)', meta: 'GLP-1 + GIP , TBWL -22.5% bar' },
+      { name: 'Wegovy (semaglutide)', meta: 'GLP-1 , SELECT MACE benefit' },
+      { name: 'Retatrutide', meta: 'GLP-1 + GIP + glucagon triple , TBWL ~24% pending' },
     ],
   },
   {
@@ -210,8 +210,8 @@ export const INDICATIONS: Indication[] = [
     full: 'Metabolic dysfunction-associated steatohepatitis',
     ta: 'cardiometabolic',
     assets: [
-      { name: 'Rezdiffra (resmetirom)', meta: 'THR-β agonist · first approved MASH' },
-      { name: 'Semaglutide (GLP-1)', meta: 'ESSENCE Ph3 · fibrosis benefit' },
+      { name: 'Rezdiffra (resmetirom)', meta: 'THR-β agonist , first approved MASH' },
+      { name: 'Semaglutide (GLP-1)', meta: 'ESSENCE Ph3 , fibrosis benefit' },
       { name: 'Lifestyle / standard care', meta: 'Fibrosis-stage anchor' },
     ],
   },
@@ -220,9 +220,9 @@ export const INDICATIONS: Indication[] = [
     full: 'Type 1 diabetes',
     ta: 'cardiometabolic',
     assets: [
-      { name: 'Tzield (teplizumab)', meta: 'Anti-CD3 · delays Stage-3 onset' },
+      { name: 'Tzield (teplizumab)', meta: 'Anti-CD3 , delays Stage-3 onset' },
       { name: 'Insulin (analog + AID)', meta: 'Standard of care anchor' },
-      { name: 'Automated insulin delivery', meta: 'Closed-loop systems · standard' },
+      { name: 'Automated insulin delivery', meta: 'Closed-loop systems , standard' },
     ],
   },
 ];

@@ -69,7 +69,7 @@ export default function WorkWithMeHub() {
             Analysis is cheap now. Judgment isn’t.
           </h1>
           <p className="rise mt-5 text-[18px] leading-[1.55] max-w-xl" style={{ color: BODY, animationDelay: '0.21s' }}>
-            AI-run, human-checked. The drug-development analysis teams build on, and the diligence investors rely on. Pick your side.
+            AI-run, human-checked. The drug development analysis teams build on, and the diligence investors rely on. Pick your side.
           </p>
 
           {/* the decision: two audience doors, first thing after the intro */}

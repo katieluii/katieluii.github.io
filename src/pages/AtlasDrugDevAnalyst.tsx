@@ -31,28 +31,27 @@ interface Capability {
   connected?: { label: string; href: string }[];
 }
 
-// the four streams — three feed the ETLM, one ships from it (lean one-liners)
 const CAPABILITIES: Capability[] = [
   {
     id: 'landscape',
     icon: Network,
     name: 'Landscape mapping',
     tag: 'Strategic spine',
-    detail: 'The per-indication strategic map, built from authoritative registries only — ClinicalTrials.gov, FDA, EMA, NCI Thesaurus.',
+    detail: 'The per-indication strategic map, built from authoritative registries including ClinicalTrials.gov, FDA, EMA, and NCI Thesaurus.',
   },
   {
     id: 'literature',
     icon: FlaskConical,
     name: 'Literature scouting',
     tag: 'Novelty surveillance',
-    detail: 'Reads PubMed, bioRxiv, and medRxiv for the novel assets registry searches miss.',
+    detail: 'Reads PubMed, bioRxiv, and medRxiv for novel assets that registry searches miss.',
   },
   {
     id: 'news',
     icon: Newspaper,
     name: 'News-signal monitoring',
     tag: 'Live industry pulse',
-    detail: 'Triages the trade press daily, turning material events — readouts, deals, label updates — into landscape edits.',
+    detail: 'Triages trade press for material events such as readouts, deals, and label updates.',
     connected: [
       { label: 'Clinical News', href: '/clinical-news' },
       { label: 'Conference Catalyst', href: '/conference-catalyst' },
@@ -63,7 +62,7 @@ const CAPABILITIES: Capability[] = [
     icon: Target,
     name: 'TPP drafting',
     tag: 'Design artifact',
-    detail: 'Drafts Target Product Profiles — the efficacy bar, the safety bar, and the axes that move the answer.',
+    detail: 'Drafts Target Product Profiles covering efficacy, safety, and the criteria that shape the answer.',
   },
 ];
 
@@ -130,54 +129,52 @@ const TA_STYLES = {
 const VALUE_PROPS = [
   {
     icon: Gauge,
-    title: 'Strategic outputs in hours, not weeks',
-    detail: "Work you'd normally commission comes back the day you ask.",
+    title: 'Strategic landscape work, condensed',
+    detail: 'A focused ETLM gives teams a clear indication read without starting every landscape from scratch.',
   },
   {
     icon: Layers,
-    title: 'Specialist depth across the full portfolio',
-    detail: 'Every indication held at the depth a dedicated analyst gives one.',
+    title: 'One indication map, ready to use',
+    detail: 'The indication, its assets, readouts, and benchmarks are shaped into one emerging therapeutic landscape map.',
   },
   {
     icon: CheckCircle2,
-    title: 'Evidence-anchored, not asserted',
-    detail: 'Every claim traces to a primary source, citations already organised. Auditable, not a black box.',
+    title: 'Source-backed, not asserted',
+    detail: 'Claims trace back to primary evidence, so teams can check the answer and follow the source.',
   },
   {
     icon: Sparkles,
-    title: 'LLM agents where they earn their place',
-    detail: "Registries fetched deterministically; agents do what registries can't.",
+    title: 'Reviewed before it ships',
+    detail: 'Source review and drafting can be accelerated, but the final map is checked before delivery.',
   },
 ];
 
-// the Atlas page's own framing of the knowledge flow (restored original wording) — fed to the
-// shared <AtlasDataflow/> as content overrides so we keep the upgraded diagram but the original copy
 const KNOWLEDGE_FLOW = {
   inputsLabel: 'Knowledge sources',
   outputsLabel: 'Strategic deliverables',
   inputs: [
     {
       name: 'Literature scouting',
-      detail: 'PubMed · bioRxiv · medRxiv — novelty signal beyond what registry searches return',
+      detail: 'PubMed, bioRxiv, medRxiv, novelty signal beyond what registry searches return',
     },
     {
       name: 'News-signal monitoring',
-      detail: 'Industry press + live feeds from connected clinical-news and conference workstreams',
+      detail: 'Industry press, plus selected readouts from clinical news and conferences',
     },
   ],
   hub: {
     name: 'ETLM',
     badge: 'Persistent intelligence',
-    line: 'Emerging Therapeutic Landscape Map · one per indication',
+    line: 'Emerging Therapeutic Landscape Map, one per indication',
   },
   outputs: [
     {
       name: 'ETLM',
-      detail: 'Competitive baseline · unmet need · efficacy + safety benchmarks · refreshed live with new readouts',
+      detail: 'Competitive baseline, unmet need, efficacy and safety benchmarks',
     },
     {
       name: 'Target Product Profile',
-      detail: 'Per indication / segment · efficacy bar against named comparators · differentiation axes that move the answer',
+      detail: 'Per indication or segment, efficacy bar against named comparators, and differentiation criteria',
     },
   ],
 };
@@ -377,25 +374,21 @@ export default function AtlasDrugDevAnalyst() {
           </div>
         </Reveal>
 
-        {/* How it works — the living-memory dataflow + the four streams */}
+        {/* How it works */}
         <Reveal className="mt-14 border-t border-zinc-200/70 dark:border-white/10 pt-12 space-y-5">
           <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-widest">
             How it works
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            Four streams feed one living memory — the ETLM. Three build it; one ships from it.
-          </p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            The learning is deliberately narrow. Atlas reads structured primary signals — trial
-            registries, conference readouts, and company disclosures at the wire — in preference to
-            the noisier secondary press, and an analyst gates what becomes canonical. The result is
-            an engine that <span className="text-zinc-700 dark:text-zinc-300">earns</span> its memory,
-            not an aggregator that accumulates it.
+            Atlas builds an indication-based ETLM from the sources a drug development team already trusts, including registries,
+            regulatory records, conference readouts, company disclosures, and selected literature. Extraction accelerates
+            the map; judgment calls go to an analyst before they become canonical.
           </p>
 
           <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-6">
             <AtlasDataflow
               theme="portfolio"
+              hubHref="/atlas-reader"
               inputsLabel={KNOWLEDGE_FLOW.inputsLabel}
               outputsLabel={KNOWLEDGE_FLOW.outputsLabel}
               inputs={KNOWLEDGE_FLOW.inputs}
@@ -468,7 +461,7 @@ export default function AtlasDrugDevAnalyst() {
           <IndicationBubbles />
 
           <p className="text-[12px] text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            <span className="font-semibold text-zinc-700 dark:text-zinc-300">Coverage extends on demand</span> — same
+            <span className="font-semibold text-zinc-700 dark:text-zinc-300">Coverage extends on demand</span>, same
             architecture, any new indication.
           </p>
         </Reveal>
@@ -500,7 +493,7 @@ export default function AtlasDrugDevAnalyst() {
             Selected work
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            The intelligence resolves into deliverables a team can act on — an indication landscape, a
+            The intelligence resolves into deliverables a team can act on: an indication landscape, a
             target product profile, a thematic read. Redacted samples, straight from the reader.
           </p>
           <div className="border-y border-zinc-200/70 dark:border-white/10 divide-y divide-zinc-200/70 dark:divide-white/10">
@@ -516,7 +509,7 @@ export default function AtlasDrugDevAnalyst() {
           </div>
           <a
             href="/atlas-reader"
-            className="inline-flex items-center gap-1 text-[13px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] font-medium bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 shadow-sm ring-1 ring-zinc-900/10 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
           >
             Browse all deliverables
             <ArrowRight className="w-3.5 h-3.5" />
@@ -529,13 +522,6 @@ export default function AtlasDrugDevAnalyst() {
             Want the outputs ready to use, or Atlas inside your own systems? Either works.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="/atlas-reader"
-              className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13.5px] font-medium bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 shadow-sm ring-1 ring-zinc-900/10 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
-            >
-              See sample deliverables
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
             {WWM_LIVE && (
               <a
                 href="/work-with-me/teams"
@@ -552,7 +538,6 @@ export default function AtlasDrugDevAnalyst() {
               Get in touch →
             </a>
           </div>
-          <p className="text-[12px] text-zinc-400 dark:text-zinc-500 pt-2">LLM (multi-agent) · Python</p>
         </Reveal>
 
       </div>

@@ -139,7 +139,7 @@ function humanizeEnum(s: unknown): string {
 
 /** Render a LABELLED key→value readout as skimmable text — never raw JSON. A
  *  public landscape map must never dump `{...}`, so objects become
- *  "key: value · key: value" and arrays join their humanized items. Bounded depth
+ *  "key: value , key: value" and arrays join their humanized items. Bounded depth
  *  so a deep object can't explode.
  *
  *  The labels are load-bearing HERE and only here: this renders a keyed detail
@@ -151,7 +151,7 @@ function humanizeEnum(s: unknown): string {
  *
  *  DO NOT use this for an element of a bulleted list. There every bullet repeats
  *  the same keys, so the keys are schema plumbing and rendering them is the
- *  defect ("company: Pfizer-Astellas · franchise: …" on the live urothelial
+ *  defect ("company: Pfizer-Astellas , franchise: …" on the live urothelial
  *  page). listItemText() owns that role. */
 function humanizeValue(v: unknown, depth = 0): string {
   if (v === null || v === undefined) return '—';
@@ -163,7 +163,7 @@ function humanizeValue(v: unknown, depth = 0): string {
       // user-visible label through a different formatter, so a detail readout
       // rendered its keys in a different case from every heading on the page.
       .map(([k, val]) => `${labelText(k)}: ${humanizeValue(val, depth + 1)}`)
-      .join(' · ');
+      .join(' , ');
   }
   return String(v);
 }
@@ -401,7 +401,7 @@ function ApprovedTherapies({
                       <span className="text-zinc-400 dark:text-zinc-500"> ({String(entry.drug_name)})</span>
                     ) : null}
                     {modShort ? (
-                      <span className="text-zinc-400 dark:text-zinc-500"> · {modShort}</span>
+                      <span className="text-zinc-400 dark:text-zinc-500"> , {modShort}</span>
                     ) : null}
                   </span>
                   <span className="tabular-nums text-zinc-500 dark:text-zinc-400 whitespace-nowrap">
@@ -445,7 +445,7 @@ function ApprovedTherapies({
                 </span>
               </div>
               <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">
-                {String(entry.company ?? '')} · {String(entry.modality ?? '')}
+                {String(entry.company ?? '')} , {String(entry.modality ?? '')}
               </div>
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <KV label="Target" value={entry.target ? String(entry.target) : null} />
@@ -695,7 +695,7 @@ function PipelineAssets({
               >
                 {tppLabel(slug)}
               </Link>
-              {i < linkedTpps.length - 1 ? ' · ' : ''}
+              {i < linkedTpps.length - 1 ? ' , ' : ''}
             </span>
           ))}
         </div>
@@ -877,7 +877,7 @@ function MechanismLandscape({
               >
                 {themeShortLabel(slug)}
               </Link>
-              {i < linkedThemes.length - 1 ? ' · ' : ''}
+              {i < linkedThemes.length - 1 ? ' , ' : ''}
             </span>
           ))}
         </div>
@@ -1005,7 +1005,7 @@ function CompetitiveDynamics({ data }: { data: Record<string, unknown> }) {
               // supply_and_manufacturing = {event, date, detail,
               // competitive_implication}) — both shapes are correct analyst output.
               // humanizeValue prefixed every field name onto every bullet, so the
-              // live page read "company: Pfizer-Astellas · franchise: …". Same keys
+              // live page read "company: Pfizer-Astellas , franchise: …". Same keys
               // on every bullet = plumbing; only the values are content.
               // Format before the cap so an unrenderable element can't spend one
               // of the 8 visible slots on an empty bullet.
@@ -1062,7 +1062,7 @@ function UnmetNeeds({ data }: { data: unknown[] }) {
           // A string-shaped need is valid analyst output and must render. This
           // early-returned null, so obesity's 11 needs, nhl_dlbcl's 12 and crc's
           // 10 — 33 in all — displayed nothing while the header above still
-          // printed "Unmet needs · 11". An empty grid under a non-zero count is
+          // printed "Unmet needs , 11". An empty grid under a non-zero count is
           // worse than no section: it reads as a broken page, not a sparse one.
           // nsclc/mm/urothelial write dicts, which is why it went unseen.
           if (typeof entry === 'string' && entry.trim()) {
@@ -1271,7 +1271,7 @@ function PreclinicalWatchlist({ data }: { data: unknown[] }) {
                 {String(entry.asset_name ?? entry.drug_name ?? '—')}
               </div>
               <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-2">
-                {String(entry.company ?? entry.sponsor ?? '')} ·{' '}
+                {String(entry.company ?? entry.sponsor ?? '')} ,{' '}
                 {String(entry.modality ?? '')}
               </div>
               {entry.rationale ? (
@@ -1362,7 +1362,7 @@ function EmergingSignals({ data }: { data: unknown[] }) {
               ) : null}
             </div>
             <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-              {[s.company, s.modality].filter(Boolean).map(String).join(' · ')}
+              {[s.company, s.modality].filter(Boolean).map(String).join(' , ')}
             </div>
             {s.indication_subtype ? (
               <div className="mb-2">
@@ -1811,7 +1811,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
         }
       }
     }
-    return bits.length ? bits.join(' · ') : 'Incidence, staging & survival context';
+    return bits.length ? bits.join(' , ') : 'Incidence, staging & survival context';
   }
 
   if (key.startsWith('approved_therapies')) {
@@ -1821,7 +1821,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
     );
     const socName = soc ? firstStr(soc, ['drug_name', 'asset_name', 'name', 'regimen']) : null;
     return socName
-      ? `${rows.length} agents · SOC anchor: ${socName}`
+      ? `${rows.length} agents , SOC anchor: ${socName}`
       : `${rows.length} approved agent${rows.length === 1 ? '' : 's'}`;
   }
 
@@ -1829,7 +1829,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
     const rows = asList(val);
     const ph3 = rows.filter((r) => /(^|[^0-9])3([^0-9]|$)|III/.test(String(r.phase ?? ''))).length;
     return `${rows.length} pipeline asset${rows.length === 1 ? '' : 's'}${
-      ph3 ? ` · ${ph3} in Phase 3` : ''
+      ph3 ? ` , ${ph3} in Phase 3` : ''
     }`;
   }
 
@@ -1840,7 +1840,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
       ? firstStr(rows[0], ['trial', 'trial_name', 'asset', 'drug_name', 'title', 'venue'])
       : null;
     return label
-      ? `${rows.length} readouts · latest: ${label}`
+      ? `${rows.length} readouts , latest: ${label}`
       : `${rows.length} conference readout${rows.length === 1 ? '' : 's'}`;
   }
 
@@ -1867,7 +1867,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
     const rows = asList(val);
     const top = rows[0] ? firstStr(rows[0], ['need', 'title', 'label', 'gap']) : null;
     return top
-      ? `${rows.length} unmet needs · e.g. ${top}`
+      ? `${rows.length} unmet needs , e.g. ${top}`
       : `${rows.length} unmet need${rows.length === 1 ? '' : 's'}`;
   }
 
@@ -1909,11 +1909,11 @@ type SummaryRow = {
  *
  *  On a capped page the derived headlines count the rows that SHIPPED, not the rows
  *  that exist — so every section announced "3": "3 approved agents", "3 pipeline
- *  assets · 3 in Phase 3", "benchmarks across 3 lines of therapy". For an indication
+ *  assets , 3 in Phase 3", "benchmarks across 3 lines of therapy". For an indication
  *  with 23 approved agents and 44 pipeline assets that is not merely repetitive, it
  *  is wrong, and it advertises the cap in the clumsiest possible way.
  *
- *  Blurring the digits keeps the sentence shape ("N approved agents · SOC anchor: X")
+ *  Blurring the digits keeps the sentence shape ("N approved agents , SOC anchor: X")
  *  and the genuinely informative half — the SOC anchor, the latest readout, the
  *  leading unmet need — while the quantity reads as deliberately withheld. Nothing
  *  secret is hidden here: the shipped number IS the cap, and the true totals travel
@@ -2000,7 +2000,7 @@ function ExecSummary({
           >
             Expand all
           </button>
-          <span className="text-zinc-300 dark:text-zinc-600">·</span>
+          <span className="text-zinc-300 dark:text-zinc-600">,</span>
           <button
             onClick={onCollapseAll}
             className="font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
@@ -2231,7 +2231,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
                 to={`/atlas-reader/tpp/${slug}`}
                 className="text-xs px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 ring-1 ring-rose-600/20 dark:bg-rose-500/10 dark:text-rose-300 dark:ring-rose-500/30 hover:ring-rose-600/40"
               >
-                TPP · {tppLabel(slug)}
+                TPP , {tppLabel(slug)}
               </Link>
             ))}
             {linkedThemes.map((slug) => (
@@ -2240,7 +2240,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
                 to={`/atlas-reader/theme/${slug}`}
                 className="text-xs px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 ring-1 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30 hover:ring-amber-600/40"
               >
-                Theme · {themeShortLabel(slug)}
+                Theme , {themeShortLabel(slug)}
               </Link>
             ))}
           </div>
