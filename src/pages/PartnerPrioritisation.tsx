@@ -65,7 +65,7 @@ function EmbeddedPortal() {
           src={PORTAL}
           title="Edge — partner shortlist for BIO 2026 (interactive)"
           className="w-full block"
-          style={{ height: 'clamp(560px, calc(100vh - 7rem), 900px)', border: 0 }}
+          style={{ height: 'clamp(480px, 65vh, 680px)', border: 0 }}
           sandbox={SANDBOX}
           allow="clipboard-write"
           referrerPolicy="no-referrer"
