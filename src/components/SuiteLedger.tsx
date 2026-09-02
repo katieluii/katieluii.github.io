@@ -74,7 +74,7 @@ function Row({ product }: { product: SuiteProduct }) {
           </h3>
           <span className="text-[14px] text-[var(--muted)]">{product.role}</span>
         </div>
-        <p className="mt-2 text-[14px] leading-[1.55] text-[var(--ink)] line-clamp-3 sm:line-clamp-2">{product.job}</p>
+        <p className="mt-2 text-[14px] leading-[1.55] text-[var(--ink)] line-clamp-5 sm:line-clamp-3">{product.job}</p>
         <p className="mt-1.5 text-[12.5px] text-[var(--faint)]">For {product.audience}</p>
       </div>
 
