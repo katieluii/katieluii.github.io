@@ -1,4 +1,4 @@
-import { projects, type Project } from './projects';
+import { projects, WS21_APP_URL, type Project } from './projects';
 
 /* ── The product suite shown on the home page ──────────────────────────────────
    Five products, lettered A→E (the names are alphabetical — the letter is the
@@ -60,12 +60,12 @@ export const suite: SuiteProduct[] = [
   {
     letter: 'D',
     name: 'Dove',
-    role: 'Clinical-trial analysis',
-    audience: 'clinical operations and trial planners',
-    job: 'Predicts how long a trial will take to enrol from its registry record, so plans start from the base rate.',
-    status: 'Live',
-    href: '/trial-recruitment',
-    madeOf: ['trial-recruitment'],
+    role: 'Clinical trial planning',
+    audience: 'clinical development and trial-planning teams',
+    job: 'Benchmarks observed trial design and enrolment for supported indication-phase cells, then adds a modelled duration estimate. Thin evidence returns a refusal.',
+    status: WS21_APP_URL ? 'Live' : 'Preview',
+    href: '/projects?suite=D',
+    madeOf: ['trial-recruitment', 'clinical-trial-analyst'],
   },
   {
     letter: 'E',

@@ -6,6 +6,8 @@ export interface ProjectLinks {
   pdf?: string;
   posterPdf?: string;
   repo?: string;
+  related?: string;
+  relatedLabel?: string;
 }
 
 export interface ProjectSection {
@@ -32,6 +34,8 @@ export interface Project {
   hideFromTimeline?: boolean;
   order?: number;
 }
+
+export const WS21_APP_URL = import.meta.env.VITE_WS21_APP_URL?.trim() || undefined;
 
 export const projects: Project[] = [
   {
@@ -96,6 +100,54 @@ export const projects: Project[] = [
       live: "/trial-recruitment",
       pdf: "/pdfs/trial-ML-project.pdf"
     }
+  },
+  {
+    id: "clinical-trial-analyst",
+    slug: "clinical-trial-analyst",
+    title: "Clinical Trial Analyst",
+    shortTitle: "Clinical trial analyst",
+    themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
+    status: WS21_APP_URL ? "Live" : "WIP",
+    yearStart: 2026,
+    yearEnd: 2026,
+    summary:
+      "Reports observed endpoints, eligibility criteria, and enrolment benchmarks for supported indication-phase cells, then adds a modelled duration estimate from the separately validated WSi v5 predictor.",
+    longDescription:
+      "I built this analyst layer to answer the trial design questions that the recruitment predictor had to ask users. Choose a supported indication or therapeutic area and phase, and it reports the endpoints used in comparable trials, recurring inclusion and exclusion criteria, and the observed enrolment distribution. It then calls the validated WSi v5 Clinical Trial Duration Predictor for a modelled duration estimate and 80% interval. Each answer is deterministic, carries its derivation, and refuses to answer when the underlying trial group is too thin.",
+    tags: ["Python", "FastAPI", "ClinicalTrials.gov", "Evidence Gates", "Data Provenance"],
+    sections: [
+      {
+        title: "What it answers",
+        bullets: [
+          "Ranks the endpoint concepts used in comparable trials and retains the measurement frame and follow-up period",
+          "Surfaces recurring inclusion and exclusion criteria by section, with restrictiveness markers",
+          "Returns q25, q50, and q75 for observed enrolment, with the IQR's own 95% confidence interval, optionally conditioned on trial design",
+          "Uses the existing WSi Clinical Trial Duration Predictor for timing rather than fitting a second duration model",
+        ],
+      },
+      {
+        title: "Evidence rules",
+        bullets: [
+          "A trial group must clear the evidence floor before any of the four answers are shown",
+          "Every emitted number is tied to a provenance record, and the response fails closed if a number is unstamped",
+          "Thin or unsupported groups return a refusal instead of a guessed benchmark",
+          "A separate terminated-trial cohort is retained for survivorship-bias auditing rather than fed into the completed-trial benchmarks",
+        ],
+      },
+      {
+        title: "How it extends Dove",
+        bullets: [
+          "The WSi v5 Trial Recruitment Prediction project predicts how long a trial will take from its design inputs",
+          "The analyst supplies the missing planning context: what endpoints, eligibility criteria, and enrolment ranges are typical for the selected indication and phase",
+          "Together they separate the observed trial benchmark from the modelled duration estimate",
+        ],
+      },
+    ],
+    links: {
+      live: WS21_APP_URL,
+      related: "/trial-recruitment",
+      relatedLabel: "View the duration predictor",
+    },
   },
   {
     id: "trial-recruitment-v1",

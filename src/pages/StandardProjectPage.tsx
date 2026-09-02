@@ -186,8 +186,8 @@
 // }
 
 
-import { useParams } from 'react-router-dom';
-import { ExternalLink, FileText, Github } from 'lucide-react';
+import { Link, useParams } from 'react-router-dom';
+import { ArrowRight, ExternalLink, FileText, Github } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
@@ -250,7 +250,8 @@ export function StandardProjectPage() {
         {(project.links.pdf ||
           project.links.posterPdf ||
           project.links.live ||
-          project.links.repo) && (
+          project.links.repo ||
+          project.links.related) && (
           <div className="flex flex-wrap gap-3">
             {project.links.pdf && (
               <a
@@ -295,6 +296,15 @@ export function StandardProjectPage() {
                 <Github className="w-4 h-4" />
                 View code
               </a>
+            )}
+            {project.links.related && (
+              <Link
+                to={project.links.related}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-zinc-800 text-slate-900 dark:text-zinc-100 rounded-lg hover:bg-slate-200 dark:hover:bg-zinc-700 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4" />
+                {project.links.relatedLabel ?? 'View related project'}
+              </Link>
             )}
           </div>
         )}
