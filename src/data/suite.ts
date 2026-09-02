@@ -62,7 +62,7 @@ export const suite: SuiteProduct[] = [
     name: 'Dove',
     role: 'Clinical trial planning',
     audience: 'clinical development and trial-planning teams',
-    job: 'Benchmarks observed trial design and enrolment for supported indication-phase cells, then adds a modelled duration estimate. Thin evidence returns a refusal.',
+    job: 'Reports the endpoints, eligibility criteria and enrolment seen in comparable trials, then adds a modelled duration estimate.',
     status: WS21_APP_URL ? 'Live' : 'Preview',
     href: '/projects?suite=D',
     madeOf: ['trial-recruitment', 'clinical-trial-analyst'],
