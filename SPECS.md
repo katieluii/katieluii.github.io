@@ -148,3 +148,73 @@ Read the optional URL from Vite environment metadata in `src/data/projects.ts`. 
 - [x] case: environment on -> WS21 is `Live` and resolves to `http://127.0.0.1:8021`.
 - [x] case: environment off -> WS21 is `WIP` and contains no localhost URL.
 - [x] case: flagship cell request -> endpoints, criteria, enrolment, and duration all answer.
+
+## Public WS21 application route   [id: public-ws21-application-route · date: 2026-09-02 · status: approved]
+
+### 1. Goal & Why
+
+Make the public Clinical Trial Analyst project open the real interactive WS21
+application. The prose-only fallback hides the product Katie reviewed: endpoints,
+eligibility criteria, enrolment range and Duration.
+
+### 2. Context
+
+The portfolio already supports `VITE_WS21_APP_URL`, but the public build leaves it
+unset because the WS21 Railway service has not started successfully. GitHub Pages
+cannot execute the FastAPI backend or serve WS21's 9,411 precomputed API answers by
+itself. The existing deployment contract is therefore: repair WS21 on Railway,
+verify a real answer, configure the verified URL in the portfolio build, and retain
+the prose page only as an outage fallback.
+
+### 3. Requirements (EARS)
+
+1. THE SYSTEM SHALL expose the complete WS21 interface at a public HTTPS URL.
+2. WHEN a user opens the Clinical Trial Analyst project from Dove, THE SYSTEM SHALL take the user to the complete WS21 interface.
+3. WHEN the WS21 interface answers a supported cell, THE SYSTEM SHALL show endpoints, eligibility criteria, enrolment range and WSi v5 Duration.
+4. IF the deployed WS21 backend cannot answer the flagship cell, THEN THE SYSTEM SHALL retain the portfolio fallback and SHALL NOT label the application Live.
+5. WHILE the public app URL is configured, THE SYSTEM SHALL exclude localhost URLs from the production bundle.
+
+### 4. Acceptance Criteria
+
+- [x] The WS21 Railway deployment completes successfully.
+- [x] `/api/health` reports precomputed mode, matching fingerprints, WSi `4efab3d`, 1,547 cells and 9,411 answers.
+- [x] P3 Oncology/Solid Tumours returns all four answer cards, including Duration 40.5 months with a 25.0-56.1 month interval.
+- [x] The portfolio production build contains the verified HTTPS URL and no localhost WS21 URL.
+- [ ] Opening Dove's Clinical Trial Analyst project reaches the interactive application rather than the prose-only page.
+
+### 5. Out of Scope
+
+- Rewriting the WS21 interface in React inside the portfolio.
+- Duplicating the 105 MB answer artifact in GitHub Pages.
+- Changing WSi v5, the WS21 evidence model, or the four answer contracts.
+- Calling the deployment Live before a real supported cell answers publicly.
+
+### 6. Open Questions
+
+None. Katie explicitly confirmed the public project should expose the built WS21
+application, not the metadata fallback.
+
+### 7. Implementation Notes
+
+Repair the existing `ws21-clinical-trial-analyst` Railway service first. Prefer
+the existing precomputed deployment contract over a second hosting architecture.
+After verification, set the portfolio production build's `VITE_WS21_APP_URL` to
+the public HTTPS URL and promote the exact tested commit to `main`.
+
+### 8. Eval Stub
+
+- success criteria: exact public health stamp, field presence on a real cell, exact Duration values, HTTPS link in the built portfolio, and zero localhost URLs.
+- [x] case: public `/api/health` -> precomputed, fingerprints match, zero gaps.
+- [x] case: public flagship cell -> endpoints, criteria, enrolment and Duration objects are present.
+- [x] case: public portfolio bundle -> verified WS21 HTTPS URL present, `127.0.0.1:8021` absent.
+- [ ] case: public Dove click -> interactive WS21 application loads.
+
+### Implementation Prompt
+
+```xml
+<role>You are repairing and publishing the existing WS21 Clinical Trial Analyst application.</role>
+<context>WS21 already serves a complete frontend and 9,411 precomputed answers through FastAPI. The portfolio already accepts VITE_WS21_APP_URL. The current public route is a prose fallback because Railway has no verified running WS21 deployment.</context>
+<task>Diagnose and repair the existing Railway service, verify health plus a real flagship answer, configure the verified HTTPS URL in the portfolio production build, and publish the exact tested portfolio commit.</task>
+<acceptance_criteria>The public app exposes all four WS21 answer cards; health stamps WSi 4efab3d with matching fingerprints and zero gaps; the portfolio routes Clinical Trial Analyst to that app and contains no localhost URL.</acceptance_criteria>
+<constraints>Reuse the existing precomputed serving contract. Keep the prose page as the fail-closed fallback. Preserve the WSi v5 and WS21 answer contracts.</constraints>
+```

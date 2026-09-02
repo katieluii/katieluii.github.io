@@ -1,14 +1,39 @@
 # Project Memory State
 
 ## Current Context
-`kl-portfolio` is the public portfolio site. The Clinical News page fetches data from the Railway WS3 backend; `main` is at `97ff553`, which includes the Monday empty-state fix.
+
+`katieluii.github.io` is the public portfolio. Branch
+`claude/ws21-project-card`, `origin/main`, and the deployed GitHub Pages build
+all point to `2af1a7f` as of 2026-09-02. A production workflow change now sets
+the verified WS21 Railway URL and is ready to publish. The worktree's only
+untracked path is `node_modules/`.
 
 ## Completed
-Updated `src/pages/ClinicalNewsMon.tsx` so an empty current-week Monday feed says the daily refresh may not yet have run. The message only appears when there are no unfiltered articles, preventing it from masking an empty result caused by filters. `npm run typecheck` and `npm run build` passed. The fix and state record are pushed to `origin/main`. On 2026-09-02, the live WS3 API was confirmed healthy (947 stored articles and fresh 1 September coverage).
+
+- Preserved the existing Clinical News Monday empty-state work from `main`.
+- Added Clinical Trial Analyst as a separate project under Dove, beside Trial
+  Recruitment Prediction. The card identifies WSi v5 and its 80% interval,
+  links to the related predictor, and falls back to an internal WIP detail page
+  when `VITE_WS21_APP_URL` is absent.
+- `npm run typecheck` and the production build passed before and after rebasing
+  onto the latest `origin/main`.
+- GitHub Pages run `33622770476` passed. Public bundle
+  `index-DaWnzdvu.js` was read back and contains both Dove project ids and the
+  WSi v5 copy.
+- WS21 is live at
+  `https://ws21-clinical-trial-analyst-production.up.railway.app`; health proves
+  matching fingerprints, WSi `4efab3d`, 1,547 cells, 9,411 answers and zero
+  gaps. A production build with that URL passed typecheck, 28 gate tests and
+  the Atlas build gate, and contains no localhost URL.
 
 ## Known Issues
-The repository has unrelated modified/generated Atlas files and an `.AI_STATE.md.cas.lock` file; leave them untouched. WS3 refresh cadence and public endpoint hardening remain Pending Katie decisions in the project tracker.
+
+- `node_modules/` is untracked in this worktree and must not be committed.
+- WS3 refresh cadence and public endpoint hardening remain separate Pending
+  Katie decisions in the project tracker.
 
 ## Exact Next Steps
-1. Restart Codex to apply the scoped GitHub/Slack network configuration; if access remains blocked, inspect the managed workspace policy.
-2. Do not change WS3 refresh cadence or endpoint access without Katie's decision.
+
+1. Publish the workflow change to `main`, wait for GitHub Pages, and verify the
+   public Dove card opens the full WS21 interface.
+2. Keep the WS3 Pending Katie decisions separate from this card.

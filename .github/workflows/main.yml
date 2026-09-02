@@ -21,6 +21,8 @@ concurrency:
 jobs:                                                                                                    
   build:                                                  
     runs-on: ubuntu-latest                                                                             
+    env:
+      VITE_WS21_APP_URL: https://ws21-clinical-trial-analyst-production.up.railway.app
     steps:
       # Build the branch tip, not the triggering SHA. When called from
       # refresh-13f.yml the triggering SHA predates the data commit that job
