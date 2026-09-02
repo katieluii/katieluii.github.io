@@ -3,10 +3,10 @@
 ## Current Context
 
 `katieluii.github.io` is the public portfolio. Branch
-`claude/ws21-project-card`, `origin/main`, and the deployed GitHub Pages build
-all point to `2af1a7f` as of 2026-09-02. A production workflow change now sets
-the verified WS21 Railway URL and is ready to publish. The worktree's only
-untracked path is `node_modules/`.
+`claude/ws21-project-card` and `origin/main` contain production commit
+`7805ae8` as of 2026-09-02. GitHub Pages run `33624892214` passed and deployed
+the verified WS21 Railway URL. The worktree's only untracked path is
+`node_modules/`.
 
 ## Completed
 
@@ -34,6 +34,4 @@ untracked path is `node_modules/`.
 
 ## Exact Next Steps
 
-1. Publish the workflow change to `main`, wait for GitHub Pages, and verify the
-   public Dove card opens the full WS21 interface.
-2. Keep the WS3 Pending Katie decisions separate from this card.
+1. Keep the WS3 Pending Katie decisions separate from this card.

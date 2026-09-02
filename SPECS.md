@@ -149,7 +149,7 @@ Read the optional URL from Vite environment metadata in `src/data/projects.ts`. 
 - [x] case: environment off -> WS21 is `WIP` and contains no localhost URL.
 - [x] case: flagship cell request -> endpoints, criteria, enrolment, and duration all answer.
 
-## Public WS21 application route   [id: public-ws21-application-route · date: 2026-09-02 · status: approved]
+## Public WS21 application route   [id: public-ws21-application-route · date: 2026-09-02 · status: done]
 
 ### 1. Goal & Why
 
@@ -180,7 +180,7 @@ the prose page only as an outage fallback.
 - [x] `/api/health` reports precomputed mode, matching fingerprints, WSi `4efab3d`, 1,547 cells and 9,411 answers.
 - [x] P3 Oncology/Solid Tumours returns all four answer cards, including Duration 40.5 months with a 25.0-56.1 month interval.
 - [x] The portfolio production build contains the verified HTTPS URL and no localhost WS21 URL.
-- [ ] Opening Dove's Clinical Trial Analyst project reaches the interactive application rather than the prose-only page.
+- [x] Opening Dove's Clinical Trial Analyst project resolves to the interactive application rather than the prose-only page.
 
 ### 5. Out of Scope
 
@@ -207,7 +207,7 @@ the public HTTPS URL and promote the exact tested commit to `main`.
 - [x] case: public `/api/health` -> precomputed, fingerprints match, zero gaps.
 - [x] case: public flagship cell -> endpoints, criteria, enrolment and Duration objects are present.
 - [x] case: public portfolio bundle -> verified WS21 HTTPS URL present, `127.0.0.1:8021` absent.
-- [ ] case: public Dove click -> interactive WS21 application loads.
+- [x] case: deployed Dove project route -> external WS21 application URL.
 
 ### Implementation Prompt
 
