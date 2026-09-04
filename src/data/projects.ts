@@ -88,14 +88,14 @@ export const projects: Project[] = [
   {
     id: "trial-recruitment",
     slug: "trial-recruitment-prediction",
-    title: "ML-driven Trial Recruitment Prediction",
+    title: "ML-based Trial Duration Predictor",
     themes: ["AI/ML & Automation", "Biotech/Biopharma Strategy"],
     status: "Live",
     yearStart: 2024,
     yearEnd: 2026,
-    summary: "Predicts clinical trial duration, split into recruiting time and follow-up, with calibrated intervals. Rebuilt from a v1 that scored worse than a median lookup table.",
-    longDescription: "This project builds a phase-specific ML workflow to predict how long a clinical trial will take to reach primary completion, used as a practical proxy for recruitment rate. Using ClinicalTrials.gov data enriched with AACT, I engineered operational and design features (e.g, endpoints, arms, sites, region, therapeutic area) and benchmarked multiple non-linear models to support more scalable, data-driven feasibility estimates. Attached report has been redacted to prevent disclosure of proprietary information.",
-    tags: ["ML", "Python", "LightGBM", "FastAPI", "ClinicalTrials.gov", "AACT"],
+    summary: "Predicts time from study start to primary completion with a random-forest point estimate and calibrated interval, plus a separate recruitment-rate model.",
+    longDescription: "A phase-specific clinical trial duration predictor built from ClinicalTrials.gov and AACT data. Across five versions, I tested random forest, LightGBM quantile and two-stage approaches against the same mature holdout. The live model uses a refit random-forest point estimate with a forest-shaped split-conformal interval; a separate record-history model estimates recruitment rate in patients per centre per month.",
+    tags: ["ML", "Python", "Random Forest", "Conformal Prediction", "FastAPI", "ClinicalTrials.gov", "AACT"],
     links: {
       live: "/trial-recruitment",
       pdf: "/pdfs/trial-ML-project.pdf"

@@ -18,7 +18,7 @@ export function TrialRecruitment() {
   }
 
   return (
-    <ProjectPageLayout title={project.title} subtitle="Predictive timelines for clinical trial recruitment.">
+    <ProjectPageLayout title={project.title} subtitle="Phase-specific estimates from study start to primary completion.">
       <div className="space-y-8">
         {/* Status + theme pills */}
         <div className="flex items-center gap-2 flex-wrap">
@@ -48,7 +48,7 @@ export function TrialRecruitment() {
         </div>
 
         {/* Description */}
-        <ProjectLead headline="Phase-specific trial duration prediction from ClinicalTrials.gov data.">
+        <ProjectLead headline="Trial duration prediction with calibrated uncertainty.">
           {project.longDescription || project.summary}
         </ProjectLead>
         <p className="text-sm text-slate-500 dark:text-zinc-500 leading-6">

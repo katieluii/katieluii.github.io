@@ -8,7 +8,7 @@ import { Pill } from './Pill';
  *
  * Page slimmed 2026-08-31 on Katie's direction: the version-by-version narrative,
  * v4 change notes, methodological note and limitations table were removed from the
- * page. The full record of what each version was (v1 to v4, where v4 was previously
+ * page. The full record of what each version was (v1 to v5, where v4 was previously
  * labelled v3.1) is archived in the model repo:
  * recruitment_rate_app/docs/VERSION_HISTORY.md. Do not re-derive it from git.
  *
@@ -57,18 +57,15 @@ const BEST = Object.fromEntries(
 ) as Record<PhaseKey, { mae: number; r2: number }>;
 
 /**
- * Recruitment-rate estimate: the typical observed rate per phase (median over trials
- * starting 2018–2020, the same mature window as the results fold) beside the served
- * model's MAE on that fold. The full served-rate validation (lookup baseline, skill,
- * coverage; ledger rows 372/382–384) remains in published_metrics.json.
+ * Separate record-history recruitment-rate model. Values mirror the validated
+ * P1/P2/P3 artifacts; P1HV has no released rate head.
  */
-type SimpleRateRow = { phase: string; typical: string; medae: string; mae: string };
+type SimpleRateRow = { phase: string; training: string; factorError: string; coverage: string };
 
 const RATE_ROWS: SimpleRateRow[] = [
-  { phase: 'Phase 1 HV', typical: '11.1', medae: '5.1', mae: '20.42' },
-  { phase: 'Phase 1', typical: '1.9', medae: '0.9', mae: '11.75' },
-  { phase: 'Phase 2', typical: '0.6', medae: '0.2', mae: '3.76' },
-  { phase: 'Phase 3', typical: '0.7', medae: '0.3', mae: '10.39' },
+  { phase: 'Phase 1', training: '1,107', factorError: '1.54×', coverage: '81.8%' },
+  { phase: 'Phase 2', training: '1,280', factorError: '1.55×', coverage: '88.4%' },
+  { phase: 'Phase 3', training: '1,248', factorError: '1.59×', coverage: '82.9%' },
 ];
 
 const thBase =
@@ -231,47 +228,42 @@ export function TrialPredictorVersions() {
       {/* Recruitment-rate estimate */}
       <section className="space-y-4">
         <div className="space-y-1">
-          <SectionHeading>Recruitment-rate estimate</SectionHeading>
+          <SectionHeading>Separate recruitment-rate model</SectionHeading>
           <p className="text-xs text-slate-500 dark:text-zinc-500">
-            Derived output, reconstructed rather than directly observed. Patients per site per
-            month.
+            Estimated in patients per centre per month from completed-trial record histories.
           </p>
         </div>
         <p className="text-sm text-slate-600 dark:text-zinc-400 leading-6">
-          The rate is derived from the predicted duration as enrolment ÷ (sites × recruiting
-          window), so it cannot disagree with the duration estimate. Small healthy-volunteer
-          studies recruit fastest by an order of magnitude; large multi-site Phase 2–3 efficacy
-          trials spread a few patients across many sites, which is why their per-site rates sit
-          below one patient a month.
+          This estimate is independent of the duration model. It uses final actual enrolment,
+          initiated centres and the interval during which the trial was recorded as recruiting.
+          Phase 1 healthy-volunteer trials do not yet have a released rate model.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-sm border-collapse table-fixed">
             <thead>
               <tr className="border-b border-slate-200 dark:border-zinc-700">
                 <th className={`${thBase} text-left pl-0 pr-4 w-[28%]`}>Phase</th>
-                <th className={`${thBase} text-right w-[24%]`}>Typical rate (median)</th>
-                <th className={`${thBase} text-right w-[24%]`}>Typical error (median)</th>
-                <th className={`${thBase} text-right w-[24%]`}>MAE</th>
+                <th className={`${thBase} text-right w-[24%]`}>Training trials</th>
+                <th className={`${thBase} text-right w-[24%]`}>Median factor error</th>
+                <th className={`${thBase} text-right w-[24%]`}>80% interval coverage</th>
               </tr>
             </thead>
             <tbody>
               {RATE_ROWS.map(r => (
                 <tr key={r.phase} className="border-b border-slate-100 dark:border-zinc-800">
                   <td className="py-2 pl-0 pr-4 text-slate-700 dark:text-zinc-300">{r.phase}</td>
-                  <td className="py-2 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.typical}</td>
-                  <td className="py-2 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.medae}</td>
-                  <td className="py-2 px-2 text-right tabular-nums text-slate-600 dark:text-zinc-400">{r.mae}</td>
+                  <td className="py-2 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.training}</td>
+                  <td className="py-2 px-2 text-right tabular-nums text-slate-900 dark:text-zinc-100">{r.factorError}</td>
+                  <td className="py-2 px-2 text-right tabular-nums text-slate-600 dark:text-zinc-400">{r.coverage}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-500 leading-5">
-          Typical rate = median observed rate over trials starting 2018–2020, the same window as
-          the results fold. Typical error = median absolute error of the served estimate on that
-          fold; MAE is the mean absolute error. Rates are heavily right-skewed (Phase 3: median
-          0.7, mean 15, 95th percentile 77), so a few very fast trials dominate the mean and pull
-          MAE far above the error a typical trial sees.
+          Validation trains on starts before 2021 and tests 2021–2022 starts. Listed centres are
+          treated as active throughout the recorded recruiting interval, so the result is a
+          planning estimate rather than observed performance for each centre.
         </p>
       </section>
 
