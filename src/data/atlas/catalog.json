@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "evaluated_at": "2026-09-03",
+  "therapeutic_areas": [
+    {
+      "id": "Oncology",
+      "description": "Solid and haematologic malignancies"
+    },
+    {
+      "id": "Metabolic",
+      "description": "Obesity and cardiometabolic disease"
+    },
+    {
+      "id": "Neurology",
+      "description": "Neurodegenerative and neuropsychiatric disease"
+    },
+    {
+      "id": "Autoimmune and Inflammation",
+      "description": "Immune-mediated inflammatory disease"
+    }
+  ],
+  "indications": [
+    {
+      "id": "aml_mds",
+      "name": "Acute myeloid leukaemia and myelodysplastic syndromes",
+      "short_name": "AML / MDS",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "AML",
+        "MDS"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "breast",
+      "name": "Breast cancer",
+      "short_name": "Breast",
+      "therapeutic_area": "Oncology",
+      "aliases": [],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "crc",
+      "name": "Colorectal cancer",
+      "short_name": "Colorectal",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "CRC"
+      ],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "summary",
+        "artifacts": [
+          {
+            "slug": "crc"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-03",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "hcc",
+      "name": "Hepatocellular carcinoma",
+      "short_name": "HCC",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "hepatocellular cancer"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "melanoma",
+      "name": "Melanoma",
+      "short_name": "Melanoma",
+      "therapeutic_area": "Oncology",
+      "aliases": [],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "mm",
+      "name": "Multiple myeloma",
+      "short_name": "Multiple Myeloma",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "MM"
+      ],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "full",
+        "artifacts": [
+          {
+            "slug": "mm"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-03",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "nhl_dlbcl",
+      "name": "Non-Hodgkin lymphoma",
+      "short_name": "NHL / DLBCL",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "NHL",
+        "DLBCL"
+      ],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "summary",
+        "artifacts": [
+          {
+            "slug": "nhl_dlbcl"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-03",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "nsclc",
+      "name": "Non-small cell lung cancer",
+      "short_name": "NSCLC",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "non-small cell lung cancer"
+      ],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-03",
+        "evidence_through": "2026-06-15",
+        "mode": "full",
+        "artifacts": [
+          {
+            "slug": "nsclc"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-06-05",
+        "mode": "none",
+        "artifacts": [
+          {
+            "slug": "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05",
+            "title": "1L all-comer bispecific vs PD-1 + chemotherapy"
+          },
+          {
+            "slug": "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05",
+            "title": "Adjuvant EGFR-mutant disease after ADAURA"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ovarian",
+      "name": "Ovarian cancer",
+      "short_name": "Ovarian",
+      "therapeutic_area": "Oncology",
+      "aliases": [],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "prostate",
+      "name": "Prostate cancer",
+      "short_name": "Prostate",
+      "therapeutic_area": "Oncology",
+      "aliases": [],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "urothelial",
+      "name": "Urothelial carcinoma",
+      "short_name": "Urothelial",
+      "therapeutic_area": "Oncology",
+      "aliases": [
+        "bladder cancer"
+      ],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "summary",
+        "artifacts": [
+          {
+            "slug": "urothelial"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "mash",
+      "name": "Metabolic dysfunction-associated steatohepatitis",
+      "short_name": "MASH",
+      "therapeutic_area": "Metabolic",
+      "aliases": [
+        "NASH"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "obesity",
+      "name": "Obesity",
+      "short_name": "Obesity",
+      "therapeutic_area": "Metabolic",
+      "aliases": [],
+      "landscape": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "full",
+        "artifacts": [
+          {
+            "slug": "obesity"
+          }
+        ]
+      },
+      "tpp": {
+        "status": "published_snapshot",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-06-05",
+        "mode": "none",
+        "artifacts": [
+          {
+            "slug": "tpp_obesity_1L_injectable_bmi30_2026-06-05",
+            "title": "1L injectable therapy in BMI ≥30 kg/m²"
+          },
+          {
+            "slug": "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05",
+            "title": "Paediatric obesity after STEP TEENS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "t1d",
+      "name": "Type 1 diabetes",
+      "short_name": "Type 1 diabetes",
+      "therapeutic_area": "Metabolic",
+      "aliases": [
+        "T1D"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "planned",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "alzheimers",
+      "name": "Alzheimer’s disease",
+      "short_name": "Alzheimer’s",
+      "therapeutic_area": "Neurology",
+      "aliases": [
+        "Alzheimer disease"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "als",
+      "name": "Amyotrophic lateral sclerosis",
+      "short_name": "ALS",
+      "therapeutic_area": "Neurology",
+      "aliases": [
+        "motor neurone disease"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "ms",
+      "name": "Multiple sclerosis",
+      "short_name": "Multiple sclerosis",
+      "therapeutic_area": "Neurology",
+      "aliases": [
+        "MS"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "parkinsons",
+      "name": "Parkinson’s disease",
+      "short_name": "Parkinson’s",
+      "therapeutic_area": "Neurology",
+      "aliases": [
+        "Parkinson disease"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "treatment_resistant_depression",
+      "name": "Treatment-resistant depression",
+      "short_name": "Treatment-resistant depression",
+      "therapeutic_area": "Neurology",
+      "aliases": [
+        "TRD"
+      ],
+      "landscape": {
+        "status": "planned",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "planned",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "atopic_dermatitis",
+      "name": "Atopic dermatitis",
+      "short_name": "Atopic dermatitis",
+      "therapeutic_area": "Autoimmune and Inflammation",
+      "aliases": [
+        "AD"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "psoriasis",
+      "name": "Psoriasis",
+      "short_name": "Psoriasis",
+      "therapeutic_area": "Autoimmune and Inflammation",
+      "aliases": [],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "rheumatoid_arthritis",
+      "name": "Rheumatoid arthritis",
+      "short_name": "Rheumatoid arthritis",
+      "therapeutic_area": "Autoimmune and Inflammation",
+      "aliases": [
+        "RA"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "sle",
+      "name": "Systemic lupus erythematosus",
+      "short_name": "Systemic lupus erythematosus",
+      "therapeutic_area": "Autoimmune and Inflammation",
+      "aliases": [
+        "SLE"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "planned",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": null,
+        "mode": "none",
+        "artifacts": []
+      }
+    },
+    {
+      "id": "ulcerative_colitis",
+      "name": "Ulcerative colitis",
+      "short_name": "Ulcerative colitis",
+      "therapeutic_area": "Autoimmune and Inflammation",
+      "aliases": [
+        "UC"
+      ],
+      "landscape": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      },
+      "tpp": {
+        "status": "in_review",
+        "reviewed_on": "2026-09-04",
+        "evidence_through": "2026-09-04",
+        "mode": "none",
+        "artifacts": []
+      }
+    }
+  ]
+}

@@ -12,11 +12,22 @@ import {
   Users,
   EyeOff,
   ExternalLink,
+  ChevronDown,
+  ChevronRight,
 } from 'lucide-react';
 import { crossLinks, etlmIndex, tppIndex } from '../../data/atlas/index';
 import { themeShortLabel } from '../../data/atlas/taxonomy';
 import { listItemText } from '../../data/atlas/presentationProfile';
 import { labelText } from '../../data/atlas/labelText';
+import {
+  filterAssetGroups,
+  groupPipelineAssets,
+  TRIAL_STATUS_ORDER,
+  trialStatusLabel,
+  visibleTrials,
+  type AssetGroup,
+  type NormalizedTrialStatus,
+} from '../../data/atlas/pipelineAssets';
 
 const tppLabel = (slug: string) =>
   tppIndex.find((t) => t.slug === slug)?.segment ??
@@ -263,10 +274,15 @@ function previewSectionTotal(etlm: Record<string, unknown>, key: string): number
 function PreviewRowsFooter({ shown, total }: { shown: number; total: number | null }) {
   if (total === null || !(total > shown)) return null;
   return (
-    <p className="mt-3 border-t border-dashed border-zinc-300 pt-2 text-[11px] leading-relaxed text-zinc-500 dark:border-white/15 dark:text-zinc-400">
-      Showing the top {shown} of {total} entries — the remaining {total - shown} are withheld from
-      this preview.
-    </p>
+    <div className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1 border-t border-dashed border-zinc-300 pt-2 text-[11px] text-zinc-500 dark:border-white/15 dark:text-zinc-400">
+      <EyeOff className="h-3 w-3" aria-hidden="true" />
+      <span className="font-medium text-zinc-700 dark:text-zinc-300">Preview coverage</span>
+      <span>{shown} shown</span>
+      <span aria-hidden="true">·</span>
+      <span>{total} total</span>
+      <span aria-hidden="true">·</span>
+      <span>{total - shown} withheld</span>
+    </div>
   );
 }
 
@@ -527,7 +543,7 @@ function ApprovedTherapies({
 }
 
 type SortDir = 'asc' | 'desc';
-type SortKey = 'asset_name' | 'population' | 'company' | 'modality' | 'target' | 'phase' | 'status' | 'trial_name' | 'estimated_readout';
+type SortKey = 'assetName' | 'population' | 'company' | 'modality' | 'target' | 'phase' | 'status';
 
 const PHASE_ORDER: Record<string, number> = {
   'Phase 1': 1, 'Phase 1/2': 2, 'Phase 2': 3, 'Phase 2/3': 4, 'Phase 3': 5, 'NDA/BLA': 6, 'Approved': 7,
@@ -544,6 +560,22 @@ function phasePill(phase: string) {
   return 'bg-zinc-100 text-zinc-600 dark:bg-white/10 dark:text-zinc-300 ring-zinc-300/50 dark:ring-white/10';
 }
 
+function compactPhaseLabel(phase: string): string {
+  return phase.replace(/^Phase\s*/i, 'Ph').replace(/\s*\/\s*/g, '/');
+}
+
+function statusPill(status: NormalizedTrialStatus) {
+  if (status === 'RECRUITING' || status === 'ENROLLING_BY_INVITATION')
+    return 'bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30';
+  if (status === 'ACTIVE_NOT_RECRUITING' || status === 'NOT_YET_RECRUITING')
+    return 'bg-sky-50 text-sky-700 ring-sky-600/20 dark:bg-sky-500/10 dark:text-sky-300 dark:ring-sky-500/30';
+  if (status === 'COMPLETED')
+    return 'bg-indigo-50 text-indigo-700 ring-indigo-600/20 dark:bg-indigo-500/10 dark:text-indigo-300 dark:ring-indigo-500/30';
+  if (status === 'CONFLICTING' || status.startsWith('UNKNOWN'))
+    return 'bg-amber-50 text-amber-800 ring-amber-600/20 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-amber-500/30';
+  return 'bg-zinc-100 text-zinc-600 ring-zinc-300/50 dark:bg-white/10 dark:text-zinc-300 dark:ring-white/10';
+}
+
 function PipelineAssets({
   data,
   indicationCode,
@@ -558,28 +590,41 @@ function PipelineAssets({
   const linkedTpps = crossLinks.etlm_to_tpps?.[indicationCode] ?? [];
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDir, setSortDir] = useState<SortDir>('asc');
+  const [selectedStatuses, setSelectedStatuses] = useState<NormalizedTrialStatus[]>([]);
+  const [expandedAssets, setExpandedAssets] = useState<Set<string>>(new Set());
+  const [showAllChildTrials, setShowAllChildTrials] = useState<Set<string>>(new Set());
 
   const rows = data.filter(isObj);
+  const assetGroups = groupPipelineAssets(rows, indicationCode);
+  const selectedStatusSet = new Set(selectedStatuses);
+  const filteredGroups = filterAssetGroups(assetGroups, selectedStatusSet);
+  const filteredTrialCount = filteredGroups.reduce(
+    (sum, group) => sum + visibleTrials(group, selectedStatusSet).length,
+    0,
+  );
+  const availableStatuses = TRIAL_STATUS_ORDER.filter((status) =>
+    assetGroups.some((group) => group.statuses.includes(status)),
+  );
 
   const sorted = sortKey
-    ? [...rows].sort((a, b) => {
+    ? [...filteredGroups].sort((a, b) => {
         let av: string | number = '';
         let bv: string | number = '';
         if (sortKey === 'phase') {
-          av = PHASE_ORDER[String(a.phase ?? '')] ?? 0;
-          bv = PHASE_ORDER[String(b.phase ?? '')] ?? 0;
-        } else if (sortKey === 'population') {
-          av = String(a.population ?? a.indication_subtype ?? '').toLowerCase();
-          bv = String(b.population ?? b.indication_subtype ?? '').toLowerCase();
+          av = PHASE_ORDER[a.phase] ?? 0;
+          bv = PHASE_ORDER[b.phase] ?? 0;
+        } else if (sortKey === 'status') {
+          av = a.statuses.join('|');
+          bv = b.statuses.join('|');
         } else {
-          av = String(a[sortKey] ?? '').toLowerCase();
-          bv = String(b[sortKey] ?? '').toLowerCase();
+          av = a[sortKey].toLowerCase();
+          bv = b[sortKey].toLowerCase();
         }
         if (av < bv) return sortDir === 'asc' ? -1 : 1;
         if (av > bv) return sortDir === 'asc' ? 1 : -1;
         return 0;
       })
-    : rows;
+    : filteredGroups;
 
   const { shown, hiddenCount, expanded, toggle } = useShowMore(sorted, 12);
 
@@ -591,6 +636,33 @@ function PipelineAssets({
       setSortKey(key);
       setSortDir('asc');
     }
+  }
+
+  function toggleStatus(status: NormalizedTrialStatus) {
+    setSelectedStatuses((current) =>
+      current.includes(status)
+        ? current.filter((item) => item !== status)
+        : [...current, status],
+    );
+    setShowAllChildTrials(new Set());
+  }
+
+  function toggleAsset(assetId: string) {
+    setExpandedAssets((current) => {
+      const next = new Set(current);
+      if (next.has(assetId)) next.delete(assetId);
+      else next.add(assetId);
+      return next;
+    });
+  }
+
+  function toggleAllChildTrials(assetId: string) {
+    setShowAllChildTrials((current) => {
+      const next = new Set(current);
+      if (next.has(assetId)) next.delete(assetId);
+      else next.add(assetId);
+      return next;
+    });
   }
 
   function SortTh({ col, label, className }: { col: SortKey; label: string; className?: string }) {
@@ -611,79 +683,114 @@ function PipelineAssets({
       <SectionHeader
         icon={TestTube}
         title="Pipeline assets"
-        subtitle="Phase 2/3 programs and key catalysts"
-        count={totalRows ?? rows.length}
+        subtitle="Clinical-stage assets across all trial recruitment statuses"
+        count={assetGroups.length}
       />
+      <div className="mb-3 rounded-xl border border-zinc-200 bg-zinc-50/60 p-3 dark:border-white/10 dark:bg-white/[0.03]">
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <p className="text-xs text-zinc-600 dark:text-zinc-300">
+            {totalRows !== null && totalRows !== undefined ? (
+              <>
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  {filteredGroups.length} preview {filteredGroups.length === 1 ? 'asset' : 'assets'}
+                </span>{' '}
+                · {filteredTrialCount} of {totalRows} asset–trial records shown
+              </>
+            ) : (
+              <>
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  {filteredGroups.length} of {assetGroups.length} assets
+                </span>{' '}
+                · {rows.length} asset–trial records loaded
+              </>
+            )}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-1.5" aria-label="Filter assets by trial recruitment status">
+          <button
+            type="button"
+            aria-pressed={selectedStatuses.length === 0}
+            onClick={() => {
+              setSelectedStatuses([]);
+              setShowAllChildTrials(new Set());
+            }}
+            className={`rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 transition-colors ${
+              selectedStatuses.length === 0
+                ? 'bg-zinc-900 text-white ring-zinc-900 dark:bg-white dark:text-zinc-900 dark:ring-white'
+                : 'bg-white text-zinc-600 ring-zinc-200 hover:text-zinc-900 dark:bg-white/5 dark:text-zinc-300 dark:ring-white/10'
+            }`}
+          >
+            All statuses
+          </button>
+          {availableStatuses.map((status) => {
+            const active = selectedStatuses.includes(status);
+            const count = assetGroups.filter((group) => group.statuses.includes(status)).length;
+            return (
+              <button
+                key={status}
+                type="button"
+                aria-pressed={active}
+                onClick={() => toggleStatus(status)}
+                className={`rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 transition-colors ${
+                  active
+                    ? statusPill(status)
+                    : 'bg-white text-zinc-600 ring-zinc-200 hover:text-zinc-900 dark:bg-white/5 dark:text-zinc-300 dark:ring-white/10'
+                }`}
+              >
+                {trialStatusLabel(status)} {count}
+              </button>
+            );
+          })}
+        </div>
+      </div>
       <div className="overflow-x-auto rounded-xl ring-1 ring-zinc-200 dark:ring-white/10">
         <table className="w-full text-xs border-collapse">
           <thead>
             <tr>
-              <SortTh col="asset_name" label="Asset" />
+              <SortTh col="assetName" label="Asset" />
               <SortTh col="population" label="Population" />
-              <SortTh col="company" label="Company" className="hidden sm:table-cell" />
+              <SortTh col="company" label="Company / sponsor" className="hidden sm:table-cell" />
               <SortTh col="modality" label="Modality" className="hidden md:table-cell" />
               <SortTh col="target" label="Target" className="hidden md:table-cell" />
               <SortTh col="phase" label="Phase" />
-              <SortTh col="status" label="Status" className="hidden lg:table-cell" />
-              <SortTh col="trial_name" label="Trial" className="hidden lg:table-cell" />
-              <th className="px-3 py-2 text-left text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-white/10 whitespace-nowrap">
-                NCT
+              <SortTh col="status" label="Trial status" className="hidden lg:table-cell" />
+              <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-white/10 whitespace-nowrap">
+                Trials
               </th>
-              <SortTh col="estimated_readout" label="Readout" className="hidden sm:table-cell" />
             </tr>
           </thead>
           <tbody>
-            {shown.map((entry, i) => {
-              const phase = String(entry.phase ?? '—');
+            {shown.map((group, i) => {
+              const phase = group.phase;
+              const isExpanded = expandedAssets.has(group.id);
+              const detailId = `asset-trials-${group.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+              const matchingTrials = visibleTrials(group, selectedStatusSet);
+              const detailTrials = showAllChildTrials.has(group.id) ? group.trials : matchingTrials;
               return (
-                <tr
-                  key={i}
-                  className={`border-b border-zinc-100 dark:border-white/5 hover:bg-zinc-50/80 dark:hover:bg-white/5 ${i % 2 === 1 ? 'bg-zinc-50/40 dark:bg-white/[0.02]' : ''}`}
-                >
-                  <td className="px-3 py-2.5 align-top">
-                    <div className="font-medium text-zinc-900 dark:text-zinc-100">
-                      {String(entry.asset_name ?? entry.drug_name ?? '—')}
-                    </div>
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 max-w-[180px]">
-                    {String(entry.population ?? entry.indication_subtype ?? '—')}
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
-                    {String(entry.company ?? entry.sponsor ?? '—')}
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden md:table-cell max-w-[180px]">
-                    <span title={String(entry.modality ?? '')}>
-                      {String(entry.modality ?? '—').slice(0, 40)}{String(entry.modality ?? '').length > 40 ? '…' : ''}
-                    </span>
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden md:table-cell">
-                    {String(entry.target ?? '—')}
-                  </td>
-                  <td className="px-3 py-2.5 align-top">
-                    <span className={`inline-block text-[10px] px-2 py-0.5 rounded-full ring-1 ${phasePill(phase)}`}>
-                      {phase}
-                    </span>
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-500 dark:text-zinc-400 hidden lg:table-cell whitespace-nowrap">
-                    {humanizeEnum(entry.status)}
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 hidden lg:table-cell">
-                    {String(entry.trial_name ?? '—')}
-                  </td>
-                  <td className="px-3 py-2.5 align-top">
-                    <NctLink nct={entry.nct ? String(entry.nct) : undefined} />
-                  </td>
-                  <td className="px-3 py-2.5 align-top text-zinc-500 dark:text-zinc-400 hidden sm:table-cell whitespace-nowrap">
-                    {String(entry.estimated_readout ?? '—')}
-                  </td>
-                </tr>
+                <AssetPipelineRows
+                  key={group.id}
+                  group={group}
+                  index={i}
+                  phase={phase}
+                  isExpanded={isExpanded}
+                  detailId={detailId}
+                  detailTrials={detailTrials}
+                  matchingTrialCount={matchingTrials.length}
+                  filtered={selectedStatuses.length > 0}
+                  showingAllChildTrials={showAllChildTrials.has(group.id)}
+                  onToggle={() => toggleAsset(group.id)}
+                  onToggleAllTrials={() => toggleAllChildTrials(group.id)}
+                />
               );
             })}
           </tbody>
         </table>
       </div>
       <ShowMore hiddenCount={hiddenCount} expanded={expanded} onClick={toggle} />
-      <PreviewRowsFooter shown={shown.length} total={totalRows ?? null} />
+      <PreviewRowsFooter
+        shown={shown.reduce((count, group) => count + group.trials.length, 0)}
+        total={totalRows ?? null}
+      />
       {linkedTpps.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
           Related TPPs in this preview:{' '}
@@ -701,6 +808,122 @@ function PipelineAssets({
         </div>
       )}
     </section>
+  );
+}
+
+function AssetPipelineRows({
+  group,
+  index,
+  phase,
+  isExpanded,
+  detailId,
+  detailTrials,
+  matchingTrialCount,
+  filtered,
+  showingAllChildTrials,
+  onToggle,
+  onToggleAllTrials,
+}: {
+  group: AssetGroup;
+  index: number;
+  phase: string;
+  isExpanded: boolean;
+  detailId: string;
+  detailTrials: AssetGroup['trials'];
+  matchingTrialCount: number;
+  filtered: boolean;
+  showingAllChildTrials: boolean;
+  onToggle: () => void;
+  onToggleAllTrials: () => void;
+}) {
+  return (
+    <>
+      <tr
+        className={`border-b border-zinc-100 dark:border-white/5 hover:bg-zinc-50/80 dark:hover:bg-white/5 ${index % 2 === 1 ? 'bg-zinc-50/40 dark:bg-white/[0.02]' : ''}`}
+      >
+        <td className="px-3 py-2.5 align-top">
+          <button
+            type="button"
+            aria-expanded={isExpanded}
+            aria-controls={detailId}
+            onClick={onToggle}
+            className="flex max-w-[240px] items-start gap-1.5 text-left font-medium text-zinc-900 hover:text-indigo-700 dark:text-zinc-100 dark:hover:text-indigo-300"
+          >
+            {isExpanded ? <ChevronDown className="mt-0.5 h-3.5 w-3.5 shrink-0" /> : <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0" />}
+            <span>
+              {group.assetName}
+              {!group.governed && (
+                <span className="mt-1 flex items-center gap-1 text-[10px] font-normal text-amber-700 dark:text-amber-300">
+                  <AlertTriangle className="h-3 w-3" /> Identity pending
+                </span>
+              )}
+            </span>
+          </button>
+        </td>
+        <td className="max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400">{group.population}</td>
+        <td className="hidden px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 sm:table-cell">{group.company}</td>
+        <td className="hidden max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">
+          <span title={group.modality}>{group.modality.slice(0, 40)}{group.modality.length > 40 ? '…' : ''}</span>
+        </td>
+        <td className="hidden px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">{group.target}</td>
+        <td className="px-3 py-2.5 align-top">
+          <span
+            title={phase}
+            className={`inline-block rounded-full px-2 py-0.5 text-[10px] ring-1 ${phasePill(phase)}`}
+          >
+            {compactPhaseLabel(phase)}
+          </span>
+        </td>
+        <td className="hidden px-3 py-2.5 align-top lg:table-cell">
+          <div className="flex max-w-[260px] flex-wrap gap-1">
+            {group.statuses.map((status) => (
+              <span key={status} className={`rounded-full px-2 py-0.5 text-[10px] ring-1 ${statusPill(status)}`}>
+                {trialStatusLabel(status)}
+              </span>
+            ))}
+          </div>
+        </td>
+        <td className="px-3 py-2.5 text-right align-top text-zinc-600 dark:text-zinc-300">{group.trials.length}</td>
+      </tr>
+      {isExpanded && (
+        <tr id={detailId} className="border-b border-zinc-200 bg-zinc-50/80 dark:border-white/10 dark:bg-white/[0.04]">
+          <td colSpan={8} className="px-4 py-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                Underlying trials · {detailTrials.length} shown
+              </p>
+              {filtered && matchingTrialCount < group.trials.length && (
+                <button type="button" onClick={onToggleAllTrials} className="text-[11px] font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400">
+                  {showingAllChildTrials ? 'Show matching trials' : `Show all ${group.trials.length} trials`}
+                </button>
+              )}
+            </div>
+            <div className="grid gap-2 lg:grid-cols-2">
+              {detailTrials.map((trial) => (
+                <div key={trial.relationId} className="rounded-lg border border-zinc-200 bg-white p-3 dark:border-white/10 dark:bg-zinc-950/40">
+                  <div className="mb-2 flex flex-wrap items-center gap-2">
+                    <span className={`rounded-full px-2 py-0.5 text-[10px] ring-1 ${statusPill(trial.normalizedStatus)}`}>
+                      {trialStatusLabel(trial.normalizedStatus)}
+                    </span>
+                    <span className="text-xs font-medium text-zinc-900 dark:text-zinc-100">{String(trial.row.trial_name ?? 'Unnamed trial')}</span>
+                  </div>
+                  <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[11px] text-zinc-600 dark:text-zinc-300">
+                    <dt className="text-zinc-400">Registry</dt><dd><NctLink nct={trial.row.nct ? String(trial.row.nct) : undefined} /></dd>
+                    <dt className="text-zinc-400">Population</dt><dd>{String(trial.row.population ?? trial.row.indication_subtype ?? '—')}</dd>
+                    <dt className="text-zinc-400">Phase</dt><dd>{String(trial.row.phase ?? '—')}</dd>
+                    <dt className="text-zinc-400">Readout</dt><dd>{String(trial.row.estimated_readout ?? '—')}</dd>
+                    <dt className="text-zinc-400">Source</dt><dd>{String(trial.row.source ?? '—')}</dd>
+                    {trial.rawStatus !== trialStatusLabel(trial.normalizedStatus) && (
+                      <><dt className="text-zinc-400">Raw status</dt><dd>{trial.rawStatus ?? 'Missing'}</dd></>
+                    )}
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </td>
+        </tr>
+      )}
+    </>
   );
 }
 
@@ -1499,7 +1722,7 @@ function ReportNav({ items, onJump }: { items: NavItem[]; onJump?: (id: string) 
   return (
     <nav
       aria-label="Sections"
-      className="sticky top-0 z-20 -mx-6 mb-8 border-b border-zinc-200 bg-white/85 px-6 py-1.5 backdrop-blur dark:border-white/10 dark:bg-zinc-950/80"
+      className="sticky top-0 z-20 mb-8 rounded-xl border border-zinc-200 bg-white/85 px-4 py-1.5 backdrop-blur dark:border-white/10 dark:bg-zinc-950/80"
     >
       {/* py-1 gives the pill ring vertical room — an overflow-x scroll box clips
           overflow-y, which was cutting off the top/bottom of the ring outline. */}
@@ -1903,6 +2126,8 @@ type SummaryRow = {
   title: string;
   count?: number;
   headline: string;
+  /** Clinical values stay blurred on previews; structural coverage copy does not. */
+  redactHeadline?: boolean;
 };
 
 /** Blur every numeric token in a string, for a redacted (summary-only) report.
@@ -1950,18 +2175,35 @@ function blurNumbers(text: string, redact: boolean): React.ReactNode {
  *  view" box already carries that sentence, and a reader arriving from it would
  *  otherwise read the same words twice. This says the one thing that box does
  *  not: how many rows of each shipped section are actually on this page. */
-function PreviewCapNotice({ rowsShown }: { rowsShown: number | null }) {
+function PreviewCapNotice({ etlm }: { etlm: Record<string, unknown> }) {
+  const counts = previewSectionCounts(etlm);
+  const approvedKeys = [
+    'approved_therapies_novel',
+    'approved_therapies_legacy',
+    'approved_therapies',
+  ].filter((key) => Array.isArray(etlm[key]));
+  const approvedShown = approvedKeys.reduce(
+    (sum, key) => sum + (etlm[key] as unknown[]).length,
+    0,
+  );
+  const approvedTotal = approvedKeys.reduce((sum, key) => sum + (counts[key] ?? 0), 0);
+  const pipelineShown = Array.isArray(etlm.pipeline_assets) ? etlm.pipeline_assets.length : 0;
+  const pipelineTotal = counts.pipeline_assets ?? 0;
   return (
-    <section className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/60 p-4 dark:border-amber-500/30 dark:bg-amber-500/5">
-      <div className="mb-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        {rowsShown === null ? 'Preview — top rows only' : `Preview — top ${rowsShown} rows per section`}
+    <section className="mb-6 rounded-xl border border-amber-300/70 bg-amber-50/60 px-4 py-3 dark:border-amber-500/30 dark:bg-amber-500/5">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-700 dark:text-zinc-300">
+        <EyeOff className="h-3.5 w-3.5 text-amber-700 dark:text-amber-400" aria-hidden="true" />
+        <span className="font-semibold text-zinc-900 dark:text-zinc-100">Preview coverage</span>
+        {approvedTotal > 0 && (
+          <span>{approvedShown} of {approvedTotal} approved therapies shown</span>
+        )}
+        {approvedTotal > 0 && pipelineTotal > 0 && <span aria-hidden="true">·</span>}
+        {pipelineTotal > 0 && (
+          <span>{pipelineShown} of {pipelineTotal} pipeline asset–trial records shown</span>
+        )}
       </div>
-      <p className="max-w-[72ch] text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
-        {rowsShown === null
-          ? 'Only the first few entries of each section are included here.'
-          : `Only the first ${rowsShown} entries of each section are included here.`}{' '}
-        Where a section names a total, that total is the full landscape map's count, not the number
-        of rows on this page.
+      <p className="mt-1 pl-6 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+        Other populated sections show their full-map totals while withholding all source rows.
       </p>
     </section>
   );
@@ -2010,7 +2252,7 @@ function ExecSummary({
         </div>
       </div>
       <ul className="divide-y divide-zinc-200/70 dark:divide-white/5">
-        {rows.map(({ key, icon: Icon, title, count, headline }) => {
+        {rows.map(({ key, icon: Icon, title, count, headline, redactHeadline = true }) => {
           const on = !!open[key];
           return (
             <li key={key}>
@@ -2024,12 +2266,12 @@ function ExecSummary({
                   {title}
                   {typeof count === 'number' ? (
                     <span className="ml-1 font-normal text-zinc-400 dark:text-zinc-500">
-                      {blurNumbers(String(count), redact)}
+                      {count}
                     </span>
                   ) : null}
                 </span>
                 <span className="flex-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
-                  {blurNumbers(String(headline ?? ''), redact)}
+                  {blurNumbers(String(headline ?? ''), redact && redactHeadline)}
                 </span>
                 <span className="shrink-0 text-xs text-zinc-400 transition-colors group-hover:text-zinc-600 dark:text-zinc-500 dark:group-hover:text-zinc-300">
                   {on ? '▾' : '▸'}
@@ -2194,21 +2436,40 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
   const navItems: NavItem[] = rendered.map(({ key }) => ({
     id: sectionId(key),
     label: navLabel(key),
-    count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
+    count:
+      etlm.detail_available === false && typeof withheldCounts[key] === 'number'
+        ? withheldCounts[key]
+        : Array.isArray(etlm[key])
+          ? (etlm[key] as unknown[]).length
+          : undefined,
   }));
 
-  const summaryRows: SummaryRow[] = rendered.map(({ key, withheld }) => ({
-    key,
-    icon: iconFor(key),
-    title: navLabel(key),
-    count: Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined,
-    // A withheld section has no rows for sectionHeadline() to describe, and its
-    // TRUE count must not travel through this row: ExecSummary blurs every digit
-    // when redact is on, and the true total is the one quantity a preview states
-    // openly. Keep the row digit-free and let the section itself print the
-    // number, unblurred.
-    headline: withheld ? 'Withheld from this preview' : sectionHeadline(key, etlm),
-  }));
+  const summaryRows: SummaryRow[] = rendered.map(({ key, withheld }) => {
+    const shown = Array.isArray(etlm[key]) ? (etlm[key] as unknown[]).length : undefined;
+    const total =
+      etlm.detail_available === false && typeof withheldCounts[key] === 'number'
+        ? withheldCounts[key]
+        : shown;
+    const isApproved = key.startsWith('approved_therapies');
+    const isPipeline = key === 'pipeline_assets';
+    const structuralPreview = etlm.detail_available === false && (isApproved || isPipeline);
+
+    let headline = withheld ? 'Withheld from this preview' : sectionHeadline(key, etlm);
+    if (structuralPreview && typeof total === 'number' && typeof shown === 'number') {
+      headline = isPipeline
+        ? `${total} asset–trial records in the full map · ${shown} shown`
+        : `${total} approved therapies in the full map · ${shown} shown`;
+    }
+
+    return {
+      key,
+      icon: iconFor(key),
+      title: navLabel(key),
+      count: total,
+      headline,
+      redactHeadline: !structuralPreview,
+    };
+  });
 
   return (
     <div>
@@ -2248,13 +2509,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
       )}
 
       {etlm.detail_available === false && (
-        <PreviewCapNotice
-          rowsShown={
-            typeof etlm.detail_rows_shown === 'number' && Number.isFinite(etlm.detail_rows_shown)
-              ? etlm.detail_rows_shown
-              : null
-          }
-        />
+        <PreviewCapNotice etlm={etlm} />
       )}
 
       <ExecSummary

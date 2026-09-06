@@ -3,10 +3,21 @@ import { labelText } from './labelText';
 // hierarchy. The synced ETLM JSON carries `therapeutic_area` only sometimes and
 // inconsistently, so this map is the source of truth for grouping.
 
-export type TherapeuticArea = 'Oncology' | 'Metabolic' | 'Neurology' | 'Other';
+export type TherapeuticArea =
+  | 'Oncology'
+  | 'Metabolic'
+  | 'Neurology'
+  | 'Autoimmune and Inflammation'
+  | 'Other';
 
 /** Display order of therapeutic-area sections on the landing page. */
-export const TA_ORDER: TherapeuticArea[] = ['Oncology', 'Metabolic', 'Neurology', 'Other'];
+export const TA_ORDER: TherapeuticArea[] = [
+  'Oncology',
+  'Metabolic',
+  'Neurology',
+  'Autoimmune and Inflammation',
+  'Other',
+];
 
 /** indication_code → therapeutic area. */
 const INDICATION_TA: Record<string, TherapeuticArea> = {
@@ -26,7 +37,18 @@ const INDICATION_TA: Record<string, TherapeuticArea> = {
   thyroid: 'Oncology',
   urothelial: 'Oncology',
   obesity: 'Metabolic',
+  mash: 'Metabolic',
+  t1d: 'Metabolic',
   parkinsons: 'Neurology',
+  alzheimers: 'Neurology',
+  treatment_resistant_depression: 'Neurology',
+  ms: 'Neurology',
+  als: 'Neurology',
+  rheumatoid_arthritis: 'Autoimmune and Inflammation',
+  psoriasis: 'Autoimmune and Inflammation',
+  ulcerative_colitis: 'Autoimmune and Inflammation',
+  sle: 'Autoimmune and Inflammation',
+  atopic_dermatitis: 'Autoimmune and Inflammation',
 };
 
 /** indication_code → short display name (used when no ETLM provides one). */
@@ -47,7 +69,18 @@ export const INDICATION_DISPLAY: Record<string, string> = {
   thyroid: 'Thyroid',
   urothelial: 'Urothelial',
   obesity: 'Obesity',
+  mash: 'MASH',
+  t1d: 'Type 1 diabetes',
   parkinsons: "Parkinson's",
+  alzheimers: "Alzheimer's",
+  treatment_resistant_depression: 'Treatment-resistant depression',
+  ms: 'Multiple sclerosis',
+  als: 'ALS',
+  rheumatoid_arthritis: 'Rheumatoid arthritis',
+  psoriasis: 'Psoriasis',
+  ulcerative_colitis: 'Ulcerative colitis',
+  sle: 'Systemic lupus erythematosus',
+  atopic_dermatitis: 'Atopic dermatitis',
 };
 
 /** Theme slug prefix → therapeutic area (overrides indication-derived TA). */
