@@ -48,7 +48,7 @@ const catalog = catalogData as CoverageCatalog;
 const STATUS_LABEL: Record<PublicStatus, string> = {
   published: 'Published',
   published_snapshot: 'Published snapshot',
-  in_review: 'In draft',
+  in_review: 'Available on request',
   planned: 'Planned',
 };
 
@@ -80,8 +80,7 @@ function statusMeta(deliverable: CatalogDeliverable): string | undefined {
     const evidenceDate = displayDate(deliverable.evidence_through);
     if (evidenceDate) return `Evidence through ${evidenceDate}`;
   }
-  const reviewedDate = displayDate(deliverable.reviewed_on);
-  return reviewedDate ? `Status reviewed ${reviewedDate}` : undefined;
+  return undefined;
 }
 
 function StatusBadge({ status }: { status: PublicStatus }) {
@@ -195,7 +194,7 @@ export function AtlasReader() {
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="Drug-development landscapes, target product profiles, and class-level theses organised by therapeutic area. The catalogue separates published work from indications still in audit or planned."
+      subtitle="Drug-development landscapes, target product profiles, and class-level theses organised by therapeutic area. Published work is immediately viewable; maintained background coverage is available on request."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
@@ -249,9 +248,9 @@ export function AtlasReader() {
       <section className="mb-12">
         <div className="border-l-4 border-zinc-900 py-2 pl-5 dark:border-zinc-100">
           <p className="max-w-[72ch] leading-relaxed text-zinc-700 dark:text-zinc-300">
-            Published artifacts are the only linked items. “Published snapshot” marks a view that
-            remains available while a newer evidence refresh is under review; “In draft” and
-            “Planned” items are not yet available.
+            Published artifacts open immediately. “Published snapshot” marks a view that remains
+            available while a newer evidence refresh is under review. “Available on request”
+            indicates maintained background coverage; “Planned” indicates coverage not yet built.
           </p>
         </div>
       </section>
