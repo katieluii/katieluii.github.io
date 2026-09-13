@@ -1,109 +1,100 @@
 #!/usr/bin/env bash
-# Weekly Monday refresh of the Atlas analyst read (feeds the public /#/ecosystem page
-# AND WP9's daily tweet). Fires via launchd, Mondays 07:00 — before WP9's 08:30 daily.
-#
-# Chain: sync-atlas-content.py (WS12 -> redacted ecosystem.md) -> refresh-analyst-read.py
-#        (distil + deterministic validation) -> receipt -> Telegram digest.
-#
-# PUSH IS OFF BY DEFAULT. The refresh commits locally and tells Katie; publishing to the
-# public site stays a human step, matching the propose-only posture. Set
-# ANALYST_REFRESH_PUSH=true in the plist to make it fully autonomous.
-set -uo pipefail
+# launchd's weekly public Atlas refresh. Review is the default; publishing is separate.
+set -euo pipefail
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# launchd sets NO $USER and the claude CLI needs it for its keychain credential (S290).
 export USER="${USER:-$(id -un)}"
 
-REPO="$HOME/Projects/kl-portfolio"
+REPO="${ANALYST_REFRESH_REPO:-$HOME/Projects/kl-portfolio}"
+PYTHON="${ANALYST_REFRESH_PYTHON:-/usr/bin/python3}"
+RECEIPT="${ANALYST_REFRESH_RECEIPT:-$HOME/.claude/bin/job_receipt.py}"
+ASSERT="${ANALYST_REFRESH_ASSERT:-$HOME/.claude/bin/output_assert.py}"
 LOG="$REPO/logs/analyst-refresh.log"
 JOB="com.katielui.analyst-refresh"
+REVIEW="${ANALYST_REFRESH_REVIEW:-true}"
 PUSH="${ANALYST_REFRESH_PUSH:-false}"
+NOTIFY="${ANALYST_REFRESH_NOTIFY:-false}"
+RUN_ID="$(date -u '+%Y%m%dT%H%M%SZ')-$$"
+PHASE=preflight
 mkdir -p "$(dirname "$LOG")"
-TS="$(date '+%Y-%m-%d %H:%M:%S')"
+exec >> "$LOG" 2>&1
 
-cd "$REPO" || { echo "[$TS] repo missing: $REPO" >> "$LOG"; exit 1; }
+finish() {
+    rc=$?
+    trap - EXIT
+    if [ "$rc" -ne 0 ]; then
+        "$PYTHON" "$RECEIPT" write "$JOB" --items-in 5 --delivered 0 \
+            --note "run=$RUN_ID FAILED phase=$PHASE rc=$rc" || true
+    fi
+    echo "[$RUN_ID] done rc=$rc phase=$PHASE review=$REVIEW push=$PUSH"
+    exit "$rc"
+}
+trap finish EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 
-if [ -f "analyst-refresh-paused" ]; then
-    echo "[$TS] paused (sentinel present). Skipping." >> "$LOG"; exit 0
+for flag in "$REVIEW" "$PUSH" "$NOTIFY"; do
+    case "$flag" in true|false) ;; *) echo "Invalid boolean: $flag"; exit 2 ;; esac
+done
+if [ "$REVIEW" = true ]; then
+    PUSH=false
+    NOTIFY=false
 fi
-
-# Refuse to run on a branch that is not main — a refresh committed onto a feature
-# branch is invisible to the live site and silently diverges (the two-checkout lesson).
-BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-if [ "$BRANCH" != "main" ]; then
-    echo "[$TS] ABORT: on branch '$BRANCH', not main. Refusing to refresh." >> "$LOG"
-    "$HOME/.claude/telegram-meta-notify.sh" "Analyst read refresh ABORTED" \
-        "Checkout is on branch $BRANCH, not main — refusing to write the weekly read there." >/dev/null 2>&1
+echo "[$RUN_ID] start review=$REVIEW push=$PUSH notify=$NOTIFY"
+cd "$REPO"
+if [ -f analyst-refresh-paused ]; then
+    echo 'Paused by analyst-refresh-paused sentinel; no source validation performed.'
     exit 1
 fi
-
-echo "==== [$TS] analyst read refresh ====" >> "$LOG"
-
-# 1. Pull WS12 -> redacted ecosystem.md. Status captured, never swallowed by a pipe.
-/usr/bin/python3 scripts/sync-atlas-content.py >> "$LOG" 2>&1
-SYNC_RC=$?
-if [ "$SYNC_RC" -ne 0 ]; then
-    echo "[$TS] sync-atlas-content failed rc=$SYNC_RC — refusing to distil stale content." >> "$LOG"
-    "$HOME/.claude/telegram-meta-notify.sh" "Analyst read refresh FAILED" \
-        "sync-atlas-content.py exited $SYNC_RC — the weekly read was NOT refreshed." >/dev/null 2>&1
-    exit 1
+[ "$(git rev-parse --abbrev-ref HEAD)" = main ] || { echo 'Checkout must be main'; exit 1; }
+if [ "$REVIEW" = false ]; then
+    git diff --cached --quiet || { echo 'Pre-existing staged changes; refusing automatic commit'; exit 1; }
+    [ -z "$(git status --porcelain -- src/data/atlas)" ] || {
+        echo 'Pre-existing Atlas changes; use review mode'; exit 1;
+    }
 fi
 
-# 2. Distil + validate. Writes only if every deterministic check passes.
-OUT="$(/usr/bin/python3 scripts/refresh-analyst-read.py 2>&1)"
-REFRESH_RC=$?
-echo "$OUT" >> "$LOG"
+PHASE=sync
+"$PYTHON" scripts/sync-atlas-content.py
+PHASE=refresh
+OUT="$("$PYTHON" scripts/refresh-analyst-read.py 2>&1)" || {
+    rc=$?; echo "$OUT"; exit "$rc";
+}
+echo "$OUT"
 
-if [ "$REFRESH_RC" -ne 0 ]; then
-    echo "[$TS] refresh failed rc=$REFRESH_RC" >> "$LOG"
-    "$HOME/.claude/telegram-meta-notify.sh" "Analyst read refresh FAILED" \
-        "refresh-analyst-read.py exited $REFRESH_RC — last week's read is still in place, nothing was overwritten." \
-        "$(echo "$OUT" | tail -3)" >/dev/null 2>&1
-    exit 1
+PHASE=public-gates
+"$PYTHON" scripts/sync-atlas-content.py --verify-only
+PHASE=assert
+"$PYTHON" "$ASSERT" check "$JOB"
+PHASE=count
+COUNT="$("$PYTHON" -c "import json; d=json.load(open('src/data/atlas/analyst_read.json')); assert len(d['narratives']) == 5; print(len(d['narratives']))")"
+
+if [ "$REVIEW" = false ]; then
+    PHASE=stage
+    git add -- src/data/atlas/analyst_read.json src/data/atlas/ecosystem.md
+    if ! git diff --cached --quiet; then
+        PHASE=commit
+        GIT_AUTHOR_NAME="Katie Lui" GIT_AUTHOR_EMAIL="64932844+katieluii@users.noreply.github.com" \
+        GIT_COMMITTER_NAME="Katie Lui" GIT_COMMITTER_EMAIL="64932844+katieluii@users.noreply.github.com" \
+            git commit -q -m 'Atlas analyst read: weekly refresh of 5 hottest themes'
+    fi
+    if [ "$PUSH" = true ]; then
+        PHASE=push
+        git push -q origin main
+    fi
 fi
 
-# "nothing to do" is a legitimate quiet run, not a delivery.
-if echo "$OUT" | grep -q "nothing to do"; then
-    echo "[$TS] source unchanged — no refresh needed." >> "$LOG"
-    /usr/bin/python3 "$HOME/.claude/bin/job_receipt.py" write "$JOB" \
-        --skipped "ecosystem.md unchanged since the last refresh" >> "$LOG" 2>&1
-    exit 0
-fi
-
-# 3. Delivery receipt carrying a COUNT, never a bare timestamp.
-COUNT="$(/usr/bin/python3 -c "
-import json;print(len(json.load(open('src/data/atlas/analyst_read.json'))['narratives']))" 2>/dev/null || echo 0)"
-/usr/bin/python3 "$HOME/.claude/bin/job_receipt.py" write "$JOB" \
-    --items-in 5 --delivered "$COUNT" --note "weekly analyst read" >> "$LOG" 2>&1
-
-# 4. Independent post-run assertion against the artifact on disk.
-/usr/bin/python3 "$HOME/.claude/bin/output_assert.py" check "$JOB" >> "$LOG" 2>&1
-ASSERT_RC=$?
-
-git add src/data/atlas/analyst_read.json src/data/atlas/ecosystem.md >> "$LOG" 2>&1
-if git diff --cached --quiet; then
-    echo "[$TS] nothing staged — content identical." >> "$LOG"; exit 0
-fi
-# Commit as Katie's GitHub noreply identity so the weekly refresh is credited on her graph
-# (rule of 2026-08-26: never `dev <dev@localhost>` — it matches no GitHub account).
-GIT_AUTHOR_NAME="Katie Lui" GIT_AUTHOR_EMAIL="64932844+katieluii@users.noreply.github.com" \
-GIT_COMMITTER_NAME="Katie Lui" GIT_COMMITTER_EMAIL="64932844+katieluii@users.noreply.github.com" \
-    git commit -q -m "Atlas analyst read: weekly refresh of 5 hottest themes" >> "$LOG" 2>&1
-
-HEADLINES="$(/usr/bin/python3 -c "
-import json
-d=json.load(open('src/data/atlas/analyst_read.json'))
-print(' | '.join(f\"{n['momentum']}: {n['headline'][:58]}\" for n in d['narratives']))" 2>/dev/null)"
-
-if [ "$PUSH" = "true" ]; then
-    git push -q origin main >> "$LOG" 2>&1
-    PUSH_RC=$?
-    [ "$PUSH_RC" -eq 0 ] && STATE="pushed — live page updates on rebuild" || STATE="commit made but PUSH FAILED rc=$PUSH_RC"
+PHASE=receipt
+if [[ "$OUT" =~ ^refresh:\ ecosystem\.md\ unchanged\ since\ .*nothing\ to\ do\. ]]; then
+    "$PYTHON" "$RECEIPT" write "$JOB" \
+        --skipped 'ecosystem.md unchanged; source validation and output assertions passed' \
+        --note "run=$RUN_ID review=$REVIEW push=$PUSH"
 else
-    STATE="committed locally, NOT pushed — run: cd ~/Projects/kl-portfolio && git push"
+    "$PYTHON" "$RECEIPT" write "$JOB" --items-in 5 --delivered "$COUNT" \
+        --note "run=$RUN_ID weekly analyst read; review=$REVIEW push=$PUSH"
 fi
-
-"$HOME/.claude/telegram-meta-notify.sh" "Analyst read refreshed ($COUNT themes)" \
-    "$STATE" "$HEADLINES" "WP9 drafts from this at 08:30" >/dev/null 2>&1
-
-echo "[$TS] done rc=0 assert=$ASSERT_RC push=$PUSH" >> "$LOG"
-exit 0
+if [ "$NOTIFY" = true ]; then
+    PHASE=notification
+    "$HOME/.claude/telegram-meta-notify.sh" "Analyst read refreshed ($COUNT themes)" \
+        "run=$RUN_ID review=$REVIEW push=$PUSH"
+fi
+PHASE=complete
