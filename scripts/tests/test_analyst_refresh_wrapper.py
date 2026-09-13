@@ -8,7 +8,6 @@ import tempfile
 import unittest
 
 WRAPPER = Path(__file__).resolve().parents[2] / 'bin/run-analyst-refresh.sh'
-RECEIPT = Path.home() / '.claude/bin/job_receipt.py'
 
 
 class WrapperTests(unittest.TestCase):
@@ -36,13 +35,13 @@ class WrapperTests(unittest.TestCase):
         (self.root / 'assert.py').write_text(
             "import os,sys,pathlib\npathlib.Path('assert-ran').touch()\nsys.exit(int(os.getenv('ASSERT_RC','0')))\n")
         (self.root / 'receipt.py').write_text(
-            "import importlib.util,json,sys,pathlib\n"
-            f"s=importlib.util.spec_from_file_location('receipt', {str(RECEIPT)!r})\n"
-            "m=importlib.util.module_from_spec(s); s.loader.exec_module(m)\n"
+            "import json,sys,pathlib\n"
             "a=sys.argv[3:]; kw={a[i][2:].replace('-','_'):a[i+1] for i in range(0,len(a),2)}\n"
             "for key in ('items_in','delivered'):\n"
             " if key in kw: kw[key]=int(kw[key])\n"
-            "r=m.write(sys.argv[2],root=pathlib.Path('receipts'),**kw)\n"
+            "r=dict(kw, skipped=bool(kw.get('skipped')), ok=bool(kw.get('skipped')) or kw.get('delivered',0)==kw.get('items_in',-1))\n"
+            "pathlib.Path('receipts').mkdir(exist_ok=True)\n"
+            "pathlib.Path('receipts',sys.argv[2]+'.json').write_text(json.dumps(r))\n"
             "with open('receipt-events.jsonl','a') as f: f.write(json.dumps(r)+'\\n')\n"
             "sys.exit(0 if r['ok'] else 1)\n")
         self.head = self.git('rev-parse', 'HEAD')
