@@ -88,6 +88,38 @@ class InternalTokenGate(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             sac.internal_token_gate(n, found, 1)  # must not raise
 
+    def test_september_provenance_residue_rules_preserve_clinical_meaning(self):
+        # The 2026-09-12 analyst-refresh failure named seven residues. These are
+        # provenance wrapped around reader-facing facts, so the public-copy rules
+        # must remove the former while preserving the latter.
+        cases = [
+            ("Phase 3 OSA precedent (UBT251, cycle194).", "UBT251"),
+            ("Same precedent (SYH2092, cycle194), not a near-term signal.", "SYH2092"),
+            ("Recovery item: NCT07154290 was mis-tagged sclc-only by a live substring "
+             "bug at scouts/ws8_consumer.py:80 (bad synonym) and did NOT appear in this "
+             "cycle's landscape/nsclc.json feed. Verified independently via CT.gov: "
+             "conditions confirm NSCLC.", "conditions confirm NSCLC"),
+            ("Verified conditions. Code fix (word-boundary match on the sclc synonym) is "
+             "one line and remains uncommitted -- flagged in urgent_for_katie.",
+             "Verified conditions"),
+            ("Verified via CT.gov per cycle237's scope_bleed_note.md: zero SCLC condition "
+             "strings.", "zero SCLC condition strings"),
+            ("Net-new pipeline_assets row — corpus-wide /usr/bin/grep -r for 'NCT05726227' "
+             "and 'STEP Young' across the full ws9-etlm/drafts tree returned zero hits "
+             "before this patch. Same INN as Wegovy.", "Same INN as Wegovy"),
+            ("This is an S64 lifecycle-expansion add, not a new-asset identity question.",
+             "lifecycle-expansion add"),
+            ("ClinicalTrials.gov NCT07802717 (checked 2026-09-07). coverage event 4750 "
+             "(new_clinical_events, is_new=true, cycle237). First-in-human in vivo CAR-T.",
+             "First-in-human in vivo CAR-T"),
+        ]
+        for raw, clinical_text in cases:
+            with self.subTest(raw=raw):
+                clean = sac._scrub_str(raw)
+                self.assertIn(clinical_text, clean)
+                _, findings = sac.internal_token_residue({"note": clean}, "t")
+                self.assertEqual(findings, [], clean)
+
 
 class StripKeys(unittest.TestCase):
     def setUp(self):

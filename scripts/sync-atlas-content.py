@@ -896,6 +896,41 @@ _ETLM_INLINE_RULE_SPECS: list[tuple[str, str, str]] = [
     ("Leading 'WS12 cycle 6 ' on nsclc sources naming real class themes and a Lancet "
      "Respir Med citation.",
      r"^WS\d+ cycle\s?\d+\w*\s+", ""),
+    ("A trailing `, cycle194` (and the same shape with a `_mega` suffix) in a "
+     "parenthetical precedent. The named comparator, phase and clinical rationale sit "
+     "outside the cycle stamp and remain; the run identifier is not a reader-facing "
+     "fact. Restricted to a comma-delimited final parenthetical item so a clinical "
+     "treatment-cycle statement cannot match.",
+     r",\s*cycle\s?\d+\w*(?=\)[,.;]?(?:\s|$))", ""),
+    ("NCT07154290's recovery note opened with an internal routing-bug report whose "
+     "path, line number and feed absence add no clinical information. The following "
+     "sentence retains the independent registry verification and all four NSCLC "
+     "condition variants.",
+     r"^Recovery item: NCT\d+ was mis-tagged sclc-only by a live substring bug at "
+     r"scouts/ws\d+_consumer\.py:\d+ \([^)]*\) and did NOT appear in this cycle's "
+     r"landscape/nsclc\.json feed\.\s*", ""),
+    ("NCT07154290's final sentence records an uncommitted local code change and its "
+     "escalation destination. The preceding registry finding is the reader-facing "
+     "clinical basis; source-control state is not.",
+     r"\s*Code fix \(word-boundary match on the sclc synonym\) is one line and remains "
+     r"uncommitted -- flagged in urgent_for_katie\.\s*$", ""),
+    ("The same recovery note cites an internal scope-bleed file only as process "
+     "provenance. Keep the independently checked registry facts while expressing its "
+     "basis in reader-facing language.",
+     r"\s*per cycle\d+'s scope_bleed_note\.md:", " per a scope review:"),
+    ("The STEP Young note's local grep command and WS9 draft path prove only internal "
+     "corpus coverage. Preserve the reader-relevant conclusion that this is a new "
+     "pipeline row without exposing the workstation command or repository layout.",
+     r"^Net-new pipeline_assets row\s*[—-]\s*corpus-wide /usr/bin/grep -r for "
+     r"'NCT05726227' and 'STEP Young' across the full ws9-etlm/drafts tree returned "
+     r"zero hits before this patch\.", "New pipeline row; no prior record of this trial was identified."),
+    ("The STEP Young row's S64 is a session label on a genuine lifecycle-expansion "
+     "classification. Keep the classification, never the internal session number.",
+     r"\bS\d{2,4} lifecycle-expansion add\b", "lifecycle-expansion add"),
+    ("VV169's source field carries a feed-event record between the registry citation "
+     "and the clinical first-in-human description. The record id and cycle are "
+     "internal; the registry citation and clinical meaning remain intact.",
+     r"\s*coverage event \d+ \(new_clinical_events, is_new=true(?:, cycle\d+)?\)\.\s*", " "),
 
     # ---- catalyst DB ---------------------------------------------------------
     ("'exon20ins theme + catalyst DB' — the internal catalyst database. This source is "
