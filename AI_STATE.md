@@ -2,6 +2,14 @@
 
 ## Current Context
 
+2026-09-14 — scoped release hardening: dependencies now audit clean (zero all/runtime
+vulnerabilities); Vite 6.4.3 and compatible plugin/router updates pass typecheck, 42 Python
+tests, public verify-only and build. Four observed workflow-clause leaks have scrub and
+mutation coverage. Six generated maps remain WITHHELD: independent review found additional
+process prose and clinical evidence issues. Existing 134 amber warnings include a public
+projection defect: endpoint provenance/gap metadata is stripped; do not clear flags blindly.
+The shared private/frontend/data work is preserved. Publish only the reviewed code commits.
+
 `katieluii.github.io` is the public portfolio. Local `main` is at `66dcd69`
 (`Harden Atlas public-copy provenance scrub`) and has diverged from `origin/main`
 (ahead one, behind one). Do not rebase the shared checkout while the active Atlas
