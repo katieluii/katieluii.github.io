@@ -121,6 +121,40 @@ class InternalTokenGate(unittest.TestCase):
                 self.assertEqual(findings, [], clean)
 
 
+class SeptemberWorkflowLeaks(unittest.TestCase):
+    def test_observed_clauses_preserve_clinical_content(self):
+        cases = [
+            ("New asset (confirmed via skill_context asset_index, 'in_etlm': null, and a "
+             "corpus grep of the live ETLM for 'sevabertinib'/'BAY2927088', zero hits). "
+             "Accelerated approval; no prior systemic therapy.",
+             "New asset. Accelerated approval; no prior systemic therapy"),
+            ("New trial (asset_index: in_etlm null for both ubamatamab and "
+             "marlotamig/REGN7075, in_kb_only true). MUC16xCD3; investigational.",
+             "New trial. MUC16xCD3; investigational"),
+            ("Distinct weekly schedule in China (S64: 'new route/formulation/dose/schedule' "
+             "is an explicit KEEP/CREATE trigger). NCT07311850.",
+             "Distinct weekly schedule in China. NCT07311850"),
+            ("Oral tablet versus injection. Per S64 'new route/formulation/dose/schedule' "
+             "is an explicit KEEP/CREATE trigger -- kept as a separate row. Base study unknown.",
+             "Oral tablet versus injection. Kept as a separate row. Base study unknown"),
+        ]
+        for raw, expected in cases:
+            with self.subTest(raw=raw):
+                self.assertEqual(sac._scrub_str(raw), expected)
+                self.assertEqual(sac.internal_token_residue({'note': expected})[1], [])
+                self.assertEqual(sac.find_scrub_issues({'note': raw}, {'note': expected}), [])
+
+    def test_unscrubbed_workflow_tokens_fail_closed(self):
+        for token in ('skill_context', 'asset_index', 'in_etlm', 'in_kb_only', 'corpus grep', 'KEEP/CREATE'):
+            with self.subTest(token=token):
+                n, findings = sac.internal_token_residue({'note': token})
+                self.assertTrue(findings)
+                with redirect_stdout(io.StringIO()), self.assertRaises(sac.SyncAborted):
+                    sac.internal_token_gate(n, findings, 1)
+        for key in ('skill_context', 'source_asset_index', 'in_etlm', 'in_kb_only'):
+            self.assertTrue(sac.internal_token_residue({key: 'clinical text'})[1])
+
+
 class StripKeys(unittest.TestCase):
     def setUp(self):
         cfg = json.loads((SCRIPTS / "atlas-redaction-config.json").read_text())

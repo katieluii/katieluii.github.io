@@ -933,6 +933,16 @@ _ETLM_INLINE_RULE_SPECS: list[tuple[str, str, str]] = [
      r"\s*coverage event \d+ \(new_clinical_events, is_new=true(?:, cycle\d+)?\)\.\s*", " "),
 
     # ---- catalyst DB ---------------------------------------------------------
+    ("Asset-index lookup evidence is internal workflow; the adjacent label and trial facts stay.",
+     r"\s*\(confirmed via skill_context asset_index, 'in_etlm': null, and a corpus grep "
+     r"of the live ETLM for '[^']+'/'[^']+', zero hits\)", ""),
+    ("The asset-index residency parenthetical is process metadata, not asset identity.",
+     r"\s*\(asset_index: in_etlm null for both [^()]+, in_kb_only true\)", ""),
+    ("The row-creation rule citation is internal; the preceding dose/schedule rationale stays.",
+     r"\s*\(S\d{2,4}: 'new route/formulation/dose/schedule' is an explicit KEEP/CREATE trigger\)", ""),
+    ("Drop the process-rule preamble, retaining why the oral and injectable records differ.",
+     r"\bPer S\d{2,4} 'new route/formulation/dose/schedule' is an explicit KEEP/CREATE "
+     r"trigger -- kept", "Kept"),
     ("'exon20ins theme + catalyst DB' — the internal catalyst database. This source is "
      "the one value in the set with no citation and no clinical fact at all, but D5 "
      "forbids emptying it, so the only reader-meaningful fragment ('exon20ins theme') is "
@@ -1130,6 +1140,7 @@ _INTERNAL_TOKEN_RE = re.compile(
     r"|\bkb_[a-z_]+"                       # kb_event_id-style internal field refs
     r"|\bevent_ids?\s*\d+|\bsignal_ids?\s*\d+"
     r"|\bcatalyst DB\b"
+    r"|\b(?:skill_context|asset_index|in_etlm|in_kb_only)\b|\bcorpus grep\b|\bKEEP/CREATE\b"
     r"|\bKB\b",                            # bare knowledge-base initialism
     re.IGNORECASE,
 )
@@ -1145,7 +1156,8 @@ _INTERNAL_TOKEN_RE = re.compile(
 # keys carried the semaglutide 7.2 mg STEP UP data (a strip would have deleted it — the
 # S296 `superseded_label` lesson).
 _INTERNAL_KEY_RE = re.compile(
-    r"(?:^|_)(?:ws\d+|s\d{2,3}|cycle\d+|katie)(?:_|$)", re.IGNORECASE
+    r"(?:^|_)(?:ws\d+|s\d{2,3}|cycle\d+|katie|skill_context|asset_index|in_etlm|in_kb_only)(?:_|$)",
+    re.IGNORECASE
 )
 
 
