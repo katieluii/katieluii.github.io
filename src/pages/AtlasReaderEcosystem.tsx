@@ -26,7 +26,7 @@ export function AtlasReaderEcosystem() {
     >
       <div className="flex flex-wrap items-center gap-2 mb-6">
         <Pill variant="tech">Analyst's read</Pill>
-        <Pill variant="tech">Refreshed weekly , Mondays</Pill>
+        <Pill variant="tech">Refreshed weekly, Mondays</Pill>
         <span className="text-xs text-zinc-400 dark:text-zinc-500">
           Updated {ecosystemUpdated}
         </span>
@@ -86,10 +86,6 @@ export function AtlasReaderEcosystem() {
         ))}
       </div>
 
-      <p className="mt-10 text-xs text-zinc-400 dark:text-zinc-500 max-w-[72ch]">
-        The full reasoning, signal trail, and per-modality crowding maps live in the analyst's
-        working note and are not surfaced here.
-      </p>
     </ProjectPageLayout>
   );
 }

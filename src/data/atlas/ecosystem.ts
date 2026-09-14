@@ -7,9 +7,7 @@
 // Refresh cadence: weekly, Mondays — regenerated from the latest committed
 // ecosystem note. Keep it to exactly 5 narratives.
 //
-// Source URLs point at authoritative landing pages (company newsroom /
-// conference / registry / trade press). TODO(human): swap in exact
-// article/press-release deep links where you have them.
+// Source URLs identify reviewed articles and announcements, not publisher hubs.
 
 import data from './analyst_read.json';
 

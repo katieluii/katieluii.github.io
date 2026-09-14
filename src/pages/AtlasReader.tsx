@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, FileText, Layers, Flame, FileSearch, LockKeyhole } from 'lucide-react';
 import { ProjectPageLayout } from '../components/ProjectPageLayout';
-import { Pill } from '../components/Pill';
 import catalogData from '../data/atlas/catalog.json';
 import { themeIndex, hasEcosystem, type ThemeIndexEntry } from '../data/atlas/index';
 import { taForTheme, themeShortLabel, type TherapeuticArea } from '../data/atlas/taxonomy';
@@ -84,6 +83,7 @@ function statusMeta(deliverable: CatalogDeliverable): string | undefined {
 }
 
 function StatusBadge({ status }: { status: PublicStatus }) {
+  if (status === 'planned') return null;
   return (
     <span
       className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${STATUS_CLASS[status]}`}
@@ -183,14 +183,6 @@ function themesForArea(area: TherapeuticArea): ThemeIndexEntry[] {
 }
 
 export function AtlasReader() {
-  const landscapePublished = catalog.indications.filter((item) =>
-    item.landscape.status.startsWith('published'),
-  ).length;
-  const tppProfilesPublished = catalog.indications.reduce(
-    (total, item) => total + item.tpp.artifacts.length,
-    0,
-  );
-
   return (
     <ProjectPageLayout
       title="Atlas Reader"
@@ -198,14 +190,6 @@ export function AtlasReader() {
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >
-      <div className="mb-10 flex flex-wrap items-center gap-2">
-        <Pill variant="tech">Open access</Pill>
-        <Pill variant="tech">
-          {catalog.indications.length} indications tracked · {landscapePublished} landscapes published ·{' '}
-          {tppProfilesPublished} TPPs published · {themeIndex.length} themes
-        </Pill>
-      </div>
-
       {import.meta.env.DEV && (
         <div className="mb-8 grid gap-3 md:grid-cols-2">
           <Link
@@ -244,16 +228,6 @@ export function AtlasReader() {
           </Link>
         </div>
       )}
-
-      <section className="mb-12">
-        <div className="border-l-4 border-zinc-900 py-2 pl-5 dark:border-zinc-100">
-          <p className="max-w-[72ch] leading-relaxed text-zinc-700 dark:text-zinc-300">
-            Published artifacts open immediately. “Published snapshot” marks a view that remains
-            available while a newer evidence refresh is under review. “Available on request”
-            indicates maintained background coverage; “Planned” indicates coverage not yet built.
-          </p>
-        </div>
-      </section>
 
       {hasEcosystem && (
         <Link

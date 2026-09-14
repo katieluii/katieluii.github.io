@@ -2,6 +2,13 @@
 
 ## Current Context
 
+2026-09-14 — Reader cleanup: Planned badges and the requested metadata/disclaimer blocks
+removed. Five analyst themes retained with ten reviewed article links; financing corrected
+to the source-backed $275M round and unsupported market-wide/internal-review wording removed.
+Refresh validation rejects publisher hubs and search links.45 tests, typecheck, publication
+verification and build pass. This release changes no clinical map or publication status;
+the separate six-map refresh and new indication batches remain under review.
+
 2026-09-14 — scoped release hardening: dependencies now audit clean (zero all/runtime
 vulnerabilities); Vite 6.4.3 and compatible plugin/router updates pass typecheck, 42 Python
 tests, public verify-only and build. Four observed workflow-clause leaks have scrub and

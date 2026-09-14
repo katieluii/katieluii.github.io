@@ -41,6 +41,7 @@ import sys
 import tempfile
 from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit, parse_qs
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
@@ -62,6 +63,22 @@ MODEL = os.environ.get("ANALYST_READ_MODEL", "claude-sonnet-5")
 
 
 # ---------------------------------------------------------------- source registry
+
+def is_article_url(url: str) -> bool:
+    """Reject directory/search links: evidence must resolve to a specific item."""
+    if not isinstance(url, str):
+        return False
+    try:
+        parsed = urlsplit(url)
+    except ValueError:
+        return False
+    path = parsed.path.rstrip('/').lower()
+    hubs = {'', '/news', '/news-events', '/newsroom', '/media', '/media-center',
+            '/media-centre', '/media-centre.html', '/press-releases', '/search',
+            '/medicines', '/business/healthcare-pharmaceuticals'}
+    return (parsed.scheme == 'https' and bool(parsed.hostname)
+            and not parsed.username and not parsed.password and path not in hubs
+            and not ({'q', 'query', 'search', 'term'} & set(parse_qs(parsed.query))))
 
 def load_registry() -> tuple[dict, dict]:
     if not REGISTRY.exists():
@@ -113,7 +130,8 @@ RULES
 - momentum: "Hot" = moving now, "Confirmed" = established this week, "Watch" = early.
 - source_labels MUST come from this list, verbatim:
 {labels}
-  You may also use "<drug> trials (ClinicalTrials.gov)" for a drug named in the note.
+- Use only specific supporting articles from that list. Publisher homepages and search
+  pages are not evidence. If no listed article supports a theme, do not invent a source.
 - NEVER write a URL. Labels only.
 - Claim NOTHING the note does not support. No invented numbers, dates or outcomes.
 - No hype words: breakthrough, game-changer, revolutionary, soaring.
@@ -222,6 +240,9 @@ def validate(raw: dict, sources: dict, patterns: dict, collect: bool = False):
             errs.append(f"narrative {i}: no source_labels")
             labels = []
         resolved = [resolve_source(str(l).strip(), sources, patterns) for l in labels]
+        for source in resolved:
+            if not is_article_url(source.get('url')):
+                errs.append(f"narrative {i}: source must resolve to a specific article, not a homepage/search: {source['label']}")
         unmapped = [r["label"] for r in resolved if "url" not in r]
         if len(unmapped) == len(resolved) and resolved:
             errs.append(f"narrative {i}: no source label resolved to a known URL ({unmapped})")

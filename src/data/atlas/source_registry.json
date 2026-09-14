@@ -1,34 +1,16 @@
 {
-  "_doc": "Controlled source registry for analyst_read.json. The refresh model may emit source LABELS ONLY — URLs are resolved from this file, never authored by the model (memory: feedback_llm_must_not_emit_citations). An unmapped label ships with no URL rather than a guessed one. Add entries by hand as needed.",
+  "_doc": "Reviewed article-level sources for analyst_read.json. The model selects labels only; exact URLs are curator-verified. Homepage and search links are not evidence. Add reviewed article entries before a new topic can publish.",
   "sources": {
-    "Amgen newsroom": "https://www.amgen.com/newsroom",
-    "AstraZeneca media": "https://www.astrazeneca.com/media-centre.html",
-    "BioPharma Dive": "https://www.biopharmadive.com/",
-    "Bristol Myers Squibb news": "https://news.bms.com/",
-    "EMA — Medicines": "https://www.ema.europa.eu/en/medicines",
-    "Eli Lilly newsroom": "https://www.lilly.com/news",
-    "Endpoints News": "https://endpts.com/",
-    "FDA — News & Events": "https://www.fda.gov/news-events",
-    "FiercePharma": "https://www.fiercepharma.com/",
-    "Genentech media": "https://www.gene.com/media",
-    "Gilead news": "https://www.gilead.com/news",
-    "GSK media": "https://www.gsk.com/en-gb/media/",
-    "J&J newsroom": "https://www.jnj.com/media-center",
-    "Merck news": "https://www.merck.com/news/",
-    "Novartis news": "https://www.novartis.com/news",
-    "Novo Nordisk news": "https://www.novonordisk.com/news-and-media/news-and-ir-materials.html",
-    "Pfizer newsroom": "https://www.pfizer.com/news",
-    "Reuters — Healthcare & Pharma": "https://www.reuters.com/business/healthcare-pharmaceuticals/",
-    "Roche media": "https://www.roche.com/media",
-    "Samsung Biologics": "https://www.samsungbiologics.com/en/",
-    "Sanofi media room": "https://www.sanofi.com/en/media-room",
-    "Scribe Therapeutics": "https://www.scribetx.com/",
-    "STAT News": "https://www.statnews.com/",
-    "Takeda newsroom": "https://www.takeda.com/newsroom/",
-    "Vertex news": "https://news.vrtx.com/"
+    "FDA: sevabertinib indication expansion": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sevabertinib-locally-advanced-or-metastatic-non-squamous-non-small",
+    "FDA: zongertinib indication expansion": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zongertinib-unresectable-or-metastatic-non-squamous-non-small-cell",
+    "TYRA: initial SURF302 results": "https://www.prnewswire.com/news-releases/tyra-biosciences-reports-initial-phase-2-surf302-results-supporting-the-first-potential-oral-innovation-in-lg-ir-nmibc-with-dabogratinib-302872937.html",
+    "Fierce Biotech: TYRA results and investor reaction": "https://www.fiercebiotech.com/biotech/tyra-rolls-toward-pivotal-bladder-cancer-study-even-midphase-data-deflates-stock",
+    "CU Anschutz: colorectal CAR T trial clearance": "https://www.prnewswire.com/news-releases/fda-clears-cu-anschutz-clinical-trial-using-engineered-immune-cells-to-fight-colorectal-cancer-302875707.html",
+    "BMS: QUINTESSENTIAL arlo-cel topline results": "https://news.bms.com/news/corporate-financial/2026/Bristol-Myers-Squibb-Announces-Positive-Topline-Results-from-Registrational-Phase-2-QUINTESSENTIAL-Trial-of-the-Potential-First-in-Class-GPRC5D-Directed-CAR-T-Cell-Therapy-Arlocabtagene-Autoleucel----/default.aspx",
+    "Insilico: first patient dosed in GENESIS-IPF-3": "https://www.prnewswire.com/news-releases/insilico-medicine-doses-first-patient-in-genesis-ipf-3-the-worlds-first-phase-iii-trial-of-a-generative-ai-driven-innovative-drug-302873749.html",
+    "Encoded: $275 million Series F": "https://encoded.com/encoded-therapeutics-raises-275-million-in-series-f-financing-to-advance-etx101-through-pivotal-development-and-accelerate-its-precision-genetic-medicines-neurology-pipeline/",
+    "Harbour BioMed: Solstice’s $225 million Series A": "https://www.prnewswire.com/news-releases/harbour-biomed-partner-solstice-oncology-announces-225-million-series-a-financing-to-advance-porustobart-a-neoadjuvant-immuno-oncology-therapy-302873689.html",
+    "Kura: Caspian launch and $50 million financing": "https://ir.kuraoncology.com/news-releases/news-release-details/kura-oncology-launches-caspian-therapeutics-50-million-financing"
   },
-  "patterns": {
-    "_doc": "Label templates the model MAY use; {drug} is substituted verbatim into the URL.",
-    "{drug} trials (ClinicalTrials.gov)": "https://clinicaltrials.gov/search?term={drug}"
-  }
+  "patterns": {}
 }
