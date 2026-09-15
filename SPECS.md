@@ -218,3 +218,10 @@ the public HTTPS URL and promote the exact tested commit to `main`.
 <acceptance_criteria>The public app exposes all four WS21 answer cards; health stamps WSi 4efab3d with matching fingerprints and zero gaps; the portfolio routes Clinical Trial Analyst to that app and contains no localhost URL.</acceptance_criteria>
 <constraints>Reuse the existing precomputed serving contract. Keep the prose page as the fail-closed fallback. Preserve the WSi v5 and WS21 answer contracts.</constraints>
 ```
+
+## Atlas release authorization bindings (2026-09-15)
+
+Implementation of the approved Atlas release workflow's exact authorization and
+invalidation requirements. Contract: [specs/atlas-release-authorization.md](specs/atlas-release-authorization.md).
+This bounded verifier is not deployment enforcement, clinical qualification or approval.
+Its mutation tests must pass before artifact upload; production integration remains closed.
