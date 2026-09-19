@@ -1,0 +1,77 @@
+name: Atlas reviewed Pages executor
+run-name: atlas-pages-${{ inputs.lease }}
+on:
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Exact reviewed source commit
+        required: true
+        type: string
+      lease:
+        description: Active protected-controller reservation
+        required: true
+        type: string
+      signed_dispatch:
+        description: Authority-signed exact manifest and execution lease
+        required: true
+        type: string
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: atlas-reviewed-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      ATLAS_SIGNED_DISPATCH: ${{ inputs.signed_dispatch }}
+      ATLAS_LEASE: ${{ inputs.lease }}
+      ATLAS_AUTHORITY_PUBLIC_KEY: ${{ vars.ATLAS_AUTHORITY_PUBLIC_KEY }}
+      VITE_WS21_APP_URL: https://ws21-clinical-trial-analyst-production.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_commit }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Verify enrolled authority and exact execution context
+        id: authorization
+        run: node scripts/pages-executor.mjs verify
+      - name: Install exact dependencies
+        if: steps.authorization.outputs.mode == 'six-indication'
+        run: npm ci
+      - name: Qualify and build exact reviewed commit
+        if: steps.authorization.outputs.mode == 'six-indication'
+        run: |
+          npm run typecheck
+          node --test scripts/tests/atlas-release-*.test.mjs scripts/tests/pages-bridge.test.mjs
+          python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+          python3 scripts/sync-atlas-content.py --verify-only
+          python3 scripts/check_atlas_scope.py
+          npm run build
+      - name: Freeze every checked artifact byte
+        run: node scripts/pages-executor.mjs prepare
+      - uses: actions/configure-pages@v5
+      - name: Recheck exact bytes and execution expiry before upload
+        run: node scripts/pages-executor.mjs recheck
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: atlas-${{ inputs.lease }}
+          path: ${{ runner.temp }}/atlas-checked-site
+      - name: Recheck execution expiry before deployment
+        run: node scripts/pages-executor.mjs recheck
+      - name: Deploy the checked artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: atlas-${{ inputs.lease }}
+          timeout: 300000

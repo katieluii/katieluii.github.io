@@ -5,11 +5,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { generateKeyPairSync, sign } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { CODES, preflight, deployWithAuthorization } from '../atlas-release-boundary.mjs';
+import { CODES, preflight, preflightRollback, deployWithAuthorization, deployRollbackWithAuthorization } from '../atlas-release-boundary.mjs';
 import { documentBytes, sha256 } from '../atlas-release-authorization.mjs';
 
 // TEST ONLY: all keys/principals are ephemeral synthetic fixture identities.
-function fixture(t) {
+function fixture(t, rollbackOperation = false) {
   const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-boundary-test-')));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const pkg = path.join(root, 'package'), checkout = path.join(root, 'checkout'), authority = path.join(root, 'authority');
@@ -48,6 +48,11 @@ function fixture(t) {
     rollback_manifest_sha256: sha256(documentBytes(rollback)), status: 'PASS', full_detail: ['mm', 'nsclc', 'obesity'], previews: ['breast', 'parkinsons', 'urothelial'],
     checks: Object.fromEntries(['evidence', 'public_private', 'rendered_routes', 'source_links', 'exact_assets', 'rollback_compatibility'].map(k => [k, true])) };
   write(pkg, 'qualification.json', qualification);
+  if (rollbackOperation) {
+    write(pkg, 'rollback-intent.json', { schema_version: 1, operation: 'safe-unpublished', source_commit: commit,
+      original_site_manifest_sha256: sha256(documentBytes(site)), rollback_manifest_sha256: sha256(documentBytes(rollback)) });
+    kinds.push('rollback-intent');
+  }
   const state = { schema_version: 1, source_commit: commit, issued_at: start, trusted, ledger_sha256: sha256(documentBytes(ledger)),
     site_manifest_sha256: sha256(documentBytes(site)), qualification_sha256: sha256(documentBytes(qualification)), rollback_manifest_sha256: sha256(documentBytes(rollback)) };
   const signState = () => write(authority, 'production-state.json', envelope(state, authorityKey.privateKey, 'atlas-production-state-v1\n'));
@@ -66,6 +71,7 @@ function fixture(t) {
     });
     release.indications[code] = { manifest: manifestName, approvals };
   }
+  if (rollbackOperation) release.operation = 'safe-unpublished';
   write(pkg, 'release.json', release);
   const options = { packageRoot: pkg, checkoutRoot: checkout, authorityRoot: authority, expectedCommit: commit };
   const outcome = snapshot => envelope({ lease: snapshot.lease, source_commit: snapshot.source_commit,
@@ -186,4 +192,27 @@ test('reserved ledger mutation queued before upload prevents side effect', async
   const ledger = f.read(f.authority, 'ledger.json');
   assert.equal(ledger.active.status, 'quarantined');
   assert.equal(ledger.fencing_token, 2);
+});
+
+test('rollback needs fresh operation package and per-indication signed intent, emits only fallback snapshot', async t => {
+  const f = fixture(t, true);
+  const preview = preflightRollback(f.options);
+  assert.equal(preview.operation, 'safe-unpublished');
+  assert.equal(preview.site_manifest_sha256, sha256(fs.readFileSync(path.join(f.pkg, 'rollback-manifest.json'))));
+  assert.throws(() => preflight(f.options), /RELEASE_OPERATION_BINDING/);
+  const result = await deployRollbackWithAuthorization(f.options, async snapshot => {
+    assert.equal(snapshot.site_manifest_sha256, preview.site_manifest_sha256);
+    assert.equal(Buffer.from(snapshot.files[0].base64,'base64').toString(), 'synthetic unpublished fallback');
+    assert.notEqual(snapshot.site_manifest_sha256, sha256(fs.readFileSync(path.join(f.pkg, 'site-manifest.json'))));
+    return f.outcome(snapshot);
+  });
+  assert.equal(result.status, 'DEPLOYED_VERIFIED_AND_CONSUMED');
+  await assert.rejects(deployRollbackWithAuthorization(f.options, async () => assert.fail('consumed operation must not deploy')), /LEDGER_STATE_STALE/);
+});
+test('normal publication approval package cannot be repurposed as rollback', t => {
+  const f = fixture(t);
+  assert.throws(() => preflightRollback(f.options), /RELEASE_OPERATION_BINDING/);
+  const bundle=f.read(f.pkg,'release.json');bundle.operation='safe-unpublished';f.write(f.pkg,'release.json',bundle);
+  f.write(f.pkg,'rollback-intent.json',{schema_version:1,operation:'safe-unpublished',source_commit:bundle.source_commit,original_site_manifest_sha256:sha256(fs.readFileSync(path.join(f.pkg,'site-manifest.json'))),rollback_manifest_sha256:sha256(fs.readFileSync(path.join(f.pkg,'rollback-manifest.json')))});
+  assert.throws(() => preflightRollback(f.options), /ROLLBACK_INTENT_NOT_APPROVED/);
 });

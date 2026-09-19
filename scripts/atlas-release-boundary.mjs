@@ -78,7 +78,8 @@ function git(root, args) {
   return execFileSync('git', ['-C', root, ...args], { encoding: 'utf8', timeout: 15000, maxBuffer: 1024 * 1024 }).trim();
 }
 
-function inspect({ packageRoot, checkoutRoot, authorityRoot, expectedCommit, now = new Date() }) {
+function inspect({ packageRoot, checkoutRoot, authorityRoot, expectedCommit, now = new Date(), operation = 'publish' }) {
+  need(['publish', 'safe-unpublished'].includes(operation), 'RELEASE_OPERATION');
   // These roots/commit are supplied by the deployment authority, not release.json.
   const pkg = directory(packageRoot), checkout = directory(checkoutRoot), authority = directory(authorityRoot);
   need(!inside(pkg, authority) && !inside(checkout, authority), 'CANDIDATE_CANNOT_SUPPLY_AUTHORITY');
@@ -100,6 +101,7 @@ function inspect({ packageRoot, checkoutRoot, authorityRoot, expectedCommit, now
   let authorizationValidUntil = Math.min(Date.parse(state.trusted.valid_until), Date.parse(policy.expires_at));
   const bundle = parse(bytes(pkg, 'release.json', 1024 * 1024));
   need(bundle.schema_version === 1 && /^[a-zA-Z0-9._-]+$/.test(bundle.release_id) && bundle.source_commit === expectedCommit, 'RELEASE_SCHEMA');
+  need((bundle.operation ?? 'publish') === operation, 'RELEASE_OPERATION_BINDING');
   need(same(Object.keys(bundle.indications).sort(), CODES), 'EXACT_SIX_REQUIRED');
   const siteBytes = bytes(pkg, 'site-manifest.json', 1024 * 1024), site = parse(siteBytes);
   const qBytes = bytes(pkg, 'qualification.json', 1024 * 1024), q = parse(qBytes);
@@ -118,6 +120,13 @@ function inspect({ packageRoot, checkoutRoot, authorityRoot, expectedCommit, now
   const rollbackFiles = snapshot(directory(path.join(pkg, 'rollback')), rollback);
   const trusted = { ...state.trusted, now: now.toISOString() };
   const releases = [];
+  let rollbackIntentBytes;
+  if (operation === 'safe-unpublished') {
+    need(rollback.mode === 'safe-unpublished', 'ROLLBACK_OPERATION_MODE');
+    rollbackIntentBytes = bytes(pkg, 'rollback-intent.json', 32768);
+    need(same(parse(rollbackIntentBytes), { schema_version: 1, operation: 'safe-unpublished', source_commit: expectedCommit,
+      original_site_manifest_sha256: sha256(siteBytes), rollback_manifest_sha256: sha256(rollbackBytes) }), 'ROLLBACK_INTENT_BINDING');
+  }
   for (const code of CODES) {
     const item = bundle.indications[code];
     const manifestBytes = bytes(pkg, item.manifest, 1024 * 1024);
@@ -139,19 +148,28 @@ function inspect({ packageRoot, checkoutRoot, authorityRoot, expectedCommit, now
       const artifact = result.artifacts.find(x => x.kind === kind);
       need(artifact && artifact.bytes.equals(expected), 'INDICATION_WHOLE_SITE_BINDING');
     }
+    if (rollbackIntentBytes) {
+      const intent = result.artifacts.find(x => x.kind === 'rollback-intent');
+      need(intent && intent.bytes.equals(rollbackIntentBytes), 'ROLLBACK_INTENT_NOT_APPROVED');
+    }
     releases.push(result.release_id);
   }
   need(new Set(releases).size === CODES.length, 'DUPLICATE_RELEASE_ID');
-  return { pkg, authority, key, stateBytes, ledgerBytes, ledger, releases, siteFiles, rollbackFiles,
-    validUntil: Date.parse(state.trusted.valid_until), authorizationValidUntil, releaseId: bundle.release_id, siteHash: sha256(siteBytes), sourceCommit: expectedCommit };
+  return { pkg, authority, key, stateBytes, ledgerBytes, ledger, releases,
+    siteFiles: operation === 'safe-unpublished' ? rollbackFiles : siteFiles, rollbackFiles, operation,
+    validUntil: Date.parse(state.trusted.valid_until), authorizationValidUntil, releaseId: bundle.release_id, siteHash: operation === 'safe-unpublished' ? sha256(rollbackBytes) : sha256(siteBytes), sourceCommit: expectedCommit };
 }
 function summary(x) {
   return Object.freeze({ status: 'PREFLIGHT_PASS', publication_authorized: false,
-    release_id: x.releaseId, source_commit: x.sourceCommit, site_manifest_sha256: x.siteHash,
+    release_id: x.releaseId, operation: x.operation, source_commit: x.sourceCommit, site_manifest_sha256: x.siteHash,
     indication_count: 6, verified_role_signatures: 12, site_files: x.siteFiles.length,
     rollback_files: x.rollbackFiles.length, requires_atomic_deployment_reservation: true });
 }
 export function preflight(options) { return summary(inspect(options)); }
+export function preflightRollback(options) { return preflight({ ...options, operation: 'safe-unpublished' }); }
+export async function deployRollbackWithAuthorization(options, upload) {
+  return deployWithAuthorization({ ...options, operation: 'safe-unpublished' }, upload);
+}
 
 function atomicWrite(root, name, value) {
   const temporary = path.join(root, `.${name}.${randomUUID()}.tmp`);
@@ -189,7 +207,7 @@ export async function deployWithAuthorization(options, upload) {
           need(Date.now() < x.authorizationValidUntil, 'AUTHORIZATION_WINDOW_EXPIRED');
           need(bytes(authority, 'production-state.json').equals(x.stateBytes), 'TRUSTED_STATE_CHANGED_OR_EXPIRED');
           need(same(parse(bytes(authority, 'ledger.json')), x.ledger), 'LEDGER_UPLOAD_CAS_FAILED');
-          return upload(Object.freeze({ lease, source_commit: x.sourceCommit,
+          return upload(Object.freeze({ lease, source_commit: x.sourceCommit, authorization_expires_at: new Date(x.authorizationValidUntil).toISOString(),
             site_manifest_sha256: x.siteHash, files: frozen }));
         }),
         new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('UPLOAD_OUTCOME_TIMEOUT')), timeoutMs); }),
