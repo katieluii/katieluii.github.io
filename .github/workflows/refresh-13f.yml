@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -62,6 +63,7 @@ jobs:
             git commit -m "chore: refresh 13F data"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           else
             git checkout -- public/data/stock_conc_latest.json
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -79,3 +81,5 @@ jobs:
       pages: write
       id-token: write
     uses: ./.github/workflows/main.yml
+    with:
+      deployment_ref: ${{ needs.refresh.outputs.commit_sha }}

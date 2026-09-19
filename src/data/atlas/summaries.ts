@@ -29,56 +29,7 @@ export type ArtifactSummary = {
 
 export const tppSummaries: Record<string, ArtifactSummary> = {
   // Reference pattern — fully drafted. TODO(human): confirm market-size + bar framing.
-  tpp_nsclc_1L_bispecific_vs_pd1chemo_2026_06_05: {
-    verdict:
-      'A new 1L all-comer NSCLC bispecific must beat pembrolizumab+chemotherapy on OS (HR ≤0.75, mOS ≥30 mo) in a globally enrolled Phase 3 — not merely beat PD-1 monotherapy as ivonescimab did.',
-    keyFacts: [
-      { label: '1L driver-neg NSCLC', value: '~140k/yr', note: 'US + EU incidence' },
-      { label: 'SoC mOS (pembro+chemo)', value: '23–26 mo', note: '5-yr OS ~19%' },
-      { label: 'OS bar to clear', value: 'HR ≤0.75', note: '≤0.70 = step-change' },
-      { label: 'Class anchor (ivonescimab)', value: 'HR 0.66', note: 'vs PD-1 alone, China-enrolled' },
-      { label: 'US peak revenue', value: '$3–5B', note: 'this segment alone' },
-    ],
-    keyTakeaways: [
-      {
-        lead: 'The bar is OS vs chemo-IO, not PD-1 alone',
-        rest: 'FDA will require pembrolizumab+platinum as the comparator; ivonescimab beat only PD-1 monotherapy, so the head-to-head vs the full standard is undemonstrated.',
-      },
-      {
-        lead: 'Ivonescimab sets class proof-of-concept (OS HR 0.66)',
-        rest: 'but China-only enrollment leaves Western generalisability unconfirmed.',
-      },
-      {
-        lead: 'A COINS Act / BIOSECURE overhang could block the Akeso/Summit US path',
-        rest: 'creating structural white space for a Western-manufactured PD-1×VEGF or dual-checkpoint bispecific.',
-      },
-      {
-        lead: 'The highest-value design is chemo-free',
-        rest: 'bispecific alone vs pembro+chemo in PD-L1-unselected patients — differentiated from both ivonescimab and the chemo-IO standard at once.',
-      },
-      {
-        lead: 'STK11/KEAP1-mutant (~20% non-squamous) is unaddressed',
-        rest: 'no approved or Phase 3 bispecific shows OS benefit in this primary IO-resistance cohort.',
-      },
-    ],
-    topUnmetNeeds: [
-      {
-        need: 'Efficacy plateau in driver-negative all-comers',
-        severity: 'Critical',
-        note: '60–70% progress within 12 months; 5-yr OS only ~19%.',
-      },
-      {
-        need: 'STK11/KEAP1 co-mutation drives IO resistance',
-        severity: 'Critical',
-        note: '~20% of non-squamous; mOS ~6–8 mo on current IO+chemo.',
-      },
-      {
-        need: 'Squamous NSCLC underserved beyond KEYNOTE-407',
-        severity: 'High',
-        note: '~25–30% of NSCLC; 5-yr OS 18.4%, few targeted options.',
-      },
-    ],
-  },
+
 };
 
 /** Look up a TPP summary; slug dots/dashes are normalised to match keys. */
@@ -97,18 +48,7 @@ export type EtlmSummary = {
   anchorAssets?: string[];
 };
 
-export const etlmSummaries: Record<string, EtlmSummary> = {
-  nsclc: {
-    verdict:
-      'A mature, molecularly-segmented market: 1L is locked by chemo-IO and driver-targeted TKIs — the open battlegrounds are post-osimertinib EGFR resistance, KRAS-mutant durability, and the PD-1×VEGF bispecific challenge to the chemo-IO standard.',
-    anchorAssets: ['keytruda', 'pembrolizumab', 'tagrisso', 'osimertinib'],
-  },
-  obesity: {
-    verdict:
-      'An incretin-defined market racing up the efficacy curve: semaglutide and tirzepatide anchor today, while the open questions are the Phase-3 tolerability ceiling, oral access, and whether triple-G agonists reset the bar.',
-    anchorAssets: ['wegovy', 'semaglutide', 'zepbound', 'tirzepatide', 'mounjaro', 'ozempic'],
-  },
-};
+export const etlmSummaries: Record<string, EtlmSummary> = {};
 
 export function getEtlmSummary(code: string): EtlmSummary | undefined {
   return etlmSummaries[code];

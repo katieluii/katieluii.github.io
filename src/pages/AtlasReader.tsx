@@ -5,7 +5,7 @@ import catalogData from '../data/atlas/catalog.json';
 import { themeIndex, hasEcosystem, type ThemeIndexEntry } from '../data/atlas/index';
 import { taForTheme, themeShortLabel, type TherapeuticArea } from '../data/atlas/taxonomy';
 
-type PublicStatus = 'published' | 'published_snapshot' | 'in_review' | 'planned';
+type PublicStatus = 'available' | 'published' | 'published_snapshot' | 'in_review' | 'planned';
 
 type CatalogArtifact = {
   slug: string;
@@ -37,7 +37,6 @@ type CatalogArea = {
 
 type CoverageCatalog = {
   schema_version: number;
-  evaluated_at: string;
   therapeutic_areas: CatalogArea[];
   indications: CatalogIndication[];
 };
@@ -45,6 +44,7 @@ type CoverageCatalog = {
 const catalog = catalogData as CoverageCatalog;
 
 const STATUS_LABEL: Record<PublicStatus, string> = {
+  available: 'Available',
   published: 'Published',
   published_snapshot: 'Published snapshot',
   in_review: 'Available on request',
@@ -52,6 +52,7 @@ const STATUS_LABEL: Record<PublicStatus, string> = {
 };
 
 const STATUS_CLASS: Record<PublicStatus, string> = {
+  available: 'bg-indigo-50 text-indigo-700 ring-indigo-600/20 dark:bg-indigo-500/10 dark:text-indigo-300 dark:ring-indigo-500/30',
   published:
     'bg-emerald-50 text-emerald-700 ring-emerald-600/20 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/30',
   published_snapshot:
@@ -93,29 +94,10 @@ function StatusBadge({ status }: { status: PublicStatus }) {
   );
 }
 
-function UnavailableRow({
-  label,
-  deliverable,
-}: {
-  label: string;
-  deliverable: CatalogDeliverable;
-}) {
-  const meta = statusMeta(deliverable);
-  return (
-    <div className="rounded-lg bg-zinc-50/60 px-3 py-3 ring-1 ring-zinc-200 dark:bg-white/[0.03] dark:ring-white/10">
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">{label}</span>
-        <StatusBadge status={deliverable.status} />
-      </div>
-      {meta && <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{meta}</div>}
-    </div>
-  );
-}
-
 function LandscapeRow({ indication }: { indication: CatalogIndication }) {
   const deliverable = indication.landscape;
   const artifact = deliverable.artifacts[0];
-  if (!artifact) return <UnavailableRow label="Landscape map" deliverable={deliverable} />;
+  if (!artifact) return null;
 
   return (
     <Link
@@ -130,7 +112,7 @@ function LandscapeRow({ indication }: { indication: CatalogIndication }) {
         </div>
       </div>
       <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-        {deliverable.mode === 'summary' ? 'Summary view' : 'Full view'}
+        {deliverable.mode === 'summary' ? 'Capped preview' : 'Full view'}
         {statusMeta(deliverable) ? ` · ${statusMeta(deliverable)}` : ''}
       </div>
     </Link>
@@ -140,7 +122,7 @@ function LandscapeRow({ indication }: { indication: CatalogIndication }) {
 function TppRow({ indication }: { indication: CatalogIndication }) {
   const deliverable = indication.tpp;
   if (deliverable.artifacts.length === 0) {
-    return <UnavailableRow label="Target product profiles" deliverable={deliverable} />;
+    return null;
   }
 
   return (
@@ -186,7 +168,7 @@ export function AtlasReader() {
   return (
     <ProjectPageLayout
       title="Atlas Reader"
-      subtitle="Drug-development landscapes, target product profiles, and class-level theses organised by therapeutic area. Published work is immediately viewable; maintained background coverage is available on request."
+      subtitle="Evidence-reviewed drug-development landscapes organised by therapeutic area. Explore three full landscapes and three capped previews."
       backTo="/atlas-drug-dev-analyst"
       backLabel="Back to Atlas"
     >

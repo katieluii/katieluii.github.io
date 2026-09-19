@@ -1,10 +1,10 @@
 {
   "etlm_whitelist": [
-    "nsclc",
     "obesity",
-    "nhl_dlbcl",
     "mm",
-    "crc",
+    "nsclc",
+    "parkinsons",
+    "breast",
     "urothelial"
   ],
   "etlm_strip_keys": [
@@ -61,7 +61,7 @@
     "_provenance$",
     "^ws13_review_update"
   ],
-  "_etlm_allowed_top_level_keys_doc": "D4 — the sync FAILS if a whitelisted draft carries a top-level key that is neither listed here (ships) nor caught by etlm_strip_keys/patterns (stripped). strip_keys() is a denylist, so without this an analyst adding any new top-level key ships it to the public bundle with no reviewer. This list is the sanctioned client schema across the 5 published drafts. Publishing a new indication will trip this gate on each of its novel top-level keys — that is the intended review point: classify each as client content (add here) or internal scaffolding (add to etlm_strip_keys). NOTE: the 43 gated drafts carry ~80 extra top-level keys, most of them internal scaffolding (bootstrap_source, source_review, schema_notes, generator, metadata, analyst_session_history, …) that MUST be stripped before those drafts publish — see PIPELINE_REMEDIATION_2026-07-23.md D4.",
+  "_etlm_allowed_top_level_keys_doc": "D4 \u2014 the sync FAILS if a whitelisted draft carries a top-level key that is neither listed here (ships) nor caught by etlm_strip_keys/patterns (stripped). strip_keys() is a denylist, so without this an analyst adding any new top-level key ships it to the public bundle with no reviewer. This list is the sanctioned client schema across the 5 published drafts. Publishing a new indication will trip this gate on each of its novel top-level keys \u2014 that is the intended review point: classify each as client content (add here) or internal scaffolding (add to etlm_strip_keys). NOTE: the 43 gated drafts carry ~80 extra top-level keys, most of them internal scaffolding (bootstrap_source, source_review, schema_notes, generator, metadata, analyst_session_history, \u2026) that MUST be stripped before those drafts publish \u2014 see PIPELINE_REMEDIATION_2026-07-23.md D4.",
   "etlm_allowed_top_level_keys": [
     "approved_therapies",
     "approved_therapies_legacy",
@@ -85,7 +85,11 @@
     "recent_conference_readouts",
     "regulatory_landscape",
     "therapeutic_area",
-    "unmet_needs"
+    "unmet_needs",
+    "detail_available",
+    "detail_rows_shown",
+    "detail_note",
+    "section_counts"
   ],
   "etlm_value_scrub_extra_tokens": [
     "analyst-knowledge[\\w-]*",
@@ -93,7 +97,7 @@
     "do not assert",
     "do-not-assert"
   ],
-  "_markdown_inline_replacements_doc": "INLINE scrub vocabulary for TPP/theme/ecosystem markdown — the counterpart to tpp_theme_strip_markers. A marker there DROPS THE WHOLE LINE, which is only ever right for a line that is pure internal provenance. These rules handle the other half: an internal token sitting INSIDE a line that must survive — an analytical bullet, a markdown table row, a citation footer holding dozens of PMIDs/NCTs/DOIs. Each rule is an ordered {why, pattern, replacement} regex substitution applied by _scrub_inline() in sync-atlas-content.py, AFTER the built-in provenance/id/workflow patterns. ORDER IS LOAD-BEARING: the end-anchored footer rules must consume their whole clause before the general id-reference rule can bite a piece out of it, and the article-carrying 'the WS12 KB' forms must run before the bare 'WS12 KB' form or the replacement doubles the article. Applies to markdown ONLY — the ETLM JSON path (scrub_values/_scrub_str) never reads this key, so a rule here cannot move a published JSON byte. Prefer a replacement that keeps the sentence's meaning over one that deletes the clause: these lines are the deliverable.",
+  "_markdown_inline_replacements_doc": "INLINE scrub vocabulary for TPP/theme/ecosystem markdown \u2014 the counterpart to tpp_theme_strip_markers. A marker there DROPS THE WHOLE LINE, which is only ever right for a line that is pure internal provenance. These rules handle the other half: an internal token sitting INSIDE a line that must survive \u2014 an analytical bullet, a markdown table row, a citation footer holding dozens of PMIDs/NCTs/DOIs. Each rule is an ordered {why, pattern, replacement} regex substitution applied by _scrub_inline() in sync-atlas-content.py, AFTER the built-in provenance/id/workflow patterns. ORDER IS LOAD-BEARING: the end-anchored footer rules must consume their whole clause before the general id-reference rule can bite a piece out of it, and the article-carrying 'the WS12 KB' forms must run before the bare 'WS12 KB' form or the replacement doubles the article. Applies to markdown ONLY \u2014 the ETLM JSON path (scrub_values/_scrub_str) never reads this key, so a rule here cannot move a published JSON byte. Prefer a replacement that keeps the sentence's meaning over one that deletes the clause: these lines are the deliverable.",
   "markdown_inline_replacements": [
     {
       "why": "TPP footer: the leading run of internal source-artifact names between '*Sources:' and the first real citation (obesity 1L: 'ETLM obesity.json; skill_context_obesity.json; ecosystem_knowledge.md; landscape/_macro.json.'). Anchored to the '*Sources: ' label so it can only ever eat a LEADING run; the public citations that follow are never reached.",
@@ -101,7 +105,7 @@
       "replacement": ""
     },
     {
-      "why": "TPP footer: the trailing internal event/signal roll-up at the very end of a '*Sources: …*' line (obesity 1L: 'WS12 events 13, 106, 252-253; macro signal_id 106.'). End-anchored so it cannot reach into the citation list.",
+      "why": "TPP footer: the trailing internal event/signal roll-up at the very end of a '*Sources: \u2026*' line (obesity 1L: 'WS12 events 13, 106, 252-253; macro signal_id 106.'). End-anchored so it cannot reach into the citation list.",
       "pattern": "\\s*\\bWS\\d+ events?\\b[^*]*?\\.(?=\\*?\\s*$)",
       "replacement": ""
     },
@@ -136,8 +140,8 @@
       "replacement": ""
     },
     {
-      "why": "A signal_id/event_id reference appended to a parenthetical or clause that must survive — the built-in _IDPAREN_RE only fires when the paren OPENS with the id token. Covers '(ASCO 2026, KB event_id 7)', '(...OptumRx; event_id 13)', '(...June 2026, macro signal_id 106)', '(...June 2026, macro.json signal_id 106)', '(3x control; signal_id 79/111, Jun 4 2026)', '(...reports; event_ids 252/253, as of 2026-06)'. The trailing number run stops at the first non-numeric group, so a following clause keeps its comma. ORDERED BEFORE the ', <artifact>' rule: pediatric TPP's '(Indiana facility failure June 2026, macro.json signal_id 106)' has BOTH, and removing ', macro.json' first strips the comma this rule needs, stranding a bare 'signal_id 106' in public copy.",
-      "pattern": "[,;]\\s*(?:[A-Za-z][\\w./-]*\\s+){0,2}(?:signal_ids?|event_ids?|macro_signal_id)\\s*\\d+(?:\\s*[/,–—-]\\s*\\d+)*",
+      "why": "A signal_id/event_id reference appended to a parenthetical or clause that must survive \u2014 the built-in _IDPAREN_RE only fires when the paren OPENS with the id token. Covers '(ASCO 2026, KB event_id 7)', '(...OptumRx; event_id 13)', '(...June 2026, macro signal_id 106)', '(...June 2026, macro.json signal_id 106)', '(3x control; signal_id 79/111, Jun 4 2026)', '(...reports; event_ids 252/253, as of 2026-06)'. The trailing number run stops at the first non-numeric group, so a following clause keeps its comma. ORDERED BEFORE the ', <artifact>' rule: pediatric TPP's '(Indiana facility failure June 2026, macro.json signal_id 106)' has BOTH, and removing ', macro.json' first strips the comma this rule needs, stranding a bare 'signal_id 106' in public copy.",
+      "pattern": "[,;]\\s*(?:[A-Za-z][\\w./-]*\\s+){0,2}(?:signal_ids?|event_ids?|macro_signal_id)\\s*\\d+(?:\\s*[/,\u2013\u2014-]\\s*\\d+)*",
       "replacement": ""
     },
     {
@@ -146,28 +150,28 @@
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R1) — a parenthetical whose ENTIRE content is an internal DB row id: '(event 202)', '(events 175/176)', '(macro signal 69)', '(KB event 1110)', '(signals 322/323/325)', '(events 261-282)'. VALUE SCRUB, not a line drop: these sit inside analytical bullets carrying real efficacy, trial names and deal values, so the line must survive. The bare 'signal 1748' form is NOT reachable by the built-in _IDPAREN_RE (which requires the paren to OPEN with a 'signal_id'-style token) nor by the ', signal_id N' rule above (which requires the '_id' suffix). Requiring the paren to hold NOTHING BUT the id run is what makes it safe — a paren with real data in it is left to R2/R3. Measured: 167 lines changed across the 2,025-line reachable ecosystem body corpus, 0 new scrub artifacts, 0 %/NCT/PMID lost.",
-      "pattern": "\\s*\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*\\)",
+      "why": "ECOSYSTEM BODY (R1) \u2014 a parenthetical whose ENTIRE content is an internal DB row id: '(event 202)', '(events 175/176)', '(macro signal 69)', '(KB event 1110)', '(signals 322/323/325)', '(events 261-282)'. VALUE SCRUB, not a line drop: these sit inside analytical bullets carrying real efficacy, trial names and deal values, so the line must survive. The bare 'signal 1748' form is NOT reachable by the built-in _IDPAREN_RE (which requires the paren to OPEN with a 'signal_id'-style token) nor by the ', signal_id N' rule above (which requires the '_id' suffix). Requiring the paren to hold NOTHING BUT the id run is what makes it safe \u2014 a paren with real data in it is left to R2/R3. Measured: 167 lines changed across the 2,025-line reachable ecosystem body corpus, 0 new scrub artifacts, 0 %/NCT/PMID lost.",
+      "pattern": "\\s*\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,\u2013\u2014-]\\s*\\d{1,4})*\\s*\\)",
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R2) — an internal DB row id APPENDED after a separator inside a parenthetical that also carries real content: '(40% ORR DeLLphi-301, events 289/290)' -> '(40% ORR DeLLphi-301)', '(up to $792M/drug biobucks; signal 288/291)' -> '(up to $792M/drug biobucks)', '(Jun 15, signal 257)' -> '(Jun 15)', '(cliff driver: signals 11/87/131/152)' -> '(cliff driver)'. Removes only the id tail, exactly like the ', <artifact>' rule above; the ORR, the biobucks figure and the date all stay. Measured: 42 lines changed, 0 new scrub artifacts.",
-      "pattern": "[,;:]\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*(?=[^()]*\\))",
+      "why": "ECOSYSTEM BODY (R2) \u2014 an internal DB row id APPENDED after a separator inside a parenthetical that also carries real content: '(40% ORR DeLLphi-301, events 289/290)' -> '(40% ORR DeLLphi-301)', '(up to $792M/drug biobucks; signal 288/291)' -> '(up to $792M/drug biobucks)', '(Jun 15, signal 257)' -> '(Jun 15)', '(cliff driver: signals 11/87/131/152)' -> '(cliff driver)'. Removes only the id tail, exactly like the ', <artifact>' rule above; the ORR, the biobucks figure and the date all stay. Measured: 42 lines changed, 0 new scrub artifacts.",
+      "pattern": "[,;:]\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,\u2013\u2014-]\\s*\\d{1,4})*(?=[^()]*\\))",
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R3) — an internal DB row id OPENING a parenthetical whose remainder is reader-facing: '(event 287, 2026-06-11)' -> '(2026-06-11)', '(event 202; breast handoff)' -> '(breast handoff)', '(signal 165, preclinical)' -> '(preclinical)'. Dropping the whole paren here would take the readout date or the development-stage qualifier with it, which is why R1 is restricted to parens holding nothing else. Requires a ',', ';' or ':' after the id run so the surviving paren is still well formed. Measured: 54 lines changed, 0 new scrub artifacts.",
-      "pattern": "\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
+      "why": "ECOSYSTEM BODY (R3) \u2014 an internal DB row id OPENING a parenthetical whose remainder is reader-facing: '(event 287, 2026-06-11)' -> '(2026-06-11)', '(event 202; breast handoff)' -> '(breast handoff)', '(signal 165, preclinical)' -> '(preclinical)'. Dropping the whole paren here would take the readout date or the development-stage qualifier with it, which is why R1 is restricted to parens holding nothing else. Requires a ',', ';' or ':' after the id run so the surviving paren is still well formed. Measured: 54 lines changed, 0 new scrub artifacts.",
+      "pattern": "\\(\\s*(?:(?:macro|KB|the|new|net-new)\\s+)*(?:macro[_ ])?(?:event|signal)s?(?:_ids?)?\\s*\\d{1,4}(?:\\s*[/,\u2013\u2014-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
       "replacement": "("
     },
     {
-      "why": "ECOSYSTEM BODY (R5) — a parenthetical whose ENTIRE content is an internal cycle-number reference: '(cycle170)', '(logged cycle170)', '(delta from cycle18)', '(since cycle123)'. The cycle number is the source pipeline's run counter, meaningless outside it; the surrounding sentence is the deliverable. Same containment rule as R1 — the paren must hold nothing but the reference. Measured: 22 lines changed, 0 new scrub artifacts. NOTE the deliberately ABSENT sibling: a rule for a cycle ref appended mid-paren ('(cycle13 \"May $4.4B day\", cycle12 \"seven multibillion-dollar deals\")') was measured and REJECTED — it left the two quoted phrases jammed together with no separator, the '(pending )' failure shape. That form is left to the ecosystem residue gate, which aborts rather than mangling it.",
-      "pattern": "\\s*\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*\\)",
+      "why": "ECOSYSTEM BODY (R5) \u2014 a parenthetical whose ENTIRE content is an internal cycle-number reference: '(cycle170)', '(logged cycle170)', '(delta from cycle18)', '(since cycle123)'. The cycle number is the source pipeline's run counter, meaningless outside it; the surrounding sentence is the deliverable. Same containment rule as R1 \u2014 the paren must hold nothing but the reference. Measured: 22 lines changed, 0 new scrub artifacts. NOTE the deliberately ABSENT sibling: a rule for a cycle ref appended mid-paren ('(cycle13 \"May $4.4B day\", cycle12 \"seven multibillion-dollar deals\")') was measured and REJECTED \u2014 it left the two quoted phrases jammed together with no separator, the '(pending )' failure shape. That form is left to the ecosystem residue gate, which aborts rather than mangling it.",
+      "pattern": "\\s*\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,\u2013\u2014-]\\s*\\d{1,4})*\\s*\\)",
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R7) — an internal cycle reference OPENING a parenthetical whose remainder is reader-facing, e.g. '(cycle37 deltas — KB scope)'. Mirrors R3. Requires a ',', ';' or ':' after the reference so the surviving paren stays well formed. Measured: 4 lines changed, 0 new scrub artifacts.",
-      "pattern": "\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,–—-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
+      "why": "ECOSYSTEM BODY (R7) \u2014 an internal cycle reference OPENING a parenthetical whose remainder is reader-facing, e.g. '(cycle37 deltas \u2014 KB scope)'. Mirrors R3. Requires a ',', ';' or ':' after the reference so the surviving paren stays well formed. Measured: 4 lines changed, 0 new scrub artifacts.",
+      "pattern": "\\(\\s*(?:(?:logged|already\\s+logged|since|from|per|see|in|at|as\\s+of|delta\\s+from|new|open\\s+since)\\s+)*cycles?\\s?\\d{1,4}(?:\\s*[/,\u2013\u2014-]\\s*\\d{1,4})*\\s*[,;:]\\s*",
       "replacement": "("
     },
     {
@@ -231,12 +235,12 @@
       "replacement": ""
     },
     {
-      "why": "adc theme prose: 'no new cycle 4 clinical data' — the internal cycle number adds nothing; the sentence's point is that EV-302 remains the class floor.",
+      "why": "adc theme prose: 'no new cycle 4 clinical data' \u2014 the internal cycle number adds nothing; the sentence's point is that EV-302 remains the class floor.",
       "pattern": "\\bno new cycle\\s?\\d+ clinical data\\b",
       "replacement": "no new clinical data"
     },
     {
-      "why": "adc theme prose: 'Confirmed in ovarian analyst cycle 4' — names an internal review cycle. The confirmation itself is the clinical content and is kept.",
+      "why": "adc theme prose: 'Confirmed in ovarian analyst cycle 4' \u2014 names an internal review cycle. The confirmation itself is the clinical content and is kept.",
       "pattern": "\\bConfirmed in (\\w+) analyst cycle\\s?\\d+\\b",
       "replacement": "Confirmed in the \\1 analysis"
     },
@@ -256,12 +260,12 @@
       "replacement": ""
     },
     {
-      "why": "kras theme heading: '## Appendix: Catalyst DB Asset Inventory (KRAS / RAS Theme)'. The inventory table beneath it is genuinely useful — 10 trials with real NCTs — so the section stays; only the internal database name leaves the heading.",
+      "why": "kras theme heading: '## Appendix: Catalyst DB Asset Inventory (KRAS / RAS Theme)'. The inventory table beneath it is genuinely useful \u2014 10 trials with real NCTs \u2014 so the section stays; only the internal database name leaves the heading.",
       "pattern": "^## Appendix: [Cc]atalyst DB Asset Inventory",
       "replacement": "## Appendix: Asset Inventory"
     },
     {
-      "why": "adc theme: '(NHL analyst D-NHL-001 auto-apply URGENT)' — an internal analyst decision id plus a pipeline workflow state. The whole parenthetical is internal; the sentence (Zynlonta removed from the 3L+ DLBCL landscape) stands without it. Also the laundering path: _scrub_inline rewrites AUTO_APPLY to lowercase before leak_gate greps for the uppercase form, so the gate can never catch this.",
+      "why": "adc theme: '(NHL analyst D-NHL-001 auto-apply URGENT)' \u2014 an internal analyst decision id plus a pipeline workflow state. The whole parenthetical is internal; the sentence (Zynlonta removed from the 3L+ DLBCL landscape) stands without it. Also the laundering path: _scrub_inline rewrites AUTO_APPLY to lowercase before leak_gate greps for the uppercase form, so the gate can never catch this.",
       "pattern": "\\s*\\((?:[A-Z]+ analyst )?D-[A-Z]+-\\d+ (?:auto-apply|human review)[^)]*\\)",
       "replacement": ""
     },
@@ -271,7 +275,7 @@
       "replacement": "immediate reassessment"
     },
     {
-      "why": "adc theme: 'KB quality gap (all 9 PDAC events blank)' — 'KB' is the internal knowledge base. Reworded to describe the gap in reader terms.",
+      "why": "adc theme: 'KB quality gap (all 9 PDAC events blank)' \u2014 'KB' is the internal knowledge base. Reworded to describe the gap in reader terms.",
       "pattern": "\\bKB quality gap\\b",
       "replacement": "Evidence coverage gap"
     },
@@ -286,22 +290,22 @@
       "replacement": "conference-metadata"
     },
     {
-      "why": "kras theme: '**Conference catalyst (DB confirmed):**' — a second phrasing of the internal database reference that the 'catalyst DB' rule does not match. The NCT on the same line is the actual evidence.",
+      "why": "kras theme: '**Conference catalyst (DB confirmed):**' \u2014 a second phrasing of the internal database reference that the 'catalyst DB' rule does not match. The NCT on the same line is the actual evidence.",
       "pattern": "\\s*\\(DB confirmed\\)",
       "replacement": ""
     },
     {
-      "why": "adc theme: 'confirmatory trial risk flagged by NHL analyst (D-NHL-002)' — internal attribution plus an analyst decision id. The RISK is the clinical content and stays; who logged it and under which decision id is internal.",
+      "why": "adc theme: 'confirmatory trial risk flagged by NHL analyst (D-NHL-002)' \u2014 internal attribution plus an analyst decision id. The RISK is the clinical content and stays; who logged it and under which decision id is internal.",
       "pattern": "\\s*by [A-Z/]+ analyst \\(D-[A-Z]+-\\d+\\)",
       "replacement": ""
     },
     {
-      "why": "adc theme: 'NHL analyst decision D-NHL-001 URGENT: withdrawal imminent.' — the judgement (withdrawal imminent) is real analysis and must survive; the decision id and the internal URGENT queue priority must not.",
+      "why": "adc theme: 'NHL analyst decision D-NHL-001 URGENT: withdrawal imminent.' \u2014 the judgement (withdrawal imminent) is real analysis and must survive; the decision id and the internal URGENT queue priority must not.",
       "pattern": "[A-Z/]+ analyst decision D-[A-Z]+-\\d+ URGENT: ",
       "replacement": "Assessment: "
     },
     {
-      "why": "adc theme: 'this converts to auto-apply for 1L HER2+ benchmark' — 'auto-apply' is a pipeline state describing how the knowledge base would ingest the result. Reworded to what it means for a reader.",
+      "why": "adc theme: 'this converts to auto-apply for 1L HER2+ benchmark' \u2014 'auto-apply' is a pipeline state describing how the knowledge base would ingest the result. Reworded to what it means for a reader.",
       "pattern": "\\bconverts to auto-apply\\b",
       "replacement": "converts to an automatic update"
     },
@@ -311,17 +315,17 @@
       "replacement": ""
     },
     {
-      "why": "ecosystem: ', flagged cycle177)' and similar — an internal pipeline cycle id appended to a real clinical signal (volrustomig, PD-1xCTLA-4 class-negative). The signal and its molecule stay; only the cycle id goes. Consumed with its leading separator so the parenthesis keeps its punctuation.",
+      "why": "ecosystem: ', flagged cycle177)' and similar \u2014 an internal pipeline cycle id appended to a real clinical signal (volrustomig, PD-1xCTLA-4 class-negative). The signal and its molecule stay; only the cycle id goes. Consumed with its leading separator so the parenthesis keeps its punctuation.",
       "pattern": ",?\\s*flagged cycle\\s?\\d+",
       "replacement": ""
     },
     {
-      "why": "ecosystem: 'Highest-volume deal/market cycle since cycle176:' — a comparison against an internal cycle number. The claim (this was the highest-volume deal cycle) is real market commentary and the deal list that follows carries names and values; only the internal reference point is reworded.",
+      "why": "ecosystem: 'Highest-volume deal/market cycle since cycle176:' \u2014 a comparison against an internal cycle number. The claim (this was the highest-volume deal cycle) is real market commentary and the deal list that follows carries names and values; only the internal reference point is reworded.",
       "pattern": "\\bsince cycle\\s?\\d+\\b",
       "replacement": "since the previous cycle"
     },
     {
-      "why": "ecosystem: 'flagged pre-decision by the obesity analyst' / 'flagged by the ccrcc analyst' — internal attribution of who raised an item and where it sits in the review queue. The flag itself is the reader-relevant part; who logged it is not.",
+      "why": "ecosystem: 'flagged pre-decision by the obesity analyst' / 'flagged by the ccrcc analyst' \u2014 internal attribution of who raised an item and where it sits in the review queue. The flag itself is the reader-relevant part; who logged it is not.",
       "pattern": "\\s*(?:flagged\\s+)?(?:pre-decision\\s+)?by the \\w+ analyst\\b",
       "replacement": ""
     },
@@ -331,12 +335,12 @@
       "replacement": ""
     },
     {
-      "why": "ecosystem: '(NCT07700979, logged cycle105)' — the NCT is the real reference and stays; the internal cycle in which it was logged does not. Consumed with its separator so the parenthesis keeps its punctuation.",
+      "why": "ecosystem: '(NCT07700979, logged cycle105)' \u2014 the NCT is the real reference and stays; the internal cycle in which it was logged does not. Consumed with its separator so the parenthesis keeps its punctuation.",
       "pattern": ",?\\s*logged cycle\\s?\\d+",
       "replacement": ""
     },
     {
-      "why": "ecosystem: trailing internal provenance sentences — 'Anchor: asthma cycle105 HR.', 'Anchor: nsclc cycle105 carry-forward.', 'Anchor: events 4386/4390/4394.' These are pointers back into the pipeline's own record, not statements about the science. Anchored on the Anchor: opener and consumed to the end of the sentence.",
+      "why": "ecosystem: trailing internal provenance sentences \u2014 'Anchor: asthma cycle105 HR.', 'Anchor: nsclc cycle105 carry-forward.', 'Anchor: events 4386/4390/4394.' These are pointers back into the pipeline's own record, not statements about the science. Anchored on the Anchor: opener and consumed to the end of the sentence.",
       "pattern": "\\s*\\bAnchors?:\\s*[^.]*?(?:cycle\\s?\\d+|events?\\s+[\\d/]+)[^.]*\\.",
       "replacement": ""
     },
@@ -346,12 +350,12 @@
       "replacement": "manual review"
     },
     {
-      "why": "ecosystem: 'routed manual review for Katie's ETLM-placement call' — an internal routing note naming the reviewer and the queue. The reader-relevant fact is that the asset is awaiting a placement decision and is therefore not yet in any count; who makes that call is not. Surfaced only after the human-review rewrite landed, which is why it was not caught in the same pass.",
+      "why": "ecosystem: 'routed manual review for Katie's ETLM-placement call' \u2014 an internal routing note naming the reviewer and the queue. The reader-relevant fact is that the asset is awaiting a placement decision and is therefore not yet in any count; who makes that call is not. Surfaced only after the human-review rewrite landed, which is why it was not caught in the same pass.",
       "pattern": "routed (?:manual|human) review for \\w+'s ([\\w-]+) call",
       "replacement": "awaiting a \\1 decision"
     },
     {
-      "why": "ecosystem: 'auto-apply patch attached this cycle to close the gap'. _WORKFLOW_RE lowercases AUTO_APPLY to auto-apply before the markdown rules run, and leak_gate only greps the uppercase form — so without this the token launders straight through every check. Specific shape first so the generic rule below never sees it.",
+      "why": "ecosystem: 'auto-apply patch attached this cycle to close the gap'. _WORKFLOW_RE lowercases AUTO_APPLY to auto-apply before the markdown rules run, and leak_gate only greps the uppercase form \u2014 so without this the token launders straight through every check. Specific shape first so the generic rule below never sees it.",
       "pattern": "\\bauto-apply patch\\b",
       "replacement": "corrective patch"
     },
@@ -361,7 +365,7 @@
       "replacement": "automatic update"
     },
     {
-      "why": "ecosystem: 'extends the rare-dermatology-licensing pattern opened cycle180)'. Fourth verb form of the same construction after flagged/logged/since — enumerating verbs was always going to lose this race, so the backstop below follows.",
+      "why": "ecosystem: 'extends the rare-dermatology-licensing pattern opened cycle180)'. Fourth verb form of the same construction after flagged/logged/since \u2014 enumerating verbs was always going to lose this race, so the backstop below follows.",
       "pattern": "\\bopened cycle\\s?\\d+\\b",
       "replacement": "opened in an earlier cycle"
     },
@@ -371,27 +375,27 @@
       "replacement": "an earlier cycle"
     },
     {
-      "why": "ECOSYSTEM BODY (R8a) — the 'events <id>[/<id>]' token itself, wherever it sits. R1 needs the whole parenthetical to be ids and R2/R3 need them at one end, so an id list interleaved with indication names slips all three — the form that aborted the 2026-08-19 sync. Removes ONLY the token. Two earlier drafts were rejected in testing: one stripped bare 3-4 digit runs and ate the YEAR from 'JCO 2026/PMID …'; the other dropped the whole parenthetical and destroyed NCTs, ORR 58.0% and $600M/$1.5B/$2.6B deal values on 9 other lines. Never drop the container to remove a token.",
+      "why": "ECOSYSTEM BODY (R8a) \u2014 the 'events <id>[/<id>]' token itself, wherever it sits. R1 needs the whole parenthetical to be ids and R2/R3 need them at one end, so an id list interleaved with indication names slips all three \u2014 the form that aborted the 2026-08-19 sync. Removes ONLY the token. Two earlier drafts were rejected in testing: one stripped bare 3-4 digit runs and ate the YEAR from 'JCO 2026/PMID \u2026'; the other dropped the whole parenthetical and destroyed NCTs, ORR 58.0% and $600M/$1.5B/$2.6B deal values on 9 other lines. Never drop the container to remove a token.",
       "pattern": ",?\\s*\\bevents?\\s+\\d{3,4}(?:/\\d{3,4})*",
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R8b) — an '<indication> <row id>' pair inside a comma-separated list, e.g. ', breast 4414, prostate 4416, sclc 4417'. Keeps the indication name (reader-facing: which tumour types the asset spans) and drops only its internal id. Guarded against years (19xx/20xx), against currency ($…) and against a following unit (%, mo, mg), so it cannot touch a deal value, a readout or a dose.",
+      "why": "ECOSYSTEM BODY (R8b) \u2014 an '<indication> <row id>' pair inside a comma-separated list, e.g. ', breast 4414, prostate 4416, sclc 4417'. Keeps the indication name (reader-facing: which tumour types the asset spans) and drops only its internal id. Guarded against years (19xx/20xx), against currency ($\u2026) and against a following unit (%, mo, mg), so it cannot touch a deal value, a readout or a dose.",
       "pattern": "(?<=,)(\\s+[a-z][a-z_\\-]{2,})\\s+(?!19\\d{2}|20\\d{2})\\d{3,4}(?=\\s*[,)])",
       "replacement": "\\1"
     },
     {
-      "why": "ECOSYSTEM BODY (R9) — the pipeline's own run ids, 'cycle155_mega' / 'cycle163_mega'. The existing bare-cycle backstop deliberately excludes these (its \\b cannot end on an underscore), so a run id in prose survives every rule and trips the leak gate. Consumes the 'since ' lead-in and its trailing comma-clause so the sentence keeps its punctuation.",
+      "why": "ECOSYSTEM BODY (R9) \u2014 the pipeline's own run ids, 'cycle155_mega' / 'cycle163_mega'. The existing bare-cycle backstop deliberately excludes these (its \\b cannot end on an underscore), so a run id in prose survives every rule and trips the leak gate. Consumes the 'since ' lead-in and its trailing comma-clause so the sentence keeps its punctuation.",
       "pattern": "\\s*\\((?:since\\s+)?cycle\\d+_\\w+(?:,\\s*[^)]*)?\\)",
       "replacement": ""
     },
     {
-      "why": "ECOSYSTEM BODY (R10) — internal triage status vocabulary in prose: 'and REJECTed', 'confirmed pure mis-tags'. _WORKFLOW_RE lowercases some status tokens before the markdown rules run, so the leak gate's uppercase grep never sees them — the same laundering the auto-apply rule was added for. Reworded, not dropped: the sentence carries the SCLC readout.",
+      "why": "ECOSYSTEM BODY (R10) \u2014 internal triage status vocabulary in prose: 'and REJECTed', 'confirmed pure mis-tags'. _WORKFLOW_RE lowercases some status tokens before the markdown rules run, so the leak gate's uppercase grep never sees them \u2014 the same laundering the auto-apply rule was added for. Reworded, not dropped: the sentence carries the SCLC readout.",
       "pattern": "\\band REJECTed\\b",
       "replacement": "and set aside"
     },
     {
-      "why": "ECOSYSTEM BODY (R11) — \"sclc's config 2L+ bars\": 'config' names the pipeline's own per-indication configuration file. The comparison itself (against lurbinectedin and tarlatamab ORRs) is real competitive content and stays.",
+      "why": "ECOSYSTEM BODY (R11) \u2014 \"sclc's config 2L+ bars\": 'config' names the pipeline's own per-indication configuration file. The comparison itself (against lurbinectedin and tarlatamab ORRs) is real competitive content and stays.",
       "pattern": "\\b(\\w+)'s config (\\d[LP]\\+?) bars\\b",
       "replacement": "the \\2 bar in \\1"
     },
@@ -401,57 +405,57 @@
       "replacement": "an earlier cycle"
     },
     {
-      "why": "Sentence case repair for the rule above — the substitution is lowercase because the possessive is usually mid-sentence; this lifts it where it opens one. The vs./cf. guards keep it off an abbreviation, which is not a sentence end — without them '$211M vs. an earlier cycle's figure' capitalised mid-sentence.",
+      "why": "Sentence case repair for the rule above \u2014 the substitution is lowercase because the possessive is usually mid-sentence; this lifts it where it opens one. The vs./cf. guards keep it off an abbreviation, which is not a sentence end \u2014 without them '$211M vs. an earlier cycle's figure' capitalised mid-sentence.",
       "pattern": "(?<=\\. )(?<!vs\\. )(?<!cf\\. )an earlier cycle(?=')",
       "replacement": "An earlier cycle"
     },
     {
       "why": "Capitalised bare 'Event 4541' as the grammatical subject after a bold run-in. Rule 55 deletes the lowercase form; the capital escaped for the same missing-re.I reason. Replaced rather than deleted (deleting strands the verb), and the negative lookahead excludes a hyphenated RANGE so 'event_id 112-119' is never rewritten to a dangling 'a tracked event-119'.",
-      "pattern": "(?<=\\*\\* )Event\\s+\\d{3,4}\\b(?![-–—\\d])",
+      "pattern": "(?<=\\*\\* )Event\\s+\\d{3,4}\\b(?![-\u2013\u2014\\d])",
       "replacement": "A tracked event"
     },
     {
-      "why": "Bare 'macro_signal 1952' mid-sentence with no punctuation or paren for rules 8/10/11/12 to anchor on ('already logged as macro_signal 1952 in cycle196'). SINGULAR only, and the same range lookahead — the plural 'macro signals 197-204' is a real span a reader can count and must survive intact.",
-      "pattern": "(?i)\\b(?:macro[_ ])signal\\s+\\d{3,4}\\b(?![-–—\\d])",
+      "why": "Bare 'macro_signal 1952' mid-sentence with no punctuation or paren for rules 8/10/11/12 to anchor on ('already logged as macro_signal 1952 in cycle196'). SINGULAR only, and the same range lookahead \u2014 the plural 'macro signals 197-204' is a real span a reader can count and must survive intact.",
+      "pattern": "(?i)\\b(?:macro[_ ])signal\\s+\\d{3,4}\\b(?![-\u2013\u2014\\d])",
       "replacement": "a tracked signal"
     },
     {
-      "why": "'13th consecutive staleness-floor cycle for copd' — the count and the quiet state are reader-facing; only the feed's internal name for that state is internal. Scoped to the ordinal idiom so the bare token elsewhere is left for review rather than silently reworded.",
+      "why": "'13th consecutive staleness-floor cycle for copd' \u2014 the count and the quiet state are reader-facing; only the feed's internal name for that state is internal. Scoped to the ordinal idiom so the bare token elsewhere is left for review rather than silently reworded.",
       "pattern": "(?i)\\b(\\d+(?:st|nd|rd|th) consecutive )staleness[- ]floor\\b",
       "replacement": "\\1quiet"
     },
     {
-      "why": "Standalone 'Event <id>.' as its own sentence fragment — a bare internal citation appended after a fully-sourced claim ('...ACTIVE_NOT_RECRUITING]. Event 4572. GB-0895 is also...'). Unlike the bold-run-in form, this one is not the subject of a sentence, so it is DELETED rather than reworded — nothing reader-facing is lost, the NCT and all trial data sit in the surrounding text. Anchored on a preceding sentence end and a following space so it cannot bite a mid-sentence 'Event 4541 (...) is a...' clause, which the earlier rule rewords instead.",
+      "why": "Standalone 'Event <id>.' as its own sentence fragment \u2014 a bare internal citation appended after a fully-sourced claim ('...ACTIVE_NOT_RECRUITING]. Event 4572. GB-0895 is also...'). Unlike the bold-run-in form, this one is not the subject of a sentence, so it is DELETED rather than reworded \u2014 nothing reader-facing is lost, the NCT and all trial data sit in the surrounding text. Anchored on a preceding sentence end and a following space so it cannot bite a mid-sentence 'Event 4541 (...) is a...' clause, which the earlier rule rewords instead.",
       "pattern": "(?<=\\.)\\s+Event\\s+\\d{3,4}\\.(?=\\s)",
       "replacement": ""
     },
     {
-      "why": "'no deal-theme macro_signal among 1955-1963' — internal table name plus an internal id RANGE. The residue detector needs signal+whitespace+digits, so 'among' between them hides it: the gate passes and the token ships. The reader-facing claim (no deal signal in the cycle's batch) survives; only the table name and the ids go.",
-      "pattern": "(?i)\\bmacro[_ ]signals?\\s+among\\s+\\d{3,4}\\s*[-–—]\\s*\\d{3,4}\\b",
+      "why": "'no deal-theme macro_signal among 1955-1963' \u2014 internal table name plus an internal id RANGE. The residue detector needs signal+whitespace+digits, so 'among' between them hides it: the gate passes and the token ships. The reader-facing claim (no deal signal in the cycle's batch) survives; only the table name and the ids go.",
+      "pattern": "(?i)\\bmacro[_ ]signals?\\s+among\\s+\\d{3,4}\\s*[-\u2013\u2014]\\s*\\d{3,4}\\b",
       "replacement": "tracked signal in this cycle's feed"
     },
     {
-      "why": "A parenthetical consisting ONLY of quoted prior-cycle characterisations — '(an earlier cycle \"quietest deal week\", an earlier cycle \"continuing ...\")'. Rule 54 maps each stamp correctly in isolation; three in one aside reads as broken prose. Dropped whole: it is an internal audit trail and the claim it annotates ('a 3rd consecutive quiet-deal cycle') sits in the main clause. DELIBERATELY NARROW — the close paren must follow the final quote immediately, so an aside carrying substance after the quote, like '(... \"seven multibillion-dollar deals\" anchor)', is left intact. A broader shape was measured first and destroyed $-denominated facts in 100 lines.",
+      "why": "A parenthetical consisting ONLY of quoted prior-cycle characterisations \u2014 '(an earlier cycle \"quietest deal week\", an earlier cycle \"continuing ...\")'. Rule 54 maps each stamp correctly in isolation; three in one aside reads as broken prose. Dropped whole: it is an internal audit trail and the claim it annotates ('a 3rd consecutive quiet-deal cycle') sits in the main clause. DELIBERATELY NARROW \u2014 the close paren must follow the final quote immediately, so an aside carrying substance after the quote, like '(... \"seven multibillion-dollar deals\" anchor)', is left intact. A broader shape was measured first and destroyed $-denominated facts in 100 lines.",
       "pattern": "\\s*\\(an earlier cycle \\\"[^\\\"]*\\\"(?:,\\s*an earlier cycle \\\"[^\\\"]*\\\")+\\)",
       "replacement": ""
     },
     {
-      "why": "'were REJECTed as non-clinical', 'is a REJECTed secondary-source re-report' — the SHOUTING-CAPS enum is the internal tell; the word is ordinary English and is its sentence's verb. Lowercased, never deleted. Runs after the existing 'and REJECTed' rule.",
+      "why": "'were REJECTed as non-clinical', 'is a REJECTed secondary-source re-report' \u2014 the SHOUTING-CAPS enum is the internal tell; the word is ordinary English and is its sentence's verb. Lowercased, never deleted. Runs after the existing 'and REJECTed' rule.",
       "pattern": "\\bREJECTed\\b",
       "replacement": "rejected"
     },
     {
-      "why": "'Held NOTED_ONLY — no ETLM section fits' — verb-object position needs a phrase, not a compound adjective. Must precede the general rule below.",
+      "why": "'Held NOTED_ONLY \u2014 no ETLM section fits' \u2014 verb-object position needs a phrase, not a compound adjective. Must precede the general rule below.",
       "pattern": "\\bHeld NOTED_ONLY\\b",
       "replacement": "Held for noting only"
     },
     {
-      "why": "'the standing C2N PrecivityAD2 NOTED_ONLY precedent' — attributive position, so the hyphenated adjective fits. Backstop for the enum anywhere else.",
+      "why": "'the standing C2N PrecivityAD2 NOTED_ONLY precedent' \u2014 attributive position, so the hyphenated adjective fits. Backstop for the enum anywhere else.",
       "pattern": "\\bNOTED_ONLY\\b",
       "replacement": "noted-only"
     }
   ],
-  "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value — a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers — a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
+  "_tpp_theme_strip_markers_doc": "LINE-DROP vocabulary for TPP/theme markdown: any line containing one of these substrings is removed WHOLE. Use ONLY for lines that are pure internal provenance with zero reader value \u2014 a byline, a 'Source ETLMs:' header, a not-for-distribution footer, an internal data-hygiene note. An internal token sitting INSIDE analytical prose, a table row, or a citation list belongs in the INLINE scrub (_scrub_inline in sync-atlas-content.py), never here: dropping the line would delete a clinical bullet or a page of PMIDs. Match is a case-SENSITIVE substring test against every line of every current AND FUTURE whitelisted file, so prefer long, distinctive, structural markers \u2014 a bare 'Katie' or 'WS9' would silently delete legitimate lines forever (e.g. adc_class_state's substantive NSCLC bullet contains 'deferred to Katie', which the inline scrub handles correctly).",
   "tpp_theme_strip_markers": [
     "INTERNAL:",
     "Katie note:",
@@ -467,7 +471,7 @@
     "**DB observation:**",
     "*Audit flag:"
   ],
-  "_tpp_theme_strip_sections_doc": "SECTION-DROP for TPP/theme markdown, keyed by source filename. Some internal provenance is a whole H2 SECTION, not a line: dropping the heading alone orphans its bullets under the previous section, and the bullets have no safe individual marker (adc_class_state's 'Sources Cited' nests nine '  - <Indication>: <etlm_key>, ...' lines). Each listed heading is matched EXACTLY against the whole stripped line — never as a substring — and the drop runs from that heading to the line before the next H1/H2 sibling (or EOF), so the section's trailing '---' separator goes with it and the surviving separator count stays correct. Keyed per FILE because exact-match alone is not enough for a generic heading: a global '## Sources Cited' entry would silently delete a FUTURE file's legitimate public citation list. New whitelisted files already require a config edit (tpp_whitelist / theme_whitelist), so per-file keying adds no maintenance the whitelists do not already impose — but it does mean a new file's internal sections must be reviewed and listed here, or they ship.",
+  "_tpp_theme_strip_sections_doc": "SECTION-DROP for TPP/theme markdown, keyed by source filename. Some internal provenance is a whole H2 SECTION, not a line: dropping the heading alone orphans its bullets under the previous section, and the bullets have no safe individual marker (adc_class_state's 'Sources Cited' nests nine '  - <Indication>: <etlm_key>, ...' lines). Each listed heading is matched EXACTLY against the whole stripped line \u2014 never as a substring \u2014 and the drop runs from that heading to the line before the next H1/H2 sibling (or EOF), so the section's trailing '---' separator goes with it and the surviving separator count stays correct. Keyed per FILE because exact-match alone is not enough for a generic heading: a global '## Sources Cited' entry would silently delete a FUTURE file's legitimate public citation list. New whitelisted files already require a config edit (tpp_whitelist / theme_whitelist), so per-file keying adds no maintenance the whitelists do not already impose \u2014 but it does mean a new file's internal sections must be reviewed and listed here, or they ship.",
   "tpp_theme_strip_sections": {
     "adc_class_state_2026-06-05.md": [
       "## How This Theme Informs WS9 ETLMs",
@@ -477,17 +481,8 @@
       "## 10. Cross-Reference Links (WS9 ETLM)"
     ]
   },
-  "tpp_whitelist": [
-    "tpp_nsclc_1L_bispecific_vs_pd1chemo_2026-06-05.md",
-    "tpp_nsclc_adjuvant_EGFR_mut_post_ADAURA_2026-06-05.md",
-    "tpp_obesity_1L_injectable_bmi30_2026-06-05.md",
-    "tpp_obesity_pediatric_post_STEP_TEENS_2026-06-05.md"
-  ],
-  "theme_whitelist": [
-    "adc_class_state_2026-06-05.md",
-    "glp1_class_competitive_supply_2026-06-05.md",
-    "kras_class_trajectory_2026-06-05.md"
-  ],
+  "tpp_whitelist": [],
+  "theme_whitelist": [],
   "ecosystem_section_whitelist": [
     "target/modality",
     "modality trajectory",
@@ -509,13 +504,301 @@
     "aml": "aml_mds",
     "mds": "aml_mds"
   },
-  "_etlm_summary_only_doc": "D9 — indications published as a capped TEASER rather than a full landscape map. etlm_summary_rows rows of each sampled section ship; the rest are REMOVED FROM THE BUNDLE, not masked in the UI. The reader-side blur fades the teaser out and the lock card states the true count from section_counts. Featured (full detail) = the codes in etlm_whitelist NOT listed here. Katie's picks: obesity, mm, nsclc featured. summary_only_gate() asserts the cap on the written files and fails closed.",
+  "_etlm_summary_only_doc": "D9 \u2014 indications published as a capped TEASER rather than a full landscape map. etlm_summary_rows rows of each sampled section ship; the rest are REMOVED FROM THE BUNDLE, not masked in the UI. The reader-side blur fades the teaser out and the lock card states the true count from section_counts. Featured (full detail) = the codes in etlm_whitelist NOT listed here. Katie's picks: obesity, mm, nsclc featured. summary_only_gate() asserts the cap on the written files and fails closed.",
   "etlm_summary_only": [
-    "nhl_dlbcl",
-    "crc",
+    "parkinsons",
+    "breast",
     "urothelial"
   ],
   "etlm_summary_unmet_needs": 3,
   "etlm_inline_replacements_note": "see _ETLM_INLINE_RULE_SPECS in sync-atlas-content.py",
-  "etlm_summary_rows": 3
+  "etlm_summary_rows": 3,
+  "etlm_preview_contracts": {
+    "parkinsons": {
+      "source_sha256": "9307a7f809b83eb7f9bb8814b1575c96e69c70bfa312c6b6b156bbf8f064db82",
+      "metadata": {
+        "indication": "Parkinson's disease",
+        "indication_code": "parkinsons",
+        "detail_available": false,
+        "detail_rows_shown": 3,
+        "detail_note": "Selected therapy and trial identities. Efficacy, benchmarks and product profiles are withheld from this preview."
+      },
+      "sections": {
+        "approved_therapies": [
+          {
+            "match": {
+              "drug_name": "carbidopa-levodopa"
+            },
+            "public": {
+              "drug_name": "carbidopa-levodopa",
+              "brand": "Sinemet",
+              "source": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=9b17b028-964a-473c-823d-81423535bd66"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "carbidopa-levodopa ER capsules (IPX066)"
+            },
+            "public": {
+              "drug_name": "carbidopa-levodopa ER capsules (IPX066)",
+              "brand": "Rytary",
+              "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c1f7cd4-de56-45c1-a734-5e77b4aeb6f7"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "carbidopa-levodopa ER capsules (IPX203)"
+            },
+            "public": {
+              "drug_name": "carbidopa-levodopa ER capsules (IPX203)",
+              "brand": "Crexont",
+              "source": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=095a08b6-b0b8-4f88-b759-67e8b87287a0"
+            }
+          }
+        ],
+        "pipeline_assets": [
+          {
+            "match": {
+              "nct": "NCT04777331"
+            },
+            "public": {
+              "asset_name": "prasinezumab",
+              "nct": "NCT04777331",
+              "trial_name": "PADOVA",
+              "source": "https://clinicaltrials.gov/study/NCT04777331"
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT04658186"
+            },
+            "public": {
+              "asset_name": "minzasolmin (UCB0599)",
+              "nct": "NCT04658186",
+              "trial_name": "ORCHESTRA",
+              "source": "https://clinicaltrials.gov/study/NCT04658186; https://www.ucb.com/newsroom/press-releases/article/findings-from-minzasolmin-proof-of-concept-orchestra-study-shape-next-steps-in-ucb-parkinson-s-research-program",
+              "status": "Historical programme; ORCHESTRA did not meet its primary or secondary clinical endpoints."
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT06015841"
+            },
+            "public": {
+              "asset_name": "ACI-7104.056",
+              "nct": "NCT06015841",
+              "trial_name": "VacSYn",
+              "source": "https://clinicaltrials.gov/study/NCT06015841"
+            }
+          }
+        ]
+      },
+      "candidate_sha256": "807d786e04a9786356a628431fe1045a3348530ea22c5ba46e8af3aa73d949cb"
+    },
+    "breast": {
+      "source_sha256": "d967721bd0b741a57cc29060dcbd3979a7637586f7c512a226d84d27efbddf6c",
+      "metadata": {
+        "indication": "Breast cancer",
+        "indication_code": "breast",
+        "detail_available": false,
+        "detail_rows_shown": 3,
+        "detail_note": "Preview of three established therapies and three clinical studies. These studies include programmes with approved indications; listing here does not imply investigational status. Efficacy comparisons and the remaining research are withheld."
+      },
+      "sections": {
+        "approved_therapies": [
+          {
+            "match": {
+              "drug_name": "tamoxifen"
+            },
+            "public": {
+              "drug_name": "tamoxifen",
+              "target": "Estrogen receptor (SERM)",
+              "indication_line": "Adjuvant and metastatic breast cancer",
+              "source": "https://www.cancer.gov/about-cancer/treatment/drugs/tamoxifencitrate"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "anastrozole"
+            },
+            "public": {
+              "drug_name": "anastrozole",
+              "target": "Aromatase",
+              "indication_line": "HR-positive breast cancer in postmenopausal women",
+              "source": "https://www.cancer.gov/about-cancer/treatment/drugs/anastrozole"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "letrozole"
+            },
+            "public": {
+              "drug_name": "letrozole",
+              "target": "Aromatase",
+              "indication_line": "HR-positive breast cancer in postmenopausal women",
+              "source": "https://www.cancer.gov/about-cancer/treatment/drugs/letrozole"
+            }
+          }
+        ],
+        "pipeline_assets": [
+          {
+            "match": {
+              "nct": "NCT04494425"
+            },
+            "public": {
+              "asset_name": "trastuzumab deruxtecan",
+              "nct": "NCT04494425",
+              "trial_name": "DESTINY-Breast06",
+              "source": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-hr-positive-her2-low-or-her2"
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT04784715"
+            },
+            "public": {
+              "asset_name": "T-DXd + pertuzumab",
+              "nct": "NCT04784715",
+              "trial_name": "DESTINY-Breast09",
+              "source": "https://www.fda.gov/drugs/drug-approvals-and-databases/fda-approves-fam-trastuzumab-deruxtecan-nxki-pertuzumab-unresectable-or-metastatic-her2-positive"
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT05104866"
+            },
+            "public": {
+              "asset_name": "datopotamab deruxtecan",
+              "nct": "NCT05104866",
+              "trial_name": "TROPION-Breast01",
+              "source": "https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-datroway"
+            }
+          }
+        ]
+      },
+      "candidate_sha256": "ed58dc390bb220c01d129af8f9ec5ad7958a588eb580744c8b1dcbaafec62c64"
+    },
+    "urothelial": {
+      "source_sha256": "9a7dc53997f4f93b9c753057daf7355f628e30b3a6e7059a571c8969a7e95aa4",
+      "metadata": {
+        "indication": "Urothelial / Bladder Cancer",
+        "indication_code": "urothelial",
+        "detail_available": false,
+        "detail_rows_shown": 3,
+        "detail_note": "Capped preview of three therapy and three study records. Clinical outcomes and the remaining research are withheld."
+      },
+      "sections": {
+        "approved_therapies": [
+          {
+            "match": {
+              "drug_name": "enfortumab vedotin + pembrolizumab"
+            },
+            "public": {
+              "drug_name": "enfortumab vedotin + pembrolizumab",
+              "brand": "Padcev + Keytruda",
+              "company": "Pfizer-Astellas / Merck",
+              "modality": "Nectin-4 ADC (MMAE) + anti-PD-1 mAb",
+              "target": "Nectin-4 + PD-1",
+              "trial": "EV-302 / KEYNOTE-A39",
+              "nct": "NCT04223856",
+              "source": "PMID 38446675"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "enfortumab vedotin"
+            },
+            "public": {
+              "drug_name": "enfortumab vedotin",
+              "brand": "Padcev",
+              "company": "Pfizer-Astellas (Seagen acq.)",
+              "modality": "Nectin-4 ADC (MMAE)",
+              "target": "Nectin-4",
+              "trial": "EV-301",
+              "nct": "NCT03474107",
+              "source": "PMID 33577729"
+            }
+          },
+          {
+            "match": {
+              "drug_name": "pembrolizumab"
+            },
+            "public": {
+              "drug_name": "pembrolizumab",
+              "brand": "Keytruda",
+              "company": "Merck",
+              "modality": "anti-PD-1 mAb",
+              "target": "PD-1",
+              "trial": "KEYNOTE-045",
+              "nct": "NCT02256436",
+              "source": "PMID 28212060"
+            }
+          }
+        ],
+        "pipeline_assets": [
+          {
+            "match": {
+              "nct": "NCT05911295"
+            },
+            "public": {
+              "asset_name": "disitamab vedotin (RC48) + pembrolizumab",
+              "company": "Pfizer (Seagen) / RemeGen / Merck",
+              "modality": "HER2 ADC + anti-PD-1",
+              "target": "HER2 + PD-1",
+              "phase": "Phase 3",
+              "trial_name": "SGNDV-001 / C5731001",
+              "nct": "NCT05911295",
+              "source": "https://clinicaltrials.gov/study/NCT05911295"
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT04879329"
+            },
+            "public": {
+              "asset_name": "disitamab vedotin (RC48) alone or with pembrolizumab",
+              "company": "Pfizer (Seagen) / Merck",
+              "modality": "HER2 ADC alone or with anti-PD-1",
+              "target": "HER2 with optional PD-1 combination",
+              "phase": "Phase 2",
+              "trial_name": "RC48G001 / C5731002",
+              "nct": "NCT04879329",
+              "source": "https://clinicaltrials.gov/study/NCT04879329"
+            }
+          },
+          {
+            "match": {
+              "nct": "NCT04482309"
+            },
+            "public": {
+              "asset_name": "trastuzumab deruxtecan (T-DXd)",
+              "company": "Daiichi Sankyo / AstraZeneca",
+              "modality": "HER2 ADC (DXd)",
+              "target": "HER2",
+              "phase": "Phase 2",
+              "trial_name": "DESTINY-PanTumor02",
+              "nct": "NCT04482309",
+              "source": "https://clinicaltrials.gov/study/NCT04482309"
+            }
+          }
+        ]
+      },
+      "candidate_sha256": "8be382ff3a964364b404e708ca3a3be56d4a3218f9fa7333521890a0b897db6a"
+    }
+  },
+  "etlm_full_detail_contracts": {
+    "obesity": {
+      "source_sha256": "b46dcc30fec2a48b62f8dd70cf40912db50796fca440ac359d0e263d45547b9a",
+      "candidate_sha256": "3b326b87c9a48cc75482c0689bad1c8586a13b4d339a1c6dd13a584ef8cee7c5"
+    },
+    "mm": {
+      "source_sha256": "8157ed42eed4f289a30ab0525129c40e4aca31d228ec0038e38741fd2953352b",
+      "candidate_sha256": "d4d3b171f400cc2b1cb7c7abc98c8c2a5970fd2b56d8722d5ac54fdac709d51c"
+    },
+    "nsclc": {
+      "source_sha256": "1f3b0582e91aea677ea30aa71511f29b7a3c9f93e45e131feb2fcd36c72740e0",
+      "candidate_sha256": "296867161b7548add8b6441db54bf18280f7fc524378640292006e07f12f0716"
+    }
+  },
+  "ecosystem_publication": "withheld"
 }

@@ -51,11 +51,9 @@ import AtlasReaderTPP from './pages/AtlasReaderTPP';
 import AtlasReaderTPPReport from './pages/AtlasReaderTPPReport';
 import AtlasReaderTheme from './pages/AtlasReaderTheme';
 import AtlasReaderThemeReport from './pages/AtlasReaderThemeReport';
-import AtlasReaderEcosystem from './pages/AtlasReaderEcosystem';
 // WS15 work-with-me — gated by WWM_LIVE (off the live site until Katie says relaunch)
 import WorkWithMe from './pages/WorkWithMe';
 import WorkWithMeHub from './pages/WorkWithMeHub';
-import SampleMemo from './pages/SampleMemo';
 import { WWM_LIVE } from './data/atlas/copy';
 import StandardProjectPage from './pages/StandardProjectPage';
 
@@ -127,9 +125,7 @@ function App() {
         <Route path="/atlas-reader/tpp/:slug/report" element={<AtlasReaderTPPReport />} />
         <Route path="/atlas-reader/theme/:slug" element={<AtlasReaderTheme />} />
         <Route path="/atlas-reader/theme/:slug/report" element={<AtlasReaderThemeReport />} />
-        <Route path="/atlas-reader/ecosystem" element={<AtlasReaderEcosystem />} />
         {/* WS15: sample IC memo — gated by WWM_LIVE (see above) */}
-        {WWM_LIVE && <Route path="/atlas-reader/memo/obesity-glp1" element={<SampleMemo />} />}
 
         <Route path="/projects/:slug" element={<StandardProjectPage />} />
       </Routes>

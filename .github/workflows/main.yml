@@ -8,6 +8,11 @@ on:
   # default GITHUB_TOKEN does NOT trigger `on: push`, so without this the
   # refreshed 13F JSON would land on main and never reach the live site.
   workflow_call:
+    inputs:
+      deployment_ref:
+        description: Exact commit produced by the calling workflow
+        required: true
+        type: string
 
 permissions:                                                                                           
   contents: read
@@ -24,12 +29,10 @@ jobs:
     env:
       VITE_WS21_APP_URL: https://ws21-clinical-trial-analyst-production.up.railway.app
     steps:
-      # Build the branch tip, not the triggering SHA. When called from
-      # refresh-13f.yml the triggering SHA predates the data commit that job
-      # just pushed, so checking out github.sha would deploy stale data.
+      # Pin the reviewed triggering commit, or the exact data commit from the caller.
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          ref: ${{ inputs.deployment_ref || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -54,21 +57,18 @@ jobs:
       - name: Atlas leak gate (committed tree)
         run: python3 scripts/sync-atlas-content.py --verify-only
 
+      - name: Six-indication public scope
+        run: python3 scripts/check_atlas_scope.py
+
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:                                                                                            
-          path: './dist'
-                                                                                                         
-  deploy:                                                 
-    needs: build                                                                                       
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:                                                                                               
-      - name: Deploy to GitHub Pages
-        id: deployment                                                                                   
-        uses: actions/deploy-pages@v4
+      - name: Release authorization tests
+        run: node --test scripts/tests/atlas-release-*.test.mjs
+
+      # Enrollment must bind genuine approvals to these exact built bytes.
+      # Ordinary upload/deploy actions cannot consume the protected release ledger.
+      - name: Require enrolled production deployment boundary
+        run: |
+          echo "::error::ATLAS_RELEASE_BLOCKED: Production authority and trusted deployment bridge are not enrolled. Build verification alone does not authorize publication."
+          exit 1

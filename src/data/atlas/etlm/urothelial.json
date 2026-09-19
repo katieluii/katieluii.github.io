@@ -1,26 +1,9 @@
 {
   "indication": "Urothelial / Bladder Cancer",
   "indication_code": "urothelial",
-  "icd10": "C67",
-  "nci_thesaurus_id": "C9334",
-  "last_updated": "2026-07-19",
-  "epidemiology": {
-    "global_incidence_annual": 614000,
-    "us_incidence_annual": 83190,
-    "5yr_survival_pct": 77,
-    "median_age_at_diagnosis": 73,
-    "source": "IARC GLOBOCAN 2022; SEER 2026 estimates; AUA 2024"
-  },
-  "section_counts": {
-    "approved_therapies": 23,
-    "competitive_dynamics": 5,
-    "efficacy_benchmarks_by_line": 9,
-    "mechanism_landscape": 12,
-    "pipeline_assets": 44,
-    "recent_conference_readouts": 16,
-    "regulatory_landscape": 4,
-    "unmet_needs": 12
-  },
+  "detail_available": false,
+  "detail_rows_shown": 3,
+  "detail_note": "Capped preview of three therapy and three study records. Clinical outcomes and the remaining research are withheld.",
   "approved_therapies": [
     {
       "drug_name": "enfortumab vedotin + pembrolizumab",
@@ -28,40 +11,9 @@
       "company": "Pfizer-Astellas / Merck",
       "modality": "Nectin-4 ADC (MMAE) + anti-PD-1 mAb",
       "target": "Nectin-4 + PD-1",
-      "indication_line": "1L locally advanced / metastatic urothelial carcinoma",
-      "fda_approval_date": "2023-12-15",
-      "ema_approval_date": "2024-08-29",
-      "key_efficacy": {
-        "orr_pct": 67.7,
-        "median_pfs_mo": 12.5,
-        "median_os_mo": 31.5
-      },
       "trial": "EV-302 / KEYNOTE-A39",
       "nct": "NCT04223856",
-      "source": "PMID 38446675",
-      "sources": [
-        {
-          "id": "nejm_pub",
-          "type": "pubmed",
-          "label": "Powles et al. Enfortumab Vedotin and Pembrolizumab in Untreated Advanced Urothelial Cancer (EV-302/KEYNOTE-A39). N Engl J Med 2024;390:875-888",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/38446675/",
-          "pmid": "38446675",
-          "nct": "NCT04223856",
-          "doi": "10.1056/NEJMoa2312117"
-        },
-        {
-          "id": "asco_post",
-          "type": "journal",
-          "label": "The ASCO Post \u2014 EV/pembrolizumab improves survival vs platinum chemo (EV-302), May 10 2024",
-          "url": "https://ascopost.com/issues/may-10-2024/enfortumab-vedotin-ejfv-plus-pembrolizumab-improves-survival-vs-platinum-based-chemotherapy-in-advanced-urothelial-cancer/"
-        },
-        {
-          "id": "pmc_review",
-          "type": "pubmed",
-          "label": "Review: Enfortumab vedotin and pembrolizumab, redefining standard of care in untreated advanced urothelial cancer (restates EV-302 primary analysis)",
-          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12051594/"
-        }
-      ]
+      "source": "PMID 38446675"
     },
     {
       "drug_name": "enfortumab vedotin",
@@ -69,56 +21,9 @@
       "company": "Pfizer-Astellas (Seagen acq.)",
       "modality": "Nectin-4 ADC (MMAE)",
       "target": "Nectin-4",
-      "indication_line": "2L+ post-platinum and post-IO la/mUC",
-      "fda_approval_date": "2019-12-18",
-      "ema_approval_date": "2022-04-13",
-      "key_efficacy": {
-        "orr_pct": 40.6,
-        "median_pfs_mo": 5.55,
-        "median_os_mo": 12.88
-      },
       "trial": "EV-301",
       "nct": "NCT03474107",
-      "source": "PMID 33577729",
-      "sources": [
-        {
-          "id": "pivotal",
-          "type": "pubmed",
-          "label": "Powles T, et al. Enfortumab Vedotin in Previously Treated Advanced Urothelial Carcinoma (EV-301). N Engl J Med 2021",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/33577729/",
-          "pmid": "33577729",
-          "doi": "10.1056/NEJMoa2035807",
-          "nct": "NCT03474107"
-        },
-        {
-          "id": "ctgov",
-          "type": "ctgov",
-          "label": "EV-301: Enfortumab Vedotin vs Chemotherapy in Previously Treated la/mUC",
-          "url": "https://clinicaltrials.gov/study/NCT03474107",
-          "nct": "NCT03474107"
-        },
-        {
-          "id": "ascopost",
-          "type": "journal",
-          "label": "ASCO Post GU Cancer Almanac 2021-2022: EV-301 improves OS vs chemotherapy",
-          "url": "https://ascopost.com/issues/digital-supplement-genitourinary-cancer-almanac-2021-2022/enfortumab-vedotin-ejfv-improves-overall-survival-vs-chemotherapy-in-previously-treated-advanced-urothelial-carcinoma/"
-        },
-        {
-          "id": "oncpm",
-          "type": "journal",
-          "label": "Oncology Practice Management (Apr 2021): Enfortumab Vedotin Prolongs Survival in Metastatic Urothelial Cancer (EV-301)",
-          "url": "https://oncpracticemanagement.com/issues/2021/april-2021-vol-11-no-4/enfortumab-vedotin-prolongs-survival-in-patients-with-metastatic-urothelial-cancer"
-        },
-        {
-          "id": "pivotal_pmc",
-          "type": "pubmed",
-          "label": "Powles T, et al. EV-301 (NEJM 2021) \u2014 PubMed Central full-text mirror, Results section with OS/PFS/ORR figures and CIs",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/33577729/",
-          "pmid": "33577729",
-          "doi": "10.1056/NEJMoa2035807",
-          "nct": "NCT03474107"
-        }
-      ]
+      "source": "PMID 33577729"
     },
     {
       "drug_name": "pembrolizumab",
@@ -126,93 +31,45 @@
       "company": "Merck",
       "modality": "anti-PD-1 mAb",
       "target": "PD-1",
-      "indication_line": "2L+ post-platinum la/mUC; 1L cis-ineligible PD-L1+; BCG-unresponsive NMIBC CIS",
-      "fda_approval_date": "2017-05-18",
-      "ema_approval_date": "2017-08-24",
-      "key_efficacy": {
-        "orr_pct": 21,
-        "median_pfs_mo": 2.1,
-        "median_os_mo": 10.3
-      },
       "trial": "KEYNOTE-045",
       "nct": "NCT02256436",
-      "source": "PMID 28212060",
-      "sources": [
-        {
-          "id": "knt045_pub",
-          "type": "pubmed",
-          "label": "Bellmunt J, et al. Pembrolizumab as Second-Line Therapy for Advanced Urothelial Carcinoma (KEYNOTE-045). N Engl J Med 2017;376:1015-1026",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/28212060/",
-          "pmid": "28212060",
-          "nct": "NCT02256436",
-          "doi": "10.1056/NEJMoa1613683"
-        },
-        {
-          "id": "ascopost_knt045",
-          "type": "journal",
-          "label": "The ASCO Post \u2014 Pembrolizumab Improves OS vs Chemotherapy in Second-Line Advanced Urothelial Carcinoma (KEYNOTE-045)",
-          "url": "https://ascopost.com/issues/july-25-2017/pembrolizumab-improves-overall-survival-vs-chemotherapy-in-second-line-therapy-for-advanced-urothelial-carcinoma/"
-        },
-        {
-          "id": "annals_knt045_2yr",
-          "type": "journal",
-          "label": "Fradet Y, et al. KEYNOTE-045 >2 years of follow-up. Ann Oncol 2019 (reports ORR 21.1%)",
-          "url": "https://www.annalsofoncology.org/article/S0923-7534(19)31210-4/fulltext"
-        }
-      ]
+      "source": "PMID 28212060"
     }
   ],
   "pipeline_assets": [
     {
-      "asset_name": "disitamab vedotin (RC48) + toripalimab",
-      "company": "Pfizer / RemeGen",
+      "asset_name": "disitamab vedotin (RC48) + pembrolizumab",
+      "company": "Pfizer (Seagen) / RemeGen / Merck",
       "modality": "HER2 ADC + anti-PD-1",
       "target": "HER2 + PD-1",
       "phase": "Phase 3",
-      "combination": "+ toripalimab vs chemo",
-      "indication_subtype": "1L HER2-expressing la/mUC",
+      "trial_name": "SGNDV-001 / C5731001",
       "nct": "NCT05911295",
-      "trial_name": "DV+toripalimab 1L",
-      "status": "RECRUITING",
-      "estimated_readout": "2027-06",
-      "primary_endpoint": "PFS / OS",
-      "enrollment": 460,
-      "source": "ClinicalTrials.gov"
+      "source": "https://clinicaltrials.gov/study/NCT05911295"
     },
     {
-      "asset_name": "disitamab vedotin (RC48) monotherapy",
-      "company": "RemeGen",
-      "modality": "HER2 ADC (MMAE)",
-      "target": "HER2",
-      "phase": "Phase 3",
-      "combination": null,
-      "indication_subtype": "2L+ HER2-expressing la/mUC",
+      "asset_name": "disitamab vedotin (RC48) alone or with pembrolizumab",
+      "company": "Pfizer (Seagen) / Merck",
+      "modality": "HER2 ADC alone or with anti-PD-1",
+      "target": "HER2 with optional PD-1 combination",
+      "phase": "Phase 2",
+      "trial_name": "RC48G001 / C5731002",
       "nct": "NCT04879329",
-      "trial_name": "RC48-C016",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "estimated_readout": "2026-12",
-      "primary_endpoint": "ORR / OS",
-      "enrollment": 349,
-      "source": "ClinicalTrials.gov"
+      "source": "https://clinicaltrials.gov/study/NCT04879329"
     },
     {
       "asset_name": "trastuzumab deruxtecan (T-DXd)",
       "company": "Daiichi Sankyo / AstraZeneca",
       "modality": "HER2 ADC (DXd)",
       "target": "HER2",
-      "phase": "Phase 3",
-      "combination": null,
-      "indication_subtype": "HER2-expressing urothelial (pan-tumour basket)",
-      "nct": "NCT04482309",
+      "phase": "Phase 2",
       "trial_name": "DESTINY-PanTumor02",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "estimated_readout": "2026-12",
-      "primary_endpoint": "ORR",
-      "enrollment": 267,
-      "source": "ClinicalTrials.gov"
+      "nct": "NCT04482309",
+      "source": "https://clinicaltrials.gov/study/NCT04482309"
     }
   ],
-  "detail_available": false,
-  "detail_rows_shown": 3,
-  "detail_note": "Preview. A sample of each section is shown; the full landscape map \u2014 every approved therapy, pipeline asset, efficacy benchmark and conference readout \u2014 is available on request."
+  "section_counts": {
+    "approved_therapies": 24,
+    "pipeline_assets": 45
+  }
 }

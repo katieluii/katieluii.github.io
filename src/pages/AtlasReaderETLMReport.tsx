@@ -1,3 +1,4 @@
+import { IndicationPreview } from '../components/atlas/IndicationPreview';
 import { useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -32,14 +33,19 @@ export function AtlasReaderETLMReport() {
     );
   }
 
+  if (etlm.detail_available === false) return <IndicationPreview etlm={etlm} />;
+
   return (
     <ProjectPageLayout
       title={meta.indication}
-      subtitle="Full landscape map — complete analytical detail."
+      subtitle="Evidence-reviewed landscape detail."
       backTo={`/atlas-reader/etlm/${indication}`}
       backLabel="Back to briefing"
       containerClassName="max-w-5xl mx-auto px-6"
     >
+      {typeof etlm.detail_note === 'string' && (
+        <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">{etlm.detail_note}</p>
+      )}
       <div className="flex flex-wrap items-center gap-2 mb-8">
         <Pill variant="tech">ETLM</Pill>
         <Pill variant="tech">Full report</Pill>

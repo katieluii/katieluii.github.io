@@ -71,7 +71,7 @@ const GOVERNANCE = [
   {
     icon: ShieldCheck,
     title: 'Analysts on the judgment calls, not the rote refresh',
-    detail: 'Routine updates land on their own; material shifts surface for human review before they go in.',
+    detail: 'Public updates require evidence review and approval of the exact release artifacts.',
   },
   {
     icon: GitBranch,
@@ -83,8 +83,6 @@ const GOVERNANCE = [
 // real samples in the reader — slugs verified against src/data/atlas/
 const SELECTED_WORK = [
   { title: 'Obesity competitive landscape', kind: 'ETLM', href: '/atlas-reader/etlm/obesity' },
-  { title: 'TPP — 1L injectable, BMI ≥ 30', kind: 'TPP', href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05' },
-  { title: 'GLP-1 class — competitive supply', kind: 'Thematic synthesis', href: '/atlas-reader/theme/glp1_class_competitive_supply_2026-06-05' },
 ];
 
 const TA_STYLES = {
@@ -278,7 +276,7 @@ function IndicationBubbles() {
                   </button>
                 </div>
                 <p className="text-[10px] uppercase tracking-wider font-semibold text-zinc-500 dark:text-zinc-400 mt-3 mb-1.5">
-                  Top assets in scope
+                  Selected therapies
                 </p>
                 <ul className="space-y-1.5">
                   {ind.assets.map((a) => (
@@ -434,8 +432,8 @@ export default function AtlasDrugDevAnalyst() {
             Therapeutic coverage
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            A flagship slice across four therapeutic areas — Atlas tracks 40+ indications on the same
-            architecture, each with its own ETLM and calibration anchors. Tap one for the assets setting the bar.
+            Six public indications across three therapeutic areas, presented on the same
+            Reader. Open an indication to see selected therapies, then follow the landscape for study context and sources.
           </p>
 
           {/* Legend */}
@@ -447,10 +445,6 @@ export default function AtlasDrugDevAnalyst() {
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-indigo-200 to-indigo-100 ring-1 ring-indigo-300 dark:from-indigo-800 dark:to-indigo-900 dark:ring-indigo-700" />
               Neurology
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-amber-200 to-amber-100 ring-1 ring-amber-300 dark:from-amber-800 dark:to-amber-900 dark:ring-amber-700" />
-              Immunology
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-emerald-200 to-emerald-100 ring-1 ring-emerald-300 dark:from-emerald-800 dark:to-emerald-900 dark:ring-emerald-700" />
@@ -493,8 +487,7 @@ export default function AtlasDrugDevAnalyst() {
             Selected work
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
-            The intelligence resolves into deliverables a team can act on: an indication landscape, a
-            target product profile, a thematic read. Redacted samples, straight from the reader.
+            Explore evidence-reviewed indication landscapes and their cited studies in the reader.
           </p>
           <div className="border-y border-zinc-200/70 dark:border-white/10 divide-y divide-zinc-200/70 dark:divide-white/10">
             {SELECTED_WORK.map((w) => (

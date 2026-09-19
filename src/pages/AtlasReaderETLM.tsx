@@ -1,3 +1,4 @@
+import { IndicationPreview } from '../components/atlas/IndicationPreview';
 import { useState, useRef, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams, Link } from 'react-router-dom';
@@ -198,7 +199,7 @@ function endpointChips(entry: Record<string, unknown>, epKey: string): React.Rea
           ? 'Verified against primary source'
           : secondary
             ? 'Secondary-corroborated (≥2 sources; primary paywalled)'
-            : 'Sourced — value not yet verified';
+            : 'Source linked';
         const cls = verified
           ? 'text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40'
           : 'text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-800 hover:bg-amber-50 dark:hover:bg-amber-950/40';
@@ -244,7 +245,7 @@ function endpointChips(entry: Record<string, unknown>, epKey: string): React.Rea
         href={String(s.url)}
         target="_blank"
         rel="noopener noreferrer"
-        title={`${String(s.label ?? '')} — citation only; value not yet verified against source`}
+        title={`${String(s.label ?? '')} — linked citation; study context available in the detailed report`}
         className="inline-flex items-center gap-0.5 text-[9px] font-medium uppercase tracking-wide leading-none text-zinc-500 dark:text-zinc-400 border border-dashed border-zinc-300 dark:border-zinc-700 rounded px-1 py-0.5 no-underline hover:bg-zinc-50 dark:hover:bg-zinc-800/40"
       >
         {srcTypeLabel(String(s.type ?? ''))}
@@ -279,7 +280,7 @@ function metricStateDot(
       : st.secondary
         ? 'Secondary-corroborated'
         : st.verification === 'sourced-unverified'
-          ? 'Sourced — value not yet verified against source'
+          ? 'Source linked — read the cited study and analysis context'
           : 'No source on file';
   return (
     <span
@@ -388,7 +389,7 @@ function buildKeyFacts(etlm: Record<string, unknown>): KeyFact[] {
     epi.median_age_at_diagnosis != null
       ? { label: 'Median age at dx', value: String(epi.median_age_at_diagnosis) }
       : null,
-    approved ? { label: 'Approved therapies', value: String(approved) } : null,
+    approved ? { label: 'Therapy records', value: String(approved) } : null,
     segments ? { label: 'Tracked segments', value: String(segments) } : null,
     summaryOnly && counts?.pipeline_assets
       ? { label: 'Pipeline assets', value: String(counts.pipeline_assets) }
@@ -580,6 +581,9 @@ function buildTherapiesTable(
               </div>
             </div>
           )}
+          {typeof e.note === 'string' && e.note && <p>{e.note}</p>}
+          {Array.isArray(e.study_notes) && e.study_notes.filter((note): note is string => typeof note === 'string').map((note, i) => <p key={i}>{note}</p>)}
+          {Array.isArray(e.sources) && e.sources.length > 0 && <div>{sourceCell(e)}</div>}
           {e.nct ? (
             <a
               href={`https://clinicaltrials.gov/study/${String(e.nct)}`}
@@ -720,6 +724,9 @@ function buildTherapiesTableFromProfile(
               </div>
             </div>
           )}
+          {typeof e.note === 'string' && e.note && <p>{e.note}</p>}
+          {Array.isArray(e.study_notes) && e.study_notes.filter((note): note is string => typeof note === 'string').map((note, i) => <p key={i}>{note}</p>)}
+          {Array.isArray(e.sources) && e.sources.length > 0 && <div>{sourceCell(e)}</div>}
           {e.nct ? (
             <a
               href={`https://clinicaltrials.gov/study/${String(e.nct)}`}
@@ -792,6 +799,8 @@ export function AtlasReaderETLM() {
       </ProjectPageLayout>
     );
   }
+
+  if (etlm.detail_available === false) return <IndicationPreview etlm={etlm} />;
 
   const summary = getEtlmSummary(indication);
   const keyFacts = buildKeyFacts(etlm);
@@ -886,7 +895,7 @@ export function AtlasReaderETLM() {
         : novelList
           ? novelList.length + legacyList.length
           : headlineTherapies.length
-    } approved therapies and ${pipelineCount} pipeline assets tracked across this landscape.`;
+    } therapy records and ${pipelineCount} trial protocols in this reviewed selection.`;
 
   return (
     <ProjectPageLayout
@@ -902,6 +911,9 @@ export function AtlasReaderETLM() {
         verdict={verdict}
         pills={meta.subtitle ? <Pill variant="tech">{meta.subtitle}</Pill> : null}
       />
+      {etlm.detail_available === true && typeof etlm.detail_note === 'string' && (
+        <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">{etlm.detail_note}</p>
+      )}
 
       <Link
         to={reportBase}
@@ -911,19 +923,19 @@ export function AtlasReaderETLM() {
           <Layers className="w-4 h-4" />
           {etlm.detail_available === false
             ? 'Open the preview — top approved therapies and pipeline assets; the rest withheld'
-            : 'Open the full landscape map — full pipeline read, mechanisms, competitive positioning & regulatory'}
+            : 'Open detailed therapies, trial protocols and source-specific benchmarks'}
         </span>
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </Link>
 
       {keyFacts.length > 0 && <KeyFactsStrip facts={keyFacts} />}
 
-      {/* Approved therapies — the standard-of-care anchor */}
+      {/* Therapies and study results */}
       {table.rows.length > 0 && (
         <section className="mb-10">
           <div className="flex items-end justify-between mb-3">
             <h2 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Approved therapies — the standard-of-care anchor
+              Therapies and study results
             </h2>
             <Link
               to={reportBase}
@@ -934,10 +946,9 @@ export function AtlasReaderETLM() {
           </div>
           <DataTable columns={table.columns} rows={table.rows} />
           <p className="mt-2 text-xs text-zinc-400 dark:text-zinc-500">
-            Sort any column; click a row for full efficacy, safety & trial detail. The Source column
-            links each asset to ClinicalTrials.gov / its pivotal publication. Highlighted rows are
-            standard-of-care anchors. Cross-trial, non-head-to-head — compare at each asset's
-            representative dose; hover a source chip for the exact figure, location, estimand & dose.
+            Open a row for its study context and source links. Results describe the cited regimen,
+            population and analysis; values from different trials are not head-to-head comparisons.
+            A blank means no value is included in this release.
           </p>
         </section>
       )}

@@ -104,31 +104,10 @@ const TRUST: TrustPillar[] = [
 const ETLM: WorkItem = {
   eyebrow: 'ETLM Landscape · Obesity',
   title: 'Obesity Competitive Landscape',
-  dek: 'Eight approved therapies, the active pipeline, mechanism landscape, and differentiation axes. 90+ primary sources, refreshed against trials and congress readouts.',
-  meta: 'Updated Jun 2026 · Living document',
+  dek: 'Selected approved therapies, clinical programmes and benchmarks, with study context and primary sources.',
+  meta: 'Evidence-reviewed landscape',
   href: '/atlas-reader/etlm/obesity',
   cta: 'Read the landscape',
-  image: '/images/wwm_etlm_sample.png',
-};
-// TPP refreshed + QC-cleared 2026-06-30 (all 6 flagged figures resolved against
-// primary sources; efficacy bar re-anchored to the 2026 frontier) and restored.
-// Shown gated (summary slice + wall) like the other TPPs — not in UNGATED_TPP.
-const TPP: WorkItem = {
-  eyebrow: 'Target Product Profile · Obesity',
-  title: 'TPP — 1L Injectable, BMI ≥ 30',
-  dek: 'The bar a new 1L injectable must clear — re-anchored to the current frontier (retatrutide TRIUMPH-1, −28% Ph3) with tirzepatide the covered incumbent: the efficacy bar, the safety bar, and the axes that separate winners.',
-  meta: 'Sample deliverable · Refreshed Jun 2026',
-  href: '/atlas-reader/tpp/tpp_obesity_1L_injectable_bmi30_2026-06-05',
-  cta: 'Open the TPP',
-};
-const MEMO: WorkItem = {
-  eyebrow: 'IC Memo · Investment',
-  title: 'A GLP-1 Asset Entering Obesity',
-  dek: 'An IC-grade read on the competitive bar, the clinical evidence, and the risks behind a financing decision. Every clinical claim sourced; modelled figures flagged.',
-  meta: 'Sample deliverable · 2026',
-  href: '/atlas-reader/memo/obesity-glp1',
-  cta: 'Read the memo',
-  image: '/images/wwm_memo_sample.png',
 };
 
 // teams: the living-memory dataflow that sits behind every deliverable
@@ -200,7 +179,7 @@ export const TEAMS: WwmContent = {
     { n: '03', label: 'You get a defensible artifact', body: 'Landscape, TPP, or positioning — sourced, and ready to put in front of your board.', icon: 'artifact' },
   ],
   dataflow: DATAFLOW,
-  work: [ETLM, TPP, MEMO], // TPP restored 2026-06-30 after QC
+  work: [ETLM],
   workFootnote: 'Other work, from full landscape builds to regulatory drafts, is scoped in conversation.',
   credibility: 'Nothing I deliver is generated.',
   trust: TRUST,
@@ -223,7 +202,7 @@ export const INVESTORS: WwmContent = {
     { n: '03', label: 'You get an IC-grade memo', body: 'Sourced, with the risks and what-has-to-be-true your committee will probe.', icon: 'memo' },
   ],
   underwrite: UNDERWRITE,
-  work: [MEMO, ETLM, TPP], // TPP restored 2026-06-30 after QC
+  work: [ETLM],
   workFootnote: 'Other work, from landscape deep-dives to portfolio monitoring, is scoped in conversation.',
   credibility: 'Nothing I deliver is generated.',
   trust: TRUST,

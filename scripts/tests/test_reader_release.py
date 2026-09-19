@@ -18,22 +18,19 @@ class ReaderReleaseTests(unittest.TestCase):
         self.assertTrue(refresh.is_article_url('https://www.fda.gov/drugs/resources-information-approved-drugs/specific-approval'))
         self.assertTrue(refresh.is_article_url('https://endpts.com/specific-biotech-announcement/'))
 
-    def test_five_themes_have_article_links(self):
-        data = json.loads((ROOT / 'src/data/atlas/analyst_read.json').read_text())
-        self.assertEqual(len(data['narratives']), 5)
-        for narrative in data['narratives']:
-            self.assertTrue(narrative['sources'])
-            for source in narrative['sources']:
-                self.assertTrue(refresh.is_article_url(source.get('url')), source)
+    def test_uncleared_supplemental_artifacts_withheld(self):
+        self.assertFalse((ROOT / 'src/data/atlas/analyst_read.json').exists())
+        self.assertFalse((ROOT / 'src/data/atlas/ecosystem.md').exists())
+        app = (ROOT / 'src/App.tsx').read_text()
+        self.assertNotIn('element={<AtlasReaderEcosystem', app)
+        self.assertNotIn('element={<SampleMemo', app)
 
     def test_requested_copy_removed(self):
         reader = (ROOT / 'src/pages/AtlasReader.tsx').read_text()
-        ecosystem = (ROOT / 'src/pages/AtlasReaderEcosystem.tsx').read_text()
         self.assertNotIn('Open access', reader)
         self.assertNotIn('indications tracked', reader)
         self.assertNotIn('Published artifacts open immediately', reader)
         self.assertIn("if (status === 'planned') return null;", reader)
-        self.assertNotIn('The full reasoning, signal trail', ecosystem)
 
 
 if __name__ == '__main__':

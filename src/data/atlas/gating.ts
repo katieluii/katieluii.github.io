@@ -36,7 +36,7 @@ export const ACCESS_CONTACT_EMAIL = 'katie@renascor.xyz';
 
 /** Indications whose real ETLM ships and gets a genuine free top slice.
  *  Must match `etlm_whitelist` in scripts/atlas-redaction-config.json. */
-export const PREVIEWABLE_INDICATIONS = new Set<string>(['nsclc', 'obesity']);
+export const PREVIEWABLE_INDICATIONS = new Set<string>(['obesity', 'mm', 'nsclc', 'parkinsons', 'breast', 'urothelial']);
 
 /** ETLMs shown with FULL detail (benchmarks un-redacted, per-row drill-down,
  *  deep report open). Empty by default: under the redact-don't-block model every
@@ -44,7 +44,7 @@ export const PREVIEWABLE_INDICATIONS = new Set<string>(['nsclc', 'obesity']);
  *  the paid layer. Add an indication code here only to deliberately open one end
  *  to end (e.g. a time-boxed showcase). Keep in sync with SELECTED_WORK in
  *  src/pages/AtlasDrugDevAnalyst.tsx. */
-export const FULL_DETAIL_ETLM = new Set<string>([]);
+export const FULL_DETAIL_ETLM = new Set<string>(['obesity', 'mm', 'nsclc']);
 // tpp_obesity_1L_injectable_bmi30_2026-06-05 removed 2026-06-25 — pulled pending refresh
 // (staleness audit: stale efficacy bar + broken citations). Re-add when the redraft passes QC.
 export const UNGATED_TPP = new Set<string>([]);
@@ -52,15 +52,7 @@ export const UNGATED_THEME = new Set<string>(['glp1_class_competitive_supply_202
 
 /** Mature drafts surfaced as locked catalog cards (no data shipped).
  *  Display names + therapeutic areas resolve via taxonomy.ts. */
-export const LOCKED_INDICATIONS: string[] = [
-  'breast',
-  'aml_mds',
-  'prostate',
-  'melanoma',
-  'hcc',
-  'ovarian',
-  'parkinsons',
-];
+export const LOCKED_INDICATIONS: string[] = [];
 
 /** Free content height (px) before the blur-fade mask begins. */
 export const PREVIEW_MAX_HEIGHT = 460;

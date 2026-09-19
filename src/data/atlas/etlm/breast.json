@@ -1,0 +1,51 @@
+{
+  "indication": "Breast cancer",
+  "indication_code": "breast",
+  "detail_available": false,
+  "detail_rows_shown": 3,
+  "detail_note": "Preview of three established therapies and three clinical studies. These studies include programmes with approved indications; listing here does not imply investigational status. Efficacy comparisons and the remaining research are withheld.",
+  "approved_therapies": [
+    {
+      "drug_name": "tamoxifen",
+      "target": "Estrogen receptor (SERM)",
+      "indication_line": "Adjuvant and metastatic breast cancer",
+      "source": "https://www.cancer.gov/about-cancer/treatment/drugs/tamoxifencitrate"
+    },
+    {
+      "drug_name": "anastrozole",
+      "target": "Aromatase",
+      "indication_line": "HR-positive breast cancer in postmenopausal women",
+      "source": "https://www.cancer.gov/about-cancer/treatment/drugs/anastrozole"
+    },
+    {
+      "drug_name": "letrozole",
+      "target": "Aromatase",
+      "indication_line": "HR-positive breast cancer in postmenopausal women",
+      "source": "https://www.cancer.gov/about-cancer/treatment/drugs/letrozole"
+    }
+  ],
+  "pipeline_assets": [
+    {
+      "asset_name": "trastuzumab deruxtecan",
+      "nct": "NCT04494425",
+      "trial_name": "DESTINY-Breast06",
+      "source": "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-hr-positive-her2-low-or-her2"
+    },
+    {
+      "asset_name": "T-DXd + pertuzumab",
+      "nct": "NCT04784715",
+      "trial_name": "DESTINY-Breast09",
+      "source": "https://www.fda.gov/drugs/drug-approvals-and-databases/fda-approves-fam-trastuzumab-deruxtecan-nxki-pertuzumab-unresectable-or-metastatic-her2-positive"
+    },
+    {
+      "asset_name": "datopotamab deruxtecan",
+      "nct": "NCT05104866",
+      "trial_name": "TROPION-Breast01",
+      "source": "https://www.fda.gov/drugs/drug-approvals-and-databases/drug-trials-snapshots-datroway"
+    }
+  ],
+  "section_counts": {
+    "approved_therapies": 36,
+    "pipeline_assets": 90
+  }
+}

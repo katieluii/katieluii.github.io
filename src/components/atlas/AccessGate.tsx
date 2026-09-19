@@ -185,7 +185,7 @@ export function DetailHook({ context, reportHref, preview = false }: { context: 
             <p className="mt-1 text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
               {preview
                 ? 'This preview carries the top rows of approved therapies and pipeline assets. Benchmarks, mechanisms, competitive positioning and regulatory are withheld — available on request.'
-                : 'Full pipeline read, head-to-head benchmarks, mechanisms, competitive positioning \u0026 regulatory — openly available.'}
+                : 'Detailed therapies, trial protocols and source-specific benchmarks in this reviewed selection.'}
             </p>
           </div>
           <Link

@@ -18,35 +18,35 @@ export const OBESITY_SOC: AssetSoc[] = [
     matchDrug: 'semaglutide 2.4',
     matchBrand: 'Wegovy',
     indicationClass: 'general-obesity',
-    exclusivity: { US: 'novel-pre-LOE', EU: 'novel-pre-LOE' },
+    exclusivity: {},
   },
   {
     id: 'zepbound',
     matchDrug: 'tirzepatide',
     matchBrand: 'Zepbound',
     indicationClass: 'general-obesity',
-    exclusivity: { US: 'novel-pre-LOE', EU: 'novel-pre-LOE' },
+    exclusivity: {},
   },
   {
     id: 'oral-wegovy',
-    matchDrug: 'oral semaglutide',
-    matchBrand: 'oral Wegovy',
+    matchDrug: 'semaglutide 25 mg',
+    matchBrand: 'Wegovy tablets',
     indicationClass: 'general-obesity',
-    exclusivity: { US: 'novel-pre-LOE', EU: 'novel-pre-LOE' },
+    exclusivity: {},
   },
   {
     id: 'foundayo',
     matchDrug: 'orforglipron',
     matchBrand: 'Foundayo',
     indicationClass: 'general-obesity',
-    exclusivity: { US: 'novel-pre-LOE', EU: 'novel-pre-LOE' },
+    exclusivity: {},
   },
   {
     id: 'imcivree',
     matchDrug: 'setmelanotide',
     matchBrand: 'Imcivree',
+    exclusivity: {},
     indicationClass: 'rare-genetic', // POMC/PCSK1/LEPR — excluded from the SoC ranking
-    exclusivity: { US: 'novel-pre-LOE', EU: 'novel-pre-LOE' },
   },
 ];
 

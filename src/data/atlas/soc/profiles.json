@@ -1,0 +1,215 @@
+{
+  "obesity": {
+    "schema_version": 1,
+    "headline_table": {
+      "source": "approved_therapies_novel",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "route",
+          "label": "Route",
+          "from": "derive",
+          "deriver": "route_from_modality"
+        },
+        {
+          "key": "tbwl",
+          "label": "TBWL%",
+          "align": "right",
+          "from": "metric",
+          "object": "custom_efficacy",
+          "match": "tbwl",
+          "pick": "latest_week",
+          "format": "pct"
+        },
+        {
+          "key": "nausea",
+          "label": "Nausea%",
+          "align": "right",
+          "from": "metric",
+          "object": "custom_safety",
+          "match": "nausea",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "caveats": [
+      {
+        "match_field": "indication_line",
+        "match_regex": "genetic|monogenic|syndrom|hypothalamic|POMC|LEPR|PCSK1|Bardet",
+        "tag": "rare genetic",
+        "why": "Different population from mass-market incretins; efficacy not directly comparable"
+      }
+    ],
+    "endpoint_glossary": {
+      "TBWL%": "Mean body-weight change from baseline at the stated timepoint; see source for estimand.",
+      "Nausea%": "Nausea incidence; see the source for the trial population, dose and pooled safety analysis."
+    }
+  },
+  "nsclc": {
+    "schema_version": 1,
+    "headline_table": {
+      "source": "approved_therapies",
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Therapy",
+          "from": "field",
+          "path": "drug_name"
+        },
+        {
+          "key": "line",
+          "label": "Study population / analysis",
+          "from": "field",
+          "path": "indication_line"
+        },
+        {
+          "key": "orr",
+          "label": "ORR",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "orr",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "mpfs",
+          "label": "mPFS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "pfs",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "mos",
+          "label": "mOS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "median_os",
+          "pick": "first",
+          "format": "mo"
+        }
+      ]
+    },
+    "endpoint_glossary": {
+      "ORR": "Objective response rate: proportion with a response.",
+      "mPFS": "Median progression-free survival, months.",
+      "mOS": "Median overall survival, months. Unshown endpoints are unavailable or withheld; absence does not imply an immature analysis."
+    }
+  },
+  "mm": {
+    "schema_version": 1,
+    "headline_table": {
+      "source": "approved_therapies",
+      "order_by": [
+        "Revlimid",
+        "Velcade",
+        "Darzalex",
+        "Sarclisa",
+        "Carvykti",
+        "Abecma",
+        "Tecvayli",
+        "Talvey",
+        "Elrexfio",
+        "Lynozyfic"
+      ],
+      "columns": [
+        {
+          "key": "asset",
+          "label": "Asset",
+          "from": "field",
+          "path": "brand|drug_name|asset_name"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "from": "field",
+          "path": "company|sponsor"
+        },
+        {
+          "key": "target",
+          "label": "Target",
+          "from": "field",
+          "path": "target"
+        },
+        {
+          "key": "line",
+          "label": "Line / setting",
+          "from": "field",
+          "path": "indication_line"
+        },
+        {
+          "key": "orr",
+          "label": "ORR",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "orr",
+          "pick": "first",
+          "format": "pct"
+        },
+        {
+          "key": "mpfs",
+          "label": "mPFS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "pfs",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "mos",
+          "label": "mOS",
+          "align": "right",
+          "from": "metric",
+          "object": "key_efficacy",
+          "match": "median_os",
+          "pick": "first",
+          "format": "mo"
+        },
+        {
+          "key": "fda",
+          "label": "FDA",
+          "from": "field",
+          "path": "fda_approval_date",
+          "format": "yyyy-mm"
+        }
+      ]
+    },
+    "caveats": [],
+    "endpoint_glossary": {
+      "ORR": "Response rate; see the cited study for response criteria, regimen and analysis population.",
+      "mPFS": "Median progression-free survival, in months. A blank means no value is included in this release.",
+      "mOS": "Median overall survival, in months. A blank means no value is included in this release."
+    }
+  }
+}

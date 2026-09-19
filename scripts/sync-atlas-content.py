@@ -30,6 +30,10 @@ from typing import Any, Optional
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 CONFIG_PATH = HERE / "atlas-redaction-config.json"
+if str(HERE) not in sys.path:
+    sys.path.insert(0, str(HERE))
+from atlas_preview import project_preview, validate_preview
+from atlas_full_detail import FULL_CODES, project_full_detail
 DATA = REPO / "src" / "data" / "atlas"
 
 # --- transactional output (D2) -------------------------------------------------
@@ -1355,6 +1359,11 @@ def summary_only_gate(out_dir: Path, summary_only: list, reduced_from: dict, cfg
             continue
         shipped = json.loads(f.read_text())
         counts = shipped.get("section_counts") or {}
+        if cfg.get("etlm_preview_contracts", {}).get(code):
+            try:
+                validate_preview(shipped)
+            except ValueError as exc:
+                leaked.append(f"{code}: {exc}")
 
         for key in SUMMARY_FORBIDDEN:
             if key in shipped:
@@ -1469,6 +1478,20 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
         src_sha = hashlib.sha256(raw).hexdigest()
         src_mtime = _utc_iso(src.stat().st_mtime)
         data = json.loads(raw.decode("utf-8"))
+        if code in FULL_CODES:
+            try:
+                data = project_full_detail(raw, code, cfg['etlm_full_detail_contracts'][code],
+                                           (DATA / 'etlm' / f'{code}.json').read_bytes())
+            except (ValueError, KeyError, TypeError, OSError) as exc:
+                raise SyncAborted(f"{code}: invalid full-detail projection: {exc}") from exc
+        if code in summary_only:
+            contract = cfg.get("etlm_preview_contracts", {}).get(code)
+            if not contract:
+                raise SyncAborted(f"{code}: reviewed preview projection contract missing")
+            try:
+                data = project_preview(raw, code, contract)
+            except (ValueError, KeyError, TypeError) as exc:
+                raise SyncAborted(f"{code}: invalid preview projection: {exc}") from exc
         stripped = strip_keys(data, strip, patterns)
 
         # D4 — strip_keys() is a DENYLIST: any top-level key that is neither stripped
@@ -1487,7 +1510,7 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
                     f"unclassified key ships silently."
                 )
 
-        sanitised = scrub_values(stripped)
+        sanitised = stripped if code in summary_only else scrub_values(stripped)
 
         # D5 — the scrub must not silently mangle a value. Abort (before promotion)
         # naming the field so the analyst fixes it at source, rather than shipping
@@ -1510,9 +1533,7 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
         # details are not there. So the reduction happens here, at the publish
         # boundary, and is asserted below.
         if code in summary_only:
-            full_counts = _top_level_list_counts(sanitised)
-            sanitised = summarise_etlm(sanitised, cfg)
-            reduced_from[code] = full_counts
+            reduced_from[code] = sanitised["section_counts"]
 
         # D8 — collect the internal-system-token residue for THIS code's shipped values.
         # Runs AFTER the reduction so it measures what actually ships, not what would
@@ -1522,6 +1543,8 @@ def sync_etlms(cfg: dict[str, Any], flags: frozenset[str]) -> list[str]:
         token_findings += n_found
 
         payload = json.dumps(sanitised, indent=2)
+        if code in FULL_CODES and hashlib.sha256(payload.encode()).hexdigest() != cfg['etlm_full_detail_contracts'][code]['candidate_sha256']:
+            raise SyncAborted(f'{code}: output transformed after review; re-review required')
         dst = out_dir / f"{code}.json"
         dst.write_text(payload)
         shipped_bytes = len(payload.encode("utf-8"))
@@ -2626,7 +2649,12 @@ def main() -> int:
         # The return value is GATED, not discarded. ecosystem_gate raises SyncAborted on
         # DID_NOT_RUN and RAN_EMPTY, so a header-only ecosystem page can no longer be
         # promoted behind an exit 0.
-        ecosystem_gate(sync_ecosystem(cfg))
+        if cfg.get('ecosystem_publication') == 'withheld':
+            if (DATA / 'ecosystem.md').exists():
+                raise SyncAborted('Withheld ecosystem artifact remains in public source tree')
+            print('  deliberately withheld by release policy')
+        else:
+            ecosystem_gate(sync_ecosystem(cfg))
 
         cross = build_cross_links(cfg, etlms, tpps, themes)
         (out() / "cross_link_map.json").write_text(json.dumps(cross, indent=2))

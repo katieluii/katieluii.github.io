@@ -1,0 +1,49 @@
+{
+  "indication": "Parkinson's disease",
+  "indication_code": "parkinsons",
+  "detail_available": false,
+  "detail_rows_shown": 3,
+  "detail_note": "Selected therapy and trial identities. Efficacy, benchmarks and product profiles are withheld from this preview.",
+  "approved_therapies": [
+    {
+      "drug_name": "carbidopa-levodopa",
+      "brand": "Sinemet",
+      "source": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=9b17b028-964a-473c-823d-81423535bd66"
+    },
+    {
+      "drug_name": "carbidopa-levodopa ER capsules (IPX066)",
+      "brand": "Rytary",
+      "source": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c1f7cd4-de56-45c1-a734-5e77b4aeb6f7"
+    },
+    {
+      "drug_name": "carbidopa-levodopa ER capsules (IPX203)",
+      "brand": "Crexont",
+      "source": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=095a08b6-b0b8-4f88-b759-67e8b87287a0"
+    }
+  ],
+  "pipeline_assets": [
+    {
+      "asset_name": "prasinezumab",
+      "nct": "NCT04777331",
+      "trial_name": "PADOVA",
+      "source": "https://clinicaltrials.gov/study/NCT04777331"
+    },
+    {
+      "asset_name": "minzasolmin (UCB0599)",
+      "nct": "NCT04658186",
+      "trial_name": "ORCHESTRA",
+      "source": "https://clinicaltrials.gov/study/NCT04658186; https://www.ucb.com/newsroom/press-releases/article/findings-from-minzasolmin-proof-of-concept-orchestra-study-shape-next-steps-in-ucb-parkinson-s-research-program",
+      "status": "Historical programme; ORCHESTRA did not meet its primary or secondary clinical endpoints."
+    },
+    {
+      "asset_name": "ACI-7104.056",
+      "nct": "NCT06015841",
+      "trial_name": "VacSYn",
+      "source": "https://clinicaltrials.gov/study/NCT06015841"
+    }
+  ],
+  "section_counts": {
+    "approved_therapies": 21,
+    "pipeline_assets": 55
+  }
+}

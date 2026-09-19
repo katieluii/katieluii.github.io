@@ -207,7 +207,7 @@ export function trialStatusLabel(status: NormalizedTrialStatus): string {
     WITHDRAWN: 'Withdrawn',
     CONFLICTING: 'Conflicting',
     UNKNOWN_MISSING: 'Unknown: missing',
-    UNKNOWN_UNPARSEABLE: 'Unknown: unparseable',
+    UNKNOWN_UNPARSEABLE: 'Unknown',
   };
   return labels[status];
 }

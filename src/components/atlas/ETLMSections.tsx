@@ -234,12 +234,45 @@ function benchmarkEntries(obj: unknown): Array<[string, unknown]> {
   );
 }
 
-/** Long prose notes that some benchmark objects carry alongside metrics. */
-function benchmarkNotes(obj: unknown): string[] {
-  if (!isObj(obj)) return [];
-  return Object.entries(obj)
-    .filter(([k, v]) => /_note$|^data_pending$|^ws13/i.test(k) && typeof v === 'string' && v)
-    .map(([, v]) => String(v));
+/** Keep nested study contexts and arm-level results together instead of dropping them. */
+function BenchmarkDetails({ value }: { value: unknown }): React.ReactNode {
+  if (Array.isArray(value)) {
+    return (
+      <ul className="space-y-2">
+        {value.map((entry, i) => (
+          <li key={i} className="border-l border-zinc-200 dark:border-white/10 pl-3">
+            <BenchmarkDetails value={entry} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  if (!isObj(value)) return value == null ? null : <span>{String(value)}</span>;
+  return (
+    <div className="space-y-1.5">
+      {Object.entries(value).map(([key, item]) => {
+        if (item == null || item === '' || /^(sources?|source_id|benchmark_key)$/.test(key)) return null;
+        if (typeof item === 'object') {
+          return (
+            <div key={key} className="border-t border-zinc-200 dark:border-white/10 pt-2 mt-2">
+              <div className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 mb-2">{labelText(key)}</div>
+              <BenchmarkDetails value={item} />
+            </div>
+          );
+        }
+        return (
+          <div key={key} className="flex justify-between text-xs gap-3">
+            <span className="text-zinc-500 dark:text-zinc-400">{labelText(key.replace(/^best_/, ''))}</span>
+            <span className="text-zinc-800 dark:text-zinc-200 font-medium text-right">{String(item)}</span>
+          </div>
+        );
+      })}
+      {typeof value.source === 'string' && value.source ? (
+        <p className="text-[10px] text-zinc-400 dark:text-zinc-500 pt-1 italic">{value.source}</p>
+      ) : null}
+      <SourceLinks sources={value.sources} />
+    </div>
+  );
 }
 
 /** TRUE row count for a section on a capped PREVIEW payload; null when this
@@ -380,12 +413,8 @@ function ApprovedTherapies({
   totalRows?: number | null;
 }) {
   const headerCount = totalRows ?? data.length;
-  const title = sectionLabel ?? 'Approved therapies';
-  const subtitle = sectionLabel === 'Legacy Approved Therapies'
-    ? 'Pre-incretin era; largely displaced — class-level summary only'
-    : sectionLabel === 'Novel Approved Therapies'
-    ? 'Current standard-of-care and active agents'
-    : 'The standard-of-care anchor';
+  const title = sectionLabel ?? 'Therapy records';
+  const subtitle = 'Results apply to the stated study population, regimen and analysis';
 
   const cards = data.filter(isObj);
   const { shown, hiddenCount, expanded, toggle } = useShowMore(cards, 8);
@@ -397,11 +426,6 @@ function ApprovedTherapies({
       <section className="mb-10">
         <SectionHeader icon={Shield} title={title} subtitle={subtitle} count={headerCount} />
         <Card>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 max-w-[72ch] leading-relaxed">
-            Pre-incretin oral agents. Efficacy ceiling ~3–8% total body-weight loss versus 15–23%
-            for the incretin class — commercially displaced. Retained relevance: low-cost generics,
-            payer step-therapy, and contraindication / adolescent niches.
-          </p>
           <ul className="text-xs">
             {data.filter(isObj).map((entry, i) => {
               const tb = tbwlSummary(entry.custom_efficacy);
@@ -457,16 +481,18 @@ function ApprovedTherapies({
                   ) : null}
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
-                  Approved
+                  Study evidence
                 </span>
               </div>
-              <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">
-                {String(entry.company ?? '')} , {String(entry.modality ?? '')}
-              </div>
+              {(entry.company || entry.modality) ? (
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mb-3">
+                  {[entry.company, entry.modality].filter(Boolean).map(String).join(' · ')}
+                </div>
+              ) : null}
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <KV label="Target" value={entry.target ? String(entry.target) : null} />
                 <KV
-                  label="Indication / line"
+                  label="Population / setting"
                   value={entry.indication_line ? String(entry.indication_line) : null}
                 />
                 <KV
@@ -531,6 +557,10 @@ function ApprovedTherapies({
                     </div>
                   </div>
                 )}
+              {[entry.note, entry.study_notes].filter((note): note is string => typeof note === 'string' && note.length > 0).map((note, ni) => (
+                <p key={ni} className="my-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{note}</p>
+              ))}
+              <SourceLinks sources={entry.sources} />
               {entry.nct ? <NctLink nct={String(entry.nct)} /> : null}
             </Card>
           );
@@ -596,6 +626,9 @@ function PipelineAssets({
 
   const rows = data.filter(isObj);
   const assetGroups = groupPipelineAssets(rows, indicationCode);
+  const showPopulation = assetGroups.some((group) => group.population !== '—');
+  const showModality = assetGroups.some((group) => group.modality !== '—');
+  const showTarget = assetGroups.some((group) => group.target !== '—');
   const selectedStatusSet = new Set(selectedStatuses);
   const filteredGroups = filterAssetGroups(assetGroups, selectedStatusSet);
   const filteredTrialCount = filteredGroups.reduce(
@@ -748,10 +781,10 @@ function PipelineAssets({
           <thead>
             <tr>
               <SortTh col="assetName" label="Asset" />
-              <SortTh col="population" label="Population" />
+              {showPopulation && <SortTh col="population" label="Population" />}
               <SortTh col="company" label="Company / sponsor" className="hidden sm:table-cell" />
-              <SortTh col="modality" label="Modality" className="hidden md:table-cell" />
-              <SortTh col="target" label="Target" className="hidden md:table-cell" />
+              {showModality && <SortTh col="modality" label="Modality" className="hidden md:table-cell" />}
+              {showTarget && <SortTh col="target" label="Target" className="hidden md:table-cell" />}
               <SortTh col="phase" label="Phase" />
               <SortTh col="status" label="Trial status" className="hidden lg:table-cell" />
               <th className="px-3 py-2 text-right text-[10px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-white/10 whitespace-nowrap">
@@ -770,6 +803,9 @@ function PipelineAssets({
                 <AssetPipelineRows
                   key={group.id}
                   group={group}
+                  showPopulation={showPopulation}
+                  showModality={showModality}
+                  showTarget={showTarget}
                   index={i}
                   phase={phase}
                   isExpanded={isExpanded}
@@ -793,7 +829,7 @@ function PipelineAssets({
       />
       {linkedTpps.length > 0 && (
         <div className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
-          Related TPPs in this preview:{' '}
+          Related TPPs:{' '}
           {linkedTpps.map((slug, i) => (
             <span key={slug}>
               <Link
@@ -813,6 +849,9 @@ function PipelineAssets({
 
 function AssetPipelineRows({
   group,
+  showPopulation,
+  showModality,
+  showTarget,
   index,
   phase,
   isExpanded,
@@ -825,6 +864,9 @@ function AssetPipelineRows({
   onToggleAllTrials,
 }: {
   group: AssetGroup;
+  showPopulation: boolean;
+  showModality: boolean;
+  showTarget: boolean;
   index: number;
   phase: string;
   isExpanded: boolean;
@@ -854,18 +896,18 @@ function AssetPipelineRows({
               {group.assetName}
               {!group.governed && (
                 <span className="mt-1 flex items-center gap-1 text-[10px] font-normal text-amber-700 dark:text-amber-300">
-                  <AlertTriangle className="h-3 w-3" /> Identity pending
+                  {group.trials.every((trial) => /^NCT\d{8}$/.test(String(trial.row.nct ?? ''))) ? 'Linked trial protocol' : 'Trial record'}
                 </span>
               )}
             </span>
           </button>
         </td>
-        <td className="max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400">{group.population}</td>
+        {showPopulation && <td className="max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400">{group.population}</td>}
         <td className="hidden px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 sm:table-cell">{group.company}</td>
-        <td className="hidden max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">
+        {showModality && <td className="hidden max-w-[180px] px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">
           <span title={group.modality}>{group.modality.slice(0, 40)}{group.modality.length > 40 ? '…' : ''}</span>
-        </td>
-        <td className="hidden px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">{group.target}</td>
+        </td>}
+        {showTarget && <td className="hidden px-3 py-2.5 align-top text-zinc-600 dark:text-zinc-400 md:table-cell">{group.target}</td>}
         <td className="px-3 py-2.5 align-top">
           <span
             title={phase}
@@ -887,7 +929,7 @@ function AssetPipelineRows({
       </tr>
       {isExpanded && (
         <tr id={detailId} className="border-b border-zinc-200 bg-zinc-50/80 dark:border-white/10 dark:bg-white/[0.04]">
-          <td colSpan={8} className="px-4 py-3">
+          <td colSpan={5 + Number(showPopulation) + Number(showModality) + Number(showTarget)} className="px-4 py-3">
             <div className="mb-2 flex items-center justify-between gap-3">
               <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 Underlying trials · {detailTrials.length} shown
@@ -911,12 +953,18 @@ function AssetPipelineRows({
                     <dt className="text-zinc-400">Registry</dt><dd><NctLink nct={trial.row.nct ? String(trial.row.nct) : undefined} /></dd>
                     <dt className="text-zinc-400">Population</dt><dd>{String(trial.row.population ?? trial.row.indication_subtype ?? '—')}</dd>
                     <dt className="text-zinc-400">Phase</dt><dd>{String(trial.row.phase ?? '—')}</dd>
-                    <dt className="text-zinc-400">Readout</dt><dd>{String(trial.row.estimated_readout ?? '—')}</dd>
-                    <dt className="text-zinc-400">Source</dt><dd>{String(trial.row.source ?? '—')}</dd>
+                    {trial.row.primary_endpoint ? <><dt className="text-zinc-400">Primary endpoint</dt><dd>{String(trial.row.primary_endpoint)}</dd></> : null}
+                    {trial.row.enrollment != null ? <><dt className="text-zinc-400">Enrollment</dt><dd>{String(trial.row.enrollment)}</dd></> : null}
+                    {trial.row.estimated_readout ? <><dt className="text-zinc-400">Estimated readout</dt><dd>{String(trial.row.estimated_readout)}</dd></> : null}
+                    {trial.row.source ? <><dt className="text-zinc-400">Source context</dt><dd>{String(trial.row.source)}</dd></> : null}
                     {trial.rawStatus !== trialStatusLabel(trial.normalizedStatus) && (
                       <><dt className="text-zinc-400">Raw status</dt><dd>{trial.rawStatus ?? 'Missing'}</dd></>
                     )}
                   </dl>
+                  {[trial.row.note, trial.row.registry_date_boundary].filter((note): note is string => typeof note === 'string' && note.length > 0).map((note, ni) => (
+                    <p key={ni} className="mt-2 text-[11px] text-zinc-500 dark:text-zinc-400">{note}</p>
+                  ))}
+                  <SourceLinks sources={trial.row.sources} />
                 </div>
               ))}
             </div>
@@ -953,32 +1001,7 @@ function EfficacyBenchmarks({
               <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
                 {labelText(line)}
               </div>
-              <div className="space-y-1.5">
-                {benchmarkEntries(val).map(([k, v]) => (
-                  <div key={k} className="flex justify-between text-xs gap-3">
-                    <span className="text-zinc-500 dark:text-zinc-400">
-                      {labelText(k)}
-                    </span>
-                    <span className="text-zinc-800 dark:text-zinc-200 font-medium text-right">
-                      {String(v)}
-                    </span>
-                  </div>
-                ))}
-                {benchmarkNotes(val).map((note, ni) => (
-                  <div
-                    key={`note-${ni}`}
-                    className="text-[10px] text-zinc-500 dark:text-zinc-400 pt-1 italic leading-relaxed"
-                  >
-                    {note}
-                  </div>
-                ))}
-                {val.source && typeof val.source === 'string' ? (
-                  <div className="text-[10px] text-zinc-400 dark:text-zinc-500 pt-1 italic">
-                    {String(val.source)}
-                  </div>
-                ) : null}
-                <SourceLinks sources={val.sources} />
-              </div>
+              <BenchmarkDetails value={val} />
             </Card>
           );
         })}
@@ -1115,8 +1138,8 @@ function RecentConferenceReadouts({ data }: { data: unknown[] }) {
     <section className="mb-10">
       <SectionHeader
         icon={Calendar}
-        title="Recent conference readouts"
-        subtitle="Recent data presented at major congresses"
+        title="Recent study readouts"
+        subtitle="Published analyses and conference presentations"
         count={data.length}
       />
       {data.length === 0 ? (
@@ -1662,9 +1685,9 @@ const SECTION_ORDER = [
 /** Short nav labels — the in-page jump rail reads as a map legend. */
 const SECTION_LABEL: Record<string, string> = {
   epidemiology: 'Epidemiology',
-  approved_therapies_novel: 'Novel approved',
+  approved_therapies_novel: 'Therapies',
   approved_therapies_legacy: 'Legacy',
-  approved_therapies: 'Approved',
+  approved_therapies: 'Therapies',
   pipeline_assets: 'Pipeline',
   recent_conference_readouts: 'Readouts',
   mechanism_landscape: 'Mechanisms',
@@ -1789,9 +1812,9 @@ function iconFor(key: string): React.ComponentType<{ className?: string }> {
  *  labelText() is the fallback for an unmapped key. */
 const SECTION_TITLE: Record<string, string> = {
   epidemiology: 'Epidemiology',
-  approved_therapies: 'Approved therapies',
-  approved_therapies_novel: 'Novel Approved Therapies',
-  approved_therapies_legacy: 'Legacy Approved Therapies',
+  approved_therapies: 'Therapy records',
+  approved_therapies_novel: 'Therapy records',
+  approved_therapies_legacy: 'Legacy therapy records',
   pipeline_assets: 'Pipeline assets',
   recent_conference_readouts: 'Recent conference readouts',
   mechanism_landscape: 'Mechanism landscape',
@@ -1805,9 +1828,9 @@ const SECTION_TITLE: Record<string, string> = {
 
 /** Subtitles, copied from the renderers above for the same reason. */
 const SECTION_SUBTITLE: Record<string, string> = {
-  approved_therapies: 'The standard-of-care anchor',
-  approved_therapies_novel: 'Current standard-of-care and active agents',
-  approved_therapies_legacy: 'Pre-incretin era; largely displaced — class-level summary only',
+  approved_therapies: 'Results apply to the stated study population, regimen and analysis',
+  approved_therapies_novel: 'Results apply to the stated study population, regimen and analysis',
+  approved_therapies_legacy: 'Results apply to the stated study population, regimen and analysis',
   pipeline_assets: 'Phase 2/3 programs and key catalysts',
   recent_conference_readouts: 'Recent data presented at major congresses',
   mechanism_landscape: 'Targets and drug classes mapped to assets',
@@ -2045,7 +2068,7 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
     const socName = soc ? firstStr(soc, ['drug_name', 'asset_name', 'name', 'regimen']) : null;
     return socName
       ? `${rows.length} agents , SOC anchor: ${socName}`
-      : `${rows.length} approved agent${rows.length === 1 ? '' : 's'}`;
+      : `${rows.length} therapy study record${rows.length === 1 ? '' : 's'}`;
   }
 
   if (key === 'pipeline_assets') {
@@ -2070,8 +2093,8 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
   if (key.startsWith('efficacy_benchmarks_')) {
     const n = isObj(val) ? Object.keys(val).length : Array.isArray(val) ? val.length : 0;
     return n
-      ? `Efficacy benchmarks across ${n} line${n === 1 ? '' : 's'} of therapy`
-      : 'Efficacy benchmarks by line of therapy';
+      ? `Efficacy benchmarks across ${n} benchmark group${n === 1 ? '' : 's'}`
+      : 'Efficacy benchmark groups';
   }
 
   if (key === 'mechanism_landscape') {
@@ -2087,11 +2110,10 @@ function sectionHeadline(key: string, etlm: Record<string, unknown>): string {
   }
 
   if (key === 'unmet_needs') {
-    const rows = asList(val);
-    const top = rows[0] ? firstStr(rows[0], ['need', 'title', 'label', 'gap']) : null;
-    return top
-      ? `${rows.length} unmet needs , e.g. ${top}`
-      : `${rows.length} unmet need${rows.length === 1 ? '' : 's'}`;
+    const rows = Array.isArray(val) ? val.filter((row) => isObj(row) || (typeof row === 'string' && row.trim())) : [];
+    const top = isObj(rows[0]) ? firstStr(rows[0], ['need', 'title', 'label', 'gap']) : null;
+    const count = `${rows.length} unmet need${rows.length === 1 ? '' : 's'}`;
+    return top ? `${count} , e.g. ${top}` : count;
   }
 
   if (key === 'regulatory_landscape') return 'Pathway risks, designations & label scope';
@@ -2300,7 +2322,7 @@ function renderSection(
     return (
       <ApprovedTherapies
         data={val}
-        sectionLabel="Novel Approved Therapies"
+        sectionLabel="Therapy records"
         totalRows={previewSectionTotal(etlm, key)}
       />
     );
@@ -2308,7 +2330,7 @@ function renderSection(
     return (
       <ApprovedTherapies
         data={val}
-        sectionLabel="Legacy Approved Therapies"
+        sectionLabel="Legacy therapy records"
         condensed
         totalRows={previewSectionTotal(etlm, key)}
       />
@@ -2483,7 +2505,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
       {(linkedTpps.length > 0 || linkedThemes.length > 0) && (
         <section className="mb-10 rounded-xl ring-1 ring-zinc-200 dark:ring-white/10 bg-zinc-50/60 dark:bg-white/[0.02] p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">
-            Related deliverables in this preview
+            Related deliverables
           </div>
           <div className="flex flex-wrap gap-2">
             {linkedTpps.map((slug) => (
@@ -2529,7 +2551,7 @@ export function ETLMSections({ etlm, indicationCode }: Props) {
 
       {meta && (
         <footer className="mt-12 pt-6 border-t border-zinc-200 dark:border-white/10 text-xs text-zinc-400 dark:text-zinc-500">
-          ETLM — {meta.indication} ({meta.indication_code}). Redacted preview only.
+          ETLM — {meta.indication} ({meta.indication_code}). {etlm.detail_available === false ? 'Capped preview; additional detail withheld.' : 'Evidence-reviewed selection; additional research withheld.'}
         </footer>
       )}
     </div>
