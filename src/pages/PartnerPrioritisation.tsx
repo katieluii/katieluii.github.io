@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ExternalLink, Building2, SlidersHorizontal, Send, Mail } from 'lucide-react';
+import { ExternalLink, Building2, SlidersHorizontal, Send } from 'lucide-react';
 import ProjectPageLayout from '../components/ProjectPageLayout';
 import { ProjectLead } from '../components/ProjectLead';
 import { Pill } from '../components/Pill';
@@ -155,18 +155,13 @@ export function PartnerPrioritisation() {
           publish attendee names. Each row shows data coverage, and missing fields remain unknown.
         </p>
 
-        {/* Get it for your conference */}
+        {/* Close */}
         <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 sm:p-6 space-y-2">
-          <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Edge for your conference</h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            The version above runs on the public Jefferies and BIO lists. A client build adds your delegate export
-            (partneringONE, Inova, BIO One-on-One), your positioning read from your own site, and enrichment from
-            owned news, financing and readout data, so the sparse fields above fill in. Built per client for JPM,
-            BIO and BioEquity.
+            Want the outputs ready to use, or Atlas inside your own systems? Either works.
           </p>
-          <a href={CONTACT} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#042A1D] dark:text-teal-300 hover:underline">
-            <Mail className="w-3.5 h-3.5" />
-            katie@renascor.xyz
+          <a href={CONTACT} className="inline-flex items-center text-sm font-semibold text-[#042A1D] dark:text-teal-300 hover:underline">
+            Get in touch →
           </a>
         </div>
 

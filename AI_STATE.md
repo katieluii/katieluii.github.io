@@ -10,6 +10,10 @@ Jefferies London 2026 is the default dataset with all 330 company entries and
 labelled accordingly. BIO 2026 remains selectable with its original 1,654
 exhibitors. Dataset tests, TypeScript, production build and local browser
 acceptance all pass, including attendee display and Jefferies/BIO round-trip.
+Katie approved the localhost preview and authorized merging it to `main`. The
+closing Edge card now uses the shared portfolio CTA copy and labels the mail link
+`Get in touch →` instead of exposing the email address; TypeScript, the production
+build, dataset tests and browser read-back pass after that change.
 Public deployment is not complete: the ordinary Pages workflow is intentionally
 fail-closed, while the enrolled protected authority expired on 20 September and
 is bound to commit `880f05b` and the safe-unpublished operation. Do not bypass
@@ -74,10 +78,12 @@ working tree into a portfolio commit.
 
 ## Exact Next Steps
 
-1. Finish and commit the active Atlas work, then run
+1. Enrol fresh protected Pages authority for the merged Jefferies commit, deploy
+   the exact authorised artifact, and read back both Edge routes from production.
+2. Finish and commit the active Atlas work, then run
    `com.katielui.analyst-refresh` and verify its fresh receipt and output assertion.
-2. Reconcile local `main` with `origin/main` only after the shared Atlas checkout
+3. Reconcile local `main` with `origin/main` only after the shared Atlas checkout
    is clean and its owner has approved the integration.
-3. When portfolio dependencies are next maintained, update deprecated GitHub
+4. When portfolio dependencies are next maintained, update deprecated GitHub
    action versions and re-run the Pages deployment.
-4. Recheck the WS21 embed after any future Railway domain or route change.
+5. Recheck the WS21 embed after any future Railway domain or route change.

@@ -233,6 +233,7 @@ Make the current Jefferies London 2026 participant roster the first dataset show
 4. WHEN Jefferies London 2026 is selected, THE SYSTEM SHALL expose the attendee names and titles published for each company in the official roster.
 5. IF a selected roster field is absent, THEN THE SYSTEM SHALL label it unknown rather than infer a false value.
 6. THE SYSTEM SHALL state the dataset date and the number of company entries shown.
+7. THE SYSTEM SHALL close the project page with the approved shared CTA copy and SHALL label its mail link `Get in touch →` rather than displaying the email address.
 
 ### 4. Acceptance Criteria
 - [x] The project page and embedded portal open on Jefferies London 2026.
@@ -240,6 +241,7 @@ Make the current Jefferies London 2026 participant roster the first dataset show
 - [x] A Jefferies company detail card shows its published attendee names and titles.
 - [x] Selecting BIO 2026 reloads the existing 1,654-exhibitor dataset and selecting Jefferies restores the Jefferies dataset.
 - [x] Type-check, production build, dataset assertions and browser interaction checks pass.
+- [x] The closing card uses the approved CTA copy and hides the direct email address behind `Get in touch →`.
 - [ ] The public deployment, if authorized by the enrolled release boundary, is read back at `/partner-prioritisation` and in the full-screen portal.
 
 ### 5. Out of Scope
