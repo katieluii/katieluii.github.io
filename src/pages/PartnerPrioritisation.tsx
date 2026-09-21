@@ -158,7 +158,7 @@ export function PartnerPrioritisation() {
         {/* Close */}
         <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 sm:p-6 space-y-2">
           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Want the outputs ready to use, or Atlas inside your own systems? Either works.
+            Want the outputs ready to use, or Edge inside your own systems? Either works.
           </p>
           <a href={CONTACT} className="inline-flex items-center text-sm font-semibold text-[#042A1D] dark:text-teal-300 hover:underline">
             Get in touch →
