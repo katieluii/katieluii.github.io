@@ -2,6 +2,19 @@
 
 ## Current Context
 
+2026-09-21 — Edge Jefferies candidate is complete on isolated branch
+`codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not changed.
+Jefferies London 2026 is the default dataset with all 330 company entries and
+899 published attendee records from the 11-page public roster pulled on
+21 September 2026. Seven company entries publish no attendee names and are
+labelled accordingly. BIO 2026 remains selectable with its original 1,654
+exhibitors. Dataset tests, TypeScript, production build and local browser
+acceptance all pass, including attendee display and Jefferies/BIO round-trip.
+Public deployment is not complete: the ordinary Pages workflow is intentionally
+fail-closed, while the enrolled protected authority expired on 20 September and
+is bound to commit `880f05b` and the safe-unpublished operation. Do not bypass
+that release boundary; renew an exact-commit authority package before publishing.
+
 2026-09-14 — Reader cleanup: Planned badges and the requested metadata/disclaimer blocks
 removed. Five analyst themes retained with ten reviewed article links; financing corrected
 to the source-backed $275M round and unsupported market-wide/internal-review wording removed.

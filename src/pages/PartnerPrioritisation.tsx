@@ -8,8 +8,9 @@ import { getProjectBySlug, formatYearRange } from '../data/projects';
 
 /* Edge (suite letter E). The portal is a self-contained HTML app built by
    ws19_partnering/build_portal.py and copied to public/demos/. It scores in the
-   visitor's browser: 1,654 BIO 2026 exhibitors (public directory, pulled 21 Jun 2026)
-   against whatever angle the visitor types. Nothing is sent anywhere. */
+   visitor's browser. Jefferies London 2026 is the default dataset (330 company
+   entries and 899 published attendee records, pulled 21 Sep 2026); the existing
+   1,654-company BIO 2026 dataset remains selectable. Nothing is sent anywhere. */
 const PORTAL = '/demos/ws19-partner-portal.html';
 const CONTACT = 'mailto:katie@renascor.xyz?subject=Edge%20for%20our%20next%20conference';
 
@@ -63,7 +64,7 @@ function EmbeddedPortal() {
       ) : (
         <iframe
           src={PORTAL}
-          title="Edge — partner shortlist for BIO 2026 (interactive)"
+          title="Edge — partner shortlist for Jefferies London 2026 (interactive)"
           className="w-full block"
           style={{ height: 'clamp(480px, 65vh, 680px)', border: 0 }}
           sandbox={SANDBOX}
@@ -82,7 +83,7 @@ export function PartnerPrioritisation() {
   const project = getProjectBySlug('partner-prioritisation');
 
   return (
-    <ProjectPageLayout title="Edge" subtitle="Who is worth a meeting at BIO, and why. Scored in your browser against your own angle.">
+    <ProjectPageLayout title="Edge" subtitle="Who is worth a meeting at your next conference, and why. Scored in your browser against your own angle.">
       <div className="space-y-8">
         {project && (
           <div className="flex items-center gap-2 flex-wrap">
@@ -104,14 +105,15 @@ export function PartnerPrioritisation() {
           Conference matchmakers rely on standard profile fields. Edge ranks companies against your actual positioning,
           scores each match by rule, and drafts a first note for you to edit.
 
-          Below is the real BIO 2026 exhibitor list with a sample angle. Replace it with your company and offer; the
-          rankings and drafts update as you type.
+          Below is the current public Jefferies London 2026 company and attendee roster with a sample angle. Replace it
+          with your company and offer; the rankings and drafts update as you type. BIO 2026 remains available in the
+          conference selector.
         </ProjectLead>
 
         {/* Try it */}
         <div className="space-y-3">
           <div className="flex items-baseline justify-between gap-4 flex-wrap">
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-zinc-100">Try it on BIO 2026</h2>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-zinc-100">Try it on Jefferies London 2026</h2>
             <a
               href={PORTAL}
               target="_blank"
@@ -144,20 +146,20 @@ export function PartnerPrioritisation() {
 
         {/* The numbers, honestly */}
         <StatGrid cols={3}>
-          <StatCard label="BIO 2026 exhibitors" value="1,654" />
-          <StatCard label="Match the sample angle" value="90" />
-          <StatCard label="Unclassified" value="744" accent />
+          <StatCard label="Jefferies company entries" value="330" />
+          <StatCard label="Published attendee records" value="899" />
+          <StatCard label="BIO exhibitors retained" value="1,654" accent />
         </StatGrid>
         <p className="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed -mt-4">
-          Public exhibitor data is sparse, so some scores cluster. Each row shows data coverage, and low-signal drafts
-          are flagged.
+          Jefferies data reflects the 11-page public roster pulled on 21 September 2026. Seven company entries did not
+          publish attendee names. Each row shows data coverage, and missing fields remain unknown.
         </p>
 
         {/* Get it for your conference */}
         <div className="rounded-2xl ring-1 ring-zinc-200/80 dark:ring-white/10 bg-white/80 dark:bg-zinc-800/80 p-5 sm:p-6 space-y-2">
           <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Edge for your conference</h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            The version above runs on one public exhibitor list. A client build adds your delegate export
+            The version above runs on the public Jefferies and BIO lists. A client build adds your delegate export
             (partneringONE, Inova, BIO One-on-One), your positioning read from your own site, and enrichment from
             owned news, financing and readout data, so the sparse fields above fill in. Built per client for JPM,
             BIO and BioEquity.

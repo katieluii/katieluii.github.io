@@ -218,3 +218,51 @@ the public HTTPS URL and promote the exact tested commit to `main`.
 <acceptance_criteria>The public app exposes all four WS21 answer cards; health stamps WSi 4efab3d with matching fingerprints and zero gaps; the portfolio routes Clinical Trial Analyst to that app and contains no localhost URL.</acceptance_criteria>
 <constraints>Reuse the existing precomputed serving contract. Keep the prose page as the fail-closed fallback. Preserve the WSi v5 and WS21 answer contracts.</constraints>
 ```
+## Jefferies 2026 default Edge dataset   [id: edge-jefferies-default-2026-09-21 · date: 2026-09-21 · status: approved]
+
+### 1. Goal & Why
+Make the current Jefferies London 2026 participant roster the first dataset shown in Edge, while keeping the existing BIO 2026 exhibitor dataset usable. This makes the live demo relevant to the nearest priority conference without discarding the established BIO example.
+
+### 2. Context
+`src/pages/PartnerPrioritisation.tsx` presents the public demo and `public/demos/ws19-partner-portal.html` contains the self-contained scorer plus its embedded BIO dataset. The Jefferies source is the event's public MeetMax Participating Companies roster, read on 21 September 2026. The portal runs entirely in the visitor's browser and sends no data.
+
+### 3. Requirements (EARS)
+1. THE SYSTEM SHALL use Jefferies London 2026 as the default Edge dataset.
+2. THE SYSTEM SHALL preserve BIO 2026 as a selectable, fully loaded dataset.
+3. WHEN a visitor changes the conference selector, THE SYSTEM SHALL score and display the selected conference's own company list.
+4. WHEN Jefferies London 2026 is selected, THE SYSTEM SHALL expose the attendee names and titles published for each company in the official roster.
+5. IF a selected roster field is absent, THEN THE SYSTEM SHALL label it unknown rather than infer a false value.
+6. THE SYSTEM SHALL state the dataset date and the number of company entries shown.
+
+### 4. Acceptance Criteria
+- [x] The project page and embedded portal open on Jefferies London 2026.
+- [x] The Jefferies dataset contains all 330 company entries visible across the official roster's 11 public pages on 21 September 2026.
+- [x] A Jefferies company detail card shows its published attendee names and titles.
+- [x] Selecting BIO 2026 reloads the existing 1,654-exhibitor dataset and selecting Jefferies restores the Jefferies dataset.
+- [x] Type-check, production build, dataset assertions and browser interaction checks pass.
+- [ ] The public deployment, if authorized by the enrolled release boundary, is read back at `/partner-prioritisation` and in the full-screen portal.
+
+### 5. Out of Scope
+This change does not invent missing therapeutic areas, development stages or contact details; does not remove or reclassify the BIO dataset; does not alter Atlas content or its reviewed-release boundary; and does not claim that the public Jefferies roster is final beyond the 21 September 2026 pull.
+
+### 6. Open Questions
+None. Katie explicitly confirmed Jefferies as the default and BIO as a retained option.
+
+### 7. Implementation Notes
+Embed both datasets in the existing self-contained portal. Conference changes reload the portal with a dataset key so all scorer state is cleanly rebound to the selected list. Preserve the sandbox and local-only scoring model.
+
+### 8. Eval Stub
+- success criteria: exact dataset counts and labels, exact selector round-trip, attendee-field presence, no network submission path, type-check and build success.
+- [x] case: open portal without a query parameter -> `Jefferies London 2026`, 330 company entries.
+- [x] case: open a Jefferies company card -> published attendee names and titles are visible.
+- [x] case: select `BIO 2026` -> portal reloads with 1,654 exhibitors and BIO copy.
+- [x] case: select Jefferies again -> portal reloads with 330 company entries and Jefferies copy.
+
+### 9. Optimized implementation prompt
+```xml
+<role>You are updating the existing Edge conference-prioritisation demo in the kl-portfolio project.</role>
+<context>The demo is a sandboxed, self-contained HTML scorer embedded by a React project page. It currently embeds the full BIO 2026 exhibitor list. The official Jefferies London 2026 public roster has 330 company entries across 11 pages as pulled on 21 September 2026, with attendee names and titles.</context>
+<task>Add Jefferies London 2026 as the default fully loaded dataset, retain BIO 2026 as a fully loaded selector option, display published Jefferies attendees in company detail, and align the surrounding project copy and statistics.</task>
+<acceptance_criteria>The default portal is Jefferies with 330 entries; BIO selection restores all 1,654 exhibitors; Jefferies cards expose attendee names and titles; dataset dates are honest; type-check, build and browser checks pass.</acceptance_criteria>
+<constraints>Keep all scoring in the browser. Preserve the existing sandbox and BIO data. Treat absent roster fields as unknown. Do not change Atlas content or bypass its publication boundary.</constraints>
+```
