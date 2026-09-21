@@ -2,8 +2,9 @@
 
 ## Current Context
 
-2026-09-21 — Edge Jefferies candidate is complete on isolated branch
-`codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not changed.
+2026-09-21 — Edge Jefferies change is merged to `origin/main` from isolated
+branch `codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not
+changed.
 Jefferies London 2026 is the default dataset with all 330 company entries and
 899 published attendee records from the 11-page public roster pulled on
 21 September 2026. Seven company entries publish no attendee names and are
@@ -18,6 +19,8 @@ Public deployment is not complete: the ordinary Pages workflow is intentionally
 fail-closed, while the enrolled protected authority expired on 20 September and
 is bound to commit `880f05b` and the safe-unpublished operation. Do not bypass
 that release boundary; renew an exact-commit authority package before publishing.
+Post-merge Pages run `35658139742` passed typecheck, Atlas gates, build and release
+authorization tests, then stopped at the enrolled production boundary as designed.
 
 2026-09-14 — Reader cleanup: Planned badges and the requested metadata/disclaimer blocks
 removed. Five analyst themes retained with ten reviewed article links; financing corrected
