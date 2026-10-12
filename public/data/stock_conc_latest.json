@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-09T13:23:32.465977Z",
+  "generated_at_utc": "2026-10-12T15:21:18.708942Z",
   "rows": [
     {
       "cik": "1364742",
@@ -12,7 +12,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1364742/000108636424008417/0001086364-24-008417-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1364742/000108636424008417/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1364742/000108636424008417/form13fInfoTable.xml",
-      "n_stocks": 4571.0,
+      "n_stocks": 4571,
       "total_value": 4418304733920.0,
       "top1_share": 0.0560704114,
       "top3_share": 0.1578841769,
@@ -28,8 +28,7 @@
       "top3_names": "MICROSOFT CORP, NVIDIA CORPORATION, APPLE INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "902219",
@@ -42,7 +41,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/902219/000090221926000311/0000902219-26-000311-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/902219/000090221926000311/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/902219/000090221926000311/form13fInfoTable.xml",
-      "n_stocks": 1785.0,
+      "n_stocks": 1785,
       "total_value": 580172687615.0,
       "top1_share": 0.0421044767,
       "top3_share": 0.1135684155,
@@ -58,8 +57,7 @@
       "top3_names": "NVIDIA CORPORATION, ALPHABET INC, BROADCOM INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1423053",
@@ -72,7 +70,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1423053/000110465926104387/0001104659-26-104387-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1423053/000110465926104387/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1423053/000110465926104387/infotable.xml",
-      "n_stocks": 4883.0,
+      "n_stocks": 4883,
       "total_value": 875011794337.0,
       "top1_share": 0.0677118298,
       "top3_share": 0.1784296528,
@@ -88,8 +86,7 @@
       "top3_names": "STATE STR SPDR S&P 500 ETF T, INVESCO QQQ TR, ISHARES TR",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1274173",
@@ -102,7 +99,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1274173/000108514626000420/0001085146-26-000420-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1274173/000108514626000420/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1274173/000108514626000420/infotable.xml",
-      "n_stocks": 2351.0,
+      "n_stocks": 2351,
       "total_value": 209438171063.0,
       "top1_share": 0.0688320039,
       "top3_share": 0.1475666998,
@@ -118,8 +115,7 @@
       "top3_names": "NVIDIA CORPORATION, MICROSOFT CORP, ALPHABET INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1088875",
@@ -132,7 +128,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1088875/000108887526000057/0001088875-26-000057-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1088875/000108887526000057/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1088875/000108887526000057/edgbgcojun26.xml",
-      "n_stocks": 277.0,
+      "n_stocks": 277,
       "total_value": 110225053010.0,
       "top1_share": 0.0796718068,
       "top3_share": 0.2139165631,
@@ -148,8 +144,7 @@
       "top3_names": "Space Exploration Technologies Corp, NVIDIA, Amazon.Com",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1318757",
@@ -162,7 +157,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1318757/000131875726000010/0001318757-26-000010-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1318757/000131875726000010/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1318757/000131875726000010/mwllp2q26.xml",
-      "n_stocks": 2732.0,
+      "n_stocks": 2732,
       "total_value": 126697578778.0,
       "top1_share": 0.2364842689,
       "top3_share": 0.2906787838,
@@ -178,8 +173,7 @@
       "top3_names": "ISHARES-S&P 500, SPDR PORTFOLIO L, APPLE INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1165408",
@@ -192,7 +186,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1165408/000117266126003503/0001172661-26-003503-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1165408/000117266126003503/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1165408/000117266126003503/infotable.xml",
-      "n_stocks": 922.0,
+      "n_stocks": 922,
       "total_value": 71317440046.0,
       "top1_share": 0.0615571262,
       "top3_share": 0.1612506268,
@@ -208,8 +202,7 @@
       "top3_names": "NVIDIA CORPORATION, APPLE INC, ALPHABET INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1758720",
@@ -222,7 +215,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1758720/000175872026000006/0001758720-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1758720/000175872026000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1758720/000175872026000006/infotable.xml",
-      "n_stocks": 1966.0,
+      "n_stocks": 1966,
       "total_value": 27979180065.0,
       "top1_share": 0.1754461585,
       "top3_share": 0.2573558376,
@@ -238,8 +231,7 @@
       "top3_names": "ISHARES TR, SPDR SERIES TRUST, AMAZON COM INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1056288",
@@ -252,7 +244,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1056288/000162363226001176/0001623632-26-001176-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1056288/000162363226001176/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1056288/000162363226001176/infotable.xml",
-      "n_stocks": 2015.0,
+      "n_stocks": 2015,
       "total_value": 69552481118.0,
       "top1_share": 0.027280543,
       "top3_share": 0.0728385919,
@@ -268,8 +260,7 @@
       "top3_names": "NVIDIA CORPORATION, APPLE INC, ALPHABET INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "898427",
@@ -282,7 +273,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/898427/000089842726000006/0000898427-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/898427/000089842726000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/898427/000089842726000006/infoTable.xml",
-      "n_stocks": 45.0,
+      "n_stocks": 45,
       "total_value": 91884605.0,
       "top1_share": 0.2452916895,
       "top3_share": 0.4102379392,
@@ -298,8 +289,7 @@
       "top3_names": "STATE STR SPDR S&P 500 ETF T, BERKSHIRE HATHAWAY INC DEL, TOTALENERGIES SE",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1704268",
@@ -312,7 +302,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1704268/000114036126032980/0001140361-26-032980-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1704268/000114036126032980/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1704268/000114036126032980/informationtable.xml",
-      "n_stocks": 71.0,
+      "n_stocks": 71,
       "total_value": 34771171317.0,
       "top1_share": 0.9470165078,
       "top3_share": 0.9703088084,
@@ -328,8 +318,7 @@
       "top3_names": "GLOBALFOUNDRIES INC, ISHARES BITCOIN TRUST ETF, ARM HOLDINGS PLC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1103804",
@@ -342,7 +331,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1103804/000110380426000006/0001103804-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1103804/000110380426000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1103804/000110380426000006/Q2202613F.xml",
-      "n_stocks": 90.0,
+      "n_stocks": 90,
       "total_value": 35079228595.0,
       "top1_share": 0.0625322073,
       "top3_share": 0.1452810107,
@@ -358,8 +347,7 @@
       "top3_names": "VISA INC, TAIWAN SEMICONDUCTOR MANUFAC, AIR PRODUCTS AND CHEMICALS I",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "909661",
@@ -372,7 +360,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/909661/000090883426000434/0000908834-26-000434-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/909661/000090883426000434/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/909661/000090883426000434/form13fInfoTable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 1522908900.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -388,8 +376,7 @@
       "top3_names": "ELECTRONIC ARTS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1665241",
@@ -402,7 +389,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1665241/000166524126000002/0001665241-26-000002-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1665241/000166524126000002/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1665241/000166524126000002/infotable.xml",
-      "n_stocks": 2132.0,
+      "n_stocks": 2132,
       "total_value": 27887721978.0,
       "top1_share": 0.147125139,
       "top3_share": 0.2667517168,
@@ -418,8 +405,7 @@
       "top3_names": "ISHARES TR, MICRON TECHNOLOGY INC, NVIDIA CORPORATION",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1390202",
@@ -432,7 +418,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1390202/000139020226000016/0001390202-26-000016-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1390202/000139020226000016/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1390202/000139020226000016/infotable.xml",
-      "n_stocks": 290.0,
+      "n_stocks": 290,
       "total_value": 3898679350.0,
       "top1_share": 0.1034339487,
       "top3_share": 0.1776666511,
@@ -448,8 +434,7 @@
       "top3_names": "STATE STR SPDR S&P 500 ETF T, ADVANCED MICRO DEVICES INC, BRIDGEBIO PHARMA INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1784547",
@@ -462,7 +447,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1784547/000117266126003541/0001172661-26-003541-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1784547/000117266126003541/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1784547/000117266126003541/infotable.xml",
-      "n_stocks": 1001.0,
+      "n_stocks": 1001,
       "total_value": 32353047814.0,
       "top1_share": 0.033399816,
       "top3_share": 0.0855213477,
@@ -478,8 +463,7 @@
       "top3_names": "NVIDIA CORPORATION, APPLE INC, ALPHABET INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1483859",
@@ -492,7 +476,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1483859/000117266126003384/0001172661-26-003384-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1483859/000117266126003384/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1483859/000117266126003384/infotable.xml",
-      "n_stocks": 294.0,
+      "n_stocks": 294,
       "total_value": 2401788572.0,
       "top1_share": 0.0374869591,
       "top3_share": 0.0676990914,
@@ -508,8 +492,7 @@
       "top3_names": "SPDR SERIES TRUST, MGM RESORTS INTERNATIONAL, VISTRA CORP",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1263508",
@@ -522,7 +505,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1263508/000110465926097191/0001104659-26-097191-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1263508/000110465926097191/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1263508/000110465926097191/infotable.xml",
-      "n_stocks": 83.0,
+      "n_stocks": 83,
       "total_value": 19955238553.0,
       "top1_share": 0.1747519941,
       "top3_share": 0.4078383806,
@@ -538,8 +521,7 @@
       "top3_names": "Incyte Corporation, BeOne Medicines Ltd., Revolution Medicines, Inc.",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "938206",
@@ -552,7 +534,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/938206/000093820626000048/0000938206-26-000048-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/938206/000093820626000048/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/938206/000093820626000048/form13fInfoTable.xml",
-      "n_stocks": 354.0,
+      "n_stocks": 354,
       "total_value": 17256704124.0,
       "top1_share": 0.0272455077,
       "top3_share": 0.0645111094,
@@ -568,8 +550,7 @@
       "top3_names": "TSMC, Definium Therapeutics Inc, Praxis Precision Medicines Inc",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1601086",
@@ -582,7 +563,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1601086/000131586326000589/0001315863-26-000589-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1601086/000131586326000589/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1601086/000131586326000589/armistice2q2026.inftbl.xml",
-      "n_stocks": 324.0,
+      "n_stocks": 324,
       "total_value": 8173736250.0,
       "top1_share": 0.2923588341,
       "top3_share": 0.5340222502,
@@ -598,8 +579,7 @@
       "top3_names": "STATE STR SPDR S&P 500 ETF T, ISHARES TR, CYTOKINETICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1633313",
@@ -612,7 +592,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1633313/000110465926096427/0001104659-26-096427-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1633313/000110465926096427/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1633313/000110465926096427/infotable.xml",
-      "n_stocks": 26.0,
+      "n_stocks": 26,
       "total_value": 11136250185.0,
       "top1_share": 0.1351516792,
       "top3_share": 0.3539819397,
@@ -628,8 +608,7 @@
       "top3_names": "UNITED THERAPEUTICS CORP, ASCENDIS PHARMA, KRYSTAL BIOTECH INC",
       "concentration_flag": "Medium",
       "flag_reason": "top3_share ≥ 0.35",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1017645",
@@ -642,7 +621,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1017645/000095014226002338/0000950142-26-002338-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1017645/000095014226002338/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1017645/000095014226002338/infotable.xml",
-      "n_stocks": 12.0,
+      "n_stocks": 12,
       "total_value": 2906996055.0,
       "top1_share": 0.2091787555,
       "top3_share": 0.5675218837,
@@ -658,8 +637,7 @@
       "top3_names": "LIFTOFF MOBILE, DLOCAL, CHIME",
       "concentration_flag": "High",
       "flag_reason": "effective_n ≤ 7",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1674546",
@@ -672,7 +650,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1674546/000110465926096739/0001104659-26-096739-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1674546/000110465926096739/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1674546/000110465926096739/infotable.xml",
-      "n_stocks": 148.0,
+      "n_stocks": 148,
       "total_value": 4752644375.0,
       "top1_share": 0.0648824658,
       "top3_share": 0.1841179045,
@@ -688,8 +666,7 @@
       "top3_names": "AMGEN INC, VERTEX PHARMACEUTICALS INC, ARGENX SE",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1346824",
@@ -702,7 +679,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1346824/000110465926097251/0001104659-26-097251-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1346824/000110465926097251/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1346824/000110465926097251/infotable.xml",
-      "n_stocks": 84.0,
+      "n_stocks": 84,
       "total_value": 11507522068.0,
       "top1_share": 0.2383033112,
       "top3_share": 0.3714445094,
@@ -718,8 +695,7 @@
       "top3_names": "ASCENDIS PHARMA A/S, PARABILIS MEDICINES INC, RHYTHM PHARMACEUTICALS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1493215",
@@ -732,7 +708,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1493215/000149321526000164/0001493215-26-000164-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1493215/000149321526000164/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1493215/000149321526000164/infotable.xml",
-      "n_stocks": 83.0,
+      "n_stocks": 83,
       "total_value": 11712926784.0,
       "top1_share": 0.0913956225,
       "top3_share": 0.2015369912,
@@ -748,8 +724,7 @@
       "top3_names": "MADRIGAL PHARMACEUTICALS INC, ARGENX SE, PTC THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1442891",
@@ -762,7 +737,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1442891/000158064226005306/0001580642-26-005306-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1442891/000158064226005306/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1442891/000158064226005306/infotable.xml",
-      "n_stocks": 301.0,
+      "n_stocks": 301,
       "total_value": 7483882245.0,
       "top1_share": 0.0392567581,
       "top3_share": 0.1060773041,
@@ -778,8 +753,7 @@
       "top3_names": "GUARDANT HEALTH INC, LAM RESEARCH CORP, XOMETRY INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1009258",
@@ -792,7 +766,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1009258/000121390026089991/0001213900-26-089991-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1009258/000121390026089991/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1009258/000121390026089991/infotable.xml",
-      "n_stocks": 75.0,
+      "n_stocks": 75,
       "total_value": 9586027944.0,
       "top1_share": 0.2222175428,
       "top3_share": 0.3758368903,
@@ -808,8 +782,7 @@
       "top3_names": "NUVALENT INC, BROOKDALE SR LIVING INC, REVOLUTION MEDICINES INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1055951",
@@ -822,7 +795,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1055951/000117266126003740/0001172661-26-003740-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1055951/000117266126003740/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1055951/000117266126003740/infotable.xml",
-      "n_stocks": 119.0,
+      "n_stocks": 119,
       "total_value": 5396779685.0,
       "top1_share": 0.1168319566,
       "top3_share": 0.2378758215,
@@ -838,8 +811,7 @@
       "top3_names": "EDGEWISE THERAPEUTICS INC, ENLIVEN THERAPEUTICS INC, ELI LILLY & CO",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1731118",
@@ -852,7 +824,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1731118/000110465926086920/0001104659-26-086920-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1731118/000110465926086920/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1731118/000110465926086920/infotable.xml",
-      "n_stocks": 2.0,
+      "n_stocks": 2,
       "total_value": 1361714190.0,
       "top1_share": 0.8033123316,
       "top3_share": 1.0,
@@ -868,8 +840,7 @@
       "top3_names": "STELLANTIS NV, CONSTELLIUM NV",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1633046",
@@ -882,7 +853,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1633046/000163304626000008/0001633046-26-000008-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1633046/000163304626000008/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1633046/000163304626000008/MSL_INFORMATIONTABLEQ22026.xml",
-      "n_stocks": 214.0,
+      "n_stocks": 214,
       "total_value": 5062639016.0,
       "top1_share": 0.1244672879,
       "top3_share": 0.2875399924,
@@ -898,8 +869,7 @@
       "top3_names": "VANECK ETF TRUST, ISHARES TR, SELECT SECTOR SPDR TR",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1687509",
@@ -912,7 +882,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1687509/000110465926097098/0001104659-26-097098-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1687509/000110465926097098/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1687509/000110465926097098/infotable.xml",
-      "n_stocks": 84.0,
+      "n_stocks": 84,
       "total_value": 10900839423.0,
       "top1_share": 0.1269783155,
       "top3_share": 0.2512063301,
@@ -928,8 +898,7 @@
       "top3_names": "TALEN ENERGY CORP, FTAI AVIATION LTD, VIATRIS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1319998",
@@ -942,7 +911,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1319998/000101297526000789/0001012975-26-000789-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1319998/000101297526000789/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1319998/000101297526000789/southpoint.xml",
-      "n_stocks": 33.0,
+      "n_stocks": 33,
       "total_value": 4395933780.0,
       "top1_share": 0.1123250542,
       "top3_share": 0.2356863301,
@@ -958,8 +927,7 @@
       "top3_names": "ADVANCED MICRO DEVICES INC, SCHEIN HENRY INC, DANAHER CORP DEL",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1224962",
@@ -972,7 +940,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1224962/000101297526000777/0001012975-26-000777-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1224962/000101297526000777/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1224962/000101297526000777/infotable.xml",
-      "n_stocks": 105.0,
+      "n_stocks": 105,
       "total_value": 6661817069.0,
       "top1_share": 0.1023185936,
       "top3_share": 0.2122893948,
@@ -988,8 +956,7 @@
       "top3_names": "PRAXIS PRECISION MEDICINES I, SPYRE THERAPEUTICS INC, CELCUITY INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1595725",
@@ -1002,7 +969,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1595725/000117266126003527/0001172661-26-003527-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1595725/000117266126003527/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1595725/000117266126003527/infotable.xml",
-      "n_stocks": 104.0,
+      "n_stocks": 104,
       "total_value": 2048808191.0,
       "top1_share": 0.1010264064,
       "top3_share": 0.2192300782,
@@ -1018,8 +985,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, TRAVERE THERAPEUTICS INC, ELI LILLY & CO",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1056807",
@@ -1032,7 +998,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1056807/000092189526002163/0000921895-26-002163-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1056807/000092189526002163/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1056807/000092189526002163/infotable.xml",
-      "n_stocks": 44.0,
+      "n_stocks": 44,
       "total_value": 3910995502.0,
       "top1_share": 0.1419881881,
       "top3_share": 0.3380312622,
@@ -1048,8 +1014,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, KYMERA THERAPEUTICS INC, XOMA ROYALTY CORPORATION",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1587114",
@@ -1062,7 +1027,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1587114/000093583626000415/0000935836-26-000415-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1587114/000093583626000415/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1587114/000093583626000415/form13fInfoTable.xml",
-      "n_stocks": 31.0,
+      "n_stocks": 31,
       "total_value": 2056733459.0,
       "top1_share": 0.2919415442,
       "top3_share": 0.6261603405,
@@ -1078,8 +1043,7 @@
       "top3_names": "ZYMEWORKS INC, ANAPTYSBIO INC, AKTIS ONCOLOGY INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1595849",
@@ -1092,7 +1056,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1595849/000139834426014642/0001398344-26-014642-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1595849/000139834426014642/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1595849/000139834426014642/fp0099921-9_13fhr-table.xml",
-      "n_stocks": 30.0,
+      "n_stocks": 30,
       "total_value": 5979937854.0,
       "top1_share": 0.2476167678,
       "top3_share": 0.4777772605,
@@ -1108,8 +1072,7 @@
       "top3_names": "HUMANA INC, WARNER BROS DISCOVERY INC, KIMBERLY-CLARK CORP",
       "concentration_flag": "High",
       "flag_reason": "effective_n ≤ 10",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1856083",
@@ -1122,7 +1085,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1856083/000185608326000004/0001856083-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1856083/000185608326000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1856083/000185608326000004/DTBIOMAST.xml",
-      "n_stocks": 66.0,
+      "n_stocks": 66,
       "total_value": 6870469447.0,
       "top1_share": 0.0740995361,
       "top3_share": 0.1635132533,
@@ -1138,8 +1101,7 @@
       "top3_names": "GUARDANT HEALTH INC, IMMUNOVANT INC, STRUCTURE THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1425738",
@@ -1152,7 +1114,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1425738/000110465926097182/0001104659-26-097182-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1425738/000110465926097182/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1425738/000110465926097182/infotable.xml",
-      "n_stocks": 39.0,
+      "n_stocks": 39,
       "total_value": 1489508540.0,
       "top1_share": 0.1591867745,
       "top3_share": 0.4035679178,
@@ -1168,8 +1130,7 @@
       "top3_names": "SCHOLAR ROCK HLDG CORP, KRYSTAL BIOTECH INC, STOKE THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1791827",
@@ -1182,7 +1143,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1791827/000179182726000005/0001791827-26-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1791827/000179182726000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1791827/000179182726000005/avid13f_q2.xml",
-      "n_stocks": 45.0,
+      "n_stocks": 45,
       "total_value": 624441478.0,
       "top1_share": 0.3284789099,
       "top3_share": 0.6035484129,
@@ -1198,8 +1159,7 @@
       "top3_names": "DIANTHUS THERAPEUTICS INC, CG ONCOLOGY INC, ORUKA THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1920938",
@@ -1212,7 +1172,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1920938/000142050626001823/0001420506-26-001823-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1920938/000142050626001823/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1920938/000142050626001823/Form13F_InfoTable.xml",
-      "n_stocks": 83.0,
+      "n_stocks": 83,
       "total_value": 2703471368.0,
       "top1_share": 0.054419844,
       "top3_share": 0.1406352368,
@@ -1228,8 +1188,7 @@
       "top3_names": "CARIS LIFE SCIENCES INC, ALPHATEC HLDGS INC, HINGE HEALTH INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1256071",
@@ -1242,7 +1201,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1256071/000125607126000007/0001256071-26-000007-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1256071/000125607126000007/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1256071/000125607126000007/infotable.xml",
-      "n_stocks": 85.0,
+      "n_stocks": 85,
       "total_value": 406746419.0,
       "top1_share": 0.109720848,
       "top3_share": 0.2096577991,
@@ -1258,8 +1217,7 @@
       "top3_names": "ZTO EXPRESS CAYMAN INC, MICRON TECHNOLOGY INC, LAM RESEARCH CORP",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1569064",
@@ -1272,7 +1230,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1569064/000117266126003727/0001172661-26-003727-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1569064/000117266126003727/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1569064/000117266126003727/infotable.xml",
-      "n_stocks": 96.0,
+      "n_stocks": 96,
       "total_value": 5468098556.0,
       "top1_share": 0.1297400719,
       "top3_share": 0.2831080669,
@@ -1288,8 +1246,7 @@
       "top3_names": "STATE STR SPDR S&P 500 ETF T, VERADERMICS INC, ARCUTIS BIOTHERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1855655",
@@ -1302,7 +1259,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1855655/000185565526000014/0001855655-26-000014-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1855655/000185565526000014/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1855655/000185565526000014/PARADIGM_13F_06302026.xml",
-      "n_stocks": 28.0,
+      "n_stocks": 28,
       "total_value": 5340558034.0,
       "top1_share": 0.2230756718,
       "top3_share": 0.4377950711,
@@ -1318,8 +1275,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, NUVALENT INC, EDGEWISE THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1583977",
@@ -1332,7 +1288,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1583977/000158397726000007/0001583977-26-000007-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1583977/000158397726000007/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1583977/000158397726000007/cam13f06302026.xml",
-      "n_stocks": 50.0,
+      "n_stocks": 50,
       "total_value": 1951406063.0,
       "top1_share": 0.1098006223,
       "top3_share": 0.2443519035,
@@ -1348,8 +1304,7 @@
       "top3_names": "PRAXIS PRECISION MEDICINES I, BRIDGEBIO ONCOLOGY THERAPEUT, PARABILIS MEDICINES INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1357550",
@@ -1362,7 +1317,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1357550/000135755026000029/0001357550-26-000029-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1357550/000135755026000029/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1357550/000135755026000029/wam13fq206302026.xml",
-      "n_stocks": 580.0,
+      "n_stocks": 580,
       "total_value": 9541753171.0,
       "top1_share": 0.1313449103,
       "top3_share": 0.3418186394,
@@ -1378,8 +1333,7 @@
       "top3_names": "NVIDIA CORPORATION, SUPER MICRO COMPUTER INC, MICRON TECHNOLOGY INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1316926",
@@ -1392,7 +1346,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1316926/000114496926000005/0001144969-26-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1316926/000114496926000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1316926/000114496926000005/PCM13F0626.xml",
-      "n_stocks": 84.0,
+      "n_stocks": 84,
       "total_value": 1061425993.0,
       "top1_share": 0.0818623131,
       "top3_share": 0.2278387062,
@@ -1408,8 +1362,7 @@
       "top3_names": "POPULAR INC, JAZZ PHARMACEUTICALS PLC, SMURFIT WESTROCK PLC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1465837",
@@ -1422,7 +1375,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1465837/000121390025014355/0001213900-25-014355-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1465837/000121390025014355/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1465837/000121390025014355/infotable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 0.0,
       "top1_share": null,
       "top3_share": null,
@@ -1438,8 +1391,7 @@
       "top3_names": null,
       "concentration_flag": "Unknown",
       "flag_reason": "no value or no holdings",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1892134",
@@ -1452,7 +1404,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1892134/000189213426000003/0001892134-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1892134/000189213426000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1892134/000189213426000003/flsmq12026form13f.xml",
-      "n_stocks": 40.0,
+      "n_stocks": 40,
       "total_value": 4592076814.0,
       "top1_share": 0.1957851844,
       "top3_share": 0.431249549,
@@ -1468,8 +1420,7 @@
       "top3_names": "MIRUM PHARMACEUTICALS INC, NEWAMSTERDAM PHARMA COMPANY, ERASCA INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1631134",
@@ -1482,7 +1433,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1631134/000110465926096982/0001104659-26-096982-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1631134/000110465926096982/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1631134/000110465926096982/infotable.xml",
-      "n_stocks": 56.0,
+      "n_stocks": 56,
       "total_value": 1934262135.0,
       "top1_share": 0.2175628103,
       "top3_share": 0.3369944188,
@@ -1498,8 +1449,7 @@
       "top3_names": "Natera Inc, Vera Therapeutics Inc, Genmab A/S",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1472322",
@@ -1512,7 +1462,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1472322/000110465926098416/0001104659-26-098416-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1472322/000110465926098416/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1472322/000110465926098416/infotable.xml",
-      "n_stocks": 140.0,
+      "n_stocks": 140,
       "total_value": 3014941589.0,
       "top1_share": 0.1993073439,
       "top3_share": 0.2781655622,
@@ -1528,8 +1478,7 @@
       "top3_names": "ISHARES TR, PELOTON INTERACTIVE INC, HILTON GRAND VACATIONS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1442756",
@@ -1542,7 +1491,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1442756/000144275626000006/0001442756-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1442756/000144275626000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1442756/000144275626000006/infotable.xml",
-      "n_stocks": 96.0,
+      "n_stocks": 96,
       "total_value": 1165441614.0,
       "top1_share": 0.0533629212,
       "top3_share": 0.1398861196,
@@ -1558,8 +1507,7 @@
       "top3_names": "ASCENDIS PHARMA A/S, AXSOME THERAPEUTICS INC., ELI LILLY & CO",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1600136",
@@ -1572,7 +1520,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1600136/000160013626000008/0001600136-26-000008-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1600136/000160013626000008/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1600136/000160013626000008/Clearline06.30.2026.xml",
-      "n_stocks": 101.0,
+      "n_stocks": 101,
       "total_value": 1676017872.0,
       "top1_share": 0.0753268161,
       "top3_share": 0.2012898714,
@@ -1588,8 +1536,7 @@
       "top3_names": "ISHARES TR, AMAZON COM INC, CORE SCIENTIFIC INC NEW",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1388325",
@@ -1602,7 +1549,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1388325/000138832526000042/0001388325-26-000042-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1388325/000138832526000042/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1388325/000138832526000042/form13f-1786739062_infotable.xml",
-      "n_stocks": 25.0,
+      "n_stocks": 25,
       "total_value": 1722216880.0,
       "top1_share": 0.1262155205,
       "top3_share": 0.3250528307,
@@ -1618,8 +1565,7 @@
       "top3_names": "EDGEWISE THERAPEUTICS INC, ASML HOLDING N V, HEMAB THERAPEUTICS HLDGS INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1093589",
@@ -1632,7 +1578,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1093589/000139834426012834/0001398344-26-012834-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1093589/000139834426012834/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1093589/000139834426012834/fp0099947-1_13fhr-table.xml",
-      "n_stocks": 109.0,
+      "n_stocks": 109,
       "total_value": 1343666509.0,
       "top1_share": 0.0747914578,
       "top3_share": 0.2146310815,
@@ -1648,8 +1594,7 @@
       "top3_names": "Alphabet Inc Cl A, Nvidia Corp, Amazon.com Inc",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1512848",
@@ -1662,7 +1607,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1512848/000107261326000684/0001072613-26-000684-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1512848/000107261326000684/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1512848/000107261326000684/infotable.xml",
-      "n_stocks": 26.0,
+      "n_stocks": 26,
       "total_value": 1587937058.0,
       "top1_share": 0.155292397,
       "top3_share": 0.3981693026,
@@ -1678,8 +1623,7 @@
       "top3_names": "Trevi Therapeutics, Inc., MBX Biosciences, Inc., Monte Rosa Therapeutics, Inc.",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1400240",
@@ -1692,7 +1636,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1400240/000119312526352122/0001193125-26-352122-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1400240/000119312526352122/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1400240/000119312526352122/56647.xml",
-      "n_stocks": 5.0,
+      "n_stocks": 5,
       "total_value": 1539910719.0,
       "top1_share": 0.6865953136,
       "top3_share": 0.9539133255,
@@ -1708,8 +1652,7 @@
       "top3_names": "GENERATE BIOMEDICINES INC, MODERNA INC, SANA BIOTECHNOLOGY INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1600004",
@@ -1722,7 +1665,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1600004/000199937126018014/0001999371-26-018014-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1600004/000199937126018014/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1600004/000199937126018014/infotable.xml",
-      "n_stocks": 31.0,
+      "n_stocks": 31,
       "total_value": 1645275411.0,
       "top1_share": 0.1088925537,
       "top3_share": 0.2666749579,
@@ -1738,8 +1681,7 @@
       "top3_names": "NEOGENOMICS INC, SI-BONE INC, AXOGEN INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1496201",
@@ -1752,7 +1694,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1496201/000149620126000004/0001496201-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1496201/000149620126000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1496201/000149620126000004/sphera13fq2.xml",
-      "n_stocks": 101.0,
+      "n_stocks": 101,
       "total_value": 766539858.0,
       "top1_share": 0.0663015464,
       "top3_share": 0.1734620954,
@@ -1768,38 +1710,36 @@
       "top3_names": "TEVA PHARMACEUTICAL INDS LTD, BIOGEN INC, MINERALYS THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
-      "cik": null,
-      "fund_name": null,
-      "filing_date": null,
-      "period_of_report": null,
-      "as_of_quarter": null,
-      "form": null,
-      "accession": null,
-      "index_url": null,
-      "primary_doc_url": null,
-      "infotable_xml_url": null,
-      "n_stocks": null,
-      "total_value": null,
-      "top1_share": null,
-      "top3_share": null,
-      "top1_share_pct": null,
-      "top3_share_pct": null,
-      "hhi": null,
-      "effective_n": null,
+      "cik": "1674712",
+      "fund_name": "Vivo Capital, LLC",
+      "filing_date": "2026-08-14",
+      "period_of_report": "06-30-2026",
+      "as_of_quarter": "2026Q2",
+      "form": "13F-HR",
+      "accession": "0001213900-26-089935",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1674712/000121390026089935/0001213900-26-089935-index.htm",
+      "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1674712/000121390026089935/primary_doc.xml",
+      "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1674712/000121390026089935/infotable.xml",
+      "n_stocks": 47,
+      "total_value": 1095100823.0,
+      "top1_share": 0.0867642102,
+      "top3_share": 0.2386964438,
+      "top1_share_pct": 8.6764210203,
+      "top3_share_pct": 23.8696443752,
+      "hhi": 0.0410020548,
+      "effective_n": 24.3890215829,
       "top10_share": null,
       "top10_share_pct": null,
       "top10_value": null,
-      "top1_name": null,
-      "top1_value": null,
-      "top3_names": null,
-      "concentration_flag": null,
-      "flag_reason": null,
-      "status": "error: RuntimeError: GET failed after retries: https://www.sec.gov/Archives/edgar/data/1674712/000121390026089935/0001213900-26-089935-index.htm",
-      "CIK": "1674712"
+      "top1_name": "Trevi Therapeutics Inc",
+      "top1_value": 95015558.0,
+      "top3_names": "Trevi Therapeutics Inc, Praxis Precision Medicines, Erasca Inc",
+      "concentration_flag": "Low",
+      "flag_reason": "no thresholds triggered",
+      "status": "ok"
     },
     {
       "cik": "1404574",
@@ -1812,7 +1752,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1404574/000140457426000023/0001404574-26-000023-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1404574/000140457426000023/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1404574/000140457426000023/infotable.xml",
-      "n_stocks": 130.0,
+      "n_stocks": 130,
       "total_value": 2036355354.0,
       "top1_share": 0.1391488123,
       "top3_share": 0.2746621251,
@@ -1828,38 +1768,36 @@
       "top3_names": "PALANTIR TECHNOLOGIES INC, ELI LILLY & CO, NVIDIA CORPORATION",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
-      "cik": null,
-      "fund_name": null,
-      "filing_date": null,
-      "period_of_report": null,
-      "as_of_quarter": null,
-      "form": null,
-      "accession": null,
-      "index_url": null,
-      "primary_doc_url": null,
-      "infotable_xml_url": null,
-      "n_stocks": null,
-      "total_value": null,
-      "top1_share": null,
-      "top3_share": null,
-      "top1_share_pct": null,
-      "top3_share_pct": null,
-      "hhi": null,
-      "effective_n": null,
+      "cik": "1831942",
+      "fund_name": "Commodore Capital LP",
+      "filing_date": "2026-08-14",
+      "period_of_report": "06-30-2026",
+      "as_of_quarter": "2026Q2",
+      "form": "13F-HR",
+      "accession": "0001831942-26-000033",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1831942/000183194226000033/0001831942-26-000033-index.htm",
+      "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1831942/000183194226000033/primary_doc.xml",
+      "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1831942/000183194226000033/commodoreq2202613f.xml",
+      "n_stocks": 33,
+      "total_value": 1678964770.0,
+      "top1_share": 0.1337252598,
+      "top3_share": 0.3263387415,
+      "top1_share_pct": 13.3725259762,
+      "top3_share_pct": 32.6338741462,
+      "hhi": 0.0621774617,
+      "effective_n": 16.082998125,
       "top10_share": null,
       "top10_share_pct": null,
       "top10_value": null,
-      "top1_name": null,
-      "top1_value": null,
-      "top3_names": null,
-      "concentration_flag": null,
-      "flag_reason": null,
-      "status": "error: RuntimeError: GET failed after retries: https://www.sec.gov/Archives/edgar/data/1831942/000183194226000033/0001831942-26-000033-index.htm",
-      "CIK": "1831942"
+      "top1_name": "RELAY THERAPEUTICS INC",
+      "top1_value": 224520000.0,
+      "top3_names": "RELAY THERAPEUTICS INC, ENLIVEN THERAPEUTICS INC, ALKERMES PLC",
+      "concentration_flag": "Medium",
+      "flag_reason": "effective_n ≤ 20",
+      "status": "ok"
     },
     {
       "cik": "1306923",
@@ -1872,7 +1810,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000102/0002073679-26-000102-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000102/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1306923/000207367926000102/xml.xml",
-      "n_stocks": 52.0,
+      "n_stocks": 52,
       "total_value": 723718198.0,
       "top1_share": 0.1035627793,
       "top3_share": 0.2646754573,
@@ -1888,8 +1826,7 @@
       "top3_names": "PTC THERAPEUTICS INC, ACADIA PHARMACEUTICALS INC, INSMED INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1792126",
@@ -1902,7 +1839,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1792126/000117266126003529/0001172661-26-003529-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1792126/000117266126003529/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1792126/000117266126003529/infotable.xml",
-      "n_stocks": 68.0,
+      "n_stocks": 68,
       "total_value": 2322922487.0,
       "top1_share": 0.0958223967,
       "top3_share": 0.2110024087,
@@ -1918,8 +1855,7 @@
       "top3_names": "ERASCA INC, ABIVAX SA, REVOLUTION MEDICINES INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1703031",
@@ -1932,7 +1868,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1703031/000119312526350470/0001193125-26-350470-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1703031/000119312526350470/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1703031/000119312526350470/56993.xml",
-      "n_stocks": 20.0,
+      "n_stocks": 20,
       "total_value": 1682021456.0,
       "top1_share": 0.2957806467,
       "top3_share": 0.521110981,
@@ -1948,8 +1884,7 @@
       "top3_names": "KAILERA THERAPEUTICS INC, HEARTFLOW INC, NEWAMSTERDAM PHARMA COMPANY",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1534261",
@@ -1962,7 +1897,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1534261/000091957426005491/0000919574-26-005491-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1534261/000091957426005491/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1534261/000091957426005491/infotable.xml",
-      "n_stocks": 43.0,
+      "n_stocks": 43,
       "total_value": 1997798996.0,
       "top1_share": 0.2416073514,
       "top3_share": 0.5191708851,
@@ -1978,8 +1913,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, RELAY THERAPEUTICS INC, GENEDX HOLDINGS CORP",
       "concentration_flag": "High",
       "flag_reason": "top3_share ≥ 0.50",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1621855",
@@ -1992,7 +1926,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1621855/000093583626000403/0000935836-26-000403-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1621855/000093583626000403/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1621855/000093583626000403/infotable.xml",
-      "n_stocks": 27.0,
+      "n_stocks": 27,
       "total_value": 1091326724.0,
       "top1_share": 0.10861467,
       "top3_share": 0.2467274612,
@@ -2008,8 +1942,7 @@
       "top3_names": "SANDISK CORP, WESTERN DIGITAL CORP, MARVELL TECHNOLOGY INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1802528",
@@ -2022,7 +1955,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1802528/000110465926096405/0001104659-26-096405-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1802528/000110465926096405/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1802528/000110465926096405/infotable.xml",
-      "n_stocks": 12.0,
+      "n_stocks": 12,
       "total_value": 1512967797.0,
       "top1_share": 0.2330715734,
       "top3_share": 0.5463303949,
@@ -2038,8 +1971,7 @@
       "top3_names": "ORUKA THERAPEUTICS INC, DIANTHUS THERAPEUTICS INC, DAMORA THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1802881",
@@ -2052,7 +1984,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1802881/000108514625002515/0001085146-25-002515-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1802881/000108514625002515/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1802881/000108514625002515/infotable.xml",
-      "n_stocks": 224.0,
+      "n_stocks": 224,
       "total_value": 933711035.0,
       "top1_share": 0.076411496,
       "top3_share": 0.2113528786,
@@ -2068,8 +2000,7 @@
       "top3_names": "ALPHABET INC, MICROSOFT CORP, APPLE INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1974915",
@@ -2082,7 +2013,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1974915/000197491526000005/0001974915-26-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1974915/000197491526000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1974915/000197491526000005/13fq22026.xml",
-      "n_stocks": 68.0,
+      "n_stocks": 68,
       "total_value": 4279457817.0,
       "top1_share": 0.0805593874,
       "top3_share": 0.2277585422,
@@ -2098,8 +2029,7 @@
       "top3_names": "BioMarin Pharmaceutical Inc, Neurocrine Biosciences Inc, Abivax SA",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1907884",
@@ -2112,7 +2042,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1907884/000190788426000012/0001907884-26-000012-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1907884/000190788426000012/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1907884/000190788426000012/infotable.xml",
-      "n_stocks": 32.0,
+      "n_stocks": 32,
       "total_value": 1809410222.0,
       "top1_share": 0.1094640699,
       "top3_share": 0.300614365,
@@ -2128,8 +2058,7 @@
       "top3_names": "CELLDEX THERAPEUTICS INC NEW, SYNDAX PHARMACEUTICALS INC, VAXCYTE INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1839948",
@@ -2142,7 +2071,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1839948/000121465926010290/0001214659-26-010290-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1839948/000121465926010290/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1839948/000121465926010290/infotable.xml",
-      "n_stocks": 54.0,
+      "n_stocks": 54,
       "total_value": 4160526316.0,
       "top1_share": 0.192428529,
       "top3_share": 0.3233366011,
@@ -2158,8 +2087,7 @@
       "top3_names": "ABIVAX SA AMERICAN DEPOSITARY SHARES, TANGO THERAPEUTICS INC, CG ONCOLOGY INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1802630",
@@ -2172,7 +2100,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1802630/000180263026000005/0001802630-26-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1802630/000180263026000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1802630/000180263026000005/SOLEUS_13F_06302026.xml",
-      "n_stocks": 97.0,
+      "n_stocks": 97,
       "total_value": 2901979696.0,
       "top1_share": 0.1202946163,
       "top3_share": 0.2371680391,
@@ -2188,8 +2116,7 @@
       "top3_names": "KRYSTAL BIOTECH INC, CELCUITY INC, TG THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1000097",
@@ -2202,7 +2129,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1000097/000100009726000006/0001000097-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1000097/000100009726000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1000097/000100009726000006/KINGDON_13F_06302026.xml",
-      "n_stocks": 68.0,
+      "n_stocks": 68,
       "total_value": 976167326.0,
       "top1_share": 0.1007217691,
       "top3_share": 0.2059000487,
@@ -2218,8 +2145,7 @@
       "top3_names": "ISHARES TR, SYNDAX PHARMACEUTICALS INC, NVIDIA CORPORATION",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1461790",
@@ -2232,7 +2158,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1461790/000146179026000032/0001461790-26-000032-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1461790/000146179026000032/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1461790/000146179026000032/informationtable.xml",
-      "n_stocks": 360.0,
+      "n_stocks": 360,
       "total_value": 1364900286.0,
       "top1_share": 0.0655251515,
       "top3_share": 0.1075515534,
@@ -2248,8 +2174,7 @@
       "top3_names": "SPDR GOLD TR, STRATEGY INC, MARA HOLDINGS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1773206",
@@ -2262,7 +2187,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1773206/000117266126003449/0001172661-26-003449-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1773206/000117266126003449/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1773206/000117266126003449/infotable.xml",
-      "n_stocks": 90.0,
+      "n_stocks": 90,
       "total_value": 2531730300.0,
       "top1_share": 0.1331516236,
       "top3_share": 0.2543714866,
@@ -2278,8 +2203,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, INSMED INC, CYTOKINETICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1777015",
@@ -2292,7 +2216,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1777015/000142050626001734/0001420506-26-001734-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1777015/000142050626001734/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1777015/000142050626001734/Form13F_InfoTable.xml",
-      "n_stocks": 77.0,
+      "n_stocks": 77,
       "total_value": 976827960.0,
       "top1_share": 0.0452173277,
       "top3_share": 0.1296854556,
@@ -2308,8 +2232,7 @@
       "top3_names": "MBX BIOSCIENCES INC, ELI LILLY & CO, CVS HEALTH CORP",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1801265",
@@ -2322,7 +2245,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1801265/000180126526000005/0001801265-26-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1801265/000180126526000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1801265/000180126526000005/madisonave13fq22026.xml",
-      "n_stocks": 25.0,
+      "n_stocks": 25,
       "total_value": 2323000202.0,
       "top1_share": 0.1210543859,
       "top3_share": 0.3238875724,
@@ -2338,8 +2261,7 @@
       "top3_names": "GRAHAM HLDGS CO, INVITATION HOMES INC, MARKEL GROUP INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1590144",
@@ -2352,7 +2274,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1590144/000159014426000004/0001590144-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1590144/000159014426000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1590144/000159014426000004/13fpuravidaq2.xml",
-      "n_stocks": 19.0,
+      "n_stocks": 19,
       "total_value": 36993272.0,
       "top1_share": 0.5535486291,
       "top3_share": 0.7770295366,
@@ -2368,8 +2290,7 @@
       "top3_names": "ALAMAR BIOSCIENCES INC, BETA BIONICS INC, ESTABLISHMENT LABS HLDGS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1744967",
@@ -2382,7 +2303,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1744967/000174496726000010/0001744967-26-000010-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1744967/000174496726000010/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1744967/000174496726000010/form13f-1786738263_infotable.xml",
-      "n_stocks": 24.0,
+      "n_stocks": 24,
       "total_value": 1217462122.0,
       "top1_share": 0.3116079368,
       "top3_share": 0.5883759142,
@@ -2398,8 +2319,7 @@
       "top3_names": "SCHOLAR ROCK HLDG CORP, ALUMIS INC, MINERALYS THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1839435",
@@ -2412,7 +2332,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1839435/000183943526000004/0001839435-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1839435/000183943526000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1839435/000183943526000004/q22026octagon13fdata.xml",
-      "n_stocks": 27.0,
+      "n_stocks": 27,
       "total_value": 1112538962.0,
       "top1_share": 0.1613657635,
       "top3_share": 0.4050382902,
@@ -2428,8 +2348,7 @@
       "top3_names": "DIANTHUS THERAPEUTICS INC, DEFINIUM THERAPEUTICS INC, ABIVAX SA",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1281446",
@@ -2442,7 +2361,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1281446/000117266126003750/0001172661-26-003750-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1281446/000117266126003750/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1281446/000117266126003750/infotable.xml",
-      "n_stocks": 41.0,
+      "n_stocks": 41,
       "total_value": 529120900.0,
       "top1_share": 0.152197511,
       "top3_share": 0.2609987396,
@@ -2458,8 +2377,7 @@
       "top3_names": "ABIVAX SA, VOR BIOPHARMA INC, IMMUNITYBIO INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1018561",
@@ -2472,7 +2390,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1018561/000208585326000782/0002085853-26-000782-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1018561/000208585326000782/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1018561/000208585326000782/infotable.xml",
-      "n_stocks": 152.0,
+      "n_stocks": 152,
       "total_value": 753481601.0,
       "top1_share": 0.0867357211,
       "top3_share": 0.2410449117,
@@ -2488,8 +2406,7 @@
       "top3_names": "ISHARES TR, SPDR SERIES TRUST, VANGUARD INDEX FDS",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1627608",
@@ -2502,7 +2419,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1627608/000117266126003357/0001172661-26-003357-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1627608/000117266126003357/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1627608/000117266126003357/infotable.xml",
-      "n_stocks": 20.0,
+      "n_stocks": 20,
       "total_value": 59583126.0,
       "top1_share": 0.2413972036,
       "top3_share": 0.4005781771,
@@ -2518,8 +2435,7 @@
       "top3_names": "ALPHABET INC, SOLID BIOSCIENCES INC, DIGITAL RLTY TR INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1776588",
@@ -2532,7 +2448,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1776588/000177658826000003/0001776588-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1776588/000177658826000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1776588/000177658826000003/2026Q2-13FFiling.xml",
-      "n_stocks": 143.0,
+      "n_stocks": 143,
       "total_value": 1217807155.0,
       "top1_share": 0.257366086,
       "top3_share": 0.4999129735,
@@ -2548,8 +2464,7 @@
       "top3_names": "DFA US Core Equity 2 ETF, DFA World ex US Core Equity 2 ETF, DFA US Marketwide Value ETF",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1911010",
@@ -2562,7 +2477,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1911010/000110465925014109/0001104659-25-014109-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1911010/000110465925014109/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1911010/000110465925014109/infotable.xml",
-      "n_stocks": 15.0,
+      "n_stocks": 15,
       "total_value": 616414127.0,
       "top1_share": 0.5393639283,
       "top3_share": 0.7000224461,
@@ -2578,8 +2493,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, TYRA BIOSCIENCES INC, ORIC PHARMACEUTICALS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1839209",
@@ -2592,7 +2506,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1839209/000189268826000126/0001892688-26-000126-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1839209/000189268826000126/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1839209/000189268826000126/darwin13ftable6302026.xml",
-      "n_stocks": 5.0,
+      "n_stocks": 5,
       "total_value": 3760253505.0,
       "top1_share": 0.5445154991,
       "top3_share": 0.845077218,
@@ -2608,8 +2522,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, INSMED INC, BELITE BIO INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1569241",
@@ -2622,7 +2535,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1569241/000149315226038303/0001493152-26-038303-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1569241/000149315226038303/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1569241/000149315226038303/infotable.xml",
-      "n_stocks": 34.0,
+      "n_stocks": 34,
       "total_value": 800882434.0,
       "top1_share": 0.144886278,
       "top3_share": 0.2846796001,
@@ -2638,8 +2551,7 @@
       "top3_names": "QUIDELORTHO CORP, THERAVANCE BIOPHARMA INC, INDIVIOR PHARMACEUTICALS INC",
       "concentration_flag": "Medium",
       "flag_reason": "effective_n ≤ 20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1482416",
@@ -2652,7 +2564,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1482416/000121465926010311/0001214659-26-010311-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1482416/000121465926010311/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1482416/000121465926010311/infotable.xml",
-      "n_stocks": 59.0,
+      "n_stocks": 59,
       "total_value": 604294540.0,
       "top1_share": 0.0903995293,
       "top3_share": 0.235320061,
@@ -2668,8 +2580,7 @@
       "top3_names": "ANTERIS TECHNOLOGIES GLOBAL, CENCORA INC, MAXIMUS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1858703",
@@ -2682,7 +2593,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1858703/000119312526345031/0001193125-26-345031-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1858703/000119312526345031/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1858703/000119312526345031/56906.xml",
-      "n_stocks": 71.0,
+      "n_stocks": 71,
       "total_value": 664512435.0,
       "top1_share": 0.3596644975,
       "top3_share": 0.5508520514,
@@ -2698,8 +2609,7 @@
       "top3_names": "SPACE EXPLORATION TECHN CORP, AKTIS ONCOLOGY INC, LARIMAR THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1389933",
@@ -2712,7 +2622,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1389933/000138993326000006/0001389933-26-000006-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1389933/000138993326000006/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1389933/000138993326000006/DAFNA_information_table.xml",
-      "n_stocks": 88.0,
+      "n_stocks": 88,
       "total_value": 524358409.0,
       "top1_share": 0.2009490917,
       "top3_share": 0.3145470353,
@@ -2728,8 +2638,7 @@
       "top3_names": "REVOLUTION MEDICINES INC, SPDR S&P BIOTECH ETF, COMPASS PATHWAYS PLC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1844645",
@@ -2742,7 +2651,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1844645/000101297526000759/0001012975-26-000759-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1844645/000101297526000759/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1844645/000101297526000759/infotable.xml",
-      "n_stocks": 13.0,
+      "n_stocks": 13,
       "total_value": 307788414.0,
       "top1_share": 0.2692192663,
       "top3_share": 0.4826014146,
@@ -2758,38 +2667,36 @@
       "top3_names": "VAXCYTE INC, ARCUTIS BIOTHERAPEUTICS INC, TREVI THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.20",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
-      "cik": null,
-      "fund_name": null,
-      "filing_date": null,
-      "period_of_report": null,
-      "as_of_quarter": null,
-      "form": null,
-      "accession": null,
-      "index_url": null,
-      "primary_doc_url": null,
-      "infotable_xml_url": null,
-      "n_stocks": null,
-      "total_value": null,
-      "top1_share": null,
-      "top3_share": null,
-      "top1_share_pct": null,
-      "top3_share_pct": null,
-      "hhi": null,
-      "effective_n": null,
+      "cik": "1760304",
+      "fund_name": "Great Point Wealth Advisors, LLC",
+      "filing_date": "2026-07-23",
+      "period_of_report": "06-30-2026",
+      "as_of_quarter": "2026Q2",
+      "form": "13F-HR",
+      "accession": "0001760304-26-000005",
+      "index_url": "https://www.sec.gov/Archives/edgar/data/1760304/000176030426000005/0001760304-26-000005-index.htm",
+      "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1760304/000176030426000005/primary_doc.xml",
+      "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1760304/000176030426000005/informationtable.xml",
+      "n_stocks": 43,
+      "total_value": 619164840.0,
+      "top1_share": 0.3546453106,
+      "top3_share": 0.6152873215,
+      "top1_share_pct": 35.4645310609,
+      "top3_share_pct": 61.5287321548,
+      "hhi": 0.1777125937,
+      "effective_n": 5.6270632228,
       "top10_share": null,
       "top10_share_pct": null,
       "top10_value": null,
-      "top1_name": null,
-      "top1_value": null,
-      "top3_names": null,
-      "concentration_flag": null,
-      "flag_reason": null,
-      "status": "error: RuntimeError: GET failed after retries: https://www.sec.gov/Archives/edgar/data/1760304/000176030426000005/0001760304-26-000005-index.htm",
-      "CIK": "1760304"
+      "top1_name": "AMERICAN CENTY ETF TR",
+      "top1_value": 219583907.0,
+      "top3_names": "AMERICAN CENTY ETF TR, DIMENSIONAL ETF TRUST, J P MORGAN EXCHANGE TRADED F",
+      "concentration_flag": "High",
+      "flag_reason": "top1_share ≥ 0.25",
+      "status": "ok"
     },
     {
       "cik": "1799883",
@@ -2802,7 +2709,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1799883/000179988326000003/0001799883-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1799883/000179988326000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1799883/000179988326000003/infotable.xml",
-      "n_stocks": 16.0,
+      "n_stocks": 16,
       "total_value": 287891952.0,
       "top1_share": 0.1182679605,
       "top3_share": 0.3361647324,
@@ -2818,8 +2725,7 @@
       "top3_names": "MAPLIGHT THERAPEUTICS INC, TYRA BIOSCIENCES INC, ENTRADA THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1595855",
@@ -2832,7 +2738,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1595855/000142050626001803/0001420506-26-001803-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1595855/000142050626001803/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1595855/000142050626001803/Form13F_InfoTable.xml",
-      "n_stocks": 58.0,
+      "n_stocks": 58,
       "total_value": 1104182260.0,
       "top1_share": 0.1767273231,
       "top3_share": 0.3628016764,
@@ -2848,8 +2754,7 @@
       "top3_names": "LIQUIDIA CORPORATION, ETON PHARMACEUTICALS INC, HARROW INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1952142",
@@ -2862,7 +2767,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1952142/000142050626001687/0001420506-26-001687-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1952142/000142050626001687/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1952142/000142050626001687/Form13F_InfoTable.xml",
-      "n_stocks": 77.0,
+      "n_stocks": 77,
       "total_value": 580521914.0,
       "top1_share": 0.066158698,
       "top3_share": 0.1830909884,
@@ -2878,8 +2783,7 @@
       "top3_names": "TANGO THERAPEUTICS INC, ABIVAX SA, REVOLUTION MEDICINES INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1663224",
@@ -2892,7 +2796,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1663224/000166322426000003/0001663224-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1663224/000166322426000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1663224/000166322426000003/q22026dwm_13f.xml",
-      "n_stocks": 561.0,
+      "n_stocks": 561,
       "total_value": 365262313.0,
       "top1_share": 0.1118357453,
       "top3_share": 0.2754992218,
@@ -2908,8 +2812,7 @@
       "top3_names": "ISHARES TR, SELECT SECTOR SPDR TR, VANECK ETF TRUST",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1816307",
@@ -2922,7 +2825,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1816307/000142050626001563/0001420506-26-001563-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1816307/000142050626001563/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1816307/000142050626001563/Form13F_InfoTable.xml",
-      "n_stocks": 69.0,
+      "n_stocks": 69,
       "total_value": 962154050.0,
       "top1_share": 0.0571704001,
       "top3_share": 0.1631592103,
@@ -2938,8 +2841,7 @@
       "top3_names": "ASCENDIS PHARMA A/S, CELCUITY INC, COGENT BIOSCIENCES INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1801682",
@@ -2952,7 +2854,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1801682/000180168225000005/0001801682-25-000005-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1801682/000180168225000005/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1801682/000180168225000005/PBMaresWealthManagement_13f.xml",
-      "n_stocks": 128.0,
+      "n_stocks": 128,
       "total_value": 616925238.0,
       "top1_share": 0.7321775852,
       "top3_share": 0.7773762337,
@@ -2968,8 +2870,7 @@
       "top3_names": "DIMENSIONAL ETF TRUST, ISHARES TR, VANGUARD INDEX FDS",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1397144",
@@ -2982,7 +2883,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1397144/000095012323001542/0000950123-23-001542-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1397144/000095012323001542/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1397144/000095012323001542/20328.xml",
-      "n_stocks": 19.0,
+      "n_stocks": 19,
       "total_value": 306916946.0,
       "top1_share": 0.3154396792,
       "top3_share": 0.7112957784,
@@ -2998,8 +2899,7 @@
       "top3_names": "VAXCYTE INC, VERONA PHARMA PLC, VERA THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1727492",
@@ -3012,7 +2912,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1727492/000142050626001809/0001420506-26-001809-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1727492/000142050626001809/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1727492/000142050626001809/Form13F_InfoTable.xml",
-      "n_stocks": 26.0,
+      "n_stocks": 26,
       "total_value": 2125706950.0,
       "top1_share": 0.3045195195,
       "top3_share": 0.5972085113,
@@ -3028,8 +2928,7 @@
       "top3_names": "LIQUIDIA CORPORATION, REVOLUTION MEDICINES INC, ABIVAX SA",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1440771",
@@ -3042,7 +2941,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1440771/000144077126000016/0001440771-26-000016-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1440771/000144077126000016/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1440771/000144077126000016/infotable.xml",
-      "n_stocks": 83.0,
+      "n_stocks": 83,
       "total_value": 177260827.0,
       "top1_share": 0.080027405,
       "top3_share": 0.2320033123,
@@ -3058,8 +2957,7 @@
       "top3_names": "EVOLUS INC, ADMA BIOLOGICS INC, VERASTEM INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1641604",
@@ -3072,7 +2970,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1641604/000121465926009973/0001214659-26-009973-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1641604/000121465926009973/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1641604/000121465926009973/infotable.xml",
-      "n_stocks": 26.0,
+      "n_stocks": 26,
       "total_value": 333479506.0,
       "top1_share": 0.2755792825,
       "top3_share": 0.4624945888,
@@ -3088,8 +2986,7 @@
       "top3_names": "USA TODAY CO INC, MEOH OPTIONS, LIBERTY LATIN AMERIC-CL C",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1643354",
@@ -3102,7 +2999,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1643354/000101359426000908/0001013594-26-000908-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1643354/000101359426000908/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1643354/000101359426000908/form13fInfoTable.xml",
-      "n_stocks": 35.0,
+      "n_stocks": 35,
       "total_value": 20905264.0,
       "top1_share": 0.0799037027,
       "top3_share": 0.2140345609,
@@ -3118,8 +3015,7 @@
       "top3_names": "CUE BIOPHARMA INC, PRAXIS PRECISION MEDICINES I, MOONLAKE IMMUNOTHERAPEUTICS",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1704132",
@@ -3132,7 +3028,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1704132/000110465926097103/0001104659-26-097103-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1704132/000110465926097103/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1704132/000110465926097103/infotable.xml",
-      "n_stocks": 6.0,
+      "n_stocks": 6,
       "total_value": 290151348.0,
       "top1_share": 0.5695073697,
       "top3_share": 0.8667657405,
@@ -3148,8 +3044,7 @@
       "top3_names": "Pharvaris N.V., CYTOKINETICS INC, Eikon Therapeutics, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1582844",
@@ -3162,7 +3057,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1582844/000110465926096822/0001104659-26-096822-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1582844/000110465926096822/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1582844/000110465926096822/infotable.xml",
-      "n_stocks": 23.0,
+      "n_stocks": 23,
       "total_value": 143494671.0,
       "top1_share": 0.1931728392,
       "top3_share": 0.4279031101,
@@ -3178,8 +3073,7 @@
       "top3_names": "PRAXIS PRECISION MEDICINES I, WHITEHAWK THERAPEUTICS INC, TANGO THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1664999",
@@ -3192,7 +3086,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1664999/000166499926000015/0001664999-26-000015-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1664999/000166499926000015/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1664999/000166499926000015/infotable.xml",
-      "n_stocks": 30.0,
+      "n_stocks": 30,
       "total_value": 314339749.0,
       "top1_share": 0.1572883326,
       "top3_share": 0.3573809655,
@@ -3208,8 +3102,7 @@
       "top3_names": "SOFI TECHNOLOGIES INC, NU HLDGS LTD, ADVANCED MICRO DEVICES INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1848809",
@@ -3222,7 +3115,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1848809/000184880926000003/0001848809-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1848809/000184880926000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1848809/000184880926000003/form13f.xml",
-      "n_stocks": 50.0,
+      "n_stocks": 50,
       "total_value": 164207527.0,
       "top1_share": 0.1810087,
       "top3_share": 0.3921378586,
@@ -3238,8 +3131,7 @@
       "top3_names": "PRAXIS PRECISION MEDICINES I, MAPLIGHT THERAPEUTICS INC, SUTRO BIOPHARMA INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1730610",
@@ -3252,7 +3144,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1730610/000110465926088536/0001104659-26-088536-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1730610/000110465926088536/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1730610/000110465926088536/infotable.xml",
-      "n_stocks": 167.0,
+      "n_stocks": 167,
       "total_value": 410315561.0,
       "top1_share": 0.1866833561,
       "top3_share": 0.3256126009,
@@ -3268,8 +3160,7 @@
       "top3_names": "DIMENSIONAL ETF TRUST, SCHWAB STRATEGIC TR, ISHARES TR",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1822947",
@@ -3282,7 +3173,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1822947/000119312526352338/0001193125-26-352338-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1822947/000119312526352338/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1822947/000119312526352338/56041.xml",
-      "n_stocks": 25.0,
+      "n_stocks": 25,
       "total_value": 113071435.0,
       "top1_share": 0.1664080765,
       "top3_share": 0.4205235478,
@@ -3298,8 +3189,7 @@
       "top3_names": "DEFINIUM THERAPEUTICS INC, ABIVAX SA, MINERVA NEUROSCIENCES INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1811907",
@@ -3312,7 +3202,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1811907/000181190726000003/0001811907-26-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1811907/000181190726000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1811907/000181190726000003/13f_063026.xml",
-      "n_stocks": 76.0,
+      "n_stocks": 76,
       "total_value": 220258.0,
       "top1_share": 0.2380662677,
       "top3_share": 0.4489371555,
@@ -3328,8 +3218,7 @@
       "top3_names": "Beckshire Hathaway, Markel Corp, Alphabet Inc. Class A",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1858353",
@@ -3342,7 +3231,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1858353/000185835326000004/0001858353-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1858353/000185835326000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1858353/000185835326000004/afox13f_q2.xml",
-      "n_stocks": 15.0,
+      "n_stocks": 15,
       "total_value": 497191448.0,
       "top1_share": 0.1984989834,
       "top3_share": 0.4718226127,
@@ -3358,8 +3247,7 @@
       "top3_names": "XPEL INC, BRIGHTSPRING HEALTH SVCS INC, NCR ATLEOS CORPORATION",
       "concentration_flag": "Medium",
       "flag_reason": "top3_share ≥ 0.45",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "80255",
@@ -3372,7 +3260,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/80255/000008025526000519/0000080255-26-000519-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/80255/000008025526000519/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/80255/000008025526000519/infotable.xml",
-      "n_stocks": 3157.0,
+      "n_stocks": 3157,
       "total_value": 999124702.0,
       "top1_share": 0.0740640701,
       "top3_share": 0.1776290954,
@@ -3388,8 +3276,7 @@
       "top3_names": "NVIDIA CORPORATION, ALPHABET INC, APPLE INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1228754",
@@ -3402,7 +3289,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1228754/000110465926096447/0001104659-26-096447-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1228754/000110465926096447/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1228754/000110465926096447/infotable.xml",
-      "n_stocks": 2.0,
+      "n_stocks": 2,
       "total_value": 32022477.0,
       "top1_share": 0.7861639498,
       "top3_share": 1.0,
@@ -3418,8 +3305,7 @@
       "top3_names": "ARDAGH METAL PACKAGING S A, UWM HOLDINGS CORPORATION",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1746382",
@@ -3432,7 +3318,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1746382/000142050626001532/0001420506-26-001532-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1746382/000142050626001532/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1746382/000142050626001532/Form13F_InfoTable.xml",
-      "n_stocks": 19.0,
+      "n_stocks": 19,
       "total_value": 47469013.0,
       "top1_share": 0.0857541951,
       "top3_share": 0.2378268114,
@@ -3448,8 +3334,7 @@
       "top3_names": "ROYCE MICRO-CAP TR INC, ASA GOLD AND PRECIOUS MTLS L, ROYCE SMALL CAP TRUST INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1964382",
@@ -3462,7 +3347,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1964382/000195175725001406/0001951757-25-001406-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1964382/000195175725001406/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1964382/000195175725001406/F_13F_PaloAlto_Q32025.xml",
-      "n_stocks": 44.0,
+      "n_stocks": 44,
       "total_value": 343271148.0,
       "top1_share": 0.502858408,
       "top3_share": 0.7102968089,
@@ -3478,8 +3363,7 @@
       "top3_names": "ALPHABET INC, ISHARES TR, WISDOMTREE TR",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1802978",
@@ -3492,7 +3376,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1802978/000121465924014750/0001214659-24-014750-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1802978/000121465924014750/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1802978/000121465924014750/infotable.xml",
-      "n_stocks": 7.0,
+      "n_stocks": 7,
       "total_value": 89240348.0,
       "top1_share": 0.3842999693,
       "top3_share": 0.7439578788,
@@ -3508,8 +3392,7 @@
       "top3_names": "Taboola.com Ltd, Arcus Biosciences Inc, IHS Holding Limited",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1631614",
@@ -3522,7 +3405,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1631614/000119312525280589/0001193125-25-280589-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1631614/000119312525280589/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1631614/000119312525280589/46020.xml",
-      "n_stocks": 7.0,
+      "n_stocks": 7,
       "total_value": 43047844.0,
       "top1_share": 0.3881544219,
       "top3_share": 0.8384207116,
@@ -3538,8 +3421,7 @@
       "top3_names": "EWTX, ARVN, CRNX",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1637359",
@@ -3552,7 +3434,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1637359/000119312526350681/0001193125-26-350681-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1637359/000119312526350681/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1637359/000119312526350681/55957.xml",
-      "n_stocks": 10.0,
+      "n_stocks": 10,
       "total_value": 185685956.0,
       "top1_share": 0.2913501654,
       "top3_share": 0.6785849276,
@@ -3568,8 +3450,7 @@
       "top3_names": "Bicara Therapeutics Inc., Nuvation Bio Inc., Kestra Med Technologies Ltd",
       "concentration_flag": "High",
       "flag_reason": "top3_share ≥ 0.60",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1622627",
@@ -3582,7 +3463,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1622627/000162262726000022/0001622627-26-000022-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1622627/000162262726000022/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1622627/000162262726000022/13F_Filing_30_Jun_2026.xml",
-      "n_stocks": 34.0,
+      "n_stocks": 34,
       "total_value": 269201776.0,
       "top1_share": 0.1543522432,
       "top3_share": 0.3672414071,
@@ -3598,8 +3479,7 @@
       "top3_names": "DELCATH SYSTEMS, INC., FENNEC PHARMACEUTICALS INC, XERIS BIOPHARMA HOLDINGS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1969764",
@@ -3612,7 +3492,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1969764/000182912626008753/0001829126-26-008753-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1969764/000182912626008753/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1969764/000182912626008753/infotable.xml",
-      "n_stocks": 29.0,
+      "n_stocks": 29,
       "total_value": 191085715.0,
       "top1_share": 0.1616037965,
       "top3_share": 0.3615702147,
@@ -3628,8 +3508,7 @@
       "top3_names": "PLAINS GP HOLDINGS LP-CL, ACHIEVE LIFE SCIENCES INC, CORCEPT THERAPEUTICS INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1615982",
@@ -3642,7 +3521,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1615982/000161598226000015/0001615982-26-000015-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1615982/000161598226000015/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1615982/000161598226000015/form13f-1786738478_infotable.xml",
-      "n_stocks": 33.0,
+      "n_stocks": 33,
       "total_value": 3298051614.0,
       "top1_share": 0.341813479,
       "top3_share": 0.5609076514,
@@ -3658,8 +3537,7 @@
       "top3_names": "APOGEE THERAPEUTICS INC, ORUKA THERAPEUTICS INC, ERASCA INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1801619",
@@ -3672,7 +3550,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1801619/000180161926000004/0001801619-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1801619/000180161926000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1801619/000180161926000004/13f.xml",
-      "n_stocks": 463.0,
+      "n_stocks": 463,
       "total_value": 216736787.0,
       "top1_share": 0.2238947235,
       "top3_share": 0.3891316475,
@@ -3688,8 +3566,7 @@
       "top3_names": "MICROSOFT CORP, FIRST TR EXCHANGE-TRADED FD, APPLE INC",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1909617",
@@ -3702,7 +3579,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1909617/000190961725000004/0001909617-25-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1909617/000190961725000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1909617/000190961725000004/form13f-1762809286_infotable.xml",
-      "n_stocks": 4.0,
+      "n_stocks": 4,
       "total_value": 55636803.0,
       "top1_share": 0.6376189696,
       "top3_share": 0.9941909495,
@@ -3718,8 +3595,7 @@
       "top3_names": "TOURMALINE BIO INC, KORRO BIO INC, JASPER THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1343781",
@@ -3732,7 +3608,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1343781/000134378123000001/0001343781-23-000001-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1343781/000134378123000001/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1343781/000134378123000001/healthcor13f123122.xml",
-      "n_stocks": 22.0,
+      "n_stocks": 22,
       "total_value": 109111523.0,
       "top1_share": 0.3488174113,
       "top3_share": 0.7514120209,
@@ -3748,8 +3624,7 @@
       "top3_names": "BIOMARIN PHARMACEUTICAL INC, DEXCOM INC, CYTOKINETICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "2011932",
@@ -3762,7 +3637,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/2011932/000142050626001714/0001420506-26-001714-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/2011932/000142050626001714/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/2011932/000142050626001714/Form13F_InfoTable.xml",
-      "n_stocks": 52.0,
+      "n_stocks": 52,
       "total_value": 162102170.0,
       "top1_share": 0.0624730995,
       "top3_share": 0.174552981,
@@ -3778,8 +3653,7 @@
       "top3_names": "GUARDANT HEALTH INC, PRAXIS PRECISION MEDICINES I, TG THERAPEUTICS INC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1780948",
@@ -3792,7 +3666,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1780948/000095012324011765/0000950123-24-011765-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1780948/000095012324011765/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1780948/000095012324011765/36554.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 50128099.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -3808,8 +3682,7 @@
       "top3_names": "Hesai Group",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1792206",
@@ -3822,7 +3695,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1792206/000110465926097121/0001104659-26-097121-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1792206/000110465926097121/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1792206/000110465926097121/infotable.xml",
-      "n_stocks": 9.0,
+      "n_stocks": 9,
       "total_value": 362202120.0,
       "top1_share": 0.4581459628,
       "top3_share": 0.7453499968,
@@ -3838,8 +3711,7 @@
       "top3_names": "ALUMIS INC., CG Oncology, Inc., Disc Medicine, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1594912",
@@ -3852,7 +3724,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1594912/000110465923117289/0001104659-23-117289-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1594912/000110465923117289/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1594912/000110465923117289/infotable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 29226780.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -3868,8 +3740,7 @@
       "top3_names": "10x Genomics, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1812549",
@@ -3882,7 +3753,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1812549/000110465924112539/0001104659-24-112539-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1812549/000110465924112539/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1812549/000110465924112539/infotable.xml",
-      "n_stocks": 3.0,
+      "n_stocks": 3,
       "total_value": 6838040.0,
       "top1_share": 0.6300305351,
       "top3_share": 1.0,
@@ -3898,8 +3769,7 @@
       "top3_names": "Reneo Pharmaceuticals, Inc., Spruce Bioscience, Inc., Xilio Therapeutics, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1423994",
@@ -3912,7 +3782,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1423994/000110465926097050/0001104659-26-097050-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1423994/000110465926097050/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1423994/000110465926097050/infotable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 80928962.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -3928,8 +3798,7 @@
       "top3_names": "Replimune Group Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1911245",
@@ -3942,7 +3811,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1911245/000110465924118975/0001104659-24-118975-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1911245/000110465924118975/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1911245/000110465924118975/infotable.xml",
-      "n_stocks": 3.0,
+      "n_stocks": 3,
       "total_value": 43659366.0,
       "top1_share": 0.3646189686,
       "top3_share": 1.0,
@@ -3958,8 +3827,7 @@
       "top3_names": "KYVERNA THERAPEUTICS INC, VIGIL NEUROSCIENCE INC, CANDEL THERAPEUTICS INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1701879",
@@ -3972,7 +3840,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1701879/000170187926000004/0001701879-26-000004-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1701879/000170187926000004/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1701879/000170187926000004/sec2026-06form13f.xml",
-      "n_stocks": 91.0,
+      "n_stocks": 91,
       "total_value": 15335593.0,
       "top1_share": 0.5384083941,
       "top3_share": 0.9783669272,
@@ -3988,8 +3856,7 @@
       "top3_names": "ISHARES TR, VANGUARD INDEX FDS, PROSHARES TR",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.25",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1658005",
@@ -4002,7 +3869,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1658005/000110465923117969/0001104659-23-117969-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1658005/000110465923117969/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1658005/000110465923117969/infotable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 958108.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -4018,8 +3885,7 @@
       "top3_names": "Zoom Video Communications Inc",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1511901",
@@ -4032,7 +3898,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1511901/000151190120000003/0001511901-20-000003-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1511901/000151190120000003/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1511901/000151190120000003/Form13fInfoTable.xml",
-      "n_stocks": 38.0,
+      "n_stocks": 38,
       "total_value": 746813.0,
       "top1_share": 0.1896298002,
       "top3_share": 0.4406752427,
@@ -4048,8 +3914,7 @@
       "top3_names": "SPDR S&P 500 ETF TR, ISHARES TR, BIOHAVEN PHARMACTL HLDG CO L",
       "concentration_flag": "Medium",
       "flag_reason": "top1_share ≥ 0.15",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1844002",
@@ -4062,7 +3927,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1844002/000089534525000069/0000895345-25-000069-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1844002/000089534525000069/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1844002/000089534525000069/informationtable.xml",
-      "n_stocks": 5.0,
+      "n_stocks": 5,
       "total_value": 56800164.0,
       "top1_share": 0.668887206,
       "top3_share": 0.9331072354,
@@ -4078,8 +3943,7 @@
       "top3_names": "ANNEXON INC, AKEBIA THERAPEUTICS INC, VERONA PHARMA PLC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1575444",
@@ -4092,7 +3956,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1575444/000181204622000034/0001812046-22-000034-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1575444/000181204622000034/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1575444/000181204622000034/infotable.xml",
-      "n_stocks": 5.0,
+      "n_stocks": 5,
       "total_value": 44851.0,
       "top1_share": 0.7217899266,
       "top3_share": 0.9455084613,
@@ -4108,8 +3972,7 @@
       "top3_names": "REPRO MED SYS INC, UROGEN PHARMA LTD, WIRELESS TELECOM GROUP INC",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1645157",
@@ -4122,7 +3985,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1645157/000110465922117991/0001104659-22-117991-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1645157/000110465922117991/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1645157/000110465922117991/infotable.xml",
-      "n_stocks": 4.0,
+      "n_stocks": 4,
       "total_value": 37881.0,
       "top1_share": 0.3644307172,
       "top3_share": 0.8483144584,
@@ -4138,8 +4001,7 @@
       "top3_names": "Ascendis Pharma A/S, Verona Pharma PLC., Natera, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1581219",
@@ -4152,7 +4014,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1581219/000110465922117989/0001104659-22-117989-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1581219/000110465922117989/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1581219/000110465922117989/infotable.xml",
-      "n_stocks": 1.0,
+      "n_stocks": 1,
       "total_value": 21360.0,
       "top1_share": 1.0,
       "top3_share": 1.0,
@@ -4168,8 +4030,7 @@
       "top3_names": "10X Genomics, Inc.",
       "concentration_flag": "High",
       "flag_reason": "top1_share ≥ 0.30",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     },
     {
       "cik": "1081698",
@@ -4182,7 +4043,7 @@
       "index_url": "https://www.sec.gov/Archives/edgar/data/1081698/000108169826000008/0001081698-26-000008-index.htm",
       "primary_doc_url": "https://www.sec.gov/Archives/edgar/data/1081698/000108169826000008/primary_doc.xml",
       "infotable_xml_url": "https://www.sec.gov/Archives/edgar/data/1081698/000108169826000008/file.XML",
-      "n_stocks": 210.0,
+      "n_stocks": 210,
       "total_value": 433069622.0,
       "top1_share": 0.0694030924,
       "top3_share": 0.15125876,
@@ -4198,8 +4059,7 @@
       "top3_names": "FLUTTER ENTMT PLC, AMC ENTMT HLDGS INC, MEIRAGTX HLDGS PLC",
       "concentration_flag": "Low",
       "flag_reason": "no thresholds triggered",
-      "status": "ok",
-      "CIK": null
+      "status": "ok"
     }
   ]
 }
