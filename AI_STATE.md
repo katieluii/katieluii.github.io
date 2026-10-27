@@ -90,3 +90,14 @@ working tree into a portfolio commit.
 4. When portfolio dependencies are next maintained, update deprecated GitHub
    action versions and re-run the Pages deployment.
 5. Recheck the WS21 embed after any future Railway domain or route change.
+
+
+## 2026-10-27 — recurring 13F workflow failure repaired
+The data refresh succeeded; its reusable deployment workflow always failed at an explicit
+Atlas release block after all build checks passed. Refresh now records validated commits
+without invoking that blocked publication path. The site workflow is named Verify site
+(publication protected) and reports the publication hold in its summary after verification,
+with no deployment action. Commits00907cf/a368d31 are on public main; verification
+run40532491511 passed. Full refresh rerun40532497971 was started for end-to-end validation.
+13F updates are committed but remain pending protected site publication; do not claim the
+live site refreshed. Existing mixed local changes remain preserved.
