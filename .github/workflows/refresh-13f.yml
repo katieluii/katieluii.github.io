@@ -69,17 +69,17 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-  # Deploy explicitly. The push above used GITHUB_TOKEN, which by design does
-  # not trigger `on: push`, so the site would otherwise never pick the new data
-  # up. Reuses the real deploy workflow so the typecheck and Atlas leak gate
-  # still guard this path.
-  deploy:
+  # Stock-data refresh is independent of the protected Atlas publication path.
+  # Keep the validated commit available for the next authorized site release.
+  publication_status:
     needs: refresh
     if: needs.refresh.outputs.changed == 'true'
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/main.yml
-    with:
-      deployment_ref: ${{ needs.refresh.outputs.commit_sha }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Record pending publication
+        env:
+          DATA_COMMIT: ${{ needs.refresh.outputs.commit_sha }}
+        run: |
+          echo "13F data refreshed and validated at $DATA_COMMIT." >> "$GITHUB_STEP_SUMMARY"
+          echo "Publication pending: the site requires the protected Atlas release process. The live site is unchanged." >> "$GITHUB_STEP_SUMMARY"
