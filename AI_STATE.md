@@ -101,3 +101,8 @@ with no deployment action. Commits00907cf/a368d31 are on public main; verificati
 run40532491511 passed. Full refresh rerun40532497971 was started for end-to-end validation.
 13F updates are committed but remain pending protected site publication; do not claim the
 live site refreshed. Existing mixed local changes remain preserved.
+
+Final validation: full13F refresh40532497971 succeeded. Publication-status job skipped
+because holdings were unchanged; build verification40532491511 also passed. Handoff-only
+changes are in draft PR#1; automatic approval review rejected publishing that additional
+documentation commit directly to main, so it was preserved through the recommended PR path.
