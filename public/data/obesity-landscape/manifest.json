@@ -1,0 +1,29 @@
+{
+  "exported_at": "2026-11-05",
+  "source": "https://obesitylandscape-production.up.railway.app",
+  "source_updated_at": "2026-08-26T09:34:11.488724+00:00",
+  "files": {
+    "firepower.json": "580a4f7bee8072c0f51ac1d0944c4ba4369a5815431ba474b39df8ec851388f3",
+    "health.json": "70061b08337ed10777483e669369c8b7a607813d1119e604ffc17c1584f91aa2",
+    "obesity-targets.json": "9a11198420bb4e4c28e44fa742fa9879a8958de7e3488b62cf1827e31d98b586",
+    "catalysts.json": "71e772a86c35d302cecf98809bcf6b86e2745536e7fb7d1652cc2a18c0d2c41c",
+    "tickers.json": "87be9b9a649ce1fac79f40a247493d3ce466038805ac90cdf9cf3ccc6c2cbdb6",
+    "drypowder.json": "892f9699d9dc296a04d201da72d1dccd333dfdfa8d8e2b85a8950e3a20a5ec32",
+    "stocks.json": "050667aea54494a444aa3b1ad19542aa19140460dc79cceada42e1cc1e94972a",
+    "pipeline.json": "9fbd558eec409c112b8985bb56df4be0c7ebad9a74d7b4b13f03c5e77aa2867d",
+    "forecast/NVS.json": "ea5b23c1baee49150bddbec30c1f8b77c011acda8fc3f05be56b0122cc7d69b5",
+    "forecast/AMGN.json": "b1369e242559a4bb0d8fdd37a736cf693b6d936337748d56b81dea7003b6f0e6",
+    "forecast/VKTX.json": "31e4107185b9486c27decd5cd8fb73500b6ecbfe1ac2b3220285929504c39272",
+    "forecast/LLY.json": "88c62de9d574a7f96b5d2a9e26aa0f63c67382098905ca16dbc6f823620b232f",
+    "forecast/PFE.json": "054f334b35adb4a9e1446dbdeb9f62638ac5118815efcd1f1d938f60f980c182",
+    "forecast/JNJ.json": "2c20144946d58f6bb15b2d11857bd338f1f07b52409be2a72abdc31ab69505bb",
+    "forecast/GPCR.json": "1264657cac7021fdeb2a2d4df41739bdb48bc8005ce7393ec035a26eb9c20556",
+    "forecast/AZN.json": "0012bf797ff68e5d962ce3a06c660886de583e42813baf2e15068d82ed8fe5e5",
+    "forecast/ABBV.json": "820ce38b2ffdcada7346778a85b1e011ddac8762462e70692e373795af873c1f",
+    "forecast/RHHBY.json": "ef29696331bfc1f785e4eb6a6cf6ac8c86cd399ea503a0cbc94bfb85da2ff739",
+    "forecast/ALT.json": "de7e64bc016972acaeb4627723f5e867bea0cd975ec53c1692ee0a87dec09312",
+    "forecast/CRBP.json": "73780df3950770d99e8c35390529daa19244018d100aaa91c2347dd704b935a6",
+    "forecast/NVO.json": "cca74965b67841de347c69d437124dfbc31e432dd4aab026073cd019a1ebe2dd",
+    "forecast/MRK.json": "2074dc0b8d9fe8eeb11b7b4806c8ae6d90d84a7060a900985a1ea3e91c7fe325"
+  }
+}

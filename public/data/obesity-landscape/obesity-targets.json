@@ -1,0 +1,150 @@
+[
+  {
+    "ticker": "VKTX",
+    "name": "Viking Therapeutics",
+    "market_cap_b": 3.99,
+    "cash_m": 706.0,
+    "quarterly_burn_m": 105.0,
+    "monthly_burn_m": 35.0,
+    "runway_months": 20,
+    "runway_source": "computed",
+    "runway_report_date": null,
+    "lead_asset": "VK2735",
+    "mechanism": "Dual GLP-1/GIP receptor agonist",
+    "peak_sales_est_b": 8.0,
+    "phase": "Phase 3",
+    "next_catalyst": "2027-07-01",
+    "deal_pressure_score": 3,
+    "deal_pressure_badge": "High",
+    "deal_pressure_signals": {
+      "short_runway": true,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    },
+    "strategic_fit_score": 3,
+    "strategic_fit_badge": "High",
+    "strategic_fit_signals": {
+      "obesity_indication": true,
+      "differentiated": true,
+      "derisked": true
+    },
+    "acq_score": 3,
+    "acq_badge": "High",
+    "acq_signals": {
+      "short_runway": true,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    }
+  },
+  {
+    "ticker": "GPCR",
+    "name": "Structure Therapeutics",
+    "market_cap_b": 3.56,
+    "cash_m": 1446.0,
+    "quarterly_burn_m": 140.0,
+    "monthly_burn_m": 46.6,
+    "runway_months": 31,
+    "runway_source": "management_guidance",
+    "runway_report_date": "2026-03-31",
+    "lead_asset": "aleniglipron",
+    "mechanism": "Oral small-molecule GLP-1 receptor agonist (biased agonist)",
+    "peak_sales_est_b": 5.0,
+    "phase": "Phase 3",
+    "next_catalyst": "2026-08",
+    "deal_pressure_score": 2,
+    "deal_pressure_badge": "Med",
+    "deal_pressure_signals": {
+      "short_runway": false,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    },
+    "strategic_fit_score": 3,
+    "strategic_fit_badge": "High",
+    "strategic_fit_signals": {
+      "obesity_indication": true,
+      "differentiated": true,
+      "derisked": true
+    },
+    "acq_score": 2,
+    "acq_badge": "Med",
+    "acq_signals": {
+      "short_runway": false,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    }
+  },
+  {
+    "ticker": "ALT",
+    "name": "Altimmune",
+    "market_cap_b": 0.62,
+    "cash_m": 535.0,
+    "quarterly_burn_m": 45.0,
+    "monthly_burn_m": 14.9,
+    "runway_months": 36,
+    "runway_source": "management_guidance",
+    "runway_report_date": "2026-03-31",
+    "lead_asset": "pemvidutide",
+    "mechanism": "GLP-1/glucagon dual agonist",
+    "peak_sales_est_b": 2.5,
+    "phase": "Phase 2",
+    "next_catalyst": "2027-09-30",
+    "deal_pressure_score": 2,
+    "deal_pressure_badge": "Med",
+    "deal_pressure_signals": {
+      "short_runway": false,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    },
+    "strategic_fit_score": 3,
+    "strategic_fit_badge": "High",
+    "strategic_fit_signals": {
+      "obesity_indication": true,
+      "differentiated": true,
+      "derisked": true
+    },
+    "acq_score": 2,
+    "acq_badge": "Med",
+    "acq_signals": {
+      "short_runway": false,
+      "late_stage": true,
+      "cheap_vs_peak": true
+    }
+  },
+  {
+    "ticker": "CRBP",
+    "name": "Corbus Pharmaceuticals",
+    "market_cap_b": 0.22,
+    "cash_m": 138.2,
+    "quarterly_burn_m": 19.0,
+    "monthly_burn_m": 6.3,
+    "runway_months": 22,
+    "runway_source": "management_guidance",
+    "runway_report_date": "2026-03-31",
+    "lead_asset": "CRB-913",
+    "mechanism": "Peripheral CB1 inverse agonist",
+    "peak_sales_est_b": 1.5,
+    "phase": "Phase 1",
+    "next_catalyst": "2026-07-02",
+    "deal_pressure_score": 2,
+    "deal_pressure_badge": "Med",
+    "deal_pressure_signals": {
+      "short_runway": true,
+      "late_stage": false,
+      "cheap_vs_peak": true
+    },
+    "strategic_fit_score": 2,
+    "strategic_fit_badge": "Med",
+    "strategic_fit_signals": {
+      "obesity_indication": true,
+      "differentiated": true,
+      "derisked": false
+    },
+    "acq_score": 2,
+    "acq_badge": "Med",
+    "acq_signals": {
+      "short_runway": true,
+      "late_stage": false,
+      "cheap_vs_peak": true
+    }
+  }
+]

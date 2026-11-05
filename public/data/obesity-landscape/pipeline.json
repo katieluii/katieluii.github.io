@@ -1,0 +1,4936 @@
+[
+  {
+    "nct_id": "NCT07752979",
+    "title": "Safety and Efficacy of ABBV-295 in Adults With Obesity or Overweight With Weight-Related Comorbidities",
+    "phase": "Phase 2",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "AbbVie",
+    "ticker": "ABBV",
+    "company": "AbbVie",
+    "primary_completion": "2028-03",
+    "start_date": "2026-08-07",
+    "drugs": [
+      "ABBV-295",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07414784",
+    "title": "A Study of ABBV-295 Subcutaneous Injections to Assess Pharmacokinetics and Adverse Events in Healthy Adult Women Partici",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AbbVie",
+    "ticker": "ABBV",
+    "company": "AbbVie",
+    "primary_completion": "2026-07",
+    "start_date": "2026-02-11",
+    "drugs": [
+      "ABBV-295",
+      "Levonorgestrel/Ethinyl Estradiol"
+    ]
+  },
+  {
+    "nct_id": "NCT07291232",
+    "title": "A Study of ABBV-295 Subcutaneous Injections to Assess Adverse Events and Pharmacokinetics in Adult Participants With Obe",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "AbbVie",
+    "ticker": "ABBV",
+    "company": "AbbVie",
+    "primary_completion": "2027-03",
+    "start_date": "2025-11-19",
+    "drugs": [
+      "ABBV-295",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06144684",
+    "title": "A Two-Part First-In-Human Study to Assess the Safety, Tolerability, Pharmacokinetics and Pharmacodynamics of GUB014295",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AbbVie",
+    "ticker": "ABBV",
+    "company": "AbbVie",
+    "primary_completion": "2026-01-05",
+    "start_date": "2023-11-29",
+    "drugs": [
+      "GUB014295",
+      "GUB014295-PLACEBO"
+    ]
+  },
+  {
+    "nct_id": "NCT07514260",
+    "title": "A Study to Assess Adverse Events, Tolerability, and Pharmacokinetics of Subcutaneous Injections of ABBV-295 in Healthy A",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AbbVie",
+    "ticker": "ABBV",
+    "company": "AbbVie",
+    "primary_completion": "2027-01",
+    "start_date": "2026-03-31",
+    "drugs": [
+      "ABBV-295",
+      "Placebo for ABBV-295"
+    ]
+  },
+  {
+    "nct_id": "NCT05295875",
+    "title": "Efficacy and Safety of ALT-801 in the Treatment of Obesity",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2023-09-28",
+    "start_date": "2022-03-31",
+    "drugs": [
+      "ALT-801"
+    ]
+  },
+  {
+    "nct_id": "NCT06987513",
+    "title": "RECLAIM STUDY: Phase 2 Study of the Efficacy and Safety of Pemvidutide in the Treatment of Alcohol Use Disorder (AUD) in",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2026-07-30",
+    "start_date": "2025-05-15",
+    "drugs": [
+      "Pemvidutide"
+    ]
+  },
+  {
+    "nct_id": "NCT05134662",
+    "title": "ALT-801 in Overweight and Obese Subjects With Type 2 Diabetes Mellitus (T2DM)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2023-02-03",
+    "start_date": "2022-02-01",
+    "drugs": [
+      "ALT-801"
+    ]
+  },
+  {
+    "nct_id": "NCT05292911",
+    "title": "Extension of ALT-801 in Diabetic and Non-Diabetic Overweight and Obese Subjects With (NAFLD)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2022-10-31",
+    "start_date": "2022-03-09",
+    "drugs": [
+      "ALT-801"
+    ]
+  },
+  {
+    "nct_id": "NCT05006885",
+    "title": "ALT-801 in Diabetic and Non-Diabetic Overweight and Obese Subjects With Non-alcoholic Fatty Liver Disease (NAFLD)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2022-08-17",
+    "start_date": "2021-09-30",
+    "drugs": [
+      "ALT-801"
+    ]
+  },
+  {
+    "nct_id": "NCT04561245",
+    "title": "ALT-801 (Pemvidutide) in Healthy Overweight and Obese Volunteers to Study Safety and Tolerability",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Altimmune, Inc.",
+    "ticker": "ALT",
+    "company": "Altimmune",
+    "primary_completion": "2021-10-29",
+    "start_date": "2020-11-10",
+    "drugs": [
+      "ALT-801"
+    ]
+  },
+  {
+    "nct_id": "NCT06858878",
+    "title": "Efficacy and Safety of Maridebart Cafraglutide in Adult Participants With Type 2 Diabetes Mellitus Who Have Obesity or A",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-01-21",
+    "start_date": "2025-03-17",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07037459",
+    "title": "Maridebart Cafraglutide in Heart Failure With Preserved or Mildly Reduced Ejection Fraction and Obesity",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2028-06-30",
+    "start_date": "2025-06-25",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07684235",
+    "title": "Extension Trial to Evaluate the Long-term Efficacy, Safety, and Tolerability of Maridebart Cafraglutide (MARITIME-1-EXTE",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-12-26",
+    "start_date": "2026-07-23",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06858839",
+    "title": "Evaluation of Maridebart Cafraglutide in Adult Participants Without Type 2 Diabetes Mellitus Who Have Obesity or Are Ove",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-01-21",
+    "start_date": "2025-03-12",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07684144",
+    "title": "Extension Trial to Evaluate the Long-term Efficacy, Safety, and Tolerability of Maridebart Cafraglutide (MARITIME-2-EXTE",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-12-26",
+    "start_date": "2026-07-29",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07226765",
+    "title": "Maridebart Cafraglutide Versus Placebo in Adult Participants With Obstructive Sleep Apnea Not on Positive Airway Pressur",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-09-29",
+    "start_date": "2025-11-25",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07225686",
+    "title": "Maridebart Cafraglutide Versus Placebo in Adult Participants With Obstructive Sleep Apnea on Positive Airway Pressure Th",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-09-29",
+    "start_date": "2025-12-19",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06987695",
+    "title": "Efficacy and Safety of Maridebart Cafraglutide in Adult Participants in Japan Who Have Obesity Disease",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-04-27",
+    "start_date": "2025-06-13",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07575399",
+    "title": "Efficacy, Safety and Tolerability of Switching From Glucagon-like Peptide-1 Receptor Agonists (GLP-1RA) to Maridebart Ca",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2028-01-03",
+    "start_date": "2026-05-11",
+    "drugs": [
+      "Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07037433",
+    "title": "Evaluating the Impact of Maridebart Cafraglutide on Cardiovascular Outcomes in Participants With Atherosclerotic Cardiov",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2028-06-30",
+    "start_date": "2025-07-25",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05669599",
+    "title": "Dose-ranging Study to Evaluate the Efficacy, Safety, and Tolerability of AMG 133 in Adult Subjects With Overweight or Ob",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2024-10-08",
+    "start_date": "2023-01-18",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07441252",
+    "title": "A Trial to Evaluate Efficacy and Safety of Maridebart Cafraglutide in Adults Living With Elevated Liver Fat and Obesity ",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2027-09-29",
+    "start_date": "2026-03-05",
+    "drugs": [
+      "Maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06660173",
+    "title": "A Study of Maridebart Cafraglutide in Adult Participants With Type 2 Diabetes Mellitus (T2DM)",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-10-06",
+    "start_date": "2024-11-07",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07226778",
+    "title": "Comparing the Extent to Which Maridebart Cafraglutide (AMG 133) is Made Available in the Body When Administered Using Tw",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2026-05-28",
+    "start_date": "2025-10-10",
+    "drugs": [
+      "Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT04478708",
+    "title": "Single and Multiple Ascending Dose Study of AMG 133 in Participants With Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2022-11-18",
+    "start_date": "2020-08-07",
+    "drugs": [
+      "maridebart cafraglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03757130",
+    "title": "Multiple Ascending Dose Study of AMG 598 in Adults With Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2019-12-16",
+    "start_date": "2018-11-26",
+    "drugs": [
+      "AMG 598",
+      "Placebo",
+      "Liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT05406115",
+    "title": "Single and Multiple Ascending Dose Study to Evaluate AMG 786 in Healthy Participants and Participants With Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2023-08-21",
+    "start_date": "2022-07-26",
+    "drugs": [
+      "AMG 786"
+    ]
+  },
+  {
+    "nct_id": "NCT07523711",
+    "title": "Effect of Maridebart Cafraglutide on How Oral Contraceptives Are Absorbed and Processed in the Body in Postmenopausal Fe",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2026-11-18",
+    "start_date": "2026-04-09",
+    "drugs": [
+      "COC",
+      "Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07717814",
+    "title": "A Trial to Assess Bioavailability of AMG 133 in Participants With Overweight or Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-05-22",
+    "start_date": "2024-11-26",
+    "drugs": [
+      "AMG 133 (frozen liquid)",
+      "AMG 133 (liquid)"
+    ]
+  },
+  {
+    "nct_id": "NCT06352892",
+    "title": "A Study to Evaluate AMG 133 in Chinese Participants With Obesity or Overweight",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2024-08-27",
+    "start_date": "2024-04-25",
+    "drugs": [
+      "Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07313761",
+    "title": "A Trial to Compare the Extent to Which Maridebart Cafraglutide (AMG 133) is Made Available in the Body When Administered",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2026-07-02",
+    "start_date": "2025-12-15",
+    "drugs": [
+      "Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07429045",
+    "title": "A Trial to Assess the Effect of Kidney Impairment on How AMG 133 is Absorbed, Broken Down, and Eliminated by the Body",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-11-21",
+    "start_date": "2025-03-11",
+    "drugs": [
+      "AMG 133"
+    ]
+  },
+  {
+    "nct_id": "NCT07310563",
+    "title": "A Trial to Evaluate Interactions Between Antiemetic Medication and AMG 133 in Participants Living With Overweight or Obe",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-05-09",
+    "start_date": "2024-12-10",
+    "drugs": [
+      "AMG 133",
+      "Ondansetron"
+    ]
+  },
+  {
+    "nct_id": "NCT07429032",
+    "title": "The Effect of AMG 133 on Gastric Emptying",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-11-26",
+    "start_date": "2025-04-17",
+    "drugs": [
+      "AMG 133",
+      "Placebo",
+      "Acetaminophen"
+    ]
+  },
+  {
+    "nct_id": "NCT06585462",
+    "title": "Single and Multiple Ascending Dose Study of AMG 513 in Participants With Obesity",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2026-10-01",
+    "start_date": "2024-09-09",
+    "drugs": [
+      "AMG 513",
+      "Placebo",
+      "AMG 513"
+    ]
+  },
+  {
+    "nct_id": "NCT06976372",
+    "title": "A Study to Evaluate AMG 133 Administered Subcutaneously in Participants With Overweight or Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2024-12-27",
+    "start_date": "2024-08-20",
+    "drugs": [
+      "AMG 133"
+    ]
+  },
+  {
+    "nct_id": "NCT07229157",
+    "title": "Effect of Maridebart Cafraglutide on the Heart's Electrical Activity",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2026-08-26",
+    "start_date": "2025-10-22",
+    "drugs": [
+      "Maridebart Cafraglutide",
+      "Moxifloxacin",
+      "Placebo for Maridebart Cafraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06761703",
+    "title": "A Study to Determine the Feasibility of Online Recruitment of People Using an Anti-Obesity Medication for Weight Loss",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Amgen",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2025-01-06",
+    "start_date": "2024-11-14",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT06576050",
+    "title": "WeighT LOSS Surgery and Comprehensive Cardiometabolic Responses to to EXercise",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Massachusetts General Hospital",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2024-08-02",
+    "start_date": "2022-01-25",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00413400",
+    "title": "Study of TNF-Antagonism in the Metabolic Syndrome (II)",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Massachusetts General Hospital",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2009-09",
+    "start_date": "2006-12",
+    "drugs": [
+      "Etanercept",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01207934",
+    "title": "Recombinant Human Leptin Therapy Effects on Insulin Action",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Washington University School of Medicine",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2000-07",
+    "start_date": "1998-08",
+    "drugs": [
+      "low-dose leptin",
+      "high-dose leptin"
+    ]
+  },
+  {
+    "nct_id": "NCT00409318",
+    "title": "Study of TNF-Antagonism in Metabolic Syndrome",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Massachusetts General Hospital",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2005-05",
+    "start_date": "2004-04",
+    "drugs": [
+      "Etanercept",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01710722",
+    "title": "The Effect of Leptin A-200, Caffeine/Ephedrine and Their Combination Upon Weight Loss and Body Composition in Man",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Pennington Biomedical Research Center",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "2002-02",
+    "start_date": "2001-02",
+    "drugs": [
+      "caffeine and ephedrine",
+      "Leptin A",
+      "caffeine, ephedrine, and leptin A"
+    ]
+  },
+  {
+    "nct_id": "NCT00121433",
+    "title": "Leptin and Endothelial Function",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University of Michigan",
+    "ticker": "AMGN",
+    "company": "Amgen",
+    "primary_completion": "",
+    "start_date": "2004-09",
+    "drugs": [
+      "leptin"
+    ]
+  },
+  {
+    "nct_id": "NCT07776509",
+    "title": "A Study to Evaluate Effect of AZD6234 as an Adjunct to Incretin-based Therapies in Adult Participants With Obesity or Ov",
+    "phase": "Phase 3",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2028-08-09",
+    "start_date": "2026-08-21",
+    "drugs": [
+      "AZD6234",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02635386",
+    "title": "EQW, DAPA, EQW/DAPA, DAPA/MET ER and PHEN/TPM ER in Obese Women With PolycysticOvary Syndrome (PCOS)",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Woman's",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2020-07-22",
+    "start_date": "2016-03-22",
+    "drugs": [
+      "Exenatide once weekly (EQW )",
+      "Dapagliflozin (DAPA)",
+      "EQW plus DAPA"
+    ]
+  },
+  {
+    "nct_id": "NCT07784270",
+    "title": "A Study to Evaluate Effect of AZD6234 in Adult Participants With Type 2 Diabetes Mellitus and Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2028-08-09",
+    "start_date": "2026-08-21",
+    "drugs": [
+      "AZD6234",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07784725",
+    "title": "A Study to Evaluate Effect of AZD6234 in Adult Participants With Obesity or Overweight With Weight-related Comorbidity W",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2028-08-11",
+    "start_date": "2026-08-19",
+    "drugs": [
+      "AZD6234",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07775404",
+    "title": "A Study to Investigate the Efficacy and Safety of Elecoglipron in Asian Participants With Obesity or Overweight With or ",
+    "phase": "Phase 3",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2028-04-20",
+    "start_date": "2026-08-28",
+    "drugs": [
+      "Elecoglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07667803",
+    "title": "A Master Protocol to Investigate Efficacy and Safety of Elecoglipron in Participants With Obesity or Overweight With or ",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2028-07-31",
+    "start_date": "2026-06-29",
+    "drugs": [
+      "Elecoglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02338193",
+    "title": "Dapagliflozin and Metformin,Alone and in Combination, in Overweight/Obese Prior GDM Women",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Woman's",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-02-13",
+    "start_date": "2015-09-22",
+    "drugs": [
+      "DAPA/MET XR",
+      "DAPA",
+      "MET XR"
+    ]
+  },
+  {
+    "nct_id": "NCT00375492",
+    "title": "Effect on Weight Loss of Exenatide Versus Placebo",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2008-02",
+    "start_date": "2006-09",
+    "drugs": [
+      "exenatide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00392925",
+    "title": "A Study to Evaluate the Effect on Body Weight of Leptin Administered in Conjunction With Pramlintide in Overweight and O",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2007-09",
+    "start_date": "2006-10",
+    "drugs": [
+      "pramlintide acetate 360 mcg",
+      "metreleptin",
+      "placebo-pramlintide 600 uL"
+    ]
+  },
+  {
+    "nct_id": "NCT03645421",
+    "title": "Safety and Tolerability Study of MEDI0382 in Japanese Preobese or Obese Subjects With Type 2 Diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-01-17",
+    "start_date": "2018-08-10",
+    "drugs": [
+      "MEDI0382 100 \u03bcg",
+      "MEDI0382 200 \u03bcg",
+      "MEDI0382 300 \u03bcg"
+    ]
+  },
+  {
+    "nct_id": "NCT06851858",
+    "title": "Efficacy, Safety and Tolerability of AZD6234 in Participants Living With Overweight or Obesity With Type 2 Diabetes Who ",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-05-27",
+    "start_date": "2025-03-12",
+    "drugs": [
+      "AZD6234",
+      "Placebo to match"
+    ]
+  },
+  {
+    "nct_id": "NCT00282178",
+    "title": "Double-Blind Randomized Cross-Over Trial Comparing Metabolic Effects of Candesartan, Hydrochlorothiazide and Placebo",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Ume\u00e5 University",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2006-03",
+    "start_date": "2005-04",
+    "drugs": [
+      "Hydrochlorothiazide",
+      "Placebo",
+      "Candesartan"
+    ]
+  },
+  {
+    "nct_id": "NCT00785408",
+    "title": "Study to Examine Safety, Tolerability and Effect on Body Weight of Subcutaneous AC2307 in Obese or Overweight Subjects",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2009-09",
+    "start_date": "2008-12",
+    "drugs": [
+      "AC2307",
+      "placebo",
+      "AC2307"
+    ]
+  },
+  {
+    "nct_id": "NCT02695810",
+    "title": "The PRE-D Trial: Effect of Dapagliflozin, Metformin and Physical Activity in Pre-diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Steno Diabetes Center Copenhagen",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2018-09-20",
+    "start_date": "2016-02-24",
+    "drugs": [
+      "Dapagliflozin",
+      "Metformin"
+    ]
+  },
+  {
+    "nct_id": "NCT06595238",
+    "title": "A Study in Participants With Obesity or Overweight With at Least One Weight-related Comorbidity",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-12-03",
+    "start_date": "2024-10-01",
+    "drugs": [
+      "AZD6234",
+      "Placebo comparator"
+    ]
+  },
+  {
+    "nct_id": "NCT00673387",
+    "title": "Study to Examine Safety, Tolerability, and Effect on Body Weight of Metreleptin Administered in Conjunction With Pramlin",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2009-04",
+    "start_date": "2008-04",
+    "drugs": [
+      "pramlintide acetate",
+      "metreleptin",
+      "placebo-P"
+    ]
+  },
+  {
+    "nct_id": "NCT07017179",
+    "title": "This is a Multi-centre, Multi-drug, Platform Study in Chinese Participants Living With Obesity / Overweight",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-08-06",
+    "start_date": "2025-05-20",
+    "drugs": [
+      "AZD6234",
+      "Placebo",
+      "AZD9550"
+    ]
+  },
+  {
+    "nct_id": "NCT00042601",
+    "title": "Evaluation of the Effect of Pramlintide on Satiety and Food Intake",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2003-10",
+    "start_date": "2002-07",
+    "drugs": [
+      "Pramlintide acetate",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00112021",
+    "title": "A Study to Examine the Effect of Pramlintide on Body Weight and Its Safety and Tolerability in Obese Subjects",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2005-11",
+    "start_date": "2005-05",
+    "drugs": [
+      "pramlintide acetate"
+    ]
+  },
+  {
+    "nct_id": "NCT03235050",
+    "title": "A Study to Evaluate the Efficacy and Safety of MEDI0382 in the Treatment of Overweight and Obese Subjects With Type 2 Di",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2018-05-03",
+    "start_date": "2017-08-02",
+    "drugs": [
+      "MEDI0382 low dose",
+      "MEDI0382 mid dose",
+      "MEDI0382 high dose"
+    ]
+  },
+  {
+    "nct_id": "NCT02313220",
+    "title": "Exploratory Study to Investigate the Effect of Dapagliflozin and Exenatide Combined on Body Weight",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Uppsala University",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2016-03",
+    "start_date": "2014-12",
+    "drugs": [
+      "Dapagliflozin",
+      "Exenatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06862791",
+    "title": "A Weight Loss Study Evaluating Subcutaneous Treatment With AZD9550 and AZD6234 in Combination Against Placebo or Each of",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-05-11",
+    "start_date": "2025-02-18",
+    "drugs": [
+      "AZD9550",
+      "AZD6234",
+      "Placebo comparator"
+    ]
+  },
+  {
+    "nct_id": "NCT06579092",
+    "title": "Effects of AZD5004 in Adults Who Are Living With Obesity or Overweight With at Least 1 Weight-related Comorbidity",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-11-21",
+    "start_date": "2024-10-08",
+    "drugs": [
+      "AZD5004",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02597101",
+    "title": "Anti-Inflammatory Small Drug Adjunctive Therapy for Type 2 Diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Nick Giannoukakis, PhD",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-06-10",
+    "start_date": "2015-11",
+    "drugs": [
+      "Metformin",
+      "saxagliptin",
+      "AZD9668"
+    ]
+  },
+  {
+    "nct_id": "NCT00819234",
+    "title": "Extension Study of Protocol DFA102 to Examine the Long-Term Safety, Tolerability, and Effect on Body Weight of Pramlinti",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2009-10",
+    "start_date": "2008-11",
+    "drugs": [
+      "Placebo",
+      "Pramlintide and Metreleptin"
+    ]
+  },
+  {
+    "nct_id": "NCT04483947",
+    "title": "A Study to Assess Safety, Tolerability, PK and PD of AZD2693 in Non-alcoholic Steatohepatitis Patients",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2023-12-18",
+    "start_date": "2020-11-06",
+    "drugs": [
+      "AZD2693"
+    ]
+  },
+  {
+    "nct_id": "NCT07013643",
+    "title": "A Study to Investigate the Effect of AZD6234, AZD9550, and a Combination of AZD9550 and AZD6234 on Pharmacokinetics of C",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2027-07-09",
+    "start_date": "2025-06-04",
+    "drugs": [
+      "AZD6234",
+      "Ethinyl estradiol/Levonorgestrel (EE/LEVO)",
+      "Acetaminophen (APAP)"
+    ]
+  },
+  {
+    "nct_id": "NCT07220954",
+    "title": "A Study to Assess the Relative Bioavailability of Different Subcutaneous Formulations ofAZD6234",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-09-17",
+    "start_date": "2025-11-11",
+    "drugs": [
+      "AZD6234 Formulation 1",
+      "AZD6234 Formulation 2 (low concentration)",
+      "AZD6234 Formulation 2 (high concentration)"
+    ]
+  },
+  {
+    "nct_id": "NCT05511025",
+    "title": "Assess the Safety, Tolerability, and Pharmacokinetics of AZD6234 Following Single Ascending Dose Administration to Healt",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2023-12-19",
+    "start_date": "2022-09-20",
+    "drugs": [
+      "AZD6234",
+      "Placebo",
+      "Acetaminophen"
+    ]
+  },
+  {
+    "nct_id": "NCT06942936",
+    "title": "A Study to Investigate the Impact of Multiple Doses of Itraconazole on AZD5004 in Healthy Participants and Multiple Dose",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-01-28",
+    "start_date": "2025-05-28",
+    "drugs": [
+      "AZD5004",
+      "Itraconazole",
+      "EE/LNG"
+    ]
+  },
+  {
+    "nct_id": "NCT06996886",
+    "title": "A Study in Healthy Participants to Investigate Relative Bioavailability of AZD5004 in Three Solid Oral Formulations",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-07-15",
+    "start_date": "2025-05-22",
+    "drugs": [
+      "AZD5004"
+    ]
+  },
+  {
+    "nct_id": "NCT01207089",
+    "title": "To Assess the Safety, Tolerability, Pharmacokinetics and Pharmacodynamics of Oral Administration of AZD8329",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2010-12",
+    "start_date": "2010-09",
+    "drugs": [
+      "AZD8329",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01217905",
+    "title": "Japanese Single and Multiple Ascending Dose, Safety, Tolerability, Pharmacokinetic (PK) & Pharmacodynamic (PD) Study of ",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2011-07",
+    "start_date": "2010-11",
+    "drugs": [
+      "AZD7687"
+    ]
+  },
+  {
+    "nct_id": "NCT07534592",
+    "title": "A Study to Investigate the Effect of Elecoglipron on Rosuvastatin and Atorvastatin in Healthy Participants",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-08-28",
+    "start_date": "2026-04-16",
+    "drugs": [
+      "Elecoglipron",
+      "Atorvastatin",
+      "Rosuvastatin"
+    ]
+  },
+  {
+    "nct_id": "NCT06555822",
+    "title": "A Study to Investigate Multiple Ascending Doses and Relative Bioavailability of AZD5004 in Healthy Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-03-06",
+    "start_date": "2024-08-15",
+    "drugs": [
+      "AZD5004",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07511205",
+    "title": "A Study to Investigate Safety, Tolerability, Pharmacokinetics and Pharmacodynamics of AZD1043 in Healthy Adult Participa",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2027-04-09",
+    "start_date": "2026-03-30",
+    "drugs": [
+      "AZD1043"
+    ]
+  },
+  {
+    "nct_id": "NCT06703658",
+    "title": "A Study to Investigate Multiple Ascending Doses of AZD5004 in Healthy Japanese Participants and Participants With Type 2",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-03-13",
+    "start_date": "2024-11-02",
+    "drugs": [
+      "AZD5004(Part A)",
+      "Placebo(Part A)",
+      "AZD5004(Part B)"
+    ]
+  },
+  {
+    "nct_id": "NCT05437848",
+    "title": "Chinese Multiple Dose Escalation (MDE) High Dose Study",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2022-12-12",
+    "start_date": "2022-02-25",
+    "drugs": [
+      "Experimental: Cotadutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06151964",
+    "title": "A Trial to Learn How Safe AZD9550 Monotherapy and Combined With AZD6234 is in People With or Without Type 2 Diabetes Who",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2027-01-29",
+    "start_date": "2023-09-29",
+    "drugs": [
+      "AZD9550",
+      "placebo",
+      "AZD9550 and AZD6234"
+    ]
+  },
+  {
+    "nct_id": "NCT07444424",
+    "title": "A Study to Investigate the Effect of AZD5004 on Mitiglinide and Pioglitazone in Healthy Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-07-02",
+    "start_date": "2026-03-13",
+    "drugs": [
+      "AZD5004",
+      "Mitiglinide",
+      "Pioglitazone"
+    ]
+  },
+  {
+    "nct_id": "NCT07723833",
+    "title": "A Study to Investigate the Relative Bioavailability and Safety of Different Oral Formulations of Elecoglipron in Healthy",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2026-11-18",
+    "start_date": "2026-07-27",
+    "drugs": [
+      "Elecoglipron Reference Formulation Dose A",
+      "Elecoglipron Test formulation 1 Dose A",
+      "Elecoglipron Reference Formulation Dose B"
+    ]
+  },
+  {
+    "nct_id": "NCT04208620",
+    "title": "Safety and Tolerability Study of Cotadutide in Japanese Obese Subjects With Type 2 Diabetes Melitus",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2020-07-08",
+    "start_date": "2020-01-21",
+    "drugs": [
+      "Placebo",
+      "Cotadutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06948747",
+    "title": "A Study to Investigate the Effect of AZD5004 on Rosuvastatin, Atorvastatin, Simvastatin, Repaglinide and the Effect of E",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2025-10-03",
+    "start_date": "2025-05-06",
+    "drugs": [
+      "AZD5004",
+      "Rosuvastatin",
+      "Erythromycin"
+    ]
+  },
+  {
+    "nct_id": "NCT01096004",
+    "title": "Study to Evaluate Methods That Assess the Effect of AZD4017 in Adipose Tissue",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2010-05",
+    "start_date": "2010-03",
+    "drugs": [
+      "AZD4017",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02760316",
+    "title": "A Study to Assess the Safety, Tolerability, Pharmacokinetics and Pharmacodynamics of Multiple Ascending Doses of AZD9567",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2017-09-11",
+    "start_date": "2016-05-02",
+    "drugs": [
+      "AZD9567 10 mg",
+      "AZD9567 20 mg",
+      "AZD9567 40 mg"
+    ]
+  },
+  {
+    "nct_id": "NCT01020604",
+    "title": "PROstaTE Cancer Treatment and Obesity in Zoladex-Astrazeneca Treated Patients",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2013-03",
+    "start_date": "2009-11",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00784264",
+    "title": "A Study on Intima Media Thickness (IMT) in Middle-aged Subjects",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "AstraZeneca",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "",
+    "start_date": "2008-10",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT02386917",
+    "title": "Impact of Body Weight and Weight Loss on Drug Bioavailability, Cardiovascular Risk Factors and Metabolic Biomarkers",
+    "phase": "NA",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "The Hospital of Vestfold",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-06",
+    "start_date": "2015-03-18",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01590433",
+    "title": "Weight Loss With Exenatide Treatment",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Jody Dushay",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-01",
+    "start_date": "2012-03",
+    "drugs": [
+      "Exenatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03361098",
+    "title": "DECREASE: Dapagliflozin Plus Exenatide on Central REgulation of Appetite in diabeteS typE 2",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Amsterdam UMC, location VUmc",
+    "ticker": "AZN",
+    "company": "AstraZeneca",
+    "primary_completion": "2019-11-25",
+    "start_date": "2017-09-18",
+    "drugs": [
+      "Dapagliflozin 10mg",
+      "Exenatide"
+    ]
+  },
+  {
+    "nct_id": "NCT07310901",
+    "title": "A 2-part, Phase 1b Clinical Study Designed to Evaluate the Safety, PK, and Efficacy of CRB-913 in Participants With Obes",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Corbus Pharmaceuticals Inc.",
+    "ticker": "CRBP",
+    "company": "Corbus Pharmaceuticals",
+    "primary_completion": "2026-07-02",
+    "start_date": "2025-12-04",
+    "drugs": [
+      "CRB-913",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07654374",
+    "title": "A Study of Aleniglipron in Adults With Obesity or Overweight and Type 2 Diabetes Mellitus (ACCOMPLISH-2)",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2028-09",
+    "start_date": "2026-07-17",
+    "drugs": [
+      "aleniglipron",
+      "aleniglipron",
+      "aleniglipron"
+    ]
+  },
+  {
+    "nct_id": "NCT07654361",
+    "title": "Efficacy and Safety of Aleniglipron in Participants With Obesity or Overweight With a Weight-Related Comorbidity (ACCOMP",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2028-09",
+    "start_date": "2026-07-13",
+    "drugs": [
+      "Aleniglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06693843",
+    "title": "A Phase 2b, Dose-range Finding Study of the Efficacy and Safety of Multiple Doses of Aleniglipron (GSBR-1290) in Partici",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2025-10-24",
+    "start_date": "2024-10-28",
+    "drugs": [
+      "Aleniglipron or Placebo",
+      "Aleniglipron or Placebo",
+      "Aleniglipron or Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06703021",
+    "title": "A Dose-Range Study of Aleniglipron (GSBR-1290) in Participants Living With Obesity or Overweight With at Least One Weigh",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2026-01-12",
+    "start_date": "2024-12-20",
+    "drugs": [
+      "aleniglipron or placebo",
+      "aleniglipron or placebo",
+      "aleniglipron or placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07169942",
+    "title": "Aleniglipron Phase 2 Body Composition Study",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2026-08",
+    "start_date": "2025-08-15",
+    "drugs": [
+      "aleniglipron or placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07400588",
+    "title": "Aleniglipron Phase 2 in Type 2 Diabetes Mellitus",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2026-09",
+    "start_date": "2025-12-01",
+    "drugs": [
+      "Aleniglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05762471",
+    "title": "Phase 1b/2a Study of GSBR-1290 in Adult Overweight or Obese Healthy Subjects and Subjects With Type 2 Diabetes Mellitus",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Gasherbrum Bio, Inc., a wholly owned subsidiary of Structure Therapeutics",
+    "ticker": "GPCR",
+    "company": "Structure Therapeutics",
+    "primary_completion": "2024-04-11",
+    "start_date": "2023-01-09",
+    "drugs": [
+      "GSBR-1290",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03586830",
+    "title": "A Study to Evaluate the Safety and Efficacy of JNJ-64565111 in Severely Obese Participants With Type 2 Diabetes Mellitus",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Janssen Research & Development, LLC",
+    "ticker": "JNJ",
+    "company": "Johnson & Johnson",
+    "primary_completion": "2019-04-05",
+    "start_date": "2018-06-26",
+    "drugs": [
+      "JNJ-64565111 Dose Level 1",
+      "JNJ-64565111 Dose Level 2",
+      "JNJ-64565111 Dose Level 3"
+    ]
+  },
+  {
+    "nct_id": "NCT02243202",
+    "title": "Effects of Co-administration of Canagliflozin 300 mg and Phentermine 15 mg With Placebo in the Treatment of Non-Diabetic",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Janssen Research & Development, LLC",
+    "ticker": "JNJ",
+    "company": "Johnson & Johnson",
+    "primary_completion": "2015-06",
+    "start_date": "2014-09",
+    "drugs": [
+      "Canagliflozin",
+      "Phentermine",
+      "Matching Placebo to Canagliflozin"
+    ]
+  },
+  {
+    "nct_id": "NCT03486392",
+    "title": "A Study to Evaluate the Safety and Efficacy of JNJ-64565111 in Non-diabetic Severely Obese Participants",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Janssen Research & Development, LLC",
+    "ticker": "JNJ",
+    "company": "Johnson & Johnson",
+    "primary_completion": "2019-03-08",
+    "start_date": "2018-03-26",
+    "drugs": [
+      "JNJ-64565111 Dose Level 1",
+      "JNJ-64565111 Dose Level 2",
+      "JNJ-64565111 Dose Level 3"
+    ]
+  },
+  {
+    "nct_id": "NCT03586843",
+    "title": "A Study of JNJ-64565111 After Single Subcutaneous Administration at Different Injection Sites in Otherwise Healthy Overw",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Janssen Research & Development, LLC",
+    "ticker": "JNJ",
+    "company": "Johnson & Johnson",
+    "primary_completion": "2019-03-17",
+    "start_date": "2018-06-29",
+    "drugs": [
+      "JNJ-64565111"
+    ]
+  },
+  {
+    "nct_id": "NCT01306214",
+    "title": "Safety and Efficacy of BI 10773 as add-on to Insulin Regimen in Patients With Type 2 Diabetes Mellitus",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Boehringer Ingelheim",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2013-04",
+    "start_date": "2011-02",
+    "drugs": [
+      "Placebo",
+      "Placebo",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07153471",
+    "title": "A Study of Orforglipron (LY3502970) in Participants With Obesity or Overweight and Osteoarthritis (OA) of the Knee",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-04",
+    "start_date": "2025-09-15",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06075667",
+    "title": "A Study of Tirzepatide (LY3298176) Once Weekly in Adolescent Participants Who Have Obesity or Overweight With Weight-Rel",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2026-06-02",
+    "start_date": "2023-10-16",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT04184622",
+    "title": "A Study of Tirzepatide (LY3298176) in Participants With Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2022-04-01",
+    "start_date": "2019-12-04",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT04657003",
+    "title": "A Study of Tirzepatide (LY3298176) in Participants With Type 2 Diabetes Who Have Obesity or Are Overweight",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2023-03-16",
+    "start_date": "2021-03-29",
+    "drugs": [
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT07202884",
+    "title": "A Study of Orforglipron in Female Participants With Stress Urinary Incontinence Who Have Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-03",
+    "start_date": "2025-09-30",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06672939",
+    "title": "A Study of Orforglipron (LY3502970) in Adolescent Participants With Obesity, or Overweight With Related Comorbidities",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-12",
+    "start_date": "2024-11-18",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07392190",
+    "title": "A Study of Eloralintide (LY3841136) in Participants With Persistent Obesity Who Are Treated With a Weekly Incretin",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-06",
+    "start_date": "2026-02-10",
+    "drugs": [
+      "Eloralintide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07353931",
+    "title": "Efficacy and Safety of Eloralintide (LY3841136) in Participants With Osteoarthritis Knee Pain and Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-03",
+    "start_date": "2026-02-09",
+    "drugs": [
+      "Eloralintide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05869903",
+    "title": "A Study of Orforglipron (LY3502970) in Adult Participants With Obesity or Overweight With Weight-Related Comorbidities",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-07-25",
+    "start_date": "2023-06-05",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05872620",
+    "title": "A Study of Orforglipron in Adult Participants With Obesity or Overweight and Type 2 Diabetes",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-08-08",
+    "start_date": "2023-06-05",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06584916",
+    "title": "A Study of Orforglipron for the Maintenance of Body Weight Reduction in Participants Who Have Obesity or Overweight With",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-11-21",
+    "start_date": "2024-09-13",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07232719",
+    "title": "A Study of Retatrutide (LY3437943) in Participants With Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-07",
+    "start_date": "2025-11-17",
+    "drugs": [
+      "Retatrutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT04660643",
+    "title": "A Study of Tirzepatide (LY3298176) in Participants With Obesity or Overweight for the Maintenance of Weight Loss",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2023-04-25",
+    "start_date": "2021-03-29",
+    "drugs": [
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06662383",
+    "title": "A Study of Retatrutide (LY3437943) Compared to Tirzepatide (LY3298176) in Adults Who Have Obesity",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2026-11",
+    "start_date": "2024-11-01",
+    "drugs": [
+      "Retatrutide",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06972472",
+    "title": "A Study of Orforglipron (LY3502970) in Participants With Obesity or Overweight and Type 2 Diabetes",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-08",
+    "start_date": "2025-05-19",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07357415",
+    "title": "A Study of Retatrutide (LY3437943) in Participants Without Type 2 Diabetes Who Have Obesity or Overweight",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-10",
+    "start_date": "2026-01-24",
+    "drugs": [
+      "Retatrutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06937099",
+    "title": "Mirikizumab and Tirzepatide Administered in Adult Participants With Moderately to Severely Active Crohn's Disease and Ob",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-05",
+    "start_date": "2025-06-26",
+    "drugs": [
+      "Mirikizumab",
+      "Mirikizumab",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06859268",
+    "title": "A Study of Retatrutide (LY3437943) in the Maintenance of Weight Reduction in Individuals With Obesity",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-04",
+    "start_date": "2025-03-05",
+    "drugs": [
+      "Retatrutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05412004",
+    "title": "Obstructive Sleep Apnea Master Protocol GPIF: A Study of Tirzepatide (LY3298176) in Participants With Obstructive Sleep ",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2024-03-12",
+    "start_date": "2022-06-21",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06937086",
+    "title": "Mirikizumab Administered at the Same Time as Tirzepatide in Adult Participants With Moderately to Severely Active Ulcera",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-04",
+    "start_date": "2025-06-26",
+    "drugs": [
+      "Mirikizumab",
+      "Mirikizumab",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06972459",
+    "title": "A Study of Orforglipron (LY3502970) in Participants With Obesity or Overweight and at Least One Weight-Related Comorbidi",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-08",
+    "start_date": "2025-05-15",
+    "drugs": [
+      "Orforglipron",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05931367",
+    "title": "A Study of Retatrutide (LY3437943) Once Weekly in Participants Who Have Obesity or Overweight and Osteoarthritis of the ",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-11-14",
+    "start_date": "2023-08-01",
+    "drugs": [
+      "Retatrutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06897475",
+    "title": "A Study of LY3457263 Compared With Placebo in Participants With Type 2 Diabetes on a Stable Dose of Semaglutide or Tirze",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2026-12",
+    "start_date": "2025-03-28",
+    "drugs": [
+      "LY3457263",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06683508",
+    "title": "A Study to Investigate Weight Management With LY3549492 Compared With Placebo in Adult Participants With Obesity or Over",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2026-01-07",
+    "start_date": "2024-11-13",
+    "drugs": [
+      "LY3549492",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06124807",
+    "title": "A Study of LY3305677 Compared With Placebo in Adult Participants With Obesity or Overweight",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-01-22",
+    "start_date": "2023-11-17",
+    "drugs": [
+      "Mazdutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06143956",
+    "title": "A Master Protocol Study (LY900038) of Multiple Intervention-Specific-Appendices (ISAs) in Adult Participants With Obesit",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-09",
+    "start_date": "2023-11-17",
+    "drugs": [
+      "LY3305677",
+      "LY3841136",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06847399",
+    "title": "Efficacy and Safety of Tirzepatide Versus Placebo or Lisdexamfetamine Dimesylate for Binge-Eating Disorder",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Johns Hopkins University",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-12-01",
+    "start_date": "2025-09-17",
+    "drugs": [
+      "Tirzepatide",
+      "Lisdexamfetamine Dimesylate",
+      "Placebo (oral)"
+    ]
+  },
+  {
+    "nct_id": "NCT04881760",
+    "title": "A Study of LY3437943 in Participants Who Have Obesity or Are Overweight",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2022-05-16",
+    "start_date": "2021-05-20",
+    "drugs": [
+      "LY3437943",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05936151",
+    "title": "A Study of Retatrutide (LY3437943) on Renal Function in Participants With Overweight or Obesity and Chronic Kidney Disea",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-10-01",
+    "start_date": "2023-07-20",
+    "drugs": [
+      "Retatrutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05696847",
+    "title": "A Study of Tirzepatide (LY3298176) in Pediatric Participants With Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-01-16",
+    "start_date": "2023-02-07",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06345066",
+    "title": "A Study of LY3841136 in Overweight and Obese Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-09-29",
+    "start_date": "2024-04-03",
+    "drugs": [
+      "Tirzepatide",
+      "LY3841136",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06606106",
+    "title": "A Study of LY3537031 in Overweight, Obese, and Healthy Participants",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2026-07",
+    "start_date": "2024-09-05",
+    "drugs": [
+      "LY3537031",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05313802",
+    "title": "A Study of LY3502970 in Healthy Overweight and Obese Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2022-09-09",
+    "start_date": "2022-05-26",
+    "drugs": [
+      "LY3502970"
+    ]
+  },
+  {
+    "nct_id": "NCT05582096",
+    "title": "A Study of LY3457263 in Obese Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2023-06-08",
+    "start_date": "2022-11-11",
+    "drugs": [
+      "LY3457263",
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05623839",
+    "title": "A Study of LY3305677 in Participants With Obesity Or Overweight",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2023-06-27",
+    "start_date": "2022-11-16",
+    "drugs": [
+      "LY3305677",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05295940",
+    "title": "A Study of LY3841136 in Healthy and Overweight Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2024-01-25",
+    "start_date": "2022-03-30",
+    "drugs": [
+      "LY3841136",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06440980",
+    "title": "A Study to Compare Tablets and Capsules of Orforglipron (LY3502970) in Healthy Participants Who Are Obese or Overweight",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-06-02",
+    "start_date": "2024-06-24",
+    "drugs": [
+      "Orforglipron"
+    ]
+  },
+  {
+    "nct_id": "NCT04407234",
+    "title": "A Study to Measure Stomach Emptying in Overweight Non-diabetic and Diabetic Participants Using Tirzepatide",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2021-01-07",
+    "start_date": "2020-09-15",
+    "drugs": [
+      "Tirzepatide",
+      "Acetaminophen"
+    ]
+  },
+  {
+    "nct_id": "NCT06313528",
+    "title": "A Study to Measure Calorie Consumption and Usage in Participants With Obesity Using LY3437943",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2025-08-26",
+    "start_date": "2024-03-20",
+    "drugs": [
+      "LY3437943"
+    ]
+  },
+  {
+    "nct_id": "NCT07654972",
+    "title": "A Study of LY4174794 in Participants With Obesity or Overweight Who Are Otherwise Healthy",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2029-04",
+    "start_date": "2026-06-24",
+    "drugs": [
+      "LY4174794",
+      "LY4174794",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT04311411",
+    "title": "A Study of Tirzepatide in Overweight and Very Overweight Participants",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2022-12-16",
+    "start_date": "2020-08-24",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo",
+      "Liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07765511",
+    "title": "A Study of Macupatide (LY3532226) in Participants With Obesity or Overweight Without Type 2 Diabetes",
+    "phase": "Phase 1",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-06",
+    "start_date": "2026-10",
+    "drugs": [
+      "Macupatide",
+      "Eloralintide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07472608",
+    "title": "Obesity Medicine Bank of the Quebec Heart and Lung Institute - Laval University (IUCPQ-ULaval)",
+    "phase": "N/A",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Institut universitaire de cardiologie et de pneumologie de Qu\u00e9bec, University Laval",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2051-06",
+    "start_date": "2026-06-01",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01281228",
+    "title": "The Effect of GLP-1 Receptor Activation on Central Reward and Satiety in Obesity and Diabetes",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Amsterdam UMC, location VUmc",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2013-10",
+    "start_date": "2011-09",
+    "drugs": [
+      "exenatide",
+      "exenatide + exendin (9-39)",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00090012",
+    "title": "Comparison of Continuing Olanzapine to Switching to Quetiapine in Overweight or Obese Patients With Schizophrenia and Sc",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "",
+    "start_date": "2004-07",
+    "drugs": [
+      "Olanzapine",
+      "Quetiapine"
+    ]
+  },
+  {
+    "nct_id": "NCT00512070",
+    "title": "Melatonin Metabolism Abnormality in Patients With Schizophrenia or Schizoaffective Disorder Treated With Olanzapine",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Seattle Institute for Biomedical and Clinical Research",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2010-12",
+    "start_date": "2007-07",
+    "drugs": [
+      "olanzapine and melatonin"
+    ]
+  },
+  {
+    "nct_id": "NCT06857942",
+    "title": "A Study to Investigate the Effectiveness of Tirzepatide (LY3298176) Following Initiation of Ixekizumab (LY2439821) in Pa",
+    "phase": "Phase 4",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2028-05",
+    "start_date": "2025-03-19",
+    "drugs": [
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06864026",
+    "title": "A Study to Investigate Effectiveness of Tirzepatide Following Initiation of Ixekizumab in Participants With Active Psori",
+    "phase": "Phase 4",
+    "status": "RECRUITING",
+    "sponsor": "Eli Lilly and Company",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-11",
+    "start_date": "2025-03-06",
+    "drugs": [
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06191848",
+    "title": "Subcutaneous Tirzepatide Once-weekly in Patients With Obesity and Knee Osteoarthritis (STOP KNEE-OA)",
+    "phase": "Phase 4",
+    "status": "RECRUITING",
+    "sponsor": "University of Melbourne",
+    "ticker": "LLY",
+    "company": "Eli Lilly",
+    "primary_completion": "2027-05",
+    "start_date": "2024-11-19",
+    "drugs": [
+      "Tirzepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00092872",
+    "title": "A 1-Year Study of an Investigational Drug in Obese Patients (0557-012)(COMPLETED)",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2005-02",
+    "start_date": "2003-11",
+    "drugs": [
+      "MK0557"
+    ]
+  },
+  {
+    "nct_id": "NCT00092859",
+    "title": "A 2-Year Study of an Investigational Drug in Obese Patients (0557-011)",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2005-06",
+    "start_date": "2003-08",
+    "drugs": [
+      "MK0557"
+    ]
+  },
+  {
+    "nct_id": "NCT00482638",
+    "title": "Study of Safety, Tolerability and Efficacy of MK0493 in Obese Patients (0493-008)(COMPLETED)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2004-10-29",
+    "start_date": "2004-05-12",
+    "drugs": [
+      "MK0493"
+    ]
+  },
+  {
+    "nct_id": "NCT00642993",
+    "title": "Efficacy and Safety Trial to Evaluate the Effect of SCH 497079 on Weight in Obese and Overweight Participants (Study P05",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2009-01-30",
+    "start_date": "2008-06-09",
+    "drugs": [
+      "SCH 497079",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00109148",
+    "title": "An Investigational Drug Study in Obese (Considerably Overweight) Patients (0364-006)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2005-01",
+    "start_date": "2004-07",
+    "drugs": [
+      "MK0364"
+    ]
+  },
+  {
+    "nct_id": "NCT00533481",
+    "title": "Efficacy of MK0557 in Combination With Sibutramine or Orlistat (0557-015)(COMPLETED)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2004-12",
+    "start_date": "2004-02",
+    "drugs": [
+      "MK0557"
+    ]
+  },
+  {
+    "nct_id": "NCT00131430",
+    "title": "An Eighteen Month Efficacy and Safety Study in Obese Patients (0364-020)(COMPLETED)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2007-05",
+    "start_date": "2005-08",
+    "drugs": [
+      "taranabant"
+    ]
+  },
+  {
+    "nct_id": "NCT00482196",
+    "title": "To Study Different Levels of MK0493 for Safety, Efficacy, and Tolerability in Obese Patients (0493-017)(COMPLETED)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2006-03",
+    "start_date": "2005-07",
+    "drugs": [
+      "MK0493"
+    ]
+  },
+  {
+    "nct_id": "NCT00533598",
+    "title": "A Study to Determine the Effects of MK0557 in Obese Subjects (0557-006)(COMPLETED)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2003-06",
+    "start_date": "2002-09",
+    "drugs": [
+      "MK0557"
+    ]
+  },
+  {
+    "nct_id": "NCT00871871",
+    "title": "Multiple Dose Effects of Hydrochlorothiazide and Isosorbide Mononitrate on Glucose Homeostasis (MK-0000-117)(Completed)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-02",
+    "start_date": "2009-03",
+    "drugs": [
+      "Hydrochlorothiazide (HCTZ)",
+      "Comparator: Placebo to HCTZ",
+      "Isosorbide mononitrate (ISMN)"
+    ]
+  },
+  {
+    "nct_id": "NCT01088711",
+    "title": "Evaluation of Omarigliptin (MK-3102) in Obese Participants and in Participants With Type 2 Diabetes (MK-3102-004)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-05-11",
+    "start_date": "2010-03-11",
+    "drugs": [
+      "Omarigliptin",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02055547",
+    "title": "A Single and Multiple-Dose Study of MK-8521 in Healthy and Obese Males (MK-8521-002)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2013-09-17",
+    "start_date": "2013-05-10",
+    "drugs": [
+      "MK-8521 35\u03bcg",
+      "MK-8521 100\u03bcg",
+      "MK-8521 125\u03bcg"
+    ]
+  },
+  {
+    "nct_id": "NCT01114568",
+    "title": "Study To Estimate The Relative Bioavailability of Ertugliflozin (PF-04971729, MK-8835) in Healthy Adult Participants (MK",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-06",
+    "start_date": "2010-05",
+    "drugs": [
+      "Ertugliflozin 10 mg tablet",
+      "Ertugliflozin OC Fast",
+      "Ertugliflozin OC Slow"
+    ]
+  },
+  {
+    "nct_id": "NCT00914212",
+    "title": "A Functional Magnetic Resonance Imaging (fMRI) Study in Overweight and Obese Men (0000-103)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2009-08",
+    "start_date": "2009-05",
+    "drugs": [
+      "Placebo",
+      "Comparator: sibutramine"
+    ]
+  },
+  {
+    "nct_id": "NCT07748351",
+    "title": "A Clinical Trial of Multiple Formulations of MK-4082 in Healthy Overweight and Obese Participants (MK-4082-007)",
+    "phase": "Phase 1",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2026-12-15",
+    "start_date": "2026-08-25",
+    "drugs": [
+      "MK-4082 Formulation 1 (F1)",
+      "MK-4082 Formulation 2 (F2)",
+      "MK-4082 Formulation 4 (F4)"
+    ]
+  },
+  {
+    "nct_id": "NCT01055340",
+    "title": "A Study That Will Evaluate Ketogenesis and Glucose-Dependent Insulin Secretion Methodologies in Healthy Male Subjects (M",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-05",
+    "start_date": "2010-04",
+    "drugs": [
+      "Oxyntomodulin (OXM)",
+      "Comparator: Oxyntomodulin (OXM)",
+      "Comparator: Placebo [ hemaccel-containing saline]"
+    ]
+  },
+  {
+    "nct_id": "NCT01018823",
+    "title": "A Multiple Dose Study Of Ertugliflozin (PF-04971729, MK-8835) In Otherwise Healthy Overweight And Obese Volunteers (MK-8",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-03-18",
+    "start_date": "2009-12-14",
+    "drugs": [
+      "Ertugliflozin",
+      "Placebo to Ertugliflozin"
+    ]
+  },
+  {
+    "nct_id": "NCT06701305",
+    "title": "A Study of Efinopegdutide in Healthy Obese Participants (MK-6024-015)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2025-02-18",
+    "start_date": "2024-06-13",
+    "drugs": [
+      "Efinopegdutide",
+      "Placebo",
+      "Acetaminophen"
+    ]
+  },
+  {
+    "nct_id": "NCT01115712",
+    "title": "Effects of Pioglitazone on Insulin Sensitivity in Healthy Overweight and Obese Males (MK-0000-170)",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2010-09",
+    "start_date": "2010-05",
+    "drugs": [
+      "Placebo",
+      "Comparator: Pioglitazone",
+      "Comparator: Hyperinsulinemic Euglycemic Clamp"
+    ]
+  },
+  {
+    "nct_id": "NCT07388667",
+    "title": "A Clinical Study of MK-4082 in Healthy Overweight Participants (MK-4082-002)",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2026-09-02",
+    "start_date": "2026-03-04",
+    "drugs": [
+      "MK-4082",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01158573",
+    "title": "Role of Cysteinyl Leukotrienes in the Pathogenesis of Asthma in Obesity",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "University of Michigan",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2013-05",
+    "start_date": "2010-07",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01229787",
+    "title": "The Relation Between Obesity, Adipose Tissue Content of Fatty Acids and Systemic and Airway Inflammation",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Cyprus International Institute for Environment and Public Health",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "",
+    "start_date": "2007-01",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00957957",
+    "title": "Gut Hormone Profiling in Obese Patients With Type 2 Diabetes (MK-0000-134)",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2014-11",
+    "start_date": "2010-02",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01748643",
+    "title": "CURES: The Effect of Deep Curarisation and Reversal With Sugammadex on Surgical Conditions and Perioperative Morbidity",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Ziekenhuis Oost-Limburg",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2015-01",
+    "start_date": "2013-04",
+    "drugs": [
+      "deep neuromuscular blockade with rocuronium, reversal with sugammadex",
+      "normal neuromuscular blockade reversal with rocuronium, reversal with neostigmine"
+    ]
+  },
+  {
+    "nct_id": "NCT00704314",
+    "title": "Does Simvastatin Affect Insulin Sensitivity in Dyslipidemic Type 2 Diabetic Patients?",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Medical University of Vienna",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2005-07",
+    "start_date": "2002-10",
+    "drugs": [
+      "Simvastatin",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03346070",
+    "title": "Efficacy and Safety of Sugammadex Dosed According to Actual Body Weight (ABW) or Ideal Body Weight (IBW) in Reversal of ",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2019-01-29",
+    "start_date": "2018-01-01",
+    "drugs": [
+      "Sugammadex 2 mg/kg ABW",
+      "Sugammadex 2 mg/kg IBW",
+      "Sugammadex 4 mg/kg ABW"
+    ]
+  },
+  {
+    "nct_id": "NCT02342418",
+    "title": "Single Dose PK of IV Tedizolid Phosphate in Morbidly Obese and Non-Obese Adults",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Amit.Pai",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2015-09",
+    "start_date": "2015-03",
+    "drugs": [
+      "Tedizolid phosphate"
+    ]
+  },
+  {
+    "nct_id": "NCT00134303",
+    "title": "Trial Comparing Metformin Versus Placebo in Non Alcoholic Steatohepatitis (NASH) Patients Receiving Bariatric Surgery fo",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University Hospital, Ghent",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2006-03-31",
+    "start_date": "2005-06",
+    "drugs": [
+      "Metformin"
+    ]
+  },
+  {
+    "nct_id": "NCT02606500",
+    "title": "Efficacy of Corifollitropin Alfa in Obese Women in Terms of Clinical and Molecular Parameters of IVF Success",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University Medical Centre Ljubljana",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2017-01",
+    "start_date": "2016-03",
+    "drugs": [
+      "Elonva"
+    ]
+  },
+  {
+    "nct_id": "NCT02703909",
+    "title": "Surgical Conditions During Laparoscopic Bariatric Surgery",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University of Missouri-Columbia",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2017-05-30",
+    "start_date": "2016-05",
+    "drugs": [
+      "Rocuronium"
+    ]
+  },
+  {
+    "nct_id": "NCT02130778",
+    "title": "Natriuretic Effect of GLP-1in Healthy Non Obese Subjects",
+    "phase": "EARLY/Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Clinical Hospital Centre Zagreb",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2015-10",
+    "start_date": "2014-04",
+    "drugs": [
+      "Synthetic GLP-1 (1.5 pmol/kg/min) dissolved in 500 ml 0.9% saline"
+    ]
+  },
+  {
+    "nct_id": "NCT03246386",
+    "title": "Dosing Obese With Noxafil\u00ae Under a Trial (DONUT)",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Radboud University Medical Center",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2018-09-01",
+    "start_date": "2017-11-05",
+    "drugs": [
+      "Posaconazole Injection [Noxafil] 300mg",
+      "Posaconazole Injection [Noxafil] 400mg"
+    ]
+  },
+  {
+    "nct_id": "NCT05866107",
+    "title": "App and Body Fat Scale in the Management of Overweight Patients",
+    "phase": "NA",
+    "status": "RECRUITING",
+    "sponsor": "Capital Medical University",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2025-12",
+    "start_date": "2023-10-31",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00675987",
+    "title": "A Randomized Clinical Trial To Study Losartan On Endothelial Dysfunction and Insulin Resistance In Obese Patients",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Brigham and Women's Hospital",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2008-12",
+    "start_date": "2007-05",
+    "drugs": [
+      "losartan",
+      "Placebo control"
+    ]
+  },
+  {
+    "nct_id": "NCT01329939",
+    "title": "The Effect of Montelukast on Asthma Control in Overweight/Obese Atopic Asthmatics",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Northwell Health",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2014-09",
+    "start_date": "2011-04",
+    "drugs": [
+      "Montelukast",
+      "Placebo",
+      "Montelukast"
+    ]
+  },
+  {
+    "nct_id": "NCT02553629",
+    "title": "Effect of Deep Neuromuscular Block on Surgical Conditions in Morbidly Obese Patients",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Leiden University Medical Center",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2016-04",
+    "start_date": "2015-09",
+    "drugs": [
+      "Rocuronium"
+    ]
+  },
+  {
+    "nct_id": "NCT00659711",
+    "title": "The Effect of Januvia (Sitagliptin) on Oxidative Stress in Obese Type 2 Diabetic Subjects",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "University at Buffalo",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2013-12",
+    "start_date": "2008-03",
+    "drugs": [
+      "Januvia (Sitagliptin) 100 mg",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00819403",
+    "title": "Simvastatin With or Without Ezetimibe and Atherothrombotic Biomarker Assessment",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University of Maryland, Baltimore",
+    "ticker": "MRK",
+    "company": "Merck",
+    "primary_completion": "2011-11",
+    "start_date": "2009-01",
+    "drugs": [
+      "simvastatin",
+      "ezetimibe/simvastatin"
+    ]
+  },
+  {
+    "nct_id": "NCT07253285",
+    "title": "A Research Study on How Well Cagrilintide and CagriSema Work in Children and Adolescents With Excess Body Weight",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2030-03-20",
+    "start_date": "2026-01-08",
+    "drugs": [
+      "Cagrilintide",
+      "Semaglutide",
+      "Placebo cagrilintide"
+    ]
+  },
+  {
+    "nct_id": "NCT04074161",
+    "title": "Research Study to Investigate How Well Semaglutide Works Compared to Liraglutide in People Living With Overweight or Obe",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2021-03-27",
+    "start_date": "2019-09-11",
+    "drugs": [
+      "Semaglutide",
+      "Placebo (semaglutide)",
+      "Liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07567001",
+    "title": "A Research Study to Look at How Well NNC0487-0111 Works Compared to Placebo in People With Heart Failure and Obesity",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2029-07-23",
+    "start_date": "2026-05-11",
+    "drugs": [
+      "NNC0487-0111",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03548987",
+    "title": "Research Study Investigating How Well Semaglutide Works in People Suffering From Overweight or Obesity",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2020-02-22",
+    "start_date": "2018-06-04",
+    "drugs": [
+      "Semaglutide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07564414",
+    "title": "A Research Study to Look at How Two Different Doses of CagriSema and One Dose of Semaglutide Help People Living With Obe",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2028-02-23",
+    "start_date": "2026-05-21",
+    "drugs": [
+      "Cagrisema",
+      "Semaglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06780449",
+    "title": "A Research Study to Look Into the Long-term Effect on Weight Loss of CagriSema in People With Obesity",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2028-08-28",
+    "start_date": "2025-02-10",
+    "drugs": [
+      "Cagrilintide",
+      "Semaglutide",
+      "Placebo cagrilintide"
+    ]
+  },
+  {
+    "nct_id": "NCT03693430",
+    "title": "Two-year Research Study Investigating How Well Semaglutide Works in People Suffering From Overweight or Obesity",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2021-01-29",
+    "start_date": "2018-10-05",
+    "drugs": [
+      "Semaglutide",
+      "Placebo (Semaglutide)"
+    ]
+  },
+  {
+    "nct_id": "NCT01557166",
+    "title": "Effect of Liraglutide in Obese Subjects With Moderate or Severe Obstructive Sleep Apnoea: SCALE\u2122 - Sleep Apnoea",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2013-06-01",
+    "start_date": "2012-06-07",
+    "drugs": [
+      "liraglutide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05087342",
+    "title": "Latino Semaglutide Study",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Loma Linda University",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2024-05-29",
+    "start_date": "2022-12-13",
+    "drugs": [
+      "Semaglutide 2.4mg",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07220642",
+    "title": "Weight Loss in People Living With Overweight or Obesity Following Treatment With Cagrilintide",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-05-11",
+    "start_date": "2025-11-05",
+    "drugs": [
+      "Cagrilintide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02043054",
+    "title": "Effects of Liraglutide in Young Adults With Type 2 DIAbetes (LYDIA)",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "University of Leicester",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2017-09-02",
+    "start_date": "2013-12-16",
+    "drugs": [
+      "Liraglutide",
+      "Sitagliptin"
+    ]
+  },
+  {
+    "nct_id": "NCT00504673",
+    "title": "Comparison of Insulin Detemir Versus Insulin NPH on Weight Change in Overweight and Obese With Type 2 Diabetes",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2006-12",
+    "start_date": "2005-04",
+    "drugs": [
+      "insulin detemir",
+      "insulin NPH",
+      "insulin aspart"
+    ]
+  },
+  {
+    "nct_id": "NCT02963922",
+    "title": "Effect and Safety of Liraglutide 3.0 mg in Subjects With Overweight or Obesity and Type 2 Diabetes Mellitus Treated With",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2018-09-10",
+    "start_date": "2017-02-06",
+    "drugs": [
+      "Liraglutide 3.0 mg",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02527200",
+    "title": "Effect of Liraglutide for Weight Management in Paediatric Subjects With Prader-Willi Syndrome",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2020-11-04",
+    "start_date": "2015-11-09",
+    "drugs": [
+      "liraglutide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01234649",
+    "title": "Combined Liraglutide and Metformin Therapy in Women With Previous Gestational Diabetes Mellitus (GDM)",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Woman's",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2019-04-24",
+    "start_date": "2011-08-11",
+    "drugs": [
+      "Metformin XR plus placebo",
+      "Metformin XR plus liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07745504",
+    "title": "A Research Study to Compare Two Different Versions of Injectable Cagrilintide and Placebo in People With Excess Body Wei",
+    "phase": "Phase 3",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-05-18",
+    "start_date": "2026-08-04",
+    "drugs": [
+      "Cagrilintide",
+      "Placebo cagrilintide",
+      "Placebo semaglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT03480022",
+    "title": "Liraglutide 3mg (Saxenda) on Weight, Body Composition, Hormonal and Metabolic Parameters in Obese Women With PCOS",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Woman's",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2021-02-22",
+    "start_date": "2018-09-26",
+    "drugs": [
+      "Liraglutide Pen Injector [Saxenda]",
+      "Placebo Liraglutide Pen Injector"
+    ]
+  },
+  {
+    "nct_id": "NCT06326060",
+    "title": "A Research Study Comparing How Well Different Doses of the Medicine NN0519-0130 Help People With Excess Body Weight Lose",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2025-04-10",
+    "start_date": "2024-03-18",
+    "drugs": [
+      "NNC0519-0130",
+      "Placebo",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT01508949",
+    "title": "Effect of Liraglutide on Weight and Appetite in Obese Subjects With Type 2 Diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2002-03",
+    "start_date": "2001-06",
+    "drugs": [
+      "liraglutide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00422058",
+    "title": "The Effect of Liraglutide on Body Weight in Obese Subjects Without Diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2007-09-13",
+    "start_date": "2007-01-10",
+    "drugs": [
+      "liraglutide",
+      "orlistat",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03856047",
+    "title": "Research Study Investigating How Well NNC0174-0833 Works in People Suffering From Overweight or Obesity.",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2020-03-02",
+    "start_date": "2019-03-01",
+    "drugs": [
+      "NNC0174-0833",
+      "Placebo (NNC0174-0833)",
+      "Liraglutide 3.0 mg"
+    ]
+  },
+  {
+    "nct_id": "NCT07395687",
+    "title": "A Research Study on How Well Different Doses of the Medicine UBT251 Help People Living With Overweight or Obesity",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-01-14",
+    "start_date": "2026-02-02",
+    "drugs": [
+      "UBT251",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03479892",
+    "title": "A Research Study Looking at a New Study Medicine (NNC0194-0499) for Weight Control in People With Overweight or Obesity",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2019-06-04",
+    "start_date": "2018-03-13",
+    "drugs": [
+      "NNC0194-0499",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02958085",
+    "title": "Investigation of Safety, Tolerability, Pharmacokinetics and Pharmacodynamics of Multiple Dosing of NNC0174-0833 in Subje",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2018-01-24",
+    "start_date": "2016-11-04",
+    "drugs": [
+      "NNC0174-0833",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02717858",
+    "title": "A Trial to Assess the Effects of Liraglutide on Gallbladder Emptying in Overweight and Obese Subjects.",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2017-02-27",
+    "start_date": "2016-03-16",
+    "drugs": [
+      "liraglutide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06820476",
+    "title": "A Research Study on How NNC0487-0111, a New Medicine, Works in Chinese Participants After 10 Days of Oral Dosing",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2025-05-14",
+    "start_date": "2025-02-09",
+    "drugs": [
+      "NNC0487-0111",
+      "Placebo (NNC0487-0111)"
+    ]
+  },
+  {
+    "nct_id": "NCT02207348",
+    "title": "Investigating Bioequivalence Between Single-dose Liraglutide Administered Subcutaneously With Two Different Pen-injector",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2014-09",
+    "start_date": "2014-08",
+    "drugs": [
+      "liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT02835235",
+    "title": "A Trial Investigating Safety, Tolerability, PK and PD for Multiple Doses of NNC9204-0530 in Male and Female Subjects Bei",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2017-07-07",
+    "start_date": "2016-07-26",
+    "drugs": [
+      "NNC9204-0530",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02235961",
+    "title": "Investigate Safety, Tolerability and Pharmacokinetics for Single Doses of NNC9204-0530 Alone and in Combination With Lir",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2016-07-06",
+    "start_date": "2014-09-04",
+    "drugs": [
+      "NNC9204-0530",
+      "liraglutide",
+      "placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05282446",
+    "title": "A Study to Explore the PK and PD of INV-202 in Metabolic Syndrome",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Inversago Pharma Inc.",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2022-09-11",
+    "start_date": "2022-03-01",
+    "drugs": [
+      "INV-202",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07587710",
+    "title": "A Research Study Looking Into Blood Levels of the Medicine NNC0487-0111 in the Body and How Well it is Tolerated in Peop",
+    "phase": "Phase 1",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-12-01",
+    "start_date": "2026-05-13",
+    "drugs": [
+      "NNC0487-0111"
+    ]
+  },
+  {
+    "nct_id": "NCT07557953",
+    "title": "A Research Study Looking Into How Cagrilintide Influences Food Intake and Appetite in People With Overweight or Obesity",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-04-13",
+    "start_date": "2026-04-30",
+    "drugs": [
+      "Cagrilintide",
+      "Placebo Cagrilintide"
+    ]
+  },
+  {
+    "nct_id": "NCT03574584",
+    "title": "A Research Study of NNC0165-1562 and Semaglutide in People Who Are Overweight or Obese",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2019-07-27",
+    "start_date": "2018-06-18",
+    "drugs": [
+      "NNC0165-1562",
+      "Semaglutide",
+      "Placebo (NNC0165-1562)"
+    ]
+  },
+  {
+    "nct_id": "NCT06559527",
+    "title": "A Research Study Looking Into Blood Levels of the Medicine NNC0487-0111 in the Body and How Well it is Tolerated in Part",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2025-02-24",
+    "start_date": "2024-08-20",
+    "drugs": [
+      "NNC0487-0111"
+    ]
+  },
+  {
+    "nct_id": "NCT07225816",
+    "title": "Examination of How the Duration of Fasting and Temporary Stopping of GLP-1 Medications Affect the Amount of Food Left in",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2026-12-13",
+    "start_date": "2025-11-07",
+    "drugs": [
+      "Liraglutide",
+      "Oral Semaglutide",
+      "Semaglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT05873660",
+    "title": "A Study to Characterize the Prevalence of Overweight and Obesity Among Patients With Established Cardiovascular Disease",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2024-06-24",
+    "start_date": "2023-06-12",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT05428501",
+    "title": "Awareness, Care & Treatment In Obesity Management - An Observation in Mainland China",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2022-11-30",
+    "start_date": "2022-08-18",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT03584191",
+    "title": "Awareness, Care & Treatment In Obesity Management - An International Observation",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2018-10-10",
+    "start_date": "2018-06-04",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT06874751",
+    "title": "Semaglutide Effects on Cardiovascular Outcomes in People With Overweight or Obesity in the Real World",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2025-03-28",
+    "start_date": "2024-12-06",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00908973",
+    "title": "Gut Hormone Response, Appetite and Intestinal Transit Time in Good and Poor Weight Responders After Gastric Bypass",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Hvidovre University Hospital",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2011-06",
+    "start_date": "2009-05",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT03560336",
+    "title": "A Regulatory Post-marketing Surveillance (rPMS) Study to Evaluate the Safety and Effectiveness of Saxenda\u00ae(Liraglutide 3",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2020-12-02",
+    "start_date": "2018-07-05",
+    "drugs": [
+      "Liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07141914",
+    "title": "A Master Protocol for Semaglutide Effects on Cardiovascular and Obesity-related Outcomes in People With Overweight or Ob",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2025-12-19",
+    "start_date": "2025-08-29",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00705172",
+    "title": "Retrospective Observational Study on Efficacy and Safety of Norditropin\u00ae in Children With Prader-Willi Syndrome",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2008-11",
+    "start_date": "2008-11",
+    "drugs": [
+      "somatropin"
+    ]
+  },
+  {
+    "nct_id": "NCT02911818",
+    "title": "Lifestyle Modification and Liraglutide",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University of Pennsylvania",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2018-11",
+    "start_date": "2016-09",
+    "drugs": [
+      "Liraglutide 3.0mg",
+      "Placebo Oral Tablet",
+      "Phentermine 15 MG"
+    ]
+  },
+  {
+    "nct_id": "NCT02905864",
+    "title": "Liraglutide 3 mg for Knee Osteoarthritis",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Henrik Gudbergsen",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2019-02",
+    "start_date": "2016-11",
+    "drugs": [
+      "Liraglutide 3 mg (Saxenda)",
+      "Liraglutide 3 mg placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01505673",
+    "title": "Adding Liraglutide to High Dose Insulin: Breaking the Cycle",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Ildiko Lingvay",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2016-06",
+    "start_date": "2012-01",
+    "drugs": [
+      "Liraglutide",
+      "Saline"
+    ]
+  },
+  {
+    "nct_id": "NCT06977438",
+    "title": "GLP-1 Plus Lifestyle for Overall Wellness: Find Your Way Forward",
+    "phase": "Phase 4",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "University of Minnesota",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2031-01-31",
+    "start_date": "2026-10-01",
+    "drugs": [
+      "Semaglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT06341179",
+    "title": "Effect of Sleep Extension on Body Weight and Learning in Children (More2Sleep)",
+    "phase": "NA",
+    "status": "RECRUITING",
+    "sponsor": "University of Copenhagen",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2027-12-31",
+    "start_date": "2024-08-13",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00795600",
+    "title": "Comparison of the Change in Fat Distribution in Overweight and Obese Subjects With Type 2 Diabetes After Insulin Treatme",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2010-08",
+    "start_date": "2009-04",
+    "drugs": [
+      "insulin detemir",
+      "insulin NPH"
+    ]
+  },
+  {
+    "nct_id": "NCT04189848",
+    "title": "Comparison of Injection Site Pain Experience for Semaglutide and Dulaglutide sc",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novo Nordisk A/S",
+    "ticker": "NVO",
+    "company": "Novo Nordisk",
+    "primary_completion": "2020-01-29",
+    "start_date": "2019-12-03",
+    "drugs": [
+      "Semaglutide",
+      "Dulaglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT03320941",
+    "title": "A Dose-finding Study to Evaluate the Change in Weight After Treatment With LIK066 in Japanese Patients With Obesity",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2018-07-25",
+    "start_date": "2017-12-07",
+    "drugs": [
+      "LIK066",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03205150",
+    "title": "Effect of LIK066 on Reduction of Fatty Content in Livers of Obese Patients",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2019-11-11",
+    "start_date": "2017-10-04",
+    "drugs": [
+      "LIK066",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03100058",
+    "title": "A Study to Evaluate the Change in Weight After 24 Weeks Treatment With LIK066 in Obese or Overweight Adults",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2018-03-02",
+    "start_date": "2017-05-06",
+    "drugs": [
+      "LIK066",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03152591",
+    "title": "Study of Pharmacodynamics of LIK066 in Overweight and Obese Women With Polycystic Ovary Syndrome",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2018-06-25",
+    "start_date": "2017-07-24",
+    "drugs": [
+      "LIK066",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03198767",
+    "title": "Effects of Carbohydrate in Diet and Supplements on the Gastrointestinal Tolerability of LIK066",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2017-09-04",
+    "start_date": "2017-06-21",
+    "drugs": [
+      "LIK066"
+    ]
+  },
+  {
+    "nct_id": "NCT03005288",
+    "title": "Safety, Pharmacokinetics and Efficacy of Bimagrumab in Overweight and Obese Patients With Type 2 Diabetes",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2019-03-21",
+    "start_date": "2017-02-01",
+    "drugs": [
+      "BYM338 10 mg/kg"
+    ]
+  },
+  {
+    "nct_id": "NCT01631864",
+    "title": "Evaluation of the Metabolic Effects of LCZ696 and Amlodipine in Obese Hypertensive Subjects",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2013-07",
+    "start_date": "2012-10",
+    "drugs": [
+      "LCZ696",
+      "amlodipine",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT03466203",
+    "title": "Safety Study of LLF580 in Obese Volunteers",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2019-11-13",
+    "start_date": "2018-02-26",
+    "drugs": [
+      "LLF580",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT02670928",
+    "title": "Interventional Study of Active Weight Management in Patients With Type 2 Diabetes and Obesity in Routine Clinical Practi",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2017-04-06",
+    "start_date": "2015-07-20",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00076362",
+    "title": "Pediatric Hypothalamic Obesity",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2005-07",
+    "start_date": "2004-03",
+    "drugs": [
+      "Sandostatin LAR"
+    ]
+  },
+  {
+    "nct_id": "NCT03440736",
+    "title": "Comparison of Secukinumab 300 mg Combined With a Lifestyle Intervention to Secukinumab Alone for the Treatment of Modera",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2021-11-30",
+    "start_date": "2018-02-28",
+    "drugs": [
+      "Secukinumab"
+    ]
+  },
+  {
+    "nct_id": "NCT00439738",
+    "title": "Safety/Efficacy of Valsartan/Hydrochlorothiazide Combination Compared to Hydrochlorothiazide in Obese Hypertensive Adult",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Novartis Pharmaceuticals",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2007-11",
+    "start_date": "2006-12",
+    "drugs": [
+      "HCTZ + Amlodipine",
+      "Valsartan/HCTZ"
+    ]
+  },
+  {
+    "nct_id": "NCT01138423",
+    "title": "Treatment of Adiposity Related hypErTension (TARGET)",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "UMC Utrecht",
+    "ticker": "NVS",
+    "company": "Novartis",
+    "primary_completion": "2012-02",
+    "start_date": "2010-08",
+    "drugs": [
+      "Aliskiren",
+      "Moxonidine",
+      "Hydrochlorothiazide"
+    ]
+  },
+  {
+    "nct_id": "NCT07595549",
+    "title": "A Study to Learn About the Study Medicine Called Berobenatide (PF-08653944) in People With Overweight or Obesity",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2028-05-04",
+    "start_date": "2026-06-10",
+    "drugs": [
+      "PF-08653944"
+    ]
+  },
+  {
+    "nct_id": "NCT07400653",
+    "title": "A Study to Learn About the Study Medicine (PF-08653944) in People With Obesity or Overweight and Type 2 Diabetes (T2D)",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2027-10-12",
+    "start_date": "2026-02-24",
+    "drugs": [
+      "PF-08653944"
+    ]
+  },
+  {
+    "nct_id": "NCT07311850",
+    "title": "Efficacy and Safety of MET097 Once-Weekly in People With Overweight or Obesity",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2027-09-21",
+    "start_date": "2025-12-19",
+    "drugs": [
+      "MET097",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00781547",
+    "title": "Growth Hormone Treatment in Men With High Risk of Developing Type 2 Diabetes Mellitus",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "G\u00f6teborg University",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2003-09",
+    "start_date": "1999-01",
+    "drugs": [
+      "recombinant human growth hormone"
+    ]
+  },
+  {
+    "nct_id": "NCT06712836",
+    "title": "A Phase 2b Study to Examine the Safety and Efficacy of Once-Weekly MET097 in Adults With Obesity or Overweight",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2025-07-03",
+    "start_date": "2024-10-09",
+    "drugs": [
+      "MET097",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07575932",
+    "title": "A Study of PF-08653945 and PF-08653944 in Adults With Overweight or Obesity (SOLIS-1)",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2027-08-04",
+    "start_date": "2026-05-11",
+    "drugs": [
+      "PF-08653945",
+      "PF-08653944",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00542009",
+    "title": "A Trial In Diabetic Patients To Assess Effect Of CE-326,597 On Glucose Control And Body Weight",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2008-11",
+    "start_date": "2007-12",
+    "drugs": [
+      "CE-326,597 100 mg QD",
+      "CE-326,597 50 mg QD",
+      "CE-326,597 25 mg QD"
+    ]
+  },
+  {
+    "nct_id": "NCT04617275",
+    "title": "A 12-WEEK TITRATE STUDY TO EVALUATE SAFETY, TOLERABILITY AND PHARMACODYNAMICS OF PF-06882961 IN ADULTS WITH TYPE 2 DIABE",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2021-11-17",
+    "start_date": "2021-01-06",
+    "drugs": [
+      "PF-06882961"
+    ]
+  },
+  {
+    "nct_id": "NCT06897202",
+    "title": "A Study to Evaluate the Efficacy and Safety of Once-Weekly MET097 in Adults With Obesity or Overweight and T2DM",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2025-12-29",
+    "start_date": "2025-03-14",
+    "drugs": [
+      "MET097 Injection",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT04839393",
+    "title": "A Drug-Drug Interaction Study Between PF-06882961 and PF-06865571 in Healthy Adult Participants and Overweight Adults or",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2021-10-10",
+    "start_date": "2021-04-05",
+    "drugs": [
+      "PF-06882961 followed by PF-06882961/PF-06865571",
+      "PF-06882961/PF-06865571 followed by PF-06882961",
+      "PF-06882961 + PF-06865571"
+    ]
+  },
+  {
+    "nct_id": "NCT01334554",
+    "title": "Study of Sildenafil Citrate on Insulin Resistance in African American",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Vanderbilt University Medical Center",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2013-08",
+    "start_date": "2011-04",
+    "drugs": [
+      "Sildenafil",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00645463",
+    "title": "Effect of Diltiazem Administration on CP-945,598 Pharmacokinetics",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "",
+    "start_date": "2007-03",
+    "drugs": [
+      "CP-945,598",
+      "CP-945,598"
+    ]
+  },
+  {
+    "nct_id": "NCT06567327",
+    "title": "A Study to Learn How the Study Medicine Danuglipron is Taken Up Into the Blood and If Danuglipron Changes How the Body P",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2025-03-16",
+    "start_date": "2024-08-28",
+    "drugs": [
+      "Danuglipron",
+      "Atorvastatin",
+      "Rosuvastatin"
+    ]
+  },
+  {
+    "nct_id": "NCT03041792",
+    "title": "Methodology Study To Examine 6-Week Food Intake With Liraglutide In Obese Subjects",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2018-01-16",
+    "start_date": "2017-02-20",
+    "drugs": [
+      "Liraglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT00645216",
+    "title": "Study Examing The Effect of Grapefruit Juice On The Blood And Urine Samples of Study Drug And Its By Product And Safety",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "",
+    "start_date": "2007-06",
+    "drugs": [
+      "CP-945,598",
+      "CP-945,598"
+    ]
+  },
+  {
+    "nct_id": "NCT02100553",
+    "title": "Study Evaluating Effects of Multiple-Dose Administration of Itraconazole on the Single Dose Pharmacokinetics of Conjugat",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2014-06",
+    "start_date": "2014-04",
+    "drugs": [
+      "CE/BZA",
+      "Itraconazole",
+      "CE/BZA"
+    ]
+  },
+  {
+    "nct_id": "NCT05677867",
+    "title": "A Study to Compare Two Different Forms of PF-07081532 in Adults Who Are Overweight or Obese",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2023-03-14",
+    "start_date": "2023-01-18",
+    "drugs": [
+      "Formulation A (PF-07081532 20 mg plus 60 mg)",
+      "Formulation B (PF-07081532 80 mg)"
+    ]
+  },
+  {
+    "nct_id": "NCT00331175",
+    "title": "Safety, Toleration and Pharmacokinetics of Single Intravenous Doses of Peptide YY in Overweight Adults",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "",
+    "start_date": "2006-07",
+    "drugs": [
+      "Peptide YY3-36"
+    ]
+  },
+  {
+    "nct_id": "NCT01513928",
+    "title": "A Study To Compare The Pharmacokinetics Of Different Formulations Of PF-04937319 In Healthy Subjects",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2012-02",
+    "start_date": "2012-01",
+    "drugs": [
+      "Pf-04937319",
+      "Pf-04937319",
+      "Pf-04937319"
+    ]
+  },
+  {
+    "nct_id": "NCT07400679",
+    "title": "A Study to Learn How the Study Medicine Called PF-08653944 is Taken up Into the Blood in Adults With Overweight or Obesi",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2026-07-02",
+    "start_date": "2026-02-04",
+    "drugs": [
+      "PF-08653944"
+    ]
+  },
+  {
+    "nct_id": "NCT01114568",
+    "title": "Study To Estimate The Relative Bioavailability of Ertugliflozin (PF-04971729, MK-8835) in Healthy Adult Participants (MK",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2010-06",
+    "start_date": "2010-05",
+    "drugs": [
+      "Ertugliflozin 10 mg tablet",
+      "Ertugliflozin OC Fast",
+      "Ertugliflozin OC Slow"
+    ]
+  },
+  {
+    "nct_id": "NCT01757756",
+    "title": "Multiple Dose Safety Toelrability, Pharmacokinetics and Midazolam Interaction In Healthy Overweight And Obese Subjects",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2012-11",
+    "start_date": "2012-10",
+    "drugs": [
+      "Pf-05175157",
+      "placebo",
+      "midazolam"
+    ]
+  },
+  {
+    "nct_id": "NCT00799006",
+    "title": "A Single Dose Study Of PF-04620110 In Overweight And Obese, Otherwise Healthy Volunteers",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2009-06",
+    "start_date": "2008-11",
+    "drugs": [
+      "Placebo",
+      "PF-04620110"
+    ]
+  },
+  {
+    "nct_id": "NCT01673178",
+    "title": "Multiple Dose Study Of PF-05231023 In Adult Subjects Who Have Poor Lipid Control With And Without Type 2 Diabetes Mellit",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2013-08",
+    "start_date": "2012-10",
+    "drugs": [
+      "25 mg PF-05231023",
+      "50 mg PF-05231023",
+      "100 mg PF-05231023"
+    ]
+  },
+  {
+    "nct_id": "NCT07022977",
+    "title": "A Study of MET233 in Individuals With Obesity or Overweight",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2026-04-21",
+    "start_date": "2024-11-06",
+    "drugs": [
+      "MET233",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05158244",
+    "title": "Study of Multiple Oral Doses of PF-07081532 in Adult Participants With Type 2 Diabetes Mellitus",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2022-06-15",
+    "start_date": "2021-12-22",
+    "drugs": [
+      "PF-07081532",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01146327",
+    "title": "A Multiple Dose Study Of PF-04620110 In Healthy Overweight Or Obese Subjects",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2011-01",
+    "start_date": "2010-06",
+    "drugs": [
+      "PF-04620110",
+      "PF-04620110",
+      "PF-04620110"
+    ]
+  },
+  {
+    "nct_id": "NCT06857617",
+    "title": "This Study Will Investigate the Safety, Tolerability, Pharmacokinetics, and Efficacy of MET097 in Adult Participants Wit",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Metsera, a wholly owned subsidiary of Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2025-01-03",
+    "start_date": "2024-04-01",
+    "drugs": [
+      "(Part C) MET097",
+      "(Part C) Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00959426",
+    "title": "A Multiple Dose Study Of PF-04620110 In Overweight And Obese, Otherwise Healthy Volunteers",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2010-05",
+    "start_date": "2009-08",
+    "drugs": [
+      "PF-04620110",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT00472836",
+    "title": "Study Examining The Effect Of Renal Impairment On Safety, Toleration And How The Body Processes An Experimental Drug",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2008-10",
+    "start_date": "2007-06",
+    "drugs": [
+      "CP-945,598",
+      "CP-945,598"
+    ]
+  },
+  {
+    "nct_id": "NCT01710371",
+    "title": "Quantitative 18F-AV-133 PET Imaging in Subjects With Diabetes and Healthy Controls",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Avid Radiopharmaceuticals",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2015-09",
+    "start_date": "2012-12",
+    "drugs": [
+      "18F-AV-133",
+      "10% Arginine Hydrochloride-R-Gene 10"
+    ]
+  },
+  {
+    "nct_id": "NCT00644839",
+    "title": "Study Examing The Effect Of Omeprazole On Safety, Tolerability And How The Body Processes An Experimental Drug",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2008-07",
+    "start_date": "2008-04",
+    "drugs": [
+      "CP-945,598",
+      "CP-945,598"
+    ]
+  },
+  {
+    "nct_id": "NCT01018823",
+    "title": "A Multiple Dose Study Of Ertugliflozin (PF-04971729, MK-8835) In Otherwise Healthy Overweight And Obese Volunteers (MK-8",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Merck Sharp & Dohme LLC",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2010-03-18",
+    "start_date": "2009-12-14",
+    "drugs": [
+      "Ertugliflozin",
+      "Placebo to Ertugliflozin"
+    ]
+  },
+  {
+    "nct_id": "NCT06924320",
+    "title": "A Study of MET233 in Combination With MET097 in Individuals With Obesity or Overweight With or Without Diabetes",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2026-09-15",
+    "start_date": "2025-03-06",
+    "drugs": [
+      "MET233 and MET097",
+      "MET097"
+    ]
+  },
+  {
+    "nct_id": "NCT04175886",
+    "title": "Effects of Tofacitinib on Body Composition, Bone Mineral Density and Bone Marrow Adiposity in Patients With Rheumatoid A",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "University Hospital, Lille",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2023-05-08",
+    "start_date": "2020-02-25",
+    "drugs": [
+      "Tofacitinib"
+    ]
+  },
+  {
+    "nct_id": "NCT03292094",
+    "title": "The African-PREDICT Study",
+    "phase": "N/A",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "North-West University, South Africa",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2017-11-30",
+    "start_date": "2013-02-04",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT03674528",
+    "title": "Technical Validation of MR Biomarkers of Obesity-Associated NAFLD",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "University of Wisconsin, Madison",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2024-06-11",
+    "start_date": "2018-05-04",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT04681482",
+    "title": "Effectiveness And Safety Of Oral Anticoagulants Among Obese Patients With Non-Valvular A-Fib In VA Patients With Medicar",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2020-11-03",
+    "start_date": "2020-11-02",
+    "drugs": [
+      "Apixaban"
+    ]
+  },
+  {
+    "nct_id": "NCT00338949",
+    "title": "Ziprasidone for Improving Insulin Sensitivity in People With Schizophrenia Who Are at Risk for Diabetes",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Veterans Medical Research Foundation",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2009-12",
+    "start_date": "2006-06",
+    "drugs": [
+      "Switch",
+      "Control"
+    ]
+  },
+  {
+    "nct_id": "NCT00746460",
+    "title": "The Healthy Options Feasibility Study",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "McGill University",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2009-04",
+    "start_date": "2008-06",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00472641",
+    "title": "Geodon in Weight Loss Study for Bipolar Disorders",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Stanford University",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2009-12",
+    "start_date": "2007-01",
+    "drugs": [
+      "Ziprasidone/Geodon"
+    ]
+  },
+  {
+    "nct_id": "NCT00471172",
+    "title": "Study of Five Different Methods Of Delivering A Lifestyle Modification Program for Weight Loss",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Pfizer",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "",
+    "start_date": "2004-08",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00353054",
+    "title": "Effect of Calcium/Vitamin D Supplementation on Body Weight and Fat Loss.",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Laval University",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "",
+    "start_date": "2003-01",
+    "drugs": [
+      "Caltrate\u00ae 600 + D"
+    ]
+  },
+  {
+    "nct_id": "NCT01805284",
+    "title": "Pharmacokinetic and Pharmacodynamic Evaluation of Linezolid Administered Intravenously in MRSA-positive, Morbidly Obese ",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "University Ghent",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2016-09-30",
+    "start_date": "2013-02",
+    "drugs": [
+      "Linezolid"
+    ]
+  },
+  {
+    "nct_id": "NCT00438555",
+    "title": "Randomized, Controlled, Open, Comparative Intervention Study for Obesity Prevention in Children",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Rabin Medical Center",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2014-10",
+    "start_date": "2006-10",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01104220",
+    "title": "Role of Immune System in Obesity-related Inflammation and Cardiometabolic Risk",
+    "phase": "NA",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Washington University School of Medicine",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2026-09",
+    "start_date": "2010-04",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT01560143",
+    "title": "Pharmacokinetics Of Tigecycline In Morbidly Obese Subjects",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Manjunath Prakash Pai",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2012-05",
+    "start_date": "2012-03",
+    "drugs": [
+      "Tigecycline"
+    ]
+  },
+  {
+    "nct_id": "NCT01724489",
+    "title": "Study of Growth Hormone and Bone in Obesity",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Massachusetts General Hospital",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2018-11-15",
+    "start_date": "2013-08",
+    "drugs": [
+      "Growth hormone",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01030653",
+    "title": "Pharmacokinetics of Voriconazole in Obese Subjects",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Manjunath Prakash Pai",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2010-04",
+    "start_date": "2009-11",
+    "drugs": [
+      "Voriconazole low dose",
+      "Voriconazole high dose"
+    ]
+  },
+  {
+    "nct_id": "NCT04126330",
+    "title": "Effect of Omega-3 and Probiotic Dietary Supplements on Elevated High Sensitivity C-reactive Protein (Hs-CRP) as a Marker",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "\u00d6rebro University, Sweden",
+    "ticker": "PFE",
+    "company": "Pfizer",
+    "primary_completion": "2020-05-15",
+    "start_date": "2019-09-11",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT07670416",
+    "title": "A Study to Evaluate the Effects of Enicepatide in Participants With Obesity or Overweight, With or Without Type 2 Diabet",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2028-02-24",
+    "start_date": "2026-07-03",
+    "drugs": [
+      "Enicepatide",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07351045",
+    "title": "A Clinical Study to Evaluate the Effects of Enicepatide (RO7795068) in Participants With Obesity or Overweight Without T",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2028-07-24",
+    "start_date": "2026-03-16",
+    "drugs": [
+      "Placebo",
+      "Enicepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT00940628",
+    "title": "A Study of Xenical (Orlistat) in Overweight and Obese Adolescents",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2010-09",
+    "start_date": "2008-04",
+    "drugs": [
+      "orlistat [Xenical]"
+    ]
+  },
+  {
+    "nct_id": "NCT07351058",
+    "title": "A Clinical Study to Evaluate the Effects of Enicepatide (RO7795068) in Participants With Obesity or Overweight and Type ",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2028-08-07",
+    "start_date": "2026-03-23",
+    "drugs": [
+      "Placebo",
+      "Enicepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT00823992",
+    "title": "A Study of Taspoglutide Versus Placebo for the Treatment of Obese Patients With Type 2 Diabetes Mellitus Inadequately Co",
+    "phase": "Phase 3",
+    "status": "COMPLETED",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2010-05",
+    "start_date": "2009-01",
+    "drugs": [
+      "placebo",
+      "taspoglutide"
+    ]
+  },
+  {
+    "nct_id": "NCT07081958",
+    "title": "A Study Evaluating the Effect of Daily Oral RO7795081 in Participants With Obesity or Overweight With at Least One Weigh",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2026-04-28",
+    "start_date": "2025-07-29",
+    "drugs": [
+      "RO7795081",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT05110846",
+    "title": "A Study of CT-868 in Overweight and Obese Participants With Type 2 Diabetes Mellitus",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Carmot Therapeutics, Inc.",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2023-02-28",
+    "start_date": "2022-02-22",
+    "drugs": [
+      "Placebo",
+      "CT-868"
+    ]
+  },
+  {
+    "nct_id": "NCT07589686",
+    "title": "A Dose-Finding Study of Petrelintide With Enicepatide (RO7795068) in Adults With Obesity or Overweight",
+    "phase": "Phase 2",
+    "status": "NOT_YET_RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2027-11-12",
+    "start_date": "2026-09-30",
+    "drugs": [
+      "Petrelintide",
+      "Enicepatide",
+      "Petrelintide-matching Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06965413",
+    "title": "A Study to Assess Efficacy, Safety, Tolerability, Pharmacokinetics (PK) and Pharmacodynamics (PD) of RO7204239 in Combin",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2026-08-22",
+    "start_date": "2025-05-05",
+    "drugs": [
+      "RO7204239",
+      "RO7204239 Matching Placebo",
+      "Tirzepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06628362",
+    "title": "A Study of Enicepatide (CT-388) in Participants Who Are Overweight or Obese With Type 2 Diabetes Mellitus",
+    "phase": "Phase 2",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Carmot Therapeutics, Inc.",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2026-05-29",
+    "start_date": "2024-11-21",
+    "drugs": [
+      "Placebo",
+      "Enicepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT06525935",
+    "title": "A Study of Enicepatide (CT-388) in Participants With Obesity or Overweight With at Least One Weight-Related Comorbidity",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Carmot Therapeutics, Inc.",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2025-12-08",
+    "start_date": "2024-08-16",
+    "drugs": [
+      "Placebo",
+      "Enicepatide"
+    ]
+  },
+  {
+    "nct_id": "NCT07137585",
+    "title": "A Study to Evaluate the Effect of RO7204239 on Insulin Sensitivity and Muscle Composition in Participants With Type 2 Di",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2026-09-14",
+    "start_date": "2025-09-30",
+    "drugs": [
+      "Placebo",
+      "RO7204239"
+    ]
+  },
+  {
+    "nct_id": "NCT06982131",
+    "title": "A Study Investigating the Safety of RO7795081 and the Effect of RO7795081 on How the Body Processes Pitavastatin and Ros",
+    "phase": "Phase 1",
+    "status": "RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2026-12-04",
+    "start_date": "2025-06-04",
+    "drugs": [
+      "RO7795081",
+      "Placebo",
+      "Rosuvastatin"
+    ]
+  },
+  {
+    "nct_id": "NCT05814107",
+    "title": "Phase 1 Study of CT-996 in Overweight/Obese Participants and Patients With Type 2 Diabetes Mellitus",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Carmot Australia First Pty Ltd",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2025-11-07",
+    "start_date": "2023-05-09",
+    "drugs": [
+      "CT-996",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT07499050",
+    "title": "A Study of Multiple Doses of Orally Administered RO7795081 in Otherwise Healthy Chinese Adult Participants With Obesity ",
+    "phase": "Phase 1",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2027-01-09",
+    "start_date": "2026-03-30",
+    "drugs": [
+      "RO7795081",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT01179919",
+    "title": "Pharmacokinetics of Oseltamivir Carboxylate In Morbidly Obese Subjects",
+    "phase": "Phase 1",
+    "status": "COMPLETED",
+    "sponsor": "Manjunath Prakash Pai",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2010-09",
+    "start_date": "2010-07",
+    "drugs": [
+      "Oseltamivir"
+    ]
+  },
+  {
+    "nct_id": "NCT00322179",
+    "title": "Microarray Analysis of IFN-Induced Gene Expression in Obese and Non-Obese Patients With Chronic Hepatitis C",
+    "phase": "N/A",
+    "status": "COMPLETED",
+    "sponsor": "Palo Alto Veterans Institute for Research",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2007-11",
+    "start_date": "2005-11",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT00212199",
+    "title": "Effectiveness of Brief Counseling for Weight Management",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "",
+    "start_date": "2002-01",
+    "drugs": [
+      "orlistat"
+    ]
+  },
+  {
+    "nct_id": "NCT00292799",
+    "title": "An RCT of Metformin Vs Orlistat in Obese Anovulatory Women",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "Sheffield Teaching Hospitals NHS Foundation Trust",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2008-02",
+    "start_date": "2006-02",
+    "drugs": [
+      "Orlistat Vs Metformin"
+    ]
+  },
+  {
+    "nct_id": "NCT00160407",
+    "title": "Orlistat (Xenical) in the Treatment of Overweight Patients With Nonalcoholic Steatohepatitis (NASH)",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "St. Louis University",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "",
+    "start_date": "2003-10",
+    "drugs": [
+      "Orlistat (Xenical)"
+    ]
+  },
+  {
+    "nct_id": "NCT01002729",
+    "title": "Oseltamivir Pharmacokinetics in Morbid Obesity",
+    "phase": "NA",
+    "status": "COMPLETED",
+    "sponsor": "IWK Health Centre",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2009-12",
+    "start_date": "2009-11",
+    "drugs": []
+  },
+  {
+    "nct_id": "NCT02706067",
+    "title": "Multifactorial Approach Associated With Orlistat (Xenical) for 4 Years Weight Loss Maintenance in Obese Adults",
+    "phase": "Phase 4",
+    "status": "COMPLETED",
+    "sponsor": "Hoffmann-La Roche",
+    "ticker": "RHHBY",
+    "company": "Roche",
+    "primary_completion": "2009-03",
+    "start_date": "2002-07",
+    "drugs": [
+      "Orlistat"
+    ]
+  },
+  {
+    "nct_id": "NCT07104500",
+    "title": "VK2735 for Weight Management Phase 3",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Viking Therapeutics, Inc.",
+    "ticker": "VKTX",
+    "company": "Viking Therapeutics",
+    "primary_completion": "2027-07-01",
+    "start_date": "2025-06-23",
+    "drugs": [
+      "VK2735"
+    ]
+  },
+  {
+    "nct_id": "NCT07104383",
+    "title": "VK2735 for Weight Management Type 2 Diabetes Phase 3 (VANQUISH 2)",
+    "phase": "Phase 3",
+    "status": "ACTIVE_NOT_RECRUITING",
+    "sponsor": "Viking Therapeutics, Inc.",
+    "ticker": "VKTX",
+    "company": "Viking Therapeutics",
+    "primary_completion": "2027-07-01",
+    "start_date": "2025-06-23",
+    "drugs": [
+      "VK2735"
+    ]
+  },
+  {
+    "nct_id": "NCT06068946",
+    "title": "VK2735 for Weight Management Phase 2",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Viking Therapeutics, Inc.",
+    "ticker": "VKTX",
+    "company": "Viking Therapeutics",
+    "primary_completion": "2024-02-27",
+    "start_date": "2023-08-31",
+    "drugs": [
+      "VK2735",
+      "Placebo"
+    ]
+  },
+  {
+    "nct_id": "NCT06828055",
+    "title": "VK2735 for Weight Management Phase 2 (Venture Oral Dosing)",
+    "phase": "Phase 2",
+    "status": "COMPLETED",
+    "sponsor": "Viking Therapeutics, Inc.",
+    "ticker": "VKTX",
+    "company": "Viking Therapeutics",
+    "primary_completion": "2025-06-24",
+    "start_date": "2024-12-18",
+    "drugs": [
+      "Placebo",
+      "VK2735"
+    ]
+  }
+]

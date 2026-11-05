@@ -2,6 +2,8 @@
 
 ## Current Context
 
+2026-11-05: isolated branch codex/static-obesity-20261105 converts only the obesity dashboard to same-origin static JSON. Source snapshot date: 26 August 2026; exported 5 November. All 22 endpoint payloads and interactions retained. Source typecheck, production build and output hash checks pass. Browser automation is currently unavailable (extension tab creation fails); visual acceptance is pending. No site release or Railway obesity removal has occurred.
+
 2026-09-21 — Edge Jefferies change is merged to `origin/main` from isolated
 branch `codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not
 changed.
@@ -80,6 +82,8 @@ working tree into a portfolio commit.
   dependencies, although the Pages workflow passes.
 
 ## Exact Next Steps
+
+0. Review the static obesity change and preview /obesity-stocks. Use the existing protected portfolio release process. Verify the static page live before retiring obesity-landscape on Railway; do not publish unrelated Atlas changes or bypass release authority.
 
 1. Enrol fresh protected Pages authority for the merged Jefferies commit, deploy
    the exact authorised artifact, and read back both Edge routes from production.

@@ -637,8 +637,8 @@ export function MaSignals({ api }: MaSignalsProps) {
 
   useEffect(() => {
     Promise.all([
-      fetch(`${api}/firepower`).then(r => r.json()),
-      fetch(`${api}/obesity-targets`).then(r => r.json()),
+      fetch(`${api}/firepower.json`).then(r => r.json()),
+      fetch(`${api}/obesity-targets.json`).then(r => r.json()),
     ])
       .then(([fp, tgts]) => {
         setFirepower(fp);

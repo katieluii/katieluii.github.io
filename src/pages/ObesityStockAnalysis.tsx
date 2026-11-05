@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { RefreshCw } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Pill } from '../components/Pill';
 import ProjectPageLayout from '../components/ProjectPageLayout';
@@ -9,8 +8,7 @@ import { PipelineLandscape } from '../components/PipelineLandscape';
 import { MaSignals } from '../components/MaSignals';
 import { SegmentedChips, Skeleton } from '../components/ui';
 
-// Update after deploying obesity_landscape to Railway
-const API = 'https://obesitylandscape-production.up.railway.app';
+const API = `${import.meta.env.BASE_URL}data/obesity-landscape`;
 
 type Tab = 'stocks' | 'pipeline' | 'ma';
 
@@ -27,10 +25,10 @@ export default function ObesityStockAnalysis() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`${API}/stocks`).then(r => r.json()),
-      fetch(`${API}/catalysts`).then(r => r.json()),
-      fetch(`${API}/pipeline`).then(r => r.json()),
-      fetch(`${API}/health`).then(r => r.json()),
+      fetch(`${API}/stocks.json`).then(r => { if (!r.ok) throw new Error("Snapshot unavailable"); return r.json(); }),
+      fetch(`${API}/catalysts.json`).then(r => { if (!r.ok) throw new Error("Snapshot unavailable"); return r.json(); }),
+      fetch(`${API}/pipeline.json`).then(r => { if (!r.ok) throw new Error("Snapshot unavailable"); return r.json(); }),
+      fetch(`${API}/health.json`).then(r => { if (!r.ok) throw new Error("Snapshot unavailable"); return r.json(); }),
     ])
       .then(([stocks, cats, pipe, health]) => {
         setStockData(stocks);
@@ -40,12 +38,12 @@ export default function ObesityStockAnalysis() {
         // Fetch per-ticker forecasts in the background
         const tickers: string[] = Object.keys(stocks);
         Promise.all(
-          tickers.map(t => fetch(`${API}/forecast/${t}`).then(r => r.json()))
+          tickers.map(t => fetch(`${API}/forecast/${t}.json`).then(r => { if (!r.ok) throw new Error("Forecast unavailable"); return r.json(); }))
         ).then(fcs => {
           const fcMap: Record<string, any> = {};
           tickers.forEach((t, i) => { if (fcs[i]?.forecast) fcMap[t] = fcs[i]; });
           setForecasts(fcMap);
-        });
+        }).catch(() => setApiStatus('error'));
       })
       .catch(() => setApiStatus('error'))
       .finally(() => setLoading(false));
@@ -72,21 +70,25 @@ export default function ObesityStockAnalysis() {
           <span className="text-xs text-zinc-500 dark:text-zinc-400 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full">
             {project.yearStart}
           </span>
-          <Pill variant={project.status === 'Live' ? 'status-live' : 'status-wip'}>{project.status}</Pill>
+          <Pill variant="status-wip">Static archive</Pill>
           {project.themes.map(t => <Pill key={t} variant="tech">{t}</Pill>)}
         </div>
 
         <ProjectLead headline="The obesity drug race, read through markets, pipelines, and M&A firepower.">
-          A competitive intelligence tool for the GLP-1/obesity pharma space, anchored to an M&A signal framework. The M&A Signals tab analyzes firepower (Net Debt/EBITDA capacity to deploy capital), surfaces likely targets, and tracks the 2023–2025 deal timeline. The Pipeline tab maps the asset-level competitive landscape feeding into those M&A decisions, sourced live from ClinicalTrials.gov. The Stock Charts tab tracks 3-year price history with SMA-50/200, ARIMA 30-day forecasts, and deal/readout markers overlaid as catalysts — sourced live from yfinance.
+          A competitive intelligence tool for the GLP-1/obesity pharma space, anchored to an M&A signal framework. The M&A Signals tab analyzes firepower (Net Debt/EBITDA capacity to deploy capital), surfaces likely targets, and tracks the 2023–2025 deal timeline. The Pipeline tab maps the asset-level competitive landscape feeding into those M&A decisions, captured from ClinicalTrials.gov. The Stock Charts tab tracks 3-year price history with SMA-50/200, ARIMA 30-day forecasts, and deal/readout markers overlaid as catalysts — captured from yfinance.
         </ProjectLead>
 
-        {/* API status */}
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          Archived snapshot: source data last updated 26 August 2026; saved 5 November 2026.
+          Prices, pipeline records and 30-day forecasts are historical and do not update automatically.
+        </p>
+
+        {/* Snapshot status */}
         {!loading && apiStatus !== 'ready' && (
           <div className="rounded-2xl ring-1 ring-amber-200 dark:ring-amber-800/40 bg-amber-50 dark:bg-amber-900/20 px-4 py-3 flex items-center gap-2 text-sm text-amber-700 dark:text-amber-400">
-            <RefreshCw className="w-3.5 h-3.5 animate-spin flex-shrink-0" />
             {apiStatus === 'error'
-              ? 'Could not reach the backend — is it deployed to Railway yet?'
-              : 'Backend is warming up (fetching data on first start) — refresh in ~60s.'}
+              ? 'Could not load the archived data. Please reload the page.'
+              : 'The archived snapshot is incomplete.'}
           </div>
         )}
 
