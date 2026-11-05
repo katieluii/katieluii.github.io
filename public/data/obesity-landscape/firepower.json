@@ -1,0 +1,296 @@
+{
+  "companies": [
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "market_cap_b": 658.2,
+      "total_cash_b": 20.1,
+      "total_debt_b": 47.9,
+      "ebitda_b": 35.2,
+      "net_debt_b": 28.2,
+      "nd_ebitda": 0.8,
+      "fcf_reported_b": 19.3,
+      "fcf_normalized_b": 19.3,
+      "ocf_b": 24.5,
+      "capex_b": -5.2,
+      "fcf_ebitda_pct": 55,
+      "comfortable_b": 77.4,
+      "stretch_b": 147.8,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement_normalized",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": "\u2020 Reported EBITDA $41.1B includes $5.9B unusual items (talc litigation reversal + investment gains). Normalized EBITDA $35.2B used."
+      }
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly",
+      "market_cap_b": 1099.6,
+      "total_cash_b": 7.3,
+      "total_debt_b": 42.5,
+      "ebitda_b": 31.7,
+      "net_debt_b": 35.2,
+      "nd_ebitda": 1.11,
+      "fcf_reported_b": 6.0,
+      "fcf_normalized_b": 16.8,
+      "ocf_b": 16.8,
+      "capex_b": -10.8,
+      "fcf_ebitda_pct": 53,
+      "comfortable_b": 59.9,
+      "stretch_b": 123.3,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "operating_cashflow",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    },
+    {
+      "ticker": "NVO",
+      "name": "Novo Nordisk",
+      "market_cap_b": 215.1,
+      "total_cash_b": 4.2,
+      "total_debt_b": 20.6,
+      "ebitda_b": 24.7,
+      "net_debt_b": 15.1,
+      "nd_ebitda": 0.61,
+      "fcf_reported_b": 4.6,
+      "fcf_normalized_b": 18.7,
+      "ocf_b": 18.7,
+      "capex_b": -14.2,
+      "fcf_ebitda_pct": 76,
+      "comfortable_b": 59.0,
+      "stretch_b": 108.4,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "DKK",
+      "fx_rate": 0.1573,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "operating_cashflow",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck",
+      "market_cap_b": 386.0,
+      "total_cash_b": 14.6,
+      "total_debt_b": 49.3,
+      "ebitda_b": 28.3,
+      "net_debt_b": 34.8,
+      "nd_ebitda": 1.23,
+      "fcf_reported_b": 12.4,
+      "fcf_normalized_b": 12.4,
+      "ocf_b": 16.5,
+      "capex_b": -4.1,
+      "fcf_ebitda_pct": 44,
+      "comfortable_b": 50.1,
+      "stretch_b": 106.7,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    },
+    {
+      "ticker": "RHHBY",
+      "name": "Roche",
+      "market_cap_b": 372.7,
+      "total_cash_b": 19.5,
+      "total_debt_b": 41.9,
+      "ebitda_b": 27.4,
+      "net_debt_b": 32.9,
+      "nd_ebitda": 1.2,
+      "fcf_reported_b": 16.5,
+      "fcf_normalized_b": 16.5,
+      "ocf_b": 23.8,
+      "capex_b": -7.3,
+      "fcf_ebitda_pct": 60,
+      "comfortable_b": 49.3,
+      "stretch_b": 104.1,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "CHF",
+      "fx_rate": 1.2631,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": "\u2021 FY2025 EBITDA +31% YoY in CHF (cost reduction despite flat revenue). Converted at period-end CHF/USD 1.2631. Lower than yfinance .info due to TTM methodology differences."
+      }
+    },
+    {
+      "ticker": "NVS",
+      "name": "Novartis",
+      "market_cap_b": 304.1,
+      "total_cash_b": 11.5,
+      "total_debt_b": 35.4,
+      "ebitda_b": 22.8,
+      "net_debt_b": 23.8,
+      "nd_ebitda": 1.04,
+      "fcf_reported_b": 15.2,
+      "fcf_normalized_b": 15.2,
+      "ocf_b": 19.1,
+      "capex_b": -3.9,
+      "fcf_ebitda_pct": 67,
+      "comfortable_b": 44.6,
+      "stretch_b": 90.2,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "computed",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    },
+    {
+      "ticker": "AZN",
+      "name": "AstraZeneca",
+      "market_cap_b": 263.1,
+      "total_cash_b": 5.7,
+      "total_debt_b": 29.1,
+      "ebitda_b": 19.5,
+      "net_debt_b": 21.6,
+      "nd_ebitda": 1.11,
+      "fcf_reported_b": 8.7,
+      "fcf_normalized_b": 8.7,
+      "ocf_b": 14.6,
+      "capex_b": -5.9,
+      "fcf_ebitda_pct": 45,
+      "comfortable_b": 36.9,
+      "stretch_b": 75.9,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    },
+    {
+      "ticker": "PFE",
+      "name": "Pfizer",
+      "market_cap_b": 162.8,
+      "total_cash_b": 13.6,
+      "total_debt_b": 64.0,
+      "ebitda_b": 25.7,
+      "net_debt_b": 62.8,
+      "nd_ebitda": 2.44,
+      "fcf_reported_b": 9.1,
+      "fcf_normalized_b": 11.7,
+      "ocf_b": 11.7,
+      "capex_b": -2.6,
+      "fcf_ebitda_pct": 46,
+      "comfortable_b": 14.3,
+      "stretch_b": 65.7,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement_normalized",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "operating_cashflow",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": "\u2020 Normalized EBITDA used; reported EBITDA $16.8B distorted by restructuring charges and Paxlovid wind-down."
+      }
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie",
+      "market_cap_b": 469.7,
+      "total_cash_b": 5.3,
+      "total_debt_b": 67.5,
+      "ebitda_b": 22.7,
+      "net_debt_b": 62.3,
+      "nd_ebitda": 2.74,
+      "fcf_reported_b": 17.8,
+      "fcf_normalized_b": 17.8,
+      "ocf_b": 19.0,
+      "capex_b": -1.2,
+      "fcf_ebitda_pct": 78,
+      "comfortable_b": 5.8,
+      "stretch_b": 51.2,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement_normalized",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": "\u2020 Normalized EBITDA used; reported EBITDA $17.6B includes ~$7.4B/yr Allergan acquisition intangible amortization."
+      }
+    },
+    {
+      "ticker": "AMGN",
+      "name": "Amgen",
+      "market_cap_b": 239.1,
+      "total_cash_b": 9.1,
+      "total_debt_b": 54.6,
+      "ebitda_b": 16.9,
+      "net_debt_b": 45.5,
+      "nd_ebitda": 2.69,
+      "fcf_reported_b": 8.1,
+      "fcf_normalized_b": 8.1,
+      "ocf_b": 10.0,
+      "capex_b": -1.9,
+      "fcf_ebitda_pct": 48,
+      "comfortable_b": 5.2,
+      "stretch_b": 39.0,
+      "statement_period_end": "2025-12-31",
+      "filing_currency": "USD",
+      "fx_rate": 1.0,
+      "data_quality": {
+        "ebitda_source": "income_statement",
+        "net_debt_source": "Net Debt",
+        "fcf_source": "fcf_line",
+        "warnings": [
+          "Statement 238d old \u2014 data may be stale"
+        ],
+        "ebitda_note": null
+      }
+    }
+  ],
+  "last_updated": 1787736848.585763,
+  "methodology_note": "Firepower calculated from audited FY2025 financial statements. EBITDA, net debt, and free cash flow taken from company-reported line items rather than TTM aggregations. For companies in active manufacturing expansion (LLY, NVO, PFE), FCF reflects operating cash flow excluding one-time strategic capex. Comfortable firepower = capacity to lever to 3\u00d7 Net Debt/EBITDA; Stretch = 5\u00d7. All data from FY2025 annual filings (period end 2025-12-31). M&A completed or announced in 2026 is not yet reflected in balance sheet figures."
+}

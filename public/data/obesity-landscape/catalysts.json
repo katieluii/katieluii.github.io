@@ -1,0 +1,600 @@
+{
+  "ABBV": [
+    {
+      "date": "2026-07",
+      "label": "ABBV-295 \u00b7 Phase 1",
+      "nct_id": "NCT07414784",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-01",
+      "label": "ABBV-295 \u00b7 Phase 1",
+      "nct_id": "NCT07514260",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-03",
+      "label": "ABBV-295 \u00b7 Phase 1",
+      "nct_id": "NCT07291232",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-03",
+      "label": "ABBV-295 \u00b7 Phase 2",
+      "nct_id": "NCT07752979",
+      "status": "NOT_YET_RECRUITING"
+    }
+  ],
+  "AMGN": [
+    {
+      "date": "2025-10-06",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 2",
+      "nct_id": "NCT06660173",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-08-26",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 1",
+      "nct_id": "NCT07229157",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-10-01",
+      "label": "AMG 513 \u00b7 Phase 1",
+      "nct_id": "NCT06585462",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2026-11-18",
+      "label": "COC \u00b7 Phase 1",
+      "nct_id": "NCT07523711",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-01-21",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT06858878",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-01-21",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT06858839",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-04-27",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT06987695",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-09-29",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07226765",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-09-29",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07225686",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-09-29",
+      "label": "Maridebart cafraglutide \u00b7 Phase 2",
+      "nct_id": "NCT07441252",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-12-26",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07684235",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-12-26",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07684144",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-01-03",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07575399",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-06-30",
+      "label": "Maridebart cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07037459",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-06-30",
+      "label": "Maridebart Cafraglutide \u00b7 Phase 3",
+      "nct_id": "NCT07037433",
+      "status": "RECRUITING"
+    }
+  ],
+  "AZN": [
+    {
+      "date": "2019-06",
+      "label": "study \u00b7 NA",
+      "nct_id": "NCT02386917",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-05-27",
+      "label": "AZD6234 \u00b7 Phase 2",
+      "nct_id": "NCT06851858",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-08-06",
+      "label": "AZD6234 \u00b7 Phase 2",
+      "nct_id": "NCT07017179",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-08-28",
+      "label": "Elecoglipron \u00b7 Phase 1",
+      "nct_id": "NCT07534592",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-09-17",
+      "label": "AZD6234 Formulation 1 \u00b7 Phase 1",
+      "nct_id": "NCT07220954",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-11-18",
+      "label": "Elecoglipron Reference Formulation Dose A \u00b7 Phase 1",
+      "nct_id": "NCT07723833",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-01-29",
+      "label": "AZD9550 \u00b7 Phase 1",
+      "nct_id": "NCT06151964",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-04-09",
+      "label": "AZD1043 \u00b7 Phase 1",
+      "nct_id": "NCT07511205",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-07-09",
+      "label": "AZD6234 \u00b7 Phase 1",
+      "nct_id": "NCT07013643",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-04-20",
+      "label": "Elecoglipron \u00b7 Phase 3",
+      "nct_id": "NCT07775404",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2028-07-31",
+      "label": "Elecoglipron \u00b7 Phase 3",
+      "nct_id": "NCT07667803",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-08-09",
+      "label": "AZD6234 \u00b7 Phase 3",
+      "nct_id": "NCT07776509",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2028-08-09",
+      "label": "AZD6234 \u00b7 Phase 3",
+      "nct_id": "NCT07784270",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2028-08-11",
+      "label": "AZD6234 \u00b7 Phase 3",
+      "nct_id": "NCT07784725",
+      "status": "RECRUITING"
+    }
+  ],
+  "CRBP": [
+    {
+      "date": "2026-07-02",
+      "label": "CRB-913 \u00b7 Phase 1",
+      "nct_id": "NCT07310901",
+      "status": "ACTIVE_NOT_RECRUITING"
+    }
+  ],
+  "GPCR": [
+    {
+      "date": "2026-08",
+      "label": "aleniglipron or placebo \u00b7 Phase 2",
+      "nct_id": "NCT07169942",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-09",
+      "label": "Aleniglipron \u00b7 Phase 2",
+      "nct_id": "NCT07400588",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2028-09",
+      "label": "aleniglipron \u00b7 Phase 3",
+      "nct_id": "NCT07654374",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-09",
+      "label": "Aleniglipron \u00b7 Phase 3",
+      "nct_id": "NCT07654361",
+      "status": "RECRUITING"
+    }
+  ],
+  "LLY": [
+    {
+      "date": "2025-07-25",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT05869903",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-06-02",
+      "label": "Tirzepatide \u00b7 Phase 3",
+      "nct_id": "NCT06075667",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-07",
+      "label": "LY3537031 \u00b7 Phase 1",
+      "nct_id": "NCT06606106",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-11",
+      "label": "Retatrutide \u00b7 Phase 3",
+      "nct_id": "NCT06662383",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-12",
+      "label": "LY3457263 \u00b7 Phase 2",
+      "nct_id": "NCT06897475",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-05",
+      "label": "Tirzepatide \u00b7 Phase 4",
+      "nct_id": "NCT06191848",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-06",
+      "label": "Macupatide \u00b7 Phase 1",
+      "nct_id": "NCT07765511",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2027-07",
+      "label": "Retatrutide \u00b7 Phase 3",
+      "nct_id": "NCT07232719",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-08",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT06972472",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-08",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT06972459",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-09",
+      "label": "LY3305677 \u00b7 Phase 2",
+      "nct_id": "NCT06143956",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-11",
+      "label": "Tirzepatide \u00b7 Phase 4",
+      "nct_id": "NCT06864026",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-12",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT06672939",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-12-01",
+      "label": "Tirzepatide \u00b7 Phase 2",
+      "nct_id": "NCT06847399",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-03",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT07202884",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-03",
+      "label": "Eloralintide \u00b7 Phase 3",
+      "nct_id": "NCT07353931",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-04",
+      "label": "Orforglipron \u00b7 Phase 3",
+      "nct_id": "NCT07153471",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-04",
+      "label": "Retatrutide \u00b7 Phase 3",
+      "nct_id": "NCT06859268",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2028-04",
+      "label": "Mirikizumab \u00b7 Phase 3",
+      "nct_id": "NCT06937086",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-05",
+      "label": "Mirikizumab \u00b7 Phase 3",
+      "nct_id": "NCT06937099",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-05",
+      "label": "Tirzepatide \u00b7 Phase 4",
+      "nct_id": "NCT06857942",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-06",
+      "label": "Eloralintide \u00b7 Phase 3",
+      "nct_id": "NCT07392190",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-10",
+      "label": "Retatrutide \u00b7 Phase 3",
+      "nct_id": "NCT07357415",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2029-04",
+      "label": "LY4174794 \u00b7 Phase 1",
+      "nct_id": "NCT07654972",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2051-06",
+      "label": "study \u00b7 N/A",
+      "nct_id": "NCT07472608",
+      "status": "NOT_YET_RECRUITING"
+    }
+  ],
+  "MRK": [
+    {
+      "date": "2025-12",
+      "label": "study \u00b7 NA",
+      "nct_id": "NCT05866107",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2026-09-02",
+      "label": "MK-4082 \u00b7 Phase 1",
+      "nct_id": "NCT07388667",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-12-15",
+      "label": "MK-4082 Formulation 1 (F1) \u00b7 Phase 1",
+      "nct_id": "NCT07748351",
+      "status": "NOT_YET_RECRUITING"
+    }
+  ],
+  "NVO": [
+    {
+      "date": "2026-12-13",
+      "label": "Liraglutide \u00b7 Phase 1",
+      "nct_id": "NCT07225816",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-01-14",
+      "label": "UBT251 \u00b7 Phase 2",
+      "nct_id": "NCT07395687",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-04-13",
+      "label": "Cagrilintide \u00b7 Phase 1",
+      "nct_id": "NCT07557953",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-05-11",
+      "label": "Cagrilintide \u00b7 Phase 3",
+      "nct_id": "NCT07220642",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-05-18",
+      "label": "Cagrilintide \u00b7 Phase 3",
+      "nct_id": "NCT07745504",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2027-12-01",
+      "label": "NNC0487-0111 \u00b7 Phase 1",
+      "nct_id": "NCT07587710",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2027-12-31",
+      "label": "study \u00b7 NA",
+      "nct_id": "NCT06341179",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-02-23",
+      "label": "Cagrisema \u00b7 Phase 3",
+      "nct_id": "NCT07564414",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-08-28",
+      "label": "Cagrilintide \u00b7 Phase 3",
+      "nct_id": "NCT06780449",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2029-07-23",
+      "label": "NNC0487-0111 \u00b7 Phase 3",
+      "nct_id": "NCT07567001",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2030-03-20",
+      "label": "Cagrilintide \u00b7 Phase 3",
+      "nct_id": "NCT07253285",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2031-01-31",
+      "label": "Semaglutide \u00b7 Phase 4",
+      "nct_id": "NCT06977438",
+      "status": "NOT_YET_RECRUITING"
+    }
+  ],
+  "PFE": [
+    {
+      "date": "2017-11-30",
+      "label": "study \u00b7 N/A",
+      "nct_id": "NCT03292094",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-09",
+      "label": "study \u00b7 NA",
+      "nct_id": "NCT01104220",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-09-15",
+      "label": "MET233 and MET097 \u00b7 Phase 1",
+      "nct_id": "NCT06924320",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-08-04",
+      "label": "PF-08653945 \u00b7 Phase 2",
+      "nct_id": "NCT07575932",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-09-21",
+      "label": "MET097 \u00b7 Phase 3",
+      "nct_id": "NCT07311850",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-10-12",
+      "label": "PF-08653944 \u00b7 Phase 3",
+      "nct_id": "NCT07400653",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2028-05-04",
+      "label": "PF-08653944 \u00b7 Phase 3",
+      "nct_id": "NCT07595549",
+      "status": "RECRUITING"
+    }
+  ],
+  "RHHBY": [
+    {
+      "date": "2026-05-29",
+      "label": "Placebo \u00b7 Phase 2",
+      "nct_id": "NCT06628362",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-08-22",
+      "label": "RO7204239 \u00b7 Phase 2",
+      "nct_id": "NCT06965413",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-09-14",
+      "label": "Placebo \u00b7 Phase 1",
+      "nct_id": "NCT07137585",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2026-12-04",
+      "label": "RO7795081 \u00b7 Phase 1",
+      "nct_id": "NCT06982131",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2027-01-09",
+      "label": "RO7795081 \u00b7 Phase 1",
+      "nct_id": "NCT07499050",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-11-12",
+      "label": "Petrelintide \u00b7 Phase 2",
+      "nct_id": "NCT07589686",
+      "status": "NOT_YET_RECRUITING"
+    },
+    {
+      "date": "2028-02-24",
+      "label": "Enicepatide \u00b7 Phase 3",
+      "nct_id": "NCT07670416",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-07-24",
+      "label": "Placebo \u00b7 Phase 3",
+      "nct_id": "NCT07351045",
+      "status": "RECRUITING"
+    },
+    {
+      "date": "2028-08-07",
+      "label": "Placebo \u00b7 Phase 3",
+      "nct_id": "NCT07351058",
+      "status": "RECRUITING"
+    }
+  ],
+  "VKTX": [
+    {
+      "date": "2027-07-01",
+      "label": "VK2735 \u00b7 Phase 3",
+      "nct_id": "NCT07104500",
+      "status": "ACTIVE_NOT_RECRUITING"
+    },
+    {
+      "date": "2027-07-01",
+      "label": "VK2735 \u00b7 Phase 3",
+      "nct_id": "NCT07104383",
+      "status": "ACTIVE_NOT_RECRUITING"
+    }
+  ]
+}

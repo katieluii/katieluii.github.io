@@ -568,7 +568,7 @@ export function PipelineLandscape({ pipeline, api }: PipelineLandscapeProps) {
   });
 
   useEffect(() => {
-    fetch(`${api}/obesity-targets`)
+    fetch(`${api}/obesity-targets.json`)
       .then(r => r.json())
       .then((data: unknown) => {
         if (Array.isArray(data)) setTargets(data as ObesityTarget[]);
