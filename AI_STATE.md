@@ -2,6 +2,8 @@
 
 ## Current Context
 
+2026-11-05 — Homepage-only profile update prepared on `codex/profile-update-20261105` in an isolated worktree. Uses Katie’s two exact approved paragraphs; removes the homepage Renascor links and switches its email CTA to the address in her CV. Original layout, heading, suite and other page content retained. Typecheck, production build, 56 Python tests, 58 release tests and Atlas publication/scope checks pass. No clinical/data changes. Publication is pending renewal of the protected release authority: existing enrollment expired 2026-09-22 and the environment public key still dates to 2026-09-19. The dirty canonical checkout is untouched.
+
 2026-09-21 — Edge Jefferies change is merged to `origin/main` from isolated
 branch `codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not
 changed.
