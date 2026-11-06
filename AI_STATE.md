@@ -1,10 +1,13 @@
 # Project Memory State
 
+2026-11-06 S371 wrap; provider readback confirms this remains current. Release outcome: recruitment deployment0b6b33de SUCCESS with sleepApplication=true. Protected Pages run42142658836 deployed static obesity at ccb1d4c and verified46 files, but concurrent homepage-only run42142992752 deployed8399654 from older880f05b and superseded it at01:20:30Z. Current deployment7589747904 lacks all obesity static JSON. DO NOT retire obesity Railway. Authority lease4b22181a-a7d5-40fa-aa7f-9335e4d519f4 remains quarantined (RENDERED_RECEIPT_TIMEOUT); browser receipt finished after supersession and cannot qualify current production. Independent review FAIL preserved in ~/Atlas-private-checkpoints/static-obesity-release-20261106/. Do not apply reconcile-live for this superseded release. Katie already approved deploy/sleep and protected renewal/key update; deployment ownership coordination between sessions is pending, not a request to repeat approval. Current mainccb1d4c includes both merged changes; preserve unrelated dirty canonical checkout.
+
+
 ## Current Context
 
 2026-11-05 — Homepage-only profile update prepared on `codex/profile-update-20261105` in an isolated worktree. Uses Katie’s two exact approved paragraphs; removes the homepage Renascor links and switches its email CTA to the address in her CV. Original layout, heading, suite and other page content retained. Typecheck, production build, 56 Python tests, 58 release tests and Atlas publication/scope checks pass. No clinical/data changes. Publication is pending renewal of the protected release authority: existing enrollment expired 2026-09-22 and the environment public key still dates to 2026-09-19. The dirty canonical checkout is untouched.
 
-2026-11-05: isolated branch codex/static-obesity-20261105 converts only the obesity dashboard to same-origin static JSON. Source snapshot date: 26 August 2026; exported 5 November. All 22 endpoint payloads and interactions retained. Source typecheck, production build and output hash checks pass. Browser automation is currently unavailable (extension tab creation fails); visual acceptance is pending. No site release or Railway obesity removal has occurred.
+2026-11-05: isolated branch codex/static-obesity-20261105 converts only the obesity dashboard to same-origin static JSON. Source snapshot date: 26 August 2026; exported 5 November. All 22 endpoint payloads and interactions retained. Source typecheck, production build and output hash checks pass. Local native Chrome verified the static dashboard; the protected site release was later superseded and the Railway backend remains running.
 
 2026-09-21 — Edge Jefferies change is merged to `origin/main` from isolated
 branch `codex/jefferies-demo-20260921`; the shared dirty `main` checkout was not
