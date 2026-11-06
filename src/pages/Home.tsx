@@ -10,10 +10,10 @@ import { projects } from '../data/projects';
    Journey: (1) who she is, in her own words, and a way to get in touch →
    (2) the suite, A→E, one pass → (3) how an engagement runs → (4) interests.
    One measure (max-w-3xl) top to bottom. One family (Hanken Grotesk); hierarchy
-   comes from size and weight. Colours are tokens from src/index.css (Renascor
+   comes from size and weight. Colours are tokens from src/index.css (a
    palette on a bone ground; the dark toggle is the green/bone/brass version). */
 
-const EMAIL = 'katie@renascor.xyz';
+const EMAIL = 'katieluikakiu@gmail.com';
 const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent('Working together')}`;
 
 const btn =
@@ -62,13 +62,10 @@ export function Home() {
           </h1>
           <div className="rise mt-6 max-w-2xl space-y-4 text-[16.5px] leading-[1.6] text-[var(--ink)]" style={{ animationDelay: '200ms' }}>
             <p>
-              Experience in a medtech startup and biopharma consultancy, "translating" complex science
-              and data into actionable insights and narratives. Started in wet labs with astrocytes and
-              iPSCs (Oxford/HK/London), now at biopharma-AI startups (SF/London).
+              Started in wet labs with astrocytes and iPSCs, worked across seed-to-Series-A medtech and biopharma-AI startups and a boutique biotech consultancy, "translating" complex science and data into actionable insights and solutions. Now an FDE, taking clients from AI strategy through design to implementation: hands-on with agent orchestration, harness engineering, evals, deployments and rollouts.
             </p>
             <p>
-              I build AI and automation tools/workflows to scale analysis, productivity, and impact: for
-              drug development and strategy teams, biotech investors, and early-stage funds.
+              I build AI tools, workflows and systems to scale productivity, value, and impact for biopharma teams, investors and early-stage funds.
             </p>
           </div>
           <div className="rise mt-8 flex flex-wrap items-center gap-x-5 gap-y-3" style={{ animationDelay: '280ms' }}>
@@ -82,8 +79,6 @@ export function Home() {
             </a>
           </div>
           <p className="rise mt-6 text-[13px] text-[var(--muted)]" style={{ animationDelay: '340ms' }}>
-            <a href="https://renascor.xyz" target="_blank" rel="noreferrer" className={textLink}>Renascor</a>
-            <span className="mx-2 text-[var(--faint)]">·</span>
             <a href="https://www.linkedin.com/in/katieluikakiu" target="_blank" rel="noreferrer" className={textLink}>LinkedIn</a>
             <span className="mx-2 text-[var(--faint)]">·</span>
             <a href="https://github.com/katieluii" target="_blank" rel="noreferrer" className={textLink}>GitHub</a>
@@ -169,7 +164,6 @@ export function Home() {
             <a href={MAILTO} className={textLink}>Email</a>
             <a href="https://www.linkedin.com/in/katieluikakiu" target="_blank" rel="noreferrer" className={textLink}>LinkedIn</a>
             <a href="https://github.com/katieluii" target="_blank" rel="noreferrer" className={textLink}>GitHub</a>
-            <a href="https://renascor.xyz" target="_blank" rel="noreferrer" className={textLink}>Renascor</a>
           </div>
         </div>
       </footer>
