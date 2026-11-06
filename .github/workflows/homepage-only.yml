@@ -1,0 +1,51 @@
+name: Homepage-only release
+on:
+  push:
+    branches: [codex/profile-live-only-20261105]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      VITE_WS21_APP_URL: https://ws21-clinical-trial-analyst-production.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require homepage-only change from published baseline
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          baseline='880f05b78751a41bdbba8cbf28731c6479164725'
+          files=subprocess.check_output(['git','diff','--name-only',baseline,'HEAD'],text=True).splitlines()
+          allowed={'src/pages/Home.tsx','.github/workflows/homepage-only.yml'}
+          assert set(files)==allowed, f'Unexpected release changes: {files}'
+          subprocess.run(['git','diff','--exit-code',baseline,'HEAD','--','src/data','public','src/pages/AtlasReaderETLM.tsx','src/components/atlas'],check=True)
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+      - run: python3 scripts/sync-atlas-content.py --verify-only
+      - run: python3 scripts/check_atlas_scope.py
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Publish verified homepage-only build
+        id: deployment
+        uses: actions/deploy-pages@v4
